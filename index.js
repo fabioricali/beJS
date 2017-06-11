@@ -49,6 +49,15 @@ var ValidityJS = {
     },
 
     /**
+     * Check if is a object
+     * @param value
+     * @returns {boolean}
+     */
+    isObject: function (value) {
+        return typeof value === 'object';
+    },
+
+    /**
      * Check if is valid string url
      * @param value
      * @returns {boolean}
