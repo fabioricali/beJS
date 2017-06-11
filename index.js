@@ -142,6 +142,15 @@ var ValidityJS = {
     isNaN: function (value) {
         return this.isNumber(value) &&
             isNaN(value);
+    },
+
+    /**
+     * Check if is a valid MD5 hash string
+     * @param value
+     * @returns {boolean}
+     */
+    isMd5: function (value) {
+        return /^[a-f0-9]{32}$/.test(value);
     }
 };
 

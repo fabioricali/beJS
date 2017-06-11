@@ -241,7 +241,7 @@ describe('isFloat', function () {
         assert.equal(result, true);
     });
 
-    it('integer, be return false', function () {
+    it('integer, should be return false', function () {
         var result = vJS.isFloat(2);
         console.log(result);
         assert.equal(result, false);
@@ -255,8 +255,22 @@ describe('isNaN', function () {
         assert.equal(result, true);
     });
 
-    it('integer, be return false', function () {
+    it('integer, should be return false', function () {
         var result = vJS.isNaN(4);
+        console.log(result);
+        assert.equal(result, false);
+    });
+});
+
+describe('isMd5', function () {
+    it('md5 hash string, should be return true', function () {
+        var result = vJS.isMd5('00236a2ae558018ed13b5222ef1bd977');
+        console.log(result);
+        assert.equal(result, true);
+    });
+
+    it('integer, should be return false', function () {
+        var result = vJS.isMd5('foo');
         console.log(result);
         assert.equal(result, false);
     });
