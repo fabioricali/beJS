@@ -599,10 +599,20 @@ describe('isEmpty', function () {
         console.log(result);
         assert.equal(result, false);
     });
-    it('object, should be return false', function () {
-        var result = vJS.isEmpty({});
+    it('negative number, should be return false', function () {
+        var result = vJS.isEmpty(-3);
         console.log(result);
         assert.equal(result, false);
+    });
+    it('zero number, should be return false', function () {
+        var result = vJS.isEmpty(0);
+        console.log(result);
+        assert.equal(result, false);
+    });
+    it('object, should be return true', function () {
+        var result = vJS.isEmpty({});
+        console.log(result);
+        assert.equal(result, true);
     });
     it('null, should be return true', function () {
         var result = vJS.isEmpty(null);
@@ -616,6 +626,31 @@ describe('isEmpty', function () {
     });
     it('should be return false', function () {
         var result = vJS.isEmpty('test');
+        console.log(result);
+        assert.equal(result, false);
+    });
+    it('empty array, should be return true', function () {
+        var result = vJS.isEmpty([]);
+        console.log(result);
+        assert.equal(result, true);
+    });
+    it('array with item, should be return false', function () {
+        var result = vJS.isEmpty([3]);
+        console.log(result);
+        assert.equal(result, false);
+    });
+    it('NaN, should be return true', function () {
+        var result = vJS.isEmpty(NaN);
+        console.log(result);
+        assert.equal(result, true);
+    });
+    it('boolean true, should be return false', function () {
+        var result = vJS.isEmpty(true);
+        console.log(result);
+        assert.equal(result, false);
+    });
+    it('boolean false, should be return false', function () {
+        var result = vJS.isEmpty(false);
         console.log(result);
         assert.equal(result, false);
     });

@@ -296,12 +296,28 @@ var ValidityJS = {
     },
 
     /**
-     * Check if string is empty
+     * Check if is empty
      * @param value
      * @returns {boolean}
      */
     isEmpty: function (value) {
-        return !value;
+        if (this.isNull(value)) return true;
+        if (this.isUndefined(value)) return true;
+        if (this.isNumber(value)) return false;
+        if (this.isFunction(value)) return false;
+        if (this.isBoolean(value)) return false;
+
+        if (this.isObject(value)) {
+            if (value.length > 0)    return false;
+            if (value.length === 0)  return true;
+
+            for (var key in value) {
+                if (Object.prototype.hasOwnProperty.call(value, key)) return false;
+            }
+        }
+
+        return !(this.isString(value) && value.length > 0);
+
     }
 };
 
