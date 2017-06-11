@@ -577,3 +577,46 @@ describe('isBase64', function () {
         assert.equal(result, false);
     });
 });
+
+describe('isEmpty', function () {
+    it('should be return true', function () {
+        var result = vJS.isEmpty('');
+        console.log(result);
+        assert.equal(result, true);
+    });
+    it('undefined value, should be return true', function () {
+        var result = vJS.isEmpty();
+        console.log(result);
+        assert.equal(result, true);
+    });
+    it('space string, should be return false', function () {
+        var result = vJS.isEmpty(' ');
+        console.log(result);
+        assert.equal(result, false);
+    });
+    it('number, should be return false', function () {
+        var result = vJS.isEmpty(3);
+        console.log(result);
+        assert.equal(result, false);
+    });
+    it('object, should be return false', function () {
+        var result = vJS.isEmpty({});
+        console.log(result);
+        assert.equal(result, false);
+    });
+    it('null, should be return true', function () {
+        var result = vJS.isEmpty(null);
+        console.log(result);
+        assert.equal(result, true);
+    });
+    it('function, should be return false', function () {
+        var result = vJS.isEmpty(function () {});
+        console.log(result);
+        assert.equal(result, false);
+    });
+    it('should be return false', function () {
+        var result = vJS.isEmpty('test');
+        console.log(result);
+        assert.equal(result, false);
+    });
+});

@@ -293,6 +293,15 @@ var ValidityJS = {
      */
     isBase64: function (value) {
         return /^([0-9a-zA-Z+/]{4})*(([0-9a-zA-Z+/]{2}==)|([0-9a-zA-Z+/]{3}=))?$/.test(value);
+    },
+
+    /**
+     * Check if string is empty
+     * @param value
+     * @returns {boolean}
+     */
+    isEmpty: function (value) {
+        return !value;
     }
 };
 
