@@ -204,6 +204,16 @@ var ValidityJS = {
     isOdd: function (value) {
         return this.isNumber(value) &&
             !this.isEven(value);
+    },
+
+    /**
+     * Check if is a hexadecimal
+     * @param value
+     * @returns {boolean}
+     */
+    isHex: function (value) {
+        var num = parseInt(value,16);
+        return (num.toString(16) === value)
     }
 };
 
