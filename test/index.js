@@ -551,3 +551,16 @@ describe('isIPv4', function () {
         assert.equal(result, false);
     });
 });
+
+describe('isIPv6', function () {
+    it('should be return true', function () {
+        var result = vJS.isIPv6('FF01:0:0:0:0:0:0:1');
+        console.log(result);
+        assert.equal(result, true);
+    });
+    it('should be return false', function () {
+        var result = vJS.isIPv6('127.0.0.1');
+        console.log(result);
+        assert.equal(result, false);
+    });
+});
