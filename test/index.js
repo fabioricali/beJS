@@ -136,6 +136,7 @@ describe('isHttpUrl', function () {
         console.log(result);
         assert.equal(result, true);
     });
+
     it('should be return false', function () {
         var result = vJS.isHttpUrl('https://www.google.it');
         console.log(result);
@@ -149,6 +150,7 @@ describe('isHttpsUrl', function () {
         console.log(result);
         assert.equal(result, true);
     });
+
     it('should be return false', function () {
         var result = vJS.isHttpsUrl('http://www.google.it');
         console.log(result);
@@ -162,6 +164,7 @@ describe('isFtpUrl', function () {
         console.log(result);
         assert.equal(result, true);
     });
+
     it('should be return false', function () {
         var result = vJS.isFtpUrl('ftps://www.google.it');
         console.log(result);
@@ -175,6 +178,7 @@ describe('isFtpsUrl', function () {
         console.log(result);
         assert.equal(result, true);
     });
+
     it('should be return false', function () {
         var result = vJS.isFtpsUrl('ftp://www.google.it');
         console.log(result);
@@ -188,6 +192,7 @@ describe('isEmail', function () {
         console.log(result);
         assert.equal(result, true);
     });
+
     it('should be return false', function () {
         var result = vJS.isEmail('fabio@rica');
         console.log(result);
@@ -201,13 +206,29 @@ describe('isObject', function () {
         console.log(result);
         assert.equal(result, true);
     });
+
     it('array, should be return true', function () {
         var result = vJS.isObject([1, 2, 3]);
         console.log(result);
         assert.equal(result, true);
     });
+
     it('should be return false', function () {
         var result = vJS.isObject('fabio@rica');
+        console.log(result);
+        assert.equal(result, false);
+    });
+});
+
+describe('isInt', function () {
+    it('integer, should be return true', function () {
+        var result = vJS.isInt(40);
+        console.log(result);
+        assert.equal(result, true);
+    });
+
+    it('float be return false', function () {
+        var result = vJS.isInt(4.5);
         console.log(result);
         assert.equal(result, false);
     });
