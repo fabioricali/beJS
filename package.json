@@ -21,6 +21,9 @@
   "author": "Fabio Ricali",
   "license": "MIT",
   "devDependencies": {
+    "gulp": "^3.9.1",
+    "gulp-bump": "^2.7.0",
+    "gulp-uglify": "^3.0.0",
     "mocha": "^3.4.2"
   }
 }

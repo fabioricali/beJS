@@ -564,3 +564,16 @@ describe('isIPv6', function () {
         assert.equal(result, false);
     });
 });
+
+describe('isBase64', function () {
+    it('should be return true', function () {
+        var result = vJS.isBase64('aGVsbG8=');
+        console.log(result);
+        assert.equal(result, true);
+    });
+    it('should be return false', function () {
+        var result = vJS.isBase64('127.0.0.1');
+        console.log(result);
+        assert.equal(result, false);
+    });
+});
