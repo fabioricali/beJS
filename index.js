@@ -2,6 +2,10 @@
  * Created by Fabio on 11/06/2017.
  */
 
+/**
+ * ValidityJS class
+ * @type {{isBoolean: ValidityJS.isBoolean, isNumber: ValidityJS.isNumber, isString: ValidityJS.isString, isUndefined: ValidityJS.isUndefined, isNull: ValidityJS.isNull, isObject: ValidityJS.isObject, isUrl: ValidityJS.isUrl, isHttpUrl: ValidityJS.isHttpUrl, isHttpsUrl: ValidityJS.isHttpsUrl, isFtpUrl: ValidityJS.isFtpUrl, isFtpsUrl: ValidityJS.isFtpsUrl, isEmail: ValidityJS.isEmail, isInt: ValidityJS.isInt, isFloat: ValidityJS.isFloat, isNaN: ValidityJS.isNaN, isMD5: ValidityJS.isMD5, isSHA1: ValidityJS.isSHA1, isJSON: ValidityJS.isJSON, isDate: ValidityJS.isDate, isDateString: ValidityJS.isDateString, isEven: ValidityJS.isEven, isOdd: ValidityJS.isOdd, isHex: ValidityJS.isHex, isHexColor: ValidityJS.isHexColor, isFunction: ValidityJS.isFunction, isPositive: ValidityJS.isPositive, isNegative: ValidityJS.isNegative, isAlphanumeric: ValidityJS.isAlphanumeric, isIPv4: ValidityJS.isIPv4, isIPv6: ValidityJS.isIPv6, isBase64: ValidityJS.isBase64, isEmpty: ValidityJS.isEmpty}}
+ */
 var ValidityJS = {
     /**
      * Check if is valid boolean
@@ -330,4 +334,7 @@ var ValidityJS = {
     }
 };
 
-module.exports = ValidityJS;
+if (typeof module !== 'undefined' && typeof module.exports !== 'undefined')
+    module.exports = ValidityJS;
+else
+    window.ValidityJS = ValidityJS;
