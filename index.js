@@ -236,6 +236,16 @@ var ValidityJS = {
      */
     isFunction: function (value) {
         return typeof value === 'function';
+    },
+
+    /**
+     * Check if is a positive number
+     * @param value
+     * @returns {*|boolean}
+     */
+    isPositive: function (value) {
+        return this.isNumber(value) &&
+                value > 0;
     }
 };
 
