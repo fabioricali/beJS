@@ -120,8 +120,8 @@ var ValidityJS = {
      */
     isInt: function (value) {
         return this.isNumber(value) &&
-                isFinite(value) &&
-                Math.floor(value) === value;
+            isFinite(value) &&
+            Math.floor(value) === value;
     },
 
     /**
@@ -131,6 +131,7 @@ var ValidityJS = {
      */
     isFloat: function (value) {
         return this.isNumber(value) &&
+            !this.isNaN(value) &&
             !this.isInt(value);
     },
 

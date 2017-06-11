@@ -232,6 +232,12 @@ describe('isInt', function () {
         console.log(result);
         assert.equal(result, false);
     });
+
+    it('NaN, be return false', function () {
+        var result = vJS.isInt(NaN);
+        console.log(result);
+        assert.equal(result, false);
+    });
 });
 
 describe('isFloat', function () {
@@ -243,6 +249,12 @@ describe('isFloat', function () {
 
     it('integer, should be return false', function () {
         var result = vJS.isFloat(2);
+        console.log(result);
+        assert.equal(result, false);
+    });
+
+    it('NaN, be return false', function () {
+        var result = vJS.isFloat(NaN);
         console.log(result);
         assert.equal(result, false);
     });
