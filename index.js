@@ -175,6 +175,15 @@ var ValidityJS = {
         } catch (e) {
             return false;
         }
+    },
+
+    /**
+     * Check if is date object
+     * @param value
+     * @returns {boolean}
+     */
+    isDate: function (value) {
+        return value instanceof Date;
     }
 };
 

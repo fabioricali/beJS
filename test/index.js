@@ -315,3 +315,17 @@ describe('isJSON', function () {
         assert.equal(result, false);
     });
 });
+
+describe('isDate', function () {
+    it('date object, should be return true', function () {
+        var result = vJS.isDate(new Date());
+        console.log(result);
+        assert.equal(result, true);
+    });
+
+    it('not valid date, should be return false', function () {
+        var result = vJS.isDate('2017-06-11');
+        console.log(result);
+        assert.equal(result, false);
+    });
+});
