@@ -160,6 +160,20 @@ var ValidityJS = {
      */
     isSHA1: function (value) {
         return /^[a-f0-9]{40}$/.test(value);
+    },
+
+    /**
+     * Check if is a JSON string
+     * @param value
+     * @returns {boolean}
+     */
+    isJSON: function (value) {
+        try {
+            JSON.parse(value);
+            return true;
+        } catch (e) {
+            return false;
+        }
     }
 };
 

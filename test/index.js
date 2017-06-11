@@ -289,3 +289,17 @@ describe('isSHA1', function () {
         assert.equal(result, false);
     });
 });
+
+describe('isJSON', function () {
+    it('JSON string, should be return true', function () {
+        var result = vJS.isJSON('{"a": 1, "b": 2}');
+        console.log(result);
+        assert.equal(result, true);
+    });
+
+    it('not valid JSON string, should be return false', function () {
+        var result = vJS.isJSON('"a": 1, "b": 2');
+        console.log(result);
+        assert.equal(result, false);
+    });
+});
