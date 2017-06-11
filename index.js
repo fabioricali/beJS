@@ -122,6 +122,16 @@ var ValidityJS = {
         return this.isNumber(value) &&
                 isFinite(value) &&
                 Math.floor(value) === value;
+    },
+
+    /**
+     * Check if is NaN
+     * @param value
+     * @returns {*|boolean}
+     */
+    isNaN: function (value) {
+        return this.isNumber(value) &&
+            isNaN(value);
     }
 };
 
