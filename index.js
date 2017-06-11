@@ -186,6 +186,16 @@ var ValidityJS = {
     },
 
     /**
+     * Check if is date string
+     * @param value
+     * @returns {boolean}
+     */
+    isDateString: function (value) {
+        var date = Date.parse(value);
+        return !isNaN(date);
+    },
+
+    /**
      * Check if is a even number
      * @param value
      * @returns {*|boolean}
@@ -245,7 +255,7 @@ var ValidityJS = {
      */
     isPositive: function (value) {
         return this.isNumber(value) &&
-                value > 0;
+            value > 0;
     },
 
     /**
@@ -255,7 +265,7 @@ var ValidityJS = {
      */
     isNegative: function (value) {
         return this.isNumber(value) &&
-                value < 0;
+            value < 0;
     },
 
     /**
@@ -317,7 +327,6 @@ var ValidityJS = {
         }
 
         return !(this.isString(value) && value.length > 0);
-
     }
 };
 
