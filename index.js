@@ -149,8 +149,17 @@ var ValidityJS = {
      * @param value
      * @returns {boolean}
      */
-    isMd5: function (value) {
+    isMD5: function (value) {
         return /^[a-f0-9]{32}$/.test(value);
+    },
+
+    /**
+     * Check if is a valid SHA1 hash string
+     * @param value
+     * @returns {boolean}
+     */
+    isSHA1: function (value) {
+        return /^[a-f0-9]{40}$/.test(value);
     }
 };
 

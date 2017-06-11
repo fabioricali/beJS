@@ -262,15 +262,29 @@ describe('isNaN', function () {
     });
 });
 
-describe('isMd5', function () {
+describe('isMD5', function () {
     it('md5 hash string, should be return true', function () {
-        var result = vJS.isMd5('00236a2ae558018ed13b5222ef1bd977');
+        var result = vJS.isMD5('00236a2ae558018ed13b5222ef1bd977');
         console.log(result);
         assert.equal(result, true);
     });
 
-    it('integer, should be return false', function () {
-        var result = vJS.isMd5('foo');
+    it('string, should be return false', function () {
+        var result = vJS.isMD5('foo');
+        console.log(result);
+        assert.equal(result, false);
+    });
+});
+
+describe('isSHA1', function () {
+    it('sha1 hash string, should be return true', function () {
+        var result = vJS.isSHA1('aaf4c61ddcc5e8a2dabede0f3b482cd9aea9434d');
+        console.log(result);
+        assert.equal(result, true);
+    });
+
+    it('string, should be return false', function () {
+        var result = vJS.isMD5('foo');
         console.log(result);
         assert.equal(result, false);
     });
