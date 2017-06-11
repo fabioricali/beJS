@@ -435,3 +435,19 @@ describe('isHexColor', function () {
     });
 
 });
+
+describe('isFunction', function () {
+    it('function, should be return true', function () {
+        var result = vJS.isFunction(function () {
+            return 1 + 1;
+        });
+        console.log(result);
+        assert.equal(result, true);
+    });
+
+    it('string, should be return false', function () {
+        var result = vJS.isFunction('function(){}');
+        console.log(result);
+        assert.equal(result, false);
+    });
+});

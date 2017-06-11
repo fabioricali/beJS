@@ -18,7 +18,7 @@ var ValidityJS = {
      * @returns {boolean}
      */
     isNumber: function (value) {
-        return typeof value === 'number';
+        return typeof value === 'number' && !isNaN(value);
     },
 
     /**
@@ -141,8 +141,7 @@ var ValidityJS = {
      * @returns {*|boolean}
      */
     isNaN: function (value) {
-        return this.isNumber(value) &&
-            isNaN(value);
+        return isNaN(value);
     },
 
     /**
@@ -229,6 +228,15 @@ var ValidityJS = {
         } catch (e) {
             return false;
         }
+    },
+
+    /**
+     * Check if is a function
+     * @param value
+     * @returns {boolean}
+     */
+    isFunction: function (value) {
+        return typeof value === 'function';
     }
 };
 
