@@ -489,3 +489,29 @@ describe('isPositive', function () {
         assert.equal(result, false);
     });
 });
+
+describe('isNegative', function () {
+    it('negative number, should be return true', function () {
+        var result = vJS.isNegative(-1);
+        console.log(result);
+        assert.equal(result, true);
+    });
+
+    it('positive number, should be return false', function () {
+        var result = vJS.isNegative(2);
+        console.log(result);
+        assert.equal(result, false);
+    });
+
+    it('0 number, should be return false', function () {
+        var result = vJS.isNegative(0);
+        console.log(result);
+        assert.equal(result, false);
+    });
+
+    it('undefined number, should be return false', function () {
+        var result = vJS.isNegative();
+        console.log(result);
+        assert.equal(result, false);
+    });
+});
