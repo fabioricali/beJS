@@ -256,6 +256,16 @@ var ValidityJS = {
     isNegative: function (value) {
         return this.isNumber(value) &&
                 value < 0;
+    },
+
+    /**
+     * Check if is alphanumeric string
+     * @param value
+     * @returns {boolean|*}
+     */
+    isAlphanumeric: function (value) {
+        return /^[a-z0-9]+$/i.test(value) &&
+            this.isString(value);
     }
 };
 

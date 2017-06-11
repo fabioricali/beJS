@@ -515,3 +515,26 @@ describe('isNegative', function () {
         assert.equal(result, false);
     });
 });
+
+describe('isAlphanumeric', function () {
+    it('alphanumeric, should be return true', function () {
+        var result = vJS.isAlphanumeric('abcd28202hju');
+        console.log(result);
+        assert.equal(result, true);
+    });
+    it('number as string, should be return true', function () {
+        var result = vJS.isAlphanumeric('222');
+        console.log(result);
+        assert.equal(result, true);
+    });
+    it('number, should be return true', function () {
+        var result = vJS.isAlphanumeric(222);
+        console.log(result);
+        assert.equal(result, false);
+    });
+    it('boolean, should be return true', function () {
+        var result = vJS.isAlphanumeric(true);
+        console.log(result);
+        assert.equal(result, false);
+    });
+});
