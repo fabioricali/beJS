@@ -329,3 +329,23 @@ describe('isDate', function () {
         assert.equal(result, false);
     });
 });
+
+describe('isEven', function () {
+    it('2, should be return true', function () {
+        var result = vJS.isEven(2);
+        console.log(result);
+        assert.equal(result, true);
+    });
+
+    it('3, should be return false', function () {
+        var result = vJS.isEven(3);
+        console.log(result);
+        assert.equal(result, false);
+    });
+
+    it('5.3, should be return false', function () {
+        var result = vJS.isEven(5.3);
+        console.log(result);
+        assert.equal(result, false);
+    });
+});

@@ -184,6 +184,16 @@ var ValidityJS = {
      */
     isDate: function (value) {
         return value instanceof Date;
+    },
+
+    /**
+     * Check if is a even number
+     * @param value
+     * @returns {*|boolean}
+     */
+    isEven: function (value) {
+        return this.isNumber(value) &&
+            value % 2 === 0;
     }
 };
 
