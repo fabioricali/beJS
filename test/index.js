@@ -383,6 +383,18 @@ describe('isHex', function () {
         assert.equal(result, true);
     });
 
+    it('FFF, should be return true', function () {
+        var result = vJS.isHex('fff');
+        console.log(result);
+        assert.equal(result, true);
+    });
+
+    it('0xf0f0f0, should be return true', function () {
+        var result = vJS.isHex('0xf0f0f0');
+        console.log(result);
+        assert.equal(result, true);
+    });
+
     it('#cccccc, should be return true', function () {
         var result = vJS.isHex('#cccccc');
         console.log(result);

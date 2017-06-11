@@ -211,8 +211,7 @@ var ValidityJS = {
      * @returns {boolean}
      */
     isHex: function (value) {
-        var num = parseInt(value,16);
-        return (num.toString(16) === value);
+        return /^(?:0x)?[a-f0-9]+$/.test(value);
     },
 
     /**
