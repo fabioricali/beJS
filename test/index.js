@@ -111,9 +111,86 @@ describe('isNull', function () {
 });
 
 describe('isUrl', function () {
-    it('string url value, shoudl be return true', function () {
+    it('string url value, should be return true', function () {
         var result = vJS.isUrl('http://www.google.it');
         console.log(result);
         assert.equal(result, true);
-    })
+    });
+
+    it('string url value, should be return false', function () {
+        var result = vJS.isUrl('http://.it');
+        console.log(result);
+        assert.equal(result, false);
+    });
+
+    it('string url value without protocol, should be return false', function () {
+        var result = vJS.isUrl('www.google.it');
+        console.log(result);
+        assert.equal(result, false);
+    });
+});
+
+describe('isHttpUrl', function () {
+    it('should be return true', function () {
+        var result = vJS.isHttpUrl('http://www.google.it');
+        console.log(result);
+        assert.equal(result, true);
+    });
+    it('should be return false', function () {
+        var result = vJS.isHttpUrl('https://www.google.it');
+        console.log(result);
+        assert.equal(result, false);
+    });
+});
+
+describe('isHttpsUrl', function () {
+    it('should be return true', function () {
+        var result = vJS.isHttpsUrl('https://www.google.it');
+        console.log(result);
+        assert.equal(result, true);
+    });
+    it('should be return false', function () {
+        var result = vJS.isHttpsUrl('http://www.google.it');
+        console.log(result);
+        assert.equal(result, false);
+    });
+});
+
+describe('isFtpUrl', function () {
+    it('should be return true', function () {
+        var result = vJS.isFtpUrl('ftp://www.google.it');
+        console.log(result);
+        assert.equal(result, true);
+    });
+    it('should be return false', function () {
+        var result = vJS.isFtpUrl('ftps://www.google.it');
+        console.log(result);
+        assert.equal(result, false);
+    });
+});
+
+describe('isFtpsUrl', function () {
+    it('should be return true', function () {
+        var result = vJS.isFtpsUrl('ftps://www.google.it');
+        console.log(result);
+        assert.equal(result, true);
+    });
+    it('should be return false', function () {
+        var result = vJS.isFtpsUrl('ftp://www.google.it');
+        console.log(result);
+        assert.equal(result, false);
+    });
+});
+
+describe('isEmail', function () {
+    it('should be return true', function () {
+        var result = vJS.isEmail('fabio@rica.li');
+        console.log(result);
+        assert.equal(result, true);
+    });
+    it('should be return false', function () {
+        var result = vJS.isEmail('fabio@rica');
+        console.log(result);
+        assert.equal(result, false);
+    });
 });
