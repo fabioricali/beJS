@@ -377,8 +377,59 @@ describe('isHex', function () {
         assert.equal(result, true);
     });
 
+    it('fff, should be return true', function () {
+        var result = vJS.isHex('fff');
+        console.log(result);
+        assert.equal(result, true);
+    });
+
+    it('#cccccc, should be return true', function () {
+        var result = vJS.isHex('#cccccc');
+        console.log(result);
+        assert.equal(result, false);
+    });
+
     it('nnnnnn, should be return false', function () {
         var result = vJS.isHex('nnnnnn');
+        console.log(result);
+        assert.equal(result, false);
+    });
+
+});
+
+describe('isHexColor', function () {
+    it('ffcc00, should be return true', function () {
+        var result = vJS.isHexColor('ffcc00');
+        console.log(result);
+        assert.equal(result, true);
+    });
+
+    it('#fff, should be return true', function () {
+        var result = vJS.isHexColor('#fff');
+        console.log(result);
+        assert.equal(result, true);
+    });
+
+    it('#ccccccaa, should be return true', function () {
+        var result = vJS.isHexColor('#ccccccaa');
+        console.log(result);
+        assert.equal(result, false);
+    });
+
+    it('nnnnnn, should be return false', function () {
+        var result = vJS.isHexColor('nnnnnn');
+        console.log(result);
+        assert.equal(result, false);
+    });
+
+    it('undefined, should be return false', function () {
+        var result = vJS.isHexColor();
+        console.log(result);
+        assert.equal(result, false);
+    });
+
+    it('null, should be return false', function () {
+        var result = vJS.isHexColor(null);
         console.log(result);
         assert.equal(result, false);
     });

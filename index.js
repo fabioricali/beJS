@@ -213,7 +213,22 @@ var ValidityJS = {
      */
     isHex: function (value) {
         var num = parseInt(value,16);
-        return (num.toString(16) === value)
+        return (num.toString(16) === value);
+    },
+
+    /**
+     * Check if is a hexadecimal color
+     * @param value
+     * @returns {boolean}
+     */
+    isHexColor: function (value) {
+        try {
+            value = value.replace('#', '');
+            return this.isHex(value) &&
+                (value.length === 3 || value.length === 6);
+        } catch (e) {
+            return false;
+        }
     }
 };
 
