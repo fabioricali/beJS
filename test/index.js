@@ -234,8 +234,22 @@ describe('isInt', function () {
     });
 });
 
+describe('isFloat', function () {
+    it('float, should be return true', function () {
+        var result = vJS.isFloat(2.2);
+        console.log(result);
+        assert.equal(result, true);
+    });
+
+    it('integer, be return false', function () {
+        var result = vJS.isFloat(2);
+        console.log(result);
+        assert.equal(result, false);
+    });
+});
+
 describe('isNaN', function () {
-    it('integer, should be return true', function () {
+    it('NaN, should be return true', function () {
         var result = vJS.isNaN(NaN);
         console.log(result);
         assert.equal(result, true);

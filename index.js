@@ -125,6 +125,16 @@ var ValidityJS = {
     },
 
     /**
+     * Check if is float number
+     * @param value
+     * @returns {*|boolean}
+     */
+    isFloat: function (value) {
+        return this.isNumber(value) &&
+            !this.isInt(value);
+    },
+
+    /**
      * Check if is NaN
      * @param value
      * @returns {*|boolean}
