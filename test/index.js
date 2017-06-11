@@ -349,3 +349,23 @@ describe('isEven', function () {
         assert.equal(result, false);
     });
 });
+
+describe('isOdd', function () {
+    it('3, should be return true', function () {
+        var result = vJS.isOdd(3);
+        console.log(result);
+        assert.equal(result, true);
+    });
+
+    it('2, should be return false', function () {
+        var result = vJS.isOdd(2);
+        console.log(result);
+        assert.equal(result, false);
+    });
+
+    it('5.3, should be return true', function () {
+        var result = vJS.isOdd(5.3);
+        console.log(result);
+        assert.equal(result, true);
+    });
+});

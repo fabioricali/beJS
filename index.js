@@ -194,6 +194,16 @@ var ValidityJS = {
     isEven: function (value) {
         return this.isNumber(value) &&
             value % 2 === 0;
+    },
+
+    /**
+     * Check if is an odd number
+     * @param value
+     * @returns {*|boolean}
+     */
+    isOdd: function (value) {
+        return this.isNumber(value) &&
+            !this.isEven(value);
     }
 };
 
