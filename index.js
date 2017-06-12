@@ -360,7 +360,7 @@
         },
 
         /**
-         * Check if is iOS
+         * Check if is iOS device
          * @returns {boolean}
          */
         isIOS: function () {
@@ -371,6 +371,20 @@
                 userAgent = navigator.userAgent;
 
             return (/iPhone|iPad|iPod/i).test(userAgent);
+        },
+
+        /**
+         * Check if is Android device
+         * @returns {boolean}
+         */
+        isAndroid: function () {
+            var userAgent;
+            if(arguments.length === 1)
+                userAgent = arguments[0];
+            else
+                userAgent = navigator.userAgent;
+
+            return (/Android/i).test(userAgent);
         }
 
     };
