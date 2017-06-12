@@ -708,3 +708,41 @@ describe('isDateString', function () {
         assert.equal(result, false);
     });
 });
+
+describe('isSemVer', function () {
+    it('1.0.0, should be return true', function () {
+        var result = vJS.isSemVer('1.0.0');
+        console.log(result);
+        assert.equal(result, true);
+    });
+    it('2.0.0-rc.2, should be return true', function () {
+        var result = vJS.isSemVer('2.0.0-rc.2');
+        console.log(result);
+        assert.equal(result, true);
+    });
+    it('1.0.0-alpha, should be return true', function () {
+        var result = vJS.isSemVer('1.0.0-alpha');
+        console.log(result);
+        assert.equal(result, true);
+    });
+    it('1.0.0-ALPHA, should be return true', function () {
+        var result = vJS.isSemVer('1.0.0-ALPHA');
+        console.log(result);
+        assert.equal(result, true);
+    });
+    it('0.0.0, should be return true', function () {
+        var result = vJS.isSemVer('0.0.0');
+        console.log(result);
+        assert.equal(result, true);
+    });
+    it('test, should be return false', function () {
+        var result = vJS.isSemVer('test');
+        console.log(result);
+        assert.equal(result, false);
+    });
+    it('v1.0.0, should be return false', function () {
+        var result = vJS.isSemVer('v1.0.0');
+        console.log(result);
+        assert.equal(result, false);
+    });
+});

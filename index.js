@@ -331,6 +331,15 @@ var ValidityJS = {
         }
 
         return !(this.isString(value) && value.length > 0);
+    },
+
+    /**
+     * Check if is valid semver string
+     * @param value
+     * @returns {boolean}
+     */
+    isSemVer: function (value) {
+        return /^(\d*)\.(\d*)\.(\d*)(-(\d*|\d*[a-z-][0-9a-z-]*)(\.(\d*|\d*[a-z-][0-9a-z-]*))*)?(\+[0-9a-z-]+(\.[0-9a-z-]+)*)?$/i.test(value);
     }
 };
 
