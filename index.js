@@ -2,7 +2,7 @@
  * Created by Fabio on 11/06/2017.
  */
 
-(function () {
+;(function () {
 
     /**
      * ValidityJS class
@@ -357,6 +357,20 @@
          */
         isBrowserEnv: function () {
             return typeof window !== 'undefined';
+        },
+
+        /**
+         * Check if is iOS
+         * @returns {boolean}
+         */
+        isIOS: function () {
+            var userAgent;
+            if(arguments.length === 1)
+                userAgent = arguments[0];
+            else
+                userAgent = navigator.userAgent;
+
+            return (/iPhone|iPad|iPod/i).test(userAgent);
         }
 
     };
