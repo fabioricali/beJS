@@ -107,7 +107,7 @@
      * @returns {*|boolean}
      */
     be.httpUrl = function (value) {
-        return this.url(value) && /^http:/i.test(value);
+        return be.url(value) && /^http:/i.test(value);
     };
 
     /**
@@ -116,7 +116,7 @@
      * @returns {*|boolean}
      */
     be.httpsUrl = function (value) {
-        return this.url(value) && /^https:/i.test(value);
+        return be.url(value) && /^https:/i.test(value);
     };
 
     /**
@@ -125,7 +125,7 @@
      * @returns {*|boolean}
      */
     be.ftpUrl = function (value) {
-        return this.url(value) && /^ftp:/i.test(value);
+        return be.url(value) && /^ftp:/i.test(value);
     };
 
     /**
@@ -134,7 +134,7 @@
      * @returns {*|boolean}
      */
     be.ftpsUrl = function (value) {
-        return this.url(value) && /^ftps:/i.test(value);
+        return be.url(value) && /^ftps:/i.test(value);
     };
 
     /**
@@ -153,7 +153,7 @@
      * @returns {*|boolean}
      */
     be.int = function (value) {
-        return this.number(value) &&
+        return be.number(value) &&
             isFinite(value) &&
             Math.floor(value) === value;
     };
@@ -164,8 +164,8 @@
      * @returns {*|boolean}
      */
     be.float = function (value) {
-        return this.number(value) &&
-            !this.int(value);
+        return be.number(value) &&
+            !be.int(value);
     };
 
     /**
@@ -234,7 +234,7 @@
      * @returns {*|boolean}
      */
     be.even = function (value) {
-        return this.number(value) &&
+        return be.number(value) &&
             value % 2 === 0;
     };
 
@@ -244,8 +244,8 @@
      * @returns {*|boolean}
      */
     be.odd = function (value) {
-        return this.number(value) &&
-            !this.even(value);
+        return be.number(value) &&
+            !be.even(value);
     };
 
     /**
@@ -265,7 +265,7 @@
     be.hexColor = function (value) {
         try {
             value = value.replace('#', '');
-            return this.hex(value) &&
+            return be.hex(value) &&
                 (value.length === 3 || value.length === 6);
         } catch (e) {
             return false;
@@ -287,7 +287,7 @@
      * @returns {*|boolean}
      */
     be.positive = function (value) {
-        return this.number(value) &&
+        return be.number(value) &&
             value > 0;
     };
 
@@ -297,7 +297,7 @@
      * @returns {*|boolean}
      */
     be.negative = function (value) {
-        return this.number(value) &&
+        return be.number(value) &&
             value < 0;
     };
 
@@ -308,7 +308,7 @@
      */
     be.alphanumeric = function (value) {
         return /^[a-z0-9]+$/i.test(value) &&
-            this.string(value);
+            be.string(value);
     };
 
     /**
@@ -335,7 +335,7 @@
      * @returns {*|boolean}
      */
     be.ip = function (value) {
-        return this.ipv4(value) || this.ipv6(value);
+        return be.ipv4(value) || be.ipv6(value);
     };
 
     /**
@@ -353,13 +353,13 @@
      * @returns {boolean}
      */
     be.empty = function (value) {
-        if (this.null(value)) return true;
-        if (this.undefined(value)) return true;
-        if (this.number(value)) return false;
-        if (this.function(value)) return false;
-        if (this.boolean(value)) return false;
+        if (be.null(value)) return true;
+        if (be.undefined(value)) return true;
+        if (be.number(value)) return false;
+        if (be.function(value)) return false;
+        if (be.boolean(value)) return false;
 
-        if (this.object(value)) {
+        if (be.object(value)) {
             if (value.length > 0)    return false;
             if (value.length === 0)  return true;
 
@@ -368,7 +368,7 @@
             }
         }
 
-        return !(this.string(value) && value.length > 0);
+        return !(be.string(value) && value.length > 0);
     };
 
     /**
@@ -419,7 +419,7 @@
      * @returns {*|boolean}
      */
     be.navigator = function () {
-        return this.browserEnv() && typeof window.navigator !== 'undefined';
+        return be.browserEnv() && typeof window.navigator !== 'undefined';
     };
 
     /**
