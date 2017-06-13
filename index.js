@@ -313,6 +313,15 @@
         },
 
         /**
+         * Check if is a valid ip string
+         * @param value
+         * @returns {*|boolean}
+         */
+        ip: function (value) {
+            return this.ipv4(value) || this.ipv6(value);
+        },
+
+        /**
          * Check if is base64 encoded string
          * @param value
          * @returns {boolean}

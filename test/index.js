@@ -545,6 +545,19 @@ describe('alphanumeric', function () {
     });
 });
 
+describe('ip', function () {
+    it('should be return true', function () {
+        var result = be.ip('127.0.0.1');
+        console.log(result);
+        assert.equal(result, true);
+    });
+    it('should be return false', function () {
+        var result = be.ip('127.0.0.1.0');
+        console.log(result);
+        assert.equal(result, false);
+    });
+});
+
 describe('ipv4', function () {
     it('should be return true', function () {
         var result = be.ipv4('127.0.0.1');
