@@ -2,461 +2,461 @@
  * Created by Fabio on 11/06/2017.
  */
 var assert = require('assert');
-var vJS = require('../index');
+var be = require('../index');
 
 it('count class methods', function () {
-    var result = Object.keys(vJS).length;
+    var result = Object.keys(be).length;
     console.log('total methods', result);
     assert.equal(result > 0, true);
 });
 
-describe('isBoolean', function () {
+describe('boolean', function () {
     it('boolean value, should be return true', function () {
-        var result = vJS.isBoolean(false);
+        var result = be.boolean(false);
         console.log(result);
         assert.equal(result, true);
     });
 
     it('string value, should be return false', function () {
-        var result = vJS.isBoolean('true');
+        var result = be.boolean('true');
         console.log(result);
         assert.equal(result, false);
     });
 
     it('number value, should be return false', function () {
-        var result = vJS.isBoolean(1);
+        var result = be.boolean(1);
         console.log(result);
         assert.equal(result, false);
     });
 
     it('undefined value, should be return false', function () {
-        var result = vJS.isBoolean();
+        var result = be.boolean();
         console.log(result);
         assert.equal(result, false);
     });
 });
 
-describe('isNumber', function () {
+describe('number', function () {
     it('number value, should be return true', function () {
-        var result = vJS.isNumber(1);
+        var result = be.number(1);
         console.log(result);
         assert.equal(result, true);
     });
 
     it('number value as string, should be return false', function () {
-        var result = vJS.isNumber('1');
+        var result = be.number('1');
         console.log(result);
         assert.equal(result, false);
     });
 
     it('float value, should be return true', function () {
-        var result = vJS.isNumber(2.2);
+        var result = be.number(2.2);
         console.log(result);
         assert.equal(result, true);
     });
 
     it('undefined value, should be return false', function () {
-        var result = vJS.isNumber();
+        var result = be.number();
         console.log(result);
         assert.equal(result, false);
     });
 });
 
-describe('isString', function () {
+describe('string', function () {
     it('string value, should be return true', function () {
-        var result = vJS.isString('hello');
+        var result = be.string('hello');
         console.log(result);
         assert.equal(result, true);
     });
 
     it('number value, should be return false', function () {
-        var result = vJS.isString(1);
+        var result = be.string(1);
         console.log(result);
         assert.equal(result, false);
     });
 
     it('undefined value, should be return false', function () {
-        var result = vJS.isString();
+        var result = be.string();
         console.log(result);
         assert.equal(result, false);
     });
 });
 
-describe('isUndefined', function () {
+describe('undefined', function () {
     it('should be return true', function () {
-        var result = vJS.isUndefined();
+        var result = be.undefined();
         console.log(result);
         assert.equal(result, true);
     });
 
     it('number value, should be return false', function () {
-        var result = vJS.isUndefined(1);
+        var result = be.undefined(1);
         console.log(result);
         assert.equal(result, false);
     });
 });
 
-describe('isNull', function () {
+describe('null', function () {
     it('should be return true', function () {
-        var result = vJS.isNull(null);
+        var result = be.null(null);
         console.log(result);
         assert.equal(result, true);
     });
 
     it('number value, should be return false', function () {
-        var result = vJS.isNull(1);
+        var result = be.null(1);
         console.log(result);
         assert.equal(result, false);
     });
 
     it('undefined value, should be return false', function () {
-        var result = vJS.isNull();
+        var result = be.null();
         console.log(result);
         assert.equal(result, false);
     });
 });
 
-describe('isUrl', function () {
+describe('url', function () {
     it('string url value, should be return true', function () {
-        var result = vJS.isUrl('http://www.google.it');
+        var result = be.url('http://www.google.it');
         console.log(result);
         assert.equal(result, true);
     });
 
     it('string url value, should be return false', function () {
-        var result = vJS.isUrl('http://.it');
+        var result = be.url('http://.it');
         console.log(result);
         assert.equal(result, false);
     });
 
     it('string url value without protocol, should be return false', function () {
-        var result = vJS.isUrl('www.google.it');
+        var result = be.url('www.google.it');
         console.log(result);
         assert.equal(result, false);
     });
 });
 
-describe('isHttpUrl', function () {
+describe('httpUrl', function () {
     it('should be return true', function () {
-        var result = vJS.isHttpUrl('http://www.google.it');
+        var result = be.httpUrl('http://www.google.it');
         console.log(result);
         assert.equal(result, true);
     });
 
     it('should be return false', function () {
-        var result = vJS.isHttpUrl('https://www.google.it');
+        var result = be.httpUrl('https://www.google.it');
         console.log(result);
         assert.equal(result, false);
     });
 });
 
-describe('isHttpsUrl', function () {
+describe('httpsUrl', function () {
     it('should be return true', function () {
-        var result = vJS.isHttpsUrl('https://www.google.it');
+        var result = be.httpsUrl('https://www.google.it');
         console.log(result);
         assert.equal(result, true);
     });
 
     it('should be return false', function () {
-        var result = vJS.isHttpsUrl('http://www.google.it');
+        var result = be.httpsUrl('http://www.google.it');
         console.log(result);
         assert.equal(result, false);
     });
 });
 
-describe('isFtpUrl', function () {
+describe('ftpUrl', function () {
     it('should be return true', function () {
-        var result = vJS.isFtpUrl('ftp://www.google.it');
+        var result = be.ftpUrl('ftp://www.google.it');
         console.log(result);
         assert.equal(result, true);
     });
 
     it('should be return false', function () {
-        var result = vJS.isFtpUrl('ftps://www.google.it');
+        var result = be.ftpUrl('ftps://www.google.it');
         console.log(result);
         assert.equal(result, false);
     });
 });
 
-describe('isFtpsUrl', function () {
+describe('ftpsUrl', function () {
     it('should be return true', function () {
-        var result = vJS.isFtpsUrl('ftps://www.google.it');
+        var result = be.ftpsUrl('ftps://www.google.it');
         console.log(result);
         assert.equal(result, true);
     });
 
     it('should be return false', function () {
-        var result = vJS.isFtpsUrl('ftp://www.google.it');
+        var result = be.ftpsUrl('ftp://www.google.it');
         console.log(result);
         assert.equal(result, false);
     });
 });
 
-describe('isEmail', function () {
+describe('email', function () {
     it('should be return true', function () {
-        var result = vJS.isEmail('fabio@rica.li');
+        var result = be.email('fabio@rica.li');
         console.log(result);
         assert.equal(result, true);
     });
 
     it('should be return false', function () {
-        var result = vJS.isEmail('fabio@rica');
+        var result = be.email('fabio@rica');
         console.log(result);
         assert.equal(result, false);
     });
 });
 
-describe('isObject', function () {
+describe('object', function () {
     it('object, should be return true', function () {
-        var result = vJS.isObject({a: 1, b: 2});
+        var result = be.object({a: 1, b: 2});
         console.log(result);
         assert.equal(result, true);
     });
 
     it('array, should be return true', function () {
-        var result = vJS.isObject([1, 2, 3]);
+        var result = be.object([1, 2, 3]);
         console.log(result);
         assert.equal(result, true);
     });
 
     it('should be return false', function () {
-        var result = vJS.isObject('fabio@rica');
+        var result = be.object('fabio@rica');
         console.log(result);
         assert.equal(result, false);
     });
 });
 
-describe('isInt', function () {
+describe('int', function () {
     it('integer, should be return true', function () {
-        var result = vJS.isInt(40);
+        var result = be.int(40);
         console.log(result);
         assert.equal(result, true);
     });
 
     it('float, be return false', function () {
-        var result = vJS.isInt(4.5);
+        var result = be.int(4.5);
         console.log(result);
         assert.equal(result, false);
     });
 
     it('NaN, be return false', function () {
-        var result = vJS.isInt(NaN);
+        var result = be.int(NaN);
         console.log(result);
         assert.equal(result, false);
     });
 });
 
-describe('isFloat', function () {
+describe('float', function () {
     it('float, should be return true', function () {
-        var result = vJS.isFloat(2.2);
+        var result = be.float(2.2);
         console.log(result);
         assert.equal(result, true);
     });
 
     it('integer, should be return false', function () {
-        var result = vJS.isFloat(2);
+        var result = be.float(2);
         console.log(result);
         assert.equal(result, false);
     });
 
     it('NaN, be return false', function () {
-        var result = vJS.isFloat(NaN);
+        var result = be.float(NaN);
         console.log(result);
         assert.equal(result, false);
     });
 });
 
-describe('isNaN', function () {
+describe('nan', function () {
     it('NaN, should be return true', function () {
-        var result = vJS.isNaN(NaN);
+        var result = be.nan(NaN);
         console.log(result);
         assert.equal(result, true);
     });
 
     it('integer, should be return false', function () {
-        var result = vJS.isNaN(4);
+        var result = be.nan(4);
         console.log(result);
         assert.equal(result, false);
     });
 });
 
-describe('isMD5', function () {
+describe('md5', function () {
     it('md5 hash string, should be return true', function () {
-        var result = vJS.isMD5('00236a2ae558018ed13b5222ef1bd977');
+        var result = be.md5('00236a2ae558018ed13b5222ef1bd977');
         console.log(result);
         assert.equal(result, true);
     });
 
     it('string, should be return false', function () {
-        var result = vJS.isMD5('foo');
+        var result = be.md5('foo');
         console.log(result);
         assert.equal(result, false);
     });
 });
 
-describe('isSHA1', function () {
+describe('sha1', function () {
     it('sha1 hash string, should be return true', function () {
-        var result = vJS.isSHA1('aaf4c61ddcc5e8a2dabede0f3b482cd9aea9434d');
+        var result = be.sha1('aaf4c61ddcc5e8a2dabede0f3b482cd9aea9434d');
         console.log(result);
         assert.equal(result, true);
     });
 
     it('string, should be return false', function () {
-        var result = vJS.isMD5('foo');
+        var result = be.md5('foo');
         console.log(result);
         assert.equal(result, false);
     });
 });
 
-describe('isJSON', function () {
+describe('json', function () {
     it('JSON string, should be return true', function () {
-        var result = vJS.isJSON('{"a": 1, "b": 2}');
+        var result = be.json('{"a": 1, "b": 2}');
         console.log(result);
         assert.equal(result, true);
     });
 
     it('not valid JSON string, should be return false', function () {
-        var result = vJS.isJSON('"a": 1, "b": 2');
+        var result = be.json('"a": 1, "b": 2');
         console.log(result);
         assert.equal(result, false);
     });
 });
 
-describe('isDate', function () {
+describe('date', function () {
     it('date object, should be return true', function () {
-        var result = vJS.isDate(new Date());
+        var result = be.date(new Date());
         console.log(result);
         assert.equal(result, true);
     });
 
     it('not valid date, should be return false', function () {
-        var result = vJS.isDate('2017-06-11');
+        var result = be.date('2017-06-11');
         console.log(result);
         assert.equal(result, false);
     });
 });
 
-describe('isEven', function () {
+describe('even', function () {
     it('2, should be return true', function () {
-        var result = vJS.isEven(2);
+        var result = be.even(2);
         console.log(result);
         assert.equal(result, true);
     });
 
     it('3, should be return false', function () {
-        var result = vJS.isEven(3);
+        var result = be.even(3);
         console.log(result);
         assert.equal(result, false);
     });
 
     it('5.3, should be return false', function () {
-        var result = vJS.isEven(5.3);
+        var result = be.even(5.3);
         console.log(result);
         assert.equal(result, false);
     });
 });
 
-describe('isOdd', function () {
+describe('odd', function () {
     it('3, should be return true', function () {
-        var result = vJS.isOdd(3);
+        var result = be.odd(3);
         console.log(result);
         assert.equal(result, true);
     });
 
     it('2, should be return false', function () {
-        var result = vJS.isOdd(2);
+        var result = be.odd(2);
         console.log(result);
         assert.equal(result, false);
     });
 
     it('5.3, should be return true', function () {
-        var result = vJS.isOdd(5.3);
+        var result = be.odd(5.3);
         console.log(result);
         assert.equal(result, true);
     });
 });
 
-describe('isHex', function () {
+describe('hex', function () {
     it('ffcc00, should be return true', function () {
-        var result = vJS.isHex('ffcc00');
+        var result = be.hex('ffcc00');
         console.log(result);
         assert.equal(result, true);
     });
 
     it('fff, should be return true', function () {
-        var result = vJS.isHex('fff');
+        var result = be.hex('fff');
         console.log(result);
         assert.equal(result, true);
     });
 
     it('FFF, should be return true', function () {
-        var result = vJS.isHex('fff');
+        var result = be.hex('fff');
         console.log(result);
         assert.equal(result, true);
     });
 
     it('0xf0f0f0, should be return true', function () {
-        var result = vJS.isHex('0xf0f0f0');
+        var result = be.hex('0xf0f0f0');
         console.log(result);
         assert.equal(result, true);
     });
 
     it('#cccccc, should be return true', function () {
-        var result = vJS.isHex('#cccccc');
+        var result = be.hex('#cccccc');
         console.log(result);
         assert.equal(result, false);
     });
 
     it('nnnnnn, should be return false', function () {
-        var result = vJS.isHex('nnnnnn');
+        var result = be.hex('nnnnnn');
         console.log(result);
         assert.equal(result, false);
     });
 
 });
 
-describe('isHexColor', function () {
+describe('hexColor', function () {
     it('ffcc00, should be return true', function () {
-        var result = vJS.isHexColor('ffcc00');
+        var result = be.hexColor('ffcc00');
         console.log(result);
         assert.equal(result, true);
     });
 
     it('#fff, should be return true', function () {
-        var result = vJS.isHexColor('#fff');
+        var result = be.hexColor('#fff');
         console.log(result);
         assert.equal(result, true);
     });
 
     it('#ccccccaa, should be return true', function () {
-        var result = vJS.isHexColor('#ccccccaa');
+        var result = be.hexColor('#ccccccaa');
         console.log(result);
         assert.equal(result, false);
     });
 
     it('nnnnnn, should be return false', function () {
-        var result = vJS.isHexColor('nnnnnn');
+        var result = be.hexColor('nnnnnn');
         console.log(result);
         assert.equal(result, false);
     });
 
     it('undefined, should be return false', function () {
-        var result = vJS.isHexColor();
+        var result = be.hexColor();
         console.log(result);
         assert.equal(result, false);
     });
 
     it('null, should be return false', function () {
-        var result = vJS.isHexColor(null);
+        var result = be.hexColor(null);
         console.log(result);
         assert.equal(result, false);
     });
 
 });
 
-describe('isFunction', function () {
+describe('function', function () {
     it('function, should be return true', function () {
-        var result = vJS.isFunction(function () {
+        var result = be.function(function () {
             return 1 + 1;
         });
         console.log(result);
@@ -464,298 +464,298 @@ describe('isFunction', function () {
     });
 
     it('string, should be return false', function () {
-        var result = vJS.isFunction('function(){}');
+        var result = be.function('function(){}');
         console.log(result);
         assert.equal(result, false);
     });
 });
 
-describe('isPositive', function () {
+describe('positive', function () {
     it('positive number, should be return true', function () {
-        var result = vJS.isPositive(1);
+        var result = be.positive(1);
         console.log(result);
         assert.equal(result, true);
     });
 
     it('negative number, should be return false', function () {
-        var result = vJS.isPositive(-2);
+        var result = be.positive(-2);
         console.log(result);
         assert.equal(result, false);
     });
 
     it('0 number, should be return false', function () {
-        var result = vJS.isPositive(0);
+        var result = be.positive(0);
         console.log(result);
         assert.equal(result, false);
     });
 
     it('undefined number, should be return false', function () {
-        var result = vJS.isPositive();
+        var result = be.positive();
         console.log(result);
         assert.equal(result, false);
     });
 });
 
-describe('isNegative', function () {
+describe('negative', function () {
     it('negative number, should be return true', function () {
-        var result = vJS.isNegative(-1);
+        var result = be.negative(-1);
         console.log(result);
         assert.equal(result, true);
     });
 
     it('positive number, should be return false', function () {
-        var result = vJS.isNegative(2);
+        var result = be.negative(2);
         console.log(result);
         assert.equal(result, false);
     });
 
     it('0 number, should be return false', function () {
-        var result = vJS.isNegative(0);
+        var result = be.negative(0);
         console.log(result);
         assert.equal(result, false);
     });
 
     it('undefined number, should be return false', function () {
-        var result = vJS.isNegative();
+        var result = be.negative();
         console.log(result);
         assert.equal(result, false);
     });
 });
 
-describe('isAlphanumeric', function () {
+describe('alphanumeric', function () {
     it('alphanumeric, should be return true', function () {
-        var result = vJS.isAlphanumeric('abcd28202hju');
+        var result = be.alphanumeric('abcd28202hju');
         console.log(result);
         assert.equal(result, true);
     });
     it('number as string, should be return true', function () {
-        var result = vJS.isAlphanumeric('222');
+        var result = be.alphanumeric('222');
         console.log(result);
         assert.equal(result, true);
     });
     it('number, should be return true', function () {
-        var result = vJS.isAlphanumeric(222);
+        var result = be.alphanumeric(222);
         console.log(result);
         assert.equal(result, false);
     });
     it('boolean, should be return true', function () {
-        var result = vJS.isAlphanumeric(true);
+        var result = be.alphanumeric(true);
         console.log(result);
         assert.equal(result, false);
     });
 });
 
-describe('isIPv4', function () {
+describe('ipv4', function () {
     it('should be return true', function () {
-        var result = vJS.isIPv4('127.0.0.1');
+        var result = be.ipv4('127.0.0.1');
         console.log(result);
         assert.equal(result, true);
     });
     it('should be return false', function () {
-        var result = vJS.isIPv4('127.0.0.1.0');
+        var result = be.ipv4('127.0.0.1.0');
         console.log(result);
         assert.equal(result, false);
     });
 });
 
-describe('isIPv6', function () {
+describe('ipv6', function () {
     it('should be return true', function () {
-        var result = vJS.isIPv6('FF01:0:0:0:0:0:0:1');
+        var result = be.ipv6('FF01:0:0:0:0:0:0:1');
         console.log(result);
         assert.equal(result, true);
     });
     it('should be return false', function () {
-        var result = vJS.isIPv6('127.0.0.1');
+        var result = be.ipv6('127.0.0.1');
         console.log(result);
         assert.equal(result, false);
     });
 });
 
-describe('isBase64', function () {
+describe('base64', function () {
     it('should be return true', function () {
-        var result = vJS.isBase64('aGVsbG8=');
+        var result = be.base64('aGVsbG8=');
         console.log(result);
         assert.equal(result, true);
     });
     it('should be return false', function () {
-        var result = vJS.isBase64('127.0.0.1');
+        var result = be.base64('127.0.0.1');
         console.log(result);
         assert.equal(result, false);
     });
 });
 
-describe('isEmpty', function () {
+describe('empty', function () {
     it('should be return true', function () {
-        var result = vJS.isEmpty('');
+        var result = be.empty('');
         console.log(result);
         assert.equal(result, true);
     });
     it('undefined value, should be return true', function () {
-        var result = vJS.isEmpty();
+        var result = be.empty();
         console.log(result);
         assert.equal(result, true);
     });
     it('space string, should be return false', function () {
-        var result = vJS.isEmpty(' ');
+        var result = be.empty(' ');
         console.log(result);
         assert.equal(result, false);
     });
     it('number, should be return false', function () {
-        var result = vJS.isEmpty(3);
+        var result = be.empty(3);
         console.log(result);
         assert.equal(result, false);
     });
     it('negative number, should be return false', function () {
-        var result = vJS.isEmpty(-3);
+        var result = be.empty(-3);
         console.log(result);
         assert.equal(result, false);
     });
     it('zero number, should be return false', function () {
-        var result = vJS.isEmpty(0);
+        var result = be.empty(0);
         console.log(result);
         assert.equal(result, false);
     });
     it('object, should be return true', function () {
-        var result = vJS.isEmpty({});
+        var result = be.empty({});
         console.log(result);
         assert.equal(result, true);
     });
     it('null, should be return true', function () {
-        var result = vJS.isEmpty(null);
+        var result = be.empty(null);
         console.log(result);
         assert.equal(result, true);
     });
     it('function, should be return false', function () {
-        var result = vJS.isEmpty(function () {});
+        var result = be.empty(function () {});
         console.log(result);
         assert.equal(result, false);
     });
     it('should be return false', function () {
-        var result = vJS.isEmpty('test');
+        var result = be.empty('test');
         console.log(result);
         assert.equal(result, false);
     });
     it('empty array, should be return true', function () {
-        var result = vJS.isEmpty([]);
+        var result = be.empty([]);
         console.log(result);
         assert.equal(result, true);
     });
     it('array with item, should be return false', function () {
-        var result = vJS.isEmpty([3]);
+        var result = be.empty([3]);
         console.log(result);
         assert.equal(result, false);
     });
     it('NaN, should be return true', function () {
-        var result = vJS.isEmpty(NaN);
+        var result = be.empty(NaN);
         console.log(result);
         assert.equal(result, true);
     });
     it('boolean true, should be return false', function () {
-        var result = vJS.isEmpty(true);
+        var result = be.empty(true);
         console.log(result);
         assert.equal(result, false);
     });
     it('boolean false, should be return false', function () {
-        var result = vJS.isEmpty(false);
+        var result = be.empty(false);
         console.log(result);
         assert.equal(result, false);
     });
 });
 
-describe('isDateString', function () {
+describe('dateString', function () {
     it('yyyy-mm-dd, should be return true', function () {
-        var result = vJS.isDateString('2017-06-11');
+        var result = be.dateString('2017-06-11');
         console.log(result);
         assert.equal(result, true);
     });
     it('yyyy-mm-dd HH:MM:SS, should be return true', function () {
-        var result = vJS.isDateString('2017-06-11 20:45:50');
+        var result = be.dateString('2017-06-11 20:45:50');
         console.log(result);
         assert.equal(result, true);
     });
     it('yyyy-mm-dd HH:MM, should be return true', function () {
-        var result = vJS.isDateString('2017-06-11 20:45');
+        var result = be.dateString('2017-06-11 20:45');
         console.log(result);
         assert.equal(result, true);
     });
     it('yyyy-mm-dd HH, should be return false', function () {
-        var result = vJS.isDateString('2017-06-11 20');
+        var result = be.dateString('2017-06-11 20');
         console.log(result);
         assert.equal(result, false);
     });
     it('yyyy-mm-ddTHH:MM:SS, should be return true', function () {
-        var result = vJS.isDateString('2017-06-11T20:50:50');
+        var result = be.dateString('2017-06-11T20:50:50');
         console.log(result);
         assert.equal(result, true);
     });
     it('yyyy-mm-dd HH:MM:SS wrong minutes, should be return false', function () {
-        var result = vJS.isDateString('2017-06-11 20:70:50');
+        var result = be.dateString('2017-06-11 20:70:50');
         console.log(result);
         assert.equal(result, false);
     });
     it('yyyy/mm/dd, should be return true', function () {
-        var result = vJS.isDateString('2017/06/11');
+        var result = be.dateString('2017/06/11');
         console.log(result);
         assert.equal(result, true);
     });
     it('dd/mm/yyyy, should be return true', function () {
-        var result = vJS.isDateString('11/06/2017');
+        var result = be.dateString('11/06/2017');
         console.log(result);
         assert.equal(result, true);
     });
     it('wrong format, should be return false', function () {
-        var result = vJS.isDateString('2017-06-112');
+        var result = be.dateString('2017-06-112');
         console.log(result);
         assert.equal(result, false);
     });
     it('wrong format dd-yyyy-mm, should be return false', function () {
-        var result = vJS.isDateString('11-2017-06');
+        var result = be.dateString('11-2017-06');
         console.log(result);
         assert.equal(result, false);
     });
 });
 
-describe('isSemVer', function () {
+describe('semVer', function () {
     it('1.0.0, should be return true', function () {
-        var result = vJS.isSemVer('1.0.0');
+        var result = be.semVer('1.0.0');
         console.log(result);
         assert.equal(result, true);
     });
     it('2.0.0-rc.2, should be return true', function () {
-        var result = vJS.isSemVer('2.0.0-rc.2');
+        var result = be.semVer('2.0.0-rc.2');
         console.log(result);
         assert.equal(result, true);
     });
     it('1.0.0-alpha, should be return true', function () {
-        var result = vJS.isSemVer('1.0.0-alpha');
+        var result = be.semVer('1.0.0-alpha');
         console.log(result);
         assert.equal(result, true);
     });
     it('1.0.0-ALPHA, should be return true', function () {
-        var result = vJS.isSemVer('1.0.0-ALPHA');
+        var result = be.semVer('1.0.0-ALPHA');
         console.log(result);
         assert.equal(result, true);
     });
     it('0.0.0, should be return true', function () {
-        var result = vJS.isSemVer('0.0.0');
+        var result = be.semVer('0.0.0');
         console.log(result);
         assert.equal(result, true);
     });
     it('test, should be return false', function () {
-        var result = vJS.isSemVer('test');
+        var result = be.semVer('test');
         console.log(result);
         assert.equal(result, false);
     });
     it('v1.0.0, should be return false', function () {
-        var result = vJS.isSemVer('v1.0.0');
+        var result = be.semVer('v1.0.0');
         console.log(result);
         assert.equal(result, false);
     });
 });
 
-describe('isServerEnv', function () {
+describe('serverEnv', function () {
     it('should be return true', function () {
-        var result = vJS.isServerEnv();
+        var result = be.serverEnv();
         console.log(result);
         assert.equal(result, true);
     })
@@ -763,55 +763,55 @@ describe('isServerEnv', function () {
 
 describe('isBrowser', function () {
     it('should be return false', function () {
-        var result = vJS.isBrowserEnv();
+        var result = be.browserEnv();
         console.log(result);
         assert.equal(result, false);
     })
 });
 
-describe('isIOS', function () {
+describe('ios', function () {
     it('should be return true', function () {
         var userAgent= 'Mozilla/5.0 (iPhone; CPU iPhone OS 10_0 like Mac OS X) AppleWebKit/602.1.38 ' +
             '(KHTML, like Gecko) Version/10.0 Mobile/14A5297c Safari/602.1';
-        var result = vJS.isIOS(userAgent);
+        var result = be.ios(userAgent);
         console.log(result);
         assert.equal(result, true);
     });
     it('should be return false', function () {
         var userAgent= 'Mozilla/5.0 (Linux; Android 5.1.1; SM-G928X Build/LMY47X) AppleWebKit/537.36 (KHTML, like Gecko) ' +
             'Chrome/47.0.2526.83 Mobile Safari/537.36';
-        var result = vJS.isIOS(userAgent);
+        var result = be.ios(userAgent);
         console.log(result);
         assert.equal(result, false);
     });
 
     it('should be return error', function (done) {
         try {
-            vJS.isIOS();
+            be.ios();
         } catch (e) {
             done();
         }
     });
 });
 
-describe('isAndroid', function () {
+describe('android', function () {
     it('should be return false', function () {
         var userAgent= 'Mozilla/5.0 (iPhone; CPU iPhone OS 10_0 like Mac OS X) AppleWebKit/602.1.38 ' +
             '(KHTML, like Gecko) Version/10.0 Mobile/14A5297c Safari/602.1';
-        var result = vJS.isAndroid(userAgent);
+        var result = be.android(userAgent);
         console.log(result);
         assert.equal(result, false);
     });
     it('should be return true', function () {
         var userAgent= 'Mozilla/5.0 (Linux; Android 5.1.1; SM-G928X Build/LMY47X) AppleWebKit/537.36 (KHTML, like Gecko) ' +
             'Chrome/47.0.2526.83 Mobile Safari/537.36';
-        var result = vJS.isAndroid(userAgent);
+        var result = be.android(userAgent);
         console.log(result);
         assert.equal(result, true);
     });
     it('should be return error', function (done) {
         try {
-            vJS.isAndroid();
+            be.android();
         } catch (e) {
             done();
         }

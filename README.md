@@ -1,4 +1,4 @@
-# ValidityJS 
+# beJS 
 Helpers methods
 
 ## License

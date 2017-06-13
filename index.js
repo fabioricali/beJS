@@ -9,7 +9,7 @@
             if(arguments.length)
                 return arguments[0];
             else {
-                if(!ValidityJS.isNavigator())
+                if(!be.navigator())
                     throw new Error('test allowed only in browser environment');
                 return navigator.userAgent;
             }
@@ -17,15 +17,15 @@
     };
 
     /**
-     * ValidityJS class
+     * be class
      */
-    var ValidityJS = {
+    var be = {
         /**
          * Check if is valid boolean
          * @param value
          * @returns {boolean}
          */
-        isBoolean: function (value) {
+        boolean: function (value) {
             return typeof value === 'boolean';
         },
 
@@ -34,7 +34,7 @@
          * @param value
          * @returns {boolean}
          */
-        isNumber: function (value) {
+        number: function (value) {
             return typeof value === 'number' && !isNaN(value);
         },
 
@@ -43,7 +43,7 @@
          * @param value
          * @returns {boolean}
          */
-        isString: function (value) {
+        string: function (value) {
             return typeof value === 'string';
         },
 
@@ -52,7 +52,7 @@
          * @param value
          * @returns {boolean}
          */
-        isUndefined: function (value) {
+        undefined: function (value) {
             return typeof value === 'undefined';
         },
 
@@ -61,7 +61,7 @@
          * @param value
          * @returns {boolean}
          */
-        isNull: function (value) {
+        'null': function (value) {
             return value === null;
         },
 
@@ -70,7 +70,7 @@
          * @param value
          * @returns {boolean}
          */
-        isObject: function (value) {
+        object: function (value) {
             return typeof value === 'object';
         },
 
@@ -79,7 +79,7 @@
          * @param value
          * @returns {boolean}
          */
-        isUrl: function (value) {
+        url: function (value) {
             // https://gist.github.com/dperini/729294
             return /^(?:(?:https?|ftps?):\/\/)(?:\S+(?::\S*)?@)?(?:(?!(?:10|127)(?:\.\d{1,3}){3})(?!(?:169\.254|192\.168)(?:\.\d{1,3}){2})(?!172\.(?:1[6-9]|2\d|3[0-1])(?:\.\d{1,3}){2})(?:[1-9]\d?|1\d\d|2[01]\d|22[0-3])(?:\.(?:1?\d{1,2}|2[0-4]\d|25[0-5])){2}(?:\.(?:[1-9]\d?|1\d\d|2[0-4]\d|25[0-4]))|(?:(?:[a-z\u00a1-\uffff0-9]-*)*[a-z\u00a1-\uffff0-9]+)(?:\.(?:[a-z\u00a1-\uffff0-9]-*)*[a-z\u00a1-\uffff0-9]+)*(?:\.(?:[a-z\u00a1-\uffff]{2,}))\.?)(?::\d{2,5})?(?:[/?#]\S*)?$/i.test(value);
         },
@@ -89,8 +89,8 @@
          * @param value
          * @returns {*|boolean}
          */
-        isHttpUrl: function (value) {
-            return this.isUrl(value) && /^http:/i.test(value);
+        httpUrl: function (value) {
+            return this.url(value) && /^http:/i.test(value);
         },
 
         /**
@@ -98,8 +98,8 @@
          * @param value
          * @returns {*|boolean}
          */
-        isHttpsUrl: function (value) {
-            return this.isUrl(value) && /^https:/i.test(value);
+        httpsUrl: function (value) {
+            return this.url(value) && /^https:/i.test(value);
         },
 
         /**
@@ -107,8 +107,8 @@
          * @param value
          * @returns {*|boolean}
          */
-        isFtpUrl: function (value) {
-            return this.isUrl(value) && /^ftp:/i.test(value);
+        ftpUrl: function (value) {
+            return this.url(value) && /^ftp:/i.test(value);
         },
 
         /**
@@ -116,8 +116,8 @@
          * @param value
          * @returns {*|boolean}
          */
-        isFtpsUrl: function (value) {
-            return this.isUrl(value) && /^ftps:/i.test(value);
+        ftpsUrl: function (value) {
+            return this.url(value) && /^ftps:/i.test(value);
         },
 
         /**
@@ -125,7 +125,7 @@
          * @param value
          * @returns {boolean}
          */
-        isEmail: function (value) {
+        email: function (value) {
             // https://emailregex.com/
             return /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(value);
         },
@@ -135,8 +135,8 @@
          * @param value
          * @returns {*|boolean}
          */
-        isInt: function (value) {
-            return this.isNumber(value) &&
+        int: function (value) {
+            return this.number(value) &&
                 isFinite(value) &&
                 Math.floor(value) === value;
         },
@@ -146,9 +146,9 @@
          * @param value
          * @returns {*|boolean}
          */
-        isFloat: function (value) {
-            return this.isNumber(value) &&
-                !this.isInt(value);
+        float: function (value) {
+            return this.number(value) &&
+                !this.int(value);
         },
 
         /**
@@ -156,7 +156,7 @@
          * @param value
          * @returns {*|boolean}
          */
-        isNaN: function (value) {
+        nan: function (value) {
             return isNaN(value);
         },
 
@@ -165,7 +165,7 @@
          * @param value
          * @returns {boolean}
          */
-        isMD5: function (value) {
+        md5: function (value) {
             return /^[a-f0-9]{32}$/.test(value);
         },
 
@@ -174,7 +174,7 @@
          * @param value
          * @returns {boolean}
          */
-        isSHA1: function (value) {
+        sha1: function (value) {
             return /^[a-f0-9]{40}$/.test(value);
         },
 
@@ -183,7 +183,7 @@
          * @param value
          * @returns {boolean}
          */
-        isJSON: function (value) {
+        json: function (value) {
             try {
                 JSON.parse(value);
                 return true;
@@ -197,7 +197,7 @@
          * @param value
          * @returns {boolean}
          */
-        isDate: function (value) {
+        date: function (value) {
             return value instanceof Date;
         },
 
@@ -206,7 +206,7 @@
          * @param value
          * @returns {boolean}
          */
-        isDateString: function (value) {
+        dateString: function (value) {
             var date = Date.parse(value);
             return !isNaN(date);
         },
@@ -216,8 +216,8 @@
          * @param value
          * @returns {*|boolean}
          */
-        isEven: function (value) {
-            return this.isNumber(value) &&
+        even: function (value) {
+            return this.number(value) &&
                 value % 2 === 0;
         },
 
@@ -226,9 +226,9 @@
          * @param value
          * @returns {*|boolean}
          */
-        isOdd: function (value) {
-            return this.isNumber(value) &&
-                !this.isEven(value);
+        odd: function (value) {
+            return this.number(value) &&
+                !this.even(value);
         },
 
         /**
@@ -236,7 +236,7 @@
          * @param value
          * @returns {boolean}
          */
-        isHex: function (value) {
+        hex: function (value) {
             return /^(?:0x)?[a-f0-9]+$/.test(value);
         },
 
@@ -245,10 +245,10 @@
          * @param value
          * @returns {boolean}
          */
-        isHexColor: function (value) {
+        hexColor: function (value) {
             try {
                 value = value.replace('#', '');
-                return this.isHex(value) &&
+                return this.hex(value) &&
                     (value.length === 3 || value.length === 6);
             } catch (e) {
                 return false;
@@ -260,7 +260,7 @@
          * @param value
          * @returns {boolean}
          */
-        isFunction: function (value) {
+        'function': function (value) {
             return typeof value === 'function';
         },
 
@@ -269,8 +269,8 @@
          * @param value
          * @returns {*|boolean}
          */
-        isPositive: function (value) {
-            return this.isNumber(value) &&
+        positive: function (value) {
+            return this.number(value) &&
                 value > 0;
         },
 
@@ -279,8 +279,8 @@
          * @param value
          * @returns {*|boolean}
          */
-        isNegative: function (value) {
-            return this.isNumber(value) &&
+        negative: function (value) {
+            return this.number(value) &&
                 value < 0;
         },
 
@@ -289,9 +289,9 @@
          * @param value
          * @returns {boolean|*}
          */
-        isAlphanumeric: function (value) {
+        alphanumeric: function (value) {
             return /^[a-z0-9]+$/i.test(value) &&
-                this.isString(value);
+                this.string(value);
         },
 
         /**
@@ -299,7 +299,7 @@
          * @param value
          * @returns {boolean}
          */
-        isIPv4: function (value) {
+        ipv4: function (value) {
             return /^(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)$/.test(value);
         },
 
@@ -308,7 +308,7 @@
          * @param value
          * @returns {boolean}
          */
-        isIPv6: function (value) {
+        ipv6: function (value) {
             return /^(([0-9A-Fa-f]{1,4}:){7}([0-9A-Fa-f]{1,4}|:))|(([0-9A-Fa-f]{1,4}:){6}(:[0-9A-Fa-f]{1,4}|((25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)(\.(25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)){3})|:))|(([0-9A-Fa-f]{1,4}:){5}(((:[0-9A-Fa-f]{1,4}){1,2})|:((25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)(\.(25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)){3})|:))|(([0-9A-Fa-f]{1,4}:){4}(((:[0-9A-Fa-f]{1,4}){1,3})|((:[0-9A-Fa-f]{1,4})?:((25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)(\.(25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)){3}))|:))|(([0-9A-Fa-f]{1,4}:){3}(((:[0-9A-Fa-f]{1,4}){1,4})|((:[0-9A-Fa-f]{1,4}){0,2}:((25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)(\.(25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)){3}))|:))|(([0-9A-Fa-f]{1,4}:){2}(((:[0-9A-Fa-f]{1,4}){1,5})|((:[0-9A-Fa-f]{1,4}){0,3}:((25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)(\.(25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)){3}))|:))|(([0-9A-Fa-f]{1,4}:){1}(((:[0-9A-Fa-f]{1,4}){1,6})|((:[0-9A-Fa-f]{1,4}){0,4}:((25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)(\.(25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)){3}))|:))|(:(((:[0-9A-Fa-f]{1,4}){1,7})|((:[0-9A-Fa-f]{1,4}){0,5}:((25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)(\.(25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)){3}))|:))$/.test(value);
         },
 
@@ -317,7 +317,7 @@
          * @param value
          * @returns {boolean}
          */
-        isBase64: function (value) {
+        base64: function (value) {
             return /^([0-9a-zA-Z+/]{4})*(([0-9a-zA-Z+/]{2}==)|([0-9a-zA-Z+/]{3}=))?$/.test(value);
         },
 
@@ -326,14 +326,14 @@
          * @param value
          * @returns {boolean}
          */
-        isEmpty: function (value) {
-            if (this.isNull(value)) return true;
-            if (this.isUndefined(value)) return true;
-            if (this.isNumber(value)) return false;
-            if (this.isFunction(value)) return false;
-            if (this.isBoolean(value)) return false;
+        empty: function (value) {
+            if (this.null(value)) return true;
+            if (this.undefined(value)) return true;
+            if (this.number(value)) return false;
+            if (this.function(value)) return false;
+            if (this.boolean(value)) return false;
 
-            if (this.isObject(value)) {
+            if (this.object(value)) {
                 if (value.length > 0)    return false;
                 if (value.length === 0)  return true;
 
@@ -342,7 +342,7 @@
                 }
             }
 
-            return !(this.isString(value) && value.length > 0);
+            return !(this.string(value) && value.length > 0);
         },
 
         /**
@@ -350,7 +350,7 @@
          * @param value
          * @returns {boolean}
          */
-        isSemVer: function (value) {
+        semVer: function (value) {
             return /^(\d*)\.(\d*)\.(\d*)(-(\d*|\d*[a-z-][0-9a-z-]*)(\.(\d*|\d*[a-z-][0-9a-z-]*))*)?(\+[0-9a-z-]+(\.[0-9a-z-]+)*)?$/i.test(value);
         },
 
@@ -358,7 +358,7 @@
          * Check if server environment
          * @returns {boolean}
          */
-        isServerEnv: function () {
+        serverEnv: function () {
             return typeof process === 'object';
         },
 
@@ -366,7 +366,7 @@
          * Check if browser environment
          * @returns {boolean}
          */
-        isBrowserEnv: function () {
+        browserEnv: function () {
             return typeof window !== 'undefined';
         },
 
@@ -374,7 +374,7 @@
          * Check if is iOS device
          * @returns {boolean}
          */
-        isIOS: function () {
+        ios: function () {
             var userAgent = helper.getUserAgent.apply(this, arguments);
             return (/iPhone|iPad|iPod/i).test(userAgent);
         },
@@ -383,7 +383,7 @@
          * Check if is Android device
          * @returns {boolean}
          */
-        isAndroid: function () {
+        android: function () {
             var userAgent = helper.getUserAgent.apply(this, arguments);
             return (/Android/i).test(userAgent);
         },
@@ -392,15 +392,15 @@
          * Check if exists navigator object
          * @returns {*|boolean}
          */
-        isNavigator: function () {
-            return this.isBrowserEnv() && typeof window.navigator !== 'undefined';
+        navigator: function () {
+            return this.browserEnv() && typeof window.navigator !== 'undefined';
         },
 
         /**
          * Firefox detecting
          * @returns {boolean}
          */
-        isFirefox: function () {
+        firefox: function () {
             var userAgent = helper.getUserAgent.apply(this, arguments);
             return (/Firefox/i).test(userAgent);
         },
@@ -409,7 +409,7 @@
          * Chrome detecting
          * @returns {boolean}
          */
-        isChrome: function () {
+        chrome: function () {
             var userAgent = helper.getUserAgent.apply(this, arguments);
             return (/Chrome/i).test(userAgent);
         },
@@ -418,7 +418,7 @@
          * Safari detecting
          * @returns {boolean}
          */
-        isSafari: function () {
+        safari: function () {
             var userAgent = helper.getUserAgent.apply(this, arguments);
             return (/Safari/i).test(userAgent.replace('Chrome', '')) &&
                 !(/Chrome/i).test(userAgent.replace('Safari', ''));
@@ -428,7 +428,7 @@
          * Explorer detecting
          * @returns {boolean}
          */
-        isIE: function () {
+        ie: function () {
             var userAgent = helper.getUserAgent.apply(this, arguments);
             return (/MSIE|Trident/i).test(userAgent);
         }
@@ -436,8 +436,8 @@
 
 };
 
-    if (ValidityJS.isServerEnv())
-        module.exports = ValidityJS;
+    if (be.serverEnv())
+        module.exports = be;
     else
-        window.ValidityJS = ValidityJS;
+        window.ValidityJS = be;
 })();
