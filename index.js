@@ -365,7 +365,7 @@
          */
         isIOS: function () {
             var userAgent;
-            if(arguments.length === 1)
+            if(arguments.length)
                 userAgent = arguments[0];
             else
                 userAgent = navigator.userAgent;
@@ -379,12 +379,23 @@
          */
         isAndroid: function () {
             var userAgent;
-            if(arguments.length === 1)
+            if(arguments.length)
                 userAgent = arguments[0];
-            else
+            else {
+                if(!this.isNavigator())
+                    throw new Error('test allowed only in browser environment');
                 userAgent = navigator.userAgent;
+            }
 
             return (/Android/i).test(userAgent);
+        },
+
+        /**
+         * Check if exists navigator object
+         * @returns {*|boolean}
+         */
+        isNavigator: function () {
+            return this.isBrowserEnv() && typeof window.navigator !== 'undefined';
         }
 
     };

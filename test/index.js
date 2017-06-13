@@ -795,4 +795,11 @@ describe('isAndroid', function () {
         console.log(result);
         assert.equal(result, true);
     });
+    it('should be return error', function (done) {
+        try {
+            vJS.isAndroid();
+        } catch (e) {
+            done();
+        }
+    });
 });
