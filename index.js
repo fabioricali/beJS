@@ -75,6 +75,15 @@
         },
 
         /**
+         * Check if is an array
+         * @param value
+         * @returns {boolean}
+         */
+        array: function (value) {
+            return value instanceof Array;
+        },
+
+        /**
          * Check if is valid string url
          * @param value
          * @returns {boolean}
