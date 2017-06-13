@@ -394,9 +394,47 @@
          */
         isNavigator: function () {
             return this.isBrowserEnv() && typeof window.navigator !== 'undefined';
+        },
+
+        /**
+         * Firefox detecting
+         * @returns {boolean}
+         */
+        isFirefox: function () {
+            var userAgent = helper.getUserAgent.apply(this, arguments);
+            return (/Firefox/i).test(userAgent);
+        },
+
+        /**
+         * Chrome detecting
+         * @returns {boolean}
+         */
+        isChrome: function () {
+            var userAgent = helper.getUserAgent.apply(this, arguments);
+            return (/Chrome/i).test(userAgent);
+        },
+
+        /**
+         * Safari detecting
+         * @returns {boolean}
+         */
+        isSafari: function () {
+            var userAgent = helper.getUserAgent.apply(this, arguments);
+            return (/Safari/i).test(userAgent.replace('Chrome', '')) &&
+                !(/Chrome/i).test(userAgent.replace('Safari', ''));
+        },
+
+        /**
+         * Explorer detecting
+         * @returns {boolean}
+         */
+        isIE: function () {
+            var userAgent = helper.getUserAgent.apply(this, arguments);
+            return (/MSIE|Trident/i).test(userAgent);
         }
 
-    };
+
+};
 
     if (ValidityJS.isServerEnv())
         module.exports = ValidityJS;
