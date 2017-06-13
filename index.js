@@ -148,7 +148,6 @@
          */
         isFloat: function (value) {
             return this.isNumber(value) &&
-                !this.isNaN(value) &&
                 !this.isInt(value);
         },
 
