@@ -4,6 +4,12 @@
 var assert = require('assert');
 var vJS = require('../index');
 
+it('count class methods', function () {
+    var result = Object.keys(vJS).length;
+    console.log('total methods', result);
+    assert.equal(result > 0, true);
+});
+
 describe('isBoolean', function () {
     it('boolean value, should be return true', function () {
         var result = vJS.isBoolean(false);
