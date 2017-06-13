@@ -426,7 +426,7 @@
      * Firefox detecting
      * @returns {boolean}
      */
-    firefox = function () {
+    be.firefox = function () {
         var userAgent = helper.getUserAgent.apply(this, arguments);
         return (/Firefox/i).test(userAgent);
     };
