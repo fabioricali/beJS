@@ -27,6 +27,8 @@
      * be class
      */
     var be = {};
+    be.all = {};
+    be.any = {};
 
     /**
      * Check if is valid boolean
@@ -254,6 +256,7 @@
      * @returns {boolean}
      */
     be.hex = function (value) {
+        console.log(value);
         return /^(?:0x)?[a-f0-9]+$/.test(value);
     };
 
@@ -459,6 +462,34 @@
         return (/MSIE|Trident/i).test(userAgent);
     };
 
+    function interfaces() {
+        for(var i in be){
+            if(be.hasOwnProperty(i) && typeof be[i] === 'function'){
+                be.all[i] = (function (j) {
+                    return function () {
+                        for(var a in arguments) {
+                            if (arguments.hasOwnProperty(a) && !be[j].call(this, arguments[a]))
+                                return false;
+                        }
+                        return true;
+                    }
+                })(i);
+
+                be.any[i] = (function (j) {
+                    return function () {
+                        for(var a in arguments) {
+                            if (arguments.hasOwnProperty(a) && be[j].call(this, arguments[a]))
+                                return true;
+                        }
+                        return false;
+                    }
+                })(i);
+            }
+
+        }
+    }
+
+    interfaces();
 
     if (be.serverEnv())
         module.exports = be;

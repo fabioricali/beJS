@@ -82,6 +82,30 @@ describe('string', function () {
         console.log(result);
         assert.equal(result, false);
     });
+
+    it('all strings should be return true', function () {
+        var result = be.all.string('string1', 'string2', 'string3');
+        console.log(result);
+        assert.equal(result, true);
+    });
+
+    it('two strings and one number should be return false', function () {
+        var result = be.all.string('string1', 'string2', 3);
+        console.log(result);
+        assert.equal(result, false);
+    });
+
+    it('any string should be return true', function () {
+        var result = be.any.string('string1', 2, 3);
+        console.log(result);
+        assert.equal(result, true);
+    });
+
+    it('all numbers should be return false', function () {
+        var result = be.any.string(1, 2, 3);
+        console.log(result);
+        assert.equal(result, false);
+    });
 });
 
 describe('undefined', function () {
