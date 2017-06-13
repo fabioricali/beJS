@@ -769,6 +769,7 @@ describe('semVer', function () {
 });
 
 describe('serverEnv', function () {
+    if(typeof window === 'undefined')
     it('should be return true', function () {
         var result = be.serverEnv();
         console.log(result);
@@ -777,6 +778,7 @@ describe('serverEnv', function () {
 });
 
 describe('isBrowser', function () {
+    if(typeof window === 'undefined')
     it('should be return false', function () {
         var result = be.browserEnv();
         console.log(result);
@@ -803,6 +805,8 @@ describe('ios', function () {
     it('should be return error', function (done) {
         try {
             be.ios();
+            if(navigation)
+                done();
         } catch (e) {
             done();
         }
@@ -827,6 +831,8 @@ describe('android', function () {
     it('should be return error', function (done) {
         try {
             be.android();
+            if(navigation)
+                done();
         } catch (e) {
             done();
         }
