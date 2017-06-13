@@ -4,6 +4,18 @@
 
 ;(function () {
 
+    var helper = {
+        getUserAgent: function () {
+            if(arguments.length)
+                return arguments[0];
+            else {
+                if(!ValidityJS.isNavigator())
+                    throw new Error('test allowed only in browser environment');
+                return navigator.userAgent;
+            }
+        }
+    };
+
     /**
      * ValidityJS class
      */
@@ -364,12 +376,7 @@
          * @returns {boolean}
          */
         isIOS: function () {
-            var userAgent;
-            if(arguments.length)
-                userAgent = arguments[0];
-            else
-                userAgent = navigator.userAgent;
-
+            var userAgent = helper.getUserAgent.apply(this, arguments);
             return (/iPhone|iPad|iPod/i).test(userAgent);
         },
 
@@ -378,15 +385,7 @@
          * @returns {boolean}
          */
         isAndroid: function () {
-            var userAgent;
-            if(arguments.length)
-                userAgent = arguments[0];
-            else {
-                if(!this.isNavigator())
-                    throw new Error('test allowed only in browser environment');
-                userAgent = navigator.userAgent;
-            }
-
+            var userAgent = helper.getUserAgent.apply(this, arguments);
             return (/Android/i).test(userAgent);
         },
 

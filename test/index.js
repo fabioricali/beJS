@@ -778,6 +778,14 @@ describe('isIOS', function () {
         console.log(result);
         assert.equal(result, false);
     });
+
+    it('should be return error', function (done) {
+        try {
+            vJS.isIOS();
+        } catch (e) {
+            done();
+        }
+    });
 });
 
 describe('isAndroid', function () {
