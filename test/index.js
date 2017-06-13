@@ -1,8 +1,10 @@
 /**
  * Created by Fabio on 11/06/2017.
  */
-var assert = require('assert');
-var be = require('../index');
+if(typeof process === 'object') {
+    var assert = require('assert');
+    var be = require('../index');
+}
 
 it('count class methods', function () {
     var result = Object.keys(be).length;
