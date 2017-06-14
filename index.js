@@ -626,8 +626,11 @@
             if(be.hasOwnProperty(i) && be.function(be[i]) && be.undefined(be[i].multiple)){
                 be.each[i] = (function (j) {
                     return function () {
-                        for(var a in arguments) {
-                            if (arguments.hasOwnProperty(a) && !be[j].call(this, arguments[a]))
+                        var args = arguments;
+                        if(be.array(args[0]))
+                            args = args[0];
+                        for(var a in args) {
+                            if (args.hasOwnProperty(a) && !be[j].call(this, args[a]))
                                 return false;
                         }
                         return true;
@@ -636,8 +639,11 @@
 
                 be.some[i] = (function (j) {
                     return function () {
-                        for(var a in arguments) {
-                            if (arguments.hasOwnProperty(a) && be[j].call(this, arguments[a]))
+                        var args = arguments;
+                        if(be.array(args[0]))
+                            args = args[0];
+                        for(var a in args) {
+                            if (args.hasOwnProperty(a) && be[j].call(this, args[a]))
                                 return true;
                         }
                         return false;
