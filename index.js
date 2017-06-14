@@ -362,7 +362,7 @@
         if (be.function(value)) return false;
         if (be.boolean(value)) return false;
 
-        if (be.object(value)) {
+        if (be.object(value) || be.array(value)) {
             if (value.length > 0)    return false;
             if (value.length === 0)  return true;
 
