@@ -234,15 +234,15 @@ describe('email', function () {
 
 describe('object', function () {
     it('object, should be return true', function () {
-        var result = be.object({a: 1, b: 2});
+        var result = be.object({a: 1, b: 2, c: [1, 2, 3]});
         console.log(result);
         assert.equal(result, true);
     });
 
-    it('array, should be return true', function () {
+    it('array, should be return false', function () {
         var result = be.object([1, 2, 3]);
         console.log(result);
-        assert.equal(result, true);
+        assert.equal(result, false);
     });
 
     it('should be return false', function () {
@@ -860,5 +860,23 @@ describe('android', function () {
         } catch (e) {
             done();
         }
+    });
+});
+
+describe('sameType', function () {
+    it('should be return true', function () {
+        var result = be.sameType('hello', 'ciao');
+        console.log(result);
+        assert.equal(result, true);
+    });
+    it('should be return false', function () {
+        var result = be.sameType(true, 1);
+        console.log(result);
+        assert.equal(result, false);
+    });
+    it('undefined arguments, should be return true', function () {
+        var result = be.sameType();
+        console.log(result);
+        assert.equal(result, true);
     });
 });

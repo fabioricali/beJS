@@ -81,7 +81,7 @@
      * @returns {boolean}
      */
     be.object = function (value) {
-        return typeof value === 'object';
+        return typeof value === 'object' && !be.array(value);
     };
 
     /**
@@ -373,6 +373,18 @@
 
         return !(be.string(value) && value.length > 0);
     };
+
+    /**
+     * Check if both arguments
+     * @param value
+     * @param other
+     * @returns {boolean}
+     */
+    be.sameType = function (value, other) {
+        return typeof value === typeof other;
+    };
+
+    be.sameType.interfaces = false;
 
     /**
      * Check if is a valid semver string
