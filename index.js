@@ -396,7 +396,7 @@
     };
 
     /**
-     * Check if both arguments
+     * Check if both arguments are same type
      * @param value
      * @param other
      * @returns {boolean}
@@ -471,6 +471,17 @@
      */
     be.regexp = function (value) {
         return be.classOf(value,'regexp');
+    };
+
+    /**
+     * Check if string contains a value
+     * @param string
+     * @param value
+     * @returns {boolean}
+     */
+    be.contains = function (string, value) {
+        if (!be.string(string)) return false;
+        return string.indexOf(value) > -1;
     };
 
     /*

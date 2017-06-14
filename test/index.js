@@ -942,3 +942,21 @@ describe('regexp', function () {
         assert.equal(result, false);
     });
 });
+
+describe('contains', function () {
+    it('should be return true', function () {
+        var result = be.contains('hello world', 'world');
+        console.log(result);
+        assert.equal(result, true);
+    });
+    it('should be return false', function () {
+        var result = be.contains('hello world', 'ciao');
+        console.log(result);
+        assert.equal(result, false);
+    });
+    it('array, should be return false', function () {
+        var result = be.contains([2,3], 3);
+        console.log(result);
+        assert.equal(result, false);
+    });
+});
