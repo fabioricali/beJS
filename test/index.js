@@ -960,3 +960,39 @@ describe('contains', function () {
         assert.equal(result, false);
     });
 });
+
+describe('lowerCase', function () {
+    it('should be return true', function () {
+        var result = be.lowerCase('hello world');
+        console.log(result);
+        assert.equal(result, true);
+    });
+    it('should be return false', function () {
+        var result = be.lowerCase('Hello world');
+        console.log(result);
+        assert.equal(result, false);
+    });
+    it('array, should be return false', function () {
+        var result = be.lowerCase([2,3]);
+        console.log(result);
+        assert.equal(result, false);
+    });
+});
+
+describe('upperCase', function () {
+    it('should be return true', function () {
+        var result = be.upperCase('HELLO WORLD');
+        console.log(result);
+        assert.equal(result, true);
+    });
+    it('should be return false', function () {
+        var result = be.upperCase('Hello world');
+        console.log(result);
+        assert.equal(result, false);
+    });
+    it('array, should be return false', function () {
+        var result = be.upperCase([2,3]);
+        console.log(result);
+        assert.equal(result, false);
+    });
+});

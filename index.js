@@ -484,6 +484,28 @@
         return string.indexOf(value) > -1;
     };
 
+    be.contains.multiple = false;
+
+    /**
+     * Check if string is lower case
+     * @param value
+     * @returns {boolean}
+     */
+    be.lowerCase = function (value) {
+        if (!be.string(value)) return false;
+        return value.toLowerCase() === value;
+    };
+
+    /**
+     * Check if string is upper case
+     * @param value
+     * @returns {boolean}
+     */
+    be.upperCase = function (value) {
+        if (!be.string(value)) return false;
+        return value.toUpperCase() === value;
+    };
+
     /*
      Environment check
      */
