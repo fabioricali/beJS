@@ -423,6 +423,26 @@
         return object.hasOwnProperty(value);
     };
 
+    be.propertyOf.multiple = false;
+
+    /**
+     * Count properties of an object
+     * @param object
+     * @param value
+     * @returns {boolean}
+     */
+    be.propertyCount = function (object, value) {
+        if(!be.object(object) || !be.number(value)) return false;
+        var n = 0;
+        for(var i in object){
+            if(object.hasOwnProperty(i) && ++n > value)
+                return false;
+        }
+        return n === value;
+    };
+
+    be.propertyCount.multiple = false;
+
     /*
      Environment check
      */
