@@ -506,6 +506,17 @@
         return value.toUpperCase() === value;
     };
 
+    /**
+     * Check if is a word
+     * @param value
+     * @returns {boolean}
+     */
+    be.word = function (value) {
+        if (!be.string(value)) return false;
+        var trimmed = value.trim();
+        return trimmed.length > 0 && trimmed.split(' ').length === 1;
+    };
+
     /*
      Environment check
      */

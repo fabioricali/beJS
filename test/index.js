@@ -996,3 +996,31 @@ describe('upperCase', function () {
         assert.equal(result, false);
     });
 });
+
+describe('word', function () {
+    it('should be return true', function () {
+        var result = be.word('hello');
+        console.log(result);
+        assert.equal(result, true);
+    });
+    it('should be return false', function () {
+        var result = be.word('Hello world');
+        console.log(result);
+        assert.equal(result, false);
+    });
+    it('only space, should be return false', function () {
+        var result = be.word(' ');
+        console.log(result);
+        assert.equal(result, false);
+    });
+    it('with space, should be return true', function () {
+        var result = be.word('hello ');
+        console.log(result);
+        assert.equal(result, true);
+    });
+    it('array, should be return false', function () {
+        var result = be.word([2,3]);
+        console.log(result);
+        assert.equal(result, false);
+    });
+});
