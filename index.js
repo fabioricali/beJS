@@ -27,8 +27,8 @@
      * be class
      */
     var be = {};
-    be.all = {};
-    be.any = {};
+    be.each = {};
+    be.some = {};
 
     /**
      * Check if is valid boolean
@@ -391,6 +391,8 @@
         return typeof process === 'object';
     };
 
+    be.serverEnv.interfaces = false;
+
     /**
      * Check if browser environment
      * @returns {boolean}
@@ -398,6 +400,8 @@
     be.browserEnv = function () {
         return typeof window !== 'undefined';
     };
+
+    be.browserEnv.interfaces = false;
 
     /**
      * Check if is iOS device
@@ -408,6 +412,8 @@
         return (/iPhone|iPad|iPod/i).test(userAgent);
     };
 
+    be.ios.interfaces = false;
+
     /**
      * Check if is Android device
      * @returns {boolean}
@@ -417,6 +423,8 @@
         return (/Android/i).test(userAgent);
     };
 
+    be.android.interfaces = false;
+
     /**
      * Check if exists navigator object
      * @returns {*|boolean}
@@ -424,6 +432,8 @@
     be.navigator = function () {
         return be.browserEnv() && typeof window.navigator !== 'undefined';
     };
+
+    be.navigator.interfaces = false;
 
     /**
      * Firefox detecting
@@ -434,6 +444,8 @@
         return (/Firefox/i).test(userAgent);
     };
 
+    be.firefox.interfaces = false;
+
     /**
      * Chrome detecting
      * @returns {boolean}
@@ -442,6 +454,8 @@
         var userAgent = helper.getUserAgent.apply(this, arguments);
         return (/Chrome/i).test(userAgent);
     };
+
+    be.chrome.interfaces = false;
 
     /**
      * Safari detecting
@@ -453,6 +467,8 @@
             !(/Chrome/i).test(userAgent.replace('Safari', ''));
     };
 
+    be.safari.interfaces = false;
+
     /**
      * Explorer detecting
      * @returns {boolean}
@@ -462,10 +478,15 @@
         return (/MSIE|Trident/i).test(userAgent);
     };
 
+    be.ie.interfaces = false;
+
+    /**
+     * Create extra interfaces
+     */
     function interfaces() {
         for(var i in be){
-            if(be.hasOwnProperty(i) && typeof be[i] === 'function'){
-                be.all[i] = (function (j) {
+            if(be.hasOwnProperty(i) && be.function(be[i]) && be.undefined(be[i].interfaces)){
+                be.each[i] = (function (j) {
                     return function () {
                         for(var a in arguments) {
                             if (arguments.hasOwnProperty(a) && !be[j].call(this, arguments[a]))
@@ -475,7 +496,7 @@
                     }
                 })(i);
 
-                be.any[i] = (function (j) {
+                be.some[i] = (function (j) {
                     return function () {
                         for(var a in arguments) {
                             if (arguments.hasOwnProperty(a) && be[j].call(this, arguments[a]))
@@ -485,7 +506,6 @@
                     }
                 })(i);
             }
-
         }
     }
 
