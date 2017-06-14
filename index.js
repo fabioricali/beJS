@@ -524,6 +524,8 @@
      */
     be.capitalized = function (value) {
         if (!be.string(value)) return false;
+        var trimmed = value.trim();
+        if (trimmed.length === 0) return false;
         var words = value.trim().split(' ');
         for(var i in words){
             var char = words[i].charAt(0);

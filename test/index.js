@@ -1042,4 +1042,9 @@ describe('capitalized', function () {
         console.log(result);
         assert.equal(result, false);
     });
+    it('empty string should be return false', function () {
+        var result = be.capitalized('');
+        console.log(result);
+        assert.equal(result, false);
+    });
 });
