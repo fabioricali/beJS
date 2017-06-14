@@ -10,6 +10,7 @@
     var helper = {};
 
     /**
+     * Get user agent
      * @private
      * @returns {*}
      */
@@ -48,6 +49,8 @@
     be.classOf = function (object, className) {
         return helper.objectToString(object).toLowerCase() === '[object ' + className + ']'.toLowerCase();
     };
+
+    be.classOf.multiple = false;
 
     /**
      * Check if is valid boolean
@@ -236,7 +239,7 @@
      * @returns {boolean}
      */
     be.date = function (value) {
-        return value instanceof Date;
+        return be.classOf(value, 'date');
     };
 
     /**
@@ -275,7 +278,6 @@
      * @returns {boolean}
      */
     be.hex = function (value) {
-        console.log(value);
         return /^(?:0x)?[a-f0-9]+$/.test(value);
     };
 
