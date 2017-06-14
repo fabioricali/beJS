@@ -929,3 +929,16 @@ describe('propertyCount', function () {
         assert.equal(result, false);
     });
 });
+
+describe('regexp', function () {
+    it('should be return true', function () {
+        var result = be.regexp(/hello/);
+        console.log(result);
+        assert.equal(result, true);
+    });
+    it('should be return false', function () {
+        var result = be.regexp([]);
+        console.log(result);
+        assert.equal(result, false);
+    });
+});

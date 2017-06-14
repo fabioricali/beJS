@@ -24,6 +24,15 @@
     };
 
     /**
+     * Convert object to string
+     * @param object
+     * @returns {*}
+     */
+    helper.objectToString = function (object) {
+        return Object.prototype.toString.call(object);
+    };
+
+    /**
      * be class
      */
     var be = {};
@@ -31,12 +40,22 @@
     be.some = {};
 
     /**
+     * Check [object ?] class
+     * @param object
+     * @param className
+     * @returns {boolean}
+     */
+    be.classOf = function (object, className) {
+        return helper.objectToString(object).toLowerCase() === '[object ' + className + ']'.toLowerCase();
+    };
+
+    /**
      * Check if is valid boolean
      * @param value
      * @returns {boolean}
      */
     be.boolean = function (value) {
-        return typeof value === 'boolean';
+        return be.classOf(value, 'boolean');
     };
 
     /**
@@ -45,7 +64,7 @@
      * @returns {boolean}
      */
     be.number = function (value) {
-        return typeof value === 'number' && !isNaN(value);
+        return be.classOf(value, 'number') && !isNaN(value);
     };
 
     /**
@@ -54,7 +73,7 @@
      * @returns {boolean}
      */
     be.string = function (value) {
-        return typeof value === 'string';
+        return be.classOf(value, 'string');
     };
 
     /**
@@ -63,7 +82,7 @@
      * @returns {boolean}
      */
     be.undefined = function (value) {
-        return typeof value === 'undefined';
+        return be.classOf(value, 'undefined');
     };
 
     /**
@@ -72,7 +91,7 @@
      * @returns {boolean}
      */
     be['null'] = function (value) {
-        return value === null;
+        return be.classOf(value, 'null');
     };
 
     /**
@@ -81,7 +100,7 @@
      * @returns {boolean}
      */
     be.object = function (value) {
-        return typeof value === 'object' && !be.array(value);
+        return be.classOf(value, 'object') && !be.array(value);
     };
 
     /**
@@ -90,7 +109,7 @@
      * @returns {boolean}
      */
     be.array = function (value) {
-        return value instanceof Array;
+        return be.classOf(value, 'array');
     };
 
     /**
@@ -281,7 +300,7 @@
      * @returns {boolean}
      */
     be['function'] = function (value) {
-        return typeof value === 'function';
+        return be.classOf(value, 'function');
     };
 
     /**
@@ -381,7 +400,7 @@
      * @returns {boolean}
      */
     be.sameType = function (value, other) {
-        return typeof value === typeof other;
+        return helper.objectToString(value) === helper.objectToString(other);
     };
 
     be.sameType.multiple = false;
@@ -443,6 +462,15 @@
 
     be.propertyCount.multiple = false;
 
+    /**
+     * Check if is a valid RegExp
+     * @param value
+     * @returns {boolean}
+     */
+    be.regexp = function (value) {
+        return be.classOf(value,'regexp');
+    };
+
     /*
      Environment check
      */
@@ -452,7 +480,7 @@
      * @returns {boolean}
      */
     be.serverEnv = function () {
-        return typeof process === 'object';
+        return typeof process !== 'undefined';
     };
 
     be.serverEnv.multiple = false;
