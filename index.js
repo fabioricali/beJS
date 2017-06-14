@@ -517,6 +517,22 @@
         return trimmed.length > 0 && trimmed.split(' ').length === 1;
     };
 
+    /**
+     * Check if string is capitalized
+     * @param value
+     * @returns {boolean}
+     */
+    be.capitalized = function (value) {
+        if (!be.string(value)) return false;
+        var words = value.trim().split(' ');
+        for(var i in words){
+            var char = words[i].charAt(0);
+            if(char !== char.toUpperCase())
+                return false;
+        }
+        return true;
+    };
+
     /*
      Environment check
      */
@@ -652,7 +668,6 @@
             }
         }
     })();
-
 
     if (be.serverEnv())
         module.exports = be;
