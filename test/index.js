@@ -880,3 +880,39 @@ describe('sameType', function () {
         assert.equal(result, true);
     });
 });
+
+describe('inArray', function () {
+    it('should be return true', function () {
+        var result = be.inArray('hello', ['ciao', 'bye', 'hello', 5, false, true]);
+        console.log(result);
+        assert.equal(result, true);
+    });
+    it('should be return false', function () {
+        var result = be.inArray('HELLO', ['ciao', 'bye', 'hello', 5, false, true]);
+        console.log(result);
+        assert.equal(result, false);
+    });
+    it('undefined should be return false', function () {
+        var result = be.inArray();
+        console.log(result);
+        assert.equal(result, false);
+    });
+});
+
+describe('propertyOf', function () {
+    it('should be return true', function () {
+        var result = be.propertyOf('a', {a: 1, b: 2});
+        console.log(result);
+        assert.equal(result, true);
+    });
+    it('should be return false', function () {
+        var result = be.propertyOf('a', {b: 2, c: 3});
+        console.log(result);
+        assert.equal(result, false);
+    });
+    it('undefined should be return false', function () {
+        var result = be.propertyOf();
+        console.log(result);
+        assert.equal(result, false);
+    });
+});

@@ -384,7 +384,7 @@
         return typeof value === typeof other;
     };
 
-    be.sameType.interfaces = false;
+    be.sameType.multiple = false;
 
     /**
      * Check if is a valid semver string
@@ -396,6 +396,38 @@
     };
 
     /**
+     * Check if element is in array
+     * @param value
+     * @param array
+     * @returns {boolean}
+     */
+    be.inArray = function (value, array) {
+        if(!be.array(array)) return false;
+        for(var i in array){
+            if(array.hasOwnProperty(i) && array[i] === value)
+                return true;
+        }
+        return false;
+    };
+
+    be.inArray.multiple = false;
+
+    /**
+     * Check if is a property of an object
+     * @param value
+     * @param object
+     * @returns {boolean}
+     */
+    be.propertyOf = function (value, object) {
+        if(!be.object(object)) return false;
+        return object.hasOwnProperty(value);
+    };
+
+    /*
+     Environment check
+     */
+
+    /**
      * Check if server environment
      * @returns {boolean}
      */
@@ -403,7 +435,7 @@
         return typeof process === 'object';
     };
 
-    be.serverEnv.interfaces = false;
+    be.serverEnv.multiple = false;
 
     /**
      * Check if browser environment
@@ -413,7 +445,7 @@
         return typeof window !== 'undefined';
     };
 
-    be.browserEnv.interfaces = false;
+    be.browserEnv.multiple = false;
 
     /**
      * Check if is iOS device
@@ -424,7 +456,7 @@
         return (/iPhone|iPad|iPod/i).test(userAgent);
     };
 
-    be.ios.interfaces = false;
+    be.ios.multiple = false;
 
     /**
      * Check if is Android device
@@ -435,7 +467,7 @@
         return (/Android/i).test(userAgent);
     };
 
-    be.android.interfaces = false;
+    be.android.multiple = false;
 
     /**
      * Check if exists navigator object
@@ -445,7 +477,7 @@
         return be.browserEnv() && typeof window.navigator !== 'undefined';
     };
 
-    be.navigator.interfaces = false;
+    be.navigator.multiple = false;
 
     /**
      * Firefox detecting
@@ -456,7 +488,7 @@
         return (/Firefox/i).test(userAgent);
     };
 
-    be.firefox.interfaces = false;
+    be.firefox.multiple = false;
 
     /**
      * Chrome detecting
@@ -467,7 +499,7 @@
         return (/Chrome/i).test(userAgent);
     };
 
-    be.chrome.interfaces = false;
+    be.chrome.multiple = false;
 
     /**
      * Safari detecting
@@ -479,7 +511,7 @@
             !(/Chrome/i).test(userAgent.replace('Safari', ''));
     };
 
-    be.safari.interfaces = false;
+    be.safari.multiple = false;
 
     /**
      * Explorer detecting
@@ -490,14 +522,14 @@
         return (/MSIE|Trident/i).test(userAgent);
     };
 
-    be.ie.interfaces = false;
+    be.ie.multiple = false;
 
     /**
      * Create extra interfaces
      */
-    function interfaces() {
+    (function () {
         for(var i in be){
-            if(be.hasOwnProperty(i) && be.function(be[i]) && be.undefined(be[i].interfaces)){
+            if(be.hasOwnProperty(i) && be.function(be[i]) && be.undefined(be[i].multiple)){
                 be.each[i] = (function (j) {
                     return function () {
                         for(var a in arguments) {
@@ -519,9 +551,8 @@
                 })(i);
             }
         }
-    }
+    })();
 
-    interfaces();
 
     if (be.serverEnv())
         module.exports = be;
