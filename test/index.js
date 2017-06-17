@@ -1225,3 +1225,21 @@ describe('infinityNegative', function () {
     });
 });
 
+describe('infinity', function () {
+    it('positive, should be return true', function () {
+        var result = be.infinity(1.7976931348623157E+10308);
+        console.log(result);
+        assert.equal(result, true);
+    });
+    it('negative, should be return true', function () {
+        var result = be.infinity(-1.7976931348623157E+10308);
+        console.log(result);
+        assert.equal(result, true);
+    });
+    it('should be return false', function () {
+        var result = be.infinity(10000);
+        console.log(result);
+        assert.equal(result, false);
+    });
+});
+

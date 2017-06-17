@@ -465,6 +465,15 @@
     };
 
     /**
+     * Check if number is infinity
+     * @param value
+     * @returns {boolean}
+     */
+    be.infinity = function (value) {
+        return be.infinityPositive(value) || be.infinityNegative(value);
+    };
+
+    /**
      * Check if both arguments are same type
      * @param value
      * @param other
