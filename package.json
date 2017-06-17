@@ -4,6 +4,7 @@
   "description": "check tools",
   "main": "index.js",
   "scripts": {
+    "build": "gulp build",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [
@@ -21,9 +22,11 @@
   "author": "Fabio Ricali",
   "license": "MIT",
   "devDependencies": {
+    "del": "^3.0.0",
     "gulp": "^3.9.1",
     "gulp-bump": "^2.7.0",
     "gulp-uglify": "^3.0.0",
+    "gulp-webmake": "0.0.41",
     "mocha": "^3.4.2"
   }
 }
