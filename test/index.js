@@ -1197,3 +1197,31 @@ describe('infinityPositive', function () {
     });
 });
 
+describe('infinityNegative', function () {
+    it('should be return true', function () {
+        var result = be.infinityNegative(-1.7976931348623157E+10308);
+        console.log(result);
+        assert.equal(result, true);
+    });
+    it('null, should be return false', function () {
+        var result = be.infinityNegative(null);
+        console.log(result);
+        assert.equal(result, false);
+    });
+    it('undefined, should be return false', function () {
+        var result = be.infinityNegative();
+        console.log(result);
+        assert.equal(result, false);
+    });
+    it('-2, should be return false', function () {
+        var result = be.infinityNegative(-2);
+        console.log(result);
+        assert.equal(result, false);
+    });
+    it('NaN, should be return true', function () {
+        var result = be.infinityNegative(NaN);
+        console.log(result);
+        assert.equal(result, false);
+    });
+});
+

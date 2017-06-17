@@ -446,10 +446,20 @@
             be.emptyString(value);
     };
 
+    /**
+     * Check if number is infinity positive
+     * @param value
+     * @returns {boolean}
+     */
     be.infinityPositive = function (value) {
         return value === Number.POSITIVE_INFINITY;
     };
 
+    /**
+     * Check if number is infinity positive
+     * @param value
+     * @returns {boolean}
+     */
     be.infinityNegative = function (value) {
         return value === Number.NEGATIVE_INFINITY;
     };
