@@ -789,6 +789,22 @@
     be.similarity.multiple = false;
 
     /**
+     * Check if number is between min and max
+     * @param num
+     * @param min
+     * @param max
+     * @returns {boolean}
+     */
+    be.between = function (num, min, max) {
+        return be.number(num) &&
+                be.number(min) &&
+                be.number(max) &&
+            num >= min && num <= max;
+    };
+
+    be.between.multiple = false;
+    
+    /**
      * Helper class
      * @type {{}}
      * @private

@@ -1378,3 +1378,16 @@ describe('similarity', function () {
         assert.equal(result, false);
     });
 });
+
+describe('between', function () {
+    it('should be return true', function () {
+        var result = be.between(50, 2, 100);
+        console.log(result);
+        assert.equal(result, true);
+    });
+    it('should be return false', function () {
+        var result = be.between(101, 2, 100);
+        console.log(result);
+        assert.equal(result, false);
+    });
+});
