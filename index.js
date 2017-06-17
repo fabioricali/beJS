@@ -435,15 +435,10 @@
      * Check if a falsy value
      * @link https://developer.mozilla.org/it/docs/Glossary/Falsy
      * @param value
-     * @returns {boolean|*|boolean}
+     * @returns {boolean}
      */
     be.falsy = function (value) {
-        return be.booleanFalse(value) ||
-            be.null(value) ||
-            be.undefined(value) ||
-            (be.number(value) && value === 0) ||
-            be.nan(value) ||
-            be.emptyString(value);
+        return !value;
     };
 
     /**
@@ -477,16 +472,10 @@
      * Check if a truthy value
      * @link https://developer.mozilla.org/en-US/docs/Glossary/Truthy
      * @param value
-     * @returns {boolean|*|boolean}
+     * @returns {boolean}
      */
     be.truthy = function (value) {
-        return be.booleanTrue(value) ||
-                be.object(value) ||
-                be.array(value) ||
-                be.number(value) ||
-                (be.string(value) && value.length > 0) ||
-                be.date(value)
-
+        return !be.falsy(value);
     };
 
     /**

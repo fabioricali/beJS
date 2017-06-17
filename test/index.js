@@ -1296,4 +1296,9 @@ describe('truthy', function () {
         console.log(result);
         assert.equal(result, false);
     });
+    it('undefined, should be return true', function () {
+        var result = be.truthy();
+        console.log(result);
+        assert.equal(result, false);
+    });
 });
