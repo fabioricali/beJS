@@ -786,6 +786,8 @@
             parseFloat(longerLength)) >= threshold;
     };
 
+    be.similarity.multiple = false;
+
     /**
      * Helper class
      * @type {{}}
