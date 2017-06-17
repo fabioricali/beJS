@@ -62,6 +62,15 @@
     };
 
     /**
+     * Check if is false boolean type
+     * @param value
+     * @returns {boolean}
+     */
+    be.booleanFalse = function (value) {
+        return be.boolean(value) && value === false;
+    };
+
+    /**
      * Check if is valid number
      * @param value
      * @returns {boolean}
@@ -413,7 +422,9 @@
         return be.string(value) && value.length === 0;
     };
 
-
+    be.falsy = function (value) {
+        return
+    };
 
     /**
      * Check if both arguments are same type

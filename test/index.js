@@ -1104,3 +1104,17 @@ describe('emptyString', function () {
         assert.equal(result, false);
     });
 });
+
+describe('booleanFalse', function () {
+    it('should be return true', function () {
+        var result = be.booleanFalse(false);
+        console.log(result);
+        assert.equal(result, true);
+    });
+    it('should be return false', function () {
+        var result = be.booleanFalse(true);
+        console.log(result);
+        assert.equal(result, false);
+    });
+});
+
