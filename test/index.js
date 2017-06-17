@@ -1131,3 +1131,41 @@ describe('booleanTrue', function () {
     });
 });
 
+describe('falsy', function () {
+    it('false, should be return true', function () {
+        var result = be.falsy(false);
+        console.log(result);
+        assert.equal(result, true);
+    });
+    it('null, should be return true', function () {
+        var result = be.falsy(null);
+        console.log(result);
+        assert.equal(result, true);
+    });
+    it('undefined, should be return true', function () {
+        var result = be.falsy();
+        console.log(result);
+        assert.equal(result, true);
+    });
+    it('0, should be return true', function () {
+        var result = be.falsy(0);
+        console.log(result);
+        assert.equal(result, true);
+    });
+    it('NaN, should be return true', function () {
+        var result = be.falsy(NaN);
+        console.log(result);
+        assert.equal(result, true);
+    });
+    it('empty string, should be return true', function () {
+        var result = be.falsy('');
+        console.log(result);
+        assert.equal(result, true);
+    });
+    it('should be return false', function () {
+        var result = be.falsy(true);
+        console.log(result);
+        assert.equal(result, false);
+    });
+});
+

@@ -431,8 +431,19 @@
         return be.string(value) && value.length === 0;
     };
 
+    /**
+     * Check if a falsy value
+     * @link https://developer.mozilla.org/it/docs/Glossary/Falsy
+     * @param value
+     * @returns {boolean|*|boolean}
+     */
     be.falsy = function (value) {
-        return
+        return be.booleanFalse(value) ||
+            be.null(value) ||
+            be.undefined(value) ||
+            (be.number(value) && value === 0) ||
+            be.nan(value) ||
+            be.emptyString(value);
     };
 
     /**
