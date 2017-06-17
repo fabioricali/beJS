@@ -1118,3 +1118,16 @@ describe('booleanFalse', function () {
     });
 });
 
+describe('booleanTrue', function () {
+    it('should be return true', function () {
+        var result = be.booleanTrue(true);
+        console.log(result);
+        assert.equal(result, true);
+    });
+    it('should be return false', function () {
+        var result = be.booleanTrue(false);
+        console.log(result);
+        assert.equal(result, false);
+    });
+});
+

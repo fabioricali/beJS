@@ -71,6 +71,15 @@
     };
 
     /**
+     * Check if is true boolean type
+     * @param value
+     * @returns {boolean}
+     */
+    be.booleanTrue = function (value) {
+        return be.boolean(value) && value === true;
+    };
+
+    /**
      * Check if is valid number
      * @param value
      * @returns {boolean}
