@@ -144,6 +144,15 @@
     };
 
     /**
+     * Check if url is encoded
+     * @param value
+     * @returns {boolean}
+     */
+    be.urlEncoded = function (value) {
+        return /%[0-9a-f]{2}/i.test(value);
+    };
+
+    /**
      * Check if is a FTP urls
      * @param value
      * @returns {*|boolean}

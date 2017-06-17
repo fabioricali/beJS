@@ -1048,3 +1048,26 @@ describe('capitalized', function () {
         assert.equal(result, false);
     });
 });
+
+describe('urlEncoded', function () {
+   it('should be return true', function(){
+      var result = be.urlEncoded('http%3A%2F%2Fwww.domain.net%2F%3Fv%3D1%26z%3D2');
+       console.log(result);
+       assert.equal(result, true);
+   });
+   it('should be return false', function(){
+      var result = be.urlEncoded('http://www.domain.net/?v=1&z=2');
+       console.log(result);
+       assert.equal(result, false);
+   });
+   it('undefined, should be return false', function(){
+      var result = be.urlEncoded();
+       console.log(result);
+       assert.equal(result, false);
+   });
+   it('null, should be return false', function(){
+      var result = be.urlEncoded(null);
+       console.log(result);
+       assert.equal(result, false);
+   });
+});
