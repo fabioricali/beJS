@@ -44,6 +44,11 @@ describe('number', function () {
         console.log(result);
         assert.equal(result, true);
     });
+    it('negative number value, should be return true', function () {
+        var result = be.number(-1);
+        console.log(result);
+        assert.equal(result, true);
+    });
 
     it('number value as string, should be return false', function () {
         var result = be.number('1');
@@ -57,8 +62,20 @@ describe('number', function () {
         assert.equal(result, true);
     });
 
+    it('infinite value, should be return true', function () {
+        var result = be.number(1.7976931348623157E+10308);
+        console.log(result);
+        assert.equal(result, true);
+    });
+
     it('undefined value, should be return false', function () {
         var result = be.number();
+        console.log(result);
+        assert.equal(result, false);
+    });
+
+    it('NaN value, should be return false', function () {
+        var result = be.number(NaN);
         console.log(result);
         assert.equal(result, false);
     });
@@ -1243,3 +1260,40 @@ describe('infinity', function () {
     });
 });
 
+describe('truthy', function () {
+    it('string, should be return true', function () {
+        var result = be.truthy('hello');
+        console.log(result);
+        assert.equal(result, true);
+    });
+    it('object, should be return true', function () {
+        var result = be.truthy({});
+        console.log(result);
+        assert.equal(result, true);
+    });
+    it('array, should be return true', function () {
+        var result = be.truthy([]);
+        console.log(result);
+        assert.equal(result, true);
+    });
+    it('number, should be return true', function () {
+        var result = be.truthy(2);
+        console.log(result);
+        assert.equal(result, true);
+    });
+    it('true, should be return true', function () {
+        var result = be.truthy(true);
+        console.log(result);
+        assert.equal(result, true);
+    });
+    it('false, should be return true', function () {
+        var result = be.truthy(false);
+        console.log(result);
+        assert.equal(result, false);
+    });
+    it('null, should be return true', function () {
+        var result = be.truthy(null);
+        console.log(result);
+        assert.equal(result, false);
+    });
+});

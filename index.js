@@ -474,6 +474,22 @@
     };
 
     /**
+     * Check if a truthy value
+     * @link https://developer.mozilla.org/en-US/docs/Glossary/Truthy
+     * @param value
+     * @returns {boolean|*|boolean}
+     */
+    be.truthy = function (value) {
+        return be.booleanTrue(value) ||
+                be.object(value) ||
+                be.array(value) ||
+                be.number(value) ||
+                (be.string(value) && value.length > 0) ||
+                be.date(value)
+
+    };
+
+    /**
      * Check if both arguments are same type
      * @param value
      * @param other
