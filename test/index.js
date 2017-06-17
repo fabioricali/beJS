@@ -1070,4 +1070,37 @@ describe('urlEncoded', function () {
        console.log(result);
        assert.equal(result, false);
    });
+   it('2, should be return true', function(){
+      var result = be.urlEncoded('http://ja.wikipedia.org/wiki/%E3%83%A1%E3%82%A4%E3%83%B3%E3%83%9A%E3%83%BC%E3%82%B8');
+       console.log(result);
+       assert.equal(result, true);
+   });
+});
+
+describe('emptyString', function () {
+    it('should be return true', function () {
+        var result = be.emptyString('');
+        console.log(result);
+        assert.equal(result, true);
+    });
+    it('double quotes, should be return true', function () {
+        var result = be.emptyString("");
+        console.log(result);
+        assert.equal(result, true);
+    });
+    it('should be return false', function () {
+        var result = be.emptyString('h');
+        console.log(result);
+        assert.equal(result, false);
+    });
+    it('space, should be return false', function () {
+        var result = be.emptyString(' ');
+        console.log(result);
+        assert.equal(result, false);
+    });
+    it('undefined, should be return false', function () {
+        var result = be.emptyString();
+        console.log(result);
+        assert.equal(result, false);
+    });
 });

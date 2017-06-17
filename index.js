@@ -405,6 +405,17 @@
     };
 
     /**
+     * Check if string is empty
+     * @param value
+     * @returns {boolean}
+     */
+    be.emptyString = function(value){
+        return be.string(value) && value.length === 0;
+    };
+
+
+
+    /**
      * Check if both arguments are same type
      * @param value
      * @param other
