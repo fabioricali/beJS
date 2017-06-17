@@ -761,6 +761,39 @@
     be.ie.multiple = false;
 
     /**
+     * Check similarity between two string
+     * @param string1
+     * @param string2
+     * @param threshold {int|float} 0 to 1
+     * @returns {boolean}
+     */
+    be.similarity =  function(string1, string2, threshold) {
+        if(!be.each.string(string1, string2)) return false;
+
+        if(!be.number(threshold) || threshold < 0 || threshold > 1)
+            threshold = 1;
+
+        var longer = string1;
+        var shorter = string2;
+
+        if (string1.length < string2.length) {
+            longer = string2;
+            shorter = string1;
+        }
+        var longerLength = longer.length;
+
+        return ((longerLength - helper.getEditDistance(longer, shorter)) /
+            parseFloat(longerLength)) >= threshold;
+    };
+
+    /**
+     * Helper class
+     * @type {{}}
+     * @private
+     */
+    be._helper = helper;
+
+    /**
      * Create extra interfaces
      */
     (function () {

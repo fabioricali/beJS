@@ -1302,3 +1302,79 @@ describe('truthy', function () {
         assert.equal(result, false);
     });
 });
+
+describe('getEditDistance', function () {
+    it('should be return 0', function () {
+        var result = be._helper.getEditDistance('hello', 'hello');
+        console.log(result);
+        assert.equal(result, 0);
+    });
+    it('should be return 1', function () {
+        var result = be._helper.getEditDistance('hello', 'Hello');
+        console.log(result);
+        assert.equal(result, 1);
+    });
+});
+
+describe('similarity', function () {
+    it('equal string, should be return true', function () {
+        var result = be.similarity('hello', 'hello', 1);
+        console.log(result);
+        assert.equal(result, 1);
+    });
+    it('equal string without threshold, should be return true', function () {
+        var result = be.similarity('hello', 'hello');
+        console.log(result);
+        assert.equal(result, 1);
+    });
+    it('equal string with threshold 15, should be return true', function () {
+        var result = be.similarity('hello', 'hello', 15);
+        console.log(result);
+        assert.equal(result, 1);
+    });
+    it('equal string with threshold -15, should be return true', function () {
+        var result = be.similarity('hello', 'hello', -15);
+        console.log(result);
+        assert.equal(result, 1);
+    });
+    it('equal string with threshold null, should be return true', function () {
+        var result = be.similarity('hello', 'hello', null);
+        console.log(result);
+        assert.equal(result, 1);
+    });
+    it('same word but different case, should be return true', function () {
+        var result = be.similarity('hello', 'Hello', 0.5);
+        console.log(result);
+        assert.equal(result, true);
+    });
+    it('should be return false', function () {
+        var result = be.similarity('Fabio Ricali', 'Fabio Rigali', 1);
+        console.log(result);
+        assert.equal(result, false);
+    });
+    it('empty, should be return false', function () {
+        var result = be.similarity('', '', 1);
+        console.log(result);
+        assert.equal(result, false);
+    });
+    it('empty first, should be return false', function () {
+        var result = be.similarity('', 'hello', 1);
+        console.log(result);
+        assert.equal(result, false);
+    });
+    it('empty second, should be return false', function () {
+        var result = be.similarity('hello', '', 1);
+        console.log(result);
+        assert.equal(result, false);
+    });
+    it('threshold zero, should be return true', function () {
+        var result = be.similarity('hello', '', 0);
+        console.log(result);
+        assert.equal(result, true);
+    });
+    it('no string input, should be return false', function () {
+        var result = be.similarity(1, 1, 1);
+        console.log(result);
+        assert.equal(result, false);
+    });
+});
