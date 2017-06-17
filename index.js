@@ -446,6 +446,14 @@
             be.emptyString(value);
     };
 
+    be.infinityPositive = function (value) {
+        return value === Number.POSITIVE_INFINITY;
+    };
+
+    be.infinityNegative = function (value) {
+        return value === Number.NEGATIVE_INFINITY;
+    };
+
     /**
      * Check if both arguments are same type
      * @param value

@@ -1169,3 +1169,31 @@ describe('falsy', function () {
     });
 });
 
+describe('infinityPositive', function () {
+    it('should be return true', function () {
+        var result = be.infinityPositive(1.7976931348623157E+10308);
+        console.log(result);
+        assert.equal(result, true);
+    });
+    it('null, should be return false', function () {
+        var result = be.infinityPositive(null);
+        console.log(result);
+        assert.equal(result, false);
+    });
+    it('undefined, should be return false', function () {
+        var result = be.infinityPositive();
+        console.log(result);
+        assert.equal(result, false);
+    });
+    it('0, should be return false', function () {
+        var result = be.infinityPositive(0);
+        console.log(result);
+        assert.equal(result, false);
+    });
+    it('NaN, should be return true', function () {
+        var result = be.infinityPositive(NaN);
+        console.log(result);
+        assert.equal(result, false);
+    });
+});
+
