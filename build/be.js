@@ -118,28 +118,37 @@
 				
 				var Helpers = require('./helpers');
 				
-				var Checks = [
-				    require('./checks/strings'),
-				    require('./checks/types'),
-				    require('./checks/numbers'),
-				    require('./checks/envs'),
-				    require('./checks/objects'),
-				    require('./checks/mixed'),
-				    require('./checks/arrays'),
-				    require('./checks/dates'),
-				    require('./checks/urls'),
-				    require('./checks/hashes')
-				];
+				/**
+				 * Collection of checks
+				 * @type {[*]}
+				 */
+				/**
+				 *
+				 * @type {{Strings: *}}
+				 */
+				var Checks = {
+				    Strings     :   require('./checks/strings'),
+				    Types       :   require('./checks/types'),
+				    Numbers     :   require('./checks/numbers'),
+				    Envs        :   require('./checks/envs'),
+				    Objects     :   require('./checks/objects'),
+				    Mixed       :   require('./checks/mixed'),
+				    Arrays      :   require('./checks/arrays'),
+				    Dates       :   require('./checks/dates'),
+				    Urls        :   require('./checks/urls'),
+				    Hashes      :   require('./checks/hashes')
+				};
 				
 				/**
 				 * be class
+				 * @type {*}
 				 */
 				var be = {};
 				be.each = {};
 				be.some = {};
 				
 				/**
-				 * Helper class
+				 * Helpers class
 				 * @type {{}}
 				 * @private
 				 */
@@ -149,6 +158,10 @@
 				 * Create interfaces
 				 */
 				(function () {
+				
+				    /**
+				     * Add all methods to "be"
+				     */
 				    for(var c in Checks){
 				        if(Checks.hasOwnProperty(c)){
 				            for(var f in Checks[c]){
@@ -163,6 +176,9 @@
 				        }
 				    }
 				
+				    /**
+				     * each and some
+				     */
 				    for(var i in be){
 				        if(be.hasOwnProperty(i) && be.function(be[i]) && be.undefined(be[i].multiple)){
 				            be.each[i] = (function (j) {
@@ -193,6 +209,15 @@
 				        }
 				    }
 				
+				    /**
+				     * After add checks class
+				     */
+				    for(var m in Checks) {
+				        if (Checks.hasOwnProperty(m)) {
+				            be[m] = Checks[m];
+				        }
+				    }
+				
 				    if (be.serverEnv())
 				        module.exports = be;
 				    else
@@ -210,8 +235,8 @@
 					
 					/**
 					 * Check if element is in array
-					 * @param value
-					 * @param array
+					 * @param value {*}
+					 * @param array {array}
 					 * @returns {boolean}
 					 */
 					Arrays.inArray = function (value, array) {
@@ -236,7 +261,7 @@
 					
 					/**
 					 * Check if is date string
-					 * @param value
+					 * @param value {string}
 					 * @returns {boolean}
 					 */
 					Dates.dateString = function (value) {
@@ -360,7 +385,7 @@
 					
 					/**
 					 * Check if is a valid MD5 hash string
-					 * @param value
+					 * @param value {string}
 					 * @returns {boolean}
 					 */
 					Hashes.md5 = function (value) {
@@ -369,7 +394,7 @@
 					
 					/**
 					 * Check if is a valid SHA1 hash string
-					 * @param value
+					 * @param value {string}
 					 * @returns {boolean}
 					 */
 					Hashes.sha1 = function (value) {
@@ -388,7 +413,7 @@
 					/**
 					 * Check if is valid email
 					 * @link https://emailregex.com/
-					 * @param value
+					 * @param value {string}
 					 * @returns {boolean}
 					 */
 					Mixed.email = function (value) {
@@ -397,7 +422,7 @@
 					
 					/**
 					 * Check if is a hexadecimal
-					 * @param value
+					 * @param value {string}
 					 * @returns {boolean}
 					 */
 					Mixed.hex = function (value) {
@@ -406,7 +431,7 @@
 					
 					/**
 					 * Check if is a hexadecimal color
-					 * @param value
+					 * @param value {string}
 					 * @returns {boolean}
 					 */
 					Mixed.hexColor = function (value) {
@@ -421,7 +446,7 @@
 					
 					/**
 					 * Check if is a valid IPv4
-					 * @param value
+					 * @param value {string}
 					 * @returns {boolean}
 					 */
 					Mixed.ipv4 = function (value) {
@@ -439,7 +464,7 @@
 					
 					/**
 					 * Check if is a valid ip string
-					 * @param value
+					 * @param value {string}
 					 * @returns {*|boolean}
 					 */
 					Mixed.ip = function (value) {
@@ -448,7 +473,7 @@
 					
 					/**
 					 * Check if is base64 encoded string
-					 * @param value
+					 * @param value {string}
 					 * @returns {boolean}
 					 */
 					Mixed.base64 = function (value) {
@@ -457,7 +482,7 @@
 					
 					/**
 					 * Check if is a valid semver string
-					 * @param value
+					 * @param value {string}
 					 * @returns {boolean}
 					 */
 					Mixed.semVer = function (value) {
@@ -476,7 +501,7 @@
 					
 					/**
 					 * Check if a number is integer
-					 * @param value
+					 * @param value {number}
 					 * @returns {*|boolean}
 					 */
 					Numbers.int = function (value) {
@@ -487,7 +512,7 @@
 					
 					/**
 					 * Check if is float number
-					 * @param value
+					 * @param value {number}
 					 * @returns {*|boolean}
 					 */
 					Numbers.float = function (value) {
@@ -497,7 +522,7 @@
 					
 					/**
 					 * Check if is NaN
-					 * @param value
+					 * @param value {*}
 					 * @returns {*|boolean}
 					 */
 					Numbers.nan = function (value) {
@@ -506,7 +531,7 @@
 					
 					/**
 					 * Check if is a even number
-					 * @param value
+					 * @param value {number}
 					 * @returns {*|boolean}
 					 */
 					Numbers.even = function (value) {
@@ -516,7 +541,7 @@
 					
 					/**
 					 * Check if is an odd number
-					 * @param value
+					 * @param value {number}
 					 * @returns {*|boolean}
 					 */
 					Numbers.odd = function (value) {
@@ -526,7 +551,7 @@
 					
 					/**
 					 * Check if is a positive number
-					 * @param value
+					 * @param value {number}
 					 * @returns {*|boolean}
 					 */
 					Numbers.positive = function (value) {
@@ -536,7 +561,7 @@
 					
 					/**
 					 * Check if is a negative number
-					 * @param value
+					 * @param value {number}
 					 * @returns {*|boolean}
 					 */
 					Numbers.negative = function (value) {
@@ -546,7 +571,7 @@
 					
 					/**
 					 * Check if number is infinity positive
-					 * @param value
+					 * @param value {number}
 					 * @returns {boolean}
 					 */
 					Numbers.infinityPositive = function (value) {
@@ -555,7 +580,7 @@
 					
 					/**
 					 * Check if number is infinity positive
-					 * @param value
+					 * @param value {number}
 					 * @returns {boolean}
 					 */
 					Numbers.infinityNegative = function (value) {
@@ -564,7 +589,7 @@
 					
 					/**
 					 * Check if number is infinity
-					 * @param value
+					 * @param value {number}
 					 * @returns {boolean}
 					 */
 					Numbers.infinity = function (value) {
@@ -573,9 +598,9 @@
 					
 					/**
 					 * Check if number is between min and max
-					 * @param num
-					 * @param min
-					 * @param max
+					 * @param num {number}
+					 * @param min {number}
+					 * @param max {number}
 					 * @returns {boolean}
 					 */
 					Numbers.between = function (num, min, max) {
@@ -598,8 +623,8 @@
 					
 					/**
 					 * Check if is a property of an object
-					 * @param value
-					 * @param object
+					 * @param value {*}
+					 * @param object {object}
 					 * @returns {boolean}
 					 */
 					Objects.propertyOf = function (value, object) {
@@ -611,8 +636,8 @@
 					
 					/**
 					 * Count properties of an object
-					 * @param object
-					 * @param value
+					 * @param object {object}
+					 * @param value {int}
 					 * @returns {boolean}
 					 */
 					Objects.propertyCount = function (object, value) {
@@ -640,7 +665,7 @@
 					
 					/**
 					 * Check if string is in camelCase format
-					 * @param value
+					 * @param value {string}
 					 * @returns {boolean}
 					 */
 					Strings.camelCase = function (value) {
@@ -652,7 +677,7 @@
 					
 					/**
 					 * Check if string is in snake_case format
-					 * @param value
+					 * @param value {string}
 					 * @returns {boolean}
 					 */
 					Strings.snakeCase = function (value) {
@@ -662,7 +687,7 @@
 					
 					/**
 					 * Check if string is in kebab-case format
-					 * @param value
+					 * @param value {string}
 					 * @returns {boolean}
 					 */
 					Strings.kebabCase = function (value) {
@@ -672,7 +697,7 @@
 					
 					/**
 					 * Check if exists a space in string
-					 * @param value
+					 * @param value {string}
 					 * @returns {boolean}
 					 */
 					Strings.space = function (value) {
@@ -681,8 +706,8 @@
 					
 					/**
 					 * Check similarity between two string
-					 * @param string1
-					 * @param string2
+					 * @param string1 {string}
+					 * @param string2 {string}
 					 * @param threshold {int|float} 0 to 1
 					 * @returns {boolean}
 					 */
@@ -709,8 +734,8 @@
 					
 					/**
 					 * Check if string contains a value
-					 * @param string
-					 * @param value
+					 * @param string {string}
+					 * @param value {string}
 					 * @returns {boolean}
 					 */
 					Strings.contains = function (string, value) {
@@ -722,7 +747,7 @@
 					
 					/**
 					 * Check if string is lower case
-					 * @param value
+					 * @param value {string}
 					 * @returns {boolean}
 					 */
 					Strings.lowerCase = function (value) {
@@ -732,7 +757,7 @@
 					
 					/**
 					 * Check if string is upper case
-					 * @param value
+					 * @param value {string}
 					 * @returns {boolean}
 					 */
 					Strings.upperCase = function (value) {
@@ -742,7 +767,7 @@
 					
 					/**
 					 * Check if is a word
-					 * @param value
+					 * @param value {string}
 					 * @returns {boolean}
 					 */
 					Strings.word = function (value) {
@@ -753,7 +778,7 @@
 					
 					/**
 					 * Check if string is capitalized
-					 * @param value
+					 * @param value {string}
 					 * @returns {boolean}
 					 */
 					Strings.capitalized = function (value) {
@@ -771,7 +796,7 @@
 					
 					/**
 					 * Check if string is empty
-					 * @param value
+					 * @param value {string}
 					 * @returns {boolean}
 					 */
 					Strings.emptyString = function(value){
@@ -780,13 +805,28 @@
 					
 					/**
 					 * Check if is alphanumeric string
-					 * @param value
+					 * @param value {string}
 					 * @returns {boolean|*}
 					 */
 					Strings.alphanumeric = function (value) {
 					    return /^[a-z0-9]+$/i.test(value) &&
 					        Types.string(value);
 					};
+					
+					/**
+					 * Check if string start with a value
+					 * @param value {string}
+					 * @param string {string}
+					 * @param insensitive {boolean|*}
+					 * @returns {boolean}
+					 */
+					Strings.startWith = function (value, string, insensitive) {
+					    if(Types.falsy(insensitive)) insensitive = false;
+					    var regex = new RegExp('^' + value, Types.booleanTrue(insensitive) ? 'i' : '');
+					    return regex.test(string);
+					};
+					
+					Strings.startWith.multiple = false;
 					
 					module.exports = Strings;
 				},
@@ -799,8 +839,8 @@
 					
 					/**
 					 * Check [object ?] class
-					 * @param object
-					 * @param className
+					 * @param object {*}
+					 * @param className {string}
 					 * @returns {boolean}
 					 */
 					Types.classOf = function (object, className) {
@@ -811,7 +851,7 @@
 					
 					/**
 					 * Check if is valid boolean
-					 * @param value
+					 * @param value {*}
 					 * @returns {boolean}
 					 */
 					Types.boolean = function (value) {
@@ -820,7 +860,7 @@
 					
 					/**
 					 * Check if is false boolean type
-					 * @param value
+					 * @param value {*}
 					 * @returns {boolean}
 					 */
 					Types.booleanFalse = function (value) {
@@ -829,7 +869,7 @@
 					
 					/**
 					 * Check if is true boolean type
-					 * @param value
+					 * @param value {*}
 					 * @returns {boolean}
 					 */
 					Types.booleanTrue = function (value) {
@@ -838,7 +878,7 @@
 					
 					/**
 					 * Check if is valid number
-					 * @param value
+					 * @param value {*}
 					 * @returns {boolean}
 					 */
 					Types.number = function (value) {
@@ -847,7 +887,7 @@
 					
 					/**
 					 * Check if is valid string
-					 * @param value
+					 * @param value {*}
 					 * @returns {boolean}
 					 */
 					Types.string = function (value) {
@@ -856,7 +896,7 @@
 					
 					/**
 					 * Check if is undefined value
-					 * @param value
+					 * @param value {*}
 					 * @returns {boolean}
 					 */
 					Types.undefined = function (value) {
@@ -865,7 +905,7 @@
 					
 					/**
 					 * Check if is null
-					 * @param value
+					 * @param value {*}
 					 * @returns {boolean}
 					 */
 					Types['null'] = function (value) {
@@ -874,7 +914,7 @@
 					
 					/**
 					 * Check if is a object
-					 * @param value
+					 * @param value {*}
 					 * @returns {boolean}
 					 */
 					Types.object = function (value) {
@@ -883,7 +923,7 @@
 					
 					/**
 					 * Check if is an array
-					 * @param value
+					 * @param value {*}
 					 * @returns {boolean}
 					 */
 					Types.array = function (value) {
@@ -892,7 +932,7 @@
 					
 					/**
 					 * Check if is a JSON string
-					 * @param value
+					 * @param value {*}
 					 * @returns {boolean}
 					 */
 					Types.json = function (value) {
@@ -906,7 +946,7 @@
 					
 					/**
 					 * Check if is date object
-					 * @param value
+					 * @param value {*}
 					 * @returns {boolean}
 					 */
 					Types.date = function (value) {
@@ -915,7 +955,7 @@
 					
 					/**
 					 * Check if is a function
-					 * @param value
+					 * @param value {*}
 					 * @returns {boolean}
 					 */
 					Types['function'] = function (value) {
@@ -924,7 +964,7 @@
 					
 					/**
 					 * Check if is a valid RegExp
-					 * @param value
+					 * @param value {*}
 					 * @returns {boolean}
 					 */
 					Types.regexp = function (value) {
@@ -933,8 +973,8 @@
 					
 					/**
 					 * Check if both arguments are same type
-					 * @param value
-					 * @param other
+					 * @param value {*}
+					 * @param other {*}
 					 * @returns {boolean}
 					 */
 					Types.sameType = function (value, other) {
@@ -945,7 +985,7 @@
 					
 					/**
 					 * Check if is empty
-					 * @param value
+					 * @param value {*}
 					 * @returns {boolean}
 					 */
 					Types.empty = function (value) {
@@ -970,7 +1010,7 @@
 					/**
 					 * Check if a falsy value
 					 * @link https://developer.mozilla.org/it/docs/Glossary/Falsy
-					 * @param value
+					 * @param value {*}
 					 * @returns {boolean}
 					 */
 					Types.falsy = function (value) {
@@ -980,7 +1020,7 @@
 					/**
 					 * Check if a truthy value
 					 * @link https://developer.mozilla.org/en-US/docs/Glossary/Truthy
-					 * @param value
+					 * @param value {*}
 					 * @returns {boolean}
 					 */
 					Types.truthy = function (value) {
@@ -998,7 +1038,7 @@
 					/**
 					 * Check if is valid string url
 					 * @link https://gist.github.com/dperini/729294
-					 * @param value
+					 * @param value {string}
 					 * @returns {boolean}
 					 */
 					Urls.url = function (value) {
@@ -1016,7 +1056,7 @@
 					
 					/**
 					 * Check if is a HTTPS url
-					 * @param value
+					 * @param value {string}
 					 * @returns {*|boolean}
 					 */
 					Urls.httpsUrl = function (value) {
@@ -1025,7 +1065,7 @@
 					
 					/**
 					 * Check if url is encoded
-					 * @param value
+					 * @param value {string}
 					 * @returns {boolean}
 					 */
 					Urls.urlEncoded = function (value) {
@@ -1034,7 +1074,7 @@
 					
 					/**
 					 * Check if is a FTP urls
-					 * @param value
+					 * @param value {string}
 					 * @returns {*|boolean}
 					 */
 					Urls.ftpUrl = function (value) {
@@ -1043,7 +1083,7 @@
 					
 					/**
 					 * Check if is a FTPS urls
-					 * @param value
+					 * @param value {string}
 					 * @returns {*|boolean}
 					 */
 					Urls.ftpsUrl = function (value) {
@@ -1079,7 +1119,7 @@
 				
 				/**
 				 * Convert object to string
-				 * @param object
+				 * @param object {*}
 				 * @returns {*}
 				 */
 				Helpers.objectToString = function (object) {
@@ -1089,8 +1129,8 @@
 				/**
 				 * Distance between the two given strings
 				 * @link https://en.wikibooks.org/wiki/Algorithm_Implementation/Strings/Levenshtein_distance#JavaScript
-				 * @param a
-				 * @param b
+				 * @param a {string}
+				 * @param b {string}
 				 * @returns {*}
 				 */
 				Helpers.getEditDistance = function(a, b) {
