@@ -236,6 +236,16 @@ describe('camelCase', function () {
         console.log(result);
         assert.equal(result, false);
     });
+    it('alphanumeric, should be return false', function () {
+        var result = be.camelCase('test123');
+        console.log(result);
+        assert.equal(result, false);
+    });
+    it('number, should be return false', function () {
+        var result = be.camelCase(123);
+        console.log(result);
+        assert.equal(result, false);
+    });
 });
 
 describe('space', function () {

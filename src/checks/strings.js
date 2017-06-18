@@ -12,7 +12,9 @@ var Strings = {};
  * @returns {boolean}
  */
 Strings.camelCase = function (value) {
-    return !Strings.upperCase(value) && Strings.space(value.replace(/([A-Z])/g, ' $1'));
+    return Types.string(value) &&
+        !Strings.upperCase(value) &&
+        Strings.space(value.replace(/([A-Z])/g, ' $1'));
 };
 
 /**
