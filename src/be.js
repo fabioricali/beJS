@@ -39,11 +39,11 @@ be._helper = Helpers;
         if(Checks.hasOwnProperty(c)){
             for(var f in Checks[c]){
                 if(Checks[c].hasOwnProperty(f)) {
-                    be[f] = (function (k, b) {
+                    be[f] = (function (b, k) {
                         return function () {
                             return Checks[b][k].apply(this, arguments);
                         }
-                    })(f, c)
+                    })(c, f)
                 }
             }
         }
@@ -78,8 +78,6 @@ be._helper = Helpers;
             })(i);
         }
     }
-
-    //console.log(be);
 
     if (be.serverEnv())
         module.exports = be;
