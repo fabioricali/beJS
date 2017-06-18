@@ -31,7 +31,7 @@ Mixed.hex = function (value) {
 Mixed.hexColor = function (value) {
     try {
         value = value.replace('#', '');
-        return this.hex(value) &&
+        return Mixed.hex(value) &&
             (value.length === 3 || value.length === 6);
     } catch (e) {
         return false;
@@ -62,7 +62,7 @@ Mixed.ipv6 = function (value) {
  * @returns {*|boolean}
  */
 Mixed.ip = function (value) {
-    return this.ipv4(value) || this.ipv6(value);
+    return Mixed.ipv4(value) || Mixed.ipv6(value);
 };
 
 /**

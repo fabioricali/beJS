@@ -153,11 +153,11 @@
 				        if(Checks.hasOwnProperty(c)){
 				            for(var f in Checks[c]){
 				                if(Checks[c].hasOwnProperty(f)) {
-				                    be[f] = (function (k, b) {
+				                    be[f] = (function (b, k) {
 				                        return function () {
 				                            return Checks[b][k].apply(this, arguments);
 				                        }
-				                    })(f, c)
+				                    })(c, f)
 				                }
 				            }
 				        }
@@ -192,8 +192,6 @@
 				            })(i);
 				        }
 				    }
-				
-				    //console.log(be);
 				
 				    if (be.serverEnv())
 				        module.exports = be;
@@ -414,7 +412,7 @@
 					Mixed.hexColor = function (value) {
 					    try {
 					        value = value.replace('#', '');
-					        return this.hex(value) &&
+					        return Mixed.hex(value) &&
 					            (value.length === 3 || value.length === 6);
 					    } catch (e) {
 					        return false;
@@ -445,7 +443,7 @@
 					 * @returns {*|boolean}
 					 */
 					Mixed.ip = function (value) {
-					    return this.ipv4(value) || this.ipv6(value);
+					    return Mixed.ipv4(value) || Mixed.ipv6(value);
 					};
 					
 					/**
