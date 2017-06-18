@@ -291,3 +291,16 @@ describe('kebabCase', function () {
         assert.equal(result, false);
     });
 });
+
+describe('startWith', function () {
+    it('should be return true', function () {
+        var result = be.startWith('hello', 'hello world');
+        console.log(result);
+        assert.equal(result, true);
+    });
+    it('should be return false', function () {
+        var result = be.startWith('world', 'hello world');
+        console.log(result);
+        assert.equal(result, false);
+    });
+});

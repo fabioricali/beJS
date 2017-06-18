@@ -156,4 +156,17 @@ Strings.alphanumeric = function (value) {
         Types.string(value);
 };
 
+/**
+ * Check if string start with a value
+ * @param value
+ * @param string
+ * @returns {boolean}
+ */
+Strings.startWith = function (value, string) {
+    var regex = new RegExp('^' + value, 'i');
+    return regex.test(string);
+};
+
+Strings.startWith.multiple = false;
+
 module.exports = Strings;
