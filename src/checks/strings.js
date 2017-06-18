@@ -7,12 +7,21 @@ var Types = require('./types');
 var Strings = {};
 
 /**
- *
+ * Check if string is in camel case format
  * @param value
  * @returns {boolean}
  */
 Strings.camelCase = function (value) {
-    return true;
+    return !Strings.upperCase(value) && Strings.space(value.replace(/([A-Z])/g, ' $1'));
+};
+
+/**
+ * Check if exists a space in string
+ * @param value
+ * @returns {boolean}
+ */
+Strings.space = function (value) {
+    return /\s/g.test(value);
 };
 
 /**

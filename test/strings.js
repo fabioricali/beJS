@@ -221,9 +221,32 @@ describe('similarity', function () {
 });
 
 describe('camelCase', function () {
-    it('shoudl be return true', function () {
+    it('should be return true', function () {
         var result = be.camelCase('testTest');
         console.log(result);
         assert.equal(result, true);
+    });
+    it('lowercase, should be return false', function () {
+        var result = be.camelCase('testtest');
+        console.log(result);
+        assert.equal(result, false);
+    });
+    it('uppercase, should be return false', function () {
+        var result = be.camelCase('TEST');
+        console.log(result);
+        assert.equal(result, false);
+    });
+});
+
+describe('space', function () {
+    it('should be return true', function () {
+        var result = be.space(' ');
+        console.log(result);
+        assert.equal(result, true);
+    });
+    it('should be return false', function () {
+        var result = be.space('ciao');
+        console.log(result);
+        assert.equal(result, false);
     });
 });
