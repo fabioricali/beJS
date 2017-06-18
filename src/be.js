@@ -41,12 +41,7 @@ be._helper = Helpers;
                 if(Checks[c].hasOwnProperty(f)) {
                     be[f] = (function (k, b) {
                         return function () {
-                            var args = arguments;
-                            for (var a in args) {
-                                if (args.hasOwnProperty(a) && !Checks[b][k].call(this, args[a]))
-                                    return false;
-                            }
-                            return true;
+                            return Checks[b][k].apply(this, arguments);
                         }
                     })(f, c)
                 }

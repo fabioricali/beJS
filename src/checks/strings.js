@@ -25,7 +25,7 @@ Strings.camelCase = function (value) {
 Strings.similarity =  function(string1, string2, threshold) {
     if(!Types.string(string1) || !Types.string(string2)) return false;
 
-    if(!Strings.number(threshold) || threshold < 0 || threshold > 1)
+    if(!Types.number(threshold) || threshold < 0 || threshold > 1)
         threshold = 1;
 
     var longer = string1;

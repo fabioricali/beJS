@@ -110,9 +110,9 @@ Numbers.infinity = function (value) {
  * @returns {boolean}
  */
 Numbers.between = function (num, min, max) {
-    return Numbers.number(num) &&
-        Numbers.number(min) &&
-        Numbers.number(max) &&
+    return Types.number(num) &&
+        Types.number(min) &&
+        Types.number(max) &&
         num >= min && num <= max;
 };
 
