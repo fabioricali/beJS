@@ -158,12 +158,14 @@ Strings.alphanumeric = function (value) {
 
 /**
  * Check if string start with a value
- * @param value
- * @param string
+ * @param value {string}
+ * @param string {string}
+ * @param insensitive {boolean|*}
  * @returns {boolean}
  */
-Strings.startWith = function (value, string) {
-    var regex = new RegExp('^' + value, 'i');
+Strings.startWith = function (value, string, insensitive) {
+    if(Types.falsy(insensitive)) insensitive = false;
+    var regex = new RegExp('^' + value, Types.booleanTrue(insensitive) ? 'i' : '');
     return regex.test(string);
 };
 

@@ -298,6 +298,16 @@ describe('startWith', function () {
         console.log(result);
         assert.equal(result, true);
     });
+    it('insensitive undefined, should be return false', function () {
+        var result = be.startWith('HELLO', 'hello world');
+        console.log(result);
+        assert.equal(result, false);
+    });
+    it('insensitive true, should be return true', function () {
+        var result = be.startWith('HELLO', 'hello world', true);
+        console.log(result);
+        assert.equal(result, true);
+    });
     it('should be return false', function () {
         var result = be.startWith('world', 'hello world');
         console.log(result);
