@@ -14,7 +14,18 @@ var Strings = {};
 Strings.camelCase = function (value) {
     return Types.string(value) &&
         !Strings.upperCase(value) &&
+        Strings.alphanumeric(value) &&
         Strings.space(value.replace(/([A-Z])/g, ' $1'));
+};
+
+/**
+ * Check if string is in snake case format
+ * @param value
+ * @returns {boolean}
+ */
+Strings.snakeCase = function (value) {
+    return Strings.lowerCase(value) &&
+        /^[0-9a-z]*_[0-9a-z]/ig.test(value);
 };
 
 /**

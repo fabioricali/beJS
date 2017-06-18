@@ -226,6 +226,11 @@ describe('camelCase', function () {
         console.log(result);
         assert.equal(result, true);
     });
+    it('TestTest should be return true', function () {
+        var result = be.camelCase('TestTest');
+        console.log(result);
+        assert.equal(result, true);
+    });
     it('lowercase, should be return false', function () {
         var result = be.camelCase('testtest');
         console.log(result);
@@ -256,6 +261,19 @@ describe('space', function () {
     });
     it('should be return false', function () {
         var result = be.space('ciao');
+        console.log(result);
+        assert.equal(result, false);
+    });
+});
+
+describe('snakeCase', function () {
+    it('should be return true', function () {
+        var result = be.snakeCase('test_test');
+        console.log(result);
+        assert.equal(result, true);
+    });
+    it('should be return false', function () {
+        var result = be.snakeCase('test');
         console.log(result);
         assert.equal(result, false);
     });
