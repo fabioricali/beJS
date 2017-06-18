@@ -8,18 +8,22 @@ var Helpers = require('./helpers');
  * Collection of checks
  * @type {[*]}
  */
-var Checks = [
-    require('./checks/strings'),
-    require('./checks/types'),
-    require('./checks/numbers'),
-    require('./checks/envs'),
-    require('./checks/objects'),
-    require('./checks/mixed'),
-    require('./checks/arrays'),
-    require('./checks/dates'),
-    require('./checks/urls'),
-    require('./checks/hashes')
-];
+/**
+ *
+ * @type {{Strings: *}}
+ */
+var Checks = {
+    Strings     :   require('./checks/strings'),
+    Types       :   require('./checks/types'),
+    Numbers     :   require('./checks/numbers'),
+    Envs        :   require('./checks/envs'),
+    Objects     :   require('./checks/objects'),
+    Mixed       :   require('./checks/mixed'),
+    Arrays      :   require('./checks/arrays'),
+    Dates       :   require('./checks/dates'),
+    Urls        :   require('./checks/urls'),
+    Hashes      :   require('./checks/hashes')
+};
 
 /**
  * be class
@@ -40,6 +44,10 @@ be._helpers = Helpers;
  * Create interfaces
  */
 (function () {
+
+    /**
+     * Add all methods to "be"
+     */
     for(var c in Checks){
         if(Checks.hasOwnProperty(c)){
             for(var f in Checks[c]){
@@ -54,6 +62,9 @@ be._helpers = Helpers;
         }
     }
 
+    /**
+     * each and some
+     */
     for(var i in be){
         if(be.hasOwnProperty(i) && be.function(be[i]) && be.undefined(be[i].multiple)){
             be.each[i] = (function (j) {
@@ -81,6 +92,15 @@ be._helpers = Helpers;
                     return false;
                 }
             })(i);
+        }
+    }
+
+    /**
+     * After add checks class
+     */
+    for(var m in Checks) {
+        if (Checks.hasOwnProperty(m)) {
+            be[m] = Checks[m];
         }
     }
 
