@@ -19,13 +19,13 @@ Strings.camelCase = function (value) {
 };
 
 /**
- * Check if string is in snake case format
+ * Check if string is in kebab case format
  * @param value
  * @returns {boolean}
  */
-Strings.snakeCase = function (value) {
+Strings.kebabCase = function (value) {
     return Strings.lowerCase(value) &&
-        /^[0-9a-z]*_[0-9a-z]/ig.test(value);
+        /^[0-9a-z]*-[0-9a-z]/ig.test(value);
 };
 
 /**

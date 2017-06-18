@@ -278,3 +278,16 @@ describe('snakeCase', function () {
         assert.equal(result, false);
     });
 });
+
+describe('kebabCase', function () {
+    it('should be return true', function () {
+        var result = be.kebabCase('test-test');
+        console.log(result);
+        assert.equal(result, true);
+    });
+    it('should be return false', function () {
+        var result = be.kebabCase('test');
+        console.log(result);
+        assert.equal(result, false);
+    });
+});
