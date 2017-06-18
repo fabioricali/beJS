@@ -7,7 +7,7 @@ var Numbers = {};
 
 /**
  * Check if a number is integer
- * @param value
+ * @param value {number}
  * @returns {*|boolean}
  */
 Numbers.int = function (value) {
@@ -18,7 +18,7 @@ Numbers.int = function (value) {
 
 /**
  * Check if is float number
- * @param value
+ * @param value {number}
  * @returns {*|boolean}
  */
 Numbers.float = function (value) {
@@ -28,7 +28,7 @@ Numbers.float = function (value) {
 
 /**
  * Check if is NaN
- * @param value
+ * @param value {*}
  * @returns {*|boolean}
  */
 Numbers.nan = function (value) {
@@ -37,7 +37,7 @@ Numbers.nan = function (value) {
 
 /**
  * Check if is a even number
- * @param value
+ * @param value {number}
  * @returns {*|boolean}
  */
 Numbers.even = function (value) {
@@ -47,7 +47,7 @@ Numbers.even = function (value) {
 
 /**
  * Check if is an odd number
- * @param value
+ * @param value {number}
  * @returns {*|boolean}
  */
 Numbers.odd = function (value) {
@@ -57,7 +57,7 @@ Numbers.odd = function (value) {
 
 /**
  * Check if is a positive number
- * @param value
+ * @param value {number}
  * @returns {*|boolean}
  */
 Numbers.positive = function (value) {
@@ -67,7 +67,7 @@ Numbers.positive = function (value) {
 
 /**
  * Check if is a negative number
- * @param value
+ * @param value {number}
  * @returns {*|boolean}
  */
 Numbers.negative = function (value) {
@@ -77,7 +77,7 @@ Numbers.negative = function (value) {
 
 /**
  * Check if number is infinity positive
- * @param value
+ * @param value {number}
  * @returns {boolean}
  */
 Numbers.infinityPositive = function (value) {
@@ -86,7 +86,7 @@ Numbers.infinityPositive = function (value) {
 
 /**
  * Check if number is infinity positive
- * @param value
+ * @param value {number}
  * @returns {boolean}
  */
 Numbers.infinityNegative = function (value) {
@@ -95,7 +95,7 @@ Numbers.infinityNegative = function (value) {
 
 /**
  * Check if number is infinity
- * @param value
+ * @param value {number}
  * @returns {boolean}
  */
 Numbers.infinity = function (value) {
@@ -104,9 +104,9 @@ Numbers.infinity = function (value) {
 
 /**
  * Check if number is between min and max
- * @param num
- * @param min
- * @param max
+ * @param num {number}
+ * @param min {number}
+ * @param max {number}
  * @returns {boolean}
  */
 Numbers.between = function (num, min, max) {

@@ -6,8 +6,8 @@ var Types = {};
 
 /**
  * Check [object ?] class
- * @param object
- * @param className
+ * @param object {*}
+ * @param className {string}
  * @returns {boolean}
  */
 Types.classOf = function (object, className) {
@@ -18,7 +18,7 @@ Types.classOf.multiple = false;
 
 /**
  * Check if is valid boolean
- * @param value
+ * @param value {*}
  * @returns {boolean}
  */
 Types.boolean = function (value) {
@@ -27,7 +27,7 @@ Types.boolean = function (value) {
 
 /**
  * Check if is false boolean type
- * @param value
+ * @param value {*}
  * @returns {boolean}
  */
 Types.booleanFalse = function (value) {
@@ -36,7 +36,7 @@ Types.booleanFalse = function (value) {
 
 /**
  * Check if is true boolean type
- * @param value
+ * @param value {*}
  * @returns {boolean}
  */
 Types.booleanTrue = function (value) {
@@ -45,7 +45,7 @@ Types.booleanTrue = function (value) {
 
 /**
  * Check if is valid number
- * @param value
+ * @param value {*}
  * @returns {boolean}
  */
 Types.number = function (value) {
@@ -54,7 +54,7 @@ Types.number = function (value) {
 
 /**
  * Check if is valid string
- * @param value
+ * @param value {*}
  * @returns {boolean}
  */
 Types.string = function (value) {
@@ -63,7 +63,7 @@ Types.string = function (value) {
 
 /**
  * Check if is undefined value
- * @param value
+ * @param value {*}
  * @returns {boolean}
  */
 Types.undefined = function (value) {
@@ -72,7 +72,7 @@ Types.undefined = function (value) {
 
 /**
  * Check if is null
- * @param value
+ * @param value {*}
  * @returns {boolean}
  */
 Types['null'] = function (value) {
@@ -81,7 +81,7 @@ Types['null'] = function (value) {
 
 /**
  * Check if is a object
- * @param value
+ * @param value {*}
  * @returns {boolean}
  */
 Types.object = function (value) {
@@ -90,7 +90,7 @@ Types.object = function (value) {
 
 /**
  * Check if is an array
- * @param value
+ * @param value {*}
  * @returns {boolean}
  */
 Types.array = function (value) {
@@ -99,7 +99,7 @@ Types.array = function (value) {
 
 /**
  * Check if is a JSON string
- * @param value
+ * @param value {*}
  * @returns {boolean}
  */
 Types.json = function (value) {
@@ -113,7 +113,7 @@ Types.json = function (value) {
 
 /**
  * Check if is date object
- * @param value
+ * @param value {*}
  * @returns {boolean}
  */
 Types.date = function (value) {
@@ -122,7 +122,7 @@ Types.date = function (value) {
 
 /**
  * Check if is a function
- * @param value
+ * @param value {*}
  * @returns {boolean}
  */
 Types['function'] = function (value) {
@@ -131,7 +131,7 @@ Types['function'] = function (value) {
 
 /**
  * Check if is a valid RegExp
- * @param value
+ * @param value {*}
  * @returns {boolean}
  */
 Types.regexp = function (value) {
@@ -140,8 +140,8 @@ Types.regexp = function (value) {
 
 /**
  * Check if both arguments are same type
- * @param value
- * @param other
+ * @param value {*}
+ * @param other {*}
  * @returns {boolean}
  */
 Types.sameType = function (value, other) {
@@ -152,7 +152,7 @@ Types.sameType.multiple = false;
 
 /**
  * Check if is empty
- * @param value
+ * @param value {*}
  * @returns {boolean}
  */
 Types.empty = function (value) {
@@ -177,7 +177,7 @@ Types.empty = function (value) {
 /**
  * Check if a falsy value
  * @link https://developer.mozilla.org/it/docs/Glossary/Falsy
- * @param value
+ * @param value {*}
  * @returns {boolean}
  */
 Types.falsy = function (value) {
@@ -187,7 +187,7 @@ Types.falsy = function (value) {
 /**
  * Check if a truthy value
  * @link https://developer.mozilla.org/en-US/docs/Glossary/Truthy
- * @param value
+ * @param value {*}
  * @returns {boolean}
  */
 Types.truthy = function (value) {

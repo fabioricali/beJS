@@ -6,7 +6,7 @@ var Dates = {};
 
 /**
  * Check if is date string
- * @param value
+ * @param value {string}
  * @returns {boolean}
  */
 Dates.dateString = function (value) {

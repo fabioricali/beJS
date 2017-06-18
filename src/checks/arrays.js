@@ -6,8 +6,8 @@ var Arrays = {};
 
 /**
  * Check if element is in array
- * @param value
- * @param array
+ * @param value {*}
+ * @param array {array}
  * @returns {boolean}
  */
 Arrays.inArray = function (value, array) {

@@ -23,7 +23,7 @@ Helpers.getUserAgent = function () {
 
 /**
  * Convert object to string
- * @param object
+ * @param object {*}
  * @returns {*}
  */
 Helpers.objectToString = function (object) {
@@ -33,8 +33,8 @@ Helpers.objectToString = function (object) {
 /**
  * Distance between the two given strings
  * @link https://en.wikibooks.org/wiki/Algorithm_Implementation/Strings/Levenshtein_distance#JavaScript
- * @param a
- * @param b
+ * @param a {string}
+ * @param b {string}
  * @returns {*}
  */
 Helpers.getEditDistance = function(a, b) {

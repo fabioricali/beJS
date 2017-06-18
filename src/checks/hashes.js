@@ -5,7 +5,7 @@ var Hashes = {};
 
 /**
  * Check if is a valid MD5 hash string
- * @param value
+ * @param value {string}
  * @returns {boolean}
  */
 Hashes.md5 = function (value) {
@@ -14,7 +14,7 @@ Hashes.md5 = function (value) {
 
 /**
  * Check if is a valid SHA1 hash string
- * @param value
+ * @param value {string}
  * @returns {boolean}
  */
 Hashes.sha1 = function (value) {

@@ -6,7 +6,7 @@ var Urls = {};
 /**
  * Check if is valid string url
  * @link https://gist.github.com/dperini/729294
- * @param value
+ * @param value {string}
  * @returns {boolean}
  */
 Urls.url = function (value) {
@@ -24,7 +24,7 @@ Urls.httpUrl = function (value) {
 
 /**
  * Check if is a HTTPS url
- * @param value
+ * @param value {string}
  * @returns {*|boolean}
  */
 Urls.httpsUrl = function (value) {
@@ -33,7 +33,7 @@ Urls.httpsUrl = function (value) {
 
 /**
  * Check if url is encoded
- * @param value
+ * @param value {string}
  * @returns {boolean}
  */
 Urls.urlEncoded = function (value) {
@@ -42,7 +42,7 @@ Urls.urlEncoded = function (value) {
 
 /**
  * Check if is a FTP urls
- * @param value
+ * @param value {string}
  * @returns {*|boolean}
  */
 Urls.ftpUrl = function (value) {
@@ -51,7 +51,7 @@ Urls.ftpUrl = function (value) {
 
 /**
  * Check if is a FTPS urls
- * @param value
+ * @param value {string}
  * @returns {*|boolean}
  */
 Urls.ftpsUrl = function (value) {

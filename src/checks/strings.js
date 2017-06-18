@@ -8,7 +8,7 @@ var Strings = {};
 
 /**
  * Check if string is in camelCase format
- * @param value
+ * @param value {string}
  * @returns {boolean}
  */
 Strings.camelCase = function (value) {
@@ -20,7 +20,7 @@ Strings.camelCase = function (value) {
 
 /**
  * Check if string is in snake_case format
- * @param value
+ * @param value {string}
  * @returns {boolean}
  */
 Strings.snakeCase = function (value) {
@@ -30,7 +30,7 @@ Strings.snakeCase = function (value) {
 
 /**
  * Check if string is in kebab-case format
- * @param value
+ * @param value {string}
  * @returns {boolean}
  */
 Strings.kebabCase = function (value) {
@@ -40,7 +40,7 @@ Strings.kebabCase = function (value) {
 
 /**
  * Check if exists a space in string
- * @param value
+ * @param value {string}
  * @returns {boolean}
  */
 Strings.space = function (value) {
@@ -49,8 +49,8 @@ Strings.space = function (value) {
 
 /**
  * Check similarity between two string
- * @param string1
- * @param string2
+ * @param string1 {string}
+ * @param string2 {string}
  * @param threshold {int|float} 0 to 1
  * @returns {boolean}
  */
@@ -77,8 +77,8 @@ Strings.similarity.multiple = false;
 
 /**
  * Check if string contains a value
- * @param string
- * @param value
+ * @param string {string}
+ * @param value {string}
  * @returns {boolean}
  */
 Strings.contains = function (string, value) {
@@ -90,7 +90,7 @@ Strings.contains.multiple = false;
 
 /**
  * Check if string is lower case
- * @param value
+ * @param value {string}
  * @returns {boolean}
  */
 Strings.lowerCase = function (value) {
@@ -100,7 +100,7 @@ Strings.lowerCase = function (value) {
 
 /**
  * Check if string is upper case
- * @param value
+ * @param value {string}
  * @returns {boolean}
  */
 Strings.upperCase = function (value) {
@@ -110,7 +110,7 @@ Strings.upperCase = function (value) {
 
 /**
  * Check if is a word
- * @param value
+ * @param value {string}
  * @returns {boolean}
  */
 Strings.word = function (value) {
@@ -121,7 +121,7 @@ Strings.word = function (value) {
 
 /**
  * Check if string is capitalized
- * @param value
+ * @param value {string}
  * @returns {boolean}
  */
 Strings.capitalized = function (value) {
@@ -139,7 +139,7 @@ Strings.capitalized = function (value) {
 
 /**
  * Check if string is empty
- * @param value
+ * @param value {string}
  * @returns {boolean}
  */
 Strings.emptyString = function(value){
@@ -148,7 +148,7 @@ Strings.emptyString = function(value){
 
 /**
  * Check if is alphanumeric string
- * @param value
+ * @param value {string}
  * @returns {boolean|*}
  */
 Strings.alphanumeric = function (value) {

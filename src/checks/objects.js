@@ -6,8 +6,8 @@ var Objects = {};
 
 /**
  * Check if is a property of an object
- * @param value
- * @param object
+ * @param value {*}
+ * @param object {object}
  * @returns {boolean}
  */
 Objects.propertyOf = function (value, object) {
@@ -19,8 +19,8 @@ Objects.propertyOf.multiple = false;
 
 /**
  * Count properties of an object
- * @param object
- * @param value
+ * @param object {object}
+ * @param value {int}
  * @returns {boolean}
  */
 Objects.propertyCount = function (object, value) {

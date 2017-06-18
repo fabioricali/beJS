@@ -7,7 +7,7 @@ var Mixed = {};
 /**
  * Check if is valid email
  * @link https://emailregex.com/
- * @param value
+ * @param value {string}
  * @returns {boolean}
  */
 Mixed.email = function (value) {
@@ -16,7 +16,7 @@ Mixed.email = function (value) {
 
 /**
  * Check if is a hexadecimal
- * @param value
+ * @param value {string}
  * @returns {boolean}
  */
 Mixed.hex = function (value) {
@@ -25,7 +25,7 @@ Mixed.hex = function (value) {
 
 /**
  * Check if is a hexadecimal color
- * @param value
+ * @param value {string}
  * @returns {boolean}
  */
 Mixed.hexColor = function (value) {
@@ -40,7 +40,7 @@ Mixed.hexColor = function (value) {
 
 /**
  * Check if is a valid IPv4
- * @param value
+ * @param value {string}
  * @returns {boolean}
  */
 Mixed.ipv4 = function (value) {
@@ -58,7 +58,7 @@ Mixed.ipv6 = function (value) {
 
 /**
  * Check if is a valid ip string
- * @param value
+ * @param value {string}
  * @returns {*|boolean}
  */
 Mixed.ip = function (value) {
@@ -67,7 +67,7 @@ Mixed.ip = function (value) {
 
 /**
  * Check if is base64 encoded string
- * @param value
+ * @param value {string}
  * @returns {boolean}
  */
 Mixed.base64 = function (value) {
@@ -76,7 +76,7 @@ Mixed.base64 = function (value) {
 
 /**
  * Check if is a valid semver string
- * @param value
+ * @param value {string}
  * @returns {boolean}
  */
 Mixed.semVer = function (value) {
