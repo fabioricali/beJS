@@ -3,16 +3,15 @@
  */
 
 /**
- * helper class
+ * Helpers class
  */
-var helper = {};
+var Helpers = {};
 
 /**
  * Get user agent
- * @private
  * @returns {*}
  */
-helper.getUserAgent = function () {
+Helpers.getUserAgent = function () {
     if (arguments.length)
         return arguments[0];
     else {
@@ -27,7 +26,7 @@ helper.getUserAgent = function () {
  * @param object
  * @returns {*}
  */
-helper.objectToString = function (object) {
+Helpers.objectToString = function (object) {
     return Object.prototype.toString.call(object);
 };
 
@@ -38,7 +37,7 @@ helper.objectToString = function (object) {
  * @param b
  * @returns {*}
  */
-helper.getEditDistance = function(a, b) {
+Helpers.getEditDistance = function(a, b) {
     if (a.length === 0) return b.length;
     if (b.length === 0) return a.length;
 
@@ -72,4 +71,4 @@ helper.getEditDistance = function(a, b) {
     return matrix[b.length][a.length];
 };
 
-module.exports = helper;
+module.exports = Helpers;

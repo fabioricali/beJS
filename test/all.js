@@ -1391,3 +1391,11 @@ describe('between', function () {
         assert.equal(result, false);
     });
 });
+
+describe('camelCase', function () {
+    it('shoudl be return true', function () {
+        var result = be.camelCase('testTest');
+        console.log(result);
+        assert.equal(result, true);
+    });
+});

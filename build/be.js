@@ -117,6 +117,7 @@
 				 */
 				
 				var helper = require('./helper');
+				var strings = require('./checks/strings');
 				
 				/**
 				 * be class
@@ -124,6 +125,10 @@
 				var be = {};
 				be.each = {};
 				be.some = {};
+				
+				be.camelCase = function (value) {
+				    return strings.camelCase(value);
+				};
 				
 				/**
 				 * Check [object ?] class
@@ -894,6 +899,28 @@
 				    module.exports = be;
 				else
 				    window.be = be;
+			},
+			"checks": {
+				"strings.js": function (exports, module, require) {
+					/**
+					 * Created by Fabio on 18/06/2017.
+					 */
+					var helper = require('../helper');
+					
+					
+					var strings = {};
+					
+					/**
+					 *
+					 * @param value
+					 * @returns {boolean}
+					 */
+					strings.camelCase = function (value) {
+					    return true;
+					};
+					
+					module.exports = strings;
+				}
 			},
 			"helper.js": function (exports, module, require) {
 				/**
