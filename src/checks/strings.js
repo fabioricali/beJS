@@ -7,7 +7,7 @@ var Types = require('./types');
 var Strings = {};
 
 /**
- * Check if string is in camel case format
+ * Check if string is in camelCase format
  * @param value
  * @returns {boolean}
  */
@@ -19,7 +19,17 @@ Strings.camelCase = function (value) {
 };
 
 /**
- * Check if string is in kebab case format
+ * Check if string is in snake_case format
+ * @param value
+ * @returns {boolean}
+ */
+Strings.snakeCase = function (value) {
+    return Strings.lowerCase(value) &&
+        /^[0-9a-z]*_[0-9a-z]/ig.test(value);
+};
+
+/**
+ * Check if string is in kebab-case format
  * @param value
  * @returns {boolean}
  */
