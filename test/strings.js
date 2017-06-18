@@ -298,6 +298,11 @@ describe('startWith', function () {
         console.log(result);
         assert.equal(result, true);
     });
+    it('access by Strings, should be return true', function () {
+        var result = be.Strings.startWith('hello', 'hello world');
+        console.log(result);
+        assert.equal(result, true);
+    });
     it('insensitive undefined, should be return false', function () {
         var result = be.startWith('HELLO', 'hello world');
         console.log(result);
