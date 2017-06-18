@@ -4,6 +4,10 @@
 
 var Helpers = require('./helpers');
 
+/**
+ * Collection of checks
+ * @type {[*]}
+ */
 var Checks = [
     require('./checks/strings'),
     require('./checks/types'),
@@ -19,17 +23,18 @@ var Checks = [
 
 /**
  * be class
+ * @type {*}
  */
 var be = {};
 be.each = {};
 be.some = {};
 
 /**
- * Helper class
+ * Helpers class
  * @type {{}}
  * @private
  */
-be._helper = Helpers;
+be._helpers = Helpers;
 
 /**
  * Create interfaces

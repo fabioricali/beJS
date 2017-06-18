@@ -8,12 +8,12 @@ if(typeof process === 'object') {
 
 describe('getEditDistance', function () {
     it('should be return 0', function () {
-        var result = be._helper.getEditDistance('hello', 'hello');
+        var result = be._helpers.getEditDistance('hello', 'hello');
         console.log(result);
         assert.equal(result, 0);
     });
     it('should be return 1', function () {
-        var result = be._helper.getEditDistance('hello', 'Hello');
+        var result = be._helpers.getEditDistance('hello', 'Hello');
         console.log(result);
         assert.equal(result, 1);
     });

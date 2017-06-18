@@ -143,7 +143,7 @@
 				 * @type {{}}
 				 * @private
 				 */
-				be._helper = Helpers;
+				be._helpers = Helpers;
 				
 				/**
 				 * Create interfaces
