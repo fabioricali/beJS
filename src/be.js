@@ -30,6 +30,8 @@ var Checks = {
  * @type {*}
  */
 var be = {};
+
+be.version = '0.0.0';
 be.each = {};
 be.some = {};
 
