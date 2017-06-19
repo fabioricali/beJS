@@ -188,3 +188,51 @@ describe('semVer', function () {
         assert.equal(result, false);
     });
 });
+
+describe('equal', function () {
+    it('string, should be return true', function () {
+        var result = be.equal('hello', 'hello');
+        console.log(result);
+        assert.equal(result, true);
+    });
+    it('string, should be return false', function () {
+        var result = be.equal('hello', 'hellow');
+        console.log(result);
+        assert.equal(result, false);
+    });
+    it('number, should be return true', function () {
+        var result = be.equal(2, 2);
+        console.log(result);
+        assert.equal(result, true);
+    });
+    it('number, should be return false', function () {
+        var result = be.equal(2, 3);
+        console.log(result);
+        assert.equal(result, false);
+    });
+    it('boolean, should be return true', function () {
+        var result = be.equal(true, true);
+        console.log(result);
+        assert.equal(result, true);
+    });
+    it('boolean, should be return false', function () {
+        var result = be.equal(true, false);
+        console.log(result);
+        assert.equal(result, false);
+    });
+    it('regexp, should be return true', function () {
+        var result = be.equal(/hello/, /hello/);
+        console.log(result);
+        assert.equal(result, true);
+    });
+    it('regexp, should be return false', function () {
+        var result = be.equal(/hello/, /hellow/);
+        console.log(result);
+        assert.equal(result, false);
+    });
+    it('regexp 2, should be return true', function () {
+        var result = be.equal(new RegExp(/hello/), new RegExp(/hello/));
+        console.log(result);
+        assert.equal(result, true);
+    });
+});
