@@ -76,3 +76,23 @@ describe('today', function () {
         assert.equal(result, false);
     });
 });
+
+describe('tomorrow', function () {
+    it('should be return true', function () {
+        var now = new Date();
+        now.setDate(now.getDate() + 1);
+        var result = be.tomorrow(now);
+        console.log(now.toDateString(),result);
+        assert.equal(result, true);
+    });
+    it('should be return false', function () {
+        var result = be.tomorrow(new Date());
+        console.log(result);
+        assert.equal(result, false);
+    });
+    it('no Date object, should be return false', function () {
+        var result = be.tomorrow();
+        console.log(result);
+        assert.equal(result, false);
+    });
+});
