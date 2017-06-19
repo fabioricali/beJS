@@ -118,4 +118,18 @@ Numbers.between = function (num, min, max) {
 
 Numbers.between.multiple = false;
 
+/**
+ * Checks if number is greater then an other
+ * @param value {number}
+ * @param num {number}
+ * @returns {boolean}
+ */
+Numbers.greater = function (value, num) {
+    return Types.number(value) &&
+            Types.number(num) &&
+            value > num;
+};
+
+Numbers.greater.multiple = false;
+
 module.exports = Numbers;
