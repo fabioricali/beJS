@@ -35,4 +35,15 @@ Dates.tomorrow = function (date) {
     return Types.date(date) && now.toDateString() === date.toDateString();
 };
 
+/**
+ * Check if date is yesterday
+ * @param date
+ * @returns {boolean}
+ */
+Dates.yesterday = function (date) {
+    var now = new Date();
+    now.setDate(now.getDate() - 1);
+    return Types.date(date) && now.toDateString() === date.toDateString();
+};
+
 module.exports = Dates;
