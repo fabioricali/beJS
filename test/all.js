@@ -7,7 +7,27 @@ if(typeof process === 'object') {
 }
 
 it('count class methods', function () {
-    var result = Object.keys(be).length;
+    var result = 0;
+    var count = 0;
+    var Checks = [
+        'Strings',
+        'Types',
+        'Numbers',
+        'Envs',
+        'Objects',
+        'Mixed',
+        'Arrays',
+        'Dates',
+        'Urls',
+        'Hashes'
+    ];
+    for (var i in Checks){
+        if(Checks.hasOwnProperty(i)){
+            count = Object.keys(be[Checks[i]]).length;
+            console.log(Checks[i], ':', count);
+            result += count;
+        }
+    }
     console.log('total methods', result);
     assert.equal(result > 0, true);
 });
