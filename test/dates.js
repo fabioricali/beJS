@@ -58,3 +58,21 @@ describe('dateString', function () {
         assert.equal(result, false);
     });
 });
+
+describe('today', function () {
+    it('should be return true', function () {
+        var result = be.today(new Date());
+        console.log(result);
+        assert.equal(result, true);
+    });
+    it('should be return false', function () {
+        var result = be.today(new Date('2016-06-08'));
+        console.log(result);
+        assert.equal(result, false);
+    });
+    it('no Date object, should be return false', function () {
+        var result = be.today();
+        console.log(result);
+        assert.equal(result, false);
+    });
+});
