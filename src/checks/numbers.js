@@ -132,4 +132,18 @@ Numbers.greater = function (value, num) {
 
 Numbers.greater.multiple = false;
 
+/**
+ * Checks if number is lesser then an other
+ * @param value {number}
+ * @param num {number}
+ * @returns {boolean}
+ */
+Numbers.lesser = function (value, num) {
+    return Types.number(value) &&
+            Types.number(num) &&
+            value < num;
+};
+
+Numbers.lesser.multiple = false;
+
 module.exports = Numbers;
