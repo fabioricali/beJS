@@ -4,6 +4,16 @@
 var Types = require('./types');
 var Dates = {};
 
+var _days = [
+    'sunday',
+    'monday',
+    'tuesday',
+    'wednesday',
+    'thursday',
+    'friday',
+    'saturday'
+];
+
 /**
  * Check if is date string
  * @param value {string}
@@ -26,7 +36,7 @@ Dates.today = function (date) {
 
 /**
  * Check if date is tomorrow
- * @param date
+ * @param date {Date}
  * @returns {boolean}
  */
 Dates.tomorrow = function (date) {
@@ -37,7 +47,7 @@ Dates.tomorrow = function (date) {
 
 /**
  * Check if date is yesterday
- * @param date
+ * @param date {Date}
  * @returns {boolean}
  */
 Dates.yesterday = function (date) {
@@ -48,7 +58,7 @@ Dates.yesterday = function (date) {
 
 /**
  * Check if date is past
- * @param date
+ * @param date {Date}
  * @returns {boolean}
  */
 Dates.past = function (date) {
@@ -58,13 +68,25 @@ Dates.past = function (date) {
 
 /**
  * Check if date is future
- * @param date
+ * @param date {Date}
  * @returns {boolean}
  */
 Dates.future = function (date) {
     return Types.date(date) && !Dates.past(date);
 };
 
+/**
+ * Check if date is day specified
+ * @param date {Date}
+ * @param day {string}
+ * @returns {boolean}
+ */
+Dates.day = function (date, day) {
+    return Types.date(date) &&
+        Types.string(day) &&
+        _days[date.getDay()] === day.toLowerCase();
+};
 
+Dates.day.multiple = false;
 
 module.exports = Dates;
