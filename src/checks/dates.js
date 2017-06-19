@@ -178,4 +178,17 @@ Dates.dateBetween = function (date, startDate, endDate) {
 
 Dates.dateBetween.multiple = false;
 
+/**
+ * Check if date is DST
+ * @param date {Date}
+ * @returns {boolean}
+ */
+Dates.dayLightSavingTime = function(date) {
+    if(!Types.date(date)) return false;
+    var jan = new Date(date.getFullYear(), 0, 1);
+    var jul = new Date(date.getFullYear(), 6, 1);
+    var stdTimezoneOffset = Math.max(jan.getTimezoneOffset(), jul.getTimezoneOffset());
+    return date.getTimezoneOffset() < stdTimezoneOffset;
+};
+
 module.exports = Dates;
