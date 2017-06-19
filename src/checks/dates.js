@@ -152,4 +152,13 @@ Dates.weekend = function (date) {
     return Dates.day(date, 'saturday') || Dates.day(date, 'sunday');
 };
 
+/**
+ * Check if date is weekday
+ * @param date {Date}
+ * @returns {boolean}
+ */
+Dates.weekday = function (date) {
+    return Types.date(date) && !Dates.weekend(date);
+};
+
 module.exports = Dates;

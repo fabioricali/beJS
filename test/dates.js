@@ -261,3 +261,26 @@ describe('weekend', function () {
         assert.equal(result, false);
     });
 });
+
+describe('weekday', function () {
+    it('saturday, should be return false', function () {
+        var result = be.weekday(new Date('2017-06-24'));
+        console.log(result);
+        assert.equal(result, false);
+    });
+    it('sunday, should be return false', function () {
+        var result = be.weekday(new Date('2017-06-25'));
+        console.log(result);
+        assert.equal(result, false);
+    });
+    it('monday, should be return true', function () {
+        var result = be.weekday(new Date('2017-06-19'));
+        console.log(result);
+        assert.equal(result, true);
+    });
+    it('no Date object, should be return false', function () {
+        var result = be.weekday();
+        console.log(result);
+        assert.equal(result, false);
+    });
+});
