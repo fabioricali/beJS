@@ -62,7 +62,7 @@ Dates.past = function (date) {
  * @returns {boolean}
  */
 Dates.future = function (date) {
-    return !Dates.past(date);
+    return Types.date(date) && !Dates.past(date);
 };
 
 
