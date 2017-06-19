@@ -116,3 +116,25 @@ describe('yesterday', function () {
         assert.equal(result, false);
     });
 });
+
+describe('past', function () {
+    it('should be return true', function () {
+        var now = new Date();
+        now.setDate(now.getDate() - 1);
+        var result = be.past(now);
+        console.log(now.toDateString(),result);
+        assert.equal(result, true);
+    });
+    it('should be return false', function () {
+        var now = new Date();
+        now.setDate(now.getDate() + 1);
+        var result = be.past(now);
+        console.log(result);
+        assert.equal(result, false);
+    });
+    it('no Date object, should be return false', function () {
+        var result = be.past();
+        console.log(result);
+        assert.equal(result, false);
+    });
+});

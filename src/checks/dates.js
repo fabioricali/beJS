@@ -46,4 +46,25 @@ Dates.yesterday = function (date) {
     return Types.date(date) && now.toDateString() === date.toDateString();
 };
 
+/**
+ * Check if date is past
+ * @param date
+ * @returns {boolean}
+ */
+Dates.past = function (date) {
+    var now = (new Date()).getTime();
+    return Types.date(date) && now > date.getTime();
+};
+
+/**
+ * Check if date is future
+ * @param date
+ * @returns {boolean}
+ */
+Dates.future = function (date) {
+    return !Dates.past(date);
+};
+
+
+
 module.exports = Dates;
