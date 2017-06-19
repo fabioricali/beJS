@@ -118,4 +118,27 @@ Dates.month = function (date, month) {
 
 Dates.month.multiple = false;
 
+/**
+ * Check if date is year specified
+ * @param date {Date}
+ * @param year {number}
+ * @returns {boolean}
+ */
+Dates.year = function (date, year) {
+    return Types.date(date) &&
+        Types.number(year) &&
+        date.getFullYear() === year;
+};
+
+Dates.year.multiple = false;
+
+/**
+ * Check if is leap year
+ * @param year {number}
+ * @returns {boolean}
+ */
+Dates.leapYear = function (year) {
+    return Types.number(year) && ((year % 4 === 0) && (year % 100 !== 0)) || (year % 400 === 0);
+};
+
 module.exports = Dates;

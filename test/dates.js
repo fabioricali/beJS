@@ -200,3 +200,23 @@ describe('month', function () {
         assert.equal(result, false);
     });
 });
+
+describe('year', function () {
+    it('should be return true', function () {
+        var now = new Date('2017-06-19');
+        var result = be.year(now, 2017);
+        console.log(now.toDateString(),result);
+        assert.equal(result, true);
+    });
+    it('should be return false', function () {
+        var now = new Date('2017-06-18');
+        var result = be.year(now, 2018);
+        console.log(now.toDateString(),result);
+        assert.equal(result, false);
+    });
+    it('no Date object, should be return false', function () {
+        var result = be.year();
+        console.log(result);
+        assert.equal(result, false);
+    });
+});
