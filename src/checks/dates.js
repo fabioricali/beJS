@@ -14,6 +14,21 @@ var _days = [
     'saturday'
 ];
 
+var _months = [
+    'january',
+    'february',
+    'march',
+    'april',
+    'may',
+    'june',
+    'july',
+    'august',
+    'september',
+    'october',
+    'november',
+    'december'
+];
+
 /**
  * Check if is date string
  * @param value {string}
@@ -88,5 +103,19 @@ Dates.day = function (date, day) {
 };
 
 Dates.day.multiple = false;
+
+/**
+ * Check if date is month specified
+ * @param date {Date}
+ * @param month {string}
+ * @returns {boolean}
+ */
+Dates.month = function (date, month) {
+    return Types.date(date) &&
+        Types.string(month) &&
+        _months[date.getMonth()] === month.toLowerCase();
+};
+
+Dates.month.multiple = false;
 
 module.exports = Dates;
