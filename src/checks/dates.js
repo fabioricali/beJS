@@ -138,7 +138,18 @@ Dates.year.multiple = false;
  * @returns {boolean}
  */
 Dates.leapYear = function (year) {
-    return Types.number(year) && ((year % 4 === 0) && (year % 100 !== 0)) || (year % 400 === 0);
+    return Types.number(year) &&
+        ((year % 4 === 0) && (year % 100 !== 0)) ||
+        (year % 400 === 0);
+};
+
+/**
+ * Check if date is weekend
+ * @param date {Date}
+ * @returns {boolean}
+ */
+Dates.weekend = function (date) {
+    return Dates.day(date, 'saturday') || Dates.day(date, 'sunday');
 };
 
 module.exports = Dates;

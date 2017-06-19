@@ -238,3 +238,26 @@ describe('leap year', function () {
         assert.equal(result, false);
     });
 });
+
+describe('weekend', function () {
+    it('saturday, should be return true', function () {
+        var result = be.weekend(new Date('2017-06-24'));
+        console.log(result);
+        assert.equal(result, true);
+    });
+    it('sunday, should be return true', function () {
+        var result = be.weekend(new Date('2017-06-25'));
+        console.log(result);
+        assert.equal(result, true);
+    });
+    it('monday, should be return false', function () {
+        var result = be.weekend(new Date('2017-06-19'));
+        console.log(result);
+        assert.equal(result, false);
+    });
+    it('no Date object, should be return false', function () {
+        var result = be.weekend();
+        console.log(result);
+        assert.equal(result, false);
+    });
+});
