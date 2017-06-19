@@ -284,3 +284,46 @@ describe('weekday', function () {
         assert.equal(result, false);
     });
 });
+
+describe('dateBetween', function () {
+    it('should be return true', function () {
+        var result = be.dateBetween(new Date('2017-06-24'), new Date('2017-06-19'), new Date('2017-06-25'));
+        console.log(result);
+        assert.equal(result, true);
+    });
+    it('date and start are equal, should be return true', function () {
+        var result = be.dateBetween(new Date('2017-06-24'), new Date('2017-06-24'), new Date('2017-06-25'));
+        console.log(result);
+        assert.equal(result, true);
+    });
+    it('date and end are equal, should be return true', function () {
+        var result = be.dateBetween(new Date('2017-06-25'), new Date('2017-06-19'), new Date('2017-06-25'));
+        console.log(result);
+        assert.equal(result, true);
+    });
+    it('date, start, end are equal, should be return true', function () {
+        var result = be.dateBetween(new Date('2017-06-25'), new Date('2017-06-25'), new Date('2017-06-25'));
+        console.log(result);
+        assert.equal(result, true);
+    });
+    it('date with time, start, end are equal, should be return false', function () {
+        var result = be.dateBetween(new Date('2017-06-25 01:00:00'), new Date('2017-06-25'), new Date('2017-06-25'));
+        console.log(result);
+        assert.equal(result, false);
+    });
+    it('date, start, end are equal but time is different, should be return true', function () {
+        var result = be.dateBetween(new Date('2017-06-25 01:00:00'), new Date('2017-06-25 00:40:00'), new Date('2017-06-25 01:01:00'));
+        console.log(result);
+        assert.equal(result, true);
+    });
+    it('date is not in range, should be return false', function () {
+        var result = be.dateBetween(new Date('2017-06-26'), new Date('2017-06-19'), new Date('2017-06-25'));
+        console.log(result);
+        assert.equal(result, false);
+    });
+    it('no Date object, should be return false', function () {
+        var result = be.dateBetween();
+        console.log(result);
+        assert.equal(result, false);
+    });
+});

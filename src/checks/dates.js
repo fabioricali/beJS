@@ -2,6 +2,7 @@
  * Created by Fabio on 18/06/2017.
  */
 var Types = require('./types');
+var Numbers = require('./numbers');
 var Dates = {};
 
 var _days = [
@@ -160,5 +161,21 @@ Dates.weekend = function (date) {
 Dates.weekday = function (date) {
     return Types.date(date) && !Dates.weekend(date);
 };
+
+/**
+ * Check if date is weekday
+ * @param date {Date}
+ * @param startDate {Date}
+ * @param endDate {Date}
+ * @returns {boolean}
+ */
+Dates.dateBetween = function (date, startDate, endDate) {
+    return Types.date(date) &&
+        Types.date(startDate) &&
+        Types.date(endDate) &&
+        Numbers.between(date.getTime(), startDate.getTime(), endDate.getTime());
+};
+
+Dates.dateBetween.multiple = false;
 
 module.exports = Dates;
