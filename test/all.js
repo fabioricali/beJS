@@ -23,7 +23,11 @@ it('count class methods', function () {
     ];
     for (var i in Checks){
         if(Checks.hasOwnProperty(i)){
-            count = Object.keys(be[Checks[i]]).length;
+            count = 0;
+            for (var m in be[Checks[i]]){
+                if(be[Checks[i]].hasOwnProperty(m) && be.function(be[Checks[i]][m]) )
+                    count++;
+            }
             console.log(Checks[i], ':', count);
             result += count;
         }

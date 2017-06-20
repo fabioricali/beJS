@@ -23,8 +23,7 @@ Numbers.int = function (value) {
  * @returns {*|boolean}
  */
 Numbers.float = function (value) {
-    return Types.number(value) &&
-        !Numbers.int(value);
+    return Types.number(value) && !Numbers.int(value);
 };
 
 /**
@@ -42,8 +41,7 @@ Numbers.nan = function (value) {
  * @returns {*|boolean}
  */
 Numbers.even = function (value) {
-    return Types.number(value) &&
-        value % 2 === 0;
+    return Types.number(value) && value % 2 === 0;
 };
 
 /**
@@ -52,8 +50,7 @@ Numbers.even = function (value) {
  * @returns {*|boolean}
  */
 Numbers.odd = function (value) {
-    return Types.number(value) &&
-        !Numbers.even(value);
+    return Types.number(value) && !Numbers.even(value);
 };
 
 /**
@@ -62,8 +59,7 @@ Numbers.odd = function (value) {
  * @returns {*|boolean}
  */
 Numbers.positive = function (value) {
-    return Types.number(value) &&
-        value > 0;
+    return Types.number(value) && value > 0;
 };
 
 /**
@@ -72,8 +68,7 @@ Numbers.positive = function (value) {
  * @returns {*|boolean}
  */
 Numbers.negative = function (value) {
-    return Types.number(value) &&
-        value < 0;
+    return Types.number(value) && value < 0;
 };
 
 /**
@@ -111,10 +106,7 @@ Numbers.infinity = function (value) {
  * @returns {boolean}
  */
 Numbers.between = function (num, min, max) {
-    return Types.number(num) &&
-        Types.number(min) &&
-        Types.number(max) &&
-        num >= min && num <= max;
+    return Types.each.number(num, min, max) && num >= min && num <= max;
 };
 
 Numbers.between.multiple = false;
@@ -126,9 +118,7 @@ Numbers.between.multiple = false;
  * @returns {boolean}
  */
 Numbers.greater = function (value, num) {
-    return Types.number(value) &&
-            Types.number(num) &&
-            value > num;
+    return Types.each.number(value, num) && value > num;
 };
 
 Numbers.greater.multiple = false;
@@ -140,9 +130,7 @@ Numbers.greater.multiple = false;
  * @returns {boolean}
  */
 Numbers.lesser = function (value, num) {
-    return Types.number(value) &&
-            Types.number(num) &&
-            value < num;
+    return Types.each.number(value, num) && value < num;
 };
 
 Numbers.lesser.multiple = false;

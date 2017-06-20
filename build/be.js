@@ -117,6 +117,7 @@
 				 */
 				
 				var Helpers = require('./helpers');
+				var Interface = require('./interface');
 				
 				/**
 				 * Collection of checks
@@ -167,7 +168,7 @@
 				    for(var c in Checks){
 				        if(Checks.hasOwnProperty(c)){
 				            for(var f in Checks[c]){
-				                if(Checks[c].hasOwnProperty(f)) {
+				                if(Checks[c].hasOwnProperty(f) && Checks.Types.function(Checks[c][f])) {
 				                    be[f] = (function (b, k) {
 				                        return function () {
 				                            return Checks[b][k].apply(this, arguments);
@@ -179,37 +180,9 @@
 				    }
 				
 				    /**
-				     * each and some
+				     * Create each and some
 				     */
-				    for(var i in be){
-				        if(be.hasOwnProperty(i) && be.function(be[i]) && be.undefined(be[i].multiple)){
-				            be.each[i] = (function (j) {
-				                return function () {
-				                    var args = arguments;
-				                    if(be.array(args[0]))
-				                        args = args[0];
-				                    for(var a in args) {
-				                        if (args.hasOwnProperty(a) && !be[j].call(this, args[a]))
-				                            return false;
-				                    }
-				                    return true;
-				                }
-				            })(i);
-				
-				            be.some[i] = (function (j) {
-				                return function () {
-				                    var args = arguments;
-				                    if(be.array(args[0]))
-				                        args = args[0];
-				                    for(var a in args) {
-				                        if (args.hasOwnProperty(a) && be[j].call(this, args[a]))
-				                            return true;
-				                    }
-				                    return false;
-				                }
-				            })(i);
-				        }
-				    }
+				    be = Interface.create(be);
 				
 				    /**
 				     * After add checks class
@@ -233,6 +206,7 @@
 					 * Created by Fabio on 18/06/2017.
 					 */
 					var Types = require('./types');
+					var Interface = require('../interface');
 					var Arrays = {};
 					
 					/**
@@ -252,6 +226,8 @@
 					
 					Arrays.inArray.multiple = false;
 					
+					Arrays = Interface.create(Arrays);
+					
 					module.exports = Arrays;
 				},
 				"dates.js": function (exports, module, require) {
@@ -260,6 +236,7 @@
 					 */
 					var Types = require('./types');
 					var Numbers = require('./numbers');
+					var Interface = require('../interface');
 					var Dates = {};
 					
 					var _days = [
@@ -427,9 +404,10 @@
 					 * @returns {boolean}
 					 */
 					Dates.dateBetween = function (date, startDate, endDate) {
-					    return Types.date(date) &&
+					    /*return Types.date(date) &&
 					        Types.date(startDate) &&
-					        Types.date(endDate) &&
+					        Types.date(endDate) &&*/
+					    return Types.each.date(date, startDate, endDate) &&
 					        Numbers.between(date.getTime(), startDate.getTime(), endDate.getTime());
 					};
 					
@@ -448,6 +426,8 @@
 					    return date.getTimezoneOffset() < stdTimezoneOffset;
 					};
 					
+					Dates = Interface.create(Dates);
+					
 					module.exports = Dates;
 				},
 				"envs.js": function (exports, module, require) {
@@ -455,6 +435,7 @@
 					 * Created by Fabio on 18/06/2017.
 					 */
 					var Helpers = require('../helpers');
+					var Interface = require('../interface');
 					var Envs = {};
 					
 					/**
@@ -554,12 +535,15 @@
 					
 					Envs.ie.multiple = false;
 					
+					Envs = Interface.create(Envs);
+					
 					module.exports = Envs;
 				},
 				"hashes.js": function (exports, module, require) {
 					/**
 					 * Created by Fabio on 18/06/2017.
 					 */
+					var Interface = require('../interface');
 					var Hashes = {};
 					
 					/**
@@ -580,6 +564,8 @@
 					    return /^[a-f0-9]{40}$/.test(value);
 					};
 					
+					Hashes = Interface.create(Hashes);
+					
 					module.exports = Hashes;
 				},
 				"mixed.js": function (exports, module, require) {
@@ -587,7 +573,7 @@
 					 * Created by Fabio on 18/06/2017.
 					 */
 					var Types = require('./types');
-					
+					var Interface = require('../interface');
 					var Mixed = {};
 					
 					/**
@@ -688,6 +674,8 @@
 					
 					Mixed.equal.multiple = false;
 					
+					Mixed = Interface.create(Mixed);
+					
 					module.exports = Mixed;
 				},
 				"numbers.js": function (exports, module, require) {
@@ -695,6 +683,7 @@
 					 * Created by Fabio on 18/06/2017.
 					 */
 					var Types = require('./types');
+					var Interface = require('../interface');
 					
 					var Numbers = {};
 					
@@ -848,6 +837,8 @@
 					    return (Types.number(value) || Types.string(value)) && !isNaN(value - parseFloat(value));
 					};
 					
+					Numbers = Interface.create(Numbers);
+					
 					module.exports = Numbers;
 				},
 				"objects.js": function (exports, module, require) {
@@ -855,6 +846,7 @@
 					 * Created by Fabio on 18/06/2017.
 					 */
 					var Types = require('./types');
+					var Interface = require('../interface');
 					var Objects = {};
 					
 					/**
@@ -888,6 +880,8 @@
 					
 					Objects.propertyCount.multiple = false;
 					
+					Objects = Interface.create(Objects);
+					
 					module.exports = Objects;
 				},
 				"strings.js": function (exports, module, require) {
@@ -895,6 +889,7 @@
 					 * Created by Fabio on 18/06/2017.
 					 */
 					var Helpers = require('../helpers');
+					var Interface = require('../interface');
 					var Types = require('./types');
 					
 					var Strings = {};
@@ -1064,6 +1059,8 @@
 					
 					Strings.startWith.multiple = false;
 					
+					Strings = Interface.create(Strings);
+					
 					module.exports = Strings;
 				},
 				"types.js": function (exports, module, require) {
@@ -1071,6 +1068,7 @@
 					 * Created by Fabio on 18/06/2017.
 					 */
 					var Helpers = require('../helpers');
+					var Interface = require('../interface');
 					var Types = {};
 					
 					/**
@@ -1260,12 +1258,15 @@
 					    return !Types.falsy(value);
 					};
 					
+					Types = Interface.create(Types);
+					
 					module.exports = Types;
 				},
 				"urls.js": function (exports, module, require) {
 					/**
 					 * Created by Fabio on 18/06/2017.
 					 */
+					var Interface = require('../interface');
 					var Urls = {};
 					
 					/**
@@ -1322,6 +1323,8 @@
 					Urls.ftpsUrl = function (value) {
 					    return Urls.url(value) && /^ftps:/i.test(value);
 					};
+					
+					Urls = Interface.create(Urls);
 					
 					module.exports = Urls;
 				}
@@ -1401,6 +1404,66 @@
 				};
 				
 				module.exports = Helpers;
+			},
+			"interface.js": function (exports, module, require) {
+				/**
+				 * Created by fabioricali on 20/06/2017.
+				 */
+				var Helpers = require('./helpers');
+				var Interface = {};
+				
+				/**
+				 * Check if is array
+				 * @param object
+				 * @returns {boolean}
+				 * @private
+				 */
+				Interface._isArray = function (object) {
+				    return Helpers.objectToString(object).toLowerCase() === '[object array]'
+				};
+				
+				/**
+				 * Create interface each and some
+				 * @param obj
+				 * @returns {*}
+				 */
+				Interface.create = function (obj) {
+				    obj.each = {};
+				    obj.some = {};
+				    for(var i in obj){
+				        if(obj.hasOwnProperty(i) && typeof obj[i] === 'function' && typeof obj[i].multiple === 'undefined'){
+				            obj.each[i] = (function (j) {
+				                return function () {
+				                    var args = arguments;
+				                    if(Interface._isArray(args[0]))
+				                        args = args[0];
+				                    for(var a in args) {
+				                        if (args.hasOwnProperty(a) && !obj[j].call(this, args[a]))
+				                            return false;
+				                    }
+				                    return true;
+				                }
+				            })(i);
+				
+				            obj.some[i] = (function (j) {
+				                return function () {
+				                    var args = arguments;
+				                    if(Interface._isArray(args[0]))
+				                        args = args[0];
+				                    for(var a in args) {
+				                        if (args.hasOwnProperty(a) && obj[j].call(this, args[a]))
+				                            return true;
+				                    }
+				                    return false;
+				                }
+				            })(i);
+				        }
+				    }
+				
+				    return obj;
+				};
+				
+				module.exports = Interface;
 			}
 		}
 	}

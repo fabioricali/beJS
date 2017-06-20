@@ -56,7 +56,8 @@ Strings.space = function (value) {
  * @returns {boolean}
  */
 Strings.similarity =  function(string1, string2, threshold) {
-    if(!Types.string(string1) || !Types.string(string2)) return false;
+    //if(!Types.string(string1) || !Types.string(string2)) return false;
+    if(!Types.each.string(string1, string2)) return false;
 
     if(!Types.number(threshold) || threshold < 0 || threshold > 1)
         threshold = 1;

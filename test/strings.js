@@ -218,6 +218,11 @@ describe('similarity', function () {
         console.log(result);
         assert.equal(result, false);
     });
+    it('no string input except one, should be return false', function () {
+        var result = be.similarity(1, '1', 1);
+        console.log(result);
+        assert.equal(result, false);
+    });
 });
 
 describe('camelCase', function () {
