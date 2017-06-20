@@ -146,4 +146,13 @@ Numbers.lesser = function (value, num) {
 
 Numbers.lesser.multiple = false;
 
+/**
+ * Checks if is a number as string or number type
+ * @param value {*}
+ * @returns {boolean}
+ */
+Numbers.numeric = function (value) {
+    return (Types.number(value) || Types.string(value)) && !isNaN(value - parseFloat(value));
+};
+
 module.exports = Numbers;

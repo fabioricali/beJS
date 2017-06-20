@@ -144,6 +144,8 @@
 				 * @type {*}
 				 */
 				var be = {};
+				
+				be.version = '0.0.0';
 				be.each = {};
 				be.some = {};
 				
@@ -433,6 +435,19 @@
 					
 					Dates.dateBetween.multiple = false;
 					
+					/**
+					 * Check if date is DST
+					 * @param date {Date}
+					 * @returns {boolean}
+					 */
+					Dates.dayLightSavingTime = function(date) {
+					    if(!Types.date(date)) return false;
+					    var jan = new Date(date.getFullYear(), 0, 1);
+					    var jul = new Date(date.getFullYear(), 6, 1);
+					    var stdTimezoneOffset = Math.max(jan.getTimezoneOffset(), jul.getTimezoneOffset());
+					    return date.getTimezoneOffset() < stdTimezoneOffset;
+					};
+					
 					module.exports = Dates;
 				},
 				"envs.js": function (exports, module, require) {
@@ -571,6 +586,7 @@
 					/**
 					 * Created by Fabio on 18/06/2017.
 					 */
+					var Types = require('./types');
 					
 					var Mixed = {};
 					
@@ -652,6 +668,25 @@
 					Mixed.semVer = function (value) {
 					    return /^(\d*)\.(\d*)\.(\d*)(-(\d*|\d*[a-z-][0-9a-z-]*)(\.(\d*|\d*[a-z-][0-9a-z-]*))*)?(\+[0-9a-z-]+(\.[0-9a-z-]+)*)?$/i.test(value);
 					};
+					
+					/**
+					 * Checks if equal
+					 * @param value {number|string|boolean|regexp}
+					 * @param other {number|string|boolean|regexp}
+					 * @returns {boolean}
+					 */
+					Mixed.equal = function (value, other) {
+					    if(Types.number(value) && Types.number(other))
+					        return  value === other;
+					    else if((Types.string(value) && Types.string(other)) || (Types.regexp(value) && Types.regexp(other)))
+					        return value + '' === '' + other;
+					    else if(Types.boolean(value) && Types.boolean(other))
+					        return value === other;
+					    else
+					        return false;
+					};
+					
+					Mixed.equal.multiple = false;
 					
 					module.exports = Mixed;
 				},
@@ -775,6 +810,34 @@
 					};
 					
 					Numbers.between.multiple = false;
+					
+					/**
+					 * Checks if number is greater then an other
+					 * @param value {number}
+					 * @param num {number}
+					 * @returns {boolean}
+					 */
+					Numbers.greater = function (value, num) {
+					    return Types.number(value) &&
+					            Types.number(num) &&
+					            value > num;
+					};
+					
+					Numbers.greater.multiple = false;
+					
+					/**
+					 * Checks if number is lesser then an other
+					 * @param value {number}
+					 * @param num {number}
+					 * @returns {boolean}
+					 */
+					Numbers.lesser = function (value, num) {
+					    return Types.number(value) &&
+					            Types.number(num) &&
+					            value < num;
+					};
+					
+					Numbers.lesser.multiple = false;
 					
 					module.exports = Numbers;
 				},

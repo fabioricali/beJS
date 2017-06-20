@@ -266,3 +266,26 @@ describe('lesser', function () {
         assert.equal(result, false);
     });
 });
+
+describe('numeric', function () {
+    it('string number, should be return true', function () {
+        var result = be.numeric('20');
+        console.log(result);
+        assert.equal(result, true);
+    });
+    it('number, should be return true', function () {
+        var result = be.numeric(20);
+        console.log(result);
+        assert.equal(result, true);
+    });
+    it('0x10, should be return true', function () {
+        var result = be.numeric('0x10');
+        console.log(result);
+        assert.equal(result, true);
+    });
+    it('should be return false', function () {
+        var result = be.numeric('hello');
+        console.log(result);
+        assert.equal(result, false);
+    });
+});
