@@ -704,8 +704,7 @@
 					 * @returns {*|boolean}
 					 */
 					Numbers.float = function (value) {
-					    return Types.number(value) &&
-					        !Numbers.int(value);
+					    return Types.number(value) && !Numbers.int(value);
 					};
 					
 					/**
@@ -723,8 +722,7 @@
 					 * @returns {*|boolean}
 					 */
 					Numbers.even = function (value) {
-					    return Types.number(value) &&
-					        value % 2 === 0;
+					    return Types.number(value) && value % 2 === 0;
 					};
 					
 					/**
@@ -733,8 +731,7 @@
 					 * @returns {*|boolean}
 					 */
 					Numbers.odd = function (value) {
-					    return Types.number(value) &&
-					        !Numbers.even(value);
+					    return Types.number(value) && !Numbers.even(value);
 					};
 					
 					/**
@@ -743,8 +740,7 @@
 					 * @returns {*|boolean}
 					 */
 					Numbers.positive = function (value) {
-					    return Types.number(value) &&
-					        value > 0;
+					    return Types.number(value) && value > 0;
 					};
 					
 					/**
@@ -753,8 +749,7 @@
 					 * @returns {*|boolean}
 					 */
 					Numbers.negative = function (value) {
-					    return Types.number(value) &&
-					        value < 0;
+					    return Types.number(value) && value < 0;
 					};
 					
 					/**
@@ -792,10 +787,7 @@
 					 * @returns {boolean}
 					 */
 					Numbers.between = function (num, min, max) {
-					    return Types.number(num) &&
-					        Types.number(min) &&
-					        Types.number(max) &&
-					        num >= min && num <= max;
+					    return Types.each.number(num, min, max) && num >= min && num <= max;
 					};
 					
 					Numbers.between.multiple = false;
@@ -807,9 +799,7 @@
 					 * @returns {boolean}
 					 */
 					Numbers.greater = function (value, num) {
-					    return Types.number(value) &&
-					            Types.number(num) &&
-					            value > num;
+					    return Types.each.number(value, num) && value > num;
 					};
 					
 					Numbers.greater.multiple = false;
@@ -821,9 +811,7 @@
 					 * @returns {boolean}
 					 */
 					Numbers.lesser = function (value, num) {
-					    return Types.number(value) &&
-					            Types.number(num) &&
-					            value < num;
+					    return Types.each.number(value, num) && value < num;
 					};
 					
 					Numbers.lesser.multiple = false;
@@ -943,7 +931,8 @@
 					 * @returns {boolean}
 					 */
 					Strings.similarity =  function(string1, string2, threshold) {
-					    if(!Types.string(string1) || !Types.string(string2)) return false;
+					    //if(!Types.string(string1) || !Types.string(string2)) return false;
+					    if(!Types.each.string(string1, string2)) return false;
 					
 					    if(!Types.number(threshold) || threshold < 0 || threshold > 1)
 					        threshold = 1;
