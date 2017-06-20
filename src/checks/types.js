@@ -156,11 +156,8 @@ Types.sameType.multiple = false;
  * @returns {boolean}
  */
 Types.empty = function (value) {
-    if (Types.null(value)) return true;
-    if (Types.undefined(value)) return true;
-    if (Types.number(value)) return false;
-    if (Types.function(value)) return false;
-    if (Types.boolean(value)) return false;
+    if (Types.null(value) || Types.undefined(value)) return true;
+    if (Types.number(value) || Types.function(value) || Types.boolean(value)) return false;
 
     if (Types.object(value) || Types.array(value)) {
         if (value.length > 0)    return false;
