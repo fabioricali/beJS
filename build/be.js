@@ -839,6 +839,15 @@
 					
 					Numbers.lesser.multiple = false;
 					
+					/**
+					 * Checks if is a number as string or number type
+					 * @param value {*}
+					 * @returns {boolean}
+					 */
+					Numbers.numeric = function (value) {
+					    return (Types.number(value) || Types.string(value)) && !isNaN(value - parseFloat(value));
+					};
+					
 					module.exports = Numbers;
 				},
 				"objects.js": function (exports, module, require) {
@@ -1216,11 +1225,8 @@
 					 * @returns {boolean}
 					 */
 					Types.empty = function (value) {
-					    if (Types.null(value)) return true;
-					    if (Types.undefined(value)) return true;
-					    if (Types.number(value)) return false;
-					    if (Types.function(value)) return false;
-					    if (Types.boolean(value)) return false;
+					    if (Types.null(value) || Types.undefined(value)) return true;
+					    if (Types.number(value) || Types.function(value) || Types.boolean(value)) return false;
 					
 					    if (Types.object(value) || Types.array(value)) {
 					        if (value.length > 0)    return false;
