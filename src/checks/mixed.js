@@ -91,11 +91,11 @@ Mixed.semVer = function (value) {
  * @returns {boolean}
  */
 Mixed.equal = function (value, other) {
-    if(Types.number(value) && Types.number(other))
+    if(Types.each.number(value, other))
         return  value === other;
-    else if((Types.string(value) && Types.string(other)) || (Types.regexp(value) && Types.regexp(other)))
+    else if((Types.each.string(value, other)) || (Types.each.regexp(value, other)))
         return value + '' === '' + other;
-    else if(Types.boolean(value) && Types.boolean(other))
+    else if(Types.each.boolean(value, other))
         return value === other;
     else
         return false;
