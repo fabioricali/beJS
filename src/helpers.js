@@ -1,6 +1,7 @@
 /**
  * Created by Fabio on 17/06/2017.
  */
+var Types = require('./checks/types');
 
 /**
  * Helpers class
@@ -69,6 +70,47 @@ Helpers.getEditDistance = function(a, b) {
     }
 
     return matrix[b.length][a.length];
+};
+
+/**
+ * Create interface each and some
+ * @param obj
+ * @returns {*}
+ */
+Helpers.createInterface = function (obj) {
+    obj.each = {};
+    obj.some = {};
+    for(var i in obj){
+        if(obj.hasOwnProperty(i) && Types.function(obj[i]) && Types.undefined(obj[i].multiple)){
+            obj.each[i] = (function (j) {
+                return function () {
+                    var args = arguments;
+                    if(Types.array(args[0]))
+                        args = args[0];
+                    for(var a in args) {
+                        if (args.hasOwnProperty(a) && !obj[j].call(this, args[a]))
+                            return false;
+                    }
+                    return true;
+                }
+            })(i);
+
+            obj.some[i] = (function (j) {
+                return function () {
+                    var args = arguments;
+                    if(Types.array(args[0]))
+                        args = args[0];
+                    for(var a in args) {
+                        if (args.hasOwnProperty(a) && obj[j].call(this, args[a]))
+                            return true;
+                    }
+                    return false;
+                }
+            })(i);
+        }
+    }
+
+    return obj;
 };
 
 module.exports = Helpers;

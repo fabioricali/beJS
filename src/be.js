@@ -67,6 +67,8 @@ be._helpers = Helpers;
     /**
      * each and some
      */
+    be = Helpers.createInterface(be);
+    /*
     for(var i in be){
         if(be.hasOwnProperty(i) && be.function(be[i]) && be.undefined(be[i].multiple)){
             be.each[i] = (function (j) {
@@ -96,7 +98,7 @@ be._helpers = Helpers;
             })(i);
         }
     }
-
+/*
     /**
      * After add checks class
      */
