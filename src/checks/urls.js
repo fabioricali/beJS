@@ -1,6 +1,7 @@
 /**
  * Created by Fabio on 18/06/2017.
  */
+var Interface = require('../interface');
 var Urls = {};
 
 /**
@@ -57,5 +58,7 @@ Urls.ftpUrl = function (value) {
 Urls.ftpsUrl = function (value) {
     return Urls.url(value) && /^ftps:/i.test(value);
 };
+
+Urls = Interface.create(Urls);
 
 module.exports = Urls;

@@ -2,7 +2,7 @@
  * Created by Fabio on 18/06/2017.
  */
 var Types = require('./types');
-
+var Interface = require('../interface');
 var Mixed = {};
 
 /**
@@ -102,5 +102,7 @@ Mixed.equal = function (value, other) {
 };
 
 Mixed.equal.multiple = false;
+
+Mixed = Interface.create(Mixed);
 
 module.exports = Mixed;

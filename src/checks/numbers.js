@@ -2,6 +2,7 @@
  * Created by Fabio on 18/06/2017.
  */
 var Types = require('./types');
+var Interface = require('../interface');
 
 var Numbers = {};
 
@@ -154,5 +155,7 @@ Numbers.lesser.multiple = false;
 Numbers.numeric = function (value) {
     return (Types.number(value) || Types.string(value)) && !isNaN(value - parseFloat(value));
 };
+
+Numbers = Interface.create(Numbers);
 
 module.exports = Numbers;

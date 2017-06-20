@@ -2,6 +2,7 @@
  * Created by Fabio on 18/06/2017.
  */
 var Helpers = require('../helpers');
+var Interface = require('../interface');
 var Envs = {};
 
 /**
@@ -100,5 +101,7 @@ Envs.ie = function () {
 };
 
 Envs.ie.multiple = false;
+
+Envs = Interface.create(Envs);
 
 module.exports = Envs;

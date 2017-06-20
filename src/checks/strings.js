@@ -2,6 +2,7 @@
  * Created by Fabio on 18/06/2017.
  */
 var Helpers = require('../helpers');
+var Interface = require('../interface');
 var Types = require('./types');
 
 var Strings = {};
@@ -170,5 +171,7 @@ Strings.startWith = function (value, string, insensitive) {
 };
 
 Strings.startWith.multiple = false;
+
+Strings = Interface.create(Strings);
 
 module.exports = Strings;

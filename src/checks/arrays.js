@@ -2,6 +2,7 @@
  * Created by Fabio on 18/06/2017.
  */
 var Types = require('./types');
+var Interface = require('../interface');
 var Arrays = {};
 
 /**
@@ -20,5 +21,7 @@ Arrays.inArray = function (value, array) {
 };
 
 Arrays.inArray.multiple = false;
+
+Arrays = Interface.create(Arrays);
 
 module.exports = Arrays;

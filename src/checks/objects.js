@@ -2,6 +2,7 @@
  * Created by Fabio on 18/06/2017.
  */
 var Types = require('./types');
+var Interface = require('../interface');
 var Objects = {};
 
 /**
@@ -34,5 +35,7 @@ Objects.propertyCount = function (object, value) {
 };
 
 Objects.propertyCount.multiple = false;
+
+Objects = Interface.create(Objects);
 
 module.exports = Objects;

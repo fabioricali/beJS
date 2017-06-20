@@ -3,6 +3,7 @@
  */
 var Types = require('./types');
 var Numbers = require('./numbers');
+var Interface = require('../interface');
 var Dates = {};
 
 var _days = [
@@ -170,9 +171,10 @@ Dates.weekday = function (date) {
  * @returns {boolean}
  */
 Dates.dateBetween = function (date, startDate, endDate) {
-    return Types.date(date) &&
+    /*return Types.date(date) &&
         Types.date(startDate) &&
-        Types.date(endDate) &&
+        Types.date(endDate) &&*/
+    return Types.each.date(date, startDate, endDate) &&
         Numbers.between(date.getTime(), startDate.getTime(), endDate.getTime());
 };
 
@@ -190,5 +192,7 @@ Dates.dayLightSavingTime = function(date) {
     var stdTimezoneOffset = Math.max(jan.getTimezoneOffset(), jul.getTimezoneOffset());
     return date.getTimezoneOffset() < stdTimezoneOffset;
 };
+
+Dates = Interface.create(Dates);
 
 module.exports = Dates;

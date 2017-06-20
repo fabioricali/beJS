@@ -2,6 +2,7 @@
  * Created by Fabio on 18/06/2017.
  */
 var Helpers = require('../helpers');
+var Interface = require('../interface');
 var Types = {};
 
 /**
@@ -190,5 +191,7 @@ Types.falsy = function (value) {
 Types.truthy = function (value) {
     return !Types.falsy(value);
 };
+
+Types = Interface.create(Types);
 
 module.exports = Types;

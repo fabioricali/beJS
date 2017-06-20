@@ -1,6 +1,7 @@
 /**
  * Created by Fabio on 18/06/2017.
  */
+var Interface = require('../interface');
 var Hashes = {};
 
 /**
@@ -20,5 +21,7 @@ Hashes.md5 = function (value) {
 Hashes.sha1 = function (value) {
     return /^[a-f0-9]{40}$/.test(value);
 };
+
+Hashes = Interface.create(Hashes);
 
 module.exports = Hashes;
