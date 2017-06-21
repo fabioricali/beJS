@@ -337,3 +337,16 @@ describe('char', function () {
         assert.equal(result, false);
     });
 });
+
+describe('spaces', function () {
+    it('should be return true', function () {
+        var result = be.spaces('hello world');
+        console.log(result);
+        assert.equal(result, true);
+    });
+    it('should be return false', function () {
+        var result = be.spaces('helloworld');
+        console.log(result);
+        assert.equal(result, false);
+    });
+});
