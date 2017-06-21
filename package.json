@@ -1,11 +1,14 @@
 {
   "name": "bejs",
   "version": "1.0.0",
-  "description": "check tools",
+  "description": "The framework for checker tools",
   "main": "index.js",
   "scripts": {
+    "version:major": "npm version major",
+    "version:minor": "npm version minor",
+    "version:patch": "npm version patch",
     "build": "gulp build",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "mocha test"
   },
   "keywords": [
     "is",
@@ -28,5 +31,9 @@
     "gulp-uglify": "^3.0.0",
     "gulp-webmake": "0.0.41",
     "mocha": "^3.4.2"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/fabioricali/beJS"
   }
 }

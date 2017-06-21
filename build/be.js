@@ -891,7 +891,7 @@
 					    return Types.string(value) &&
 					        !Strings.upperCase(value) &&
 					        Strings.alphanumeric(value) &&
-					        Strings.space(value.replace(/([A-Z])/g, ' $1'));
+					        Strings.spaces(value.replace(/([A-Z])/g, ' $1'));
 					};
 					
 					/**
@@ -912,15 +912,6 @@
 					Strings.kebabCase = function (value) {
 					    return Strings.lowerCase(value) &&
 					        /^[0-9a-z]*-[0-9a-z]/ig.test(value);
-					};
-					
-					/**
-					 * Check if exists a space in string
-					 * @param value {string}
-					 * @returns {boolean}
-					 */
-					Strings.space = function (value) {
-					    return /\s/g.test(value);
 					};
 					
 					/**
@@ -1047,6 +1038,33 @@
 					};
 					
 					Strings.startWith.multiple = false;
+					
+					/**
+					 * Check if value is a single char
+					 * @param value {string}
+					 * @returns {boolean}
+					 */
+					Strings.char = function (value) {
+					    return Types.string(value) && value.length === 1;
+					};
+					
+					/**
+					 * Check if string is a space
+					 * @param value {string}
+					 * @returns {boolean}
+					 */
+					Strings.space = function (value) {
+					    return Strings.char(value) && /\s/.test(value);
+					};
+					
+					/**
+					 * Check if exists spaces in string
+					 * @param value {string}
+					 * @returns {boolean}
+					 */
+					Strings.spaces = function (value) {
+					    return /\s/.test(value);
+					};
 					
 					Strings = Interface.create(Strings);
 					
