@@ -193,7 +193,7 @@
 				        }
 				    }
 				
-				    if (be.serverEnv())
+				    if (be.commonjsEnv())
 				        module.exports = be;
 				    else
 				        window.be = be;
@@ -442,11 +442,11 @@
 					 * Check if server environment
 					 * @returns {boolean}
 					 */
-					Envs.serverEnv = function () {
+					Envs.commonjsEnv = function () {
 					    return typeof process !== 'undefined';
 					};
 					
-					Envs.serverEnv.multiple = false;
+					Envs.commonjsEnv.multiple = false;
 					
 					/**
 					 * Check if browser environment

@@ -79,7 +79,9 @@ be._helpers = Helpers;
         }
     }
 
-    if (be.serverEnv())
+    if (be.amdEnv())
+        define(function () { return be; });
+    else if (be.commonjsEnv())
         module.exports = be;
     else
         window.be = be;

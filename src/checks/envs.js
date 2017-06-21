@@ -9,11 +9,11 @@ var Envs = {};
  * Check if server environment
  * @returns {boolean}
  */
-Envs.serverEnv = function () {
+Envs.commonjsEnv = function () {
     return typeof process !== 'undefined';
 };
 
-Envs.serverEnv.multiple = false;
+Envs.commonjsEnv.multiple = false;
 
 /**
  * Check if browser environment
@@ -24,6 +24,16 @@ Envs.browserEnv = function () {
 };
 
 Envs.browserEnv.multiple = false;
+
+/**
+ * Check if AMD environment
+ * @returns {boolean}
+ */
+Envs.amdEnv = function () {
+    return typeof define === 'function' && define.amd;
+};
+
+Envs.amdEnv.multiple = false;
 
 /**
  * Check if is iOS device

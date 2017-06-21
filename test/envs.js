@@ -6,10 +6,10 @@ if(typeof process === 'object') {
     var be = require('../index');
 }
 
-describe('serverEnv', function () {
+describe('commonjsEnv', function () {
     if(typeof window === 'undefined')
         it('should be return true', function () {
-            var result = be.serverEnv();
+            var result = be.commonjsEnv();
             console.log(result);
             assert.equal(result, true);
         })
