@@ -324,3 +324,16 @@ describe('startWith', function () {
         assert.equal(result, false);
     });
 });
+
+describe('char', function () {
+    it('should be return true', function () {
+        var result = be.char('h');
+        console.log(result);
+        assert.equal(result, true);
+    });
+    it('should be return false', function () {
+        var result = be.char('hh');
+        console.log(result);
+        assert.equal(result, false);
+    });
+});

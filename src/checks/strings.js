@@ -173,6 +173,15 @@ Strings.startWith = function (value, string, insensitive) {
 
 Strings.startWith.multiple = false;
 
+/**
+ * Check if value is a single char
+ * @param value
+ * @returns {boolean}
+ */
+Strings.char = function (value) {
+    return Types.string(value) && value.length === 1;
+};
+
 Strings = Interface.create(Strings);
 
 module.exports = Strings;
