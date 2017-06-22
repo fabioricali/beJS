@@ -1,9 +1,9 @@
 /**
  * Created by Fabio on 18/06/2017.
  */
-var Types = require('./types');
-var Interface = require('../interface');
-var Objects = {};
+const Types = require('./types');
+const Interface = require('../interface');
+let Objects = {};
 
 /**
  * Check if is a property of an object
@@ -11,7 +11,7 @@ var Objects = {};
  * @param object {object}
  * @returns {boolean}
  */
-Objects.propertyOf = function (value, object) {
+Objects.propertyOf = (value, object) => {
     if(!Types.object(object)) return false;
     return object.hasOwnProperty(value);
 };
@@ -24,10 +24,10 @@ Objects.propertyOf.multiple = false;
  * @param value {int}
  * @returns {boolean}
  */
-Objects.propertyCount = function (object, value) {
+Objects.propertyCount = (object, value) => {
     if(!Types.object(object) || !Types.number(value)) return false;
-    var n = 0;
-    for(var i in object){
+    let n = 0;
+    for(let i in object){
         if(object.hasOwnProperty(i) && ++n > value)
             return false;
     }

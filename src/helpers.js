@@ -5,13 +5,13 @@
 /**
  * Helpers class
  */
-var Helpers = {};
+let Helpers = {};
 
 /**
  * Get user agent
  * @returns {*}
  */
-Helpers.getUserAgent = function () {
+Helpers.getUserAgent = () => {
     if (arguments.length)
         return arguments[0];
     else {
@@ -26,7 +26,7 @@ Helpers.getUserAgent = function () {
  * @param object {*}
  * @returns {*}
  */
-Helpers.objectToString = function (object) {
+Helpers.objectToString = (object) => {
     return Object.prototype.toString.call(object);
 };
 
@@ -37,20 +37,20 @@ Helpers.objectToString = function (object) {
  * @param b {string}
  * @returns {*}
  */
-Helpers.getEditDistance = function(a, b) {
+Helpers.getEditDistance = (a, b) => {
     if (a.length === 0) return b.length;
     if (b.length === 0) return a.length;
 
-    var matrix = [];
+    let matrix = [];
 
     // increment along the first column of each row
-    var i;
+    let i;
     for (i = 0; i <= b.length; i++) {
         matrix[i] = [i];
     }
 
     // increment each column in the first row
-    var j;
+    let j;
     for (j = 0; j <= a.length; j++) {
         matrix[0][j] = j;
     }

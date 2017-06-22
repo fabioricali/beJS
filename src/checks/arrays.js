@@ -1,9 +1,10 @@
 /**
  * Created by Fabio on 18/06/2017.
  */
-var Types = require('./types');
-var Interface = require('../interface');
-var Arrays = {};
+
+const Types = require('./types');
+const Interface = require('../interface');
+let Arrays = {};
 
 /**
  * Check if element is in array
@@ -11,9 +12,9 @@ var Arrays = {};
  * @param array {array}
  * @returns {boolean}
  */
-Arrays.inArray = function (value, array) {
+Arrays.inArray = (value, array) => {
     if(!Types.array(array)) return false;
-    for(var i in array){
+    for(let i in array){
         if(array.hasOwnProperty(i) && array[i] === value)
             return true;
     }

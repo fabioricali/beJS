@@ -1,8 +1,8 @@
 /**
  * Created by Fabio on 18/06/2017.
  */
-var Interface = require('../interface');
-var Urls = {};
+const Interface = require('../interface');
+let Urls = {};
 
 /**
  * Check if is valid string url
@@ -10,7 +10,7 @@ var Urls = {};
  * @param value {string}
  * @returns {boolean}
  */
-Urls.url = function (value) {
+Urls.url = (value) => {
     return /^(?:(?:https?|ftps?):\/\/)(?:\S+(?::\S*)?@)?(?:(?!(?:10|127)(?:\.\d{1,3}){3})(?!(?:169\.254|192\.168)(?:\.\d{1,3}){2})(?!172\.(?:1[6-9]|2\d|3[0-1])(?:\.\d{1,3}){2})(?:[1-9]\d?|1\d\d|2[01]\d|22[0-3])(?:\.(?:1?\d{1,2}|2[0-4]\d|25[0-5])){2}(?:\.(?:[1-9]\d?|1\d\d|2[0-4]\d|25[0-4]))|(?:(?:[a-z\u00a1-\uffff0-9]-*)*[a-z\u00a1-\uffff0-9]+)(?:\.(?:[a-z\u00a1-\uffff0-9]-*)*[a-z\u00a1-\uffff0-9]+)*(?:\.(?:[a-z\u00a1-\uffff]{2,}))\.?)(?::\d{2,5})?(?:[/?#]\S*)?$/i.test(value);
 };
 
@@ -19,7 +19,7 @@ Urls.url = function (value) {
  * @param value
  * @returns {*|boolean}
  */
-Urls.httpUrl = function (value) {
+Urls.httpUrl = (value) => {
     return Urls.url(value) && /^http:/i.test(value);
 };
 
@@ -28,7 +28,7 @@ Urls.httpUrl = function (value) {
  * @param value {string}
  * @returns {*|boolean}
  */
-Urls.httpsUrl = function (value) {
+Urls.httpsUrl = (value) => {
     return Urls.url(value) && /^https:/i.test(value);
 };
 
@@ -37,7 +37,7 @@ Urls.httpsUrl = function (value) {
  * @param value {string}
  * @returns {boolean}
  */
-Urls.urlEncoded = function (value) {
+Urls.urlEncoded = (value) => {
     return /%[0-9a-f]{2}/i.test(value);
 };
 
@@ -46,7 +46,7 @@ Urls.urlEncoded = function (value) {
  * @param value {string}
  * @returns {*|boolean}
  */
-Urls.ftpUrl = function (value) {
+Urls.ftpUrl = (value) => {
     return Urls.url(value) && /^ftp:/i.test(value);
 };
 
@@ -55,7 +55,7 @@ Urls.ftpUrl = function (value) {
  * @param value {string}
  * @returns {*|boolean}
  */
-Urls.ftpsUrl = function (value) {
+Urls.ftpsUrl = (value) => {
     return Urls.url(value) && /^ftps:/i.test(value);
 };
 

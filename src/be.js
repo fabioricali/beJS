@@ -2,8 +2,8 @@
  * Created by Fabio on 17/06/2017.
  */
 
-var Helpers = require('./helpers');
-var Interface = require('./interface');
+const Helpers = require('./helpers');
+const Interface = require('./interface');
 
 /**
  * Collection of checks
@@ -13,7 +13,7 @@ var Interface = require('./interface');
  *
  * @type {{Strings: *}}
  */
-var Checks = {
+let Checks = {
     Strings     :   require('./checks/strings'),
     Types       :   require('./checks/types'),
     Numbers     :   require('./checks/numbers'),
@@ -30,7 +30,7 @@ var Checks = {
  * be class
  * @type {*}
  */
-var be = {};
+let be = {};
 
 be.version = '0.0.0';
 be.each = {};
@@ -46,20 +46,33 @@ be._helpers = Helpers;
 /**
  * Create interfaces
  */
-(function () {
-
+( function() {
     /**
      * Add all methods to "be"
      */
-    for(var c in Checks){
+    /*
+    for(let c in Checks){
         if(Checks.hasOwnProperty(c)){
-            for(var f in Checks[c]){
+            for(let f in Checks[c]){
                 if(Checks[c].hasOwnProperty(f) && Checks.Types.function(Checks[c][f])) {
-                    be[f] = (function (b, k) {
-                        return function () {
+                    be[f] = ( (b, k) => {
+                        return () => {
                             return Checks[b][k].apply(this, arguments);
                         }
                     })(c, f)
+                }
+            }
+        }
+    }*/
+    for(let c in Checks){
+        if(Checks.hasOwnProperty(c)){
+            for(let f in Checks[c]){
+                if(Checks[c].hasOwnProperty(f) && Checks.Types.function(Checks[c][f])) {
+                    be[f] = () => {
+                        console.log(arguments);
+                            return Checks[c][f].apply(this, arguments);
+                        }
+
                 }
             }
         }
@@ -73,14 +86,14 @@ be._helpers = Helpers;
     /**
      * After add checks class
      */
-    for(var m in Checks) {
+    for(let m in Checks) {
         if (Checks.hasOwnProperty(m)) {
             be[m] = Checks[m];
         }
     }
 
     if (be.amdEnv())
-        define(function () { return be; });
+        define( () => { return be; });
     else if (be.commonjsEnv())
         module.exports = be;
     else

@@ -1,16 +1,15 @@
 /**
  * Created by fabioricali on 20/06/2017.
  */
-var Helpers = require('./helpers');
-var Interface = {};
+let Helpers = require('./helpers');
+let Interface = {};
 
 /**
  * Check if is array
  * @param object
  * @returns {boolean}
- * @private
  */
-Interface._isArray = function (object) {
+Interface._isArray = (object) => {
     return Helpers.objectToString(object).toLowerCase() === '[object array]'
 };
 
@@ -19,17 +18,17 @@ Interface._isArray = function (object) {
  * @param obj
  * @returns {*}
  */
-Interface.create = function (obj) {
+Interface.create = (obj) => {
     obj.each = {};
     obj.some = {};
-    for(var i in obj){
+    for(let i in obj){
         if(obj.hasOwnProperty(i) && typeof obj[i] === 'function' && typeof obj[i].multiple === 'undefined'){
-            obj.each[i] = (function (j) {
-                return function () {
-                    var args = arguments;
+            obj.each[i] = ( (j) => {
+                return () => {
+                    let args = arguments;
                     if(Interface._isArray(args[0]))
                         args = args[0];
-                    for(var a in args) {
+                    for(let a in args) {
                         if (args.hasOwnProperty(a) && !obj[j].call(this, args[a]))
                             return false;
                     }
@@ -37,12 +36,12 @@ Interface.create = function (obj) {
                 }
             })(i);
 
-            obj.some[i] = (function (j) {
-                return function () {
-                    var args = arguments;
+            obj.some[i] = ( (j) => {
+                return () => {
+                    let args = arguments;
                     if(Interface._isArray(args[0]))
                         args = args[0];
-                    for(var a in args) {
+                    for(let a in args) {
                         if (args.hasOwnProperty(a) && obj[j].call(this, args[a]))
                             return true;
                     }

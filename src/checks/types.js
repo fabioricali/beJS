@@ -1,9 +1,9 @@
 /**
  * Created by Fabio on 18/06/2017.
  */
-var Helpers = require('../helpers');
-var Interface = require('../interface');
-var Types = {};
+const Helpers = require('../helpers');
+const Interface = require('../interface');
+let Types = {};
 
 /**
  * Check [object ?] class
@@ -11,7 +11,7 @@ var Types = {};
  * @param className {string}
  * @returns {boolean}
  */
-Types.classOf = function (object, className) {
+Types.classOf = (object, className) => {
     return Helpers.objectToString(object).toLowerCase() === '[object ' + className + ']'.toLowerCase();
 };
 
@@ -22,7 +22,7 @@ Types.classOf.multiple = false;
  * @param value {*}
  * @returns {boolean}
  */
-Types.boolean = function (value) {
+Types.boolean = (value) => {
     return Types.classOf(value, 'boolean');
 };
 
@@ -31,7 +31,7 @@ Types.boolean = function (value) {
  * @param value {*}
  * @returns {boolean}
  */
-Types.booleanFalse = function (value) {
+Types.booleanFalse = (value) => {
     return Types.boolean(value) && value === false;
 };
 
@@ -40,7 +40,7 @@ Types.booleanFalse = function (value) {
  * @param value {*}
  * @returns {boolean}
  */
-Types.booleanTrue = function (value) {
+Types.booleanTrue = (value) => {
     return Types.boolean(value) && value === true;
 };
 
@@ -49,7 +49,7 @@ Types.booleanTrue = function (value) {
  * @param value {*}
  * @returns {boolean}
  */
-Types.number = function (value) {
+Types.number = (value) => {
     return Types.classOf(value, 'number') && !isNaN(value);
 };
 
@@ -58,7 +58,7 @@ Types.number = function (value) {
  * @param value {*}
  * @returns {boolean}
  */
-Types.string = function (value) {
+Types.string = (value) => {
     return Types.classOf(value, 'string');
 };
 
@@ -67,7 +67,7 @@ Types.string = function (value) {
  * @param value {*}
  * @returns {boolean}
  */
-Types.undefined = function (value) {
+Types.undefined = (value) => {
     return Types.classOf(value, 'undefined');
 };
 
@@ -76,7 +76,7 @@ Types.undefined = function (value) {
  * @param value {*}
  * @returns {boolean}
  */
-Types['null'] = function (value) {
+Types['null'] = (value) => {
     return Types.classOf(value, 'null');
 };
 
@@ -85,7 +85,7 @@ Types['null'] = function (value) {
  * @param value {*}
  * @returns {boolean}
  */
-Types.object = function (value) {
+Types.object = (value) => {
     return Types.classOf(value, 'object') && !Types.array(value);
 };
 
@@ -94,7 +94,7 @@ Types.object = function (value) {
  * @param value {*}
  * @returns {boolean}
  */
-Types.array = function (value) {
+Types.array = (value) => {
     return Types.classOf(value, 'array');
 };
 
@@ -103,7 +103,7 @@ Types.array = function (value) {
  * @param value {*}
  * @returns {boolean}
  */
-Types.json = function (value) {
+Types.json = (value) => {
     try {
         JSON.parse(value);
         return true;
@@ -117,7 +117,7 @@ Types.json = function (value) {
  * @param value {*}
  * @returns {boolean}
  */
-Types.date = function (value) {
+Types.date = (value) => {
     return Types.classOf(value, 'date');
 };
 
@@ -126,7 +126,7 @@ Types.date = function (value) {
  * @param value {*}
  * @returns {boolean}
  */
-Types['function'] = function (value) {
+Types['function'] = (value) => {
     return Types.classOf(value, 'function');
 };
 
@@ -135,7 +135,7 @@ Types['function'] = function (value) {
  * @param value {*}
  * @returns {boolean}
  */
-Types.regexp = function (value) {
+Types.regexp = (value) => {
     return Types.classOf(value,'regexp');
 };
 
@@ -145,7 +145,7 @@ Types.regexp = function (value) {
  * @param other {*}
  * @returns {boolean}
  */
-Types.sameType = function (value, other) {
+Types.sameType = (value, other) =>{
     return Helpers.objectToString(value) === Helpers.objectToString(other);
 };
 
@@ -156,7 +156,7 @@ Types.sameType.multiple = false;
  * @param value {*}
  * @returns {boolean}
  */
-Types.empty = function (value) {
+Types.empty = (value) => {
     if (Types.null(value) || Types.undefined(value)) return true;
     if (Types.number(value) || Types.function(value) || Types.boolean(value)) return false;
 
@@ -164,7 +164,7 @@ Types.empty = function (value) {
         if (value.length > 0)    return false;
         if (value.length === 0)  return true;
 
-        for (var key in value) {
+        for (let key in value) {
             if (Object.prototype.hasOwnProperty.call(value, key)) return false;
         }
     }
@@ -178,7 +178,7 @@ Types.empty = function (value) {
  * @param value {*}
  * @returns {boolean}
  */
-Types.falsy = function (value) {
+Types.falsy = (value) => {
     return !value;
 };
 
@@ -188,7 +188,7 @@ Types.falsy = function (value) {
  * @param value {*}
  * @returns {boolean}
  */
-Types.truthy = function (value) {
+Types.truthy = (value) => {
     return !Types.falsy(value);
 };
 

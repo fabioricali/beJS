@@ -1,15 +1,15 @@
 /**
  * Created by Fabio on 18/06/2017.
  */
-var Interface = require('../interface');
-var Hashes = {};
+const Interface = require('../interface');
+let Hashes = {};
 
 /**
  * Check if is a valid MD5 hash string
  * @param value {string}
  * @returns {boolean}
  */
-Hashes.md5 = function (value) {
+Hashes.md5 = (value) => {
     return /^[a-f0-9]{32}$/.test(value);
 };
 
@@ -18,7 +18,7 @@ Hashes.md5 = function (value) {
  * @param value {string}
  * @returns {boolean}
  */
-Hashes.sha1 = function (value) {
+Hashes.sha1 = (value) => {
     return /^[a-f0-9]{40}$/.test(value);
 };
 

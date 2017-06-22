@@ -1,17 +1,17 @@
 /**
  * Created by Fabio on 18/06/2017.
  */
-var Types = require('./types');
-var Interface = require('../interface');
+const Types = require('./types');
+const Interface = require('../interface');
 
-var Numbers = {};
+let Numbers = {};
 
 /**
  * Check if a number is integer
  * @param value {number}
  * @returns {*|boolean}
  */
-Numbers.int = function (value) {
+Numbers.int = (value) => {
     return Types.number(value) &&
         isFinite(value) &&
         Math.floor(value) === value;
@@ -22,7 +22,7 @@ Numbers.int = function (value) {
  * @param value {number}
  * @returns {*|boolean}
  */
-Numbers.float = function (value) {
+Numbers.float = (value) => {
     return Types.number(value) && !Numbers.int(value);
 };
 
@@ -31,7 +31,7 @@ Numbers.float = function (value) {
  * @param value {*}
  * @returns {*|boolean}
  */
-Numbers.nan = function (value) {
+Numbers.nan = (value) => {
     return isNaN(value);
 };
 
@@ -40,7 +40,7 @@ Numbers.nan = function (value) {
  * @param value {number}
  * @returns {*|boolean}
  */
-Numbers.even = function (value) {
+Numbers.even = (value) => {
     return Types.number(value) && value % 2 === 0;
 };
 
@@ -49,7 +49,7 @@ Numbers.even = function (value) {
  * @param value {number}
  * @returns {*|boolean}
  */
-Numbers.odd = function (value) {
+Numbers.odd = (value) => {
     return Types.number(value) && !Numbers.even(value);
 };
 
@@ -58,7 +58,7 @@ Numbers.odd = function (value) {
  * @param value {number}
  * @returns {*|boolean}
  */
-Numbers.positive = function (value) {
+Numbers.positive = (value) => {
     return Types.number(value) && value > 0;
 };
 
@@ -67,7 +67,7 @@ Numbers.positive = function (value) {
  * @param value {number}
  * @returns {*|boolean}
  */
-Numbers.negative = function (value) {
+Numbers.negative = (value) => {
     return Types.number(value) && value < 0;
 };
 
@@ -76,7 +76,7 @@ Numbers.negative = function (value) {
  * @param value {number}
  * @returns {boolean}
  */
-Numbers.infinityPositive = function (value) {
+Numbers.infinityPositive = (value) => {
     return value === Number.POSITIVE_INFINITY;
 };
 
@@ -85,7 +85,7 @@ Numbers.infinityPositive = function (value) {
  * @param value {number}
  * @returns {boolean}
  */
-Numbers.infinityNegative = function (value) {
+Numbers.infinityNegative = (value) => {
     return value === Number.NEGATIVE_INFINITY;
 };
 
@@ -94,7 +94,7 @@ Numbers.infinityNegative = function (value) {
  * @param value {number}
  * @returns {boolean}
  */
-Numbers.infinity = function (value) {
+Numbers.infinity = (value) => {
     return Numbers.infinityPositive(value) || Numbers.infinityNegative(value);
 };
 
@@ -105,7 +105,7 @@ Numbers.infinity = function (value) {
  * @param max {number}
  * @returns {boolean}
  */
-Numbers.between = function (num, min, max) {
+Numbers.between = (num, min, max) => {
     return Types.each.number(num, min, max) && num >= min && num <= max;
 };
 
@@ -117,7 +117,7 @@ Numbers.between.multiple = false;
  * @param num {number}
  * @returns {boolean}
  */
-Numbers.greater = function (value, num) {
+Numbers.greater = (value, num) => {
     return Types.each.number(value, num) && value > num;
 };
 
@@ -129,7 +129,7 @@ Numbers.greater.multiple = false;
  * @param num {number}
  * @returns {boolean}
  */
-Numbers.lesser = function (value, num) {
+Numbers.lesser = (value, num) => {
     return Types.each.number(value, num) && value < num;
 };
 
@@ -140,7 +140,7 @@ Numbers.lesser.multiple = false;
  * @param value {*}
  * @returns {boolean}
  */
-Numbers.numeric = function (value) {
+Numbers.numeric = (value) => {
     return (Types.number(value) || Types.string(value)) && !isNaN(value - parseFloat(value));
 };
 

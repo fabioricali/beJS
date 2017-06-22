@@ -1,18 +1,18 @@
 /**
  * Created by Fabio on 18/06/2017.
  */
-var Helpers = require('../helpers');
-var Interface = require('../interface');
-var Types = require('./types');
+const Helpers = require('../helpers');
+const Interface = require('../interface');
+const Types = require('./types');
 
-var Strings = {};
+let Strings = {};
 
 /**
  * Check if string is in camelCase format
  * @param value {string}
  * @returns {boolean}
  */
-Strings.camelCase = function (value) {
+Strings.camelCase = (value) => {
     return Types.string(value) &&
         !Strings.upperCase(value) &&
         Strings.alphanumeric(value) &&
@@ -24,7 +24,7 @@ Strings.camelCase = function (value) {
  * @param value {string}
  * @returns {boolean}
  */
-Strings.snakeCase = function (value) {
+Strings.snakeCase = (value) => {
     return Strings.lowerCase(value) &&
         /^[0-9a-z]*_[0-9a-z]/ig.test(value);
 };
@@ -34,7 +34,7 @@ Strings.snakeCase = function (value) {
  * @param value {string}
  * @returns {boolean}
  */
-Strings.kebabCase = function (value) {
+Strings.kebabCase = (value) => {
     return Strings.lowerCase(value) &&
         /^[0-9a-z]*-[0-9a-z]/ig.test(value);
 };
@@ -46,21 +46,21 @@ Strings.kebabCase = function (value) {
  * @param threshold {int|float} 0 to 1
  * @returns {boolean}
  */
-Strings.similarity =  function(string1, string2, threshold) {
+Strings.similarity =  (string1, string2, threshold) => {
     //if(!Types.string(string1) || !Types.string(string2)) return false;
     if(!Types.each.string(string1, string2)) return false;
 
     if(!Types.number(threshold) || threshold < 0 || threshold > 1)
         threshold = 1;
 
-    var longer = string1;
-    var shorter = string2;
+    let longer = string1;
+    let shorter = string2;
 
     if (string1.length < string2.length) {
         longer = string2;
         shorter = string1;
     }
-    var longerLength = longer.length;
+    let longerLength = longer.length;
 
     return ((longerLength - Helpers.getEditDistance(longer, shorter)) /
         parseFloat(longerLength)) >= threshold;
@@ -74,7 +74,7 @@ Strings.similarity.multiple = false;
  * @param value {string}
  * @returns {boolean}
  */
-Strings.contains = function (string, value) {
+Strings.contains = (string, value) => {
     if (!Types.string(string)) return false;
     return string.indexOf(value) > -1;
 };
@@ -86,7 +86,7 @@ Strings.contains.multiple = false;
  * @param value {string}
  * @returns {boolean}
  */
-Strings.lowerCase = function (value) {
+Strings.lowerCase = (value) => {
     if (!Types.string(value)) return false;
     return value.toLowerCase() === value;
 };
@@ -96,7 +96,7 @@ Strings.lowerCase = function (value) {
  * @param value {string}
  * @returns {boolean}
  */
-Strings.upperCase = function (value) {
+Strings.upperCase = (value) => {
     if (!Types.string(value)) return false;
     return value.toUpperCase() === value;
 };
@@ -106,9 +106,9 @@ Strings.upperCase = function (value) {
  * @param value {string}
  * @returns {boolean}
  */
-Strings.word = function (value) {
+Strings.word = (value) => {
     if (!Types.string(value)) return false;
-    var trimmed = value.trim();
+    let trimmed = value.trim();
     return trimmed.length > 0 && trimmed.split(' ').length === 1;
 };
 
@@ -117,13 +117,13 @@ Strings.word = function (value) {
  * @param value {string}
  * @returns {boolean}
  */
-Strings.capitalized = function (value) {
+Strings.capitalized = (value) => {
     if (!Types.string(value)) return false;
-    var trimmed = value.trim();
+    let trimmed = value.trim();
     if (trimmed.length === 0) return false;
-    var words = value.trim().split(' ');
-    for(var i in words){
-        var char = words[i].charAt(0);
+    let words = value.trim().split(' ');
+    for(let i in words){
+        let char = words[i].charAt(0);
         if(char !== char.toUpperCase())
             return false;
     }
@@ -135,7 +135,7 @@ Strings.capitalized = function (value) {
  * @param value {string}
  * @returns {boolean}
  */
-Strings.emptyString = function(value){
+Strings.emptyString = (value) => {
     return Types.string(value) && value.length === 0;
 };
 
@@ -144,7 +144,7 @@ Strings.emptyString = function(value){
  * @param value {string}
  * @returns {boolean|*}
  */
-Strings.alphanumeric = function (value) {
+Strings.alphanumeric = (value) => {
     return /^[a-z0-9]+$/i.test(value) &&
         Types.string(value);
 };
@@ -156,9 +156,9 @@ Strings.alphanumeric = function (value) {
  * @param insensitive {boolean|*}
  * @returns {boolean}
  */
-Strings.startWith = function (value, string, insensitive) {
+Strings.startWith = (value, string, insensitive) => {
     if(Types.falsy(insensitive)) insensitive = false;
-    var regex = new RegExp('^' + value, Types.booleanTrue(insensitive) ? 'i' : '');
+    let regex = new RegExp('^' + value, Types.booleanTrue(insensitive) ? 'i' : '');
     return regex.test(string);
 };
 
@@ -169,7 +169,7 @@ Strings.startWith.multiple = false;
  * @param value {string}
  * @returns {boolean}
  */
-Strings.char = function (value) {
+Strings.char = (value) => {
     return Types.string(value) && value.length === 1;
 };
 
@@ -178,7 +178,7 @@ Strings.char = function (value) {
  * @param value {string}
  * @returns {boolean}
  */
-Strings.space = function (value) {
+Strings.space = (value) => {
     return Strings.char(value) && /\s/.test(value);
 };
 
@@ -187,7 +187,7 @@ Strings.space = function (value) {
  * @param value {string}
  * @returns {boolean}
  */
-Strings.spaces = function (value) {
+Strings.spaces = (value) => {
     return /\s/.test(value);
 };
 

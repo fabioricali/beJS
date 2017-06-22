@@ -1,14 +1,21 @@
 /**
  * Created by Fabio on 18/06/2017.
  */
-if(typeof process === 'object') {
-    var assert = require('assert');
-    var be = require('../index');
-}
+//if(typeof process === 'object') {
+    const assert = require('assert');
+    const be = require('../index');
+    const Types = require('../src/checks/types');
+//}
 
 describe('boolean', function () {
     it('boolean value, should be return true', function () {
-        var result = be.boolean(false);
+        var result = be.boolean(true);
+        console.log(result);
+        assert.equal(result, true);
+    });
+
+    it('using direct module, boolean value, should be return true', function () {
+        var result = Types.boolean(false);
         console.log(result);
         assert.equal(result, true);
     });
