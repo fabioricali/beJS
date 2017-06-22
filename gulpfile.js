@@ -70,7 +70,7 @@ function build(min) {
     pipe(gulp.dest('dist'));
 }
 
-/** Distributables */
+/** Distributable */
 gulp.task('cleanup:dist', () => {
     return del.sync('dist/*.js');
 });
