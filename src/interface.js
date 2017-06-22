@@ -10,7 +10,7 @@ let Interface = {};
  * @returns {boolean}
  */
 Interface._isArray = (object) => {
-    return Helpers.objectToString(object).toLowerCase() === '[object array]'
+    return Helpers.objectToString(object) === '[object Array]'
 };
 
 /**
