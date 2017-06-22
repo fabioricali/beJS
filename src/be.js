@@ -1,17 +1,19 @@
 /**
- * Created by Fabio on 17/06/2017.
- */
+ * @module beJS
+ * @version 1.0.0
+ * @author Fabio Ricali <fabio@rica.li>
+ * @copyright rica.li 2017
+ * @license MIT
+ * @description The framework for checker tools
+ **/
 
 const Helpers = require('./helpers');
 const Interface = require('./interface');
 
 /**
  * Collection of checks
- * @type {[*]}
- */
-/**
- *
- * @type {{Strings: *}}
+ * @type {{Strings, Types, Numbers, Envs, Objects, Mixed, Arrays, Dates, Urls, Hashes}}
+ * @private
  */
 let Checks = {
     Strings: require('./checks/strings'),
@@ -28,7 +30,8 @@ let Checks = {
 
 /**
  * be class
- * @type {*}
+ * @type {Object}
+ * @private
  */
 let be = {};
 
@@ -64,6 +67,7 @@ be._helpers = Helpers;
 
     /**
      * Create each and some
+     * @type {be}
      */
     be = Interface.create(be);
 
