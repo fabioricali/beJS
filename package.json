@@ -25,12 +25,19 @@
   "author": "Fabio Ricali",
   "license": "MIT",
   "devDependencies": {
+    "browserify": "^14.4.0",
     "del": "^3.0.0",
     "gulp": "^3.9.1",
     "gulp-bump": "^2.7.0",
+    "gulp-rename": "^1.2.2",
     "gulp-uglify": "^3.0.0",
+    "gulp-util": "^3.0.8",
     "gulp-webmake": "0.0.41",
-    "mocha": "^3.4.2"
+    "jsdox": "^0.4.10",
+    "mocha": "^3.4.2",
+    "uglify-es": "^3.0.19",
+    "vinyl-buffer": "^1.0.0",
+    "vinyl-source-stream": "^1.1.0"
   },
   "repository": {
     "type": "git",

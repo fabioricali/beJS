@@ -1,14 +1,14 @@
 /**
  * Created by Fabio on 11/06/2017.
  */
-//if(typeof process === 'object') {
-    const assert = require('assert');
-    const be = require('../index');
-//}
+if(typeof process === 'object') {
+    var assert = require('assert');
+    var be = require('../index');
+}
 it('count class methods', function () {
-    let result = 0;
-    let count = 0;
-    let Checks = [
+    var result = 0;
+    var count = 0;
+    var Checks = [
         'Strings',
         'Types',
         'Numbers',
@@ -20,10 +20,10 @@ it('count class methods', function () {
         'Urls',
         'Hashes'
     ];
-    for (let i in Checks){
+    for (var i in Checks){
         if(Checks.hasOwnProperty(i)){
             count = 0;
-            for (let m in be[Checks[i]]){
+            for (var m in be[Checks[i]]){
                 if(be[Checks[i]].hasOwnProperty(m) && be.function(be[Checks[i]][m]) )
                     count++;
             }

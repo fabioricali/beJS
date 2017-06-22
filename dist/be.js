@@ -1,1 +1,808 @@
-!function(e){"use strict";var t,r,n,i,a,u={".js":[],".json":[],".css":[],".html":[]},o="function"==typeof require?require:null;return i=function(e){var t=new Error("Could not find module '"+e+"'");return t.code="MODULE_NOT_FOUND",t},a=function(e,t,r){var n,i;if("function"==typeof e[t+r])return t+r;for(n=0;i=u[r][n];++n)if("function"==typeof e[t+i])return t+i;return null},t=function(e,n,u,o,s,f){var c,l,p,d,h,g;for("."!==(c=(u=u.split(/[\\/]/)).pop())&&".."!==c||(u.push(c),c="");null!=(l=u.shift());)if(l&&"."!==l&&(".."===l?(e=n.pop(),f=f.slice(0,f.lastIndexOf("/"))):(n.push(e),e=e[l],f+="/"+l),!e))throw i(o);if(c&&"function"!=typeof e[c]&&((g=a(e,c,".js"))||(g=a(e,c,".json")),g||(g=a(e,c,".css")),g||(g=a(e,c,".html")),g?c=g:2!==s&&"object"==typeof e[c]&&(n.push(e),e=e[c],f+="/"+c,c="")),!c)return 1!==s&&e[":mainpath:"]?t(e,n,e[":mainpath:"],o,1,f):t(e,n,"index",o,2,f);if(!(h=e[c]))throw i(o);return h.hasOwnProperty("module")?h.module.exports:(p={},h.module=d={exports:p,id:f+"/"+c},h.call(p,p,d,r(e,n,f)),d.exports)},n=function(r,n,a,u){var s,f=a,c=a.charAt(0),l=0;if("/"===c){if(f=f.slice(1),!(r=e["/"])){if(o)return o(a);throw i(a)}u="/",n=[]}else if("."!==c){if(s=f.split("/",1)[0],!(r=e[s])){if(o)return o(a);throw i(a)}u=s,n=[],(f=f.slice(s.length+1))||((f=r[":mainpath:"])?l=1:(f="index",l=2))}return t(r,n,f,a,l,u)},(r=function(e,t,r){return function(i){return n(e,[].concat(t),i,r)}})(e,[],"")}({beJS:{src:{"be.js":function(e,t,r){var n=r("./helpers"),i=r("./interface"),a={Strings:r("./checks/strings"),Types:r("./checks/types"),Numbers:r("./checks/numbers"),Envs:r("./checks/envs"),Objects:r("./checks/objects"),Mixed:r("./checks/mixed"),Arrays:r("./checks/arrays"),Dates:r("./checks/dates"),Urls:r("./checks/urls"),Hashes:r("./checks/hashes")},u={};u.version="0.0.0",u.each={},u.some={},u._helpers=n,function(){for(var e in a)if(a.hasOwnProperty(e))for(var r in a[e])a[e].hasOwnProperty(r)&&a.Types.function(a[e][r])&&(u[r]=function(e,t){return function(){return a[e][t].apply(this,arguments)}}(e,r));u=i.create(u);for(var n in a)a.hasOwnProperty(n)&&(u[n]=a[n]);u.commonjsEnv()?t.exports=u:window.be=u}()},checks:{"arrays.js":function(e, t, r){var n=r("./types"),i=r("../interface"),a={};a.inArray=function(e, t){if(!n.array(t))return!1;for(var r in t)if(t.hasOwnProperty(r)&&t[r]===e)return!0;return!1},a.inArray.multiple=!1,a=i.create(a),t.exports=a},"dates.js":function(e, t, r){var n=r("./types"),i=r("./numbers"),a=r("../interface"),u={},o=["sunday","monday","tuesday","wednesday","thursday","friday","saturday"],s=["january","february","march","april","may","june","july","august","september","october","november","december"];u.dateString=function(e){var t=Date.parse(e);return!isNaN(t)},u.today=function(e){var t=new Date;return n.date(e)&&t.toDateString()===e.toDateString()},u.tomorrow=function(e){var t=new Date;return t.setDate(t.getDate()+1),n.date(e)&&t.toDateString()===e.toDateString()},u.yesterday=function(e){var t=new Date;return t.setDate(t.getDate()-1),n.date(e)&&t.toDateString()===e.toDateString()},u.past=function(e){var t=(new Date).getTime();return n.date(e)&&t>e.getTime()},u.future=function(e){return n.date(e)&&!u.past(e)},u.day=function(e,t){return n.date(e)&&n.string(t)&&o[e.getDay()]===t.toLowerCase()},u.day.multiple=!1,u.month=function(e,t){return n.date(e)&&n.string(t)&&s[e.getMonth()]===t.toLowerCase()},u.month.multiple=!1,u.year=function(e,t){return n.date(e)&&n.number(t)&&e.getFullYear()===t},u.year.multiple=!1,u.leapYear=function(e){return n.number(e)&&e%4==0&&e%100!=0||e%400==0},u.weekend=function(e){return u.day(e,"saturday")||u.day(e,"sunday")},u.weekday=function(e){return n.date(e)&&!u.weekend(e)},u.dateBetween=function(e, t, r){return n.each.date(e,t,r)&&i.between(e.getTime(),t.getTime(),r.getTime())},u.dateBetween.multiple=!1,u.dayLightSavingTime=function(e){if(!n.date(e))return!1;var t=new Date(e.getFullYear(),0,1),r=new Date(e.getFullYear(),6,1),i=Math.max(t.getTimezoneOffset(),r.getTimezoneOffset());return e.getTimezoneOffset()<i},u=a.create(u),t.exports=u},"envs.js":function(e, t, r){var n=r("../helpers"),i=r("../interface"),a={};a.commonjsEnv=function(){return"undefined"!=typeof process},a.commonjsEnv.multiple=!1,a.browserEnv=function(){return"undefined"!=typeof window},a.browserEnv.multiple=!1,a.ios=function(){var e=n.getUserAgent.apply(this,arguments);return/iPhone|iPad|iPod/i.test(e)},a.ios.multiple=!1,a.android=function(){var e=n.getUserAgent.apply(this,arguments);return/Android/i.test(e)},a.android.multiple=!1,a.navigator=function(){return a.browserEnv()&&void 0!==window.navigator},a.navigator.multiple=!1,a.firefox=function(){var e=n.getUserAgent.apply(this,arguments);return/Firefox/i.test(e)},a.firefox.multiple=!1,a.chrome=function(){var e=n.getUserAgent.apply(this,arguments);return/Chrome/i.test(e)},a.chrome.multiple=!1,a.safari=function(){var e=n.getUserAgent.apply(this,arguments);return/Safari/i.test(e.replace("Chrome",""))&&!/Chrome/i.test(e.replace("Safari",""))},a.safari.multiple=!1,a.ie=function(){var e=n.getUserAgent.apply(this,arguments);return/MSIE|Trident/i.test(e)},a.ie.multiple=!1,a=i.create(a),t.exports=a},"hashes.js":function(e,t,r){var n=r("../interface"),i={};i.md5=function(e){return/^[a-f0-9]{32}$/.test(e)},i.sha1=function(e){return/^[a-f0-9]{40}$/.test(e)},i=n.create(i),t.exports=i},"mixed.js":function(e,t,r){var n=r("./types"),i=r("../interface"),a={};a.email=function(e){return/^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(e)},a.hex=function(e){return/^(?:0x)?[a-f0-9]+$/.test(e)},a.hexColor=function(e){try{return e=e.replace("#",""),a.hex(e)&&(3===e.length||6===e.length)}catch(e){return!1}},a.ipv4=function(e){return/^(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)$/.test(e)},a.ipv6=function(e){return/^(([0-9A-Fa-f]{1,4}:){7}([0-9A-Fa-f]{1,4}|:))|(([0-9A-Fa-f]{1,4}:){6}(:[0-9A-Fa-f]{1,4}|((25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)(\.(25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)){3})|:))|(([0-9A-Fa-f]{1,4}:){5}(((:[0-9A-Fa-f]{1,4}){1,2})|:((25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)(\.(25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)){3})|:))|(([0-9A-Fa-f]{1,4}:){4}(((:[0-9A-Fa-f]{1,4}){1,3})|((:[0-9A-Fa-f]{1,4})?:((25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)(\.(25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)){3}))|:))|(([0-9A-Fa-f]{1,4}:){3}(((:[0-9A-Fa-f]{1,4}){1,4})|((:[0-9A-Fa-f]{1,4}){0,2}:((25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)(\.(25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)){3}))|:))|(([0-9A-Fa-f]{1,4}:){2}(((:[0-9A-Fa-f]{1,4}){1,5})|((:[0-9A-Fa-f]{1,4}){0,3}:((25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)(\.(25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)){3}))|:))|(([0-9A-Fa-f]{1,4}:){1}(((:[0-9A-Fa-f]{1,4}){1,6})|((:[0-9A-Fa-f]{1,4}){0,4}:((25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)(\.(25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)){3}))|:))|(:(((:[0-9A-Fa-f]{1,4}){1,7})|((:[0-9A-Fa-f]{1,4}){0,5}:((25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)(\.(25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)){3}))|:))$/.test(e)},a.ip=function(e){return a.ipv4(e)||a.ipv6(e)},a.base64=function(e){return/^([0-9a-zA-Z+/]{4})*(([0-9a-zA-Z+/]{2}==)|([0-9a-zA-Z+/]{3}=))?$/.test(e)},a.semVer=function(e){return/^(\d*)\.(\d*)\.(\d*)(-(\d*|\d*[a-z-][0-9a-z-]*)(\.(\d*|\d*[a-z-][0-9a-z-]*))*)?(\+[0-9a-z-]+(\.[0-9a-z-]+)*)?$/i.test(e)},a.equal=function(e,t){return n.each.number(e,t)?e===t:n.each.string(e,t)||n.each.regexp(e,t)?e+""==""+t:!!n.each.boolean(e,t)&&e===t},a.equal.multiple=!1,a=i.create(a),t.exports=a},"numbers.js":function(e,t,r){var n=r("./types"),i=r("../interface"),a={};a.int=function(e){return n.number(e)&&isFinite(e)&&Math.floor(e)===e},a.float=function(e){return n.number(e)&&!a.int(e)},a.nan=function(e){return isNaN(e)},a.even=function(e){return n.number(e)&&e%2==0},a.odd=function(e){return n.number(e)&&!a.even(e)},a.positive=function(e){return n.number(e)&&e>0},a.negative=function(e){return n.number(e)&&e<0},a.infinityPositive=function(e){return e===Number.POSITIVE_INFINITY},a.infinityNegative=function(e){return e===Number.NEGATIVE_INFINITY},a.infinity=function(e){return a.infinityPositive(e)||a.infinityNegative(e)},a.between=function(e,t,r){return n.each.number(e,t,r)&&e>=t&&e<=r},a.between.multiple=!1,a.greater=function(e,t){return n.each.number(e,t)&&e>t},a.greater.multiple=!1,a.lesser=function(e,t){return n.each.number(e,t)&&e<t},a.lesser.multiple=!1,a.numeric=function(e){return(n.number(e)||n.string(e))&&!isNaN(e-parseFloat(e))},a=i.create(a),t.exports=a},"objects.js":function(e,t,r){var n=r("./types"),i=r("../interface"),a={};a.propertyOf=function(e,t){return!!n.object(t)&&t.hasOwnProperty(e)},a.propertyOf.multiple=!1,a.propertyCount=function(e,t){if(!n.object(e)||!n.number(t))return!1;var r=0;for(var i in e)if(e.hasOwnProperty(i)&&++r>t)return!1;return r===t},a.propertyCount.multiple=!1,a=i.create(a),t.exports=a},"strings.js":function(e,t,r){var n=r("../helpers"),i=r("../interface"),a=r("./types"),u={};u.camelCase=function(e){return a.string(e)&&!u.upperCase(e)&&u.alphanumeric(e)&&u.spaces(e.replace(/([A-Z])/g," $1"))},u.snakeCase=function(e){return u.lowerCase(e)&&/^[0-9a-z]*_[0-9a-z]/gi.test(e)},u.kebabCase=function(e){return u.lowerCase(e)&&/^[0-9a-z]*-[0-9a-z]/gi.test(e)},u.similarity=function(e,t,r){if(!a.each.string(e,t))return!1;(!a.number(r)||r<0||r>1)&&(r=1);var i=e,u=t;e.length<t.length&&(i=t,u=e);var o=i.length;return(o-n.getEditDistance(i,u))/parseFloat(o)>=r},u.similarity.multiple=!1,u.contains=function(e,t){return!!a.string(e)&&e.indexOf(t)>-1},u.contains.multiple=!1,u.lowerCase=function(e){return!!a.string(e)&&e.toLowerCase()===e},u.upperCase=function(e){return!!a.string(e)&&e.toUpperCase()===e},u.word=function(e){if(!a.string(e))return!1;var t=e.trim();return t.length>0&&1===t.split(" ").length},u.capitalized=function(e){if(!a.string(e))return!1;if(0===e.trim().length)return!1;var t=e.trim().split(" ");for(var r in t){var n=t[r].charAt(0);if(n!==n.toUpperCase())return!1}return!0},u.emptyString=function(e){return a.string(e)&&0===e.length},u.alphanumeric=function(e){return/^[a-z0-9]+$/i.test(e)&&a.string(e)},u.startWith=function(e,t,r){return a.falsy(r)&&(r=!1),new RegExp("^"+e,a.booleanTrue(r)?"i":"").test(t)},u.startWith.multiple=!1,u.char=function(e){return a.string(e)&&1===e.length},u.space=function(e){return u.char(e)&&/\s/.test(e)},u.spaces=function(e){return/\s/.test(e)},u=i.create(u),t.exports=u},"types.js":function(e,t,r){var n=r("../helpers"),i=r("../interface"),a={};a.classOf=function(e,t){return n.objectToString(e).toLowerCase()==="[object "+t+"]".toLowerCase()},a.classOf.multiple=!1,a.boolean=function(e){return a.classOf(e,"boolean")},a.booleanFalse=function(e){return a.boolean(e)&&!1===e},a.booleanTrue=function(e){return a.boolean(e)&&!0===e},a.number=function(e){return a.classOf(e,"number")&&!isNaN(e)},a.string=function(e){return a.classOf(e,"string")},a.undefined=function(e){return a.classOf(e,"undefined")},a.null=function(e){return a.classOf(e,"null")},a.object=function(e){return a.classOf(e,"object")&&!a.array(e)},a.array=function(e){return a.classOf(e,"array")},a.json=function(e){try{return JSON.parse(e),!0}catch(e){return!1}},a.date=function(e){return a.classOf(e,"date")},a.function=function(e){return a.classOf(e,"function")},a.regexp=function(e){return a.classOf(e,"regexp")},a.sameType=function(e,t){return n.objectToString(e)===n.objectToString(t)},a.sameType.multiple=!1,a.empty=function(e){if(a.null(e)||a.undefined(e))return!0;if(a.number(e)||a.function(e)||a.boolean(e))return!1;if(a.object(e)||a.array(e)){if(e.length>0)return!1;if(0===e.length)return!0;for(var t in e)if(Object.prototype.hasOwnProperty.call(e,t))return!1}return!(a.string(e)&&e.length>0)},a.falsy=function(e){return!e},a.truthy=function(e){return!a.falsy(e)},a=i.create(a),t.exports=a},"urls.js":function(e,t,r){var n=r("../interface"),i={};i.url=function(e){return/^(?:(?:https?|ftps?):\/\/)(?:\S+(?::\S*)?@)?(?:(?!(?:10|127)(?:\.\d{1,3}){3})(?!(?:169\.254|192\.168)(?:\.\d{1,3}){2})(?!172\.(?:1[6-9]|2\d|3[0-1])(?:\.\d{1,3}){2})(?:[1-9]\d?|1\d\d|2[01]\d|22[0-3])(?:\.(?:1?\d{1,2}|2[0-4]\d|25[0-5])){2}(?:\.(?:[1-9]\d?|1\d\d|2[0-4]\d|25[0-4]))|(?:(?:[a-z\u00a1-\uffff0-9]-*)*[a-z\u00a1-\uffff0-9]+)(?:\.(?:[a-z\u00a1-\uffff0-9]-*)*[a-z\u00a1-\uffff0-9]+)*(?:\.(?:[a-z\u00a1-\uffff]{2,}))\.?)(?::\d{2,5})?(?:[/?#]\S*)?$/i.test(e)},i.httpUrl=function(e){return i.url(e)&&/^http:/i.test(e)},i.httpsUrl=function(e){return i.url(e)&&/^https:/i.test(e)},i.urlEncoded=function(e){return/%[0-9a-f]{2}/i.test(e)},i.ftpUrl=function(e){return i.url(e)&&/^ftp:/i.test(e)},i.ftpsUrl=function(e){return i.url(e)&&/^ftps:/i.test(e)},i=n.create(i),t.exports=i}},"helpers.js":function(e,t,r){var n={};n.getUserAgent=function(){if(arguments.length)return arguments[0];if(!be.navigator())throw new Error("test allowed only in browser environment");return navigator.userAgent},n.objectToString=function(e){return Object.prototype.toString.call(e)},n.getEditDistance=function(e,t){if(0===e.length)return t.length;if(0===t.length)return e.length;var r,n=[];for(r=0;r<=t.length;r++)n[r]=[r];var i;for(i=0;i<=e.length;i++)n[0][i]=i;for(r=1;r<=t.length;r++)for(i=1;i<=e.length;i++)t.charAt(r-1)===e.charAt(i-1)?n[r][i]=n[r-1][i-1]:n[r][i]=Math.min(n[r-1][i-1]+1,Math.min(n[r][i-1]+1,n[r-1][i]+1));return n[t.length][e.length]},t.exports=n},"interface.js":function(e,t,r){var n=r("./helpers"),i={};i._isArray=function(e){return"[object array]"===n.objectToString(e).toLowerCase()},i.create=function(e){e.each={},e.some={};for(var t in e)e.hasOwnProperty(t)&&"function"==typeof e[t]&&void 0===e[t].multiple&&(e.each[t]=function(t){return function(){var r=arguments;i._isArray(r[0])&&(r=r[0]);for(var n in r)if(r.hasOwnProperty(n)&&!e[t].call(this,r[n]))return!1;return!0}}(t),e.some[t]=function(t){return function(){var r=arguments;i._isArray(r[0])&&(r=r[0]);for(var n in r)if(r.hasOwnProperty(n)&&e[t].call(this,r[n]))return!0;return!1}}(t));return e},t.exports=i}}}})("beJS/src/be");
+(function(f) {
+    if (typeof exports === "object" && typeof module !== "undefined") {
+        module.exports = f();
+    } else if (typeof define === "function" && define.amd) {
+        define([], f);
+    } else {
+        var g;
+        if (typeof window !== "undefined") {
+            g = window;
+        } else if (typeof global !== "undefined") {
+            g = global;
+        } else if (typeof self !== "undefined") {
+            g = self;
+        } else {
+            g = this;
+        }
+        g.be = f();
+    }
+})(function() {
+    var define, module, exports;
+    return function e(t, n, r) {
+        function s(o, u) {
+            if (!n[o]) {
+                if (!t[o]) {
+                    var a = typeof require == "function" && require;
+                    if (!u && a) return a(o, !0);
+                    if (i) return i(o, !0);
+                    var f = new Error("Cannot find module '" + o + "'");
+                    throw f.code = "MODULE_NOT_FOUND", f;
+                }
+                var l = n[o] = {
+                    exports: {}
+                };
+                t[o][0].call(l.exports, function(e) {
+                    var n = t[o][1][e];
+                    return s(n ? n : e);
+                }, l, l.exports, e, t, n, r);
+            }
+            return n[o].exports;
+        }
+        var i = typeof require == "function" && require;
+        for (var o = 0; o < r.length; o++) s(r[o]);
+        return s;
+    }({
+        1: [ function(require, module, exports) {
+            module.exports = require("./src/be");
+        }, {
+            "./src/be": 3
+        } ],
+        2: [ function(require, module, exports) {
+            var process = module.exports = {};
+            var cachedSetTimeout;
+            var cachedClearTimeout;
+            function defaultSetTimout() {
+                throw new Error("setTimeout has not been defined");
+            }
+            function defaultClearTimeout() {
+                throw new Error("clearTimeout has not been defined");
+            }
+            (function() {
+                try {
+                    if (typeof setTimeout === "function") {
+                        cachedSetTimeout = setTimeout;
+                    } else {
+                        cachedSetTimeout = defaultSetTimout;
+                    }
+                } catch (e) {
+                    cachedSetTimeout = defaultSetTimout;
+                }
+                try {
+                    if (typeof clearTimeout === "function") {
+                        cachedClearTimeout = clearTimeout;
+                    } else {
+                        cachedClearTimeout = defaultClearTimeout;
+                    }
+                } catch (e) {
+                    cachedClearTimeout = defaultClearTimeout;
+                }
+            })();
+            function runTimeout(fun) {
+                if (cachedSetTimeout === setTimeout) {
+                    return setTimeout(fun, 0);
+                }
+                if ((cachedSetTimeout === defaultSetTimout || !cachedSetTimeout) && setTimeout) {
+                    cachedSetTimeout = setTimeout;
+                    return setTimeout(fun, 0);
+                }
+                try {
+                    return cachedSetTimeout(fun, 0);
+                } catch (e) {
+                    try {
+                        return cachedSetTimeout.call(null, fun, 0);
+                    } catch (e) {
+                        return cachedSetTimeout.call(this, fun, 0);
+                    }
+                }
+            }
+            function runClearTimeout(marker) {
+                if (cachedClearTimeout === clearTimeout) {
+                    return clearTimeout(marker);
+                }
+                if ((cachedClearTimeout === defaultClearTimeout || !cachedClearTimeout) && clearTimeout) {
+                    cachedClearTimeout = clearTimeout;
+                    return clearTimeout(marker);
+                }
+                try {
+                    return cachedClearTimeout(marker);
+                } catch (e) {
+                    try {
+                        return cachedClearTimeout.call(null, marker);
+                    } catch (e) {
+                        return cachedClearTimeout.call(this, marker);
+                    }
+                }
+            }
+            var queue = [];
+            var draining = false;
+            var currentQueue;
+            var queueIndex = -1;
+            function cleanUpNextTick() {
+                if (!draining || !currentQueue) {
+                    return;
+                }
+                draining = false;
+                if (currentQueue.length) {
+                    queue = currentQueue.concat(queue);
+                } else {
+                    queueIndex = -1;
+                }
+                if (queue.length) {
+                    drainQueue();
+                }
+            }
+            function drainQueue() {
+                if (draining) {
+                    return;
+                }
+                var timeout = runTimeout(cleanUpNextTick);
+                draining = true;
+                var len = queue.length;
+                while (len) {
+                    currentQueue = queue;
+                    queue = [];
+                    while (++queueIndex < len) {
+                        if (currentQueue) {
+                            currentQueue[queueIndex].run();
+                        }
+                    }
+                    queueIndex = -1;
+                    len = queue.length;
+                }
+                currentQueue = null;
+                draining = false;
+                runClearTimeout(timeout);
+            }
+            process.nextTick = function(fun) {
+                var args = new Array(arguments.length - 1);
+                if (arguments.length > 1) {
+                    for (var i = 1; i < arguments.length; i++) {
+                        args[i - 1] = arguments[i];
+                    }
+                }
+                queue.push(new Item(fun, args));
+                if (queue.length === 1 && !draining) {
+                    runTimeout(drainQueue);
+                }
+            };
+            function Item(fun, array) {
+                this.fun = fun;
+                this.array = array;
+            }
+            Item.prototype.run = function() {
+                this.fun.apply(null, this.array);
+            };
+            process.title = "browser";
+            process.browser = true;
+            process.env = {};
+            process.argv = [];
+            process.version = "";
+            process.versions = {};
+            function noop() {}
+            process.on = noop;
+            process.addListener = noop;
+            process.once = noop;
+            process.off = noop;
+            process.removeListener = noop;
+            process.removeAllListeners = noop;
+            process.emit = noop;
+            process.prependListener = noop;
+            process.prependOnceListener = noop;
+            process.listeners = function(name) {
+                return [];
+            };
+            process.binding = function(name) {
+                throw new Error("process.binding is not supported");
+            };
+            process.cwd = function() {
+                return "/";
+            };
+            process.chdir = function(dir) {
+                throw new Error("process.chdir is not supported");
+            };
+            process.umask = function() {
+                return 0;
+            };
+        }, {} ],
+        3: [ function(require, module, exports) {
+            const Helpers = require("./helpers");
+            const Interface = require("./interface");
+            let Checks = {
+                Strings: require("./checks/strings"),
+                Types: require("./checks/types"),
+                Numbers: require("./checks/numbers"),
+                Envs: require("./checks/envs"),
+                Objects: require("./checks/objects"),
+                Mixed: require("./checks/mixed"),
+                Arrays: require("./checks/arrays"),
+                Dates: require("./checks/dates"),
+                Urls: require("./checks/urls"),
+                Hashes: require("./checks/hashes")
+            };
+            let be = {};
+            be.version = "0.0.0";
+            be.each = {};
+            be.some = {};
+            be._helpers = Helpers;
+            (function() {
+                for (let c in Checks) {
+                    if (Checks.hasOwnProperty(c)) {
+                        for (let f in Checks[c]) {
+                            if (Checks[c].hasOwnProperty(f) && Checks.Types.function(Checks[c][f])) {
+                                be[f] = ((...params) => {
+                                    return Checks[c][f].apply(null, params);
+                                });
+                            }
+                        }
+                    }
+                }
+                be = Interface.create(be);
+                for (let m in Checks) {
+                    if (Checks.hasOwnProperty(m)) {
+                        be[m] = Checks[m];
+                    }
+                }
+                module.exports = be;
+            })();
+        }, {
+            "./checks/arrays": 4,
+            "./checks/dates": 5,
+            "./checks/envs": 6,
+            "./checks/hashes": 7,
+            "./checks/mixed": 8,
+            "./checks/numbers": 9,
+            "./checks/objects": 10,
+            "./checks/strings": 11,
+            "./checks/types": 12,
+            "./checks/urls": 13,
+            "./helpers": 14,
+            "./interface": 15
+        } ],
+        4: [ function(require, module, exports) {
+            const Types = require("./types");
+            const Interface = require("../interface");
+            let Arrays = {};
+            Arrays.inArray = ((value, array) => {
+                if (!Types.array(array)) return false;
+                for (let i in array) {
+                    if (array.hasOwnProperty(i) && array[i] === value) return true;
+                }
+                return false;
+            });
+            Arrays.inArray.multiple = false;
+            Arrays = Interface.create(Arrays);
+            module.exports = Arrays;
+        }, {
+            "../interface": 15,
+            "./types": 12
+        } ],
+        5: [ function(require, module, exports) {
+            const Types = require("./types");
+            const Numbers = require("./numbers");
+            const Interface = require("../interface");
+            let Dates = {};
+            let _days = [ "sunday", "monday", "tuesday", "wednesday", "thursday", "friday", "saturday" ];
+            let _months = [ "january", "february", "march", "april", "may", "june", "july", "august", "september", "october", "november", "december" ];
+            Dates.dateString = (value => {
+                let date = Date.parse(value);
+                return !isNaN(date);
+            });
+            Dates.today = (date => {
+                let now = new Date();
+                return Types.date(date) && now.toDateString() === date.toDateString();
+            });
+            Dates.tomorrow = (date => {
+                let now = new Date();
+                now.setDate(now.getDate() + 1);
+                return Types.date(date) && now.toDateString() === date.toDateString();
+            });
+            Dates.yesterday = (date => {
+                let now = new Date();
+                now.setDate(now.getDate() - 1);
+                return Types.date(date) && now.toDateString() === date.toDateString();
+            });
+            Dates.past = (date => {
+                let now = new Date().getTime();
+                return Types.date(date) && now > date.getTime();
+            });
+            Dates.future = (date => {
+                return Types.date(date) && !Dates.past(date);
+            });
+            Dates.day = ((date, day) => {
+                return Types.date(date) && Types.string(day) && _days[date.getDay()] === day.toLowerCase();
+            });
+            Dates.day.multiple = false;
+            Dates.month = ((date, month) => {
+                return Types.date(date) && Types.string(month) && _months[date.getMonth()] === month.toLowerCase();
+            });
+            Dates.month.multiple = false;
+            Dates.year = ((date, year) => {
+                return Types.date(date) && Types.number(year) && date.getFullYear() === year;
+            });
+            Dates.year.multiple = false;
+            Dates.leapYear = (year => {
+                return Types.number(year) && (year % 4 === 0 && year % 100 !== 0) || year % 400 === 0;
+            });
+            Dates.weekend = (date => {
+                return Dates.day(date, "saturday") || Dates.day(date, "sunday");
+            });
+            Dates.weekday = (date => {
+                return Types.date(date) && !Dates.weekend(date);
+            });
+            Dates.dateBetween = ((date, startDate, endDate) => {
+                return Types.each.date(date, startDate, endDate) && Numbers.between(date.getTime(), startDate.getTime(), endDate.getTime());
+            });
+            Dates.dateBetween.multiple = false;
+            Dates.dayLightSavingTime = (date => {
+                if (!Types.date(date)) return false;
+                let jan = new Date(date.getFullYear(), 0, 1);
+                let jul = new Date(date.getFullYear(), 6, 1);
+                let stdTimezoneOffset = Math.max(jan.getTimezoneOffset(), jul.getTimezoneOffset());
+                return date.getTimezoneOffset() < stdTimezoneOffset;
+            });
+            Dates = Interface.create(Dates);
+            module.exports = Dates;
+        }, {
+            "../interface": 15,
+            "./numbers": 9,
+            "./types": 12
+        } ],
+        6: [ function(require, module, exports) {
+            (function(process) {
+                const Helpers = require("../helpers");
+                const Interface = require("../interface");
+                let Envs = {};
+                Envs.commonjsEnv = (() => {
+                    return typeof process !== "undefined";
+                });
+                Envs.commonjsEnv.multiple = false;
+                Envs.browserEnv = (() => {
+                    return typeof window !== "undefined";
+                });
+                Envs.browserEnv.multiple = false;
+                Envs.amdEnv = (() => {
+                    return typeof define === "function" && define.amd;
+                });
+                Envs.amdEnv.multiple = false;
+                Envs.ios = ((...params) => {
+                    let userAgent = Helpers.getUserAgent.apply(this, params);
+                    return /iPhone|iPad|iPod/i.test(userAgent);
+                });
+                Envs.ios.multiple = false;
+                Envs.android = ((...params) => {
+                    let userAgent = Helpers.getUserAgent.apply(this, params);
+                    return /Android/i.test(userAgent);
+                });
+                Envs.android.multiple = false;
+                Envs.navigator = (() => {
+                    return Envs.browserEnv() && typeof window.navigator !== "undefined";
+                });
+                Envs.navigator.multiple = false;
+                Envs.firefox = ((...params) => {
+                    let userAgent = Helpers.getUserAgent.apply(this, params);
+                    return /Firefox/i.test(userAgent);
+                });
+                Envs.firefox.multiple = false;
+                Envs.chrome = ((...params) => {
+                    let userAgent = Helpers.getUserAgent.apply(this, params);
+                    return /Chrome/i.test(userAgent);
+                });
+                Envs.chrome.multiple = false;
+                Envs.safari = ((...params) => {
+                    let userAgent = Helpers.getUserAgent.apply(this, params);
+                    return /Safari/i.test(userAgent.replace("Chrome", "")) && !/Chrome/i.test(userAgent.replace("Safari", ""));
+                });
+                Envs.safari.multiple = false;
+                Envs.ie = ((...params) => {
+                    let userAgent = Helpers.getUserAgent.apply(this, params);
+                    return /MSIE|Trident/i.test(userAgent);
+                });
+                Envs.ie.multiple = false;
+                Envs = Interface.create(Envs);
+                module.exports = Envs;
+            }).call(this, require("_process"));
+        }, {
+            "../helpers": 14,
+            "../interface": 15,
+            _process: 2
+        } ],
+        7: [ function(require, module, exports) {
+            const Interface = require("../interface");
+            let Hashes = {};
+            Hashes.md5 = (value => {
+                return /^[a-f0-9]{32}$/.test(value);
+            });
+            Hashes.sha1 = (value => {
+                return /^[a-f0-9]{40}$/.test(value);
+            });
+            Hashes = Interface.create(Hashes);
+            module.exports = Hashes;
+        }, {
+            "../interface": 15
+        } ],
+        8: [ function(require, module, exports) {
+            const Types = require("./types");
+            const Interface = require("../interface");
+            let Mixed = {};
+            Mixed.email = (value => {
+                return /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(value);
+            });
+            Mixed.hex = (value => {
+                return /^(?:0x)?[a-f0-9]+$/.test(value);
+            });
+            Mixed.hexColor = (value => {
+                try {
+                    value = value.replace("#", "");
+                    return Mixed.hex(value) && (value.length === 3 || value.length === 6);
+                } catch (e) {
+                    return false;
+                }
+            });
+            Mixed.ipv4 = (value => {
+                return /^(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)$/.test(value);
+            });
+            Mixed.ipv6 = (value => {
+                return /^(([0-9A-Fa-f]{1,4}:){7}([0-9A-Fa-f]{1,4}|:))|(([0-9A-Fa-f]{1,4}:){6}(:[0-9A-Fa-f]{1,4}|((25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)(\.(25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)){3})|:))|(([0-9A-Fa-f]{1,4}:){5}(((:[0-9A-Fa-f]{1,4}){1,2})|:((25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)(\.(25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)){3})|:))|(([0-9A-Fa-f]{1,4}:){4}(((:[0-9A-Fa-f]{1,4}){1,3})|((:[0-9A-Fa-f]{1,4})?:((25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)(\.(25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)){3}))|:))|(([0-9A-Fa-f]{1,4}:){3}(((:[0-9A-Fa-f]{1,4}){1,4})|((:[0-9A-Fa-f]{1,4}){0,2}:((25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)(\.(25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)){3}))|:))|(([0-9A-Fa-f]{1,4}:){2}(((:[0-9A-Fa-f]{1,4}){1,5})|((:[0-9A-Fa-f]{1,4}){0,3}:((25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)(\.(25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)){3}))|:))|(([0-9A-Fa-f]{1,4}:){1}(((:[0-9A-Fa-f]{1,4}){1,6})|((:[0-9A-Fa-f]{1,4}){0,4}:((25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)(\.(25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)){3}))|:))|(:(((:[0-9A-Fa-f]{1,4}){1,7})|((:[0-9A-Fa-f]{1,4}){0,5}:((25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)(\.(25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)){3}))|:))$/.test(value);
+            });
+            Mixed.ip = (value => {
+                return Mixed.ipv4(value) || Mixed.ipv6(value);
+            });
+            Mixed.base64 = (value => {
+                return /^([0-9a-zA-Z+/]{4})*(([0-9a-zA-Z+/]{2}==)|([0-9a-zA-Z+/]{3}=))?$/.test(value);
+            });
+            Mixed.semVer = (value => {
+                return /^(\d*)\.(\d*)\.(\d*)(-(\d*|\d*[a-z-][0-9a-z-]*)(\.(\d*|\d*[a-z-][0-9a-z-]*))*)?(\+[0-9a-z-]+(\.[0-9a-z-]+)*)?$/i.test(value);
+            });
+            Mixed.equal = ((value, other) => {
+                if (Types.each.number(value, other)) return value === other; else if (Types.each.string(value, other) || Types.each.regexp(value, other)) return value + "" === "" + other; else if (Types.each.boolean(value, other)) return value === other; else return false;
+            });
+            Mixed.equal.multiple = false;
+            Mixed = Interface.create(Mixed);
+            module.exports = Mixed;
+        }, {
+            "../interface": 15,
+            "./types": 12
+        } ],
+        9: [ function(require, module, exports) {
+            const Types = require("./types");
+            const Interface = require("../interface");
+            let Numbers = {};
+            Numbers.int = (value => {
+                return Types.number(value) && isFinite(value) && Math.floor(value) === value;
+            });
+            Numbers.float = (value => {
+                return Types.number(value) && !Numbers.int(value);
+            });
+            Numbers.nan = (value => {
+                return isNaN(value);
+            });
+            Numbers.even = (value => {
+                return Types.number(value) && value % 2 === 0;
+            });
+            Numbers.odd = (value => {
+                return Types.number(value) && !Numbers.even(value);
+            });
+            Numbers.positive = (value => {
+                return Types.number(value) && value > 0;
+            });
+            Numbers.negative = (value => {
+                return Types.number(value) && value < 0;
+            });
+            Numbers.infinityPositive = (value => {
+                return value === Number.POSITIVE_INFINITY;
+            });
+            Numbers.infinityNegative = (value => {
+                return value === Number.NEGATIVE_INFINITY;
+            });
+            Numbers.infinity = (value => {
+                return Numbers.infinityPositive(value) || Numbers.infinityNegative(value);
+            });
+            Numbers.between = ((num, min, max) => {
+                return Types.each.number(num, min, max) && num >= min && num <= max;
+            });
+            Numbers.between.multiple = false;
+            Numbers.greater = ((value, num) => {
+                return Types.each.number(value, num) && value > num;
+            });
+            Numbers.greater.multiple = false;
+            Numbers.lesser = ((value, num) => {
+                return Types.each.number(value, num) && value < num;
+            });
+            Numbers.lesser.multiple = false;
+            Numbers.numeric = (value => {
+                return (Types.number(value) || Types.string(value)) && !isNaN(value - parseFloat(value));
+            });
+            Numbers = Interface.create(Numbers);
+            module.exports = Numbers;
+        }, {
+            "../interface": 15,
+            "./types": 12
+        } ],
+        10: [ function(require, module, exports) {
+            const Types = require("./types");
+            const Interface = require("../interface");
+            let Objects = {};
+            Objects.propertyOf = ((value, object) => {
+                if (!Types.object(object)) return false;
+                return object.hasOwnProperty(value);
+            });
+            Objects.propertyOf.multiple = false;
+            Objects.propertyCount = ((object, value) => {
+                if (!Types.object(object) || !Types.number(value)) return false;
+                let n = 0;
+                for (let i in object) {
+                    if (object.hasOwnProperty(i) && ++n > value) return false;
+                }
+                return n === value;
+            });
+            Objects.propertyCount.multiple = false;
+            Objects = Interface.create(Objects);
+            module.exports = Objects;
+        }, {
+            "../interface": 15,
+            "./types": 12
+        } ],
+        11: [ function(require, module, exports) {
+            const Helpers = require("../helpers");
+            const Interface = require("../interface");
+            const Types = require("./types");
+            let Strings = {};
+            Strings.camelCase = (value => {
+                return Types.string(value) && !Strings.upperCase(value) && Strings.alphanumeric(value) && Strings.spaces(value.replace(/([A-Z])/g, " $1"));
+            });
+            Strings.snakeCase = (value => {
+                return Strings.lowerCase(value) && /^[0-9a-z]*_[0-9a-z]/gi.test(value);
+            });
+            Strings.kebabCase = (value => {
+                return Strings.lowerCase(value) && /^[0-9a-z]*-[0-9a-z]/gi.test(value);
+            });
+            Strings.similarity = ((string1, string2, threshold) => {
+                if (!Types.each.string(string1, string2)) return false;
+                if (!Types.number(threshold) || threshold < 0 || threshold > 1) threshold = 1;
+                let longer = string1;
+                let shorter = string2;
+                if (string1.length < string2.length) {
+                    longer = string2;
+                    shorter = string1;
+                }
+                let longerLength = longer.length;
+                return (longerLength - Helpers.getEditDistance(longer, shorter)) / parseFloat(longerLength) >= threshold;
+            });
+            Strings.similarity.multiple = false;
+            Strings.contains = ((string, value) => {
+                if (!Types.string(string)) return false;
+                return string.indexOf(value) > -1;
+            });
+            Strings.contains.multiple = false;
+            Strings.lowerCase = (value => {
+                if (!Types.string(value)) return false;
+                return value.toLowerCase() === value;
+            });
+            Strings.upperCase = (value => {
+                if (!Types.string(value)) return false;
+                return value.toUpperCase() === value;
+            });
+            Strings.word = (value => {
+                if (!Types.string(value)) return false;
+                let trimmed = value.trim();
+                return trimmed.length > 0 && trimmed.split(" ").length === 1;
+            });
+            Strings.capitalized = (value => {
+                if (!Types.string(value)) return false;
+                let trimmed = value.trim();
+                if (trimmed.length === 0) return false;
+                let words = value.trim().split(" ");
+                for (let i in words) {
+                    let char = words[i].charAt(0);
+                    if (char !== char.toUpperCase()) return false;
+                }
+                return true;
+            });
+            Strings.emptyString = (value => {
+                return Types.string(value) && value.length === 0;
+            });
+            Strings.alphanumeric = (value => {
+                return /^[a-z0-9]+$/i.test(value) && Types.string(value);
+            });
+            Strings.startWith = ((value, string, insensitive) => {
+                if (Types.falsy(insensitive)) insensitive = false;
+                let regex = new RegExp("^" + value, Types.booleanTrue(insensitive) ? "i" : "");
+                return regex.test(string);
+            });
+            Strings.startWith.multiple = false;
+            Strings.char = (value => {
+                return Types.string(value) && value.length === 1;
+            });
+            Strings.space = (value => {
+                return Strings.char(value) && /\s/.test(value);
+            });
+            Strings.spaces = (value => {
+                return /\s/.test(value);
+            });
+            Strings = Interface.create(Strings);
+            module.exports = Strings;
+        }, {
+            "../helpers": 14,
+            "../interface": 15,
+            "./types": 12
+        } ],
+        12: [ function(require, module, exports) {
+            const Helpers = require("../helpers");
+            const Interface = require("../interface");
+            let Types = {};
+            Types.classOf = ((object, className) => {
+                return Helpers.objectToString(object).toLowerCase() === "[object " + className + "]".toLowerCase();
+            });
+            Types.classOf.multiple = false;
+            Types.boolean = (value => {
+                return Types.classOf(value, "boolean");
+            });
+            Types.booleanFalse = (value => {
+                return Types.boolean(value) && value === false;
+            });
+            Types.booleanTrue = (value => {
+                return Types.boolean(value) && value === true;
+            });
+            Types.number = (value => {
+                return Types.classOf(value, "number") && !isNaN(value);
+            });
+            Types.string = (value => {
+                return Types.classOf(value, "string");
+            });
+            Types.undefined = (value => {
+                return Types.classOf(value, "undefined");
+            });
+            Types["null"] = (value => {
+                return Types.classOf(value, "null");
+            });
+            Types.object = (value => {
+                return Types.classOf(value, "object") && !Types.array(value);
+            });
+            Types.array = (value => {
+                return Types.classOf(value, "array");
+            });
+            Types.json = (value => {
+                try {
+                    JSON.parse(value);
+                    return true;
+                } catch (e) {
+                    return false;
+                }
+            });
+            Types.date = (value => {
+                return Types.classOf(value, "date");
+            });
+            Types["function"] = (value => {
+                return Types.classOf(value, "function");
+            });
+            Types.regexp = (value => {
+                return Types.classOf(value, "regexp");
+            });
+            Types.sameType = ((value, other) => {
+                return Helpers.objectToString(value) === Helpers.objectToString(other);
+            });
+            Types.sameType.multiple = false;
+            Types.empty = (value => {
+                if (Types.null(value) || Types.undefined(value)) return true;
+                if (Types.number(value) || Types.function(value) || Types.boolean(value)) return false;
+                if (Types.object(value) || Types.array(value)) {
+                    if (value.length > 0) return false;
+                    if (value.length === 0) return true;
+                    for (let key in value) {
+                        if (Object.prototype.hasOwnProperty.call(value, key)) return false;
+                    }
+                }
+                return !(Types.string(value) && value.length > 0);
+            });
+            Types.falsy = (value => {
+                return !value;
+            });
+            Types.truthy = (value => {
+                return !Types.falsy(value);
+            });
+            Types = Interface.create(Types);
+            module.exports = Types;
+        }, {
+            "../helpers": 14,
+            "../interface": 15
+        } ],
+        13: [ function(require, module, exports) {
+            const Interface = require("../interface");
+            let Urls = {};
+            Urls.url = (value => {
+                return /^(?:(?:https?|ftps?):\/\/)(?:\S+(?::\S*)?@)?(?:(?!(?:10|127)(?:\.\d{1,3}){3})(?!(?:169\.254|192\.168)(?:\.\d{1,3}){2})(?!172\.(?:1[6-9]|2\d|3[0-1])(?:\.\d{1,3}){2})(?:[1-9]\d?|1\d\d|2[01]\d|22[0-3])(?:\.(?:1?\d{1,2}|2[0-4]\d|25[0-5])){2}(?:\.(?:[1-9]\d?|1\d\d|2[0-4]\d|25[0-4]))|(?:(?:[a-z\u00a1-\uffff0-9]-*)*[a-z\u00a1-\uffff0-9]+)(?:\.(?:[a-z\u00a1-\uffff0-9]-*)*[a-z\u00a1-\uffff0-9]+)*(?:\.(?:[a-z\u00a1-\uffff]{2,}))\.?)(?::\d{2,5})?(?:[/?#]\S*)?$/i.test(value);
+            });
+            Urls.httpUrl = (value => {
+                return Urls.url(value) && /^http:/i.test(value);
+            });
+            Urls.httpsUrl = (value => {
+                return Urls.url(value) && /^https:/i.test(value);
+            });
+            Urls.urlEncoded = (value => {
+                return /%[0-9a-f]{2}/i.test(value);
+            });
+            Urls.ftpUrl = (value => {
+                return Urls.url(value) && /^ftp:/i.test(value);
+            });
+            Urls.ftpsUrl = (value => {
+                return Urls.url(value) && /^ftps:/i.test(value);
+            });
+            Urls = Interface.create(Urls);
+            module.exports = Urls;
+        }, {
+            "../interface": 15
+        } ],
+        14: [ function(require, module, exports) {
+            let Helpers = {};
+            Helpers.getUserAgent = ((...params) => {
+                console.log(params);
+                if (params.length) return params[0]; else {
+                    if (!be.navigator()) throw new Error("test allowed only in browser environment");
+                    return navigator.userAgent;
+                }
+            });
+            Helpers.objectToString = (object => {
+                return Object.prototype.toString.call(object);
+            });
+            Helpers.getEditDistance = ((a, b) => {
+                if (a.length === 0) return b.length;
+                if (b.length === 0) return a.length;
+                let matrix = [];
+                let i;
+                for (i = 0; i <= b.length; i++) {
+                    matrix[i] = [ i ];
+                }
+                let j;
+                for (j = 0; j <= a.length; j++) {
+                    matrix[0][j] = j;
+                }
+                for (i = 1; i <= b.length; i++) {
+                    for (j = 1; j <= a.length; j++) {
+                        if (b.charAt(i - 1) === a.charAt(j - 1)) {
+                            matrix[i][j] = matrix[i - 1][j - 1];
+                        } else {
+                            matrix[i][j] = Math.min(matrix[i - 1][j - 1] + 1, Math.min(matrix[i][j - 1] + 1, matrix[i - 1][j] + 1));
+                        }
+                    }
+                }
+                return matrix[b.length][a.length];
+            });
+            module.exports = Helpers;
+        }, {} ],
+        15: [ function(require, module, exports) {
+            let Helpers = require("./helpers");
+            let Interface = {};
+            Interface._isArray = (object => {
+                return Helpers.objectToString(object).toLowerCase() === "[object array]";
+            });
+            Interface.create = (obj => {
+                obj.each = {};
+                obj.some = {};
+                for (let i in obj) {
+                    if (obj.hasOwnProperty(i) && typeof obj[i] === "function" && typeof obj[i].multiple === "undefined") {
+                        obj.each[i] = ((...params) => {
+                            let args = params;
+                            if (Interface._isArray(args[0])) args = args[0];
+                            for (let a in args) {
+                                if (args.hasOwnProperty(a) && !obj[i].call(this, args[a])) return false;
+                            }
+                            return true;
+                        });
+                        obj.some[i] = ((...params) => {
+                            let args = params;
+                            if (Interface._isArray(args[0])) args = args[0];
+                            for (let a in args) {
+                                if (args.hasOwnProperty(a) && obj[i].call(this, args[a])) return true;
+                            }
+                            return false;
+                        });
+                    }
+                }
+                return obj;
+            });
+            module.exports = Interface;
+        }, {
+            "./helpers": 14
+        } ]
+    }, {}, [ 1 ])(1);
+});
