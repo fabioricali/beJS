@@ -817,7 +817,7 @@
             var Helpers = require("./helpers");
             var Interface = {};
             Interface._isArray = function(object) {
-                return Helpers.objectToString(object).toLowerCase() === "[object array]";
+                return Helpers.objectToString(object) === "[object Array]";
             };
             Interface.create = function(obj) {
                 obj.each = {};
