@@ -84,7 +84,7 @@ gulp.task('cleanup:docs', () => {
 });
 
 gulp.task('compile:docs', (done) => {
-    jsdox.generateForDir('./src', './docs', null, done);
+    jsdox.generateForDir('./src', './docs', null, done, null);
 });
 
 gulp.task('dist', ['cleanup:dist', 'compile:dist', 'minify:dist']);
