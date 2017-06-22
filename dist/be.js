@@ -43,6 +43,7 @@
         return s;
     }({
         1: [ function(require, module, exports) {
+            "use strict";
             module.exports = require("./src/be");
         }, {
             "./src/be": 3
@@ -205,9 +206,10 @@
             };
         }, {} ],
         3: [ function(require, module, exports) {
-            const Helpers = require("./helpers");
-            const Interface = require("./interface");
-            let Checks = {
+            "use strict";
+            var Helpers = require("./helpers");
+            var Interface = require("./interface");
+            var Checks = {
                 Strings: require("./checks/strings"),
                 Types: require("./checks/types"),
                 Numbers: require("./checks/numbers"),
@@ -219,25 +221,34 @@
                 Urls: require("./checks/urls"),
                 Hashes: require("./checks/hashes")
             };
-            let be = {};
+            var be = {};
             be.version = "0.0.0";
             be.each = {};
             be.some = {};
             be._helpers = Helpers;
             (function() {
-                for (let c in Checks) {
+                var _loop = function _loop(c) {
                     if (Checks.hasOwnProperty(c)) {
-                        for (let f in Checks[c]) {
+                        var _loop2 = function _loop2(f) {
                             if (Checks[c].hasOwnProperty(f) && Checks.Types.function(Checks[c][f])) {
-                                be[f] = ((...params) => {
+                                be[f] = function() {
+                                    for (var _len = arguments.length, params = Array(_len), _key = 0; _key < _len; _key++) {
+                                        params[_key] = arguments[_key];
+                                    }
                                     return Checks[c][f].apply(null, params);
-                                });
+                                };
                             }
+                        };
+                        for (var f in Checks[c]) {
+                            _loop2(f);
                         }
                     }
+                };
+                for (var c in Checks) {
+                    _loop(c);
                 }
                 be = Interface.create(be);
-                for (let m in Checks) {
+                for (var m in Checks) {
                     if (Checks.hasOwnProperty(m)) {
                         be[m] = Checks[m];
                     }
@@ -259,16 +270,17 @@
             "./interface": 15
         } ],
         4: [ function(require, module, exports) {
-            const Types = require("./types");
-            const Interface = require("../interface");
-            let Arrays = {};
-            Arrays.inArray = ((value, array) => {
+            "use strict";
+            var Types = require("./types");
+            var Interface = require("../interface");
+            var Arrays = {};
+            Arrays.inArray = function(value, array) {
                 if (!Types.array(array)) return false;
-                for (let i in array) {
+                for (var i in array) {
                     if (array.hasOwnProperty(i) && array[i] === value) return true;
                 }
                 return false;
-            });
+            };
             Arrays.inArray.multiple = false;
             Arrays = Interface.create(Arrays);
             module.exports = Arrays;
@@ -277,69 +289,70 @@
             "./types": 12
         } ],
         5: [ function(require, module, exports) {
-            const Types = require("./types");
-            const Numbers = require("./numbers");
-            const Interface = require("../interface");
-            let Dates = {};
-            let _days = [ "sunday", "monday", "tuesday", "wednesday", "thursday", "friday", "saturday" ];
-            let _months = [ "january", "february", "march", "april", "may", "june", "july", "august", "september", "october", "november", "december" ];
-            Dates.dateString = (value => {
-                let date = Date.parse(value);
+            "use strict";
+            var Types = require("./types");
+            var Numbers = require("./numbers");
+            var Interface = require("../interface");
+            var Dates = {};
+            var _days = [ "sunday", "monday", "tuesday", "wednesday", "thursday", "friday", "saturday" ];
+            var _months = [ "january", "february", "march", "april", "may", "june", "july", "august", "september", "october", "november", "december" ];
+            Dates.dateString = function(value) {
+                var date = Date.parse(value);
                 return !isNaN(date);
-            });
-            Dates.today = (date => {
-                let now = new Date();
+            };
+            Dates.today = function(date) {
+                var now = new Date();
                 return Types.date(date) && now.toDateString() === date.toDateString();
-            });
-            Dates.tomorrow = (date => {
-                let now = new Date();
+            };
+            Dates.tomorrow = function(date) {
+                var now = new Date();
                 now.setDate(now.getDate() + 1);
                 return Types.date(date) && now.toDateString() === date.toDateString();
-            });
-            Dates.yesterday = (date => {
-                let now = new Date();
+            };
+            Dates.yesterday = function(date) {
+                var now = new Date();
                 now.setDate(now.getDate() - 1);
                 return Types.date(date) && now.toDateString() === date.toDateString();
-            });
-            Dates.past = (date => {
-                let now = new Date().getTime();
+            };
+            Dates.past = function(date) {
+                var now = new Date().getTime();
                 return Types.date(date) && now > date.getTime();
-            });
-            Dates.future = (date => {
+            };
+            Dates.future = function(date) {
                 return Types.date(date) && !Dates.past(date);
-            });
-            Dates.day = ((date, day) => {
+            };
+            Dates.day = function(date, day) {
                 return Types.date(date) && Types.string(day) && _days[date.getDay()] === day.toLowerCase();
-            });
+            };
             Dates.day.multiple = false;
-            Dates.month = ((date, month) => {
+            Dates.month = function(date, month) {
                 return Types.date(date) && Types.string(month) && _months[date.getMonth()] === month.toLowerCase();
-            });
+            };
             Dates.month.multiple = false;
-            Dates.year = ((date, year) => {
+            Dates.year = function(date, year) {
                 return Types.date(date) && Types.number(year) && date.getFullYear() === year;
-            });
+            };
             Dates.year.multiple = false;
-            Dates.leapYear = (year => {
-                return Types.number(year) && (year % 4 === 0 && year % 100 !== 0) || year % 400 === 0;
-            });
-            Dates.weekend = (date => {
+            Dates.leapYear = function(year) {
+                return Types.number(year) && year % 4 === 0 && year % 100 !== 0 || year % 400 === 0;
+            };
+            Dates.weekend = function(date) {
                 return Dates.day(date, "saturday") || Dates.day(date, "sunday");
-            });
-            Dates.weekday = (date => {
+            };
+            Dates.weekday = function(date) {
                 return Types.date(date) && !Dates.weekend(date);
-            });
-            Dates.dateBetween = ((date, startDate, endDate) => {
+            };
+            Dates.dateBetween = function(date, startDate, endDate) {
                 return Types.each.date(date, startDate, endDate) && Numbers.between(date.getTime(), startDate.getTime(), endDate.getTime());
-            });
+            };
             Dates.dateBetween.multiple = false;
-            Dates.dayLightSavingTime = (date => {
+            Dates.dayLightSavingTime = function(date) {
                 if (!Types.date(date)) return false;
-                let jan = new Date(date.getFullYear(), 0, 1);
-                let jul = new Date(date.getFullYear(), 6, 1);
-                let stdTimezoneOffset = Math.max(jan.getTimezoneOffset(), jul.getTimezoneOffset());
+                var jan = new Date(date.getFullYear(), 0, 1);
+                var jul = new Date(date.getFullYear(), 6, 1);
+                var stdTimezoneOffset = Math.max(jan.getTimezoneOffset(), jul.getTimezoneOffset());
                 return date.getTimezoneOffset() < stdTimezoneOffset;
-            });
+            };
             Dates = Interface.create(Dates);
             module.exports = Dates;
         }, {
@@ -349,54 +362,73 @@
         } ],
         6: [ function(require, module, exports) {
             (function(process) {
-                const Helpers = require("../helpers");
-                const Interface = require("../interface");
-                let Envs = {};
-                Envs.commonjsEnv = (() => {
+                "use strict";
+                var Helpers = require("../helpers");
+                var Interface = require("../interface");
+                var Envs = {};
+                Envs.commonjsEnv = function() {
                     return typeof process !== "undefined";
-                });
+                };
                 Envs.commonjsEnv.multiple = false;
-                Envs.browserEnv = (() => {
+                Envs.browserEnv = function() {
                     return typeof window !== "undefined";
-                });
+                };
                 Envs.browserEnv.multiple = false;
-                Envs.amdEnv = (() => {
+                Envs.amdEnv = function() {
                     return typeof define === "function" && define.amd;
-                });
+                };
                 Envs.amdEnv.multiple = false;
-                Envs.ios = ((...params) => {
-                    let userAgent = Helpers.getUserAgent.apply(this, params);
+                Envs.ios = function() {
+                    for (var _len = arguments.length, params = Array(_len), _key = 0; _key < _len; _key++) {
+                        params[_key] = arguments[_key];
+                    }
+                    var userAgent = Helpers.getUserAgent.apply(undefined, params);
                     return /iPhone|iPad|iPod/i.test(userAgent);
-                });
+                };
                 Envs.ios.multiple = false;
-                Envs.android = ((...params) => {
-                    let userAgent = Helpers.getUserAgent.apply(this, params);
+                Envs.android = function() {
+                    for (var _len2 = arguments.length, params = Array(_len2), _key2 = 0; _key2 < _len2; _key2++) {
+                        params[_key2] = arguments[_key2];
+                    }
+                    var userAgent = Helpers.getUserAgent.apply(undefined, params);
                     return /Android/i.test(userAgent);
-                });
+                };
                 Envs.android.multiple = false;
-                Envs.navigator = (() => {
+                Envs.navigator = function() {
                     return Envs.browserEnv() && typeof window.navigator !== "undefined";
-                });
+                };
                 Envs.navigator.multiple = false;
-                Envs.firefox = ((...params) => {
-                    let userAgent = Helpers.getUserAgent.apply(this, params);
+                Envs.firefox = function() {
+                    for (var _len3 = arguments.length, params = Array(_len3), _key3 = 0; _key3 < _len3; _key3++) {
+                        params[_key3] = arguments[_key3];
+                    }
+                    var userAgent = Helpers.getUserAgent.apply(undefined, params);
                     return /Firefox/i.test(userAgent);
-                });
+                };
                 Envs.firefox.multiple = false;
-                Envs.chrome = ((...params) => {
-                    let userAgent = Helpers.getUserAgent.apply(this, params);
+                Envs.chrome = function() {
+                    for (var _len4 = arguments.length, params = Array(_len4), _key4 = 0; _key4 < _len4; _key4++) {
+                        params[_key4] = arguments[_key4];
+                    }
+                    var userAgent = Helpers.getUserAgent.apply(undefined, params);
                     return /Chrome/i.test(userAgent);
-                });
+                };
                 Envs.chrome.multiple = false;
-                Envs.safari = ((...params) => {
-                    let userAgent = Helpers.getUserAgent.apply(this, params);
+                Envs.safari = function() {
+                    for (var _len5 = arguments.length, params = Array(_len5), _key5 = 0; _key5 < _len5; _key5++) {
+                        params[_key5] = arguments[_key5];
+                    }
+                    var userAgent = Helpers.getUserAgent.apply(undefined, params);
                     return /Safari/i.test(userAgent.replace("Chrome", "")) && !/Chrome/i.test(userAgent.replace("Safari", ""));
-                });
+                };
                 Envs.safari.multiple = false;
-                Envs.ie = ((...params) => {
-                    let userAgent = Helpers.getUserAgent.apply(this, params);
+                Envs.ie = function() {
+                    for (var _len6 = arguments.length, params = Array(_len6), _key6 = 0; _key6 < _len6; _key6++) {
+                        params[_key6] = arguments[_key6];
+                    }
+                    var userAgent = Helpers.getUserAgent.apply(undefined, params);
                     return /MSIE|Trident/i.test(userAgent);
-                });
+                };
                 Envs.ie.multiple = false;
                 Envs = Interface.create(Envs);
                 module.exports = Envs;
@@ -407,55 +439,57 @@
             _process: 2
         } ],
         7: [ function(require, module, exports) {
-            const Interface = require("../interface");
-            let Hashes = {};
-            Hashes.md5 = (value => {
+            "use strict";
+            var Interface = require("../interface");
+            var Hashes = {};
+            Hashes.md5 = function(value) {
                 return /^[a-f0-9]{32}$/.test(value);
-            });
-            Hashes.sha1 = (value => {
+            };
+            Hashes.sha1 = function(value) {
                 return /^[a-f0-9]{40}$/.test(value);
-            });
+            };
             Hashes = Interface.create(Hashes);
             module.exports = Hashes;
         }, {
             "../interface": 15
         } ],
         8: [ function(require, module, exports) {
-            const Types = require("./types");
-            const Interface = require("../interface");
-            let Mixed = {};
-            Mixed.email = (value => {
+            "use strict";
+            var Types = require("./types");
+            var Interface = require("../interface");
+            var Mixed = {};
+            Mixed.email = function(value) {
                 return /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(value);
-            });
-            Mixed.hex = (value => {
+            };
+            Mixed.hex = function(value) {
                 return /^(?:0x)?[a-f0-9]+$/.test(value);
-            });
-            Mixed.hexColor = (value => {
+            };
+            Mixed.hexColor = function(value) {
                 try {
                     value = value.replace("#", "");
                     return Mixed.hex(value) && (value.length === 3 || value.length === 6);
                 } catch (e) {
                     return false;
                 }
-            });
-            Mixed.ipv4 = (value => {
+            };
+            Mixed.ipv4 = function(value) {
                 return /^(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)$/.test(value);
-            });
-            Mixed.ipv6 = (value => {
+            };
+            Mixed.ipv6 = function(value) {
                 return /^(([0-9A-Fa-f]{1,4}:){7}([0-9A-Fa-f]{1,4}|:))|(([0-9A-Fa-f]{1,4}:){6}(:[0-9A-Fa-f]{1,4}|((25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)(\.(25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)){3})|:))|(([0-9A-Fa-f]{1,4}:){5}(((:[0-9A-Fa-f]{1,4}){1,2})|:((25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)(\.(25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)){3})|:))|(([0-9A-Fa-f]{1,4}:){4}(((:[0-9A-Fa-f]{1,4}){1,3})|((:[0-9A-Fa-f]{1,4})?:((25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)(\.(25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)){3}))|:))|(([0-9A-Fa-f]{1,4}:){3}(((:[0-9A-Fa-f]{1,4}){1,4})|((:[0-9A-Fa-f]{1,4}){0,2}:((25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)(\.(25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)){3}))|:))|(([0-9A-Fa-f]{1,4}:){2}(((:[0-9A-Fa-f]{1,4}){1,5})|((:[0-9A-Fa-f]{1,4}){0,3}:((25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)(\.(25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)){3}))|:))|(([0-9A-Fa-f]{1,4}:){1}(((:[0-9A-Fa-f]{1,4}){1,6})|((:[0-9A-Fa-f]{1,4}){0,4}:((25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)(\.(25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)){3}))|:))|(:(((:[0-9A-Fa-f]{1,4}){1,7})|((:[0-9A-Fa-f]{1,4}){0,5}:((25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)(\.(25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)){3}))|:))$/.test(value);
-            });
-            Mixed.ip = (value => {
+            };
+            Mixed.ip = function(value) {
                 return Mixed.ipv4(value) || Mixed.ipv6(value);
-            });
-            Mixed.base64 = (value => {
+            };
+            Mixed.base64 = function(value) {
                 return /^([0-9a-zA-Z+/]{4})*(([0-9a-zA-Z+/]{2}==)|([0-9a-zA-Z+/]{3}=))?$/.test(value);
-            });
-            Mixed.semVer = (value => {
+            };
+            Mixed.semVer = function(value) {
                 return /^(\d*)\.(\d*)\.(\d*)(-(\d*|\d*[a-z-][0-9a-z-]*)(\.(\d*|\d*[a-z-][0-9a-z-]*))*)?(\+[0-9a-z-]+(\.[0-9a-z-]+)*)?$/i.test(value);
-            });
-            Mixed.equal = ((value, other) => {
+            };
+            Mixed.equal = function(value, other) {
                 if (Types.each.number(value, other)) return value === other; else if (Types.each.string(value, other) || Types.each.regexp(value, other)) return value + "" === "" + other; else if (Types.each.boolean(value, other)) return value === other; else return false;
-            });
+            };
             Mixed.equal.multiple = false;
             Mixed = Interface.create(Mixed);
             module.exports = Mixed;
@@ -464,54 +498,55 @@
             "./types": 12
         } ],
         9: [ function(require, module, exports) {
-            const Types = require("./types");
-            const Interface = require("../interface");
-            let Numbers = {};
-            Numbers.int = (value => {
+            "use strict";
+            var Types = require("./types");
+            var Interface = require("../interface");
+            var Numbers = {};
+            Numbers.int = function(value) {
                 return Types.number(value) && isFinite(value) && Math.floor(value) === value;
-            });
-            Numbers.float = (value => {
+            };
+            Numbers.float = function(value) {
                 return Types.number(value) && !Numbers.int(value);
-            });
-            Numbers.nan = (value => {
+            };
+            Numbers.nan = function(value) {
                 return isNaN(value);
-            });
-            Numbers.even = (value => {
+            };
+            Numbers.even = function(value) {
                 return Types.number(value) && value % 2 === 0;
-            });
-            Numbers.odd = (value => {
+            };
+            Numbers.odd = function(value) {
                 return Types.number(value) && !Numbers.even(value);
-            });
-            Numbers.positive = (value => {
+            };
+            Numbers.positive = function(value) {
                 return Types.number(value) && value > 0;
-            });
-            Numbers.negative = (value => {
+            };
+            Numbers.negative = function(value) {
                 return Types.number(value) && value < 0;
-            });
-            Numbers.infinityPositive = (value => {
+            };
+            Numbers.infinityPositive = function(value) {
                 return value === Number.POSITIVE_INFINITY;
-            });
-            Numbers.infinityNegative = (value => {
+            };
+            Numbers.infinityNegative = function(value) {
                 return value === Number.NEGATIVE_INFINITY;
-            });
-            Numbers.infinity = (value => {
+            };
+            Numbers.infinity = function(value) {
                 return Numbers.infinityPositive(value) || Numbers.infinityNegative(value);
-            });
-            Numbers.between = ((num, min, max) => {
+            };
+            Numbers.between = function(num, min, max) {
                 return Types.each.number(num, min, max) && num >= min && num <= max;
-            });
+            };
             Numbers.between.multiple = false;
-            Numbers.greater = ((value, num) => {
+            Numbers.greater = function(value, num) {
                 return Types.each.number(value, num) && value > num;
-            });
+            };
             Numbers.greater.multiple = false;
-            Numbers.lesser = ((value, num) => {
+            Numbers.lesser = function(value, num) {
                 return Types.each.number(value, num) && value < num;
-            });
+            };
             Numbers.lesser.multiple = false;
-            Numbers.numeric = (value => {
+            Numbers.numeric = function(value) {
                 return (Types.number(value) || Types.string(value)) && !isNaN(value - parseFloat(value));
-            });
+            };
             Numbers = Interface.create(Numbers);
             module.exports = Numbers;
         }, {
@@ -519,22 +554,23 @@
             "./types": 12
         } ],
         10: [ function(require, module, exports) {
-            const Types = require("./types");
-            const Interface = require("../interface");
-            let Objects = {};
-            Objects.propertyOf = ((value, object) => {
+            "use strict";
+            var Types = require("./types");
+            var Interface = require("../interface");
+            var Objects = {};
+            Objects.propertyOf = function(value, object) {
                 if (!Types.object(object)) return false;
                 return object.hasOwnProperty(value);
-            });
+            };
             Objects.propertyOf.multiple = false;
-            Objects.propertyCount = ((object, value) => {
+            Objects.propertyCount = function(object, value) {
                 if (!Types.object(object) || !Types.number(value)) return false;
-                let n = 0;
-                for (let i in object) {
+                var n = 0;
+                for (var i in object) {
                     if (object.hasOwnProperty(i) && ++n > value) return false;
                 }
                 return n === value;
-            });
+            };
             Objects.propertyCount.multiple = false;
             Objects = Interface.create(Objects);
             module.exports = Objects;
@@ -543,82 +579,83 @@
             "./types": 12
         } ],
         11: [ function(require, module, exports) {
-            const Helpers = require("../helpers");
-            const Interface = require("../interface");
-            const Types = require("./types");
-            let Strings = {};
-            Strings.camelCase = (value => {
+            "use strict";
+            var Helpers = require("../helpers");
+            var Interface = require("../interface");
+            var Types = require("./types");
+            var Strings = {};
+            Strings.camelCase = function(value) {
                 return Types.string(value) && !Strings.upperCase(value) && Strings.alphanumeric(value) && Strings.spaces(value.replace(/([A-Z])/g, " $1"));
-            });
-            Strings.snakeCase = (value => {
+            };
+            Strings.snakeCase = function(value) {
                 return Strings.lowerCase(value) && /^[0-9a-z]*_[0-9a-z]/gi.test(value);
-            });
-            Strings.kebabCase = (value => {
+            };
+            Strings.kebabCase = function(value) {
                 return Strings.lowerCase(value) && /^[0-9a-z]*-[0-9a-z]/gi.test(value);
-            });
-            Strings.similarity = ((string1, string2, threshold) => {
+            };
+            Strings.similarity = function(string1, string2, threshold) {
                 if (!Types.each.string(string1, string2)) return false;
                 if (!Types.number(threshold) || threshold < 0 || threshold > 1) threshold = 1;
-                let longer = string1;
-                let shorter = string2;
+                var longer = string1;
+                var shorter = string2;
                 if (string1.length < string2.length) {
                     longer = string2;
                     shorter = string1;
                 }
-                let longerLength = longer.length;
+                var longerLength = longer.length;
                 return (longerLength - Helpers.getEditDistance(longer, shorter)) / parseFloat(longerLength) >= threshold;
-            });
+            };
             Strings.similarity.multiple = false;
-            Strings.contains = ((string, value) => {
+            Strings.contains = function(string, value) {
                 if (!Types.string(string)) return false;
                 return string.indexOf(value) > -1;
-            });
+            };
             Strings.contains.multiple = false;
-            Strings.lowerCase = (value => {
+            Strings.lowerCase = function(value) {
                 if (!Types.string(value)) return false;
                 return value.toLowerCase() === value;
-            });
-            Strings.upperCase = (value => {
+            };
+            Strings.upperCase = function(value) {
                 if (!Types.string(value)) return false;
                 return value.toUpperCase() === value;
-            });
-            Strings.word = (value => {
+            };
+            Strings.word = function(value) {
                 if (!Types.string(value)) return false;
-                let trimmed = value.trim();
+                var trimmed = value.trim();
                 return trimmed.length > 0 && trimmed.split(" ").length === 1;
-            });
-            Strings.capitalized = (value => {
+            };
+            Strings.capitalized = function(value) {
                 if (!Types.string(value)) return false;
-                let trimmed = value.trim();
+                var trimmed = value.trim();
                 if (trimmed.length === 0) return false;
-                let words = value.trim().split(" ");
-                for (let i in words) {
-                    let char = words[i].charAt(0);
+                var words = value.trim().split(" ");
+                for (var i in words) {
+                    var char = words[i].charAt(0);
                     if (char !== char.toUpperCase()) return false;
                 }
                 return true;
-            });
-            Strings.emptyString = (value => {
+            };
+            Strings.emptyString = function(value) {
                 return Types.string(value) && value.length === 0;
-            });
-            Strings.alphanumeric = (value => {
+            };
+            Strings.alphanumeric = function(value) {
                 return /^[a-z0-9]+$/i.test(value) && Types.string(value);
-            });
-            Strings.startWith = ((value, string, insensitive) => {
+            };
+            Strings.startWith = function(value, string, insensitive) {
                 if (Types.falsy(insensitive)) insensitive = false;
-                let regex = new RegExp("^" + value, Types.booleanTrue(insensitive) ? "i" : "");
+                var regex = new RegExp("^" + value, Types.booleanTrue(insensitive) ? "i" : "");
                 return regex.test(string);
-            });
+            };
             Strings.startWith.multiple = false;
-            Strings.char = (value => {
+            Strings.char = function(value) {
                 return Types.string(value) && value.length === 1;
-            });
-            Strings.space = (value => {
+            };
+            Strings.space = function(value) {
                 return Strings.char(value) && /\s/.test(value);
-            });
-            Strings.spaces = (value => {
+            };
+            Strings.spaces = function(value) {
                 return /\s/.test(value);
-            });
+            };
             Strings = Interface.create(Strings);
             module.exports = Strings;
         }, {
@@ -627,79 +664,80 @@
             "./types": 12
         } ],
         12: [ function(require, module, exports) {
-            const Helpers = require("../helpers");
-            const Interface = require("../interface");
-            let Types = {};
-            Types.classOf = ((object, className) => {
+            "use strict";
+            var Helpers = require("../helpers");
+            var Interface = require("../interface");
+            var Types = {};
+            Types.classOf = function(object, className) {
                 return Helpers.objectToString(object).toLowerCase() === "[object " + className + "]".toLowerCase();
-            });
+            };
             Types.classOf.multiple = false;
-            Types.boolean = (value => {
+            Types.boolean = function(value) {
                 return Types.classOf(value, "boolean");
-            });
-            Types.booleanFalse = (value => {
+            };
+            Types.booleanFalse = function(value) {
                 return Types.boolean(value) && value === false;
-            });
-            Types.booleanTrue = (value => {
+            };
+            Types.booleanTrue = function(value) {
                 return Types.boolean(value) && value === true;
-            });
-            Types.number = (value => {
+            };
+            Types.number = function(value) {
                 return Types.classOf(value, "number") && !isNaN(value);
-            });
-            Types.string = (value => {
+            };
+            Types.string = function(value) {
                 return Types.classOf(value, "string");
-            });
-            Types.undefined = (value => {
+            };
+            Types.undefined = function(value) {
                 return Types.classOf(value, "undefined");
-            });
-            Types["null"] = (value => {
+            };
+            Types["null"] = function(value) {
                 return Types.classOf(value, "null");
-            });
-            Types.object = (value => {
+            };
+            Types.object = function(value) {
                 return Types.classOf(value, "object") && !Types.array(value);
-            });
-            Types.array = (value => {
+            };
+            Types.array = function(value) {
                 return Types.classOf(value, "array");
-            });
-            Types.json = (value => {
+            };
+            Types.json = function(value) {
                 try {
                     JSON.parse(value);
                     return true;
                 } catch (e) {
                     return false;
                 }
-            });
-            Types.date = (value => {
+            };
+            Types.date = function(value) {
                 return Types.classOf(value, "date");
-            });
-            Types["function"] = (value => {
+            };
+            Types["function"] = function(value) {
                 return Types.classOf(value, "function");
-            });
-            Types.regexp = (value => {
+            };
+            Types.regexp = function(value) {
                 return Types.classOf(value, "regexp");
-            });
-            Types.sameType = ((value, other) => {
+            };
+            Types.sameType = function(value, other) {
                 return Helpers.objectToString(value) === Helpers.objectToString(other);
-            });
+            };
             Types.sameType.multiple = false;
-            Types.empty = (value => {
+            Types.empty = function(value) {
                 if (Types.null(value) || Types.undefined(value)) return true;
                 if (Types.number(value) || Types.function(value) || Types.boolean(value)) return false;
                 if (Types.object(value) || Types.array(value)) {
                     if (value.length > 0) return false;
                     if (value.length === 0) return true;
-                    for (let key in value) {
+                    for (var key in value) {
                         if (Object.prototype.hasOwnProperty.call(value, key)) return false;
                     }
                 }
                 return !(Types.string(value) && value.length > 0);
-            });
-            Types.falsy = (value => {
+            };
+            Types.falsy = function(value) {
                 return !value;
-            });
-            Types.truthy = (value => {
+            };
+            Types.truthy = function(value) {
                 return !Types.falsy(value);
-            });
+            };
             Types = Interface.create(Types);
             module.exports = Types;
         }, {
@@ -707,52 +745,57 @@
             "../interface": 15
         } ],
         13: [ function(require, module, exports) {
-            const Interface = require("../interface");
-            let Urls = {};
-            Urls.url = (value => {
+            "use strict";
+            var Interface = require("../interface");
+            var Urls = {};
+            Urls.url = function(value) {
                 return /^(?:(?:https?|ftps?):\/\/)(?:\S+(?::\S*)?@)?(?:(?!(?:10|127)(?:\.\d{1,3}){3})(?!(?:169\.254|192\.168)(?:\.\d{1,3}){2})(?!172\.(?:1[6-9]|2\d|3[0-1])(?:\.\d{1,3}){2})(?:[1-9]\d?|1\d\d|2[01]\d|22[0-3])(?:\.(?:1?\d{1,2}|2[0-4]\d|25[0-5])){2}(?:\.(?:[1-9]\d?|1\d\d|2[0-4]\d|25[0-4]))|(?:(?:[a-z\u00a1-\uffff0-9]-*)*[a-z\u00a1-\uffff0-9]+)(?:\.(?:[a-z\u00a1-\uffff0-9]-*)*[a-z\u00a1-\uffff0-9]+)*(?:\.(?:[a-z\u00a1-\uffff]{2,}))\.?)(?::\d{2,5})?(?:[/?#]\S*)?$/i.test(value);
-            });
-            Urls.httpUrl = (value => {
+            };
+            Urls.httpUrl = function(value) {
                 return Urls.url(value) && /^http:/i.test(value);
-            });
-            Urls.httpsUrl = (value => {
+            };
+            Urls.httpsUrl = function(value) {
                 return Urls.url(value) && /^https:/i.test(value);
-            });
-            Urls.urlEncoded = (value => {
+            };
+            Urls.urlEncoded = function(value) {
                 return /%[0-9a-f]{2}/i.test(value);
-            });
-            Urls.ftpUrl = (value => {
+            };
+            Urls.ftpUrl = function(value) {
                 return Urls.url(value) && /^ftp:/i.test(value);
-            });
-            Urls.ftpsUrl = (value => {
+            };
+            Urls.ftpsUrl = function(value) {
                 return Urls.url(value) && /^ftps:/i.test(value);
-            });
+            };
             Urls = Interface.create(Urls);
             module.exports = Urls;
         }, {
             "../interface": 15
         } ],
         14: [ function(require, module, exports) {
-            let Helpers = {};
-            Helpers.getUserAgent = ((...params) => {
+            "use strict";
+            var Helpers = {};
+            Helpers.getUserAgent = function() {
+                for (var _len = arguments.length, params = Array(_len), _key = 0; _key < _len; _key++) {
+                    params[_key] = arguments[_key];
+                }
                 console.log(params);
                 if (params.length) return params[0]; else {
                     if (!be.navigator()) throw new Error("test allowed only in browser environment");
                     return navigator.userAgent;
                 }
-            });
-            Helpers.objectToString = (object => {
+            };
+            Helpers.objectToString = function(object) {
                 return Object.prototype.toString.call(object);
-            });
-            Helpers.getEditDistance = ((a, b) => {
+            };
+            Helpers.getEditDistance = function(a, b) {
                 if (a.length === 0) return b.length;
                 if (b.length === 0) return a.length;
-                let matrix = [];
-                let i;
+                var matrix = [];
+                var i = void 0;
                 for (i = 0; i <= b.length; i++) {
                     matrix[i] = [ i ];
                 }
-                let j;
+                var j = void 0;
                 for (j = 0; j <= a.length; j++) {
                     matrix[0][j] = j;
                 }
@@ -766,40 +809,50 @@
                     }
                 }
                 return matrix[b.length][a.length];
-            });
+            };
             module.exports = Helpers;
         }, {} ],
         15: [ function(require, module, exports) {
-            let Helpers = require("./helpers");
-            let Interface = {};
-            Interface._isArray = (object => {
+            "use strict";
+            var Helpers = require("./helpers");
+            var Interface = {};
+            Interface._isArray = function(object) {
                 return Helpers.objectToString(object).toLowerCase() === "[object array]";
-            });
-            Interface.create = (obj => {
+            };
+            Interface.create = function(obj) {
                 obj.each = {};
                 obj.some = {};
-                for (let i in obj) {
+                var _loop = function _loop(i) {
                     if (obj.hasOwnProperty(i) && typeof obj[i] === "function" && typeof obj[i].multiple === "undefined") {
-                        obj.each[i] = ((...params) => {
-                            let args = params;
+                        obj.each[i] = function() {
+                            for (var _len = arguments.length, params = Array(_len), _key = 0; _key < _len; _key++) {
+                                params[_key] = arguments[_key];
+                            }
+                            var args = params;
                             if (Interface._isArray(args[0])) args = args[0];
-                            for (let a in args) {
-                                if (args.hasOwnProperty(a) && !obj[i].call(this, args[a])) return false;
+                            for (var a in args) {
+                                if (args.hasOwnProperty(a) && !obj[i].call(undefined, args[a])) return false;
                             }
                             return true;
-                        });
-                        obj.some[i] = ((...params) => {
-                            let args = params;
+                        };
+                        obj.some[i] = function() {
+                            for (var _len2 = arguments.length, params = Array(_len2), _key2 = 0; _key2 < _len2; _key2++) {
+                                params[_key2] = arguments[_key2];
+                            }
+                            var args = params;
                             if (Interface._isArray(args[0])) args = args[0];
-                            for (let a in args) {
-                                if (args.hasOwnProperty(a) && obj[i].call(this, args[a])) return true;
+                            for (var a in args) {
+                                if (args.hasOwnProperty(a) && obj[i].call(undefined, args[a])) return true;
                             }
                             return false;
-                        });
+                        };
                     }
+                };
+                for (var i in obj) {
+                    _loop(i);
                 }
                 return obj;
-            });
+            };
             module.exports = Interface;
         }, {
             "./helpers": 14

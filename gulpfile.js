@@ -4,16 +4,15 @@ const source = require('vinyl-source-stream');
 const browserify = require('browserify');
 const buffer = require('vinyl-buffer');
 const rename = require('gulp-rename');
-const uglifyEs = require('uglify-es');
+const uglifyjs = require('gulp-uglify');
 const composer = require('gulp-uglify/composer');
 const gutil = require('gulp-util');
 const jsdox = require('jsdox');
 const gulp = require('gulp');
 const del = require('del');
+const babelify = require('babelify');
 
 const src = './index.js';
-
-const minify = composer(uglifyEs, console);
 
 const opts = {
     uglify: {
@@ -48,19 +47,18 @@ const opts = {
  * @returns {Object} The gulp stream object.
  */
 function build(min) {
-    let b = browserify({
+    return browserify({
         standalone: 'be',
         entries: src,
         debug: true
-    });
-
-    return b.bundle().
+    }).transform(babelify, {presets: ["es2015"]}).bundle().
 
     pipe(source('bundle.tmp.js')).
 
     pipe(buffer()).
 
-    pipe(minify(min ? opts.uglify.min : opts.uglify.dev).on('error', gutil.log)).
+    //pipe(minify(min ? opts.uglify.min : opts.uglify.dev).on('error', gutil.log)).
+    pipe(uglifyjs(min ? opts.uglify.min : opts.uglify.dev).on('error', gutil.log)).
 
     pipe(rename({
         basename: 'be',
