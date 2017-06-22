@@ -11,9 +11,10 @@ let Helpers = {};
  * Get user agent
  * @returns {*}
  */
-Helpers.getUserAgent = () => {
-    if (arguments.length)
-        return arguments[0];
+Helpers.getUserAgent = (...params) => {
+    console.log(params);
+    if (params.length)
+        return params[0];
     else {
         if (!be.navigator())
             throw new Error('test allowed only in browser environment');

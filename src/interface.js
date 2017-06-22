@@ -23,31 +23,27 @@ Interface.create = (obj) => {
     obj.some = {};
     for(let i in obj){
         if(obj.hasOwnProperty(i) && typeof obj[i] === 'function' && typeof obj[i].multiple === 'undefined'){
-            obj.each[i] = ( (j) => {
-                return () => {
-                    let args = arguments;
+            obj.each[i] = (...params) => {
+                    let args = params;
                     if(Interface._isArray(args[0]))
                         args = args[0];
                     for(let a in args) {
-                        if (args.hasOwnProperty(a) && !obj[j].call(this, args[a]))
+                        if (args.hasOwnProperty(a) && !obj[i].call(this, args[a]))
                             return false;
                     }
                     return true;
-                }
-            })(i);
+                };
 
-            obj.some[i] = ( (j) => {
-                return () => {
-                    let args = arguments;
+            obj.some[i] = (...params) => {
+                    let args = params;
                     if(Interface._isArray(args[0]))
                         args = args[0];
                     for(let a in args) {
-                        if (args.hasOwnProperty(a) && obj[j].call(this, args[a]))
+                        if (args.hasOwnProperty(a) && obj[i].call(this, args[a]))
                             return true;
                     }
                     return false;
-                }
-            })(i);
+                };
         }
     }
 

@@ -14,16 +14,16 @@ const Interface = require('./interface');
  * @type {{Strings: *}}
  */
 let Checks = {
-    Strings     :   require('./checks/strings'),
-    Types       :   require('./checks/types'),
-    Numbers     :   require('./checks/numbers'),
-    Envs        :   require('./checks/envs'),
-    Objects     :   require('./checks/objects'),
-    Mixed       :   require('./checks/mixed'),
-    Arrays      :   require('./checks/arrays'),
-    Dates       :   require('./checks/dates'),
-    Urls        :   require('./checks/urls'),
-    Hashes      :   require('./checks/hashes')
+    Strings: require('./checks/strings'),
+    Types: require('./checks/types'),
+    Numbers: require('./checks/numbers'),
+    Envs: require('./checks/envs'),
+    Objects: require('./checks/objects'),
+    Mixed: require('./checks/mixed'),
+    Arrays: require('./checks/arrays'),
+    Dates: require('./checks/dates'),
+    Urls: require('./checks/urls'),
+    Hashes: require('./checks/hashes')
 };
 
 /**
@@ -46,33 +46,17 @@ be._helpers = Helpers;
 /**
  * Create interfaces
  */
-( function() {
+(function () {
     /**
      * Add all methods to "be"
      */
-    /*
-    for(let c in Checks){
-        if(Checks.hasOwnProperty(c)){
-            for(let f in Checks[c]){
-                if(Checks[c].hasOwnProperty(f) && Checks.Types.function(Checks[c][f])) {
-                    be[f] = ( (b, k) => {
-                        return () => {
-                            return Checks[b][k].apply(this, arguments);
-                        }
-                    })(c, f)
-                }
-            }
-        }
-    }*/
-    for(let c in Checks){
-        if(Checks.hasOwnProperty(c)){
-            for(let f in Checks[c]){
-                if(Checks[c].hasOwnProperty(f) && Checks.Types.function(Checks[c][f])) {
-                    be[f] = () => {
-                        console.log(arguments);
-                            return Checks[c][f].apply(this, arguments);
-                        }
-
+    for (let c in Checks) {
+        if (Checks.hasOwnProperty(c)) {
+            for (let f in Checks[c]) {
+                if (Checks[c].hasOwnProperty(f) && Checks.Types.function(Checks[c][f])) {
+                    be[f] = (...params) => {
+                        return Checks[c][f].apply(null, params);
+                    };
                 }
             }
         }
@@ -86,14 +70,16 @@ be._helpers = Helpers;
     /**
      * After add checks class
      */
-    for(let m in Checks) {
+    for (let m in Checks) {
         if (Checks.hasOwnProperty(m)) {
             be[m] = Checks[m];
         }
     }
 
     if (be.amdEnv())
-        define( () => { return be; });
+        define(() => {
+            return be;
+        });
     else if (be.commonjsEnv())
         module.exports = be;
     else

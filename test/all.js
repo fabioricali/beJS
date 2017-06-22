@@ -24,7 +24,6 @@ it('count class methods', function () {
         if(Checks.hasOwnProperty(i)){
             count = 0;
             for (let m in be[Checks[i]]){
-                console.log(be.function(be[Checks[i]][m]));
                 if(be[Checks[i]].hasOwnProperty(m) && be.function(be[Checks[i]][m]) )
                     count++;
             }

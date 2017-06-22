@@ -39,8 +39,8 @@ Envs.amdEnv.multiple = false;
  * Check if is iOS device
  * @returns {boolean}
  */
-Envs.ios = () => {
-    let userAgent = Helpers.getUserAgent.apply(this, arguments);
+Envs.ios = (...params) => {
+    let userAgent = Helpers.getUserAgent.apply(this, params);
     return (/iPhone|iPad|iPod/i).test(userAgent);
 };
 
@@ -50,8 +50,8 @@ Envs.ios.multiple = false;
  * Check if is Android device
  * @returns {boolean}
  */
-Envs.android = () => {
-    let userAgent = Helpers.getUserAgent.apply(this, arguments);
+Envs.android = (...params) => {
+    let userAgent = Helpers.getUserAgent.apply(this, params);
     return (/Android/i).test(userAgent);
 };
 
@@ -71,8 +71,8 @@ Envs.navigator.multiple = false;
  * Firefox detecting
  * @returns {boolean}
  */
-Envs.firefox = () => {
-    let userAgent = Helpers.getUserAgent.apply(this, arguments);
+Envs.firefox = (...params) => {
+    let userAgent = Helpers.getUserAgent.apply(this, params);
     return (/Firefox/i).test(userAgent);
 };
 
@@ -82,8 +82,8 @@ Envs.firefox.multiple = false;
  * Chrome detecting
  * @returns {boolean}
  */
-Envs.chrome = () => {
-    let userAgent = Helpers.getUserAgent.apply(this, arguments);
+Envs.chrome = (...params) => {
+    let userAgent = Helpers.getUserAgent.apply(this, params);
     return (/Chrome/i).test(userAgent);
 };
 
@@ -93,8 +93,8 @@ Envs.chrome.multiple = false;
  * Safari detecting
  * @returns {boolean}
  */
-Envs.safari = () => {
-    let userAgent = Helpers.getUserAgent.apply(this, arguments);
+Envs.safari = (...params) => {
+    let userAgent = Helpers.getUserAgent.apply(this, params);
     return (/Safari/i).test(userAgent.replace('Chrome', '')) &&
         !(/Chrome/i).test(userAgent.replace('Safari', ''));
 };
@@ -105,8 +105,8 @@ Envs.safari.multiple = false;
  * Explorer detecting
  * @returns {boolean}
  */
-Envs.ie = () => {
-    let userAgent = Helpers.getUserAgent.apply(this, arguments);
+Envs.ie = (...params) => {
+    let userAgent = Helpers.getUserAgent.apply(this, params);
     return (/MSIE|Trident/i).test(userAgent);
 };
 
