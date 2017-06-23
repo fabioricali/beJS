@@ -1,5 +1,5 @@
 /**
- * @module beJS
+ * @module be
  * @version 1.0.0
  * @author Fabio Ricali <fabio@rica.li>
  * @copyright rica.li 2017

@@ -1,22 +1,27 @@
-# Global
+# be
 
-
+Arrays checks.
 
 
 
 * * *
 
-### inArray(value, array) 
+### be.inArray(value, array) 
 
-Check if element is in array
+Check if an element is in the array
 
 **Parameters**
 
-**value**: `*`, Check if element is in array
+**value**: `Mixed`, Element for search
 
-**array**: `array`, Check if element is in array
+**array**: `Array`, Array where search
 
-**Returns**: `boolean`
+**Returns**: `Boolean`
+
+**Example**:
+```js
+be.inArray('hello', ['hello', 'world']) //truebe.inArray('ciao', ['hello', 'world']) //falsebe.inArray(1, true) //falsebe.Arrays.inArray(1, [1, 2, 3]) //true
+```
 
 
 

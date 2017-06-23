@@ -1,5 +1,6 @@
 /**
- * Created by Fabio on 18/06/2017.
+ * @module be
+ * @description Arrays checks.
  */
 
 const Types = require('./types');
@@ -7,10 +8,16 @@ const Interface = require('../interface');
 let Arrays = {};
 
 /**
- * Check if element is in array
- * @param value {*}
- * @param array {array}
- * @returns {boolean}
+ * Check if an element is in the array
+ *
+ * @param value {Mixed} Element for search
+ * @param array {Array} Array where search
+ * @returns {Boolean}
+ * @example
+ * be.inArray('hello', ['hello', 'world']) //true
+ * be.inArray('ciao', ['hello', 'world']) //false
+ * be.inArray(1, true) //false
+ * be.Arrays.inArray(1, [1, 2, 3]) //true
  */
 Arrays.inArray = (value, array) => {
     if(!Types.array(array)) return false;
