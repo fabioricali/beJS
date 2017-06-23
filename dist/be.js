@@ -771,14 +771,11 @@
         } ],
         14: [ function(require, module, exports) {
             "use strict";
+            var be = require("./be");
             var Helpers = {};
             Helpers.getUserAgent = function() {
-                for (var _len = arguments.length, params = Array(_len), _key = 0; _key < _len; _key++) {
-                    params[_key] = arguments[_key];
-                }
-                console.log(params);
-                if (params.length) return params[0]; else {
-                    if (!be.navigator()) throw new Error("test allowed only in browser environment");
+                if (arguments.length) return arguments.length <= 0 ? undefined : arguments[0]; else {
+                    if (typeof window === "undefined" || typeof window.navigator === "undefined") throw new Error("test allowed only in browser environment");
                     return navigator.userAgent;
                 }
             };
@@ -809,7 +806,9 @@
                 return matrix[b.length][a.length];
             };
             module.exports = Helpers;
-        }, {} ],
+        }, {
+            "./be": 3
+        } ],
         15: [ function(require, module, exports) {
             "use strict";
             var Helpers = require("./helpers");

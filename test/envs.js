@@ -43,7 +43,7 @@ describe('ios', function () {
     it('should be return error', function (done) {
         try {
             be.ios();
-            if(navigation)
+            if(navigator)
                 done();
         } catch (e) {
             if(e.message === 'test allowed only in browser environment')
@@ -70,7 +70,7 @@ describe('android', function () {
     it('should be return error', function (done) {
         try {
             be.android();
-            if(navigation)
+            if(navigator)
                 done();
         } catch (e) {
             done();
