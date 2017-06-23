@@ -1,7 +1,7 @@
 /**
  * Created by Fabio on 17/06/2017.
  */
-
+const be = require('./be');
 /**
  * Helpers class
  */
@@ -12,11 +12,10 @@ let Helpers = {};
  * @returns {*}
  */
 Helpers.getUserAgent = (...params) => {
-    console.log(params);
     if (params.length)
         return params[0];
     else {
-        if (!be.navigator())
+        if (typeof window === 'undefined' || typeof window.navigator === 'undefined')
             throw new Error('test allowed only in browser environment');
         return navigator.userAgent;
     }

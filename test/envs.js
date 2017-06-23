@@ -46,7 +46,8 @@ describe('ios', function () {
             if(navigation)
                 done();
         } catch (e) {
-            done();
+            if(e.message === 'test allowed only in browser environment')
+                done();
         }
     });
 });

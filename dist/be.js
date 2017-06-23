@@ -223,8 +223,6 @@
             };
             var be = {};
             be.version = "0.0.0";
-            be.all = {};
-            be.any = {};
             be._helpers = Helpers;
             (function() {
                 var _loop = function _loop(c) {
@@ -822,30 +820,39 @@
             Interface.create = function(obj) {
                 obj.all = {};
                 obj.any = {};
+                obj.not = {};
                 var _loop = function _loop(i) {
-                    if (obj.hasOwnProperty(i) && typeof obj[i] === "function" && typeof obj[i].multiple === "undefined") {
-                        obj.all[i] = function() {
+                    if (obj.hasOwnProperty(i) && typeof obj[i] === "function") {
+                        obj.not[i] = function() {
                             for (var _len = arguments.length, params = Array(_len), _key = 0; _key < _len; _key++) {
                                 params[_key] = arguments[_key];
                             }
-                            var args = params;
-                            if (Interface._isArray(args[0])) args = args[0];
-                            for (var a in args) {
-                                if (args.hasOwnProperty(a) && !obj[i].call(undefined, args[a])) return false;
-                            }
-                            return true;
+                            return !obj[i].apply(undefined, params);
                         };
-                        obj.any[i] = function() {
-                            for (var _len2 = arguments.length, params = Array(_len2), _key2 = 0; _key2 < _len2; _key2++) {
-                                params[_key2] = arguments[_key2];
-                            }
-                            var args = params;
-                            if (Interface._isArray(args[0])) args = args[0];
-                            for (var a in args) {
-                                if (args.hasOwnProperty(a) && obj[i].call(undefined, args[a])) return true;
-                            }
-                            return false;
-                        };
+                        if (typeof obj[i].multiple === "undefined") {
+                            obj.all[i] = function() {
+                                for (var _len2 = arguments.length, params = Array(_len2), _key2 = 0; _key2 < _len2; _key2++) {
+                                    params[_key2] = arguments[_key2];
+                                }
+                                var args = params;
+                                if (Interface._isArray(args[0])) args = args[0];
+                                for (var a in args) {
+                                    if (args.hasOwnProperty(a) && !obj[i].call(undefined, args[a])) return false;
+                                }
+                                return true;
+                            };
+                            obj.any[i] = function() {
+                                for (var _len3 = arguments.length, params = Array(_len3), _key3 = 0; _key3 < _len3; _key3++) {
+                                    params[_key3] = arguments[_key3];
+                                }
+                                var args = params;
+                                if (Interface._isArray(args[0])) args = args[0];
+                                for (var a in args) {
+                                    if (args.hasOwnProperty(a) && obj[i].call(undefined, args[a])) return true;
+                                }
+                                return false;
+                            };
+                        }
                     }
                 };
                 for (var i in obj) {
