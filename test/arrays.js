@@ -17,6 +17,11 @@ describe('inArray', function () {
         console.log(result);
         assert.equal(result, false);
     });
+    it('interface "not" from Arrays, should be return false', function () {
+        var result = be.Arrays.not.inArray('hello', ['ciao', 'bye', 'hello', 5, false, true]);
+        console.log(result);
+        assert.equal(result, false);
+    });
     it('should be return false', function () {
         var result = be.inArray('HELLO', ['ciao', 'bye', 'hello', 5, false, true]);
         console.log(result);
