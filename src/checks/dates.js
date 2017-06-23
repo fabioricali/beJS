@@ -176,7 +176,7 @@ Dates.dateBetween = (date, startDate, endDate) => {
     /*return Types.date(date) &&
         Types.date(startDate) &&
         Types.date(endDate) &&*/
-    return Types.each.date(date, startDate, endDate) &&
+    return Types.all.date(date, startDate, endDate) &&
         Numbers.between(date.getTime(), startDate.getTime(), endDate.getTime());
 };
 

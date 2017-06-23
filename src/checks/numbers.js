@@ -108,7 +108,7 @@ Numbers.infinity = (value) => {
  * @returns {boolean}
  */
 Numbers.between = (num, min, max) => {
-    return Types.each.number(num, min, max) && num >= min && num <= max;
+    return Types.all.number(num, min, max) && num >= min && num <= max;
 };
 
 Numbers.between.multiple = false;
@@ -120,7 +120,7 @@ Numbers.between.multiple = false;
  * @returns {boolean}
  */
 Numbers.greater = (value, num) => {
-    return Types.each.number(value, num) && value > num;
+    return Types.all.number(value, num) && value > num;
 };
 
 Numbers.greater.multiple = false;
@@ -132,7 +132,7 @@ Numbers.greater.multiple = false;
  * @returns {boolean}
  */
 Numbers.lesser = (value, num) => {
-    return Types.each.number(value, num) && value < num;
+    return Types.all.number(value, num) && value < num;
 };
 
 Numbers.lesser.multiple = false;

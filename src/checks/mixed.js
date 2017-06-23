@@ -93,11 +93,11 @@ Mixed.semVer = (value) => {
  * @returns {boolean}
  */
 Mixed.equal = (value, other) => {
-    if(Types.each.number(value, other))
+    if(Types.all.number(value, other))
         return  value === other;
-    else if((Types.each.string(value, other)) || (Types.each.regexp(value, other)))
+    else if((Types.all.string(value, other)) || (Types.all.regexp(value, other)))
         return value + '' === '' + other;
-    else if(Types.each.boolean(value, other))
+    else if(Types.all.boolean(value, other))
         return value === other;
     else
         return false;

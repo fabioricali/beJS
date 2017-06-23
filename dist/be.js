@@ -223,8 +223,8 @@
             };
             var be = {};
             be.version = "0.0.0";
-            be.each = {};
-            be.some = {};
+            be.all = {};
+            be.any = {};
             be._helpers = Helpers;
             (function() {
                 var _loop = function _loop(c) {
@@ -343,7 +343,7 @@
                 return Types.date(date) && !Dates.weekend(date);
             };
             Dates.dateBetween = function(date, startDate, endDate) {
-                return Types.each.date(date, startDate, endDate) && Numbers.between(date.getTime(), startDate.getTime(), endDate.getTime());
+                return Types.all.date(date, startDate, endDate) && Numbers.between(date.getTime(), startDate.getTime(), endDate.getTime());
             };
             Dates.dateBetween.multiple = false;
             Dates.dayLightSavingTime = function(date) {
@@ -488,7 +488,7 @@
                 return /^(\d*)\.(\d*)\.(\d*)(-(\d*|\d*[a-z-][0-9a-z-]*)(\.(\d*|\d*[a-z-][0-9a-z-]*))*)?(\+[0-9a-z-]+(\.[0-9a-z-]+)*)?$/i.test(value);
             };
             Mixed.equal = function(value, other) {
-                if (Types.each.number(value, other)) return value === other; else if (Types.each.string(value, other) || Types.each.regexp(value, other)) return value + "" === "" + other; else if (Types.each.boolean(value, other)) return value === other; else return false;
+                if (Types.all.number(value, other)) return value === other; else if (Types.all.string(value, other) || Types.all.regexp(value, other)) return value + "" === "" + other; else if (Types.all.boolean(value, other)) return value === other; else return false;
             };
             Mixed.equal.multiple = false;
             Mixed = Interface.create(Mixed);
@@ -533,15 +533,15 @@
                 return Numbers.infinityPositive(value) || Numbers.infinityNegative(value);
             };
             Numbers.between = function(num, min, max) {
-                return Types.each.number(num, min, max) && num >= min && num <= max;
+                return Types.all.number(num, min, max) && num >= min && num <= max;
             };
             Numbers.between.multiple = false;
             Numbers.greater = function(value, num) {
-                return Types.each.number(value, num) && value > num;
+                return Types.all.number(value, num) && value > num;
             };
             Numbers.greater.multiple = false;
             Numbers.lesser = function(value, num) {
-                return Types.each.number(value, num) && value < num;
+                return Types.all.number(value, num) && value < num;
             };
             Numbers.lesser.multiple = false;
             Numbers.numeric = function(value) {
@@ -594,7 +594,7 @@
                 return Strings.lowerCase(value) && /^[0-9a-z]*-[0-9a-z]/gi.test(value);
             };
             Strings.similarity = function(string1, string2, threshold) {
-                if (!Types.each.string(string1, string2)) return false;
+                if (!Types.all.string(string1, string2)) return false;
                 if (!Types.number(threshold) || threshold < 0 || threshold > 1) threshold = 1;
                 var longer = string1;
                 var shorter = string2;
@@ -820,11 +820,11 @@
                 return Helpers.objectToString(object) === "[object Array]";
             };
             Interface.create = function(obj) {
-                obj.each = {};
-                obj.some = {};
+                obj.all = {};
+                obj.any = {};
                 var _loop = function _loop(i) {
                     if (obj.hasOwnProperty(i) && typeof obj[i] === "function" && typeof obj[i].multiple === "undefined") {
-                        obj.each[i] = function() {
+                        obj.all[i] = function() {
                             for (var _len = arguments.length, params = Array(_len), _key = 0; _key < _len; _key++) {
                                 params[_key] = arguments[_key];
                             }
@@ -835,7 +835,7 @@
                             }
                             return true;
                         };
-                        obj.some[i] = function() {
+                        obj.any[i] = function() {
                             for (var _len2 = arguments.length, params = Array(_len2), _key2 = 0; _key2 < _len2; _key2++) {
                                 params[_key2] = arguments[_key2];
                             }

@@ -50,7 +50,7 @@ Strings.kebabCase = (value) => {
  */
 Strings.similarity =  (string1, string2, threshold) => {
     //if(!Types.string(string1) || !Types.string(string2)) return false;
-    if(!Types.each.string(string1, string2)) return false;
+    if(!Types.all.string(string1, string2)) return false;
 
     if(!Types.number(threshold) || threshold < 0 || threshold > 1)
         threshold = 1;

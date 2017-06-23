@@ -82,6 +82,12 @@ describe('string', function () {
         assert.equal(result, true);
     });
 
+    it('string value and interface "not", should be return false', function () {
+        var result = be.not.string('hello');
+        console.log(result);
+        assert.equal(result, false);
+    });
+
     it('number value, should be return false', function () {
         var result = be.string(1);
         console.log(result);
@@ -94,32 +100,32 @@ describe('string', function () {
         assert.equal(result, false);
     });
 
-    it('each strings should be return true', function () {
-        var result = be.each.string('string1', 'string2', 'string3');
+    it('all strings should be return true', function () {
+        var result = be.all.string('string1', 'string2', 'string3');
         console.log(result);
         assert.equal(result, true);
     });
 
-    it('each strings as array should be return true', function () {
-        var result = be.each.string(['string1', 'string2', 'string3']);
+    it('all strings as array should be return true', function () {
+        var result = be.all.string(['string1', 'string2', 'string3']);
         console.log(result);
         assert.equal(result, true);
     });
 
     it('two strings and one number should be return false', function () {
-        var result = be.each.string('string1', 'string2', 3);
+        var result = be.all.string('string1', 'string2', 3);
         console.log(result);
         assert.equal(result, false);
     });
 
-    it('some string should be return true', function () {
-        var result = be.some.string('string1', 2, 3);
+    it('any string should be return true', function () {
+        var result = be.any.string('string1', 2, 3);
         console.log(result);
         assert.equal(result, true);
     });
 
-    it('each numbers should be return false', function () {
-        var result = be.some.string(1, 2, 3);
+    it('all numbers should be return false', function () {
+        var result = be.any.string(1, 2, 3);
         console.log(result);
         assert.equal(result, false);
     });

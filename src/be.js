@@ -36,8 +36,6 @@ let Checks = {
 let be = {};
 
 be.version = '0.0.0';
-be.each = {};
-be.some = {};
 
 /**
  * Helpers class
@@ -66,7 +64,7 @@ be._helpers = Helpers;
     }
 
     /**
-     * Create each and some
+     * Create all and any
      * @type {be}
      */
     be = Interface.create(be);
