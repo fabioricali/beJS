@@ -1,75 +1,75 @@
-# Global
+# be
 
-
+Environments checks.
 
 
 
 * * *
 
-### commonjsEnv() 
+### be.commonjsEnv() 
 
 Check if server environment
 
 **Returns**: `boolean`
 
 
-### browserEnv() 
+### be.browserEnv() 
 
 Check if browser environment
 
 **Returns**: `boolean`
 
 
-### amdEnv() 
+### be.amdEnv() 
 
 Check if AMD environment
 
 **Returns**: `boolean`
 
 
-### ios() 
+### be.ios() 
 
 Check if is iOS device
 
 **Returns**: `boolean`
 
 
-### android() 
+### be.android() 
 
 Check if is Android device
 
 **Returns**: `boolean`
 
 
-### navigator() 
+### be.navigator() 
 
 Check if exists navigator object
 
 **Returns**: `* | boolean`
 
 
-### firefox() 
+### be.firefox() 
 
 Firefox detecting
 
 **Returns**: `boolean`
 
 
-### chrome() 
+### be.chrome() 
 
 Chrome detecting
 
 **Returns**: `boolean`
 
 
-### safari() 
+### be.safari() 
 
 Safari detecting
 
 **Returns**: `boolean`
 
 
-### ie() 
+### be.ie() 
 
 Explorer detecting
 

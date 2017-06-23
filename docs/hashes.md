@@ -1,12 +1,12 @@
-# Global
+# be
 
-
+Hashes checks.
 
 
 
 * * *
 
-### md5(value) 
+### be.md5(value) 
 
 Check if is a valid MD5 hash string
 
@@ -17,7 +17,7 @@ Check if is a valid MD5 hash string
 **Returns**: `boolean`
 
 
-### sha1(value) 
+### be.sha1(value) 
 
 Check if is a valid SHA1 hash string
 

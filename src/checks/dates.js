@@ -1,6 +1,8 @@
 /**
- * Created by Fabio on 18/06/2017.
+ * @module be
+ * @description Dates checks.
  */
+
 const Types = require('./types');
 const Numbers = require('./numbers');
 const Interface = require('../interface');

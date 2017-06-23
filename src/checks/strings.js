@@ -1,6 +1,8 @@
 /**
- * Created by Fabio on 18/06/2017.
+ * @module be
+ * @description Strings checks.
  */
+
 const Helpers = require('../helpers');
 const Interface = require('../interface');
 const Types = require('./types');

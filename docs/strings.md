@@ -1,12 +1,12 @@
-# Global
+# be
 
-
+Strings checks.
 
 
 
 * * *
 
-### camelCase(value) 
+### be.camelCase(value) 
 
 Check if string is in camelCase format
 
@@ -17,7 +17,7 @@ Check if string is in camelCase format
 **Returns**: `boolean`
 
 
-### snakeCase(value) 
+### be.snakeCase(value) 
 
 Check if string is in snake_case format
 
@@ -28,7 +28,7 @@ Check if string is in snake_case format
 **Returns**: `boolean`
 
 
-### kebabCase(value) 
+### be.kebabCase(value) 
 
 Check if string is in kebab-case format
 
@@ -39,7 +39,7 @@ Check if string is in kebab-case format
 **Returns**: `boolean`
 
 
-### similarity(string1, string2, threshold) 
+### be.similarity(string1, string2, threshold) 
 
 Check similarity between two string
 
@@ -54,7 +54,7 @@ Check similarity between two string
 **Returns**: `boolean`
 
 
-### contains(string, value) 
+### be.contains(string, value) 
 
 Check if string contains a value
 
@@ -67,7 +67,7 @@ Check if string contains a value
 **Returns**: `boolean`
 
 
-### lowerCase(value) 
+### be.lowerCase(value) 
 
 Check if string is lower case
 
@@ -78,7 +78,7 @@ Check if string is lower case
 **Returns**: `boolean`
 
 
-### upperCase(value) 
+### be.upperCase(value) 
 
 Check if string is upper case
 
@@ -89,7 +89,7 @@ Check if string is upper case
 **Returns**: `boolean`
 
 
-### word(value) 
+### be.word(value) 
 
 Check if is a word
 
@@ -100,7 +100,7 @@ Check if is a word
 **Returns**: `boolean`
 
 
-### capitalized(value) 
+### be.capitalized(value) 
 
 Check if string is capitalized
 
@@ -111,7 +111,7 @@ Check if string is capitalized
 **Returns**: `boolean`
 
 
-### emptyString(value) 
+### be.emptyString(value) 
 
 Check if string is empty
 
@@ -122,7 +122,7 @@ Check if string is empty
 **Returns**: `boolean`
 
 
-### alphanumeric(value) 
+### be.alphanumeric(value) 
 
 Check if is alphanumeric string
 
@@ -133,7 +133,7 @@ Check if is alphanumeric string
 **Returns**: `boolean | *`
 
 
-### startWith(value, string, insensitive) 
+### be.startWith(value, string, insensitive) 
 
 Check if string start with a value
 
@@ -148,7 +148,7 @@ Check if string start with a value
 **Returns**: `boolean`
 
 
-### char(value) 
+### be.char(value) 
 
 Check if value is a single char
 
@@ -159,7 +159,7 @@ Check if value is a single char
 **Returns**: `boolean`
 
 
-### space(value) 
+### be.space(value) 
 
 Check if string is a space
 
@@ -170,7 +170,7 @@ Check if string is a space
 **Returns**: `boolean`
 
 
-### spaces(value) 
+### be.spaces(value) 
 
 Check if exists spaces in string
 

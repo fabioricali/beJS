@@ -1,12 +1,12 @@
-# Global
+# be
 
-
+Urls checks.
 
 
 
 * * *
 
-### url(value) 
+### be.url(value) 
 
 Check if is valid string url
 
@@ -17,7 +17,7 @@ Check if is valid string url
 **Returns**: `boolean`
 
 
-### httpUrl(value) 
+### be.httpUrl(value) 
 
 Check if is a HTTP url
 
@@ -28,7 +28,7 @@ Check if is a HTTP url
 **Returns**: `* | boolean`
 
 
-### httpsUrl(value) 
+### be.httpsUrl(value) 
 
 Check if is a HTTPS url
 
@@ -39,7 +39,7 @@ Check if is a HTTPS url
 **Returns**: `* | boolean`
 
 
-### urlEncoded(value) 
+### be.urlEncoded(value) 
 
 Check if url is encoded
 
@@ -50,7 +50,7 @@ Check if url is encoded
 **Returns**: `boolean`
 
 
-### ftpUrl(value) 
+### be.ftpUrl(value) 
 
 Check if is a FTP urls
 
@@ -61,7 +61,7 @@ Check if is a FTP urls
 **Returns**: `* | boolean`
 
 
-### ftpsUrl(value) 
+### be.ftpsUrl(value) 
 
 Check if is a FTPS urls
 

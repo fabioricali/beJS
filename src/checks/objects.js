@@ -1,6 +1,8 @@
 /**
- * Created by Fabio on 18/06/2017.
+ * @module be
+ * @description Objects checks.
  */
+
 const Types = require('./types');
 const Interface = require('../interface');
 let Objects = {};

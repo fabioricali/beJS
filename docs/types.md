@@ -1,12 +1,12 @@
-# Global
+# be
 
-
+Types checks.
 
 
 
 * * *
 
-### classOf(object, className) 
+### be.classOf(object, className) 
 
 Check [object ?] class
 
@@ -19,7 +19,7 @@ Check [object ?] class
 **Returns**: `boolean`
 
 
-### boolean(value) 
+### be.boolean(value) 
 
 Check if is valid boolean
 
@@ -30,7 +30,7 @@ Check if is valid boolean
 **Returns**: `boolean`
 
 
-### booleanFalse(value) 
+### be.booleanFalse(value) 
 
 Check if is false boolean type
 
@@ -41,7 +41,7 @@ Check if is false boolean type
 **Returns**: `boolean`
 
 
-### booleanTrue(value) 
+### be.booleanTrue(value) 
 
 Check if is true boolean type
 
@@ -52,7 +52,7 @@ Check if is true boolean type
 **Returns**: `boolean`
 
 
-### number(value) 
+### be.number(value) 
 
 Check if is valid number
 
@@ -63,7 +63,7 @@ Check if is valid number
 **Returns**: `boolean`
 
 
-### string(value) 
+### be.string(value) 
 
 Check if is valid string
 
@@ -74,7 +74,7 @@ Check if is valid string
 **Returns**: `boolean`
 
 
-### undefined(value) 
+### be.undefined(value) 
 
 Check if is undefined value
 
@@ -85,7 +85,7 @@ Check if is undefined value
 **Returns**: `boolean`
 
 
-### &#39;null&#39;(value) 
+### be.&#39;null&#39;](value) 
 
 Check if is null
 
@@ -96,7 +96,7 @@ Check if is null
 **Returns**: `boolean`
 
 
-### object(value) 
+### be.object(value) 
 
 Check if is a object
 
@@ -107,7 +107,7 @@ Check if is a object
 **Returns**: `boolean`
 
 
-### array(value) 
+### be.array(value) 
 
 Check if is an array
 
@@ -118,7 +118,7 @@ Check if is an array
 **Returns**: `boolean`
 
 
-### json(value) 
+### be.json(value) 
 
 Check if is a JSON string
 
@@ -129,7 +129,7 @@ Check if is a JSON string
 **Returns**: `boolean`
 
 
-### date(value) 
+### be.date(value) 
 
 Check if is date object
 
@@ -140,7 +140,7 @@ Check if is date object
 **Returns**: `boolean`
 
 
-### &#39;function&#39;(value) 
+### be.&#39;function&#39;](value) 
 
 Check if is a function
 
@@ -151,7 +151,7 @@ Check if is a function
 **Returns**: `boolean`
 
 
-### regexp(value) 
+### be.regexp(value) 
 
 Check if is a valid RegExp
 
@@ -162,7 +162,7 @@ Check if is a valid RegExp
 **Returns**: `boolean`
 
 
-### sameType(value, other) 
+### be.sameType(value, other) 
 
 Check if both arguments are same type
 
@@ -175,7 +175,7 @@ Check if both arguments are same type
 **Returns**: `boolean`
 
 
-### empty(value) 
+### be.empty(value) 
 
 Check if is empty
 
@@ -186,7 +186,7 @@ Check if is empty
 **Returns**: `boolean`
 
 
-### falsy(value) 
+### be.falsy(value) 
 
 Check if a falsy value
 
@@ -197,7 +197,7 @@ Check if a falsy value
 **Returns**: `boolean`
 
 
-### truthy(value) 
+### be.truthy(value) 
 
 Check if a truthy value
 

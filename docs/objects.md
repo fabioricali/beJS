@@ -1,12 +1,12 @@
-# Global
+# be
 
-
+Objects checks.
 
 
 
 * * *
 
-### propertyOf(value, object) 
+### be.propertyOf(value, object) 
 
 Check if is a property of an object
 
@@ -19,7 +19,7 @@ Check if is a property of an object
 **Returns**: `boolean`
 
 
-### propertyCount(object, value) 
+### be.propertyCount(object, value) 
 
 Count properties of an object
 

@@ -1,12 +1,12 @@
-# Global
+# be
 
-
+Numbers checks.
 
 
 
 * * *
 
-### int(value) 
+### be.int(value) 
 
 Check if a number is integer
 
@@ -17,7 +17,7 @@ Check if a number is integer
 **Returns**: `* | boolean`
 
 
-### float(value) 
+### be.float(value) 
 
 Check if is float number
 
@@ -28,7 +28,7 @@ Check if is float number
 **Returns**: `* | boolean`
 
 
-### nan(value) 
+### be.nan(value) 
 
 Check if is NaN
 
@@ -39,7 +39,7 @@ Check if is NaN
 **Returns**: `* | boolean`
 
 
-### even(value) 
+### be.even(value) 
 
 Check if is a even number
 
@@ -50,7 +50,7 @@ Check if is a even number
 **Returns**: `* | boolean`
 
 
-### odd(value) 
+### be.odd(value) 
 
 Check if is an odd number
 
@@ -61,7 +61,7 @@ Check if is an odd number
 **Returns**: `* | boolean`
 
 
-### positive(value) 
+### be.positive(value) 
 
 Check if is a positive number
 
@@ -72,7 +72,7 @@ Check if is a positive number
 **Returns**: `* | boolean`
 
 
-### negative(value) 
+### be.negative(value) 
 
 Check if is a negative number
 
@@ -83,7 +83,7 @@ Check if is a negative number
 **Returns**: `* | boolean`
 
 
-### infinityPositive(value) 
+### be.infinityPositive(value) 
 
 Check if number is infinity positive
 
@@ -94,7 +94,7 @@ Check if number is infinity positive
 **Returns**: `boolean`
 
 
-### infinityNegative(value) 
+### be.infinityNegative(value) 
 
 Check if number is infinity positive
 
@@ -105,7 +105,7 @@ Check if number is infinity positive
 **Returns**: `boolean`
 
 
-### infinity(value) 
+### be.infinity(value) 
 
 Check if number is infinity
 
@@ -116,7 +116,7 @@ Check if number is infinity
 **Returns**: `boolean`
 
 
-### between(num, min, max) 
+### be.between(num, min, max) 
 
 Check if number is between min and max
 
@@ -131,7 +131,7 @@ Check if number is between min and max
 **Returns**: `boolean`
 
 
-### greater(value, num) 
+### be.greater(value, num) 
 
 Checks if number is greater then an other
 
@@ -144,7 +144,7 @@ Checks if number is greater then an other
 **Returns**: `boolean`
 
 
-### lesser(value, num) 
+### be.lesser(value, num) 
 
 Checks if number is lesser then an other
 
@@ -157,7 +157,7 @@ Checks if number is lesser then an other
 **Returns**: `boolean`
 
 
-### numeric(value) 
+### be.numeric(value) 
 
 Checks if is a number as string or number type
 

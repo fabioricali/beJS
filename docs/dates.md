@@ -1,12 +1,12 @@
-# Global
+# be
 
-
+Dates checks.
 
 
 
 * * *
 
-### dateString(value) 
+### be.dateString(value) 
 
 Check if is date string
 
@@ -17,7 +17,7 @@ Check if is date string
 **Returns**: `boolean`
 
 
-### today(date) 
+### be.today(date) 
 
 Check if date is today
 
@@ -28,7 +28,7 @@ Check if date is today
 **Returns**: `boolean`
 
 
-### tomorrow(date) 
+### be.tomorrow(date) 
 
 Check if date is tomorrow
 
@@ -39,7 +39,7 @@ Check if date is tomorrow
 **Returns**: `boolean`
 
 
-### yesterday(date) 
+### be.yesterday(date) 
 
 Check if date is yesterday
 
@@ -50,7 +50,7 @@ Check if date is yesterday
 **Returns**: `boolean`
 
 
-### past(date) 
+### be.past(date) 
 
 Check if date is past
 
@@ -61,7 +61,7 @@ Check if date is past
 **Returns**: `boolean`
 
 
-### future(date) 
+### be.future(date) 
 
 Check if date is future
 
@@ -72,7 +72,7 @@ Check if date is future
 **Returns**: `boolean`
 
 
-### day(date, day) 
+### be.day(date, day) 
 
 Check if date is day specified
 
@@ -85,7 +85,7 @@ Check if date is day specified
 **Returns**: `boolean`
 
 
-### month(date, month) 
+### be.month(date, month) 
 
 Check if date is month specified
 
@@ -98,7 +98,7 @@ Check if date is month specified
 **Returns**: `boolean`
 
 
-### year(date, year) 
+### be.year(date, year) 
 
 Check if date is year specified
 
@@ -111,7 +111,7 @@ Check if date is year specified
 **Returns**: `boolean`
 
 
-### leapYear(year) 
+### be.leapYear(year) 
 
 Check if is leap year
 
@@ -122,7 +122,7 @@ Check if is leap year
 **Returns**: `boolean`
 
 
-### weekend(date) 
+### be.weekend(date) 
 
 Check if date is weekend
 
@@ -133,7 +133,7 @@ Check if date is weekend
 **Returns**: `boolean`
 
 
-### weekday(date) 
+### be.weekday(date) 
 
 Check if date is weekday
 
@@ -144,7 +144,7 @@ Check if date is weekday
 **Returns**: `boolean`
 
 
-### dateBetween(date, startDate, endDate) 
+### be.dateBetween(date, startDate, endDate) 
 
 Check if date is weekday
 
@@ -159,7 +159,7 @@ Check if date is weekday
 **Returns**: `boolean`
 
 
-### dayLightSavingTime(date) 
+### be.dayLightSavingTime(date) 
 
 Check if date is DST
 

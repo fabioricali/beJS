@@ -1,12 +1,12 @@
-# Global
+# be
 
-
+Various checks.
 
 
 
 * * *
 
-### email(value) 
+### be.email(value) 
 
 Check if is valid email
 
@@ -17,7 +17,7 @@ Check if is valid email
 **Returns**: `boolean`
 
 
-### hex(value) 
+### be.hex(value) 
 
 Check if is a hexadecimal
 
@@ -28,7 +28,7 @@ Check if is a hexadecimal
 **Returns**: `boolean`
 
 
-### hexColor(value) 
+### be.hexColor(value) 
 
 Check if is a hexadecimal color
 
@@ -39,7 +39,7 @@ Check if is a hexadecimal color
 **Returns**: `boolean`
 
 
-### ipv4(value) 
+### be.ipv4(value) 
 
 Check if is a valid IPv4
 
@@ -50,7 +50,7 @@ Check if is a valid IPv4
 **Returns**: `boolean`
 
 
-### ipv6(value) 
+### be.ipv6(value) 
 
 Check if is a valid IPv6
 
@@ -61,7 +61,7 @@ Check if is a valid IPv6
 **Returns**: `boolean`
 
 
-### ip(value) 
+### be.ip(value) 
 
 Check if is a valid ip string
 
@@ -72,7 +72,7 @@ Check if is a valid ip string
 **Returns**: `* | boolean`
 
 
-### base64(value) 
+### be.base64(value) 
 
 Check if is base64 encoded string
 
@@ -83,7 +83,7 @@ Check if is base64 encoded string
 **Returns**: `boolean`
 
 
-### semVer(value) 
+### be.semVer(value) 
 
 Check if is a valid semver string
 
@@ -94,7 +94,7 @@ Check if is a valid semver string
 **Returns**: `boolean`
 
 
-### equal(value, other) 
+### be.equal(value, other) 
 
 Checks if equal
 
