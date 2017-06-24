@@ -10,8 +10,15 @@ let Numbers = {};
 
 /**
  * Check if a number is integer
- * @param value {number}
- * @returns {*|boolean}
+ *
+ * * **Interfaces**: `all`, `any`, `not`
+ *
+ * @param value {Number} number
+ * @returns {Boolean}
+ * @example
+ * be.int(2) // true
+ * be.int(1.5) // false
+ * be.all.int(1, 4, 5) // true
  */
 Numbers.int = (value) => {
     return Types.number(value) &&
@@ -21,8 +28,15 @@ Numbers.int = (value) => {
 
 /**
  * Check if is float number
- * @param value {number}
- * @returns {*|boolean}
+ *
+ * * **Interfaces**: `all`, `any`, `not`
+ *
+ * @param value {Number} number
+ * @returns {Boolean}
+ * @example
+ * be.float(1.5) // true
+ * be.float(1) // false
+ * be.all.float(1.5, 4.2, 5) // false
  */
 Numbers.float = (value) => {
     return Types.number(value) && !Numbers.int(value);

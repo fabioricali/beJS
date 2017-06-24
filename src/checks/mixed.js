@@ -9,9 +9,15 @@ let Mixed = {};
 
 /**
  * Check if is valid email
+ *
+ * **Interfaces**: `all`, `any`, `not`
+ *
  * @link https://emailregex.com/
- * @param value {string}
- * @returns {boolean}
+ * @param value {String} email
+ * @returns {Boolean}
+ * @example
+ * be.email('fabio@rica.li') // true
+ * be.not.email('fabiorica.li') // true
  */
 Mixed.email = (value) => {
     return /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(value);
@@ -19,8 +25,13 @@ Mixed.email = (value) => {
 
 /**
  * Check if is a hexadecimal
- * @param value {string}
- * @returns {boolean}
+ *
+ * **Interfaces**: `all`, `any`, `not`
+ *
+ * @param value {String} hex string
+ * @returns {Boolean}
+ * @example
+ * be.hex('fff') // true
  */
 Mixed.hex = (value) => {
     return /^(?:0x)?[a-f0-9]+$/.test(value);
@@ -28,8 +39,13 @@ Mixed.hex = (value) => {
 
 /**
  * Check if is a hexadecimal color
- * @param value {string}
- * @returns {boolean}
+ *
+ * **Interfaces**: `all`, `any`, `not`
+ *
+ * @param value {String} hex color string
+ * @returns {Boolean}
+ * @example
+ * be.hexColor('#ff0000') // true
  */
 Mixed.hexColor = (value) => {
     try {
@@ -43,8 +59,13 @@ Mixed.hexColor = (value) => {
 
 /**
  * Check if is a valid IPv4
- * @param value {string}
- * @returns {boolean}
+ *
+ * **Interfaces**: `all`, `any`, `not`
+ *
+ * @param value {String} ip string
+ * @returns {Boolean}
+ * @example
+ * be.ipv4('127.0.0.1') // true
  */
 Mixed.ipv4 = (value) => {
     return /^(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)$/.test(value);
@@ -52,8 +73,13 @@ Mixed.ipv4 = (value) => {
 
 /**
  * Check if is a valid IPv6
- * @param value
- * @returns {boolean}
+ *
+ * **Interfaces**: `all`, `any`, `not`
+ *
+ * @param value {String} ip string
+ * @returns {Boolean}
+ * @example
+ * be.ipv6('FF01:0:0:0:0:0:0:1') // true
  */
 Mixed.ipv6 = (value) => {
     return /^(([0-9A-Fa-f]{1,4}:){7}([0-9A-Fa-f]{1,4}|:))|(([0-9A-Fa-f]{1,4}:){6}(:[0-9A-Fa-f]{1,4}|((25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)(\.(25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)){3})|:))|(([0-9A-Fa-f]{1,4}:){5}(((:[0-9A-Fa-f]{1,4}){1,2})|:((25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)(\.(25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)){3})|:))|(([0-9A-Fa-f]{1,4}:){4}(((:[0-9A-Fa-f]{1,4}){1,3})|((:[0-9A-Fa-f]{1,4})?:((25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)(\.(25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)){3}))|:))|(([0-9A-Fa-f]{1,4}:){3}(((:[0-9A-Fa-f]{1,4}){1,4})|((:[0-9A-Fa-f]{1,4}){0,2}:((25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)(\.(25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)){3}))|:))|(([0-9A-Fa-f]{1,4}:){2}(((:[0-9A-Fa-f]{1,4}){1,5})|((:[0-9A-Fa-f]{1,4}){0,3}:((25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)(\.(25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)){3}))|:))|(([0-9A-Fa-f]{1,4}:){1}(((:[0-9A-Fa-f]{1,4}){1,6})|((:[0-9A-Fa-f]{1,4}){0,4}:((25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)(\.(25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)){3}))|:))|(:(((:[0-9A-Fa-f]{1,4}){1,7})|((:[0-9A-Fa-f]{1,4}){0,5}:((25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)(\.(25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)){3}))|:))$/.test(value);
@@ -61,8 +87,13 @@ Mixed.ipv6 = (value) => {
 
 /**
  * Check if is a valid ip string
- * @param value {string}
- * @returns {*|boolean}
+ *
+ * **Interfaces**: `all`, `any`, `not`
+ *
+ * @param value {String} ip string
+ * @returns {Boolean}
+ * @example
+ * be.ipv('127.0.0.1') // true
  */
 Mixed.ip = (value) => {
     return Mixed.ipv4(value) || Mixed.ipv6(value);
@@ -70,8 +101,13 @@ Mixed.ip = (value) => {
 
 /**
  * Check if is base64 encoded string
- * @param value {string}
- * @returns {boolean}
+ *
+ * **Interfaces**: `all`, `any`, `not`
+ *
+ * @param value {String} base64 string
+ * @returns {Boolean}
+ * @example
+ * be.base64('aGVsbG8=') // true
  */
 Mixed.base64 = (value) => {
     return /^([0-9a-zA-Z+/]{4})*(([0-9a-zA-Z+/]{2}==)|([0-9a-zA-Z+/]{3}=))?$/.test(value);
@@ -79,8 +115,13 @@ Mixed.base64 = (value) => {
 
 /**
  * Check if is a valid semver string
- * @param value {string}
- * @returns {boolean}
+ *
+ * **Interfaces**: `all`, `any`, `not`
+ *
+ * @param value {String} version string
+ * @returns {Boolean}
+ * @example
+ * be.semVer('1.0.0') // true
  */
 Mixed.semVer = (value) => {
     return /^(\d*)\.(\d*)\.(\d*)(-(\d*|\d*[a-z-][0-9a-z-]*)(\.(\d*|\d*[a-z-][0-9a-z-]*))*)?(\+[0-9a-z-]+(\.[0-9a-z-]+)*)?$/i.test(value);
@@ -88,9 +129,16 @@ Mixed.semVer = (value) => {
 
 /**
  * Checks if equal
- * @param value {number|string|boolean|regexp}
- * @param other {number|string|boolean|regexp}
- * @returns {boolean}
+ *
+ * **Interfaces**: `not`
+ *
+ * @param value {Number|String|Boolean|RegExp} first
+ * @param other {Number|String|Boolean|RegExp} second
+ * @returns {Boolean}
+ * @example
+ * be.equal('hello', 'hello') // true
+ * be.equal('hello', 'hellow') // false
+ * be.equal(true, 'true') // false
  */
 Mixed.equal = (value, other) => {
     if(Types.all.number(value, other))

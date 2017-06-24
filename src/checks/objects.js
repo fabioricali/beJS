@@ -9,9 +9,14 @@ let Objects = {};
 
 /**
  * Check if is a property of an object
- * @param value {*}
- * @param object {object}
- * @returns {boolean}
+ *
+ * **Interfaces**: `not`
+ *
+ * @param value {Mixed} property that you want to search
+ * @param object {Object} object target
+ * @returns {Boolean}
+ * @example
+ * be.propertyOf('firstName', {firstName: 'Teddy', lastName: 'Red'}) // true
  */
 Objects.propertyOf = (value, object) => {
     if(!Types.object(object)) return false;
@@ -22,9 +27,14 @@ Objects.propertyOf.multiple = false;
 
 /**
  * Count properties of an object
- * @param object {object}
- * @param value {int}
- * @returns {boolean}
+ *
+ * **Interfaces**: `not`
+ *
+ * @param object {Object} object
+ * @param value {Integer} count
+ * @returns {Boolean}
+ * @example
+ * be.propertyCount({a: 1, b: 2, c: 3}, 3) // true
  */
 Objects.propertyCount = (object, value) => {
     if(!Types.object(object) || !Types.number(value)) return false;

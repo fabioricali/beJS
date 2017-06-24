@@ -8,7 +8,7 @@ Dates checks.
 
 ### be.dateString(value) 
 
-Check if is date stringinterfaces: `all`, `any`, `not`
+Check if is date string**Interfaces**: `all`, `any`, `not`
 
 **Parameters**
 
@@ -24,7 +24,7 @@ be.dateString('2017-06-20') // truebe.dateString('hello') // false
 
 ### be.today(date) 
 
-Check if date is todayinterfaces: `all`, `any`, `not`
+Check if date is today**Interfaces**: `all`, `any`, `not`
 
 **Parameters**
 
@@ -40,7 +40,7 @@ be.today(new Date()) // true
 
 ### be.tomorrow(date) 
 
-Check if date is tomorrowinterfaces: `all`, `any`, `not`
+Check if date is tomorrow**Interfaces**: `all`, `any`, `not`
 
 **Parameters**
 
@@ -56,7 +56,7 @@ let now = new Date();let tomorrow = now.setDate(now.getDate() + 1);be.tomorrow
 
 ### be.yesterday(date) 
 
-Check if date is yesterdayinterfaces: `all`, `any`, `not`
+Check if date is yesterday**Interfaces**: `all`, `any`, `not`
 
 **Parameters**
 
@@ -72,7 +72,7 @@ let now = new Date();let yesterday = now.setDate(now.getDate() - 1);be.yesterd
 
 ### be.past(date) 
 
-Check if date is pastinterfaces: `all`, `any`, `not`
+Check if date is past**Interfaces**: `all`, `any`, `not`
 
 **Parameters**
 
@@ -88,7 +88,7 @@ be.past(new Date('1980-02-05')) // true
 
 ### be.future(date) 
 
-Check if date is futureinterfaces: `all`, `any`, `not`
+Check if date is future**Interfaces**: `all`, `any`, `not`
 
 **Parameters**
 
@@ -104,7 +104,7 @@ be.future(new Date('2117-06-24')) // truebe.all.future(new Date('2117-06-24'), 
 
 ### be.day(date, day) 
 
-Check if date is day specifiedinterfaces: `not`
+Check if date is day specified**Interfaces**: `not`
 
 **Parameters**
 
@@ -122,7 +122,7 @@ be.day(new Date('2017-06-24'), 'saturday') // truebe.day(new Date('2017-06-25')
 
 ### be.month(date, month) 
 
-Check if date is month specifiedinterfaces: `not`
+Check if date is month specified**Interfaces**: `not`
 
 **Parameters**
 
@@ -140,7 +140,7 @@ be.month(new Date('2017-06-24'), 'june') // truebe.month(new Date('2017-02-25')
 
 ### be.year(date, year) 
 
-Check if date is the year specifiedinterfaces: `not`
+Check if date is the year specified**Interfaces**: `not`
 
 **Parameters**
 
@@ -158,7 +158,7 @@ be.year(new Date('2017-06-06'), 2017) // truebe.not.year(new Date('2017-06-06')
 
 ### be.leapYear(year) 
 
-Check if is leap yearinterfaces: `all`, `any`, `not`
+Check if is leap year**Interfaces**: `all`, `any`, `not`
 
 **Parameters**
 
@@ -174,7 +174,7 @@ be.leapYear(2016) // truebe.leapYear(2017) // falsebe.not.leapYear(2017) // tr
 
 ### be.weekend(date) 
 
-Check if date is weekendinterfaces: `all`, `any`, `not`
+Check if date is weekend**Interfaces**: `all`, `any`, `not`
 
 **Parameters**
 
@@ -190,7 +190,7 @@ be.weekend(new Date('2017-06-24')) // truebe.not.weekend(new Date('2017-06-24')
 
 ### be.weekday(date) 
 
-Check if date is weekdayinterfaces: `all`, `any`, `not`
+Check if date is weekday**Interfaces**: `all`, `any`, `not`
 
 **Parameters**
 
@@ -206,7 +206,7 @@ be.weekday(new Date('2017-06-26')) // truebe.not.weekday(new Date('2017-06-24')
 
 ### be.dateBetween(date, startDate, endDate) 
 
-Check if date is between start date and end dateinterfaces: `not`
+Check if date is between start date and end date**Interfaces**: `not`
 
 **Parameters**
 
@@ -226,7 +226,7 @@ be.dateBetween(new Date('2017-05-12'), new Date('2017-03-10'), new Date('2017-07
 
 ### be.dayLightSavingTime(date) 
 
-Check if date is DSTinterfaces: `all`, `any`, `not`
+Check if date is DST**Interfaces**: `all`, `any`, `not`
 
 **Parameters**
 

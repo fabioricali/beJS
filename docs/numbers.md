@@ -8,24 +8,34 @@ Numbers checks.
 
 ### be.int(value) 
 
-Check if a number is integer
+Check if a number is integer* **Interfaces**: `all`, `any`, `not`
 
 **Parameters**
 
-**value**: `number`, Check if a number is integer
+**value**: `Number`, number
 
-**Returns**: `* | boolean`
+**Returns**: `Boolean`
+
+**Example**:
+```js
+be.int(2) // truebe.int(1.5) // falsebe.all.int(1, 4, 5) // true
+```
 
 
 ### be.float(value) 
 
-Check if is float number
+Check if is float number* **Interfaces**: `all`, `any`, `not`
 
 **Parameters**
 
-**value**: `number`, Check if is float number
+**value**: `Number`, number
 
-**Returns**: `* | boolean`
+**Returns**: `Boolean`
+
+**Example**:
+```js
+be.float(1.5) // truebe.float(1) // falsebe.all.float(1.5, 4.2, 5) // false
+```
 
 
 ### be.nan(value) 

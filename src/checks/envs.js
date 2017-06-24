@@ -9,7 +9,10 @@ let Envs = {};
 
 /**
  * Check if server environment
- * @returns {boolean}
+ *
+ * **Interfaces**: `not`
+ *
+ * @returns {Boolean}
  */
 Envs.commonjsEnv = () => {
     return typeof process !== 'undefined';
@@ -19,7 +22,10 @@ Envs.commonjsEnv.multiple = false;
 
 /**
  * Check if browser environment
- * @returns {boolean}
+ *
+ * **Interfaces**: `not`
+ *
+ * @returns {Boolean}
  */
 Envs.browserEnv = () => {
     return typeof window !== 'undefined';
@@ -29,7 +35,10 @@ Envs.browserEnv.multiple = false;
 
 /**
  * Check if AMD environment
- * @returns {boolean}
+ *
+ * **Interfaces**: `not`
+ *
+ * @returns {Boolean}
  */
 Envs.amdEnv = () => {
     return typeof define === 'function' && define.amd;
@@ -39,7 +48,10 @@ Envs.amdEnv.multiple = false;
 
 /**
  * Check if is iOS device
- * @returns {boolean}
+ *
+ * **Interfaces**: `not`
+ *
+ * @returns {Boolean}
  */
 Envs.ios = (...params) => {
     let userAgent = Helpers.getUserAgent.apply(this, params);
@@ -50,7 +62,10 @@ Envs.ios.multiple = false;
 
 /**
  * Check if is Android device
- * @returns {boolean}
+ *
+ * **Interfaces**: `not`
+ *
+ * @returns {Boolean}
  */
 Envs.android = (...params) => {
     let userAgent = Helpers.getUserAgent.apply(this, params);
@@ -61,7 +76,10 @@ Envs.android.multiple = false;
 
 /**
  * Check if exists navigator object
- * @returns {*|boolean}
+ *
+ * **Interfaces**: `not`
+ *
+ * @returns {Boolean}
  */
 Envs.navigator = () => {
     return Envs.browserEnv() && typeof window.navigator !== 'undefined';
@@ -71,7 +89,10 @@ Envs.navigator.multiple = false;
 
 /**
  * Firefox detecting
- * @returns {boolean}
+ *
+ * **Interfaces**: `not`
+ *
+ * @returns {Boolean}
  */
 Envs.firefox = (...params) => {
     let userAgent = Helpers.getUserAgent.apply(this, params);
@@ -82,7 +103,10 @@ Envs.firefox.multiple = false;
 
 /**
  * Chrome detecting
- * @returns {boolean}
+ *
+ * **Interfaces**: `not`
+ *
+ * @returns {Boolean}
  */
 Envs.chrome = (...params) => {
     let userAgent = Helpers.getUserAgent.apply(this, params);
@@ -93,7 +117,10 @@ Envs.chrome.multiple = false;
 
 /**
  * Safari detecting
- * @returns {boolean}
+ *
+ * **Interfaces**: `not`
+ *
+ * @returns {Boolean}
  */
 Envs.safari = (...params) => {
     let userAgent = Helpers.getUserAgent.apply(this, params);
@@ -105,7 +132,10 @@ Envs.safari.multiple = false;
 
 /**
  * Explorer detecting
- * @returns {boolean}
+ *
+ * **Interfaces**: `not`
+ *
+ * @returns {Boolean}
  */
 Envs.ie = (...params) => {
     let userAgent = Helpers.getUserAgent.apply(this, params);

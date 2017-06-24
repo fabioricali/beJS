@@ -8,72 +8,72 @@ Environments checks.
 
 ### be.commonjsEnv() 
 
-Check if server environment
+Check if server environment**Interfaces**: `not`
 
-**Returns**: `boolean`
+**Returns**: `Boolean`
 
 
 ### be.browserEnv() 
 
-Check if browser environment
+Check if browser environment**Interfaces**: `not`
 
-**Returns**: `boolean`
+**Returns**: `Boolean`
 
 
 ### be.amdEnv() 
 
-Check if AMD environment
+Check if AMD environment**Interfaces**: `not`
 
-**Returns**: `boolean`
+**Returns**: `Boolean`
 
 
 ### be.ios() 
 
-Check if is iOS device
+Check if is iOS device**Interfaces**: `not`
 
-**Returns**: `boolean`
+**Returns**: `Boolean`
 
 
 ### be.android() 
 
-Check if is Android device
+Check if is Android device**Interfaces**: `not`
 
-**Returns**: `boolean`
+**Returns**: `Boolean`
 
 
 ### be.navigator() 
 
-Check if exists navigator object
+Check if exists navigator object**Interfaces**: `not`
 
-**Returns**: `* | boolean`
+**Returns**: `Boolean`
 
 
 ### be.firefox() 
 
-Firefox detecting
+Firefox detecting**Interfaces**: `not`
 
-**Returns**: `boolean`
+**Returns**: `Boolean`
 
 
 ### be.chrome() 
 
-Chrome detecting
+Chrome detecting**Interfaces**: `not`
 
-**Returns**: `boolean`
+**Returns**: `Boolean`
 
 
 ### be.safari() 
 
-Safari detecting
+Safari detecting**Interfaces**: `not`
 
-**Returns**: `boolean`
+**Returns**: `Boolean`
 
 
 ### be.ie() 
 
-Explorer detecting
+Explorer detecting**Interfaces**: `not`
 
-**Returns**: `boolean`
+**Returns**: `Boolean`
 
 
 

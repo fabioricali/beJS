@@ -8,7 +8,7 @@ Arrays checks.
 
 ### be.inArray(value, array) 
 
-Check if an element is in the arrayinterfaces: `not`
+Check if an element is in the array**Interfaces**: `not`
 
 **Parameters**
 

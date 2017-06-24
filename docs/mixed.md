@@ -8,103 +8,148 @@ Various checks.
 
 ### be.email(value) 
 
-Check if is valid email
+Check if is valid email**Interfaces**: `all`, `any`, `not`
 
 **Parameters**
 
-**value**: `string`, Check if is valid email
+**value**: `String`, email
 
-**Returns**: `boolean`
+**Returns**: `Boolean`
+
+**Example**:
+```js
+be.email('fabio@rica.li') // truebe.not.email('fabiorica.li') // true
+```
 
 
 ### be.hex(value) 
 
-Check if is a hexadecimal
+Check if is a hexadecimal**Interfaces**: `all`, `any`, `not`
 
 **Parameters**
 
-**value**: `string`, Check if is a hexadecimal
+**value**: `String`, hex string
 
-**Returns**: `boolean`
+**Returns**: `Boolean`
+
+**Example**:
+```js
+be.hex('fff') // true
+```
 
 
 ### be.hexColor(value) 
 
-Check if is a hexadecimal color
+Check if is a hexadecimal color**Interfaces**: `all`, `any`, `not`
 
 **Parameters**
 
-**value**: `string`, Check if is a hexadecimal color
+**value**: `String`, hex color string
 
-**Returns**: `boolean`
+**Returns**: `Boolean`
+
+**Example**:
+```js
+be.hexColor('#ff0000') // true
+```
 
 
 ### be.ipv4(value) 
 
-Check if is a valid IPv4
+Check if is a valid IPv4**Interfaces**: `all`, `any`, `not`
 
 **Parameters**
 
-**value**: `string`, Check if is a valid IPv4
+**value**: `String`, ip string
 
-**Returns**: `boolean`
+**Returns**: `Boolean`
+
+**Example**:
+```js
+be.ipv4('127.0.0.1') // true
+```
 
 
 ### be.ipv6(value) 
 
-Check if is a valid IPv6
+Check if is a valid IPv6**Interfaces**: `all`, `any`, `not`
 
 **Parameters**
 
-**value**: , Check if is a valid IPv6
+**value**: `String`, ip string
 
-**Returns**: `boolean`
+**Returns**: `Boolean`
+
+**Example**:
+```js
+be.ipv6('FF01:0:0:0:0:0:0:1') // true
+```
 
 
 ### be.ip(value) 
 
-Check if is a valid ip string
+Check if is a valid ip string**Interfaces**: `all`, `any`, `not`
 
 **Parameters**
 
-**value**: `string`, Check if is a valid ip string
+**value**: `String`, ip string
 
-**Returns**: `* | boolean`
+**Returns**: `Boolean`
+
+**Example**:
+```js
+be.ipv('127.0.0.1') // true
+```
 
 
 ### be.base64(value) 
 
-Check if is base64 encoded string
+Check if is base64 encoded string**Interfaces**: `all`, `any`, `not`
 
 **Parameters**
 
-**value**: `string`, Check if is base64 encoded string
+**value**: `String`, base64 string
 
-**Returns**: `boolean`
+**Returns**: `Boolean`
+
+**Example**:
+```js
+be.base64('aGVsbG8=') // true
+```
 
 
 ### be.semVer(value) 
 
-Check if is a valid semver string
+Check if is a valid semver string**Interfaces**: `all`, `any`, `not`
 
 **Parameters**
 
-**value**: `string`, Check if is a valid semver string
+**value**: `String`, version string
 
-**Returns**: `boolean`
+**Returns**: `Boolean`
+
+**Example**:
+```js
+be.semVer('1.0.0') // true
+```
 
 
 ### be.equal(value, other) 
 
-Checks if equal
+Checks if equal**Interfaces**: `not`
 
 **Parameters**
 
-**value**: `number | string | boolean | regexp`, Checks if equal
+**value**: `Number | String | Boolean | RegExp`, first
 
-**other**: `number | string | boolean | regexp`, Checks if equal
+**other**: `Number | String | Boolean | RegExp`, second
 
-**Returns**: `boolean`
+**Returns**: `Boolean`
+
+**Example**:
+```js
+be.equal('hello', 'hello') // truebe.equal('hello', 'hellow') // falsebe.equal(true, 'true') // false
+```
 
 
 

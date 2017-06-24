@@ -36,7 +36,7 @@ let _months = [
 /**
  * Check if is date string
  *
- * interfaces: `all`, `any`, `not`
+ * **Interfaces**: `all`, `any`, `not`
  *
  * @param value {String} string date
  * @returns {Boolean}
@@ -52,7 +52,7 @@ Dates.dateString = (value) => {
 /**
  * Check if date is today
  *
- * interfaces: `all`, `any`, `not`
+ * **Interfaces**: `all`, `any`, `not`
  *
  * @param date {Date} date object
  * @returns {Boolean}
@@ -67,7 +67,7 @@ Dates.today = (date) => {
 /**
  * Check if date is tomorrow
  *
- * interfaces: `all`, `any`, `not`
+ * **Interfaces**: `all`, `any`, `not`
  *
  * @param date {Date} date object
  * @returns {Boolean}
@@ -85,7 +85,7 @@ Dates.tomorrow = (date) => {
 /**
  * Check if date is yesterday
  *
- * interfaces: `all`, `any`, `not`
+ * **Interfaces**: `all`, `any`, `not`
  *
  * @param date {Date} date object
  * @returns {Boolean}
@@ -103,7 +103,7 @@ Dates.yesterday = (date) => {
 /**
  * Check if date is past
  *
- * interfaces: `all`, `any`, `not`
+ * **Interfaces**: `all`, `any`, `not`
  *
  * @param date {Date} date object
  * @returns {Boolean}
@@ -118,7 +118,7 @@ Dates.past = (date) => {
 /**
  * Check if date is future
  *
- * interfaces: `all`, `any`, `not`
+ * **Interfaces**: `all`, `any`, `not`
  *
  * @param date {Date} date object
  * @returns {Boolean}
@@ -135,7 +135,7 @@ Dates.future = (date) => {
 /**
  * Check if date is day specified
  *
- * interfaces: `not`
+ * **Interfaces**: `not`
  *
  * @param date {Date} date object
  * @param day {String} day can be 'sunday','monday','tuesday','wednesday','thursday','friday','saturday'
@@ -156,7 +156,7 @@ Dates.day.multiple = false;
 /**
  * Check if date is month specified
  *
- * interfaces: `not`
+ * **Interfaces**: `not`
  *
  * @param date {Date} date object
  * @param month {string} month can be 'january', 'february', 'march', 'april', 'may', 'june', 'july', 'august', 'september', 'october', 'november', 'december'
@@ -177,7 +177,7 @@ Dates.month.multiple = false;
 /**
  * Check if date is the year specified
  *
- * interfaces: `not`
+ * **Interfaces**: `not`
  *
  * @param date {Date} date object
  * @param year {Number} year
@@ -197,7 +197,7 @@ Dates.year.multiple = false;
 /**
  * Check if is leap year
  *
- * interfaces: `all`, `any`, `not`
+ * **Interfaces**: `all`, `any`, `not`
  *
  * @param year {Number} year
  * @returns {Boolean}
@@ -217,7 +217,7 @@ Dates.leapYear = (year) => {
 /**
  * Check if date is weekend
  *
- * interfaces: `all`, `any`, `not`
+ * **Interfaces**: `all`, `any`, `not`
  *
  * @param date {Date} date object
  * @returns {Boolean}
@@ -234,7 +234,7 @@ Dates.weekend = (date) => {
 /**
  * Check if date is weekday
  *
- * interfaces: `all`, `any`, `not`
+ * **Interfaces**: `all`, `any`, `not`
  *
  * @param date {Date} date object
  * @returns {Boolean}
@@ -251,7 +251,7 @@ Dates.weekday = (date) => {
 /**
  * Check if date is between start date and end date
  *
- * interfaces: `not`
+ * **Interfaces**: `not`
  *
  * @param date {Date} date object
  * @param startDate {Date} start date object
@@ -271,7 +271,7 @@ Dates.dateBetween.multiple = false;
 /**
  * Check if date is DST
  *
- * interfaces: `all`, `any`, `not`
+ * **Interfaces**: `all`, `any`, `not`
  *
  * @param date {Date} date object
  * @returns {Boolean}

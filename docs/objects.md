@@ -8,28 +8,38 @@ Objects checks.
 
 ### be.propertyOf(value, object) 
 
-Check if is a property of an object
+Check if is a property of an object**Interfaces**: `not`
 
 **Parameters**
 
-**value**: `*`, Check if is a property of an object
+**value**: `Mixed`, property that you want to search
 
-**object**: `object`, Check if is a property of an object
+**object**: `Object`, object target
 
-**Returns**: `boolean`
+**Returns**: `Boolean`
+
+**Example**:
+```js
+be.propertyOf('firstName', {firstName: 'Teddy', lastName: 'Red'}) // true
+```
 
 
 ### be.propertyCount(object, value) 
 
-Count properties of an object
+Count properties of an object**Interfaces**: `not`
 
 **Parameters**
 
-**object**: `object`, Count properties of an object
+**object**: `Object`, object
 
-**value**: `int`, Count properties of an object
+**value**: `Integer`, count
 
-**Returns**: `boolean`
+**Returns**: `Boolean`
+
+**Example**:
+```js
+be.propertyCount({a: 1, b: 2, c: 3}, 3) // true
+```
 
 
 
