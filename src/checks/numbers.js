@@ -117,9 +117,29 @@ Numbers.negative = (value) => {
 };
 
 /**
+ * Check if number is infinity
+ *
+ * * **Interfaces**: `all`, `any`, `not`
+ *
+ * @param value {Number} number
+ * @returns {Boolean}
+ * @example
+ * be.infinity(1.7976931348623157E+10308) // true
+ */
+Numbers.infinity = (value) => {
+    return Numbers.infinityPositive(value) || Numbers.infinityNegative(value);
+};
+
+/**
  * Check if number is infinity positive
- * @param value {number}
- * @returns {boolean}
+ *
+ * * **Interfaces**: `all`, `any`, `not`
+ *
+ * @param value {Number} number
+ * @returns {Boolean}
+ * @example
+ * be.infinityPositive(1.7976931348623157E+10308) // true
+ * be.infinityPositive(-1.7976931348623157E+10308) // false
  */
 Numbers.infinityPositive = (value) => {
     return value === Number.POSITIVE_INFINITY;
@@ -127,28 +147,30 @@ Numbers.infinityPositive = (value) => {
 
 /**
  * Check if number is infinity positive
- * @param value {number}
- * @returns {boolean}
+ *
+ * * **Interfaces**: `all`, `any`, `not`
+ *
+ * @param value {Number} number
+ * @returns {Boolean}
+ * @example
+ * be.infinityNegative(-1.7976931348623157E+10308) // true
+ * be.infinityNegative(1.7976931348623157E+10308) // false
  */
 Numbers.infinityNegative = (value) => {
     return value === Number.NEGATIVE_INFINITY;
 };
 
 /**
- * Check if number is infinity
- * @param value {number}
- * @returns {boolean}
- */
-Numbers.infinity = (value) => {
-    return Numbers.infinityPositive(value) || Numbers.infinityNegative(value);
-};
-
-/**
  * Check if number is between min and max
- * @param num {number}
- * @param min {number}
- * @param max {number}
- * @returns {boolean}
+ *
+ * * **Interfaces**: `not`
+ *
+ * @param num {Number} number
+ * @param min {Number} number min
+ * @param max {Number} number max
+ * @returns {Boolean}
+ * @example
+ * be.between(4, 1, 10) // true
  */
 Numbers.between = (num, min, max) => {
     return Types.all.number(num, min, max) && num >= min && num <= max;
@@ -158,9 +180,15 @@ Numbers.between.multiple = false;
 
 /**
  * Checks if number is greater then an other
- * @param value {number}
- * @param num {number}
- * @returns {boolean}
+ *
+ * * **Interfaces**: `not`
+ *
+ * @param value {Number} value to check
+ * @param num {Number} number target
+ * @returns {Boolean}
+ * @example
+ * be.greater(10, 5) // true
+ * be.greater(2, 8) // false
  */
 Numbers.greater = (value, num) => {
     return Types.all.number(value, num) && value > num;
@@ -170,9 +198,15 @@ Numbers.greater.multiple = false;
 
 /**
  * Checks if number is lesser then an other
- * @param value {number}
- * @param num {number}
- * @returns {boolean}
+ *
+ * * **Interfaces**: `not`
+ *
+ * @param value {Number} value to check
+ * @param num {Number} number target
+ * @returns {Boolean}
+ * @example
+ * be.lesser(10, 5) // false
+ * be.lesser(2, 8) // true
  */
 Numbers.lesser = (value, num) => {
     return Types.all.number(value, num) && value < num;
@@ -182,8 +216,14 @@ Numbers.lesser.multiple = false;
 
 /**
  * Checks if is a number as string or number type
- * @param value {*}
- * @returns {boolean}
+ *
+ * * **Interfaces**: `all`, `any`, `not`
+ *
+ * @param value {Number} number
+ * @returns {Boolean}
+ * @example
+ * be.numeric(100) // true
+ * be.numeric('100') // true
  */
 Numbers.numeric = (value) => {
     return (Types.number(value) || Types.string(value)) && !isNaN(value - parseFloat(value));
