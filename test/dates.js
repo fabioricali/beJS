@@ -232,6 +232,11 @@ describe('leap year', function () {
         console.log(result);
         assert.equal(result, false);
     });
+    it('interface not, should be return false', function () {
+        var result = be.not.leapYear(2020);
+        console.log(result);
+        assert.equal(result, false);
+    });
     it('no Date object, should be return false', function () {
         var result = be.leapYear();
         console.log(result);
