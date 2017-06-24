@@ -44,8 +44,13 @@ Numbers.float = (value) => {
 
 /**
  * Check if is NaN
- * @param value {*}
- * @returns {*|boolean}
+ *
+ * * **Interfaces**: `all`, `any`, `not`
+ *
+ * @param value {Number} number
+ * @returns {Boolean}
+ * @example
+ * be.nan('s') // true
  */
 Numbers.nan = (value) => {
     return isNaN(value);
@@ -53,8 +58,14 @@ Numbers.nan = (value) => {
 
 /**
  * Check if is a even number
- * @param value {number}
- * @returns {*|boolean}
+ *
+ * * **Interfaces**: `all`, `any`, `not`
+ *
+ * @param value {Number} number
+ * @returns {Boolean}
+ * @example
+ * be.even(2) // true
+ * be.even(3) // false
  */
 Numbers.even = (value) => {
     return Types.number(value) && value % 2 === 0;
@@ -62,8 +73,14 @@ Numbers.even = (value) => {
 
 /**
  * Check if is an odd number
- * @param value {number}
- * @returns {*|boolean}
+ *
+ * * **Interfaces**: `all`, `any`, `not`
+ *
+ * @param value {Number} number
+ * @returns {Boolean}
+ * @example
+ * be.odd(3) // true
+ * be.odd(4) // false
  */
 Numbers.odd = (value) => {
     return Types.number(value) && !Numbers.even(value);
@@ -71,8 +88,14 @@ Numbers.odd = (value) => {
 
 /**
  * Check if is a positive number
- * @param value {number}
- * @returns {*|boolean}
+ *
+ * * **Interfaces**: `all`, `any`, `not`
+ *
+ * @param value {Number} number
+ * @returns {Boolean}
+ * @example
+ * be.positive(2) // true
+ * be.positive(-3) // false
  */
 Numbers.positive = (value) => {
     return Types.number(value) && value > 0;
@@ -80,8 +103,14 @@ Numbers.positive = (value) => {
 
 /**
  * Check if is a negative number
- * @param value {number}
- * @returns {*|boolean}
+ *
+ * * **Interfaces**: `all`, `any`, `not`
+ *
+ * @param value {Number} number
+ * @returns {Boolean}
+ * @example
+ * be.negative(-2) // true
+ * be.negative(2) // false
  */
 Numbers.negative = (value) => {
     return Types.number(value) && value < 0;

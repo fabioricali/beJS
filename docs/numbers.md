@@ -40,57 +40,82 @@ be.float(1.5) // truebe.float(1) // falsebe.all.float(1.5, 4.2, 5) // false
 
 ### be.nan(value) 
 
-Check if is NaN
+Check if is NaN* **Interfaces**: `all`, `any`, `not`
 
 **Parameters**
 
-**value**: `*`, Check if is NaN
+**value**: `Number`, number
 
-**Returns**: `* | boolean`
+**Returns**: `Boolean`
+
+**Example**:
+```js
+be.nan('s') // true
+```
 
 
 ### be.even(value) 
 
-Check if is a even number
+Check if is a even number* **Interfaces**: `all`, `any`, `not`
 
 **Parameters**
 
-**value**: `number`, Check if is a even number
+**value**: `Number`, number
 
-**Returns**: `* | boolean`
+**Returns**: `Boolean`
+
+**Example**:
+```js
+be.even(2) // truebe.even(3) // false
+```
 
 
 ### be.odd(value) 
 
-Check if is an odd number
+Check if is an odd number* **Interfaces**: `all`, `any`, `not`
 
 **Parameters**
 
-**value**: `number`, Check if is an odd number
+**value**: `Number`, number
 
-**Returns**: `* | boolean`
+**Returns**: `Boolean`
+
+**Example**:
+```js
+be.odd(3) // truebe.odd(4) // false
+```
 
 
 ### be.positive(value) 
 
-Check if is a positive number
+Check if is a positive number* **Interfaces**: `all`, `any`, `not`
 
 **Parameters**
 
-**value**: `number`, Check if is a positive number
+**value**: `Number`, number
 
-**Returns**: `* | boolean`
+**Returns**: `Boolean`
+
+**Example**:
+```js
+be.positive(2) // truebe.positive(-3) // false
+```
 
 
 ### be.negative(value) 
 
-Check if is a negative number
+Check if is a negative number* **Interfaces**: `all`, `any`, `not`
 
 **Parameters**
 
-**value**: `number`, Check if is a negative number
+**value**: `Number`, number
 
-**Returns**: `* | boolean`
+**Returns**: `Boolean`
+
+**Example**:
+```js
+be.negative(-2) // truebe.negative(2) // false
+```
 
 
 ### be.infinityPositive(value) 
