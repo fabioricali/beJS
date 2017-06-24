@@ -1,4 +1,6 @@
 # beJS 
+To be, or not to be, that is the question:
+
 The framework for checker tools
 
 ## License
