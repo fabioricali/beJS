@@ -12,9 +12,9 @@ Check if an element is in the array**Interfaces**: `not`
 
 **Parameters**
 
-**value**: `Mixed`, Element for search
+**value**: `Mixed`, element to search
 
-**array**: `Array`, Array where search
+**array**: `Array`, array where search
 
 **Returns**: `Boolean`
 

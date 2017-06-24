@@ -118,89 +118,124 @@ be.negative(-2) // truebe.negative(2) // false
 ```
 
 
-### be.infinityPositive(value) 
+### be.infinity(value) 
 
-Check if number is infinity positive
+Check if number is infinity* **Interfaces**: `all`, `any`, `not`
 
 **Parameters**
 
-**value**: `number`, Check if number is infinity positive
+**value**: `Number`, number
 
-**Returns**: `boolean`
+**Returns**: `Boolean`
+
+**Example**:
+```js
+be.infinity(1.7976931348623157E+10308) // true
+```
+
+
+### be.infinityPositive(value) 
+
+Check if number is infinity positive* **Interfaces**: `all`, `any`, `not`
+
+**Parameters**
+
+**value**: `Number`, number
+
+**Returns**: `Boolean`
+
+**Example**:
+```js
+be.infinityPositive(1.7976931348623157E+10308) // truebe.infinityPositive(-1.7976931348623157E+10308) // false
+```
 
 
 ### be.infinityNegative(value) 
 
-Check if number is infinity positive
+Check if number is infinity positive* **Interfaces**: `all`, `any`, `not`
 
 **Parameters**
 
-**value**: `number`, Check if number is infinity positive
+**value**: `Number`, number
 
-**Returns**: `boolean`
+**Returns**: `Boolean`
 
-
-### be.infinity(value) 
-
-Check if number is infinity
-
-**Parameters**
-
-**value**: `number`, Check if number is infinity
-
-**Returns**: `boolean`
+**Example**:
+```js
+be.infinityNegative(-1.7976931348623157E+10308) // truebe.infinityNegative(1.7976931348623157E+10308) // false
+```
 
 
 ### be.between(num, min, max) 
 
-Check if number is between min and max
+Check if number is between min and max* **Interfaces**: `not`
 
 **Parameters**
 
-**num**: `number`, Check if number is between min and max
+**num**: `Number`, number
 
-**min**: `number`, Check if number is between min and max
+**min**: `Number`, number min
 
-**max**: `number`, Check if number is between min and max
+**max**: `Number`, number max
 
-**Returns**: `boolean`
+**Returns**: `Boolean`
+
+**Example**:
+```js
+be.between(4, 1, 10) // true
+```
 
 
 ### be.greater(value, num) 
 
-Checks if number is greater then an other
+Checks if number is greater then an other* **Interfaces**: `not`
 
 **Parameters**
 
-**value**: `number`, Checks if number is greater then an other
+**value**: `Number`, value to check
 
-**num**: `number`, Checks if number is greater then an other
+**num**: `Number`, number target
 
-**Returns**: `boolean`
+**Returns**: `Boolean`
+
+**Example**:
+```js
+be.greater(10, 5) // truebe.greater(2, 8) // false
+```
 
 
 ### be.lesser(value, num) 
 
-Checks if number is lesser then an other
+Checks if number is lesser then an other* **Interfaces**: `not`
 
 **Parameters**
 
-**value**: `number`, Checks if number is lesser then an other
+**value**: `Number`, value to check
 
-**num**: `number`, Checks if number is lesser then an other
+**num**: `Number`, number target
 
-**Returns**: `boolean`
+**Returns**: `Boolean`
+
+**Example**:
+```js
+be.lesser(10, 5) // falsebe.lesser(2, 8) // true
+```
 
 
 ### be.numeric(value) 
 
-Checks if is a number as string or number type
+Checks if is a number as string or number type* **Interfaces**: `all`, `any`, `not`
 
 **Parameters**
 
-**value**: `*`, Checks if is a number as string or number type
+**value**: `Number`, number
 
-**Returns**: `boolean`
+**Returns**: `Boolean`
+
+**Example**:
+```js
+be.numeric(100) // truebe.numeric('100') // true
+```
 
 
 

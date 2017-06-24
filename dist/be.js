@@ -521,14 +521,14 @@
             Numbers.negative = function(value) {
                 return Types.number(value) && value < 0;
             };
+            Numbers.infinity = function(value) {
+                return Numbers.infinityPositive(value) || Numbers.infinityNegative(value);
+            };
             Numbers.infinityPositive = function(value) {
                 return value === Number.POSITIVE_INFINITY;
             };
             Numbers.infinityNegative = function(value) {
                 return value === Number.NEGATIVE_INFINITY;
-            };
-            Numbers.infinity = function(value) {
-                return Numbers.infinityPositive(value) || Numbers.infinityNegative(value);
             };
             Numbers.between = function(num, min, max) {
                 return Types.all.number(num, min, max) && num >= min && num <= max;

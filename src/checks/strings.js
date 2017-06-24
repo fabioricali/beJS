@@ -11,8 +11,14 @@ let Strings = {};
 
 /**
  * Check if string is in camelCase format
- * @param value {string}
- * @returns {boolean}
+ *
+ * **Interfaces**: `all`, `any`, `not`
+ *
+ * @param value {String} string
+ * @returns {Boolean}
+ * @example
+ * be.camelCase('testTest') // true
+ * be.camelCase('test_test') // false
  */
 Strings.camelCase = (value) => {
     return Types.string(value) &&
@@ -23,8 +29,14 @@ Strings.camelCase = (value) => {
 
 /**
  * Check if string is in snake_case format
- * @param value {string}
- * @returns {boolean}
+ *
+ * **Interfaces**: `all`, `any`, `not`
+ *
+ * @param value {String} string
+ * @returns {Boolean}
+ * @example
+ * be.snakeCase('test_test') // true
+ * be.snakeCase('testTest') // false
  */
 Strings.snakeCase = (value) => {
     return Strings.lowerCase(value) &&
@@ -33,8 +45,14 @@ Strings.snakeCase = (value) => {
 
 /**
  * Check if string is in kebab-case format
- * @param value {string}
- * @returns {boolean}
+ *
+ * **Interfaces**: `all`, `any`, `not`
+ *
+ * @param value {String} string
+ * @returns {Boolean}
+ * @example
+ * be.kebabCase('test-test') // true
+ * be.kebabCase('testTest') // false
  */
 Strings.kebabCase = (value) => {
     return Strings.lowerCase(value) &&
@@ -43,10 +61,16 @@ Strings.kebabCase = (value) => {
 
 /**
  * Check similarity between two string
- * @param string1 {string}
- * @param string2 {string}
+ *
+ * **Interfaces**: `not`
+ *
+ * @param string1 {String} string
+ * @param string2 {String} string target
  * @param threshold {int|float} 0 to 1
- * @returns {boolean}
+ * @returns {Boolean}
+ * @example
+ * be.similarity('hello', 'hello', 1) // true
+ * be.similarity('hello', 'hello world', 1) // false
  */
 Strings.similarity =  (string1, string2, threshold) => {
     //if(!Types.string(string1) || !Types.string(string2)) return false;
@@ -72,9 +96,14 @@ Strings.similarity.multiple = false;
 
 /**
  * Check if string contains a value
- * @param string {string}
- * @param value {string}
- * @returns {boolean}
+ *
+ * **Interfaces**: `not`
+ *
+ * @param string {String} string
+ * @param value {String} string target
+ * @returns {Boolean}
+ * @example
+ * be.contains('hello', 'hello world') // true
  */
 Strings.contains = (string, value) => {
     if (!Types.string(string)) return false;
@@ -85,8 +114,13 @@ Strings.contains.multiple = false;
 
 /**
  * Check if string is lower case
- * @param value {string}
- * @returns {boolean}
+ *
+ * **Interfaces**: `all`, `any`, `not`
+ *
+ * @param value {String} string
+ * @returns {Boolean}
+ * @example
+ * be.lowerCase('hello') // true
  */
 Strings.lowerCase = (value) => {
     if (!Types.string(value)) return false;
@@ -95,8 +129,13 @@ Strings.lowerCase = (value) => {
 
 /**
  * Check if string is upper case
- * @param value {string}
- * @returns {boolean}
+ *
+ * **Interfaces**: `all`, `any`, `not`
+ *
+ * @param value {String} string
+ * @returns {Boolean}
+ * @example
+ * be.upperCase('HELLO') // true
  */
 Strings.upperCase = (value) => {
     if (!Types.string(value)) return false;
@@ -105,8 +144,14 @@ Strings.upperCase = (value) => {
 
 /**
  * Check if is a word
- * @param value {string}
- * @returns {boolean}
+ *
+ * **Interfaces**: `all`, `any`, `not`
+ *
+ * @param value {String} string
+ * @returns {Boolean}
+ * @example
+ * be.word('hello') // true
+ * be.word('hello world') // false
  */
 Strings.word = (value) => {
     if (!Types.string(value)) return false;
@@ -116,8 +161,14 @@ Strings.word = (value) => {
 
 /**
  * Check if string is capitalized
- * @param value {string}
- * @returns {boolean}
+ *
+ * **Interfaces**: `all`, `any`, `not`
+ *
+ * @param value {String} string
+ * @returns {Boolean}
+ * @example
+ * be.capitalized('Hello World') // true
+ * be.capitalized('hello world') // false
  */
 Strings.capitalized = (value) => {
     if (!Types.string(value)) return false;
@@ -134,8 +185,13 @@ Strings.capitalized = (value) => {
 
 /**
  * Check if string is empty
- * @param value {string}
- * @returns {boolean}
+ *
+ * **Interfaces**: `all`, `any`, `not`
+ *
+ * @param value {String} string
+ * @returns {Boolean}
+ * @example
+ * be.emptyString('') // true
  */
 Strings.emptyString = (value) => {
     return Types.string(value) && value.length === 0;
@@ -143,8 +199,13 @@ Strings.emptyString = (value) => {
 
 /**
  * Check if is alphanumeric string
- * @param value {string}
- * @returns {boolean|*}
+ *
+ * **Interfaces**: `all`, `any`, `not`
+ *
+ * @param value {String} string
+ * @returns {Boolean}
+ * @example
+ * be.alphanumeric('hello123456') // true
  */
 Strings.alphanumeric = (value) => {
     return /^[a-z0-9]+$/i.test(value) &&
@@ -153,10 +214,16 @@ Strings.alphanumeric = (value) => {
 
 /**
  * Check if string start with a value
- * @param value {string}
- * @param string {string}
- * @param insensitive {boolean|*}
- * @returns {boolean}
+ *
+ * **Interfaces**: `not`
+ *
+ * @param value {String} start string
+ * @param string {String} string target
+ * @param insensitive {Boolean} case sensitive
+ * @returns {Boolean}
+ * @example
+ * be.startWith('hello', 'hello world') // true
+ * be.startWith('hello', 'HELLO world', true) // false
  */
 Strings.startWith = (value, string, insensitive) => {
     if(Types.falsy(insensitive)) insensitive = false;
@@ -168,8 +235,14 @@ Strings.startWith.multiple = false;
 
 /**
  * Check if value is a single char
- * @param value {string}
- * @returns {boolean}
+ *
+ * **Interfaces**: `all`, `any`, `not`
+ *
+ * @param value {String} string
+ * @returns {Boolean}
+ * @example
+ * be.char('a') // true
+ * be.char('ab') // false
  */
 Strings.char = (value) => {
     return Types.string(value) && value.length === 1;
@@ -177,8 +250,14 @@ Strings.char = (value) => {
 
 /**
  * Check if string is a space
- * @param value {string}
- * @returns {boolean}
+ *
+ * **Interfaces**: `all`, `any`, `not`
+ *
+ * @param value {String} string
+ * @returns {Boolean}
+ * @example
+ * be.space(' ') // true
+ * be.space('a') // false
  */
 Strings.space = (value) => {
     return Strings.char(value) && /\s/.test(value);
@@ -186,8 +265,14 @@ Strings.space = (value) => {
 
 /**
  * Check if exists spaces in string
- * @param value {string}
- * @returns {boolean}
+ *
+ * **Interfaces**: `all`, `any`, `not`
+ *
+ * @param value {String} string
+ * @returns {Boolean}
+ * @example
+ * be.spaces('hello world') // true
+ * be.spaces('helloworld') // false
  */
 Strings.spaces = (value) => {
     return /\s/.test(value);

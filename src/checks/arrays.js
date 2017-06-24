@@ -12,8 +12,8 @@ let Arrays = {};
  *
  * **Interfaces**: `not`
  *
- * @param value {Mixed} Element for search
- * @param array {Array} Array where search
+ * @param value {Mixed} element to search
+ * @param array {Array} array where search
  * @returns {Boolean}
  * @example
  * be.inArray('hello', ['hello', 'world']) //true
