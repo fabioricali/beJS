@@ -1,7 +1,8 @@
-# beJS 
-To be, or not to be, that is the question:
+![beJS](extra/logo.png?1)
 
-The framework for checker tools
+to be, or not to be, that is the question:
+
+# The framework for checker tools
 
 ## License
 beJS is open-sourced software licensed under the [MIT license](http://opensource.org/licenses/MIT)
