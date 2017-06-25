@@ -1,9 +1,48 @@
 /**
  * @module be
+ *
+ * beJS has the following interfaces:
+ *
+ * - `all`, all checks must be satisfied
+ * - `any`, also just one check can be satisfied
+ * - `not`, return "logical not" of called method
+ *
+ * `all`, `any` can accept array or arguments
+ *
+ * You can access the methods directly from "be.boolean" or from the class eg "be.Types.boolean".
+ * Also the classes supports `all`, `any`, `not`
+ *
+ * Checks
+ *
+ * - [Arrays](arrays.md)
+ * - [Dates](dates.md)
+ * - [Envs](envs.md)
+ * - [Hashes](hashes.md)
+ * - [Mixed](mixed.md)
+ * - [Numbers](numbers.md)
+ * - [Objects](objects.md)
+ * - [Strings](strings.md)
+ * - [Types](types.md)
+ * - [Urls](urls.md)
+ *
  * @author Fabio Ricali <fabio@rica.li>
  * @copyright rica.li 2017
  * @license MIT
- * @description The framework for checker tools
+ * @example
+ * // call a method
+ * be.boolean(true);
+ *
+ * // call interface "not"
+ * be.not.boolean(1);
+ *
+ * // call interface "all" and passing arguments
+ * be.all.boolean(true, false, true);
+ *
+ * // call interface "all" and passing array
+ * be.all.boolean([true, false, true]);
+ *
+ * // call interface "any" and passing arguments
+ * be.any.boolean(true, false, 1);
  **/
 
 const Helpers = require('./helpers');
@@ -11,13 +50,8 @@ const Interface = require('./interface');
 
 /**
  * be class
- * @type {{not, any, all, version, Strings, Types, Numbers, Envs, Objects, Mixed, Arrays, Dates, Urls, Hashes}}
- * @example
- * be.boolean(true);
- * be.not.boolean(1);
- * be.all.boolean(true, false, true);
- * be.all.boolean([true, false, true]);
- * be.any.boolean(true, false, 1);
+ * @type {Object}
+ * @private
  */
 let be = {};
 
@@ -25,7 +59,7 @@ be.version = '0.0.0';
 
 /**
  * Helpers class
- * @type {{}}
+ * @type {Object}
  * @private
  * @ignore
  */
@@ -33,7 +67,7 @@ be._helpers = Helpers;
 
 /**
  * Collection of checks
- * @type {{Strings, Types, Numbers, Envs, Objects, Mixed, Arrays, Dates, Urls, Hashes}}
+ * @type {Object}
  * @private
  */
 let Checks = {
@@ -68,6 +102,10 @@ let Checks = {
         }
     }
 
+    /**
+     * @ignore
+     * @type {be}
+     */
     be = Interface.create(be);
 
     /**
