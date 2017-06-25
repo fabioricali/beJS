@@ -5,6 +5,7 @@
 # The framework for checker tools
 
 ## Docs
+- [API](docs/be.md)
 - [Arrays](docs/arrays.md)
 - [Dates](docs/dates.md)
 - [Envs](docs/envs.md)
