@@ -13,8 +13,8 @@ let Types = {};
  * **Interfaces**: `not`
  *
  * @param object {Mixed} object
- * @param className {String} class name
- * @returns {Boolean}
+ * @param className {string} class name
+ * @returns {boolean}
  * @example
  * be.classOf(2, 'number') // true
  * be.classOf([1, 2, 3], 'array') // true
@@ -35,7 +35,7 @@ Types.classOf.multiple = false;
  * **Interfaces**: `all`, `any`, `not`
  *
  * @param value {Mixed} value
- * @returns {Boolean}
+ * @returns {boolean}
  * @example
  * be.boolean(false) // true
  * be.boolean('true') // false
@@ -50,7 +50,7 @@ Types.boolean = (value) => {
  * **Interfaces**: `all`, `any`, `not`
  *
  * @param value {Mixed} value
- * @returns {Boolean}
+ * @returns {boolean}
  * @example
  * be.booleanFalse(false) // true
  * be.booleanFalse(true) // false
@@ -65,7 +65,7 @@ Types.booleanFalse = (value) => {
  * **Interfaces**: `all`, `any`, `not`
  *
  * @param value {Mixed} value
- * @returns {Boolean}
+ * @returns {boolean}
  * @example
  * be.booleanTrue(true) // true
  * be.booleanTrue(false) // false
@@ -80,7 +80,7 @@ Types.booleanTrue = (value) => {
  * **Interfaces**: `all`, `any`, `not`
  *
  * @param value {Mixed} value
- * @returns {Boolean}
+ * @returns {boolean}
  * @example
  * be.number(1) // true
  * be.number(false) // false
@@ -95,7 +95,7 @@ Types.number = (value) => {
  * **Interfaces**: `all`, `any`, `not`
  *
  * @param value {Mixed} value
- * @returns {Boolean}
+ * @returns {boolean}
  * @example
  * be.string('hello') // true
  * be.string(false) // false
@@ -110,7 +110,7 @@ Types.string = (value) => {
  * **Interfaces**: `all`, `any`, `not`
  *
  * @param value {Mixed} value
- * @returns {Boolean}
+ * @returns {boolean}
  * @example
  * be.undefined(undefined) // true
  * be.undefined(null) // false
@@ -125,7 +125,7 @@ Types.undefined = (value) => {
  * **Interfaces**: `all`, `any`, `not`
  *
  * @param value {Mixed} value
- * @returns {Boolean}
+ * @returns {boolean}
  * @example
  * be.null(null) // true
  * be.null(undefined) // false
@@ -140,7 +140,7 @@ Types['null'] = (value) => {
  * **Interfaces**: `all`, `any`, `not`
  *
  * @param value {Mixed} value
- * @returns {Boolean}
+ * @returns {boolean}
  * @example
  * be.object({a: 1, b: 2}) // true
  * be.object([1, 2, 3]) // false
@@ -155,7 +155,7 @@ Types.object = (value) => {
  * **Interfaces**: `all`, `any`, `not`
  *
  * @param value {Mixed} value
- * @returns {Boolean}
+ * @returns {boolean}
  * @example
  * be.array([1, 2, 3]) // true
  * be.array({a: 1, b: 2}) // false
@@ -170,7 +170,7 @@ Types.array = (value) => {
  * **Interfaces**: `all`, `any`, `not`
  *
  * @param value {Mixed} json string
- * @returns {Boolean}
+ * @returns {boolean}
  * @example
  * be.json('{"a": 1, "b": 2}') // true
  * be.json({a: 1, b: 2}) // false
@@ -190,7 +190,7 @@ Types.json = (value) => {
  * **Interfaces**: `all`, `any`, `not`
  *
  * @param value {Mixed} date object
- * @returns {Boolean}
+ * @returns {boolean}
  * @example
  * be.date(new Date()) // true
  * be.date('2017-12-25') // false
@@ -205,7 +205,7 @@ Types.date = (value) => {
  * **Interfaces**: `all`, `any`, `not`
  *
  * @param value {Mixed} value
- * @returns {Boolean}
+ * @returns {boolean}
  * @example
  * be.function(function(){return 1 + 2}) // true
  * be.function(new Date()) // false
@@ -220,7 +220,7 @@ Types['function'] = (value) => {
  * **Interfaces**: `all`, `any`, `not`
  *
  * @param value {Mixed} value
- * @returns {Boolean}
+ * @returns {boolean}
  * @example
  * be.regexp(/hello/) // true
  * be.regexp('hello') // false
@@ -237,7 +237,7 @@ Types.regexp = (value) => {
  *
  * @param value {Mixed} first
  * @param other {Mixed} second
- * @returns {Boolean}
+ * @returns {boolean}
  * @example
  * be.sameType(1, 1) // true
  * be.sameType(1, '1') // false
@@ -254,7 +254,7 @@ Types.sameType.multiple = false;
  * **Interfaces**: `all`, `any`, `not`
  *
  * @param value {Mixed} value
- * @returns {Boolean}
+ * @returns {boolean}
  * @example
  * be.empty('') // true
  * be.empty(' ') // false
@@ -284,7 +284,7 @@ Types.empty = (value) => {
  *
  * @link https://developer.mozilla.org/it/docs/Glossary/Falsy
  * @param value {Mixed} value
- * @returns {Boolean}
+ * @returns {boolean}
  * @example
  * be.falsy(false) // true
  * be.falsy(null) // true
@@ -303,7 +303,7 @@ Types.falsy = (value) => {
  *
  * @link https://developer.mozilla.org/en-US/docs/Glossary/Truthy
  * @param value {Mixed}
- * @returns {Boolean}
+ * @returns {boolean}
  * @example
  * be.truthy('hello') // true
  * be.truthy({}) // true

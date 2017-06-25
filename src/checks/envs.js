@@ -12,7 +12,7 @@ let Envs = {};
  *
  * **Interfaces**: `not`
  *
- * @returns {Boolean}
+ * @returns {boolean}
  */
 Envs.commonjsEnv = () => {
     return typeof process !== 'undefined';
@@ -25,7 +25,7 @@ Envs.commonjsEnv.multiple = false;
  *
  * **Interfaces**: `not`
  *
- * @returns {Boolean}
+ * @returns {boolean}
  */
 Envs.browserEnv = () => {
     return typeof window !== 'undefined';
@@ -38,7 +38,7 @@ Envs.browserEnv.multiple = false;
  *
  * **Interfaces**: `not`
  *
- * @returns {Boolean}
+ * @returns {boolean}
  */
 Envs.amdEnv = () => {
     return typeof define === 'function' && define.amd;
@@ -51,7 +51,7 @@ Envs.amdEnv.multiple = false;
  *
  * **Interfaces**: `not`
  *
- * @returns {Boolean}
+ * @returns {boolean}
  */
 Envs.ios = (...params) => {
     let userAgent = Helpers.getUserAgent.apply(this, params);
@@ -65,7 +65,7 @@ Envs.ios.multiple = false;
  *
  * **Interfaces**: `not`
  *
- * @returns {Boolean}
+ * @returns {boolean}
  */
 Envs.android = (...params) => {
     let userAgent = Helpers.getUserAgent.apply(this, params);
@@ -79,7 +79,7 @@ Envs.android.multiple = false;
  *
  * **Interfaces**: `not`
  *
- * @returns {Boolean}
+ * @returns {boolean}
  */
 Envs.navigator = () => {
     return Envs.browserEnv() && typeof window.navigator !== 'undefined';
@@ -92,7 +92,7 @@ Envs.navigator.multiple = false;
  *
  * **Interfaces**: `not`
  *
- * @returns {Boolean}
+ * @returns {boolean}
  */
 Envs.firefox = (...params) => {
     let userAgent = Helpers.getUserAgent.apply(this, params);
@@ -106,7 +106,7 @@ Envs.firefox.multiple = false;
  *
  * **Interfaces**: `not`
  *
- * @returns {Boolean}
+ * @returns {boolean}
  */
 Envs.chrome = (...params) => {
     let userAgent = Helpers.getUserAgent.apply(this, params);
@@ -120,7 +120,7 @@ Envs.chrome.multiple = false;
  *
  * **Interfaces**: `not`
  *
- * @returns {Boolean}
+ * @returns {boolean}
  */
 Envs.safari = (...params) => {
     let userAgent = Helpers.getUserAgent.apply(this, params);
@@ -135,7 +135,7 @@ Envs.safari.multiple = false;
  *
  * **Interfaces**: `not`
  *
- * @returns {Boolean}
+ * @returns {boolean}
  */
 Envs.ie = (...params) => {
     let userAgent = Helpers.getUserAgent.apply(this, params);

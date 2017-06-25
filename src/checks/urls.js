@@ -12,8 +12,8 @@ let Urls = {};
  * **Interfaces**: `all`, `any`, `not`
  *
  * @link https://gist.github.com/dperini/729294
- * @param value {String} url
- * @returns {Boolean}
+ * @param value {string} url
+ * @returns {boolean}
  * @example
  * be.url('http://www.google.com') // true;
  * be.not.url('http://www.google.com') // false;
@@ -29,8 +29,8 @@ Urls.url = (value) => {
  *
  * **Interfaces**: `all`, `any`, `not`
  *
- * @param value {String} url
- * @returns {Boolean}
+ * @param value {string} url
+ * @returns {boolean}
  * @example
  * be.httpUrl('http://www.google.com') // true;
  * be.not.httpUrl('http://www.google.com') // false;
@@ -46,8 +46,8 @@ Urls.httpUrl = (value) => {
  *
  * **Interfaces**: `all`, `any`, `not`
  *
- * @param value {String} url
- * @returns {Boolean}
+ * @param value {string} url
+ * @returns {boolean}
  * @example
  * be.httpsUrl('https://www.google.com') // true;
  * be.not.httpsUrl('https://www.google.com') // false;
@@ -63,8 +63,8 @@ Urls.httpsUrl = (value) => {
  *
  * **Interfaces**: `all`, `any`, `not`
  *
- * @param value {String} url encoded
- * @returns {Boolean}
+ * @param value {string} url encoded
+ * @returns {boolean}
  * @example
  * be.urlEncoded('http://ja.wikipedia.org/wiki/%E3%83%A1%E3%82%A4%E3%83%B3%E3%83%9A%E3%83%BC%E3%82%B8') // true
  */
@@ -77,8 +77,8 @@ Urls.urlEncoded = (value) => {
  *
  * **Interfaces**: `all`, `any`, `not`
  *
- * @param value {String} url
- * @returns {Boolean}
+ * @param value {string} url
+ * @returns {boolean}
  * @example
  * be.ftpUrl('ftp://ftp.google.com') // true;
  * be.not.ftpUrl('ftp://ftp.google.com') // false;
@@ -94,8 +94,8 @@ Urls.ftpUrl = (value) => {
  *
  * **Interfaces**: `all`, `any`, `not`
  *
- * @param value {String} url
- * @returns {Boolean}
+ * @param value {string} url
+ * @returns {boolean}
  * @example
  * be.ftpsUrl('ftps://ftp.google.com') // true;
  * be.not.ftpsUrl('ftps://ftp.google.com') // false;

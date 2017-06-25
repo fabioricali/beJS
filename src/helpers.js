@@ -1,7 +1,7 @@
 /**
- * Created by Fabio on 17/06/2017.
+ * @module helpers
  */
-const be = require('./be');
+
 /**
  * Helpers class
  */

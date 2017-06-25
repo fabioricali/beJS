@@ -1,12 +1,13 @@
 /**
- * Created by fabioricali on 20/06/2017.
+ * @module interface
  */
+
 let Helpers = require('./helpers');
 let Interface = {};
 
 /**
  * Check if is array
- * @param object
+ * @param object {Object} object
  * @returns {boolean}
  */
 Interface._isArray = (object) => {
@@ -15,8 +16,8 @@ Interface._isArray = (object) => {
 
 /**
  * Create interface all and any
- * @param obj
- * @returns {*}
+ * @param obj {Object} object
+ * @returns {Object}
  */
 Interface.create = (obj) => {
     obj.all = {};

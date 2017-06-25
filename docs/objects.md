@@ -16,7 +16,7 @@ Check if is a property of an object**Interfaces**: `not`
 
 **object**: `Object`, object target
 
-**Returns**: `Boolean`
+**Returns**: `boolean`
 
 **Example**:
 ```js
@@ -34,7 +34,7 @@ Count properties of an object**Interfaces**: `not`
 
 **value**: `Integer`, count
 
-**Returns**: `Boolean`
+**Returns**: `boolean`
 
 **Example**:
 ```js

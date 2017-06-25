@@ -13,8 +13,8 @@ let Numbers = {};
  *
  * * **Interfaces**: `all`, `any`, `not`
  *
- * @param value {Number} number
- * @returns {Boolean}
+ * @param value {number} number
+ * @returns {boolean}
  * @example
  * be.int(2) // true
  * be.int(1.5) // false
@@ -31,8 +31,8 @@ Numbers.int = (value) => {
  *
  * * **Interfaces**: `all`, `any`, `not`
  *
- * @param value {Number} number
- * @returns {Boolean}
+ * @param value {number} number
+ * @returns {boolean}
  * @example
  * be.float(1.5) // true
  * be.float(1) // false
@@ -47,8 +47,8 @@ Numbers.float = (value) => {
  *
  * * **Interfaces**: `all`, `any`, `not`
  *
- * @param value {Number} number
- * @returns {Boolean}
+ * @param value {number} number
+ * @returns {boolean}
  * @example
  * be.nan('s') // true
  */
@@ -61,8 +61,8 @@ Numbers.nan = (value) => {
  *
  * * **Interfaces**: `all`, `any`, `not`
  *
- * @param value {Number} number
- * @returns {Boolean}
+ * @param value {number} number
+ * @returns {boolean}
  * @example
  * be.even(2) // true
  * be.even(3) // false
@@ -76,8 +76,8 @@ Numbers.even = (value) => {
  *
  * * **Interfaces**: `all`, `any`, `not`
  *
- * @param value {Number} number
- * @returns {Boolean}
+ * @param value {number} number
+ * @returns {boolean}
  * @example
  * be.odd(3) // true
  * be.odd(4) // false
@@ -91,8 +91,8 @@ Numbers.odd = (value) => {
  *
  * * **Interfaces**: `all`, `any`, `not`
  *
- * @param value {Number} number
- * @returns {Boolean}
+ * @param value {number} number
+ * @returns {boolean}
  * @example
  * be.positive(2) // true
  * be.positive(-3) // false
@@ -106,8 +106,8 @@ Numbers.positive = (value) => {
  *
  * * **Interfaces**: `all`, `any`, `not`
  *
- * @param value {Number} number
- * @returns {Boolean}
+ * @param value {number} number
+ * @returns {boolean}
  * @example
  * be.negative(-2) // true
  * be.negative(2) // false
@@ -121,8 +121,8 @@ Numbers.negative = (value) => {
  *
  * * **Interfaces**: `all`, `any`, `not`
  *
- * @param value {Number} number
- * @returns {Boolean}
+ * @param value {number} number
+ * @returns {boolean}
  * @example
  * be.infinity(1.7976931348623157E+10308) // true
  */
@@ -135,8 +135,8 @@ Numbers.infinity = (value) => {
  *
  * * **Interfaces**: `all`, `any`, `not`
  *
- * @param value {Number} number
- * @returns {Boolean}
+ * @param value {number} number
+ * @returns {boolean}
  * @example
  * be.infinityPositive(1.7976931348623157E+10308) // true
  * be.infinityPositive(-1.7976931348623157E+10308) // false
@@ -150,8 +150,8 @@ Numbers.infinityPositive = (value) => {
  *
  * * **Interfaces**: `all`, `any`, `not`
  *
- * @param value {Number} number
- * @returns {Boolean}
+ * @param value {number} number
+ * @returns {boolean}
  * @example
  * be.infinityNegative(-1.7976931348623157E+10308) // true
  * be.infinityNegative(1.7976931348623157E+10308) // false
@@ -165,10 +165,10 @@ Numbers.infinityNegative = (value) => {
  *
  * * **Interfaces**: `not`
  *
- * @param num {Number} number
- * @param min {Number} number min
- * @param max {Number} number max
- * @returns {Boolean}
+ * @param num {number} number
+ * @param min {number} number min
+ * @param max {number} number max
+ * @returns {boolean}
  * @example
  * be.between(4, 1, 10) // true
  */
@@ -183,9 +183,9 @@ Numbers.between.multiple = false;
  *
  * * **Interfaces**: `not`
  *
- * @param value {Number} value to check
- * @param num {Number} number target
- * @returns {Boolean}
+ * @param value {number} value to check
+ * @param num {number} number target
+ * @returns {boolean}
  * @example
  * be.greater(10, 5) // true
  * be.greater(2, 8) // false
@@ -201,9 +201,9 @@ Numbers.greater.multiple = false;
  *
  * * **Interfaces**: `not`
  *
- * @param value {Number} value to check
- * @param num {Number} number target
- * @returns {Boolean}
+ * @param value {number} value to check
+ * @param num {number} number target
+ * @returns {boolean}
  * @example
  * be.lesser(10, 5) // false
  * be.lesser(2, 8) // true
@@ -219,8 +219,8 @@ Numbers.lesser.multiple = false;
  *
  * * **Interfaces**: `all`, `any`, `not`
  *
- * @param value {Number} number
- * @returns {Boolean}
+ * @param value {number} number
+ * @returns {boolean}
  * @example
  * be.numeric(100) // true
  * be.numeric('100') // true

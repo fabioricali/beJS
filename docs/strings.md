@@ -12,9 +12,9 @@ Check if string is in camelCase format**Interfaces**: `all`, `any`, `not`
 
 **Parameters**
 
-**value**: `String`, string
+**value**: `string`, string
 
-**Returns**: `Boolean`
+**Returns**: `boolean`
 
 **Example**:
 ```js
@@ -28,9 +28,9 @@ Check if string is in snake_case format**Interfaces**: `all`, `any`, `not`
 
 **Parameters**
 
-**value**: `String`, string
+**value**: `string`, string
 
-**Returns**: `Boolean`
+**Returns**: `boolean`
 
 **Example**:
 ```js
@@ -44,9 +44,9 @@ Check if string is in kebab-case format**Interfaces**: `all`, `any`, `not`
 
 **Parameters**
 
-**value**: `String`, string
+**value**: `string`, string
 
-**Returns**: `Boolean`
+**Returns**: `boolean`
 
 **Example**:
 ```js
@@ -60,13 +60,13 @@ Check similarity between two string**Interfaces**: `not`
 
 **Parameters**
 
-**string1**: `String`, string
+**string1**: `string`, string
 
-**string2**: `String`, string target
+**string2**: `string`, string target
 
 **threshold**: `int | float`, 0 to 1
 
-**Returns**: `Boolean`
+**Returns**: `boolean`
 
 **Example**:
 ```js
@@ -80,11 +80,11 @@ Check if string contains a value**Interfaces**: `not`
 
 **Parameters**
 
-**string**: `String`, string
+**string**: `string`, string
 
-**value**: `String`, string target
+**value**: `string`, string target
 
-**Returns**: `Boolean`
+**Returns**: `boolean`
 
 **Example**:
 ```js
@@ -98,9 +98,9 @@ Check if string is lower case**Interfaces**: `all`, `any`, `not`
 
 **Parameters**
 
-**value**: `String`, string
+**value**: `string`, string
 
-**Returns**: `Boolean`
+**Returns**: `boolean`
 
 **Example**:
 ```js
@@ -114,9 +114,9 @@ Check if string is upper case**Interfaces**: `all`, `any`, `not`
 
 **Parameters**
 
-**value**: `String`, string
+**value**: `string`, string
 
-**Returns**: `Boolean`
+**Returns**: `boolean`
 
 **Example**:
 ```js
@@ -130,9 +130,9 @@ Check if is a word**Interfaces**: `all`, `any`, `not`
 
 **Parameters**
 
-**value**: `String`, string
+**value**: `string`, string
 
-**Returns**: `Boolean`
+**Returns**: `boolean`
 
 **Example**:
 ```js
@@ -146,9 +146,9 @@ Check if string is capitalized**Interfaces**: `all`, `any`, `not`
 
 **Parameters**
 
-**value**: `String`, string
+**value**: `string`, string
 
-**Returns**: `Boolean`
+**Returns**: `boolean`
 
 **Example**:
 ```js
@@ -162,9 +162,9 @@ Check if string is empty**Interfaces**: `all`, `any`, `not`
 
 **Parameters**
 
-**value**: `String`, string
+**value**: `string`, string
 
-**Returns**: `Boolean`
+**Returns**: `boolean`
 
 **Example**:
 ```js
@@ -178,9 +178,9 @@ Check if is alphanumeric string**Interfaces**: `all`, `any`, `not`
 
 **Parameters**
 
-**value**: `String`, string
+**value**: `string`, string
 
-**Returns**: `Boolean`
+**Returns**: `boolean`
 
 **Example**:
 ```js
@@ -194,13 +194,13 @@ Check if string start with a value**Interfaces**: `not`
 
 **Parameters**
 
-**value**: `String`, start string
+**value**: `string`, start string
 
-**string**: `String`, string target
+**string**: `string`, string target
 
-**insensitive**: `Boolean`, case sensitive
+**insensitive**: `boolean`, case sensitive
 
-**Returns**: `Boolean`
+**Returns**: `boolean`
 
 **Example**:
 ```js
@@ -214,9 +214,9 @@ Check if value is a single char**Interfaces**: `all`, `any`, `not`
 
 **Parameters**
 
-**value**: `String`, string
+**value**: `string`, string
 
-**Returns**: `Boolean`
+**Returns**: `boolean`
 
 **Example**:
 ```js
@@ -230,9 +230,9 @@ Check if string is a space**Interfaces**: `all`, `any`, `not`
 
 **Parameters**
 
-**value**: `String`, string
+**value**: `string`, string
 
-**Returns**: `Boolean`
+**Returns**: `boolean`
 
 **Example**:
 ```js
@@ -246,9 +246,9 @@ Check if exists spaces in string**Interfaces**: `all`, `any`, `not`
 
 **Parameters**
 
-**value**: `String`, string
+**value**: `string`, string
 
-**Returns**: `Boolean`
+**Returns**: `boolean`
 
 **Example**:
 ```js

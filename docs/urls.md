@@ -12,9 +12,9 @@ Check if is valid string url**Interfaces**: `all`, `any`, `not`
 
 **Parameters**
 
-**value**: `String`, url
+**value**: `string`, url
 
-**Returns**: `Boolean`
+**Returns**: `boolean`
 
 **Example**:
 ```js
@@ -28,9 +28,9 @@ Check if is a HTTP url**Interfaces**: `all`, `any`, `not`
 
 **Parameters**
 
-**value**: `String`, url
+**value**: `string`, url
 
-**Returns**: `Boolean`
+**Returns**: `boolean`
 
 **Example**:
 ```js
@@ -44,9 +44,9 @@ Check if is a HTTPS url**Interfaces**: `all`, `any`, `not`
 
 **Parameters**
 
-**value**: `String`, url
+**value**: `string`, url
 
-**Returns**: `Boolean`
+**Returns**: `boolean`
 
 **Example**:
 ```js
@@ -60,9 +60,9 @@ Check if url is encoded**Interfaces**: `all`, `any`, `not`
 
 **Parameters**
 
-**value**: `String`, url encoded
+**value**: `string`, url encoded
 
-**Returns**: `Boolean`
+**Returns**: `boolean`
 
 **Example**:
 ```js
@@ -76,9 +76,9 @@ Check if is a FTP urls**Interfaces**: `all`, `any`, `not`
 
 **Parameters**
 
-**value**: `String`, url
+**value**: `string`, url
 
-**Returns**: `Boolean`
+**Returns**: `boolean`
 
 **Example**:
 ```js
@@ -92,9 +92,9 @@ Check if is a FTPS urls**Interfaces**: `all`, `any`, `not`
 
 **Parameters**
 
-**value**: `String`, url
+**value**: `string`, url
 
-**Returns**: `Boolean`
+**Returns**: `boolean`
 
 **Example**:
 ```js

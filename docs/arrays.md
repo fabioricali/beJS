@@ -14,9 +14,9 @@ Check if an element is in the array**Interfaces**: `not`
 
 **value**: `Mixed`, element to search
 
-**array**: `Array`, array where search
+**array**: `array`, array where search
 
-**Returns**: `Boolean`
+**Returns**: `boolean`
 
 **Example**:
 ```js

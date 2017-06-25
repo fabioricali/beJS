@@ -12,9 +12,9 @@ Check if is date string**Interfaces**: `all`, `any`, `not`
 
 **Parameters**
 
-**value**: `String`, string date
+**value**: `string`, string date
 
-**Returns**: `Boolean`
+**Returns**: `boolean`
 
 **Example**:
 ```js
@@ -30,7 +30,7 @@ Check if date is today**Interfaces**: `all`, `any`, `not`
 
 **date**: `Date`, date object
 
-**Returns**: `Boolean`
+**Returns**: `boolean`
 
 **Example**:
 ```js
@@ -46,7 +46,7 @@ Check if date is tomorrow**Interfaces**: `all`, `any`, `not`
 
 **date**: `Date`, date object
 
-**Returns**: `Boolean`
+**Returns**: `boolean`
 
 **Example**:
 ```js
@@ -62,7 +62,7 @@ Check if date is yesterday**Interfaces**: `all`, `any`, `not`
 
 **date**: `Date`, date object
 
-**Returns**: `Boolean`
+**Returns**: `boolean`
 
 **Example**:
 ```js
@@ -78,7 +78,7 @@ Check if date is past**Interfaces**: `all`, `any`, `not`
 
 **date**: `Date`, date object
 
-**Returns**: `Boolean`
+**Returns**: `boolean`
 
 **Example**:
 ```js
@@ -94,7 +94,7 @@ Check if date is future**Interfaces**: `all`, `any`, `not`
 
 **date**: `Date`, date object
 
-**Returns**: `Boolean`
+**Returns**: `boolean`
 
 **Example**:
 ```js
@@ -110,9 +110,9 @@ Check if date is day specified**Interfaces**: `not`
 
 **date**: `Date`, date object
 
-**day**: `String`, day can be 'sunday','monday','tuesday','wednesday','thursday','friday','saturday'
+**day**: `string`, day can be 'sunday','monday','tuesday','wednesday','thursday','friday','saturday'
 
-**Returns**: `Boolean`
+**Returns**: `boolean`
 
 **Example**:
 ```js
@@ -130,7 +130,7 @@ Check if date is month specified**Interfaces**: `not`
 
 **month**: `string`, month can be 'january', 'february', 'march', 'april', 'may', 'june', 'july', 'august', 'september', 'october', 'november', 'december'
 
-**Returns**: `Boolean`
+**Returns**: `boolean`
 
 **Example**:
 ```js
@@ -146,9 +146,9 @@ Check if date is the year specified**Interfaces**: `not`
 
 **date**: `Date`, date object
 
-**year**: `Number`, year
+**year**: `number`, year
 
-**Returns**: `Boolean`
+**Returns**: `boolean`
 
 **Example**:
 ```js
@@ -162,9 +162,9 @@ Check if is leap year**Interfaces**: `all`, `any`, `not`
 
 **Parameters**
 
-**year**: `Number`, year
+**year**: `number`, year
 
-**Returns**: `Boolean`
+**Returns**: `boolean`
 
 **Example**:
 ```js
@@ -180,7 +180,7 @@ Check if date is weekend**Interfaces**: `all`, `any`, `not`
 
 **date**: `Date`, date object
 
-**Returns**: `Boolean`
+**Returns**: `boolean`
 
 **Example**:
 ```js
@@ -196,7 +196,7 @@ Check if date is weekday**Interfaces**: `all`, `any`, `not`
 
 **date**: `Date`, date object
 
-**Returns**: `Boolean`
+**Returns**: `boolean`
 
 **Example**:
 ```js
@@ -216,7 +216,7 @@ Check if date is between start date and end date**Interfaces**: `not`
 
 **endDate**: `Date`, end date object
 
-**Returns**: `Boolean`
+**Returns**: `boolean`
 
 **Example**:
 ```js
@@ -232,7 +232,7 @@ Check if date is DST**Interfaces**: `all`, `any`, `not`
 
 **date**: `Date`, date object
 
-**Returns**: `Boolean`
+**Returns**: `boolean`
 
 **Example**:
 ```js

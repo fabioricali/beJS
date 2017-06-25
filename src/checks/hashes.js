@@ -11,8 +11,8 @@ let Hashes = {};
  *
  * **Interfaces**: `all`, `any`, `not`
  *
- * @param value {String} hash string
- * @returns {Boolean}
+ * @param value {string} hash string
+ * @returns {boolean}
  * @example
  * be.md5('00236a2ae558018ed13b5222ef1bd977') // true
  * be.not.md5('00236a2ae558018ed13b5222ef1bd977') // false
@@ -26,8 +26,8 @@ Hashes.md5 = (value) => {
  *
  * **Interfaces**: `all`, `any`, `not`
  *
- * @param value {String} hash string
- * @returns {Boolean}
+ * @param value {string} hash string
+ * @returns {boolean}
  * @example
  * be.sha1('aaf4c61ddcc5e8a2dabede0f3b482cd9aea9434d') // true
  * be.not.sha1('aaf4c61ddcc5e8a2dabede0f3b482cd9aea9434d') // false

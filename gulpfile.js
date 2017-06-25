@@ -5,7 +5,6 @@ const browserify = require('browserify');
 const buffer = require('vinyl-buffer');
 const rename = require('gulp-rename');
 const uglifyjs = require('gulp-uglify');
-const composer = require('gulp-uglify/composer');
 const gutil = require('gulp-util');
 const jsdox = require('jsdox');
 const gulp = require('gulp');
@@ -19,7 +18,6 @@ const opts = {
         min: {
             mangle: true,
             compress: {
-                sequences: true,
                 dead_code: true,
                 conditionals: true,
                 booleans: true,
@@ -57,7 +55,6 @@ function build(min) {
 
     pipe(buffer()).
 
-    //pipe(minify(min ? opts.uglify.min : opts.uglify.dev).on('error', gutil.log)).
     pipe(uglifyjs(min ? opts.uglify.min : opts.uglify.dev).on('error', gutil.log)).
 
     pipe(rename({
@@ -81,10 +78,14 @@ gulp.task('cleanup:docs', () => {
     return del.sync('docs/**.*');
 });
 
-gulp.task('compile:docs', (done) => {
+gulp.task('compile:docs-checks', (done) => {
     jsdox.generateForDir('./src/checks', './docs', null, done, null);
 });
 
+gulp.task('compile:docs-be', (done) => {
+    jsdox.generateForDir('./src/be.js', './docs', null, done, null);
+});
+
 gulp.task('dist', ['cleanup:dist', 'compile:dist', 'minify:dist']);
-gulp.task('docs', ['cleanup:docs', 'compile:docs']);
+gulp.task('docs', ['cleanup:docs', 'compile:docs-checks', 'compile:docs-be']);
 gulp.task('build', ['dist', 'docs']);

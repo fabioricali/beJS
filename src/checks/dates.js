@@ -38,8 +38,8 @@ let _months = [
  *
  * **Interfaces**: `all`, `any`, `not`
  *
- * @param value {String} string date
- * @returns {Boolean}
+ * @param value {string} string date
+ * @returns {boolean}
  * @example
  * be.dateString('2017-06-20') // true
  * be.dateString('hello') // false
@@ -55,7 +55,7 @@ Dates.dateString = (value) => {
  * **Interfaces**: `all`, `any`, `not`
  *
  * @param date {Date} date object
- * @returns {Boolean}
+ * @returns {boolean}
  * @example
  * be.today(new Date()) // true
  */
@@ -70,7 +70,7 @@ Dates.today = (date) => {
  * **Interfaces**: `all`, `any`, `not`
  *
  * @param date {Date} date object
- * @returns {Boolean}
+ * @returns {boolean}
  * @example
  * let now = new Date();
  * let tomorrow = now.setDate(now.getDate() + 1);
@@ -88,7 +88,7 @@ Dates.tomorrow = (date) => {
  * **Interfaces**: `all`, `any`, `not`
  *
  * @param date {Date} date object
- * @returns {Boolean}
+ * @returns {boolean}
  * @example
  * let now = new Date();
  * let yesterday = now.setDate(now.getDate() - 1);
@@ -106,7 +106,7 @@ Dates.yesterday = (date) => {
  * **Interfaces**: `all`, `any`, `not`
  *
  * @param date {Date} date object
- * @returns {Boolean}
+ * @returns {boolean}
  * @example
  * be.past(new Date('1980-02-05')) // true
  */
@@ -121,7 +121,7 @@ Dates.past = (date) => {
  * **Interfaces**: `all`, `any`, `not`
  *
  * @param date {Date} date object
- * @returns {Boolean}
+ * @returns {boolean}
  * @example
  * be.future(new Date('2117-06-24')) // true
  * be.all.future(new Date('2117-06-24'), new Date('2007-06-25')) // false
@@ -138,8 +138,8 @@ Dates.future = (date) => {
  * **Interfaces**: `not`
  *
  * @param date {Date} date object
- * @param day {String} day can be 'sunday','monday','tuesday','wednesday','thursday','friday','saturday'
- * @returns {Boolean}
+ * @param day {string} day can be 'sunday','monday','tuesday','wednesday','thursday','friday','saturday'
+ * @returns {boolean}
  * @example
  * be.day(new Date('2017-06-24'), 'saturday') // true
  * be.day(new Date('2017-06-25'), 'monday') // false
@@ -160,7 +160,7 @@ Dates.day.multiple = false;
  *
  * @param date {Date} date object
  * @param month {string} month can be 'january', 'february', 'march', 'april', 'may', 'june', 'july', 'august', 'september', 'october', 'november', 'december'
- * @returns {Boolean}
+ * @returns {boolean}
  * @example
  * be.month(new Date('2017-06-24'), 'june') // true
  * be.month(new Date('2017-02-25'), 'march') // false
@@ -180,8 +180,8 @@ Dates.month.multiple = false;
  * **Interfaces**: `not`
  *
  * @param date {Date} date object
- * @param year {Number} year
- * @returns {Boolean}
+ * @param year {number} year
+ * @returns {boolean}
  * @example
  * be.year(new Date('2017-06-06'), 2017) // true
  * be.not.year(new Date('2017-06-06'), 2017) // false
@@ -199,8 +199,8 @@ Dates.year.multiple = false;
  *
  * **Interfaces**: `all`, `any`, `not`
  *
- * @param year {Number} year
- * @returns {Boolean}
+ * @param year {number} year
+ * @returns {boolean}
  * @example
  * be.leapYear(2016) // true
  * be.leapYear(2017) // false
@@ -220,7 +220,7 @@ Dates.leapYear = (year) => {
  * **Interfaces**: `all`, `any`, `not`
  *
  * @param date {Date} date object
- * @returns {Boolean}
+ * @returns {boolean}
  * @example
  * be.weekend(new Date('2017-06-24')) // true
  * be.not.weekend(new Date('2017-06-24')) // false
@@ -237,7 +237,7 @@ Dates.weekend = (date) => {
  * **Interfaces**: `all`, `any`, `not`
  *
  * @param date {Date} date object
- * @returns {Boolean}
+ * @returns {boolean}
  * @example
  * be.weekday(new Date('2017-06-26')) // true
  * be.not.weekday(new Date('2017-06-24')) // true
@@ -256,7 +256,7 @@ Dates.weekday = (date) => {
  * @param date {Date} date object
  * @param startDate {Date} start date object
  * @param endDate {Date} end date object
- * @returns {Boolean}
+ * @returns {boolean}
  * @example
  * be.dateBetween(new Date('2017-05-12'), new Date('2017-03-10'), new Date('2017-07-25')) // true
  * be.not.dateBetween(new Date('2017-05-12'), new Date('2017-03-10'), new Date('2017-07-25')) // false
@@ -274,7 +274,7 @@ Dates.dateBetween.multiple = false;
  * **Interfaces**: `all`, `any`, `not`
  *
  * @param date {Date} date object
- * @returns {Boolean}
+ * @returns {boolean}
  * @example
  * be.dayLightSavingTime(new Date('2017-06-24')) // true
  * be.dayLightSavingTime(new Date('2017-10-30')) // false

@@ -13,8 +13,8 @@ let Mixed = {};
  * **Interfaces**: `all`, `any`, `not`
  *
  * @link https://emailregex.com/
- * @param value {String} email
- * @returns {Boolean}
+ * @param value {string} email
+ * @returns {boolean}
  * @example
  * be.email('fabio@rica.li') // true
  * be.not.email('fabiorica.li') // true
@@ -28,8 +28,8 @@ Mixed.email = (value) => {
  *
  * **Interfaces**: `all`, `any`, `not`
  *
- * @param value {String} hex string
- * @returns {Boolean}
+ * @param value {string} hex string
+ * @returns {boolean}
  * @example
  * be.hex('fff') // true
  */
@@ -42,8 +42,8 @@ Mixed.hex = (value) => {
  *
  * **Interfaces**: `all`, `any`, `not`
  *
- * @param value {String} hex color string
- * @returns {Boolean}
+ * @param value {string} hex color string
+ * @returns {boolean}
  * @example
  * be.hexColor('#ff0000') // true
  */
@@ -62,8 +62,8 @@ Mixed.hexColor = (value) => {
  *
  * **Interfaces**: `all`, `any`, `not`
  *
- * @param value {String} ip string
- * @returns {Boolean}
+ * @param value {string} ip string
+ * @returns {boolean}
  * @example
  * be.ipv4('127.0.0.1') // true
  */
@@ -76,8 +76,8 @@ Mixed.ipv4 = (value) => {
  *
  * **Interfaces**: `all`, `any`, `not`
  *
- * @param value {String} ip string
- * @returns {Boolean}
+ * @param value {string} ip string
+ * @returns {boolean}
  * @example
  * be.ipv6('FF01:0:0:0:0:0:0:1') // true
  */
@@ -90,8 +90,8 @@ Mixed.ipv6 = (value) => {
  *
  * **Interfaces**: `all`, `any`, `not`
  *
- * @param value {String} ip string
- * @returns {Boolean}
+ * @param value {string} ip string
+ * @returns {boolean}
  * @example
  * be.ipv('127.0.0.1') // true
  */
@@ -104,8 +104,8 @@ Mixed.ip = (value) => {
  *
  * **Interfaces**: `all`, `any`, `not`
  *
- * @param value {String} base64 string
- * @returns {Boolean}
+ * @param value {string} base64 string
+ * @returns {boolean}
  * @example
  * be.base64('aGVsbG8=') // true
  */
@@ -118,8 +118,8 @@ Mixed.base64 = (value) => {
  *
  * **Interfaces**: `all`, `any`, `not`
  *
- * @param value {String} version string
- * @returns {Boolean}
+ * @param value {string} version string
+ * @returns {boolean}
  * @example
  * be.semVer('1.0.0') // true
  */
@@ -134,7 +134,7 @@ Mixed.semVer = (value) => {
  *
  * @param value {Number|String|Boolean|RegExp} first
  * @param other {Number|String|Boolean|RegExp} second
- * @returns {Boolean}
+ * @returns {boolean}
  * @example
  * be.equal('hello', 'hello') // true
  * be.equal('hello', 'hellow') // false

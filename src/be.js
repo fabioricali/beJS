@@ -1,6 +1,5 @@
 /**
  * @module be
- * @version 1.0.0
  * @author Fabio Ricali <fabio@rica.li>
  * @copyright rica.li 2017
  * @license MIT
@@ -9,6 +8,28 @@
 
 const Helpers = require('./helpers');
 const Interface = require('./interface');
+
+/**
+ * be class
+ * @type {{not, any, all, version, Strings, Types, Numbers, Envs, Objects, Mixed, Arrays, Dates, Urls, Hashes}}
+ * @example
+ * be.boolean(true);
+ * be.not.boolean(1);
+ * be.all.boolean(true, false, true);
+ * be.all.boolean([true, false, true]);
+ * be.any.boolean(true, false, 1);
+ */
+let be = {};
+
+be.version = '0.0.0';
+
+/**
+ * Helpers class
+ * @type {{}}
+ * @private
+ * @ignore
+ */
+be._helpers = Helpers;
 
 /**
  * Collection of checks
@@ -29,22 +50,6 @@ let Checks = {
 };
 
 /**
- * be class
- * @type {Object}
- * @private
- */
-let be = {};
-
-be.version = '0.0.0';
-
-/**
- * Helpers class
- * @type {{}}
- * @private
- */
-be._helpers = Helpers;
-
-/**
  * Create interfaces
  */
 (function () {
@@ -63,10 +68,6 @@ be._helpers = Helpers;
         }
     }
 
-    /**
-     * Create all and any
-     * @type {be}
-     */
     be = Interface.create(be);
 
     /**

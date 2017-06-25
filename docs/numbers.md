@@ -12,9 +12,9 @@ Check if a number is integer* **Interfaces**: `all`, `any`, `not`
 
 **Parameters**
 
-**value**: `Number`, number
+**value**: `number`, number
 
-**Returns**: `Boolean`
+**Returns**: `boolean`
 
 **Example**:
 ```js
@@ -28,9 +28,9 @@ Check if is float number* **Interfaces**: `all`, `any`, `not`
 
 **Parameters**
 
-**value**: `Number`, number
+**value**: `number`, number
 
-**Returns**: `Boolean`
+**Returns**: `boolean`
 
 **Example**:
 ```js
@@ -44,9 +44,9 @@ Check if is NaN* **Interfaces**: `all`, `any`, `not`
 
 **Parameters**
 
-**value**: `Number`, number
+**value**: `number`, number
 
-**Returns**: `Boolean`
+**Returns**: `boolean`
 
 **Example**:
 ```js
@@ -60,9 +60,9 @@ Check if is a even number* **Interfaces**: `all`, `any`, `not`
 
 **Parameters**
 
-**value**: `Number`, number
+**value**: `number`, number
 
-**Returns**: `Boolean`
+**Returns**: `boolean`
 
 **Example**:
 ```js
@@ -76,9 +76,9 @@ Check if is an odd number* **Interfaces**: `all`, `any`, `not`
 
 **Parameters**
 
-**value**: `Number`, number
+**value**: `number`, number
 
-**Returns**: `Boolean`
+**Returns**: `boolean`
 
 **Example**:
 ```js
@@ -92,9 +92,9 @@ Check if is a positive number* **Interfaces**: `all`, `any`, `not`
 
 **Parameters**
 
-**value**: `Number`, number
+**value**: `number`, number
 
-**Returns**: `Boolean`
+**Returns**: `boolean`
 
 **Example**:
 ```js
@@ -108,9 +108,9 @@ Check if is a negative number* **Interfaces**: `all`, `any`, `not`
 
 **Parameters**
 
-**value**: `Number`, number
+**value**: `number`, number
 
-**Returns**: `Boolean`
+**Returns**: `boolean`
 
 **Example**:
 ```js
@@ -124,9 +124,9 @@ Check if number is infinity* **Interfaces**: `all`, `any`, `not`
 
 **Parameters**
 
-**value**: `Number`, number
+**value**: `number`, number
 
-**Returns**: `Boolean`
+**Returns**: `boolean`
 
 **Example**:
 ```js
@@ -140,9 +140,9 @@ Check if number is infinity positive* **Interfaces**: `all`, `any`, `not`
 
 **Parameters**
 
-**value**: `Number`, number
+**value**: `number`, number
 
-**Returns**: `Boolean`
+**Returns**: `boolean`
 
 **Example**:
 ```js
@@ -156,9 +156,9 @@ Check if number is infinity positive* **Interfaces**: `all`, `any`, `not`
 
 **Parameters**
 
-**value**: `Number`, number
+**value**: `number`, number
 
-**Returns**: `Boolean`
+**Returns**: `boolean`
 
 **Example**:
 ```js
@@ -172,13 +172,13 @@ Check if number is between min and max* **Interfaces**: `not`
 
 **Parameters**
 
-**num**: `Number`, number
+**num**: `number`, number
 
-**min**: `Number`, number min
+**min**: `number`, number min
 
-**max**: `Number`, number max
+**max**: `number`, number max
 
-**Returns**: `Boolean`
+**Returns**: `boolean`
 
 **Example**:
 ```js
@@ -192,11 +192,11 @@ Checks if number is greater then an other* **Interfaces**: `not`
 
 **Parameters**
 
-**value**: `Number`, value to check
+**value**: `number`, value to check
 
-**num**: `Number`, number target
+**num**: `number`, number target
 
-**Returns**: `Boolean`
+**Returns**: `boolean`
 
 **Example**:
 ```js
@@ -210,11 +210,11 @@ Checks if number is lesser then an other* **Interfaces**: `not`
 
 **Parameters**
 
-**value**: `Number`, value to check
+**value**: `number`, value to check
 
-**num**: `Number`, number target
+**num**: `number`, number target
 
-**Returns**: `Boolean`
+**Returns**: `boolean`
 
 **Example**:
 ```js
@@ -228,9 +228,9 @@ Checks if is a number as string or number type* **Interfaces**: `all`, `any`, 
 
 **Parameters**
 
-**value**: `Number`, number
+**value**: `number`, number
 
-**Returns**: `Boolean`
+**Returns**: `boolean`
 
 **Example**:
 ```js

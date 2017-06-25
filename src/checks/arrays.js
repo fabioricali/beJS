@@ -13,8 +13,8 @@ let Arrays = {};
  * **Interfaces**: `not`
  *
  * @param value {Mixed} element to search
- * @param array {Array} array where search
- * @returns {Boolean}
+ * @param array {array} array where search
+ * @returns {boolean}
  * @example
  * be.inArray('hello', ['hello', 'world']) //true
  * be.inArray('ciao', ['hello', 'world']) //false

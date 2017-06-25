@@ -14,9 +14,9 @@ Check [object ?] class**Interfaces**: `not`
 
 **object**: `Mixed`, object
 
-**className**: `String`, class name
+**className**: `string`, class name
 
-**Returns**: `Boolean`
+**Returns**: `boolean`
 
 **Example**:
 ```js
@@ -32,7 +32,7 @@ Check if is valid boolean**Interfaces**: `all`, `any`, `not`
 
 **value**: `Mixed`, value
 
-**Returns**: `Boolean`
+**Returns**: `boolean`
 
 **Example**:
 ```js
@@ -48,7 +48,7 @@ Check if is false boolean type**Interfaces**: `all`, `any`, `not`
 
 **value**: `Mixed`, value
 
-**Returns**: `Boolean`
+**Returns**: `boolean`
 
 **Example**:
 ```js
@@ -64,7 +64,7 @@ Check if is true boolean type**Interfaces**: `all`, `any`, `not`
 
 **value**: `Mixed`, value
 
-**Returns**: `Boolean`
+**Returns**: `boolean`
 
 **Example**:
 ```js
@@ -80,7 +80,7 @@ Check if is valid number**Interfaces**: `all`, `any`, `not`
 
 **value**: `Mixed`, value
 
-**Returns**: `Boolean`
+**Returns**: `boolean`
 
 **Example**:
 ```js
@@ -96,7 +96,7 @@ Check if is valid string**Interfaces**: `all`, `any`, `not`
 
 **value**: `Mixed`, value
 
-**Returns**: `Boolean`
+**Returns**: `boolean`
 
 **Example**:
 ```js
@@ -112,7 +112,7 @@ Check if is undefined value**Interfaces**: `all`, `any`, `not`
 
 **value**: `Mixed`, value
 
-**Returns**: `Boolean`
+**Returns**: `boolean`
 
 **Example**:
 ```js
@@ -128,7 +128,7 @@ Check if is null**Interfaces**: `all`, `any`, `not`
 
 **value**: `Mixed`, value
 
-**Returns**: `Boolean`
+**Returns**: `boolean`
 
 **Example**:
 ```js
@@ -144,7 +144,7 @@ Check if is a object**Interfaces**: `all`, `any`, `not`
 
 **value**: `Mixed`, value
 
-**Returns**: `Boolean`
+**Returns**: `boolean`
 
 **Example**:
 ```js
@@ -160,7 +160,7 @@ Check if is an array**Interfaces**: `all`, `any`, `not`
 
 **value**: `Mixed`, value
 
-**Returns**: `Boolean`
+**Returns**: `boolean`
 
 **Example**:
 ```js
@@ -176,7 +176,7 @@ Check if is a JSON string**Interfaces**: `all`, `any`, `not`
 
 **value**: `Mixed`, json string
 
-**Returns**: `Boolean`
+**Returns**: `boolean`
 
 **Example**:
 ```js
@@ -192,7 +192,7 @@ Check if is date object**Interfaces**: `all`, `any`, `not`
 
 **value**: `Mixed`, date object
 
-**Returns**: `Boolean`
+**Returns**: `boolean`
 
 **Example**:
 ```js
@@ -208,7 +208,7 @@ Check if is a function**Interfaces**: `all`, `any`, `not`
 
 **value**: `Mixed`, value
 
-**Returns**: `Boolean`
+**Returns**: `boolean`
 
 **Example**:
 ```js
@@ -224,7 +224,7 @@ Check if is a valid RegExp**Interfaces**: `all`, `any`, `not`
 
 **value**: `Mixed`, value
 
-**Returns**: `Boolean`
+**Returns**: `boolean`
 
 **Example**:
 ```js
@@ -242,7 +242,7 @@ Check if both arguments are same type**Interfaces**: `not`
 
 **other**: `Mixed`, second
 
-**Returns**: `Boolean`
+**Returns**: `boolean`
 
 **Example**:
 ```js
@@ -258,7 +258,7 @@ Check if is empty**Interfaces**: `all`, `any`, `not`
 
 **value**: `Mixed`, value
 
-**Returns**: `Boolean`
+**Returns**: `boolean`
 
 **Example**:
 ```js
@@ -274,7 +274,7 @@ Check if a falsy value**Interfaces**: `all`, `any`, `not`
 
 **value**: `Mixed`, value
 
-**Returns**: `Boolean`
+**Returns**: `boolean`
 
 **Example**:
 ```js
@@ -290,7 +290,7 @@ Check if a truthy value**Interfaces**: `all`, `any`, `not`
 
 **value**: `Mixed`, Check if a truthy value**Interfaces**: `all`, `any`, `not`
 
-**Returns**: `Boolean`
+**Returns**: `boolean`
 
 **Example**:
 ```js

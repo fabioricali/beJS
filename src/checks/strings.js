@@ -14,8 +14,8 @@ let Strings = {};
  *
  * **Interfaces**: `all`, `any`, `not`
  *
- * @param value {String} string
- * @returns {Boolean}
+ * @param value {string} string
+ * @returns {boolean}
  * @example
  * be.camelCase('testTest') // true
  * be.camelCase('test_test') // false
@@ -32,8 +32,8 @@ Strings.camelCase = (value) => {
  *
  * **Interfaces**: `all`, `any`, `not`
  *
- * @param value {String} string
- * @returns {Boolean}
+ * @param value {string} string
+ * @returns {boolean}
  * @example
  * be.snakeCase('test_test') // true
  * be.snakeCase('testTest') // false
@@ -48,8 +48,8 @@ Strings.snakeCase = (value) => {
  *
  * **Interfaces**: `all`, `any`, `not`
  *
- * @param value {String} string
- * @returns {Boolean}
+ * @param value {string} string
+ * @returns {boolean}
  * @example
  * be.kebabCase('test-test') // true
  * be.kebabCase('testTest') // false
@@ -64,10 +64,10 @@ Strings.kebabCase = (value) => {
  *
  * **Interfaces**: `not`
  *
- * @param string1 {String} string
- * @param string2 {String} string target
+ * @param string1 {string} string
+ * @param string2 {string} string target
  * @param threshold {int|float} 0 to 1
- * @returns {Boolean}
+ * @returns {boolean}
  * @example
  * be.similarity('hello', 'hello', 1) // true
  * be.similarity('hello', 'hello world', 1) // false
@@ -99,9 +99,9 @@ Strings.similarity.multiple = false;
  *
  * **Interfaces**: `not`
  *
- * @param string {String} string
- * @param value {String} string target
- * @returns {Boolean}
+ * @param string {string} string
+ * @param value {string} string target
+ * @returns {boolean}
  * @example
  * be.contains('hello', 'hello world') // true
  */
@@ -117,8 +117,8 @@ Strings.contains.multiple = false;
  *
  * **Interfaces**: `all`, `any`, `not`
  *
- * @param value {String} string
- * @returns {Boolean}
+ * @param value {string} string
+ * @returns {boolean}
  * @example
  * be.lowerCase('hello') // true
  */
@@ -132,8 +132,8 @@ Strings.lowerCase = (value) => {
  *
  * **Interfaces**: `all`, `any`, `not`
  *
- * @param value {String} string
- * @returns {Boolean}
+ * @param value {string} string
+ * @returns {boolean}
  * @example
  * be.upperCase('HELLO') // true
  */
@@ -147,8 +147,8 @@ Strings.upperCase = (value) => {
  *
  * **Interfaces**: `all`, `any`, `not`
  *
- * @param value {String} string
- * @returns {Boolean}
+ * @param value {string} string
+ * @returns {boolean}
  * @example
  * be.word('hello') // true
  * be.word('hello world') // false
@@ -164,8 +164,8 @@ Strings.word = (value) => {
  *
  * **Interfaces**: `all`, `any`, `not`
  *
- * @param value {String} string
- * @returns {Boolean}
+ * @param value {string} string
+ * @returns {boolean}
  * @example
  * be.capitalized('Hello World') // true
  * be.capitalized('hello world') // false
@@ -188,8 +188,8 @@ Strings.capitalized = (value) => {
  *
  * **Interfaces**: `all`, `any`, `not`
  *
- * @param value {String} string
- * @returns {Boolean}
+ * @param value {string} string
+ * @returns {boolean}
  * @example
  * be.emptyString('') // true
  */
@@ -202,8 +202,8 @@ Strings.emptyString = (value) => {
  *
  * **Interfaces**: `all`, `any`, `not`
  *
- * @param value {String} string
- * @returns {Boolean}
+ * @param value {string} string
+ * @returns {boolean}
  * @example
  * be.alphanumeric('hello123456') // true
  */
@@ -217,10 +217,10 @@ Strings.alphanumeric = (value) => {
  *
  * **Interfaces**: `not`
  *
- * @param value {String} start string
- * @param string {String} string target
- * @param insensitive {Boolean} case sensitive
- * @returns {Boolean}
+ * @param value {string} start string
+ * @param string {string} string target
+ * @param insensitive {boolean} case sensitive
+ * @returns {boolean}
  * @example
  * be.startWith('hello', 'hello world') // true
  * be.startWith('hello', 'HELLO world', true) // false
@@ -238,8 +238,8 @@ Strings.startWith.multiple = false;
  *
  * **Interfaces**: `all`, `any`, `not`
  *
- * @param value {String} string
- * @returns {Boolean}
+ * @param value {string} string
+ * @returns {boolean}
  * @example
  * be.char('a') // true
  * be.char('ab') // false
@@ -253,8 +253,8 @@ Strings.char = (value) => {
  *
  * **Interfaces**: `all`, `any`, `not`
  *
- * @param value {String} string
- * @returns {Boolean}
+ * @param value {string} string
+ * @returns {boolean}
  * @example
  * be.space(' ') // true
  * be.space('a') // false
@@ -268,8 +268,8 @@ Strings.space = (value) => {
  *
  * **Interfaces**: `all`, `any`, `not`
  *
- * @param value {String} string
- * @returns {Boolean}
+ * @param value {string} string
+ * @returns {boolean}
  * @example
  * be.spaces('hello world') // true
  * be.spaces('helloworld') // false

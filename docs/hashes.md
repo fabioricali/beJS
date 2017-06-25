@@ -12,9 +12,9 @@ Check if is a valid MD5 hash string**Interfaces**: `all`, `any`, `not`
 
 **Parameters**
 
-**value**: `String`, hash string
+**value**: `string`, hash string
 
-**Returns**: `Boolean`
+**Returns**: `boolean`
 
 **Example**:
 ```js
@@ -28,9 +28,9 @@ Check if is a valid SHA1 hash string**Interfaces**: `all`, `any`, `not`
 
 **Parameters**
 
-**value**: `String`, hash string
+**value**: `string`, hash string
 
-**Returns**: `Boolean`
+**Returns**: `boolean`
 
 **Example**:
 ```js

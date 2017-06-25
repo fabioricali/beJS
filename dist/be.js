@@ -209,6 +209,9 @@
             "use strict";
             var Helpers = require("./helpers");
             var Interface = require("./interface");
+            var be = {};
+            be.version = "0.0.0";
+            be._helpers = Helpers;
             var Checks = {
                 Strings: require("./checks/strings"),
                 Types: require("./checks/types"),
@@ -221,9 +224,6 @@
                 Urls: require("./checks/urls"),
                 Hashes: require("./checks/hashes")
             };
-            var be = {};
-            be.version = "0.0.0";
-            be._helpers = Helpers;
             (function() {
                 var _loop = function _loop(c) {
                     if (Checks.hasOwnProperty(c)) {
@@ -771,7 +771,6 @@
         } ],
         14: [ function(require, module, exports) {
             "use strict";
-            var be = require("./be");
             var Helpers = {};
             Helpers.getUserAgent = function() {
                 if (arguments.length) return arguments.length <= 0 ? undefined : arguments[0]; else {
@@ -806,9 +805,7 @@
                 return matrix[b.length][a.length];
             };
             module.exports = Helpers;
-        }, {
-            "./be": 3
-        } ],
+        }, {} ],
         15: [ function(require, module, exports) {
             "use strict";
             var Helpers = require("./helpers");

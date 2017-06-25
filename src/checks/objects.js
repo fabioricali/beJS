@@ -14,7 +14,7 @@ let Objects = {};
  *
  * @param value {Mixed} property that you want to search
  * @param object {Object} object target
- * @returns {Boolean}
+ * @returns {boolean}
  * @example
  * be.propertyOf('firstName', {firstName: 'Teddy', lastName: 'Red'}) // true
  */
@@ -32,7 +32,7 @@ Objects.propertyOf.multiple = false;
  *
  * @param object {Object} object
  * @param value {Integer} count
- * @returns {Boolean}
+ * @returns {boolean}
  * @example
  * be.propertyCount({a: 1, b: 2, c: 3}, 3) // true
  */

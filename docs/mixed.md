@@ -12,9 +12,9 @@ Check if is valid email**Interfaces**: `all`, `any`, `not`
 
 **Parameters**
 
-**value**: `String`, email
+**value**: `string`, email
 
-**Returns**: `Boolean`
+**Returns**: `boolean`
 
 **Example**:
 ```js
@@ -28,9 +28,9 @@ Check if is a hexadecimal**Interfaces**: `all`, `any`, `not`
 
 **Parameters**
 
-**value**: `String`, hex string
+**value**: `string`, hex string
 
-**Returns**: `Boolean`
+**Returns**: `boolean`
 
 **Example**:
 ```js
@@ -44,9 +44,9 @@ Check if is a hexadecimal color**Interfaces**: `all`, `any`, `not`
 
 **Parameters**
 
-**value**: `String`, hex color string
+**value**: `string`, hex color string
 
-**Returns**: `Boolean`
+**Returns**: `boolean`
 
 **Example**:
 ```js
@@ -60,9 +60,9 @@ Check if is a valid IPv4**Interfaces**: `all`, `any`, `not`
 
 **Parameters**
 
-**value**: `String`, ip string
+**value**: `string`, ip string
 
-**Returns**: `Boolean`
+**Returns**: `boolean`
 
 **Example**:
 ```js
@@ -76,9 +76,9 @@ Check if is a valid IPv6**Interfaces**: `all`, `any`, `not`
 
 **Parameters**
 
-**value**: `String`, ip string
+**value**: `string`, ip string
 
-**Returns**: `Boolean`
+**Returns**: `boolean`
 
 **Example**:
 ```js
@@ -92,9 +92,9 @@ Check if is a valid ip string**Interfaces**: `all`, `any`, `not`
 
 **Parameters**
 
-**value**: `String`, ip string
+**value**: `string`, ip string
 
-**Returns**: `Boolean`
+**Returns**: `boolean`
 
 **Example**:
 ```js
@@ -108,9 +108,9 @@ Check if is base64 encoded string**Interfaces**: `all`, `any`, `not`
 
 **Parameters**
 
-**value**: `String`, base64 string
+**value**: `string`, base64 string
 
-**Returns**: `Boolean`
+**Returns**: `boolean`
 
 **Example**:
 ```js
@@ -124,9 +124,9 @@ Check if is a valid semver string**Interfaces**: `all`, `any`, `not`
 
 **Parameters**
 
-**value**: `String`, version string
+**value**: `string`, version string
 
-**Returns**: `Boolean`
+**Returns**: `boolean`
 
 **Example**:
 ```js
@@ -144,7 +144,7 @@ Checks if equal**Interfaces**: `not`
 
 **other**: `Number | String | Boolean | RegExp`, second
 
-**Returns**: `Boolean`
+**Returns**: `boolean`
 
 **Example**:
 ```js
