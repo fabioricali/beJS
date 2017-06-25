@@ -1,6 +1,6 @@
 /**
  * @module be
- *
+ * @description
  * beJS has the following interfaces:
  *
  * - `all`, all checks must be satisfied
@@ -25,9 +25,6 @@
  * - [Types](types.md)
  * - [Urls](urls.md)
  *
- * @author Fabio Ricali <fabio@rica.li>
- * @copyright rica.li 2017
- * @license MIT
  * @example
  * // call a method
  * be.boolean(true);
@@ -43,6 +40,10 @@
  *
  * // call interface "any" and passing arguments
  * be.any.boolean(true, false, 1);
+ *
+ * @author Fabio Ricali <fabio@rica.li>
+ * @copyright rica.li 2017
+ * @license MIT
  **/
 
 const Helpers = require('./helpers');
@@ -51,11 +52,17 @@ const Interface = require('./interface');
 /**
  * be class
  * @type {Object}
+ * @ignore
  * @private
  */
 let be = {};
 
-be.version = '0.0.0';
+/**
+ * Version
+ * @type {string}
+ * @private
+ */
+be._version = '0.0.0';
 
 /**
  * Helpers class
@@ -66,8 +73,18 @@ be.version = '0.0.0';
 be._helpers = Helpers;
 
 /**
+ * Get version of framework
+ * @memberOf be
+ * @returns {string}
+ */
+be.getVersion = function () {
+    return be._version;
+};
+
+/**
  * Collection of checks
  * @type {Object}
+ * @ignore
  * @private
  */
 let Checks = {

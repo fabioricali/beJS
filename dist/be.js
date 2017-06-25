@@ -210,8 +210,11 @@
             var Helpers = require("./helpers");
             var Interface = require("./interface");
             var be = {};
-            be.version = "0.0.0";
+            be._version = "0.0.0";
             be._helpers = Helpers;
+            be.getVersion = function() {
+                return be._version;
+            };
             var Checks = {
                 Strings: require("./checks/strings"),
                 Types: require("./checks/types"),

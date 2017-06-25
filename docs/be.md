@@ -4,11 +4,11 @@ beJS has the following interfaces:
 
 - `all`, all checks must be satisfied
 - `any`, also just one check can be satisfied
-- `not`, return &quot;logical not&quot; of called method
+- `not`, return "logical not" of called method
 
 `all`, `any` can accept array or arguments
 
-You can access the methods directly from &quot;be.boolean&quot; or from the class eg &quot;be.Types.boolean&quot;.
+You can access the methods directly from "be.boolean" or from the class eg "be.Types.boolean".
 Also the classes supports `all`, `any`, `not`
 
 Checks
@@ -23,8 +23,6 @@ Checks
 - [Strings](strings.md)
 - [Types](types.md)
 - [Urls](urls.md)
-
-
 
 
 
@@ -47,6 +45,13 @@ be.any.boolean(true, false, 1);
 ```
 
 * * *
+
+### be.getVersion() 
+
+Get version of framework
+
+**Returns**: `string`
+
 
 
 * * *
