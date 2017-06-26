@@ -77,7 +77,7 @@ be._helpers = Helpers;
  * @memberOf be
  * @returns {string}
  */
-be.getVersion = function () {
+be.getVersion = () => {
     return be._version;
 };
 
