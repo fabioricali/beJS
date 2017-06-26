@@ -97,7 +97,8 @@ let Checks = {
     Arrays: require('./checks/arrays'),
     Dates: require('./checks/dates'),
     Urls: require('./checks/urls'),
-    Hashes: require('./checks/hashes')
+    Hashes: require('./checks/hashes'),
+    CreditCard: require('./checks/creditcard')
 };
 
 /**

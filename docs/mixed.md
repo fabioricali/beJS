@@ -173,24 +173,6 @@ be.equal(true, 'true') // false
 ```
 
 
-### be.creditCard(value) 
-
-Check if is a valid credit card
-
-**Interfaces**: `all`, `any`, `not`
-
-**Parameters**
-
-**value**: `string`, version string
-
-**Returns**: `boolean`
-
-**Example**:
-```js
-be.creditCard('4242424242424242') // true
-```
-
-
 ### be.postalCodeES(value) 
 
 Check if is an It postal code
@@ -224,6 +206,24 @@ Check if is an Uk postal code
 **Example**:
 ```js
 be.postalCodeUk('BN519EJ') // true
+```
+
+
+### be.fiscalCodeIT(value) 
+
+Check if is an IT fiscal code
+
+**Interfaces**: `all`, `any`, `not`
+
+**Parameters**
+
+**value**: `string`, code string
+
+**Returns**: `boolean`
+
+**Example**:
+```js
+be.fiscalCodeIT('OLEFBA97C64F158X') // true
 ```
 
 

@@ -154,20 +154,6 @@ Mixed.equal = (value, other) => {
 Mixed.equal.multiple = false;
 
 /**
- * Check if is a valid credit card
- *
- * **Interfaces**: `all`, `any`, `not`
- *
- * @param value {string} version string
- * @returns {boolean}
- * @example
- * be.creditCard('4242424242424242') // true
- */
-Mixed.creditCard = (value) => {
-    return /^(?:(4[0-9]{12}(?:[0-9]{3})?)|(5[1-5][0-9]{14})|(6(?:011|5[0-9]{2})[0-9]{12})|(3[47][0-9]{13})|(3(?:0[0-5]|[68][0-9])[0-9]{11})|((?:2131|1800|35[0-9]{3})[0-9]{11}))$/.test(value);
-};
-
-/**
  * Check if is an It postal code
  *
  * **Interfaces**: `all`, `any`, `not`
