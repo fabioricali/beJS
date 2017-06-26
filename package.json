@@ -1,7 +1,7 @@
 {
   "name": "bejs",
   "version": "1.0.0",
-  "description": "The framework for checker tools",
+  "description": "Simple, light-weight TDD / BDD framework for javascript",
   "main": "index.js",
   "scripts": {
     "version:major": "npm version major",
