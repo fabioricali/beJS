@@ -21,6 +21,18 @@ module.exports = {
         }],
     },
     plugins: [
-        new webpack.optimize.UglifyJsPlugin({ compress: { warnings: false }, include: /\.min\.js$/ }),
+        new webpack.optimize.UglifyJsPlugin({
+            mangle: true,
+            comments: false,
+            compress: {
+                warnings:false,
+                dead_code: true,
+                conditionals: true,
+                booleans: true,
+                unused: true,
+                if_return: true,
+                join_vars: true,
+                drop_console: true
+            }, include: /\.min\.js$/ }),
     ]
 };
