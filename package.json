@@ -1,13 +1,13 @@
 {
   "name": "bejs",
   "version": "1.0.0",
-  "description": "Simple, light-weight TDD / BDD framework for javascript",
+  "description": "Simple, light-weight assertions framework for javascript",
   "main": "index.js",
   "scripts": {
     "version:major": "npm version major",
     "version:minor": "npm version minor",
     "version:patch": "npm version patch",
-    "build": "webpack --watch --progress",
+    "build": "webpack --progress",
     "doc": "jsdox --output docs src/*",
     "test": "mocha test"
   },
