@@ -1903,6 +1903,21 @@ Mixed.postalCodeUK = function (value) {
     );
 };
 
+/**
+ * Check if is an IT fiscal code
+ *
+ * **Interfaces**: `all`, `any`, `not`
+ *
+ * @param value {string} code string
+ * @returns {boolean}
+ * @example
+ * be.fiscalCodeIT('OLEFBA97C64F158X') // true
+ */
+Mixed.fiscalCodeIT = function (value) {
+    return (/^[A-Za-z]{6}[0-9]{2}[A-Za-z]{1}[0-9]{2}[A-Za-z]{1}[0-9]{3}[A-Za-z]{1}$/.test(value)
+    );
+};
+
 Mixed = Interface.create(Mixed);
 
 module.exports = Mixed;
