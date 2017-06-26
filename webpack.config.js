@@ -1,4 +1,5 @@
 const webpack = require('webpack');
+const unminifiedWebpackPlugin = require('unminified-webpack-plugin');
 
 module.exports = {
     entry: './index.js',
@@ -25,14 +26,8 @@ module.exports = {
             mangle: true,
             comments: false,
             compress: {
-                warnings:false,
-                dead_code: true,
-                conditionals: true,
-                booleans: true,
-                unused: true,
-                if_return: true,
-                join_vars: true,
-                drop_console: true
+                warnings:false
             }, include: /\.min\.js$/ }),
+        new unminifiedWebpackPlugin()
     ]
 };

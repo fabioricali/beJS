@@ -7,7 +7,7 @@
     "version:major": "npm version major",
     "version:minor": "npm version minor",
     "version:patch": "npm version patch",
-    "build": "webpack --progress",
+    "build": "webpack --progress --env.compress",
     "doc": "jsdox --output docs src/*",
     "test": "mocha test"
   },
@@ -34,6 +34,7 @@
     "jsdox": "^0.4.10",
     "mocha": "^3.4.2",
     "uglifyjs-webpack-plugin": "^0.4.6",
+    "unminified-webpack-plugin": "^1.2.0",
     "webpack": "^3.0.0"
   },
   "repository": {
