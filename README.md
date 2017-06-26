@@ -2,7 +2,7 @@
 
 ***to be, or not to be, that is the question***
 
-# The framework for checker tools
+# Simple, light-weight assertions framework for javascript
 
 ## Docs
 - [API](docs/be.md)
