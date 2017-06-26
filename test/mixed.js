@@ -275,3 +275,16 @@ describe('postalCodeUK', function () {
         assert.equal(result, false);
     });
 });
+
+describe('fiscalCodeIT', function () {
+    it('should be return true', function () {
+        var result = be.fiscalCodeIT('OLEFBA97C64F158X');
+        console.log(result);
+        assert.equal(result, true);
+    });
+    it('should be return false', function () {
+        var result = be.fiscalCodeIT('OLEFBA977777C64F158X');
+        console.log(result);
+        assert.equal(result, false);
+    });
+});

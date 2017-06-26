@@ -192,7 +192,21 @@ Mixed.postalCodeES = (value) => {
  * be.postalCodeUk('BN519EJ') // true
  */
 Mixed.postalCodeUK = (value) => {
-  return /^[A-Z]{1,2}[0-9RCHNQ][0-9A-Z]?\s?[0-9][ABD-HJLNP-UW-Z]{2}$|^[A-Z]{2}-?[0-9]{4}$/.test(value);
+    return /^[A-Z]{1,2}[0-9RCHNQ][0-9A-Z]?\s?[0-9][ABD-HJLNP-UW-Z]{2}$|^[A-Z]{2}-?[0-9]{4}$/.test(value);
+};
+
+/**
+ * Check if is an IT fiscal code
+ *
+ * **Interfaces**: `all`, `any`, `not`
+ *
+ * @param value {string} code string
+ * @returns {boolean}
+ * @example
+ * be.fiscalCodeIT('OLEFBA97C64F158X') // true
+ */
+Mixed.fiscalCodeIT = (value) => {
+    return /^[A-Za-z]{6}[0-9]{2}[A-Za-z]{1}[0-9]{2}[A-Za-z]{1}[0-9]{3}[A-Za-z]{1}$/.test(value);
 };
 
 Mixed = Interface.create(Mixed);
