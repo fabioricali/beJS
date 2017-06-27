@@ -844,6 +844,7 @@ module.exports = __webpack_require__(5);
  * - [Urls](urls.md)
  * - [CreditCards](creditCards.md)
  * - [PostalCodes](postalCodes.md)
+ * - [DOM](dom.md)
  *
  * @example
  * // call a method
@@ -919,7 +920,8 @@ var Checks = {
     Urls: __webpack_require__(14),
     Hashes: __webpack_require__(15),
     CreditCards: __webpack_require__(16),
-    PostalCodes: __webpack_require__(17)
+    PostalCodes: __webpack_require__(17),
+    DOM: __webpack_require__(18)
 };
 
 /**
@@ -2557,6 +2559,39 @@ PostalCodes.postalCodeIT = function (value) {
 PostalCodes = Interface.create(PostalCodes);
 
 module.exports = PostalCodes;
+
+/***/ }),
+/* 18 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+/**
+ * @module be
+ * @description DOM checks.
+ */
+
+var Interface = __webpack_require__(0);
+var DOM = {};
+
+/**
+ * Check if is a valid DOM element
+ *
+ * **Interfaces**: `all`, `any`, `not`
+ *
+ * @param value {string} hash string
+ * @returns {boolean}
+ * @example
+ * be.domElement(document.getElementById('test')) // true
+ */
+DOM.domElement = function (value) {
+  return true;
+};
+
+DOM = Interface.create(DOM);
+
+module.exports = DOM;
 
 /***/ })
 /******/ ]);

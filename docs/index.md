@@ -137,6 +137,11 @@ Check if is a valid Discover credit card**Interfaces**: `all`, `any`, `not` (i
 
 
 
+###[domElement](dom.md):
+Check if is a valid DOM element**Interfaces**: `all`, `any`, `not` (in [..\src\asserts\dom.js](..\src\asserts\dom.js))
+
+
+
 ###[email](mixed.md):
 Check if is valid email**Interfaces**: `all`, `any`, `not` (in [..\src\asserts\mixed.js](..\src\asserts\mixed.js))
 

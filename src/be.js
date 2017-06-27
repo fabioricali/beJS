@@ -26,6 +26,7 @@
  * - [Urls](urls.md)
  * - [CreditCards](creditCards.md)
  * - [PostalCodes](postalCodes.md)
+ * - [DOM](dom.md)
  *
  * @example
  * // call a method
@@ -101,7 +102,8 @@ let Checks = {
     Urls: require('./asserts/urls'),
     Hashes: require('./asserts/hashes'),
     CreditCards: require('./asserts/creditCards'),
-    PostalCodes: require('./asserts/postalCodes')
+    PostalCodes: require('./asserts/postalCodes'),
+    DOM: require('./asserts/dom')
 };
 
 /**
