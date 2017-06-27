@@ -89,17 +89,17 @@ be.getVersion = () => {
  * @private
  */
 let Checks = {
-    Strings: require('./checks/strings'),
-    Types: require('./checks/types'),
-    Numbers: require('./checks/numbers'),
-    Envs: require('./checks/envs'),
-    Objects: require('./checks/objects'),
-    Mixed: require('./checks/mixed'),
-    Arrays: require('./checks/arrays'),
-    Dates: require('./checks/dates'),
-    Urls: require('./checks/urls'),
-    Hashes: require('./checks/hashes'),
-    CreditCard: require('./checks/creditcard')
+    Strings: require('./asserts/strings'),
+    Types: require('./asserts/types'),
+    Numbers: require('./asserts/numbers'),
+    Envs: require('./asserts/envs'),
+    Objects: require('./asserts/objects'),
+    Mixed: require('./asserts/mixed'),
+    Arrays: require('./asserts/arrays'),
+    Dates: require('./asserts/dates'),
+    Urls: require('./asserts/urls'),
+    Hashes: require('./asserts/hashes'),
+    CreditCard: require('./asserts/creditcard')
 };
 
 /**
