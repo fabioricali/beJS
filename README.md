@@ -17,6 +17,7 @@
     - [Types](docs/types.md)
     - [Urls](docs/urls.md)
     - [CreditCards](docs/creditCards.md)
+    - [DOM](docs/dom.md)
 
 ## License
 beJS is open-sourced software licensed under the [MIT license](http://opensource.org/licenses/MIT)
