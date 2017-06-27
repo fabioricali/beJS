@@ -19,7 +19,7 @@ it('count class methods', function () {
         'Dates',
         'Urls',
         'Hashes',
-        'CreditCard'
+        'CreditCards'
     ];
     for (var i in Checks){
         if(Checks.hasOwnProperty(i)){

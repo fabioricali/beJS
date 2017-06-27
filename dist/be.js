@@ -840,7 +840,7 @@ module.exports = __webpack_require__(5);
  * - [Strings](strings.md)
  * - [Types](types.md)
  * - [Urls](urls.md)
- * - [CreditCard](creditcard.md)
+ * - [CreditCards](creditCards.md)
  *
  * @example
  * // call a method
@@ -915,7 +915,7 @@ var Checks = {
     Dates: __webpack_require__(13),
     Urls: __webpack_require__(14),
     Hashes: __webpack_require__(15),
-    CreditCard: __webpack_require__(16)
+    CreditCards: __webpack_require__(16)
 };
 
 /**
