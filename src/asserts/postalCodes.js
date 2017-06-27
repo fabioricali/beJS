@@ -62,6 +62,36 @@ PostalCodes.postalCodeIT = (value) => {
     return /^\d{5}$/.test(value);
 };
 
+/**
+ * Check if is an DE postal code
+ *
+ * **Interfaces**: `all`, `any`, `not`
+ *
+ * @param value {string} version string
+ * @returns {boolean}
+ * @example
+ * be.postalCodeDE('10117') // true
+ */
+PostalCodes.postalCodeDE = (value) => {
+    return /\b((?:0[1-46-9]\d{3})|(?:[1-357-9]\d{4})|(?:[4][0-24-9]\d{3})|(?:[6][013-9]\d{3}))\b/.test(value);
+};
+
+/**
+ * Check if is an NL postal code
+ *
+ * **Interfaces**: `all`, `any`, `not`
+ *
+ * @param value {string} version string
+ * @returns {boolean}
+ * @example
+ * be.postalCodeNL('1001 AD') // true
+ */
+PostalCodes.postalCodeNL = (value) => {
+    return /^[1-9][0-9]{3}\s?[a-zA-Z]{2}$/.test(value);
+};
+
+
+
 PostalCodes = Interface.create(PostalCodes);
 
 module.exports = PostalCodes;

@@ -47,12 +47,38 @@ describe('postalCodeUS', function () {
 
 describe('postalCodeIT', function () {
     it('should be return true', function () {
-        var result = be.postalCodeIT('98028');
+        var result = be.postalCodeIT('98023');
         console.log(result);
         assert.equal(result, true);
     });
     it('should be return false', function () {
         var result = be.postalCodeIT('1N238YR');
+        console.log(result);
+        assert.equal(result, false);
+    });
+});
+
+describe('postalCodeDE', function () {
+    it('should be return true', function () {
+        var result = be.postalCodeDE('10117');
+        console.log(result);
+        assert.equal(result, true);
+    });
+    it('should be return false', function () {
+        var result = be.postalCodeDE('1N238YR');
+        console.log(result);
+        assert.equal(result, false);
+    });
+});
+
+describe('postalCodeNL', function () {
+    it('should be return true', function () {
+        var result = be.postalCodeNL('1001 AD');
+        console.log(result);
+        assert.equal(result, true);
+    });
+    it('should be return false', function () {
+        var result = be.postalCodeNL('1N238YR');
         console.log(result);
         assert.equal(result, false);
     });

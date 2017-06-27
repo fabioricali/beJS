@@ -8,7 +8,9 @@ DOM checks.
 
 ### be.domElement(value) 
 
-Check if is a valid DOM element**Interfaces**: `all`, `any`, `not`
+Check if is a valid DOM element
+
+**Interfaces**: `all`, `any`, `not`
 
 **Parameters**
 

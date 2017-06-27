@@ -8,7 +8,9 @@ Numbers checks.
 
 ### be.int(value) 
 
-Check if a number is integer* **Interfaces**: `all`, `any`, `not`
+Check if a number is integer
+
+* **Interfaces**: `all`, `any`, `not`
 
 **Parameters**
 
@@ -18,13 +20,17 @@ Check if a number is integer* **Interfaces**: `all`, `any`, `not`
 
 **Example**:
 ```js
-be.int(2) // truebe.int(1.5) // falsebe.all.int(1, 4, 5) // true
+be.int(2) // true
+be.int(1.5) // false
+be.all.int(1, 4, 5) // true
 ```
 
 
 ### be.float(value) 
 
-Check if is float number* **Interfaces**: `all`, `any`, `not`
+Check if is float number
+
+* **Interfaces**: `all`, `any`, `not`
 
 **Parameters**
 
@@ -34,13 +40,17 @@ Check if is float number* **Interfaces**: `all`, `any`, `not`
 
 **Example**:
 ```js
-be.float(1.5) // truebe.float(1) // falsebe.all.float(1.5, 4.2, 5) // false
+be.float(1.5) // true
+be.float(1) // false
+be.all.float(1.5, 4.2, 5) // false
 ```
 
 
 ### be.nan(value) 
 
-Check if is NaN* **Interfaces**: `all`, `any`, `not`
+Check if is NaN
+
+* **Interfaces**: `all`, `any`, `not`
 
 **Parameters**
 
@@ -56,7 +66,9 @@ be.nan('s') // true
 
 ### be.even(value) 
 
-Check if is a even number* **Interfaces**: `all`, `any`, `not`
+Check if is a even number
+
+* **Interfaces**: `all`, `any`, `not`
 
 **Parameters**
 
@@ -66,13 +78,16 @@ Check if is a even number* **Interfaces**: `all`, `any`, `not`
 
 **Example**:
 ```js
-be.even(2) // truebe.even(3) // false
+be.even(2) // true
+be.even(3) // false
 ```
 
 
 ### be.odd(value) 
 
-Check if is an odd number* **Interfaces**: `all`, `any`, `not`
+Check if is an odd number
+
+* **Interfaces**: `all`, `any`, `not`
 
 **Parameters**
 
@@ -82,13 +97,16 @@ Check if is an odd number* **Interfaces**: `all`, `any`, `not`
 
 **Example**:
 ```js
-be.odd(3) // truebe.odd(4) // false
+be.odd(3) // true
+be.odd(4) // false
 ```
 
 
 ### be.positive(value) 
 
-Check if is a positive number* **Interfaces**: `all`, `any`, `not`
+Check if is a positive number
+
+* **Interfaces**: `all`, `any`, `not`
 
 **Parameters**
 
@@ -98,13 +116,16 @@ Check if is a positive number* **Interfaces**: `all`, `any`, `not`
 
 **Example**:
 ```js
-be.positive(2) // truebe.positive(-3) // false
+be.positive(2) // true
+be.positive(-3) // false
 ```
 
 
 ### be.negative(value) 
 
-Check if is a negative number* **Interfaces**: `all`, `any`, `not`
+Check if is a negative number
+
+* **Interfaces**: `all`, `any`, `not`
 
 **Parameters**
 
@@ -114,13 +135,16 @@ Check if is a negative number* **Interfaces**: `all`, `any`, `not`
 
 **Example**:
 ```js
-be.negative(-2) // truebe.negative(2) // false
+be.negative(-2) // true
+be.negative(2) // false
 ```
 
 
 ### be.infinity(value) 
 
-Check if number is infinity* **Interfaces**: `all`, `any`, `not`
+Check if number is infinity
+
+* **Interfaces**: `all`, `any`, `not`
 
 **Parameters**
 
@@ -136,7 +160,9 @@ be.infinity(1.7976931348623157E+10308) // true
 
 ### be.infinityPositive(value) 
 
-Check if number is infinity positive* **Interfaces**: `all`, `any`, `not`
+Check if number is infinity positive
+
+* **Interfaces**: `all`, `any`, `not`
 
 **Parameters**
 
@@ -146,13 +172,16 @@ Check if number is infinity positive* **Interfaces**: `all`, `any`, `not`
 
 **Example**:
 ```js
-be.infinityPositive(1.7976931348623157E+10308) // truebe.infinityPositive(-1.7976931348623157E+10308) // false
+be.infinityPositive(1.7976931348623157E+10308) // true
+be.infinityPositive(-1.7976931348623157E+10308) // false
 ```
 
 
 ### be.infinityNegative(value) 
 
-Check if number is infinity positive* **Interfaces**: `all`, `any`, `not`
+Check if number is infinity positive
+
+* **Interfaces**: `all`, `any`, `not`
 
 **Parameters**
 
@@ -162,13 +191,16 @@ Check if number is infinity positive* **Interfaces**: `all`, `any`, `not`
 
 **Example**:
 ```js
-be.infinityNegative(-1.7976931348623157E+10308) // truebe.infinityNegative(1.7976931348623157E+10308) // false
+be.infinityNegative(-1.7976931348623157E+10308) // true
+be.infinityNegative(1.7976931348623157E+10308) // false
 ```
 
 
 ### be.between(num, min, max) 
 
-Check if number is between min and max* **Interfaces**: `not`
+Check if number is between min and max
+
+* **Interfaces**: `not`
 
 **Parameters**
 
@@ -188,7 +220,9 @@ be.between(4, 1, 10) // true
 
 ### be.greater(value, num) 
 
-Checks if number is greater then an other* **Interfaces**: `not`
+Checks if number is greater then an other
+
+* **Interfaces**: `not`
 
 **Parameters**
 
@@ -200,13 +234,16 @@ Checks if number is greater then an other* **Interfaces**: `not`
 
 **Example**:
 ```js
-be.greater(10, 5) // truebe.greater(2, 8) // false
+be.greater(10, 5) // true
+be.greater(2, 8) // false
 ```
 
 
 ### be.lesser(value, num) 
 
-Checks if number is lesser then an other* **Interfaces**: `not`
+Checks if number is lesser then an other
+
+* **Interfaces**: `not`
 
 **Parameters**
 
@@ -218,13 +255,16 @@ Checks if number is lesser then an other* **Interfaces**: `not`
 
 **Example**:
 ```js
-be.lesser(10, 5) // falsebe.lesser(2, 8) // true
+be.lesser(10, 5) // false
+be.lesser(2, 8) // true
 ```
 
 
 ### be.numeric(value) 
 
-Checks if is a number as string or number type* **Interfaces**: `all`, `any`, `not`
+Checks if is a number as string or number type
+
+* **Interfaces**: `all`, `any`, `not`
 
 **Parameters**
 
@@ -234,7 +274,8 @@ Checks if is a number as string or number type* **Interfaces**: `all`, `any`, 
 
 **Example**:
 ```js
-be.numeric(100) // truebe.numeric('100') // true
+be.numeric(100) // true
+be.numeric('100') // true
 ```
 
 
