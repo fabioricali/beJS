@@ -1,6 +1,6 @@
 # be
 
-Various checks.
+Credit cards checks.
 
 
 

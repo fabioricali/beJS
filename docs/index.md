@@ -387,13 +387,23 @@ Check if is a positive number* **Interfaces**: `all`, `any`, `not` (in [..\src
 
 
 
-###[postalCodeES](mixed.md):
-Check if is an It postal code**Interfaces**: `all`, `any`, `not` (in [..\src\asserts\mixed.js](..\src\asserts\mixed.js))
+###[postalCodeES](postalCodes.md):
+Check if is an ES postal code**Interfaces**: `all`, `any`, `not` (in [..\src\asserts\postalCodes.js](..\src\asserts\postalCodes.js))
 
 
 
-###[postalCodeUK](mixed.md):
-Check if is an Uk postal code**Interfaces**: `all`, `any`, `not` (in [..\src\asserts\mixed.js](..\src\asserts\mixed.js))
+###[postalCodeIT](postalCodes.md):
+Check if is an IT postal code**Interfaces**: `all`, `any`, `not` (in [..\src\asserts\postalCodes.js](..\src\asserts\postalCodes.js))
+
+
+
+###[postalCodeUK](postalCodes.md):
+Check if is an UK postal code**Interfaces**: `all`, `any`, `not` (in [..\src\asserts\postalCodes.js](..\src\asserts\postalCodes.js))
+
+
+
+###[postalCodeUS](postalCodes.md):
+Check if is an US postal code**Interfaces**: `all`, `any`, `not` (in [..\src\asserts\postalCodes.js](..\src\asserts\postalCodes.js))
 
 
 

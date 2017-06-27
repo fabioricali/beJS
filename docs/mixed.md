@@ -152,38 +152,6 @@ be.equal('hello', 'hello') // truebe.equal('hello', 'hellow') // falsebe.equal
 ```
 
 
-### be.postalCodeES(value) 
-
-Check if is an It postal code**Interfaces**: `all`, `any`, `not`
-
-**Parameters**
-
-**value**: `string`, version string
-
-**Returns**: `boolean`
-
-**Example**:
-```js
-be.postalCodeES('03160') // true
-```
-
-
-### be.postalCodeUK(value) 
-
-Check if is an Uk postal code**Interfaces**: `all`, `any`, `not`
-
-**Parameters**
-
-**value**: `string`, version string
-
-**Returns**: `boolean`
-
-**Example**:
-```js
-be.postalCodeUk('BN519EJ') // true
-```
-
-
 ### be.fiscalCodeIT(value) 
 
 Check if is an IT fiscal code**Interfaces**: `all`, `any`, `not`
