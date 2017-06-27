@@ -8,9 +8,7 @@ Types checks.
 
 ### be.classOf(object, className) 
 
-Check [object ?] class
-
-**Interfaces**: `not`
+Check [object ?] class**Interfaces**: `not`
 
 **Parameters**
 
@@ -22,20 +20,13 @@ Check [object ?] class
 
 **Example**:
 ```js
-be.classOf(2, 'number') // true
-be.classOf([1, 2, 3], 'array') // true
-be.classOf({a: 1, b: 2}, 'object') // true
-be.classOf({a: 1, b: 2}, 'array') // false
-be.classOf(/hello/, 'regexp') // true
-be.classOf(true, 'boolean') // true
+be.classOf(2, 'number') // truebe.classOf([1, 2, 3], 'array') // truebe.classOf({a: 1, b: 2}, 'object') // truebe.classOf({a: 1, b: 2}, 'array') // falsebe.classOf(/hello/, 'regexp') // truebe.classOf(true, 'boolean') // true
 ```
 
 
 ### be.boolean(value) 
 
-Check if is valid boolean
-
-**Interfaces**: `all`, `any`, `not`
+Check if is valid boolean**Interfaces**: `all`, `any`, `not`
 
 **Parameters**
 
@@ -45,16 +36,13 @@ Check if is valid boolean
 
 **Example**:
 ```js
-be.boolean(false) // true
-be.boolean('true') // false
+be.boolean(false) // truebe.boolean('true') // false
 ```
 
 
 ### be.booleanFalse(value) 
 
-Check if is false boolean type
-
-**Interfaces**: `all`, `any`, `not`
+Check if is false boolean type**Interfaces**: `all`, `any`, `not`
 
 **Parameters**
 
@@ -64,16 +52,13 @@ Check if is false boolean type
 
 **Example**:
 ```js
-be.booleanFalse(false) // true
-be.booleanFalse(true) // false
+be.booleanFalse(false) // truebe.booleanFalse(true) // false
 ```
 
 
 ### be.booleanTrue(value) 
 
-Check if is true boolean type
-
-**Interfaces**: `all`, `any`, `not`
+Check if is true boolean type**Interfaces**: `all`, `any`, `not`
 
 **Parameters**
 
@@ -83,16 +68,13 @@ Check if is true boolean type
 
 **Example**:
 ```js
-be.booleanTrue(true) // true
-be.booleanTrue(false) // false
+be.booleanTrue(true) // truebe.booleanTrue(false) // false
 ```
 
 
 ### be.number(value) 
 
-Check if is valid number
-
-**Interfaces**: `all`, `any`, `not`
+Check if is valid number**Interfaces**: `all`, `any`, `not`
 
 **Parameters**
 
@@ -102,16 +84,13 @@ Check if is valid number
 
 **Example**:
 ```js
-be.number(1) // true
-be.number(false) // false
+be.number(1) // truebe.number(false) // false
 ```
 
 
 ### be.string(value) 
 
-Check if is valid string
-
-**Interfaces**: `all`, `any`, `not`
+Check if is valid string**Interfaces**: `all`, `any`, `not`
 
 **Parameters**
 
@@ -121,16 +100,13 @@ Check if is valid string
 
 **Example**:
 ```js
-be.string('hello') // true
-be.string(false) // false
+be.string('hello') // truebe.string(false) // false
 ```
 
 
 ### be.undefined(value) 
 
-Check if is undefined value
-
-**Interfaces**: `all`, `any`, `not`
+Check if is undefined value**Interfaces**: `all`, `any`, `not`
 
 **Parameters**
 
@@ -140,16 +116,13 @@ Check if is undefined value
 
 **Example**:
 ```js
-be.undefined(undefined) // true
-be.undefined(null) // false
+be.undefined(undefined) // truebe.undefined(null) // false
 ```
 
 
-### be.&#39;null&#39;](value) 
+### be.null(value) 
 
-Check if is null
-
-**Interfaces**: `all`, `any`, `not`
+Check if is null**Interfaces**: `all`, `any`, `not`
 
 **Parameters**
 
@@ -159,16 +132,13 @@ Check if is null
 
 **Example**:
 ```js
-be.null(null) // true
-be.null(undefined) // false
+be.null(null) // truebe.null(undefined) // false
 ```
 
 
 ### be.object(value) 
 
-Check if is a object
-
-**Interfaces**: `all`, `any`, `not`
+Check if is a object**Interfaces**: `all`, `any`, `not`
 
 **Parameters**
 
@@ -178,16 +148,13 @@ Check if is a object
 
 **Example**:
 ```js
-be.object({a: 1, b: 2}) // true
-be.object([1, 2, 3]) // false
+be.object({a: 1, b: 2}) // truebe.object([1, 2, 3]) // false
 ```
 
 
 ### be.array(value) 
 
-Check if is an array
-
-**Interfaces**: `all`, `any`, `not`
+Check if is an array**Interfaces**: `all`, `any`, `not`
 
 **Parameters**
 
@@ -197,16 +164,13 @@ Check if is an array
 
 **Example**:
 ```js
-be.array([1, 2, 3]) // true
-be.array({a: 1, b: 2}) // false
+be.array([1, 2, 3]) // truebe.array({a: 1, b: 2}) // false
 ```
 
 
 ### be.json(value) 
 
-Check if is a JSON string
-
-**Interfaces**: `all`, `any`, `not`
+Check if is a JSON string**Interfaces**: `all`, `any`, `not`
 
 **Parameters**
 
@@ -216,16 +180,13 @@ Check if is a JSON string
 
 **Example**:
 ```js
-be.json('{"a": 1, "b": 2}') // true
-be.json({a: 1, b: 2}) // false
+be.json('{"a": 1, "b": 2}') // truebe.json({a: 1, b: 2}) // false
 ```
 
 
 ### be.date(value) 
 
-Check if is date object
-
-**Interfaces**: `all`, `any`, `not`
+Check if is date object**Interfaces**: `all`, `any`, `not`
 
 **Parameters**
 
@@ -235,16 +196,13 @@ Check if is date object
 
 **Example**:
 ```js
-be.date(new Date()) // true
-be.date('2017-12-25') // false
+be.date(new Date()) // truebe.date('2017-12-25') // false
 ```
 
 
-### be.&#39;function&#39;](value) 
+### be.function(value) 
 
-Check if is a function
-
-**Interfaces**: `all`, `any`, `not`
+Check if is a function**Interfaces**: `all`, `any`, `not`
 
 **Parameters**
 
@@ -254,16 +212,13 @@ Check if is a function
 
 **Example**:
 ```js
-be.function(function(){return 1 + 2}) // true
-be.function(new Date()) // false
+be.function(function(){return 1 + 2}) // truebe.function(new Date()) // false
 ```
 
 
 ### be.regexp(value) 
 
-Check if is a valid RegExp
-
-**Interfaces**: `all`, `any`, `not`
+Check if is a valid RegExp**Interfaces**: `all`, `any`, `not`
 
 **Parameters**
 
@@ -273,17 +228,13 @@ Check if is a valid RegExp
 
 **Example**:
 ```js
-be.regexp(/hello/) // true
-be.regexp('hello') // false
-be.regexp(new RegExp(/hello/)) // true
+be.regexp(/hello/) // truebe.regexp('hello') // falsebe.regexp(new RegExp(/hello/)) // true
 ```
 
 
 ### be.sameType(value, other) 
 
-Check if both arguments are same type
-
-**Interfaces**: `not`
+Check if both arguments are same type**Interfaces**: `not`
 
 **Parameters**
 
@@ -295,16 +246,13 @@ Check if both arguments are same type
 
 **Example**:
 ```js
-be.sameType(1, 1) // true
-be.sameType(1, '1') // false
+be.sameType(1, 1) // truebe.sameType(1, '1') // false
 ```
 
 
 ### be.empty(value) 
 
-Check if is empty
-
-**Interfaces**: `all`, `any`, `not`
+Check if is empty**Interfaces**: `all`, `any`, `not`
 
 **Parameters**
 
@@ -314,18 +262,13 @@ Check if is empty
 
 **Example**:
 ```js
-be.empty('') // true
-be.empty(' ') // false
-be.empty({}) // true
-be.empty([]) // true
+be.empty('') // truebe.empty(' ') // falsebe.empty({}) // truebe.empty([]) // true
 ```
 
 
 ### be.falsy(value) 
 
-Check if a falsy value
-
-**Interfaces**: `all`, `any`, `not`
+Check if a falsy value**Interfaces**: `all`, `any`, `not`
 
 **Parameters**
 
@@ -335,37 +278,23 @@ Check if a falsy value
 
 **Example**:
 ```js
-be.falsy(false) // true
-be.falsy(null) // true
-be.falsy() // true
-be.falsy(0) // true
-be.falsy(true) // false
+be.falsy(false) // truebe.falsy(null) // truebe.falsy() // truebe.falsy(0) // truebe.falsy(true) // false
 ```
 
 
 ### be.truthy(value) 
 
-Check if a truthy value
-
-**Interfaces**: `all`, `any`, `not`
+Check if a truthy value**Interfaces**: `all`, `any`, `not`
 
 **Parameters**
 
-**value**: `Mixed`, Check if a truthy value
-
-**Interfaces**: `all`, `any`, `not`
+**value**: `Mixed`, Check if a truthy value**Interfaces**: `all`, `any`, `not`
 
 **Returns**: `boolean`
 
 **Example**:
 ```js
-be.truthy('hello') // true
-be.truthy({}) // true
-be.truthy([]) // true
-be.truthy(2) // true
-be.truthy(false) // false
-be.truthy(null) // false
-be.truthy(undefined) // false
+be.truthy('hello') // truebe.truthy({}) // truebe.truthy([]) // truebe.truthy(2) // truebe.truthy(false) // falsebe.truthy(null) // falsebe.truthy(undefined) // false
 ```
 
 
