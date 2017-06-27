@@ -31,3 +31,16 @@ describe('postalCodeUK', function () {
         assert.equal(result, false);
     });
 });
+
+describe('postalCodeUS', function () {
+    it('should be return true', function () {
+        var result = be.postalCodeUS('36784');
+        console.log(result);
+        assert.equal(result, true);
+    });
+    it('should be return false', function () {
+        var result = be.postalCodeUS('1N238YR');
+        console.log(result);
+        assert.equal(result, false);
+    });
+});
