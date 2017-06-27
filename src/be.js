@@ -24,7 +24,7 @@
  * - [Strings](strings.md)
  * - [Types](types.md)
  * - [Urls](urls.md)
- * - [CreditCard](creditcard.md)
+ * - [CreditCards](creditCards.md)
  *
  * @example
  * // call a method

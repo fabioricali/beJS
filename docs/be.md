@@ -23,6 +23,7 @@ Checks
 - [Strings](strings.md)
 - [Types](types.md)
 - [Urls](urls.md)
+- [CreditCards](creditCards.md)
 
 
 
