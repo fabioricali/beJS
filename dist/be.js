@@ -843,6 +843,7 @@ module.exports = __webpack_require__(5);
  * - [Types](types.md)
  * - [Urls](urls.md)
  * - [CreditCards](creditCards.md)
+ * - [PostalCodes](postalCodes.md)
  *
  * @example
  * // call a method
@@ -917,7 +918,8 @@ var Checks = {
     Dates: __webpack_require__(13),
     Urls: __webpack_require__(14),
     Hashes: __webpack_require__(15),
-    CreditCards: __webpack_require__(16)
+    CreditCards: __webpack_require__(16),
+    PostalCodes: __webpack_require__(17)
 };
 
 /**
@@ -1863,36 +1865,6 @@ Mixed.equal = function (value, other) {
 Mixed.equal.multiple = false;
 
 /**
- * Check if is an It postal code
- *
- * **Interfaces**: `all`, `any`, `not`
- *
- * @param value {string} version string
- * @returns {boolean}
- * @example
- * be.postalCodeES('03160') // true
- */
-Mixed.postalCodeES = function (value) {
-    return (/^([1-9]{2}|[0-9][1-9]|[1-9][0-9])[0-9]{3}$/.test(value)
-    );
-};
-
-/**
- * Check if is an Uk postal code
- *
- * **Interfaces**: `all`, `any`, `not`
- *
- * @param value {string} version string
- * @returns {boolean}
- * @example
- * be.postalCodeUk('BN519EJ') // true
- */
-Mixed.postalCodeUK = function (value) {
-    return (/^[A-Z]{1,2}[0-9RCHNQ][0-9A-Z]?\s?[0-9][ABD-HJLNP-UW-Z]{2}$|^[A-Z]{2}-?[0-9]{4}$/.test(value)
-    );
-};
-
-/**
  * Check if is an IT fiscal code
  *
  * **Interfaces**: `all`, `any`, `not`
@@ -2407,7 +2379,7 @@ module.exports = Hashes;
 
 /**
  * @module be
- * @description Various checks.
+ * @description Credit cards checks.
  */
 
 var Interface = __webpack_require__(0);
@@ -2506,6 +2478,85 @@ CreditCard.visa = function (value) {
 CreditCard = Interface.create(CreditCard);
 
 module.exports = CreditCard;
+
+/***/ }),
+/* 17 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+/**
+ * @module be
+ * @description Postal codes checks.
+ */
+
+var Interface = __webpack_require__(0);
+var PostalCodes = {};
+
+/**
+ * Check if is an ES postal code
+ *
+ * **Interfaces**: `all`, `any`, `not`
+ *
+ * @param value {string} version string
+ * @returns {boolean}
+ * @example
+ * be.postalCodeES('03160') // true
+ */
+PostalCodes.postalCodeES = function (value) {
+  return (/^([1-9]{2}|[0-9][1-9]|[1-9][0-9])[0-9]{3}$/.test(value)
+  );
+};
+
+/**
+ * Check if is an UK postal code
+ *
+ * **Interfaces**: `all`, `any`, `not`
+ *
+ * @param value {string} version string
+ * @returns {boolean}
+ * @example
+ * be.postalCodeUk('BN519EJ') // true
+ */
+PostalCodes.postalCodeUK = function (value) {
+  return (/^[A-Z]{1,2}[0-9RCHNQ][0-9A-Z]?\s?[0-9][ABD-HJLNP-UW-Z]{2}$|^[A-Z]{2}-?[0-9]{4}$/.test(value)
+  );
+};
+
+/**
+ * Check if is an US postal code
+ *
+ * **Interfaces**: `all`, `any`, `not`
+ *
+ * @param value {string} version string
+ * @returns {boolean}
+ * @example
+ * be.postalCodeUS('36784') // true
+ */
+PostalCodes.postalCodeUS = function (value) {
+  return (/(\d{5}([\-]\d{4})?)$/.test(value)
+  );
+};
+
+/**
+ * Check if is an IT postal code
+ *
+ * **Interfaces**: `all`, `any`, `not`
+ *
+ * @param value {string} version string
+ * @returns {boolean}
+ * @example
+ * be.postalCodeIT('98023') // true
+ */
+PostalCodes.postalCodeIT = function (value) {
+  return (/^\d{5}$/.test(value)
+  );
+};
+
+PostalCodes = Interface.create(PostalCodes);
+
+module.exports = PostalCodes;
 
 /***/ })
 /******/ ]);
