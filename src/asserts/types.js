@@ -124,6 +124,7 @@ Types.undefined = (value) => {
  *
  * **Interfaces**: `all`, `any`, `not`
  *
+ * @name null
  * @param value {Mixed} value
  * @returns {boolean}
  * @example
@@ -204,6 +205,7 @@ Types.date = (value) => {
  *
  * **Interfaces**: `all`, `any`, `not`
  *
+ * @name function
  * @param value {Mixed} value
  * @returns {boolean}
  * @example
