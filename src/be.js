@@ -99,7 +99,7 @@ let Checks = {
     Dates: require('./asserts/dates'),
     Urls: require('./asserts/urls'),
     Hashes: require('./asserts/hashes'),
-    CreditCard: require('./asserts/creditcard')
+    CreditCard: require('./asserts/creditCards')
 };
 
 /**
