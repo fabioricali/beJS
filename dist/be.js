@@ -279,6 +279,7 @@ Types.undefined = function (value) {
  *
  * **Interfaces**: `all`, `any`, `not`
  *
+ * @name null
  * @param value {Mixed} value
  * @returns {boolean}
  * @example
@@ -359,6 +360,7 @@ Types.date = function (value) {
  *
  * **Interfaces**: `all`, `any`, `not`
  *
+ * @name function
  * @param value {Mixed} value
  * @returns {boolean}
  * @example
