@@ -154,34 +154,6 @@ Mixed.equal = (value, other) => {
 Mixed.equal.multiple = false;
 
 /**
- * Check if is an It postal code
- *
- * **Interfaces**: `all`, `any`, `not`
- *
- * @param value {string} version string
- * @returns {boolean}
- * @example
- * be.postalCodeES('03160') // true
- */
-Mixed.postalCodeES = (value) => {
-    return /^([1-9]{2}|[0-9][1-9]|[1-9][0-9])[0-9]{3}$/.test(value);
-};
-
-/**
- * Check if is an Uk postal code
- *
- * **Interfaces**: `all`, `any`, `not`
- *
- * @param value {string} version string
- * @returns {boolean}
- * @example
- * be.postalCodeUk('BN519EJ') // true
- */
-Mixed.postalCodeUK = (value) => {
-    return /^[A-Z]{1,2}[0-9RCHNQ][0-9A-Z]?\s?[0-9][ABD-HJLNP-UW-Z]{2}$|^[A-Z]{2}-?[0-9]{4}$/.test(value);
-};
-
-/**
  * Check if is an IT fiscal code
  *
  * **Interfaces**: `all`, `any`, `not`

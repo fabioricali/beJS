@@ -25,6 +25,7 @@
  * - [Types](types.md)
  * - [Urls](urls.md)
  * - [CreditCards](creditCards.md)
+ * - [PostalCodes](postalCodes.md)
  *
  * @example
  * // call a method
@@ -99,7 +100,8 @@ let Checks = {
     Dates: require('./asserts/dates'),
     Urls: require('./asserts/urls'),
     Hashes: require('./asserts/hashes'),
-    CreditCards: require('./asserts/creditCards')
+    CreditCards: require('./asserts/creditCards'),
+    PostalCodes: require('./asserts/postalCodes')
 };
 
 /**
