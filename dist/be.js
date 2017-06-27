@@ -279,7 +279,7 @@ Types.undefined = function (value) {
  *
  * **Interfaces**: `all`, `any`, `not`
  *
- * @name null
+ * @alias null
  * @param value {Mixed} value
  * @returns {boolean}
  * @example
@@ -360,7 +360,7 @@ Types.date = function (value) {
  *
  * **Interfaces**: `all`, `any`, `not`
  *
- * @name function
+ * @alias function
  * @param value {Mixed} value
  * @returns {boolean}
  * @example
@@ -2374,7 +2374,7 @@ var Hashes = {};
  * be.not.md5('00236a2ae558018ed13b5222ef1bd977') // false
  */
 Hashes.md5 = function (value) {
-  return (/^[a-f0-9]{32}$/.test(value)
+  return (/^[a-f0-9]{32}$/i.test(value)
   );
 };
 
@@ -2390,7 +2390,7 @@ Hashes.md5 = function (value) {
  * be.not.sha1('aaf4c61ddcc5e8a2dabede0f3b482cd9aea9434d') // false
  */
 Hashes.sha1 = function (value) {
-  return (/^[a-f0-9]{40}$/.test(value)
+  return (/^[a-f0-9]{40}$/i.test(value)
   );
 };
 
