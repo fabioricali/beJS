@@ -44,3 +44,16 @@ describe('postalCodeUS', function () {
         assert.equal(result, false);
     });
 });
+
+describe('postalCodeIT', function () {
+    it('should be return true', function () {
+        var result = be.postalCodeIT('98028');
+        console.log(result);
+        assert.equal(result, true);
+    });
+    it('should be return false', function () {
+        var result = be.postalCodeIT('1N238YR');
+        console.log(result);
+        assert.equal(result, false);
+    });
+});

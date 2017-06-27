@@ -48,6 +48,20 @@ PostalCodes.postalCodeUS = (value) => {
     return /(\d{5}([\-]\d{4})?)$/.test(value);
 };
 
+/**
+ * Check if is an IT postal code
+ *
+ * **Interfaces**: `all`, `any`, `not`
+ *
+ * @param value {string} version string
+ * @returns {boolean}
+ * @example
+ * be.postalCodeIT('98023') // true
+ */
+PostalCodes.postalCodeIT = (value) => {
+    return /^\d{5}$/.test(value);
+};
+
 PostalCodes = Interface.create(PostalCodes);
 
 module.exports = PostalCodes;
