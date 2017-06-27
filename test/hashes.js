@@ -12,6 +12,11 @@ describe('md5', function () {
         console.log(result);
         assert.equal(result, true);
     });
+    it('md5 hash string uppercase, should be return true', function () {
+        var result = be.md5('00236a2ae558018ed13b5222ef1bd977'.toLocaleUpperCase());
+        console.log(result);
+        assert.equal(result, true);
+    });
 
     it('string, should be return false', function () {
         var result = be.md5('foo');

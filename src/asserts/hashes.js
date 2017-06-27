@@ -18,7 +18,7 @@ let Hashes = {};
  * be.not.md5('00236a2ae558018ed13b5222ef1bd977') // false
  */
 Hashes.md5 = (value) => {
-    return /^[a-f0-9]{32}$/.test(value);
+    return /^[a-f0-9]{32}$/i.test(value);
 };
 
 /**
