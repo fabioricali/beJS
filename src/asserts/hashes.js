@@ -33,7 +33,7 @@ Hashes.md5 = (value) => {
  * be.not.sha1('aaf4c61ddcc5e8a2dabede0f3b482cd9aea9434d') // false
  */
 Hashes.sha1 = (value) => {
-    return /^[a-f0-9]{40}$/.test(value);
+    return /^[a-f0-9]{40}$/i.test(value);
 };
 
 Hashes = Interface.create(Hashes);

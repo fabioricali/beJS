@@ -31,6 +31,11 @@ describe('sha1', function () {
         console.log(result);
         assert.equal(result, true);
     });
+    it('sha1 hash string uppercase, should be return true', function () {
+        var result = be.sha1('aaf4c61ddcc5e8a2dabede0f3b482cd9aea9434d'.toUpperCase());
+        console.log(result);
+        assert.equal(result, true);
+    });
 
     it('string, should be return false', function () {
         var result = be.md5('foo');
