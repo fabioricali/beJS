@@ -29,7 +29,7 @@ DOM.domElement = (element) => {
  *
  * **Interfaces**: `not`
  *
- * @param element element {object} element object
+ * @param element {object} element object
  * @param tag {string} tag name
  * @returns {boolean}
  * @example
