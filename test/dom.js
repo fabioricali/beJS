@@ -23,3 +23,17 @@ describe('domElement', function () {
         assert.equal(result, false);
     });
 });
+
+describe('domElementTag', function () {
+    it('should be return true', function () {
+        console.log(document.getElementsByTagName('body')[0]);
+        var result = be.domElement(document.body);
+        console.log(result);
+        assert.equal(result, true);
+    });
+    it('string, should be return false', function () {
+        var result = be.domElement('foo');
+        console.log(result);
+        assert.equal(result, false);
+    });
+});
