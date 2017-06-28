@@ -2619,9 +2619,25 @@ var DOM = {};
  * be.domElement(document.getElementById('test')) // true
  */
 DOM.domElement = function (element) {
-  return (typeof HTMLElement === 'undefined' ? 'undefined' : _typeof(HTMLElement)) === 'object' ? element instanceof HTMLElement : //DOM2
-  element && (typeof element === 'undefined' ? 'undefined' : _typeof(element)) === 'object' && element.nodeType === 1 && typeof element.nodeName === 'string';
+  return (typeof HTMLElement === 'undefined' ? 'undefined' : _typeof(HTMLElement)) === 'object' ? element instanceof HTMLElement : element && (typeof element === 'undefined' ? 'undefined' : _typeof(element)) === 'object' && element.nodeType === 1 && typeof element.nodeName === 'string';
 };
+
+/**
+ * Check if element is a specific tag
+ *
+ * **Interfaces**: `not`
+ *
+ * @param element element {object} element object
+ * @param tag {string} tag name
+ * @returns {boolean}
+ * @example
+ * be.domElementTag(document.getElementsByTagName('body')[0], 'ul') // false
+ */
+DOM.domElementTag = function (element, tag) {
+  return DOM.domElement(element) && Types.string(tag) && element.tagName.toLowerCase() === tag.toLowerCase();
+};
+
+DOM.domElementTag.multiple = false;
 
 DOM = Interface.create(DOM);
 

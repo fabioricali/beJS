@@ -8,9 +8,7 @@ Objects checks.
 
 ### be.propertyOf(value, object) 
 
-Check if is a property of an object
-
-**Interfaces**: `not`
+Check if is a property of an object**Interfaces**: `not`
 
 **Parameters**
 
@@ -28,9 +26,7 @@ be.propertyOf('firstName', {firstName: 'Teddy', lastName: 'Red'}) // true
 
 ### be.propertyCount(object, value) 
 
-Count properties of an object
-
-**Interfaces**: `not`
+Count properties of an object**Interfaces**: `not`
 
 **Parameters**
 

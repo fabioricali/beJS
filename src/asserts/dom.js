@@ -19,7 +19,7 @@ let DOM = {};
  */
 DOM.domElement = (element) => {
     return (
-        typeof HTMLElement === 'object' ? element instanceof HTMLElement : //DOM2
+        typeof HTMLElement === 'object' ? element instanceof HTMLElement :
             element &&  typeof element === 'object' && element.nodeType === 1 && typeof element.nodeName === 'string'
     );
 };
@@ -33,7 +33,7 @@ DOM.domElement = (element) => {
  * @param tag {string} tag name
  * @returns {boolean}
  * @example
- * be.domElementTag(document.getElementsByTagName('body')[0], 'body') // true
+ * be.domElementTag(document.getElementsByTagName('body')[0], 'ul') // false
  */
 DOM.domElementTag = (element, tag) => {
     return DOM.domElement(element) &&

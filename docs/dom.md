@@ -6,21 +6,37 @@ DOM checks.
 
 * * *
 
-### be.domElement(value) 
+### be.domElement(element) 
 
-Check if is a valid DOM element
-
-**Interfaces**: `all`, `any`, `not`
+Check if is a valid DOM element**Interfaces**: `all`, `any`, `not`
 
 **Parameters**
 
-**value**: `string`, hash string
+**element**: `object`, element object
 
 **Returns**: `boolean`
 
 **Example**:
 ```js
 be.domElement(document.getElementById('test')) // true
+```
+
+
+### be.domElementTag(element, tag) 
+
+Check if element is a specific tag**Interfaces**: `not`
+
+**Parameters**
+
+**element**: `object`, element  element object
+
+**tag**: `string`, tag name
+
+**Returns**: `boolean`
+
+**Example**:
+```js
+be.domElementTag(document.getElementsByTagName('body')[0], 'ul') // false
 ```
 
 
