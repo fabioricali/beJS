@@ -26,13 +26,12 @@ describe('domElement', function () {
 
 describe('domElementTag', function () {
     it('should be return true', function () {
-        console.log(document.getElementsByTagName('body')[0]);
-        var result = be.domElement(document.body);
+        var result = be.domElementTag(document.body, 'body');
         console.log(result);
         assert.equal(result, true);
     });
     it('string, should be return false', function () {
-        var result = be.domElement('foo');
+        var result = be.domElementTag(document.body, 'ul');
         console.log(result);
         assert.equal(result, false);
     });
