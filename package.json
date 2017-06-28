@@ -23,7 +23,16 @@
     "float",
     "alphanumeric"
   ],
-  "author": "Fabio Ricali",
+  "author": {
+    "name": "Fabio Ricali",
+    "email": "fabio@rica.li"
+  },
+  "contributors": [
+    {
+    "name": "Davide Polano",
+    "email": "info@mdslab.org"
+    }
+  ],
   "license": "MIT",
   "devDependencies": {
     "babel-core": "^6.25.0",
