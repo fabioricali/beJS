@@ -17,6 +17,7 @@
     - [Types](docs/types.md)
     - [Urls](docs/urls.md)
     - [CreditCards](docs/creditCards.md)
+    - [PostalCodes](docs/postalCodes.md)
     - [DOM](docs/dom.md)
 
 ## License
