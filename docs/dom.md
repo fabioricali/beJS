@@ -28,7 +28,7 @@ Check if element is a specific tag**Interfaces**: `not`
 
 **Parameters**
 
-**element**: `object`, element  element object
+**element**: `object`, element object
 
 **tag**: `string`, tag name
 
