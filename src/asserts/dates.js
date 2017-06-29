@@ -50,6 +50,20 @@ Dates.dateString = (value) => {
 };
 
 /**
+ * Check if is time string
+ *
+ * **Interfaces**: `all`, `any`, `not`
+ *
+ * @param value {string} string time
+ * @returns {boolean}
+ * @example
+ * be.timeString('22:06:50') // true
+ */
+Dates.timeString = (value) => {
+    return /^(?:(?:([01]?\d|2[0-3]):)?([0-5]?\d):)?([0-5]?\d)$/.test(value);
+};
+
+/**
  * Check if date is today
  *
  * **Interfaces**: `all`, `any`, `not`

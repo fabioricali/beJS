@@ -345,3 +345,21 @@ describe('dayLightSavingTime', function () {
         assert.equal(result, false);
     });
 });
+
+describe('timeString', function () {
+    it('hh:mm:ss, should be return true', function () {
+        var result = be.timeString('22:50:05');
+        console.log(result);
+        assert.equal(result, true);
+    });
+    it('hh:mm, should be return true', function () {
+        var result = be.timeString('22:50');
+        console.log(result);
+        assert.equal(result, true);
+    });
+    it('should be return false', function () {
+        var result = be.timeString('22:50:65');
+        console.log(result);
+        assert.equal(result, false);
+    });
+});
