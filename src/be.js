@@ -62,13 +62,6 @@ const version = '[AIV]{version}[/AIV]';
 let be = {};
 
 /**
- * Version
- * @type {string}
- * @private
- */
-be._version = version;
-
-/**
  * Helpers class
  * @type {Object}
  * @private
@@ -82,7 +75,7 @@ be._helpers = Helpers;
  * @returns {string}
  */
 be.getVersion = () => {
-    return be._version;
+    return version;
 };
 
 /**
