@@ -22,6 +22,22 @@ be.dateString('2017-06-20') // truebe.dateString('hello') // false
 ```
 
 
+### be.timeString(value) 
+
+Check if is time string**Interfaces**: `all`, `any`, `not`
+
+**Parameters**
+
+**value**: `string`, string time
+
+**Returns**: `boolean`
+
+**Example**:
+```js
+be.timeString('22:06:50') // true
+```
+
+
 ### be.today(date) 
 
 Check if date is today**Interfaces**: `all`, `any`, `not`

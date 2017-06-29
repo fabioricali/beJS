@@ -168,6 +168,22 @@ be.fiscalCodeIT('OLEFBA97C64F158X') // true
 ```
 
 
+### be.macAddress(value) 
+
+Check if is a valid MAC address**Interfaces**: `all`, `any`, `not`
+
+**Parameters**
+
+**value**: `string`, MAC string
+
+**Returns**: `boolean`
+
+**Example**:
+```js
+be.macAddress('3D:F2:C9:A6:B3:4F') // true
+```
+
+
 
 * * *
 

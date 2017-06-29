@@ -327,6 +327,11 @@ Check if string is lower case**Interfaces**: `all`, `any`, `not` (in [..\src\a
 
 
 
+###[macAddress](mixed.md):
+Check if is a valid MAC address**Interfaces**: `all`, `any`, `not` (in [..\src\asserts\mixed.js](..\src\asserts\mixed.js))
+
+
+
 ###[mastercard](creditCards.md):
 Check if is a valid Mastercard credit card**Interfaces**: `all`, `any`, `not` (in [..\src\asserts\creditCards.js](..\src\asserts\creditCards.js))
 
@@ -499,6 +504,11 @@ Check if string start with a value**Interfaces**: `not` (in [..\src\asserts\st
 
 ###[string](types.md):
 Check if is valid string**Interfaces**: `all`, `any`, `not` (in [..\src\asserts\types.js](..\src\asserts\types.js))
+
+
+
+###[timeString](dates.md):
+Check if is time string**Interfaces**: `all`, `any`, `not` (in [..\src\asserts\dates.js](..\src\asserts\dates.js))
 
 
 
