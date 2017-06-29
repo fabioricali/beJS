@@ -34,6 +34,7 @@ module.exports = {
           PACKAGE_JSON_PATH: './package.json',
           components: {
             InjectAsComment: true,
+            InjectByTag: true,
           },
           componentsOptions: {
             InjectAsComment: {

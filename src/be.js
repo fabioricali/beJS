@@ -51,6 +51,7 @@
 
 const Helpers = require('./helpers');
 const Interface = require('./interface');
+const version = '[AIV]{version}[/AIV]';
 
 /**
  * be class
@@ -65,7 +66,7 @@ let be = {};
  * @type {string}
  * @private
  */
-be._version = '0.0.0';
+be._version = version;
 
 /**
  * Helpers class

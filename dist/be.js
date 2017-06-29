@@ -870,6 +870,7 @@ module.exports = __webpack_require__(5);
 
 var Helpers = __webpack_require__(2);
 var Interface = __webpack_require__(0);
+var version = '1.0.0';
 
 /**
  * be class
@@ -884,7 +885,7 @@ var be = {};
  * @type {string}
  * @private
  */
-be._version = '0.0.0';
+be._version = version;
 
 /**
  * Helpers class
