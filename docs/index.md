@@ -387,6 +387,11 @@ Check if is an odd number* **Interfaces**: `all`, `any`, `not` (in [..\src\ass
 
 
 
+###[onLine](envs.md):
+Check if is on line**Interfaces**: `not` (in [..\src\asserts\envs.js](..\src\asserts\envs.js))
+
+
+
 ###[palindrome](strings.md):
 Check if a string is palindrome**Interfaces**: `all`, `any`, `not` (in [..\src\asserts\strings.js](..\src\asserts\strings.js))
 
