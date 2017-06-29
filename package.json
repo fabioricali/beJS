@@ -29,8 +29,8 @@
   },
   "contributors": [
     {
-    "name": "Davide Polano",
-    "email": "info@mdslab.org"
+      "name": "Davide Polano",
+      "email": "info@mdslab.org"
     }
   ],
   "license": "MIT",
@@ -42,7 +42,8 @@
     "jsdox": "^0.4.10",
     "mocha": "^3.4.2",
     "unminified-webpack-plugin": "^1.2.0",
-    "webpack": "^3.0.0"
+    "webpack": "^3.0.0",
+    "webpack-auto-inject-version": "^0.5.14"
   },
   "repository": {
     "type": "git",

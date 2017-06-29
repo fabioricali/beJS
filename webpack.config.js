@@ -1,5 +1,6 @@
 const webpack = require('webpack');
 const unminifiedWebpackPlugin = require('unminified-webpack-plugin');
+const WebpackAutoInject = require('webpack-auto-inject-version');
 
 module.exports = {
     entry: './index.js',
@@ -28,6 +29,17 @@ module.exports = {
             compress: {
                 warnings:false
             }, include: /\.min\.js$/ }),
-        new unminifiedWebpackPlugin()
+        new unminifiedWebpackPlugin(),
+        new WebpackAutoInject({
+          PACKAGE_JSON_PATH: './package.json',
+          components: {
+            InjectAsComment: true,
+          },
+          componentsOptions: {
+            InjectAsComment: {
+              tag: 'beJS Build version: {version}'
+            }
+          }
+        })
     ]
 };

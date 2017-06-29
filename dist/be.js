@@ -1,4 +1,5 @@
-var be =
+// [AIV]  beJS Build version: 1.0.0  
+ var be =
 /******/ (function(modules) { // webpackBootstrap
 /******/ 	// The module cache
 /******/ 	var installedModules = {};
@@ -899,7 +900,7 @@ be._helpers = Helpers;
  * @returns {string}
  */
 be.getVersion = function () {
-    return be._version;
+  return be._version;
 };
 
 /**
@@ -909,68 +910,68 @@ be.getVersion = function () {
  * @private
  */
 var Checks = {
-    Strings: __webpack_require__(6),
-    Types: __webpack_require__(1),
-    Numbers: __webpack_require__(3),
-    Envs: __webpack_require__(7),
-    Objects: __webpack_require__(10),
-    Mixed: __webpack_require__(11),
-    Arrays: __webpack_require__(12),
-    Dates: __webpack_require__(13),
-    Urls: __webpack_require__(14),
-    Hashes: __webpack_require__(15),
-    CreditCards: __webpack_require__(16),
-    PostalCodes: __webpack_require__(17),
-    DOM: __webpack_require__(18)
+  Strings: __webpack_require__(6),
+  Types: __webpack_require__(1),
+  Numbers: __webpack_require__(3),
+  Envs: __webpack_require__(7),
+  Objects: __webpack_require__(10),
+  Mixed: __webpack_require__(11),
+  Arrays: __webpack_require__(12),
+  Dates: __webpack_require__(13),
+  Urls: __webpack_require__(14),
+  Hashes: __webpack_require__(15),
+  CreditCards: __webpack_require__(16),
+  PostalCodes: __webpack_require__(17),
+  DOM: __webpack_require__(18)
 };
 
 /**
  * Create interfaces
  */
 (function () {
-    var _loop = function _loop(c) {
-        if (Checks.hasOwnProperty(c)) {
-            var _loop2 = function _loop2(f) {
-                if (Checks[c].hasOwnProperty(f) && Checks.Types.function(Checks[c][f])) {
-                    be[f] = function () {
-                        for (var _len = arguments.length, params = Array(_len), _key = 0; _key < _len; _key++) {
-                            params[_key] = arguments[_key];
-                        }
-
-                        return Checks[c][f].apply(null, params);
-                    };
-                }
-            };
-
-            for (var f in Checks[c]) {
-                _loop2(f);
+  var _loop = function _loop(c) {
+    if (Checks.hasOwnProperty(c)) {
+      var _loop2 = function _loop2(f) {
+        if (Checks[c].hasOwnProperty(f) && Checks.Types.function(Checks[c][f])) {
+          be[f] = function () {
+            for (var _len = arguments.length, params = Array(_len), _key = 0; _key < _len; _key++) {
+              params[_key] = arguments[_key];
             }
+
+            return Checks[c][f].apply(null, params);
+          };
         }
-    };
+      };
 
-    /**
-     * Add all methods to "be"
-     */
-    for (var c in Checks) {
-        _loop(c);
+      for (var f in Checks[c]) {
+        _loop2(f);
+      }
     }
+  };
 
-    /**
-     * @ignore
-     * @type {be}
-     */
-    be = Interface.create(be);
+  /**
+   * Add all methods to "be"
+   */
+  for (var c in Checks) {
+    _loop(c);
+  }
 
-    /**
-     * After add checks class
-     */
-    for (var m in Checks) {
-        if (Checks.hasOwnProperty(m)) {
-            be[m] = Checks[m];
-        }
+  /**
+   * @ignore
+   * @type {be}
+   */
+  be = Interface.create(be);
+
+  /**
+   * After add checks class
+   */
+  for (var m in Checks) {
+    if (Checks.hasOwnProperty(m)) {
+      be[m] = Checks[m];
     }
+  }
 
-    module.exports = be;
+  module.exports = be;
 })();
 
 /***/ }),
@@ -2660,4 +2661,4 @@ DOM = Interface.create(DOM);
 module.exports = DOM;
 
 /***/ })
-/******/ ]);
+/******/ ]); 
