@@ -1208,6 +1208,22 @@ Strings.startWith = function (value, string, insensitive) {
 Strings.startWith.multiple = false;
 
 /**
+ * Check if a string is palindrome
+ *
+ * **Interfaces**: `all`, `any`, `not`
+ *
+ * @param value {string} string
+ * @returns {boolean}
+ * @example
+ * be.palindrome('A but tuba') // true
+ */
+Strings.palindrome = function (value) {
+    if (!Types.string(value)) return false;
+    value = value.replace(/\s/g, '').toLowerCase();
+    return value === value.split('').reverse().join('');
+};
+
+/**
  * Check if value is a single char
  *
  * **Interfaces**: `all`, `any`, `not`
@@ -2627,7 +2643,7 @@ DOM.domElement = function (element) {
  *
  * **Interfaces**: `not`
  *
- * @param element element {object} element object
+ * @param element {object} element object
  * @param tag {string} tag name
  * @returns {boolean}
  * @example
