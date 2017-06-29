@@ -144,6 +144,21 @@ Envs.ie = (...params) => {
 
 Envs.ie.multiple = false;
 
+/**
+ * Check if is on line
+ *
+ * **Interfaces**: `not`
+ *
+ * @returns {boolean}
+ * @example
+ * be.onLine() // true
+ */
+Envs.onLine = function () {
+    return typeof navigator !== 'undefined' && navigator.onLine;
+};
+
+Envs.onLine.multiple = false;
+
 Envs = Interface.create(Envs);
 
 module.exports = Envs;
