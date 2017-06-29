@@ -387,6 +387,11 @@ Check if is an odd number* **Interfaces**: `all`, `any`, `not` (in [..\src\ass
 
 
 
+###[palindrome](strings.md):
+Check if a string is palindrome**Interfaces**: `all`, `any`, `not` (in [..\src\asserts\strings.js](..\src\asserts\strings.js))
+
+
+
 ###[past](dates.md):
 Check if date is past**Interfaces**: `all`, `any`, `not` (in [..\src\asserts\dates.js](..\src\asserts\dates.js))
 

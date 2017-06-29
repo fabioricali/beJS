@@ -208,6 +208,22 @@ be.startWith('hello', 'hello world') // truebe.startWith('hello', 'HELLO world'
 ```
 
 
+### be.palindrome(value) 
+
+Check if a string is palindrome**Interfaces**: `all`, `any`, `not`
+
+**Parameters**
+
+**value**: `string`, string
+
+**Returns**: `boolean`
+
+**Example**:
+```js
+be.palindrome('A but tuba') // true
+```
+
+
 ### be.char(value) 
 
 Check if value is a single char**Interfaces**: `all`, `any`, `not`
