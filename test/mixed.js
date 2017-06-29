@@ -262,3 +262,21 @@ describe('fiscalCodeIT', function () {
         assert.equal(result, false);
     });
 });
+
+describe('macAddress', function () {
+    it('(:), should be return true', function () {
+        var result = be.macAddress('3D:F2:C9:A6:B3:4F');
+        console.log(result);
+        assert.equal(result, true);
+    });
+    it('(-), should be return true', function () {
+        var result = be.macAddress('3D-F2-C9-A6-B3-4F');
+        console.log(result);
+        assert.equal(result, true);
+    });
+    it('should be return false', function () {
+        var result = be.macAddress('3DF2C9A6B34F');
+        console.log(result);
+        assert.equal(result, false);
+    });
+});
