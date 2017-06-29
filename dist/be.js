@@ -1290,6 +1290,8 @@ var Envs = {};
  * **Interfaces**: `not`
  *
  * @returns {boolean}
+ * @example
+ * be.commonjsEnv() // true
  */
 Envs.commonjsEnv = function () {
   return typeof process !== 'undefined';
@@ -1303,6 +1305,8 @@ Envs.commonjsEnv.multiple = false;
  * **Interfaces**: `not`
  *
  * @returns {boolean}
+ * @example
+ * be.browserEnv() // true
  */
 Envs.browserEnv = function () {
   return typeof window !== 'undefined';
@@ -1316,6 +1320,8 @@ Envs.browserEnv.multiple = false;
  * **Interfaces**: `not`
  *
  * @returns {boolean}
+ * @example
+ * be.amdEnv() // true
  */
 Envs.amdEnv = function () {
   return "function" === 'function' && __webpack_require__(9);
@@ -1329,6 +1335,8 @@ Envs.amdEnv.multiple = false;
  * **Interfaces**: `not`
  *
  * @returns {boolean}
+ * @example
+ * be.ios() // true
  */
 Envs.ios = function () {
   for (var _len = arguments.length, params = Array(_len), _key = 0; _key < _len; _key++) {
@@ -1348,6 +1356,8 @@ Envs.ios.multiple = false;
  * **Interfaces**: `not`
  *
  * @returns {boolean}
+ * @example
+ * be.android() // true
  */
 Envs.android = function () {
   for (var _len2 = arguments.length, params = Array(_len2), _key2 = 0; _key2 < _len2; _key2++) {
@@ -1367,6 +1377,8 @@ Envs.android.multiple = false;
  * **Interfaces**: `not`
  *
  * @returns {boolean}
+ * @example
+ * be.navigator() // true
  */
 Envs.navigator = function () {
   return Envs.browserEnv() && typeof window.navigator !== 'undefined';
@@ -1380,6 +1392,8 @@ Envs.navigator.multiple = false;
  * **Interfaces**: `not`
  *
  * @returns {boolean}
+ * @example
+ * be.firefox() // true
  */
 Envs.firefox = function () {
   for (var _len3 = arguments.length, params = Array(_len3), _key3 = 0; _key3 < _len3; _key3++) {
@@ -1399,6 +1413,8 @@ Envs.firefox.multiple = false;
  * **Interfaces**: `not`
  *
  * @returns {boolean}
+ * @example
+ * be.chrome() // true
  */
 Envs.chrome = function () {
   for (var _len4 = arguments.length, params = Array(_len4), _key4 = 0; _key4 < _len4; _key4++) {
@@ -1418,6 +1434,8 @@ Envs.chrome.multiple = false;
  * **Interfaces**: `not`
  *
  * @returns {boolean}
+ * @example
+ * be.safari() // true
  */
 Envs.safari = function () {
   for (var _len5 = arguments.length, params = Array(_len5), _key5 = 0; _key5 < _len5; _key5++) {
@@ -1437,6 +1455,8 @@ Envs.safari.multiple = false;
  * **Interfaces**: `not`
  *
  * @returns {boolean}
+ * @example
+ * be.ie() // true
  */
 Envs.ie = function () {
   for (var _len6 = arguments.length, params = Array(_len6), _key6 = 0; _key6 < _len6; _key6++) {
@@ -1449,6 +1469,21 @@ Envs.ie = function () {
 };
 
 Envs.ie.multiple = false;
+
+/**
+ * Check if is on line
+ *
+ * **Interfaces**: `not`
+ *
+ * @returns {boolean}
+ * @example
+ * be.onLine() // true
+ */
+Envs.onLine = function () {
+  return Envs.navigator() && navigator.onLine;
+};
+
+Envs.onLine.multiple = false;
 
 Envs = Interface.create(Envs);
 
@@ -1892,6 +1927,21 @@ Mixed.fiscalCodeIT = function (value) {
     );
 };
 
+/**
+ * Check if is a valid MAC address
+ *
+ * **Interfaces**: `all`, `any`, `not`
+ *
+ * @param value {string} MAC string
+ * @returns {boolean}
+ * @example
+ * be.macAddress('3D:F2:C9:A6:B3:4F') // true
+ */
+Mixed.macAddress = function (value) {
+    return (/^([0-9A-Fa-f]{2}[:-]){5}([0-9A-Fa-f]{2})$/.test(value)
+    );
+};
+
 Mixed = Interface.create(Mixed);
 
 module.exports = Mixed;
@@ -1976,6 +2026,21 @@ var _months = ['january', 'february', 'march', 'april', 'may', 'june', 'july', '
 Dates.dateString = function (value) {
     var date = Date.parse(value);
     return !isNaN(date);
+};
+
+/**
+ * Check if is time string
+ *
+ * **Interfaces**: `all`, `any`, `not`
+ *
+ * @param value {string} string time
+ * @returns {boolean}
+ * @example
+ * be.timeString('22:06:50') // true
+ */
+Dates.timeString = function (value) {
+    return (/^(?:(?:([01]?\d|2[0-3]):)?([0-5]?\d):)?([0-5]?\d)$/.test(value)
+    );
 };
 
 /**
