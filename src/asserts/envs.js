@@ -13,6 +13,8 @@ let Envs = {};
  * **Interfaces**: `not`
  *
  * @returns {boolean}
+ * @example
+ * be.commonjsEnv() // true
  */
 Envs.commonjsEnv = () => {
     return typeof process !== 'undefined';
@@ -26,6 +28,8 @@ Envs.commonjsEnv.multiple = false;
  * **Interfaces**: `not`
  *
  * @returns {boolean}
+ * @example
+ * be.browserEnv() // true
  */
 Envs.browserEnv = () => {
     return typeof window !== 'undefined';
@@ -39,6 +43,8 @@ Envs.browserEnv.multiple = false;
  * **Interfaces**: `not`
  *
  * @returns {boolean}
+ * @example
+ * be.amdEnv() // true
  */
 Envs.amdEnv = () => {
     return typeof define === 'function' && define.amd;
@@ -52,6 +58,8 @@ Envs.amdEnv.multiple = false;
  * **Interfaces**: `not`
  *
  * @returns {boolean}
+ * @example
+ * be.ios() // true
  */
 Envs.ios = (...params) => {
     let userAgent = Helpers.getUserAgent.apply(this, params);
@@ -66,6 +74,8 @@ Envs.ios.multiple = false;
  * **Interfaces**: `not`
  *
  * @returns {boolean}
+ * @example
+ * be.android() // true
  */
 Envs.android = (...params) => {
     let userAgent = Helpers.getUserAgent.apply(this, params);
@@ -80,6 +90,8 @@ Envs.android.multiple = false;
  * **Interfaces**: `not`
  *
  * @returns {boolean}
+ * @example
+ * be.navigator() // true
  */
 Envs.navigator = () => {
     return Envs.browserEnv() && typeof window.navigator !== 'undefined';
@@ -93,6 +105,8 @@ Envs.navigator.multiple = false;
  * **Interfaces**: `not`
  *
  * @returns {boolean}
+ * @example
+ * be.firefox() // true
  */
 Envs.firefox = (...params) => {
     let userAgent = Helpers.getUserAgent.apply(this, params);
@@ -107,6 +121,8 @@ Envs.firefox.multiple = false;
  * **Interfaces**: `not`
  *
  * @returns {boolean}
+ * @example
+ * be.chrome() // true
  */
 Envs.chrome = (...params) => {
     let userAgent = Helpers.getUserAgent.apply(this, params);
@@ -121,6 +137,8 @@ Envs.chrome.multiple = false;
  * **Interfaces**: `not`
  *
  * @returns {boolean}
+ * @example
+ * be.safari() // true
  */
 Envs.safari = (...params) => {
     let userAgent = Helpers.getUserAgent.apply(this, params);
@@ -136,6 +154,8 @@ Envs.safari.multiple = false;
  * **Interfaces**: `not`
  *
  * @returns {boolean}
+ * @example
+ * be.ie() // true
  */
 Envs.ie = (...params) => {
     let userAgent = Helpers.getUserAgent.apply(this, params);
@@ -154,7 +174,7 @@ Envs.ie.multiple = false;
  * be.onLine() // true
  */
 Envs.onLine = function () {
-    return typeof navigator !== 'undefined' && navigator.onLine;
+    return Envs.navigator() && navigator.onLine;
 };
 
 Envs.onLine.multiple = false;
