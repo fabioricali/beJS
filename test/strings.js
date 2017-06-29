@@ -350,3 +350,21 @@ describe('spaces', function () {
         assert.equal(result, false);
     });
 });
+
+describe('palindrome', function () {
+    it('should be return true', function () {
+        var result = be.palindrome('A but tuba');
+        console.log(result);
+        assert.equal(result, true);
+    });
+    it('with number should be return true', function () {
+        var result = be.palindrome('69 A but tuba 96');
+        console.log(result);
+        assert.equal(result, true);
+    });
+    it('should be return false', function () {
+        var result = be.palindrome('helloworld');
+        console.log(result);
+        assert.equal(result, false);
+    });
+});
