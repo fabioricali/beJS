@@ -63,7 +63,7 @@ Envs.amdEnv.multiple = false;
  */
 Envs.ios = (...params) => {
     let userAgent = Helpers.getUserAgent.apply(this, params);
-    return (/iPhone|iPad|iPod/i).test(userAgent);
+    return /iPhone|iPad|iPod/i.test(userAgent);
 };
 
 Envs.ios.multiple = false;
@@ -79,7 +79,7 @@ Envs.ios.multiple = false;
  */
 Envs.android = (...params) => {
     let userAgent = Helpers.getUserAgent.apply(this, params);
-    return (/Android/i).test(userAgent);
+    return /Android/i.test(userAgent);
 };
 
 Envs.android.multiple = false;
@@ -110,7 +110,7 @@ Envs.navigator.multiple = false;
  */
 Envs.firefox = (...params) => {
     let userAgent = Helpers.getUserAgent.apply(this, params);
-    return (/Firefox/i).test(userAgent);
+    return /Firefox/i.test(userAgent);
 };
 
 Envs.firefox.multiple = false;
@@ -126,7 +126,7 @@ Envs.firefox.multiple = false;
  */
 Envs.chrome = (...params) => {
     let userAgent = Helpers.getUserAgent.apply(this, params);
-    return (/Chrome/i).test(userAgent);
+    return /Chrome/i.test(userAgent);
 };
 
 Envs.chrome.multiple = false;
@@ -142,8 +142,8 @@ Envs.chrome.multiple = false;
  */
 Envs.safari = (...params) => {
     let userAgent = Helpers.getUserAgent.apply(this, params);
-    return (/Safari/i).test(userAgent.replace('Chrome', '')) &&
-        !(/Chrome/i).test(userAgent.replace('Safari', ''));
+    return /Safari/i.test(userAgent.replace('Chrome', '')) &&
+        !/Chrome/i.test(userAgent.replace('Safari', ''));
 };
 
 Envs.safari.multiple = false;
@@ -159,7 +159,7 @@ Envs.safari.multiple = false;
  */
 Envs.ie = (...params) => {
     let userAgent = Helpers.getUserAgent.apply(this, params);
-    return (/MSIE|Trident/i).test(userAgent);
+    return /MSIE|Trident/i.test(userAgent);
 };
 
 Envs.ie.multiple = false;
@@ -175,7 +175,7 @@ Envs.ie.multiple = false;
  */
 Envs.mac = (...params) => {
     let userAgent = Helpers.getUserAgent.apply(this, params);
-    return (/mac/i).test(userAgent);
+    return /mac/i.test(userAgent);
 };
 
 Envs.mac.multiple = false;
