@@ -1,4 +1,4 @@
-// [AIV]  beJS Build version: 1.0.0  
+// [AIV]  beJS Build version: 1.0.2  
  var be =
 /******/ (function(modules) { // webpackBootstrap
 /******/ 	// The module cache
@@ -870,7 +870,7 @@ module.exports = __webpack_require__(5);
 
 var Helpers = __webpack_require__(2);
 var Interface = __webpack_require__(0);
-var version = '1.0.0';
+var version = '1.0.2';
 
 /**
  * be class

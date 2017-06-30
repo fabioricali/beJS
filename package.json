@@ -1,12 +1,12 @@
 {
     "name": "bejs",
-    "version": "1.0.0",
+    "version": "1.0.2",
     "description": "Simple, light-weight assertions framework for javascript",
     "main": "index.js",
     "scripts": {
-        "version:major": "webpack --env.major",
-        "version:minor": "webpack --env.minor",
-        "version:patch": "webpack --env.patch",
+        "version:major": "webpack --env.major && npm run-script doc",
+        "version:minor": "webpack --env.minor && npm run-script doc",
+        "version:patch": "webpack --env.patch && npm run-script doc",
         "build": "webpack --progress",
         "doc": "jsdox -i -r -o docs src",
         "test": "mocha test"
