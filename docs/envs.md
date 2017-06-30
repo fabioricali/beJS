@@ -54,6 +54,42 @@ be.ios() // true
 ```
 
 
+### be.iphone() 
+
+Check if is iPhone device**Interfaces**: `not`
+
+**Returns**: `boolean`
+
+**Example**:
+```js
+be.iphone() // true
+```
+
+
+### be.ipad() 
+
+Check if is iPad device**Interfaces**: `not`
+
+**Returns**: `boolean`
+
+**Example**:
+```js
+be.ipad() // true
+```
+
+
+### be.ipod() 
+
+Check if is iPod device**Interfaces**: `not`
+
+**Returns**: `boolean`
+
+**Example**:
+```js
+be.ipod() // true
+```
+
+
 ### be.android() 
 
 Check if is Android device**Interfaces**: `not`
@@ -123,6 +159,18 @@ Explorer detecting**Interfaces**: `not`
 **Example**:
 ```js
 be.ie() // true
+```
+
+
+### be.mac() 
+
+Mac detecting**Interfaces**: `not`
+
+**Returns**: `boolean`
+
+**Example**:
+```js
+be.mac() // true
 ```
 
 

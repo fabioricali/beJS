@@ -292,6 +292,21 @@ Check if is a valid ip string**Interfaces**: `all`, `any`, `not` (in [..\src\a
 
 
 
+###[ipad](envs.md):
+Check if is iPad device**Interfaces**: `not` (in [..\src\asserts\envs.js](..\src\asserts\envs.js))
+
+
+
+###[iphone](envs.md):
+Check if is iPhone device**Interfaces**: `not` (in [..\src\asserts\envs.js](..\src\asserts\envs.js))
+
+
+
+###[ipod](envs.md):
+Check if is iPod device**Interfaces**: `not` (in [..\src\asserts\envs.js](..\src\asserts\envs.js))
+
+
+
 ###[ipv4](mixed.md):
 Check if is a valid IPv4**Interfaces**: `all`, `any`, `not` (in [..\src\asserts\mixed.js](..\src\asserts\mixed.js))
 
@@ -324,6 +339,11 @@ Checks if number is lesser then an other* **Interfaces**: `not` (in [..\src\as
 
 ###[lowerCase](strings.md):
 Check if string is lower case**Interfaces**: `all`, `any`, `not` (in [..\src\asserts\strings.js](..\src\asserts\strings.js))
+
+
+
+###[mac](envs.md):
+Mac detecting**Interfaces**: `not` (in [..\src\asserts\envs.js](..\src\asserts\envs.js))
 
 
 
