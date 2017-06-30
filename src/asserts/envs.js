@@ -69,6 +69,22 @@ Envs.ios = (...params) => {
 Envs.ios.multiple = false;
 
 /**
+ * Check if is iPhone device
+ *
+ * **Interfaces**: `not`
+ *
+ * @returns {boolean}
+ * @example
+ * be.iphone() // true
+ */
+Envs.iphone = (...params) => {
+    let userAgent = Helpers.getUserAgent.apply(this, params);
+    return /iPhone/i.test(userAgent);
+};
+
+Envs.iphone.multiple = false;
+
+/**
  * Check if is Android device
  *
  * **Interfaces**: `not`
