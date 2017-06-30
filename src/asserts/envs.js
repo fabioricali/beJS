@@ -63,7 +63,7 @@ Envs.amdEnv.multiple = false;
  */
 Envs.ios = (...params) => {
     let userAgent = Helpers.getUserAgent.apply(this, params);
-    return /iPhone|iPad|iPod/i.test(userAgent);
+    return /iphone|ipad|ipod/i.test(userAgent);
 };
 
 Envs.ios.multiple = false;
@@ -79,10 +79,26 @@ Envs.ios.multiple = false;
  */
 Envs.iphone = (...params) => {
     let userAgent = Helpers.getUserAgent.apply(this, params);
-    return /iPhone/i.test(userAgent);
+    return /iphone/i.test(userAgent);
 };
 
 Envs.iphone.multiple = false;
+
+/**
+ * Check if is iPad device
+ *
+ * **Interfaces**: `not`
+ *
+ * @returns {boolean}
+ * @example
+ * be.ipad() // true
+ */
+Envs.ipad = (...params) => {
+    let userAgent = Helpers.getUserAgent.apply(this, params);
+    return /ipad/i.test(userAgent);
+};
+
+Envs.ipad.multiple = false;
 
 /**
  * Check if is Android device
