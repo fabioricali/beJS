@@ -1344,11 +1344,74 @@ Envs.ios = function () {
   }
 
   var userAgent = Helpers.getUserAgent.apply(undefined, params);
-  return (/iPhone|iPad|iPod/i.test(userAgent)
+  return (/iphone|ipad|ipod/i.test(userAgent)
   );
 };
 
 Envs.ios.multiple = false;
+
+/**
+ * Check if is iPhone device
+ *
+ * **Interfaces**: `not`
+ *
+ * @returns {boolean}
+ * @example
+ * be.iphone() // true
+ */
+Envs.iphone = function () {
+  for (var _len2 = arguments.length, params = Array(_len2), _key2 = 0; _key2 < _len2; _key2++) {
+    params[_key2] = arguments[_key2];
+  }
+
+  var userAgent = Helpers.getUserAgent.apply(undefined, params);
+  return (/iphone/i.test(userAgent)
+  );
+};
+
+Envs.iphone.multiple = false;
+
+/**
+ * Check if is iPad device
+ *
+ * **Interfaces**: `not`
+ *
+ * @returns {boolean}
+ * @example
+ * be.ipad() // true
+ */
+Envs.ipad = function () {
+  for (var _len3 = arguments.length, params = Array(_len3), _key3 = 0; _key3 < _len3; _key3++) {
+    params[_key3] = arguments[_key3];
+  }
+
+  var userAgent = Helpers.getUserAgent.apply(undefined, params);
+  return (/ipad/i.test(userAgent)
+  );
+};
+
+Envs.ipad.multiple = false;
+
+/**
+ * Check if is iPod device
+ *
+ * **Interfaces**: `not`
+ *
+ * @returns {boolean}
+ * @example
+ * be.ipod() // true
+ */
+Envs.ipod = function () {
+  for (var _len4 = arguments.length, params = Array(_len4), _key4 = 0; _key4 < _len4; _key4++) {
+    params[_key4] = arguments[_key4];
+  }
+
+  var userAgent = Helpers.getUserAgent.apply(undefined, params);
+  return (/ipod/i.test(userAgent)
+  );
+};
+
+Envs.ipod.multiple = false;
 
 /**
  * Check if is Android device
@@ -1360,8 +1423,8 @@ Envs.ios.multiple = false;
  * be.android() // true
  */
 Envs.android = function () {
-  for (var _len2 = arguments.length, params = Array(_len2), _key2 = 0; _key2 < _len2; _key2++) {
-    params[_key2] = arguments[_key2];
+  for (var _len5 = arguments.length, params = Array(_len5), _key5 = 0; _key5 < _len5; _key5++) {
+    params[_key5] = arguments[_key5];
   }
 
   var userAgent = Helpers.getUserAgent.apply(undefined, params);
@@ -1396,8 +1459,8 @@ Envs.navigator.multiple = false;
  * be.firefox() // true
  */
 Envs.firefox = function () {
-  for (var _len3 = arguments.length, params = Array(_len3), _key3 = 0; _key3 < _len3; _key3++) {
-    params[_key3] = arguments[_key3];
+  for (var _len6 = arguments.length, params = Array(_len6), _key6 = 0; _key6 < _len6; _key6++) {
+    params[_key6] = arguments[_key6];
   }
 
   var userAgent = Helpers.getUserAgent.apply(undefined, params);
@@ -1417,8 +1480,8 @@ Envs.firefox.multiple = false;
  * be.chrome() // true
  */
 Envs.chrome = function () {
-  for (var _len4 = arguments.length, params = Array(_len4), _key4 = 0; _key4 < _len4; _key4++) {
-    params[_key4] = arguments[_key4];
+  for (var _len7 = arguments.length, params = Array(_len7), _key7 = 0; _key7 < _len7; _key7++) {
+    params[_key7] = arguments[_key7];
   }
 
   var userAgent = Helpers.getUserAgent.apply(undefined, params);
@@ -1438,8 +1501,8 @@ Envs.chrome.multiple = false;
  * be.safari() // true
  */
 Envs.safari = function () {
-  for (var _len5 = arguments.length, params = Array(_len5), _key5 = 0; _key5 < _len5; _key5++) {
-    params[_key5] = arguments[_key5];
+  for (var _len8 = arguments.length, params = Array(_len8), _key8 = 0; _key8 < _len8; _key8++) {
+    params[_key8] = arguments[_key8];
   }
 
   var userAgent = Helpers.getUserAgent.apply(undefined, params);
@@ -1459,8 +1522,8 @@ Envs.safari.multiple = false;
  * be.ie() // true
  */
 Envs.ie = function () {
-  for (var _len6 = arguments.length, params = Array(_len6), _key6 = 0; _key6 < _len6; _key6++) {
-    params[_key6] = arguments[_key6];
+  for (var _len9 = arguments.length, params = Array(_len9), _key9 = 0; _key9 < _len9; _key9++) {
+    params[_key9] = arguments[_key9];
   }
 
   var userAgent = Helpers.getUserAgent.apply(undefined, params);
@@ -1469,6 +1532,27 @@ Envs.ie = function () {
 };
 
 Envs.ie.multiple = false;
+
+/**
+ * Mac detecting
+ *
+ * **Interfaces**: `not`
+ *
+ * @returns {boolean}
+ * @example
+ * be.mac() // true
+ */
+Envs.mac = function () {
+  for (var _len10 = arguments.length, params = Array(_len10), _key10 = 0; _key10 < _len10; _key10++) {
+    params[_key10] = arguments[_key10];
+  }
+
+  var userAgent = Helpers.getUserAgent.apply(undefined, params);
+  return (/mac/i.test(userAgent)
+  );
+};
+
+Envs.mac.multiple = false;
 
 /**
  * Check if is on line
