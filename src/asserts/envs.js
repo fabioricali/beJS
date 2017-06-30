@@ -165,6 +165,22 @@ Envs.ie = (...params) => {
 Envs.ie.multiple = false;
 
 /**
+ * Mac detecting
+ *
+ * **Interfaces**: `not`
+ *
+ * @returns {boolean}
+ * @example
+ * be.mac() // true
+ */
+Envs.mac = (...params) => {
+    let userAgent = Helpers.getUserAgent.apply(this, params);
+    return (/mac/i).test(userAgent);
+};
+
+Envs.mac.multiple = false;
+
+/**
  * Check if is on line
  *
  * **Interfaces**: `not`
