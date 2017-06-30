@@ -101,6 +101,22 @@ Envs.ipad = (...params) => {
 Envs.ipad.multiple = false;
 
 /**
+ * Check if is iPod device
+ *
+ * **Interfaces**: `not`
+ *
+ * @returns {boolean}
+ * @example
+ * be.ipod() // true
+ */
+Envs.ipod = (...params) => {
+    let userAgent = Helpers.getUserAgent.apply(this, params);
+    return /ipod/i.test(userAgent);
+};
+
+Envs.ipod.multiple = false;
+
+/**
  * Check if is Android device
  *
  * **Interfaces**: `not`
