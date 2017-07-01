@@ -16,7 +16,7 @@ npm install bejs --save
 ## Example
 ```javascript
 const be = require('bejs');
-console.log(be.boolean(0));
+console.log(be.boolean(0)) // false;
 ```
 
 ### Browser
