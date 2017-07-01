@@ -9,8 +9,7 @@
         "version:patch": "webpack --env.patch && npm run-script doc && version-to-tag.sh",
         "build": "webpack --progress",
         "doc": "jsdox -i -r -o docs src",
-        "test": "mocha test",
-        "get_version": "node -p -e \"require('./package.json').version\""
+        "test": "mocha test"
     },
     "keywords": [
         "is",
