@@ -1,6 +1,6 @@
 {
     "name": "bejs",
-    "version": "1.0.8",
+    "version": "1.0.9",
     "description": "Simple, light-weight assertions framework for javascript",
     "main": "index.js",
     "scripts": {
