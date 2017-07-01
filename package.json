@@ -4,8 +4,8 @@
     "description": "Simple, light-weight assertions framework for javascript",
     "main": "index.js",
     "scripts": {
-        "version:major": "webpack --env.major && npm run-script doc",
-        "version:minor": "webpack --env.minor && npm run-script doc",
+        "version:major": "webpack --env.major && npm run-script doc && version-to-tag.sh",
+        "version:minor": "webpack --env.minor && npm run-script doc && version-to-tag.sh",
         "version:patch": "webpack --env.patch && npm run-script doc && version-to-tag.sh",
         "build": "webpack --progress",
         "doc": "jsdox -i -r -o docs src",
