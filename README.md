@@ -6,6 +6,24 @@
 
 # Simple, light-weight assertions framework for javascript
 
+## Installation
+
+### Node.js
+```javascript
+npm install bejs --save
+```
+
+## Example
+```javascript
+const be = require('bejs');
+console.log(be.boolean(0));
+```
+
+### Browser
+```html
+<script src="node_modules/bejs/dist/be.min.js"></script>
+```
+
 ## Docs
 - [API](docs/be.md)
     - [Arrays](docs/arrays.md)
