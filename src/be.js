@@ -70,15 +70,6 @@ let be = {};
 be._helpers = Helpers;
 
 /**
- * Get version of framework
- * @memberOf be
- * @returns {string}
- */
-be.getVersion = () => {
-    return version;
-};
-
-/**
  * Collection of checks
  * @type {Object}
  * @ignore
@@ -98,6 +89,18 @@ let Checks = {
     CreditCards: require('./asserts/creditCards'),
     PostalCodes: require('./asserts/postalCodes'),
     DOM: require('./asserts/dom')
+};
+
+/**
+ * Get version of framework
+ * @memberOf be
+ * @returns {string}
+ */
+be.getVersion = () => {
+    if (Checks.Envs.commonjsEnv())
+        return require('../package.json').version;
+    else
+        return version;
 };
 
 /**
