@@ -2,6 +2,8 @@
 
 ***to be, or not to be, that is the question***
 
+[![Build Status](https://travis-ci.org/fabioricali/beJS.svg?branch=master)](https://travis-ci.org/fabioricali/beJS) [![Coverage Status](https://coveralls.io/repos/github/fabioricali/beJS/badge.svg?branch=master)](https://coveralls.io/github/fabioricali/beJS?branch=master)
+
 # Simple, light-weight assertions framework for javascript
 
 ## Docs
