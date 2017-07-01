@@ -1,4 +1,4 @@
-// [AIV]  beJS Build version: 1.0.16  
+// [AIV]  beJS Build version: 1.0.17  
  var be =
 /******/ (function(modules) { // webpackBootstrap
 /******/ 	// The module cache
@@ -870,7 +870,7 @@ module.exports = __webpack_require__(5);
 
 var Helpers = __webpack_require__(2);
 var Interface = __webpack_require__(0);
-var version = '1.0.16';
+var version = '1.0.17';
 
 /**
  * be class
@@ -887,15 +887,6 @@ var be = {};
  * @ignore
  */
 be._helpers = Helpers;
-
-/**
- * Get version of framework
- * @memberOf be
- * @returns {string}
- */
-be.getVersion = function () {
-    return version;
-};
 
 /**
  * Collection of checks
@@ -917,6 +908,15 @@ var Checks = {
     CreditCards: __webpack_require__(16),
     PostalCodes: __webpack_require__(17),
     DOM: __webpack_require__(18)
+};
+
+/**
+ * Get version of framework
+ * @memberOf be
+ * @returns {string}
+ */
+be.getVersion = function () {
+    if (Checks.Envs.commonjsEnv()) return __webpack_require__(19).version;else return version;
 };
 
 /**
@@ -2802,6 +2802,66 @@ DOM.domElementTag.multiple = false;
 DOM = Interface.create(DOM);
 
 module.exports = DOM;
+
+/***/ }),
+/* 19 */
+/***/ (function(module, exports) {
+
+module.exports = {
+	"name": "bejs",
+	"version": "1.0.17",
+	"description": "Simple, light-weight assertions framework for javascript",
+	"main": "index.js",
+	"scripts": {
+		"version:major": "webpack --env.major && npm run-script doc && version-to-tag.sh",
+		"version:minor": "webpack --env.minor && npm run-script doc && version-to-tag.sh",
+		"version:patch": "webpack --env.patch && npm run-script doc && version-to-tag.sh",
+		"build": "webpack --progress",
+		"doc": "jsdox -i -r -o docs src",
+		"test": "istanbul cover ./node_modules/mocha/bin/_mocha --report lcovonly -- -R spec && cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js && rm -rf ./coverage"
+	},
+	"keywords": [
+		"is",
+		"boolean",
+		"url",
+		"number",
+		"string",
+		"email",
+		"object",
+		"check",
+		"float",
+		"alphanumeric"
+	],
+	"author": {
+		"name": "Fabio Ricali",
+		"email": "fabio@rica.li"
+	},
+	"contributors": [
+		{
+			"name": "Davide Polano",
+			"email": "info@mdslab.org"
+		}
+	],
+	"license": "MIT",
+	"devDependencies": {
+		"babel-core": "^6.25.0",
+		"babel-loader": "^7.1.0",
+		"babel-preset-es2015": "^6.24.1",
+		"coveralls": "^2.13.1",
+		"istanbul": "^0.4.5",
+		"jsdom": "^11.0.0",
+		"jsdox": "^0.4.10",
+		"mocha": "^3.4.2",
+		"mocha-lcov-reporter": "^1.3.0",
+		"unminified-webpack-plugin": "^1.2.0",
+		"webpack": "^3.0.0",
+		"webpack-auto-inject-version": "^0.5.14"
+	},
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/fabioricali/beJS"
+	}
+};
 
 /***/ })
 /******/ ]); 
