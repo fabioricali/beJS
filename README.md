@@ -2,7 +2,7 @@
 
 ***to be, or not to be, that is the question***
 
-[![Build Status](https://travis-ci.org/fabioricali/beJS.svg?branch=master)](https://travis-ci.org/fabioricali/beJS) [![Coverage Status](https://coveralls.io/repos/github/fabioricali/beJS/badge.svg?branch=master)](https://coveralls.io/github/fabioricali/beJS?branch=master)
+[![Build Status](https://travis-ci.org/fabioricali/beJS.svg?branch=master)](https://travis-ci.org/fabioricali/beJS) [![Coverage Status](https://coveralls.io/repos/github/fabioricali/beJS/badge.svg?branch=master)](https://coveralls.io/github/fabioricali/beJS?branch=master) [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
 # Simple, light-weight assertions framework for javascript
 
