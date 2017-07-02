@@ -38,9 +38,13 @@ be.any.boolean(true, false, 1);
 ```html
 <script src="node_modules/bejs/dist/be.min.js"></script>
 ```
-#### CDN
+#### CDN unpkg
 ```html
 <script src="https://unpkg.com/bejs/dist/be.min.js"></script>
+```
+#### CDN jsDeliver
+```html
+<script src="https://cdn.jsdelivr.net/npm/bejs/dist/be.min.js"></script>
 ```
 
 ## Docs
