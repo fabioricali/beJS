@@ -1,4 +1,4 @@
-// [AIV]  beJS Build version: 1.0.17  
+// [AIV]  beJS Build version: 1.0.18  
  var be =
 /******/ (function(modules) { // webpackBootstrap
 /******/ 	// The module cache
@@ -870,7 +870,7 @@ module.exports = __webpack_require__(5);
 
 var Helpers = __webpack_require__(2);
 var Interface = __webpack_require__(0);
-var version = '1.0.17';
+var version = '1.0.18';
 
 /**
  * be class
@@ -2809,13 +2809,13 @@ module.exports = DOM;
 
 module.exports = {
 	"name": "bejs",
-	"version": "1.0.17",
+	"version": "1.0.18",
 	"description": "Simple, light-weight assertions framework for javascript",
 	"main": "index.js",
 	"scripts": {
-		"version:major": "webpack --env.major && npm run-script doc && version-to-tag.sh",
-		"version:minor": "webpack --env.minor && npm run-script doc && version-to-tag.sh",
-		"version:patch": "webpack --env.patch && npm run-script doc && version-to-tag.sh",
+		"version:major": "webpack --env.major && npm run-script doc && version-to-tag.sh && npm publish",
+		"version:minor": "webpack --env.minor && npm run-script doc && version-to-tag.sh && npm publish",
+		"version:patch": "webpack --env.patch && npm run-script doc && version-to-tag.sh && npm publish",
 		"build": "webpack --progress",
 		"doc": "jsdox -i -r -o docs src",
 		"test": "istanbul cover ./node_modules/mocha/bin/_mocha --report lcovonly -- -R spec && cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js && rm -rf ./coverage"
