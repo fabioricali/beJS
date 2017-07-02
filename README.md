@@ -13,6 +13,23 @@
 npm install bejs --save
 ```
 
+### Browser
+
+#### Local
+```html
+<script src="node_modules/bejs/dist/be.min.js"></script>
+```
+
+#### CDN unpkg
+```html
+<script src="https://unpkg.com/bejs/dist/be.min.js"></script>
+```
+
+#### CDN jsDeliver
+```html
+<script src="https://cdn.jsdelivr.net/npm/bejs/dist/be.min.js"></script>
+```
+
 ## Example
 ```javascript
 const be = require('bejs');
@@ -33,19 +50,7 @@ be.all.boolean([true, false, true]);
 be.any.boolean(true, false, 1);
 ```
 
-### Browser
-#### Local
-```html
-<script src="node_modules/bejs/dist/be.min.js"></script>
-```
-#### CDN unpkg
-```html
-<script src="https://unpkg.com/bejs/dist/be.min.js"></script>
-```
-#### CDN jsDeliver
-```html
-<script src="https://cdn.jsdelivr.net/npm/bejs/dist/be.min.js"></script>
-```
+
 
 ## Docs
 - [API](docs/be.md)
