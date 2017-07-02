@@ -16,12 +16,31 @@ npm install bejs --save
 ## Example
 ```javascript
 const be = require('bejs');
-console.log(be.boolean(0)) // false;
+
+// call a method
+be.boolean(true);
+
+// call interface "not"
+be.not.boolean(1);
+
+// call interface "all" and passing arguments
+be.all.boolean(true, false, true);
+
+// call interface "all" and passing array
+be.all.boolean([true, false, true]);
+
+// call interface "any" and passing arguments
+be.any.boolean(true, false, 1);
 ```
 
 ### Browser
+#### Local
 ```html
 <script src="node_modules/bejs/dist/be.min.js"></script>
+```
+#### CDN
+```html
+<script src="https://unpkg.com/bejs/dist/be.min.js"></script>
 ```
 
 ## Docs
