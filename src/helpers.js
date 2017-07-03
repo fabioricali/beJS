@@ -71,22 +71,4 @@ Helpers.getEditDistance = (a, b) => {
     return matrix[b.length][a.length];
 };
 
-/**
- * Returns the sign of a number, indicating whether the number is positive, negative or zero.
- * @param x {number} number
- * @returns {number}
- */
-Helpers.mathSign = function(x) {
-    // If x is NaN, the result is NaN.
-    // If x is -0, the result is -0.
-    // If x is +0, the result is +0.
-    // If x is negative and not -0, the result is -1.
-    // If x is positive and not +0, the result is +1.
-    x = +x; // convert to a number
-    if (x === 0 || isNaN(x)) {
-        return Number(x);
-    }
-    return x > 0 ? 1 : -1;
-};
-
 module.exports = Helpers;

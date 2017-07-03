@@ -475,6 +475,36 @@ Types.truthy = function (value) {
     return !Types.falsy(value);
 };
 
+/**
+ * Check if is an error object
+ *
+ * **Interfaces**: `all`, `any`, `not`
+ *
+ * @param value {Mixed} value
+ * @returns {boolean}
+ * @example
+ * be.error(new Error('my error')) // true
+ * be.error({}) // false
+ */
+Types.error = function (value) {
+    return Types.classOf(value, 'error');
+};
+
+/**
+ * Check if is an arguments
+ *
+ * **Interfaces**: `all`, `any`, `not`
+ *
+ * @param value {Mixed} value
+ * @returns {boolean}
+ * @example
+ * be.argument(arguments) // true
+ * be.argument({}) // false
+ */
+Types.argument = function (value) {
+    return Types.classOf(value, 'arguments') || Types.object(value) && 'callee' in value;
+};
+
 Types = Interface.create(Types);
 
 module.exports = Types;
@@ -590,14 +620,13 @@ module.exports = Helpers;
 
 var Types = __webpack_require__(1);
 var Interface = __webpack_require__(0);
-var Helpers = __webpack_require__(2);
 
 var Numbers = {};
 
 /**
  * Check if a number is integer
  *
- * * **Interfaces**: `all`, `any`, `not`
+ * **Interfaces**: `all`, `any`, `not`
  *
  * @param value {number} number
  * @returns {boolean}
@@ -613,7 +642,7 @@ Numbers.int = function (value) {
 /**
  * Check if is float number
  *
- * * **Interfaces**: `all`, `any`, `not`
+ * **Interfaces**: `all`, `any`, `not`
  *
  * @param value {number} number
  * @returns {boolean}
@@ -629,7 +658,7 @@ Numbers.float = function (value) {
 /**
  * Check if is NaN
  *
- * * **Interfaces**: `all`, `any`, `not`
+ * **Interfaces**: `all`, `any`, `not`
  *
  * @param value {number} number
  * @returns {boolean}
@@ -643,7 +672,7 @@ Numbers.nan = function (value) {
 /**
  * Check if is a even number
  *
- * * **Interfaces**: `all`, `any`, `not`
+ * **Interfaces**: `all`, `any`, `not`
  *
  * @param value {number} number
  * @returns {boolean}
@@ -658,7 +687,7 @@ Numbers.even = function (value) {
 /**
  * Check if is an odd number
  *
- * * **Interfaces**: `all`, `any`, `not`
+ * **Interfaces**: `all`, `any`, `not`
  *
  * @param value {number} number
  * @returns {boolean}
@@ -673,7 +702,7 @@ Numbers.odd = function (value) {
 /**
  * Check if is a positive number
  *
- * * **Interfaces**: `all`, `any`, `not`
+ * **Interfaces**: `all`, `any`, `not`
  *
  * @param value {number} number
  * @returns {boolean}
@@ -688,7 +717,7 @@ Numbers.positive = function (value) {
 /**
  * Check if is a negative number
  *
- * * **Interfaces**: `all`, `any`, `not`
+ * **Interfaces**: `all`, `any`, `not`
  *
  * @param value {number} number
  * @returns {boolean}
@@ -702,6 +731,9 @@ Numbers.negative = function (value) {
 
 /**
  * Check if is negative zero
+ *
+ * **Interfaces**: `all`, `any`, `not`
+ *
  * @param value {number} number
  * @returns {boolean}
  * @example
@@ -714,6 +746,9 @@ Numbers.negativeZero = function (value) {
 
 /**
  * Check if is negative zero
+ *
+ * **Interfaces**: `all`, `any`, `not`
+ *
  * @param value {number} number
  * @returns {boolean}
  * @example
@@ -727,7 +762,7 @@ Numbers.positiveZero = function (value) {
 /**
  * Check if number is infinity
  *
- * * **Interfaces**: `all`, `any`, `not`
+ * **Interfaces**: `all`, `any`, `not`
  *
  * @param value {number} number
  * @returns {boolean}
@@ -741,7 +776,7 @@ Numbers.infinity = function (value) {
 /**
  * Check if number is infinity positive
  *
- * * **Interfaces**: `all`, `any`, `not`
+ * **Interfaces**: `all`, `any`, `not`
  *
  * @param value {number} number
  * @returns {boolean}
@@ -756,7 +791,7 @@ Numbers.infinityPositive = function (value) {
 /**
  * Check if number is infinity positive
  *
- * * **Interfaces**: `all`, `any`, `not`
+ * **Interfaces**: `all`, `any`, `not`
  *
  * @param value {number} number
  * @returns {boolean}
@@ -771,7 +806,7 @@ Numbers.infinityNegative = function (value) {
 /**
  * Check if number is between min and max
  *
- * * **Interfaces**: `not`
+ * **Interfaces**: `not`
  *
  * @param num {number} number
  * @param min {number} number min
@@ -789,7 +824,7 @@ Numbers.between.multiple = false;
 /**
  * Checks if number is greater then an other
  *
- * * **Interfaces**: `not`
+ * **Interfaces**: `not`
  *
  * @param value {number} value to check
  * @param num {number} number target
@@ -807,7 +842,7 @@ Numbers.greater.multiple = false;
 /**
  * Checks if number is lesser then an other
  *
- * * **Interfaces**: `not`
+ * **Interfaces**: `not`
  *
  * @param value {number} value to check
  * @param num {number} number target
@@ -825,7 +860,7 @@ Numbers.lesser.multiple = false;
 /**
  * Checks if is a number as string or number type
  *
- * * **Interfaces**: `all`, `any`, `not`
+ * **Interfaces**: `all`, `any`, `not`
  *
  * @param value {number} number
  * @returns {boolean}
