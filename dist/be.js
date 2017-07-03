@@ -1,4 +1,4 @@
-// [AIV]  beJS Build version: 1.1.3  
+// [AIV]  beJS Build version: 1.2.0  
  var be =
 /******/ (function(modules) { // webpackBootstrap
 /******/ 	// The module cache
@@ -586,24 +586,6 @@ Helpers.getEditDistance = function (a, b) {
     return matrix[b.length][a.length];
 };
 
-/**
- * Returns the sign of a number, indicating whether the number is positive, negative or zero.
- * @param x {number} number
- * @returns {number}
- */
-Helpers.mathSign = function (x) {
-    // If x is NaN, the result is NaN.
-    // If x is -0, the result is -0.
-    // If x is +0, the result is +0.
-    // If x is negative and not -0, the result is -1.
-    // If x is positive and not +0, the result is +1.
-    x = +x; // convert to a number
-    if (x === 0 || isNaN(x)) {
-        return Number(x);
-    }
-    return x > 0 ? 1 : -1;
-};
-
 module.exports = Helpers;
 
 /***/ }),
@@ -948,7 +930,7 @@ module.exports = __webpack_require__(5);
 
 var Helpers = __webpack_require__(2);
 var Interface = __webpack_require__(0);
-var version = '1.1.3';
+var version = '1.2.0';
 
 /**
  * be class
@@ -2900,7 +2882,7 @@ module.exports = DOM;
 
 module.exports = {
 	"name": "bejs",
-	"version": "1.1.3",
+	"version": "1.2.0",
 	"description": "Simple, light-weight assertions framework for javascript",
 	"main": "index.js",
 	"scripts": {

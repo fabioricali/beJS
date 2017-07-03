@@ -40,17 +40,6 @@ Distance between the two given strings
 **Returns**: `*`
 
 
-### helpers.mathSign(x) 
-
-Returns the sign of a number, indicating whether the number is positive, negative or zero.
-
-**Parameters**
-
-**x**: `number`, number
-
-**Returns**: `number`
-
-
 
 * * *
 

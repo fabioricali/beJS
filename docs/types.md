@@ -298,6 +298,38 @@ be.truthy('hello') // truebe.truthy({}) // truebe.truthy([]) // truebe.truthy
 ```
 
 
+### be.error(value) 
+
+Check if is an error object**Interfaces**: `all`, `any`, `not`
+
+**Parameters**
+
+**value**: `Mixed`, value
+
+**Returns**: `boolean`
+
+**Example**:
+```js
+be.error(new Error('my error')) // truebe.error({}) // false
+```
+
+
+### be.argument(value) 
+
+Check if is an arguments**Interfaces**: `all`, `any`, `not`
+
+**Parameters**
+
+**value**: `Mixed`, value
+
+**Returns**: `boolean`
+
+**Example**:
+```js
+be.argument(arguments) // truebe.argument({}) // false
+```
+
+
 
 * * *
 

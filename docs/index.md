@@ -22,6 +22,11 @@ Check if is Android device**Interfaces**: `not` (in [..\src\asserts\envs.js](.
 
 
 
+###[argument](types.md):
+Check if is an arguments**Interfaces**: `all`, `any`, `not` (in [..\src\asserts\types.js](..\src\asserts\types.js))
+
+
+
 ###[array](types.md):
 Check if is an array**Interfaces**: `all`, `any`, `not` (in [..\src\asserts\types.js](..\src\asserts\types.js))
 
@@ -33,7 +38,7 @@ Check if is base64 encoded string**Interfaces**: `all`, `any`, `not` (in [..\s
 
 
 ###[between](numbers.md):
-Check if number is between min and max* **Interfaces**: `not` (in [..\src\asserts\numbers.js](..\src\asserts\numbers.js))
+Check if number is between min and max**Interfaces**: `not` (in [..\src\asserts\numbers.js](..\src\asserts\numbers.js))
 
 
 
@@ -167,8 +172,13 @@ Checks if equal**Interfaces**: `not` (in [..\src\asserts\mixed.js](..\src\asse
 
 
 
+###[error](types.md):
+Check if is an error object**Interfaces**: `all`, `any`, `not` (in [..\src\asserts\types.js](..\src\asserts\types.js))
+
+
+
 ###[even](numbers.md):
-Check if is a even number* **Interfaces**: `all`, `any`, `not` (in [..\src\asserts\numbers.js](..\src\asserts\numbers.js))
+Check if is a even number**Interfaces**: `all`, `any`, `not` (in [..\src\asserts\numbers.js](..\src\asserts\numbers.js))
 
 
 
@@ -188,7 +198,7 @@ Check if is an IT fiscal code**Interfaces**: `all`, `any`, `not` (in [..\src\a
 
 
 ###[float](numbers.md):
-Check if is float number* **Interfaces**: `all`, `any`, `not` (in [..\src\asserts\numbers.js](..\src\asserts\numbers.js))
+Check if is float number**Interfaces**: `all`, `any`, `not` (in [..\src\asserts\numbers.js](..\src\asserts\numbers.js))
 
 
 
@@ -228,7 +238,7 @@ Get version of framework (in [..\src\be.js](..\src\be.js))
 
 
 ###[greater](numbers.md):
-Checks if number is greater then an other* **Interfaces**: `not` (in [..\src\asserts\numbers.js](..\src\asserts\numbers.js))
+Checks if number is greater then an other**Interfaces**: `not` (in [..\src\asserts\numbers.js](..\src\asserts\numbers.js))
 
 
 
@@ -263,22 +273,22 @@ Check if an element is in the array**Interfaces**: `not` (in [..\src\asserts\a
 
 
 ###[infinity](numbers.md):
-Check if number is infinity* **Interfaces**: `all`, `any`, `not` (in [..\src\asserts\numbers.js](..\src\asserts\numbers.js))
+Check if number is infinity**Interfaces**: `all`, `any`, `not` (in [..\src\asserts\numbers.js](..\src\asserts\numbers.js))
 
 
 
 ###[infinityNegative](numbers.md):
-Check if number is infinity positive* **Interfaces**: `all`, `any`, `not` (in [..\src\asserts\numbers.js](..\src\asserts\numbers.js))
+Check if number is infinity positive**Interfaces**: `all`, `any`, `not` (in [..\src\asserts\numbers.js](..\src\asserts\numbers.js))
 
 
 
 ###[infinityPositive](numbers.md):
-Check if number is infinity positive* **Interfaces**: `all`, `any`, `not` (in [..\src\asserts\numbers.js](..\src\asserts\numbers.js))
+Check if number is infinity positive**Interfaces**: `all`, `any`, `not` (in [..\src\asserts\numbers.js](..\src\asserts\numbers.js))
 
 
 
 ###[int](numbers.md):
-Check if a number is integer* **Interfaces**: `all`, `any`, `not` (in [..\src\asserts\numbers.js](..\src\asserts\numbers.js))
+Check if a number is integer**Interfaces**: `all`, `any`, `not` (in [..\src\asserts\numbers.js](..\src\asserts\numbers.js))
 
 
 
@@ -333,7 +343,7 @@ Check if is leap year**Interfaces**: `all`, `any`, `not` (in [..\src\asserts\d
 
 
 ###[lesser](numbers.md):
-Checks if number is lesser then an other* **Interfaces**: `not` (in [..\src\asserts\numbers.js](..\src\asserts\numbers.js))
+Checks if number is lesser then an other**Interfaces**: `not` (in [..\src\asserts\numbers.js](..\src\asserts\numbers.js))
 
 
 
@@ -357,11 +367,6 @@ Check if is a valid Mastercard credit card**Interfaces**: `all`, `any`, `not` 
 
 
 
-###[mathSign](helpers.md):
-Returns the sign of a number, indicating whether the number is positive, negative or zero. (in [..\src\helpers.js](..\src\helpers.js))
-
-
-
 ###[md5](hashes.md):
 Check if is a valid MD5 hash string**Interfaces**: `all`, `any`, `not` (in [..\src\asserts\hashes.js](..\src\asserts\hashes.js))
 
@@ -373,7 +378,7 @@ Check if date is month specified**Interfaces**: `not` (in [..\src\asserts\date
 
 
 ###[nan](numbers.md):
-Check if is NaN* **Interfaces**: `all`, `any`, `not` (in [..\src\asserts\numbers.js](..\src\asserts\numbers.js))
+Check if is NaN**Interfaces**: `all`, `any`, `not` (in [..\src\asserts\numbers.js](..\src\asserts\numbers.js))
 
 
 
@@ -383,12 +388,12 @@ Check if exists navigator object**Interfaces**: `not` (in [..\src\asserts\envs
 
 
 ###[negative](numbers.md):
-Check if is a negative number* **Interfaces**: `all`, `any`, `not` (in [..\src\asserts\numbers.js](..\src\asserts\numbers.js))
+Check if is a negative number**Interfaces**: `all`, `any`, `not` (in [..\src\asserts\numbers.js](..\src\asserts\numbers.js))
 
 
 
 ###[negativeZero](numbers.md):
-Check if is negative zero (in [..\src\asserts\numbers.js](..\src\asserts\numbers.js))
+Check if is negative zero**Interfaces**: `all`, `any`, `not` (in [..\src\asserts\numbers.js](..\src\asserts\numbers.js))
 
 
 
@@ -408,7 +413,7 @@ Check if number is in week, between 0 and 6 (in [..\src\asserts\dates.js](..\src
 
 
 ###[numeric](numbers.md):
-Checks if is a number as string or number type* **Interfaces**: `all`, `any`, `not` (in [..\src\asserts\numbers.js](..\src\asserts\numbers.js))
+Checks if is a number as string or number type**Interfaces**: `all`, `any`, `not` (in [..\src\asserts\numbers.js](..\src\asserts\numbers.js))
 
 
 
@@ -423,7 +428,7 @@ Convert object to string (in [..\src\helpers.js](..\src\helpers.js))
 
 
 ###[odd](numbers.md):
-Check if is an odd number* **Interfaces**: `all`, `any`, `not` (in [..\src\asserts\numbers.js](..\src\asserts\numbers.js))
+Check if is an odd number**Interfaces**: `all`, `any`, `not` (in [..\src\asserts\numbers.js](..\src\asserts\numbers.js))
 
 
 
@@ -443,12 +448,12 @@ Check if date is past**Interfaces**: `all`, `any`, `not` (in [..\src\asserts\d
 
 
 ###[positive](numbers.md):
-Check if is a positive number* **Interfaces**: `all`, `any`, `not` (in [..\src\asserts\numbers.js](..\src\asserts\numbers.js))
+Check if is a positive number**Interfaces**: `all`, `any`, `not` (in [..\src\asserts\numbers.js](..\src\asserts\numbers.js))
 
 
 
 ###[positiveZero](numbers.md):
-Check if is negative zero (in [..\src\asserts\numbers.js](..\src\asserts\numbers.js))
+Check if is negative zero**Interfaces**: `all`, `any`, `not` (in [..\src\asserts\numbers.js](..\src\asserts\numbers.js))
 
 
 
