@@ -392,6 +392,11 @@ Check if is valid number**Interfaces**: `all`, `any`, `not` (in [..\src\assert
 
 
 
+###[numberInWeek](dates.md):
+Check if number is in week, between 0 and 6 (in [..\src\asserts\dates.js](..\src\asserts\dates.js))
+
+
+
 ###[numeric](numbers.md):
 Checks if is a number as string or number type* **Interfaces**: `all`, `any`, `not` (in [..\src\asserts\numbers.js](..\src\asserts\numbers.js))
 

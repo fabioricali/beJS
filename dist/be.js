@@ -1,4 +1,4 @@
-// [AIV]  beJS Build version: 1.0.20  
+// [AIV]  beJS Build version: 1.1.0  
  var be =
 /******/ (function(modules) { // webpackBootstrap
 /******/ 	// The module cache
@@ -870,7 +870,7 @@ module.exports = __webpack_require__(5);
 
 var Helpers = __webpack_require__(2);
 var Interface = __webpack_require__(0);
-var version = '1.0.20';
+var version = '1.1.0';
 
 /**
  * be class
@@ -2319,6 +2319,19 @@ Dates.weekday = function (date) {
 };
 
 /**
+ * Check if number is in week, between 0 and 6
+ * @param number {number} number
+ * @returns {boolean}
+ * @example
+ * be.numberInWeek(0) // true, is sunday
+ * be.numberInWeek(1) // true, is monday
+ * be.numberInWeek(7) // false, the days are between 0 and 6
+ */
+Dates.numberInWeek = function (number) {
+    return Types.number(number) && Numbers.between(number, 0, 6);
+};
+
+/**
  * Check if date is between start date and end date
  *
  * **Interfaces**: `not`
@@ -2809,7 +2822,7 @@ module.exports = DOM;
 
 module.exports = {
 	"name": "bejs",
-	"version": "1.0.20",
+	"version": "1.1.0",
 	"description": "Simple, light-weight assertions framework for javascript",
 	"main": "index.js",
 	"scripts": {

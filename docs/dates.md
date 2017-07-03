@@ -220,6 +220,22 @@ be.weekday(new Date('2017-06-26')) // truebe.not.weekday(new Date('2017-06-24')
 ```
 
 
+### be.numberInWeek(number) 
+
+Check if number is in week, between 0 and 6
+
+**Parameters**
+
+**number**: `number`, number
+
+**Returns**: `boolean`
+
+**Example**:
+```js
+be.numberInWeek(0) // true, is sundaybe.numberInWeek(1) // true, is mondaybe.numberInWeek(7) // false, the days are between 0 and 6
+```
+
+
 ### be.dateBetween(date, startDate, endDate) 
 
 Check if date is between start date and end date**Interfaces**: `not`
