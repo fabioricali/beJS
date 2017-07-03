@@ -121,6 +121,12 @@ describe('positive', function () {
         assert.equal(result, false);
     });
 
+    it('-0 number, should be return false', function () {
+        var result = be.positive(-0);
+        console.log(result);
+        assert.equal(result, false);
+    });
+
     it('undefined number, should be return false', function () {
         var result = be.positive();
         console.log(result);
