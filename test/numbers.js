@@ -115,10 +115,16 @@ describe('positive', function () {
         assert.equal(result, false);
     });
 
-    it('0 number, should be return false', function () {
+    it('0 number, should be return true', function () {
         var result = be.positive(0);
         console.log(result);
-        assert.equal(result, false);
+        assert.equal(result, true);
+    });
+
+    it('+0 number, should be return true', function () {
+        var result = be.positive(+0);
+        console.log(result);
+        assert.equal(result, true);
     });
 
     it('-0 number, should be return false', function () {
@@ -151,6 +157,24 @@ describe('negative', function () {
         var result = be.negative(0);
         console.log(result);
         assert.equal(result, false);
+    });
+
+    it('-0 number, should be return true', function () {
+        var result = be.negative(-0);
+        console.log(result);
+        assert.equal(result, true);
+    });
+
+    it('+0 number, should be return false', function () {
+        var result = be.negative(+0);
+        console.log(result);
+        assert.equal(result, false);
+    });
+
+    it('-5 number, should be return true', function () {
+        var result = be.negative(-5);
+        console.log(result);
+        assert.equal(result, true);
     });
 
     it('undefined number, should be return false', function () {

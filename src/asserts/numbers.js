@@ -5,6 +5,7 @@
 
 const Types = require('./types');
 const Interface = require('../interface');
+const Helpers = require('../helpers');
 
 let Numbers = {};
 
@@ -98,7 +99,7 @@ Numbers.odd = (value) => {
  * be.positive(-3) // false
  */
 Numbers.positive = (value) => {
-    return Types.number(value) && value > 0;
+    return Types.number(value) && (value > 0 || (value === 0 && 1 / value === Infinity));
 };
 
 /**
@@ -113,7 +114,7 @@ Numbers.positive = (value) => {
  * be.negative(2) // false
  */
 Numbers.negative = (value) => {
-    return Types.number(value) && value < 0;
+    return Types.number(value) && (value < 0 || (value === 0 && 1 / value === -Infinity));
 };
 
 /**
