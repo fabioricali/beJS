@@ -73,4 +73,5 @@ beJS is open-sourced software licensed under the [MIT license](http://opensource
 
 ## Author
 [Fabio Ricali](http://rica.li)
+
 [Davide Polano](https://www.mdslab.org)
