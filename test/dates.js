@@ -363,3 +363,21 @@ describe('timeString', function () {
         assert.equal(result, false);
     });
 });
+
+describe('numberInWeek', function () {
+    it('0, should be return true', function () {
+        var result = be.numberInWeek(0);
+        console.log(result);
+        assert.equal(result, true);
+    });
+    it('1, should be return true', function () {
+        var result = be.numberInWeek(1);
+        console.log(result);
+        assert.equal(result, true);
+    });
+    it('7, should be return false', function () {
+        var result = be.numberInWeek(7);
+        console.log(result);
+        assert.equal(result, false);
+    });
+});

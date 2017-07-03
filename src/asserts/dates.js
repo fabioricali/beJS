@@ -263,6 +263,19 @@ Dates.weekday = (date) => {
 };
 
 /**
+ * Check if number is in week, between 0 and 6
+ * @param number {number} number
+ * @returns {boolean}
+ * @example
+ * be.numberInWeek(0) // true, is sunday
+ * be.numberInWeek(1) // true, is monday
+ * be.numberInWeek(7) // false, the days are between 0 and 6
+ */
+Dates.numberInWeek = (number) => {
+    return Types.number(number) && Numbers.between(number, 0, 6);
+};
+
+/**
  * Check if date is between start date and end date
  *
  * **Interfaces**: `not`
