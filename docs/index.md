@@ -357,6 +357,11 @@ Check if is a valid Mastercard credit card**Interfaces**: `all`, `any`, `not` 
 
 
 
+###[mathSign](helpers.md):
+Returns the sign of a number, indicating whether the number is positive, negative or zero. (in [..\src\helpers.js](..\src\helpers.js))
+
+
+
 ###[md5](hashes.md):
 Check if is a valid MD5 hash string**Interfaces**: `all`, `any`, `not` (in [..\src\asserts\hashes.js](..\src\asserts\hashes.js))
 
