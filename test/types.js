@@ -471,3 +471,19 @@ describe('error', function () {
         assert.equal(result, false);
     });
 });
+
+describe('argument', function () {
+    it('should be return true', function () {
+        function arg() {
+            var result = be.argument(arguments);
+            console.log(result);
+            assert.equal(result, true);
+        }
+        arg('hello');
+    });
+    it('should be return false', function () {
+        var result = be.argument({});
+        console.log(result);
+        assert.equal(result, false);
+    });
+});

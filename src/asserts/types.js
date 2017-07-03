@@ -334,6 +334,21 @@ Types.error = (value) => {
     return Types.classOf(value, 'error');
 };
 
+/**
+ * Check if is an arguments
+ *
+ * **Interfaces**: `all`, `any`, `not`
+ *
+ * @param value {Mixed} value
+ * @returns {boolean}
+ * @example
+ * be.argument(arguments) // true
+ * be.argument({}) // false
+ */
+Types.argument = (value) => {
+    return Types.classOf(value, 'arguments') || (Types.object(value) && 'callee' in value);
+};
+
 Types = Interface.create(Types);
 
 module.exports = Types;
