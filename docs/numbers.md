@@ -118,6 +118,38 @@ be.negative(-2) // truebe.negative(2) // false
 ```
 
 
+### be.negativeZero(value) 
+
+Check if is negative zero
+
+**Parameters**
+
+**value**: `number`, number
+
+**Returns**: `boolean`
+
+**Example**:
+```js
+be.negativeZero(-0) // truebe.negativeZero(0) // false
+```
+
+
+### be.positiveZero(value) 
+
+Check if is negative zero
+
+**Parameters**
+
+**value**: `number`, number
+
+**Returns**: `boolean`
+
+**Example**:
+```js
+be.positiveZero(+0) // truebe.positiveZero(0) // true
+```
+
+
 ### be.infinity(value) 
 
 Check if number is infinity* **Interfaces**: `all`, `any`, `not`

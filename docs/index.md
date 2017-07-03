@@ -387,6 +387,11 @@ Check if is a negative number* **Interfaces**: `all`, `any`, `not` (in [..\src
 
 
 
+###[negativeZero](numbers.md):
+Check if is negative zero (in [..\src\asserts\numbers.js](..\src\asserts\numbers.js))
+
+
+
 ###[null](types.md):
 Check if is null**Interfaces**: `all`, `any`, `not` (in [..\src\asserts\types.js](..\src\asserts\types.js))
 
@@ -439,6 +444,11 @@ Check if date is past**Interfaces**: `all`, `any`, `not` (in [..\src\asserts\d
 
 ###[positive](numbers.md):
 Check if is a positive number* **Interfaces**: `all`, `any`, `not` (in [..\src\asserts\numbers.js](..\src\asserts\numbers.js))
+
+
+
+###[positiveZero](numbers.md):
+Check if is negative zero (in [..\src\asserts\numbers.js](..\src\asserts\numbers.js))
 
 
 

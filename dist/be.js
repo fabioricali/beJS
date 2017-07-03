@@ -1,4 +1,4 @@
-// [AIV]  beJS Build version: 1.1.2  
+// [AIV]  beJS Build version: 1.1.3  
  var be =
 /******/ (function(modules) { // webpackBootstrap
 /******/ 	// The module cache
@@ -682,7 +682,7 @@ Numbers.odd = function (value) {
  * be.positive(-3) // false
  */
 Numbers.positive = function (value) {
-  return Types.number(value) && (value > 0 || value === 0 && 1 / value === Infinity);
+  return Types.number(value) && (value > 0 || Numbers.positiveZero(value));
 };
 
 /**
@@ -697,7 +697,31 @@ Numbers.positive = function (value) {
  * be.negative(2) // false
  */
 Numbers.negative = function (value) {
-  return Types.number(value) && (value < 0 || value === 0 && 1 / value === -Infinity);
+  return Types.number(value) && (value < 0 || Numbers.negativeZero(value));
+};
+
+/**
+ * Check if is negative zero
+ * @param value {number} number
+ * @returns {boolean}
+ * @example
+ * be.negativeZero(-0) // true
+ * be.negativeZero(0) // false
+ */
+Numbers.negativeZero = function (value) {
+  return Types.number(value) && value === 0 && 1 / value === Number.NEGATIVE_INFINITY;
+};
+
+/**
+ * Check if is negative zero
+ * @param value {number} number
+ * @returns {boolean}
+ * @example
+ * be.positiveZero(+0) // true
+ * be.positiveZero(0) // true
+ */
+Numbers.positiveZero = function (value) {
+  return Types.number(value) && value === 0 && 1 / value === Number.POSITIVE_INFINITY;
 };
 
 /**
@@ -889,7 +913,7 @@ module.exports = __webpack_require__(5);
 
 var Helpers = __webpack_require__(2);
 var Interface = __webpack_require__(0);
-var version = '1.1.2';
+var version = '1.1.3';
 
 /**
  * be class
@@ -2841,7 +2865,7 @@ module.exports = DOM;
 
 module.exports = {
 	"name": "bejs",
-	"version": "1.1.2",
+	"version": "1.1.3",
 	"description": "Simple, light-weight assertions framework for javascript",
 	"main": "index.js",
 	"scripts": {
