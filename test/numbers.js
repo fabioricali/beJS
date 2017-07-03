@@ -319,3 +319,34 @@ describe('numeric', function () {
         assert.equal(result, false);
     });
 });
+
+describe('negativeZero', function () {
+    it('-0, should be return true', function () {
+        var result = be.negativeZero(-0);
+        console.log(result);
+        assert.equal(result, true);
+    });
+    it('0, should be return false', function () {
+        var result = be.negativeZero(0);
+        console.log(result);
+        assert.equal(result, false);
+    });
+});
+
+describe('positiveZero', function () {
+    it('0, should be return true', function () {
+        var result = be.positiveZero(0);
+        console.log(result);
+        assert.equal(result, true);
+    });
+    it('+0, should be return true', function () {
+        var result = be.positiveZero(+0);
+        console.log(result);
+        assert.equal(result, true);
+    });
+    it('-0, should be return false', function () {
+        var result = be.positiveZero(-0);
+        console.log(result);
+        assert.equal(result, false);
+    });
+});

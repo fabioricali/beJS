@@ -99,7 +99,7 @@ Numbers.odd = (value) => {
  * be.positive(-3) // false
  */
 Numbers.positive = (value) => {
-    return Types.number(value) && (value > 0 || (value === 0 && 1 / value === Infinity));
+    return Types.number(value) && (value > 0 || Numbers.positiveZero(value));
 };
 
 /**
@@ -114,7 +114,31 @@ Numbers.positive = (value) => {
  * be.negative(2) // false
  */
 Numbers.negative = (value) => {
-    return Types.number(value) && (value < 0 || (value === 0 && 1 / value === -Infinity));
+    return Types.number(value) && (value < 0 || Numbers.negativeZero(value));
+};
+
+/**
+ * Check if is negative zero
+ * @param value {number} number
+ * @returns {boolean}
+ * @example
+ * be.negativeZero(-0) // true
+ * be.negativeZero(0) // false
+ */
+Numbers.negativeZero = (value) => {
+    return Types.number(value) && value === 0 && 1 / value === Number.NEGATIVE_INFINITY;
+};
+
+/**
+ * Check if is negative zero
+ * @param value {number} number
+ * @returns {boolean}
+ * @example
+ * be.positiveZero(+0) // true
+ * be.positiveZero(0) // true
+ */
+Numbers.positiveZero = (value) => {
+    return Types.number(value) && value === 0 && 1 / value === Number.POSITIVE_INFINITY;
 };
 
 /**
