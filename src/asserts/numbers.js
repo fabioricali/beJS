@@ -5,14 +5,13 @@
 
 const Types = require('./types');
 const Interface = require('../interface');
-const Helpers = require('../helpers');
 
 let Numbers = {};
 
 /**
  * Check if a number is integer
  *
- * * **Interfaces**: `all`, `any`, `not`
+ * **Interfaces**: `all`, `any`, `not`
  *
  * @param value {number} number
  * @returns {boolean}
@@ -30,7 +29,7 @@ Numbers.int = (value) => {
 /**
  * Check if is float number
  *
- * * **Interfaces**: `all`, `any`, `not`
+ * **Interfaces**: `all`, `any`, `not`
  *
  * @param value {number} number
  * @returns {boolean}
@@ -46,7 +45,7 @@ Numbers.float = (value) => {
 /**
  * Check if is NaN
  *
- * * **Interfaces**: `all`, `any`, `not`
+ * **Interfaces**: `all`, `any`, `not`
  *
  * @param value {number} number
  * @returns {boolean}
@@ -60,7 +59,7 @@ Numbers.nan = (value) => {
 /**
  * Check if is a even number
  *
- * * **Interfaces**: `all`, `any`, `not`
+ * **Interfaces**: `all`, `any`, `not`
  *
  * @param value {number} number
  * @returns {boolean}
@@ -75,7 +74,7 @@ Numbers.even = (value) => {
 /**
  * Check if is an odd number
  *
- * * **Interfaces**: `all`, `any`, `not`
+ * **Interfaces**: `all`, `any`, `not`
  *
  * @param value {number} number
  * @returns {boolean}
@@ -90,7 +89,7 @@ Numbers.odd = (value) => {
 /**
  * Check if is a positive number
  *
- * * **Interfaces**: `all`, `any`, `not`
+ * **Interfaces**: `all`, `any`, `not`
  *
  * @param value {number} number
  * @returns {boolean}
@@ -105,7 +104,7 @@ Numbers.positive = (value) => {
 /**
  * Check if is a negative number
  *
- * * **Interfaces**: `all`, `any`, `not`
+ * **Interfaces**: `all`, `any`, `not`
  *
  * @param value {number} number
  * @returns {boolean}
@@ -119,6 +118,9 @@ Numbers.negative = (value) => {
 
 /**
  * Check if is negative zero
+ *
+ * **Interfaces**: `all`, `any`, `not`
+ *
  * @param value {number} number
  * @returns {boolean}
  * @example
@@ -131,6 +133,9 @@ Numbers.negativeZero = (value) => {
 
 /**
  * Check if is negative zero
+ *
+ * **Interfaces**: `all`, `any`, `not`
+ *
  * @param value {number} number
  * @returns {boolean}
  * @example
@@ -144,7 +149,7 @@ Numbers.positiveZero = (value) => {
 /**
  * Check if number is infinity
  *
- * * **Interfaces**: `all`, `any`, `not`
+ * **Interfaces**: `all`, `any`, `not`
  *
  * @param value {number} number
  * @returns {boolean}
@@ -158,7 +163,7 @@ Numbers.infinity = (value) => {
 /**
  * Check if number is infinity positive
  *
- * * **Interfaces**: `all`, `any`, `not`
+ * **Interfaces**: `all`, `any`, `not`
  *
  * @param value {number} number
  * @returns {boolean}
@@ -173,7 +178,7 @@ Numbers.infinityPositive = (value) => {
 /**
  * Check if number is infinity positive
  *
- * * **Interfaces**: `all`, `any`, `not`
+ * **Interfaces**: `all`, `any`, `not`
  *
  * @param value {number} number
  * @returns {boolean}
@@ -188,7 +193,7 @@ Numbers.infinityNegative = (value) => {
 /**
  * Check if number is between min and max
  *
- * * **Interfaces**: `not`
+ * **Interfaces**: `not`
  *
  * @param num {number} number
  * @param min {number} number min
@@ -206,7 +211,7 @@ Numbers.between.multiple = false;
 /**
  * Checks if number is greater then an other
  *
- * * **Interfaces**: `not`
+ * **Interfaces**: `not`
  *
  * @param value {number} value to check
  * @param num {number} number target
@@ -224,7 +229,7 @@ Numbers.greater.multiple = false;
 /**
  * Checks if number is lesser then an other
  *
- * * **Interfaces**: `not`
+ * **Interfaces**: `not`
  *
  * @param value {number} value to check
  * @param num {number} number target
@@ -242,7 +247,7 @@ Numbers.lesser.multiple = false;
 /**
  * Checks if is a number as string or number type
  *
- * * **Interfaces**: `all`, `any`, `not`
+ * **Interfaces**: `all`, `any`, `not`
  *
  * @param value {number} number
  * @returns {boolean}
