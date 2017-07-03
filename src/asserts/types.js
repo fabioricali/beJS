@@ -319,6 +319,21 @@ Types.truthy = (value) => {
     return !Types.falsy(value);
 };
 
+/**
+ * Check if is an error object
+ *
+ * **Interfaces**: `all`, `any`, `not`
+ *
+ * @param value {Mixed} value
+ * @returns {boolean}
+ * @example
+ * be.error(new Error('my error')) // true
+ * be.error({}) // false
+ */
+Types.error = (value) => {
+    return Types.classOf(value, 'error');
+};
+
 Types = Interface.create(Types);
 
 module.exports = Types;

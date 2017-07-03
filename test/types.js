@@ -445,3 +445,29 @@ describe('truthy', function () {
         assert.equal(result, false);
     });
 });
+
+describe('classOf', function () {
+    it('should be return true', function () {
+        var result = be.classOf(new Error('an error'), 'error');
+        console.log(result);
+        assert.equal(result, true);
+    });
+    it('should be return false', function () {
+        var result = be.classOf(new Error('an error'), 'object');
+        console.log(result);
+        assert.equal(result, false);
+    });
+});
+
+describe('error', function () {
+    it('should be return true', function () {
+        var result = be.error(new Error('an error'));
+        console.log(result);
+        assert.equal(result, true);
+    });
+    it('should be return false', function () {
+        var result = be.error({});
+        console.log(result);
+        assert.equal(result, false);
+    });
+});
