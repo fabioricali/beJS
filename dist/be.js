@@ -596,6 +596,24 @@ Types.buffer = function (value) {
     return value instanceof Buffer;
 };
 
+/**
+ * Check if is iterable
+ *
+ * **Interfaces**: `all`, `any`, `not`
+ *
+ * @function
+ * @name iterable
+ * @param value {Mixed} value
+ * @returns {boolean}
+ * @example
+ * be.iterable([1, 2, 3]) // true
+ * be.iterable('hello') // true
+ * be.iterable({a: 1}) // false
+ */
+Types.iterable = function (value) {
+    return Types.function(value[Symbol.iterator]);
+};
+
 Types = Interface.create(Types);
 
 module.exports = Types;

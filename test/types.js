@@ -5,6 +5,10 @@ if(typeof process === 'object') {
     var assert = require('assert');
     var be = require('../index');
 }
+var skip;
+beforeEach(function() {
+    skip = typeof Buffer === 'undefined';
+});
 
 describe('boolean', function () {
     it('boolean value, should be return true', function () {
@@ -531,9 +535,11 @@ describe('promise', function () {
     });
 });
 
-if(Buffer)
-    describe('buffer', function () {
+describe('buffer', function () {
+
         it('should be return true', function () {
+
+            if(skip) return;
 
             var b = new Buffer('hello');
 
@@ -542,11 +548,13 @@ if(Buffer)
             assert.equal(result, true);
         });
         it('should be return false', function () {
+            if(skip) return;
+
             var result = be.buffer('hello');
             console.log(result);
             assert.equal(result, false);
         });
-    });
+});
 
 describe('iterable', function () {
     it('array should be return true', function () {
