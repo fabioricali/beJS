@@ -55,6 +55,7 @@ Types.boolean = (value) => {
  *
  * @function
  * @name booleanFalse
+ * @alias false
  * @param value {Mixed} value
  * @returns {boolean}
  * @example
@@ -62,6 +63,23 @@ Types.boolean = (value) => {
  * be.booleanFalse(true) // false
  */
 Types.booleanFalse = (value) => {
+    return Types.false(value);
+};
+
+/**
+ * Check if is false boolean type
+ *
+ * **Interfaces**: `all`, `any`, `not`
+ *
+ * @function
+ * @name false
+ * @param value {Mixed} value
+ * @returns {boolean}
+ * @example
+ * be.booleanFalse(false) // true
+ * be.booleanFalse(true) // false
+ */
+Types.false = (value) => {
     return Types.boolean(value) && value === false;
 };
 
@@ -72,6 +90,7 @@ Types.booleanFalse = (value) => {
  *
  * @function
  * @name booleanTrue
+ * @alias true
  * @param value {Mixed} value
  * @returns {boolean}
  * @example
@@ -79,6 +98,23 @@ Types.booleanFalse = (value) => {
  * be.booleanTrue(false) // false
  */
 Types.booleanTrue = (value) => {
+    return Types.true(value);
+};
+
+/**
+ * Check if is true boolean type
+ *
+ * **Interfaces**: `all`, `any`, `not`
+ *
+ * @function
+ * @name true
+ * @param value {Mixed} value
+ * @returns {boolean}
+ * @example
+ * be.booleanTrue(true) // true
+ * be.booleanTrue(false) // false
+ */
+Types.true = (value) => {
     return Types.boolean(value) && value === true;
 };
 

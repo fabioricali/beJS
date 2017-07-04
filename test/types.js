@@ -284,8 +284,44 @@ describe('booleanTrue', function () {
         console.log(result);
         assert.equal(result, true);
     });
+    it('all arguments, should be return true', function () {
+        var result = be.all.booleanTrue(true, true, true, true);
+        console.log(result);
+        assert.equal(result, true);
+    });
+    it('all, array, should be return true', function () {
+        var result = be.all.booleanTrue([true, true, true, true]);
+        console.log(result);
+        assert.equal(result, true);
+    });
     it('should be return false', function () {
         var result = be.booleanTrue(false);
+        console.log(result);
+        assert.equal(result, false);
+    });
+});
+
+describe('false', function () {
+    it('should be return true', function () {
+        var result = be.false(false);
+        console.log(result);
+        assert.equal(result, true);
+    });
+    it('should be return false', function () {
+        var result = be.false(true);
+        console.log(result);
+        assert.equal(result, false);
+    });
+});
+
+describe('true', function () {
+    it('should be return true', function () {
+        var result = be.true(true);
+        console.log(result);
+        assert.equal(result, true);
+    });
+    it('should be return false', function () {
+        var result = be.true(false);
         console.log(result);
         assert.equal(result, false);
     });
