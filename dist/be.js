@@ -1,4 +1,4 @@
-// [AIV]  beJS Build version: 1.2.1  
+// [AIV]  beJS Build version: 1.3.0  
  var be =
 /******/ (function(modules) { // webpackBootstrap
 /******/ 	// The module cache
@@ -215,6 +215,7 @@ Types.boolean = function (value) {
  *
  * @function
  * @name booleanFalse
+ * @alias false
  * @param value {Mixed} value
  * @returns {boolean}
  * @example
@@ -222,6 +223,23 @@ Types.boolean = function (value) {
  * be.booleanFalse(true) // false
  */
 Types.booleanFalse = function (value) {
+    return Types.false(value);
+};
+
+/**
+ * Check if is false boolean type
+ *
+ * **Interfaces**: `all`, `any`, `not`
+ *
+ * @function
+ * @name false
+ * @param value {Mixed} value
+ * @returns {boolean}
+ * @example
+ * be.booleanFalse(false) // true
+ * be.booleanFalse(true) // false
+ */
+Types.false = function (value) {
     return Types.boolean(value) && value === false;
 };
 
@@ -232,6 +250,7 @@ Types.booleanFalse = function (value) {
  *
  * @function
  * @name booleanTrue
+ * @alias true
  * @param value {Mixed} value
  * @returns {boolean}
  * @example
@@ -239,6 +258,23 @@ Types.booleanFalse = function (value) {
  * be.booleanTrue(false) // false
  */
 Types.booleanTrue = function (value) {
+    return Types.true(value);
+};
+
+/**
+ * Check if is true boolean type
+ *
+ * **Interfaces**: `all`, `any`, `not`
+ *
+ * @function
+ * @name true
+ * @param value {Mixed} value
+ * @returns {boolean}
+ * @example
+ * be.booleanTrue(true) // true
+ * be.booleanTrue(false) // false
+ */
+Types.true = function (value) {
     return Types.boolean(value) && value === true;
 };
 
@@ -1072,7 +1108,7 @@ module.exports = __webpack_require__(5);
 
 var Helpers = __webpack_require__(2);
 var Interface = __webpack_require__(0);
-var version = '1.2.1';
+var version = '1.3.0';
 
 /**
  * be class
@@ -1549,12 +1585,12 @@ exports.INSPECT_MAX_BYTES = 50;
  * We detect these buggy browsers and set `Buffer.TYPED_ARRAY_SUPPORT` to `false` so they
  * get the Object implementation, which is slower but behaves correctly.
  */
-Buffer.TYPED_ARRAY_SUPPORT = global.TYPED_ARRAY_SUPPORT !== undefined ? global.TYPED_ARRAY_SUPPORT : typedArraySupport();
+Buffer.TYPED_ARRAY_SUPPORT = global.TYPED_ARRAY_SUPPORT !== undefined ? global.TYPED_ARRAY_SUPPORT : typedArraySupport
 
 /*
  * Export kMaxLength after typed array support is determined.
  */
-exports.kMaxLength = kMaxLength();
+();exports.kMaxLength = kMaxLength();
 
 function typedArraySupport() {
   try {
@@ -2488,7 +2524,8 @@ var MAX_ARGUMENTS_LENGTH = 0x1000;
 function decodeCodePointsArray(codePoints) {
   var len = codePoints.length;
   if (len <= MAX_ARGUMENTS_LENGTH) {
-    return String.fromCharCode.apply(String, codePoints); // avoid extra slice()
+    return String.fromCharCode.apply(String, codePoints // avoid extra slice()
+    );
   }
 
   // Decode in chunks to avoid "call stack size exceeded".
@@ -3116,9 +3153,9 @@ var INVALID_BASE64_RE = /[^+\/0-9A-Za-z-_]/g;
 
 function base64clean(str) {
   // Node strips out invalid characters like \n and \t from the string, base64-js does not
-  str = stringtrim(str).replace(INVALID_BASE64_RE, '');
+  str = stringtrim(str).replace(INVALID_BASE64_RE, ''
   // Node converts strings with length < 2 to ''
-  if (str.length < 2) return '';
+  );if (str.length < 2) return '';
   // Node allows for non-padded base64 strings (missing trailing ===), base64-js does not
   while (str.length % 4 !== 0) {
     str = str + '=';
@@ -3144,10 +3181,10 @@ function utf8ToBytes(string, units) {
   var bytes = [];
 
   for (var i = 0; i < length; ++i) {
-    codePoint = string.charCodeAt(i);
+    codePoint = string.charCodeAt(i
 
     // is surrogate component
-    if (codePoint > 0xD7FF && codePoint < 0xE000) {
+    );if (codePoint > 0xD7FF && codePoint < 0xE000) {
       // last char was a lead
       if (!leadSurrogate) {
         // no lead yet
@@ -4391,7 +4428,7 @@ Arrays.arrayOfStrings = function (value) {
  * @param value {array} array
  * @returns {*|boolean}
  * @example
- * be.arrayOfObjects({a:1},{b:2}) // true
+ * be.arrayOfObjects([{a:1},{b:2}]) // true
  * be.all.arrayOfObjects([
  *      {a: 1},
  *      {b: 2},
@@ -4400,6 +4437,27 @@ Arrays.arrayOfStrings = function (value) {
  */
 Arrays.arrayOfObjects = function (value) {
   return Types.all.object(value);
+};
+
+/**
+ * Check if is an array of booleans
+ *
+ * **Interfaces**: `all`, `any`, `not`
+ *
+ * @function
+ * @name arrayOfBooleans
+ * @param value {array} array
+ * @returns {*|boolean}
+ * @example
+ * be.arrayOfBooleans([true, false]) // true
+ * be.all.arrayOfBooleans([
+ *      true,
+ *      false,
+ *      [1, 2, 3]
+ * ]) // false
+ */
+Arrays.arrayOfBooleans = function (value) {
+  return Types.all.boolean(value);
 };
 
 Arrays = Interface.create(Arrays);
@@ -5228,7 +5286,7 @@ module.exports = DOM;
 
 module.exports = {
 	"name": "bejs",
-	"version": "1.2.1",
+	"version": "1.3.0",
 	"description": "Simple, light-weight assertions framework for javascript",
 	"main": "index.js",
 	"scripts": {
