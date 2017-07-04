@@ -50,6 +50,9 @@ be.all.boolean([true, false, true]);
 be.any.boolean(true, false, 1);
 ```
 
+## Documentation
+See [https://be.js.org](https://be.js.org/)
+
 ## License
 beJS is open-sourced software licensed under the [MIT license](http://opensource.org/licenses/MIT)
 
