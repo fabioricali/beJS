@@ -32,6 +32,16 @@ Check if is an array**Interfaces**: `all`, `any`, `not` (in [..\src\asserts\ty
 
 
 
+###[arrayOfObjects](arrays.md):
+Check if is an array of objects**Interfaces**: `all`, `any`, `not` (in [..\src\asserts\arrays.js](..\src\asserts\arrays.js))
+
+
+
+###[arrayOfStrings](arrays.md):
+Check if is an array of strings**Interfaces**: `all`, `any`, `not` (in [..\src\asserts\arrays.js](..\src\asserts\arrays.js))
+
+
+
 ###[base64](mixed.md):
 Check if is base64 encoded string**Interfaces**: `all`, `any`, `not` (in [..\src\asserts\mixed.js](..\src\asserts\mixed.js))
 

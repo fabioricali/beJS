@@ -116,6 +116,9 @@ Interface.create = function (obj) {
 
                     var args = params;
                     if (Interface._isArray(args[0])) args = args[0];
+
+                    if (!args.length) return false;
+
                     for (var a in args) {
                         if (args.hasOwnProperty(a) && !obj[i].call(undefined, args[a])) return false;
                     }
@@ -129,6 +132,7 @@ Interface.create = function (obj) {
 
                     var args = params;
                     if (Interface._isArray(args[0])) args = args[0];
+
                     for (var a in args) {
                         if (args.hasOwnProperty(a) && obj[i].call(undefined, args[a])) return true;
                     }
@@ -2130,6 +2134,43 @@ Arrays.inArray = function (value, array) {
 };
 
 Arrays.inArray.multiple = false;
+
+/**
+ * Check if is an array of strings
+ *
+ * **Interfaces**: `all`, `any`, `not`
+ *
+ * @param value {array} array
+ * @returns {*|boolean}
+ * @example
+ * be.arrayOfStrings(['hello', 'world']) // true
+ * be.all.arrayOfStrings([
+ *      ['hello', 'world'],
+ *      ['ciao', 'mondo']
+ * ]) // true
+ */
+Arrays.arrayOfStrings = function (value) {
+  return Types.all.string(value);
+};
+
+/**
+ * Check if is an array of objects
+ *
+ * **Interfaces**: `all`, `any`, `not`
+ *
+ * @param value {array} array
+ * @returns {*|boolean}
+ * @example
+ * be.arrayOfObjects({a:1},{b:2}) // true
+ * be.all.arrayOfObjects([
+ *      {a: 1},
+ *      {b: 2},
+ *      [1, 2, 3]
+ * ]) // false
+ */
+Arrays.arrayOfObjects = function (value) {
+  return Types.all.object(value);
+};
 
 Arrays = Interface.create(Arrays);
 
