@@ -35,6 +35,9 @@ Interface.create = (obj) => {
                     let args = params;
                     if (Interface._isArray(args[0]))
                         args = args[0];
+
+                    if(!args.length) return false;
+
                     for (let a in args) {
                         if (args.hasOwnProperty(a) && !obj[i].call(this, args[a]))
                             return false;
@@ -46,6 +49,7 @@ Interface.create = (obj) => {
                     let args = params;
                     if (Interface._isArray(args[0]))
                         args = args[0];
+
                     for (let a in args) {
                         if (args.hasOwnProperty(a) && obj[i].call(this, args[a]))
                             return true;
