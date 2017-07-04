@@ -33,6 +33,10 @@ Arrays.inArray = (value, array) => {
 
 Arrays.inArray.multiple = false;
 
+Arrays.arrayOfStrings = (value) => {
+    return Types.all.string(value);
+};
+
 Arrays = Interface.create(Arrays);
 
 module.exports = Arrays;

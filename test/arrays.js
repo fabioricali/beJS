@@ -38,3 +38,21 @@ describe('inArray', function () {
         assert.equal(result, false);
     });
 });
+
+describe('arrayOfStrings', function () {
+    it('should be return true', function () {
+        var result = be.arrayOfStrings(['ciao', 'bye', 'hello']);
+        console.log(result);
+        assert.equal(result, true);
+    });
+    it('should be return false', function () {
+        var result = be.arrayOfStrings(['ciao', 'bye', 2]);
+        console.log(result);
+        assert.equal(result, false);
+    });
+    it('[], should be return false', function () {
+        var result = be.arrayOfStrings([]);
+        console.log(result);
+        assert.equal(result, false);
+    });
+});
