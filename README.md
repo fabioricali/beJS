@@ -1,4 +1,4 @@
-![beJS](extra/logo.png?1)
+![beJS](https://raw.githubusercontent.com/fabioricali/beJS/master/extra/logo.png)
 
 ***to be, or not to be, that is the question***
 
@@ -49,24 +49,6 @@ be.all.boolean([true, false, true]);
 // call interface "any" and passing arguments
 be.any.boolean(true, false, 1);
 ```
-
-
-
-## Docs
-- [API](docs/be.md)
-    - [Arrays](docs/arrays.md)
-    - [Dates](docs/dates.md)
-    - [Envs](docs/envs.md)
-    - [Hashes](docs/hashes.md)
-    - [Mixed](docs/mixed.md)
-    - [Numbers](docs/numbers.md)
-    - [Objects](docs/objects.md)
-    - [Strings](docs/strings.md)
-    - [Types](docs/types.md)
-    - [Urls](docs/urls.md)
-    - [CreditCards](docs/creditCards.md)
-    - [PostalCodes](docs/postalCodes.md)
-    - [DOM](docs/dom.md)
 
 ## License
 beJS is open-sourced software licensed under the [MIT license](http://opensource.org/licenses/MIT)

@@ -1,6 +1,6 @@
 /**
- * @module be
- * @description Hashes checks.
+ * @fileOverview Hashes checks.
+ * @module Hashes
  */
 
 const Interface = require('../interface');
@@ -11,6 +11,8 @@ let Hashes = {};
  *
  * **Interfaces**: `all`, `any`, `not`
  *
+ * @function
+ * @name md5
  * @param value {string} hash string
  * @returns {boolean}
  * @example
@@ -26,6 +28,8 @@ Hashes.md5 = (value) => {
  *
  * **Interfaces**: `all`, `any`, `not`
  *
+ * @function
+ * @name sha1
  * @param value {string} hash string
  * @returns {boolean}
  * @example

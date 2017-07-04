@@ -1,6 +1,6 @@
 /**
- * @module be
- * @description Numbers checks.
+ * @fileOverview Numbers checks.
+ * @module Numbers
  */
 
 const Types = require('./types');
@@ -13,6 +13,8 @@ let Numbers = {};
  *
  * **Interfaces**: `all`, `any`, `not`
  *
+ * @function
+ * @name int
  * @param value {number} number
  * @returns {boolean}
  * @example
@@ -31,6 +33,8 @@ Numbers.int = (value) => {
  *
  * **Interfaces**: `all`, `any`, `not`
  *
+ * @function
+ * @name float
  * @param value {number} number
  * @returns {boolean}
  * @example
@@ -47,6 +51,8 @@ Numbers.float = (value) => {
  *
  * **Interfaces**: `all`, `any`, `not`
  *
+ * @function
+ * @name nan
  * @param value {number} number
  * @returns {boolean}
  * @example
@@ -61,6 +67,8 @@ Numbers.nan = (value) => {
  *
  * **Interfaces**: `all`, `any`, `not`
  *
+ * @function
+ * @name even
  * @param value {number} number
  * @returns {boolean}
  * @example
@@ -76,6 +84,8 @@ Numbers.even = (value) => {
  *
  * **Interfaces**: `all`, `any`, `not`
  *
+ * @function
+ * @name odd
  * @param value {number} number
  * @returns {boolean}
  * @example
@@ -91,6 +101,8 @@ Numbers.odd = (value) => {
  *
  * **Interfaces**: `all`, `any`, `not`
  *
+ * @function
+ * @name positive
  * @param value {number} number
  * @returns {boolean}
  * @example
@@ -106,6 +118,8 @@ Numbers.positive = (value) => {
  *
  * **Interfaces**: `all`, `any`, `not`
  *
+ * @function
+ * @name negative
  * @param value {number} number
  * @returns {boolean}
  * @example
@@ -121,6 +135,8 @@ Numbers.negative = (value) => {
  *
  * **Interfaces**: `all`, `any`, `not`
  *
+ * @function
+ * @name negativeZero
  * @param value {number} number
  * @returns {boolean}
  * @example
@@ -136,6 +152,8 @@ Numbers.negativeZero = (value) => {
  *
  * **Interfaces**: `all`, `any`, `not`
  *
+ * @function
+ * @name positiveZero
  * @param value {number} number
  * @returns {boolean}
  * @example
@@ -151,6 +169,8 @@ Numbers.positiveZero = (value) => {
  *
  * **Interfaces**: `all`, `any`, `not`
  *
+ * @function
+ * @name infinity
  * @param value {number} number
  * @returns {boolean}
  * @example
@@ -165,6 +185,8 @@ Numbers.infinity = (value) => {
  *
  * **Interfaces**: `all`, `any`, `not`
  *
+ * @function
+ * @name infinityPositive
  * @param value {number} number
  * @returns {boolean}
  * @example
@@ -180,6 +202,8 @@ Numbers.infinityPositive = (value) => {
  *
  * **Interfaces**: `all`, `any`, `not`
  *
+ * @function
+ * @name infinityNegative
  * @param value {number} number
  * @returns {boolean}
  * @example
@@ -195,6 +219,8 @@ Numbers.infinityNegative = (value) => {
  *
  * **Interfaces**: `not`
  *
+ * @function
+ * @name between
  * @param num {number} number
  * @param min {number} number min
  * @param max {number} number max
@@ -213,6 +239,8 @@ Numbers.between.multiple = false;
  *
  * **Interfaces**: `not`
  *
+ * @function
+ * @name greater
  * @param value {number} value to check
  * @param num {number} number target
  * @returns {boolean}
@@ -231,6 +259,8 @@ Numbers.greater.multiple = false;
  *
  * **Interfaces**: `not`
  *
+ * @function
+ * @name lesser
  * @param value {number} value to check
  * @param num {number} number target
  * @returns {boolean}
@@ -249,6 +279,8 @@ Numbers.lesser.multiple = false;
  *
  * **Interfaces**: `all`, `any`, `not`
  *
+ * @function
+ * @name numeric
  * @param value {number} number
  * @returns {boolean}
  * @example

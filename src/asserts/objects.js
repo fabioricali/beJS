@@ -1,6 +1,6 @@
 /**
- * @module be
- * @description Objects checks.
+ * @fileOverview Objects checks.
+ * @module Objects
  */
 
 const Types = require('./types');
@@ -12,6 +12,8 @@ let Objects = {};
  *
  * **Interfaces**: `not`
  *
+ * @function
+ * @name propertyOf
  * @param value {Mixed} property that you want to search
  * @param object {Object} object target
  * @returns {boolean}
@@ -30,6 +32,8 @@ Objects.propertyOf.multiple = false;
  *
  * **Interfaces**: `not`
  *
+ * @function
+ * @name propertyCount
  * @param object {Object} object
  * @param value {Integer} count
  * @returns {boolean}

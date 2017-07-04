@@ -1,6 +1,6 @@
 /**
- * @module be
- * @description Urls checks.
+ * @fileOverview Urls checks.
+ * @module Urls
  */
 
 const Interface = require('../interface');
@@ -11,7 +11,8 @@ let Urls = {};
  *
  * **Interfaces**: `all`, `any`, `not`
  *
- * @link https://gist.github.com/dperini/729294
+ * @function
+ * @name url
  * @param value {string} url
  * @returns {boolean}
  * @example
@@ -29,6 +30,8 @@ Urls.url = (value) => {
  *
  * **Interfaces**: `all`, `any`, `not`
  *
+ * @function
+ * @name httpUrl
  * @param value {string} url
  * @returns {boolean}
  * @example
@@ -46,6 +49,8 @@ Urls.httpUrl = (value) => {
  *
  * **Interfaces**: `all`, `any`, `not`
  *
+ * @function
+ * @name httpsUrl
  * @param value {string} url
  * @returns {boolean}
  * @example
@@ -63,6 +68,8 @@ Urls.httpsUrl = (value) => {
  *
  * **Interfaces**: `all`, `any`, `not`
  *
+ * @function
+ * @name urlEncoded
  * @param value {string} url encoded
  * @returns {boolean}
  * @example
@@ -77,6 +84,8 @@ Urls.urlEncoded = (value) => {
  *
  * **Interfaces**: `all`, `any`, `not`
  *
+ * @function
+ * @name ftpUrl
  * @param value {string} url
  * @returns {boolean}
  * @example
@@ -94,6 +103,8 @@ Urls.ftpUrl = (value) => {
  *
  * **Interfaces**: `all`, `any`, `not`
  *
+ * @function
+ * @name ftpsUrl
  * @param value {string} url
  * @returns {boolean}
  * @example

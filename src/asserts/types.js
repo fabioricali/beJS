@@ -1,6 +1,6 @@
 /**
- * @module be
- * @description Types checks.
+ * @fileOverview Types checks.
+ * @module Types
  */
 
 const Helpers = require('../helpers');
@@ -12,6 +12,8 @@ let Types = {};
  *
  * **Interfaces**: `not`
  *
+ * @function
+ * @name classOf
  * @param object {Mixed} object
  * @param className {string} class name
  * @returns {boolean}
@@ -34,6 +36,8 @@ Types.classOf.multiple = false;
  *
  * **Interfaces**: `all`, `any`, `not`
  *
+ * @function
+ * @name boolean
  * @param value {Mixed} value
  * @returns {boolean}
  * @example
@@ -49,6 +53,8 @@ Types.boolean = (value) => {
  *
  * **Interfaces**: `all`, `any`, `not`
  *
+ * @function
+ * @name booleanFalse
  * @param value {Mixed} value
  * @returns {boolean}
  * @example
@@ -64,6 +70,8 @@ Types.booleanFalse = (value) => {
  *
  * **Interfaces**: `all`, `any`, `not`
  *
+ * @function
+ * @name booleanTrue
  * @param value {Mixed} value
  * @returns {boolean}
  * @example
@@ -79,6 +87,8 @@ Types.booleanTrue = (value) => {
  *
  * **Interfaces**: `all`, `any`, `not`
  *
+ * @function
+ * @name number
  * @param value {Mixed} value
  * @returns {boolean}
  * @example
@@ -94,6 +104,8 @@ Types.number = (value) => {
  *
  * **Interfaces**: `all`, `any`, `not`
  *
+ * @function
+ * @name string
  * @param value {Mixed} value
  * @returns {boolean}
  * @example
@@ -109,6 +121,8 @@ Types.string = (value) => {
  *
  * **Interfaces**: `all`, `any`, `not`
  *
+ * @function
+ * @name undefined
  * @param value {Mixed} value
  * @returns {boolean}
  * @example
@@ -124,6 +138,8 @@ Types.undefined = (value) => {
  *
  * **Interfaces**: `all`, `any`, `not`
  *
+ * @function
+ * @name null
  * @alias null
  * @param value {Mixed} value
  * @returns {boolean}
@@ -155,6 +171,8 @@ Types.object = (value) => {
  *
  * **Interfaces**: `all`, `any`, `not`
  *
+ * @function
+ * @name array
  * @param value {Mixed} value
  * @returns {boolean}
  * @example
@@ -170,6 +188,8 @@ Types.array = (value) => {
  *
  * **Interfaces**: `all`, `any`, `not`
  *
+ * @function
+ * @name json
  * @param value {Mixed} json string
  * @returns {boolean}
  * @example
@@ -190,6 +210,8 @@ Types.json = (value) => {
  *
  * **Interfaces**: `all`, `any`, `not`
  *
+ * @function
+ * @name date
  * @param value {Mixed} date object
  * @returns {boolean}
  * @example
@@ -205,6 +227,8 @@ Types.date = (value) => {
  *
  * **Interfaces**: `all`, `any`, `not`
  *
+ * @function
+ * @name function
  * @alias function
  * @param value {Mixed} value
  * @returns {boolean}
@@ -221,6 +245,8 @@ Types['function'] = (value) => {
  *
  * **Interfaces**: `all`, `any`, `not`
  *
+ * @function
+ * @name regexp
  * @param value {Mixed} value
  * @returns {boolean}
  * @example
@@ -237,6 +263,8 @@ Types.regexp = (value) => {
  *
  * **Interfaces**: `not`
  *
+ * @function
+ * @name sameType
  * @param value {Mixed} first
  * @param other {Mixed} second
  * @returns {boolean}
@@ -255,6 +283,8 @@ Types.sameType.multiple = false;
  *
  * **Interfaces**: `all`, `any`, `not`
  *
+ * @function
+ * @name empty
  * @param value {Mixed} value
  * @returns {boolean}
  * @example
@@ -281,10 +311,11 @@ Types.empty = (value) => {
 
 /**
  * Check if a falsy value
- *
+ * https://developer.mozilla.org/it/docs/Glossary/Falsy
  * **Interfaces**: `all`, `any`, `not`
  *
- * @link https://developer.mozilla.org/it/docs/Glossary/Falsy
+ * @function
+ * @name falsy
  * @param value {Mixed} value
  * @returns {boolean}
  * @example
@@ -300,10 +331,11 @@ Types.falsy = (value) => {
 
 /**
  * Check if a truthy value
- *
+ * https://developer.mozilla.org/en-US/docs/Glossary/Truthy
  * **Interfaces**: `all`, `any`, `not`
  *
- * @link https://developer.mozilla.org/en-US/docs/Glossary/Truthy
+ * @function
+ * @name truthy
  * @param value {Mixed}
  * @returns {boolean}
  * @example
@@ -324,6 +356,8 @@ Types.truthy = (value) => {
  *
  * **Interfaces**: `all`, `any`, `not`
  *
+ * @function
+ * @name error
  * @param value {Mixed} value
  * @returns {boolean}
  * @example
@@ -339,6 +373,8 @@ Types.error = (value) => {
  *
  * **Interfaces**: `all`, `any`, `not`
  *
+ * @function
+ * @name argument
  * @param value {Mixed} value
  * @returns {boolean}
  * @example

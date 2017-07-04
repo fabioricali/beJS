@@ -1,6 +1,6 @@
 /**
- * @module be
- * @description Postal codes checks.
+ * @fileOverview Postal codes checks.
+ * @module PostalCodes
  */
 
 const Interface = require('../interface');
@@ -11,6 +11,8 @@ let PostalCodes = {};
  *
  * **Interfaces**: `all`, `any`, `not`
  *
+ * @function
+ * @name postalCodeES
  * @param value {string} version string
  * @returns {boolean}
  * @example
@@ -25,6 +27,8 @@ PostalCodes.postalCodeES = (value) => {
  *
  * **Interfaces**: `all`, `any`, `not`
  *
+ * @function
+ * @name postalCodeUK
  * @param value {string} version string
  * @returns {boolean}
  * @example
@@ -39,6 +43,8 @@ PostalCodes.postalCodeUK = (value) => {
  *
  * **Interfaces**: `all`, `any`, `not`
  *
+ * @function
+ * @name postalCodeUS
  * @param value {string} version string
  * @returns {boolean}
  * @example
@@ -53,6 +59,8 @@ PostalCodes.postalCodeUS = (value) => {
  *
  * **Interfaces**: `all`, `any`, `not`
  *
+ * @function
+ * @name postalCodeIT
  * @param value {string} version string
  * @returns {boolean}
  * @example
@@ -67,6 +75,8 @@ PostalCodes.postalCodeIT = (value) => {
  *
  * **Interfaces**: `all`, `any`, `not`
  *
+ * @function
+ * @name postalCodeDE
  * @param value {string} version string
  * @returns {boolean}
  * @example
@@ -81,6 +91,8 @@ PostalCodes.postalCodeDE = (value) => {
  *
  * **Interfaces**: `all`, `any`, `not`
  *
+ * @function
+ * @name postalCodeNL
  * @param value {string} version string
  * @returns {boolean}
  * @example

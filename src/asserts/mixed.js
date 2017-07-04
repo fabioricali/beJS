@@ -1,6 +1,6 @@
 /**
- * @module be
- * @description Various checks.
+ * @fileOverview Various checks.
+ * @module Mixed
  */
 
 const Types = require('./types');
@@ -9,10 +9,11 @@ let Mixed = {};
 
 /**
  * Check if is valid email
- *
+ * https://emailregex.com/
  * **Interfaces**: `all`, `any`, `not`
  *
- * @link https://emailregex.com/
+ * @function
+ * @name email
  * @param value {string} email
  * @returns {boolean}
  * @example
@@ -28,6 +29,8 @@ Mixed.email = (value) => {
  *
  * **Interfaces**: `all`, `any`, `not`
  *
+ * @function
+ * @name hex
  * @param value {string} hex string
  * @returns {boolean}
  * @example
@@ -42,6 +45,8 @@ Mixed.hex = (value) => {
  *
  * **Interfaces**: `all`, `any`, `not`
  *
+ * @function
+ * @name hexColor
  * @param value {string} hex color string
  * @returns {boolean}
  * @example
@@ -62,6 +67,8 @@ Mixed.hexColor = (value) => {
  *
  * **Interfaces**: `all`, `any`, `not`
  *
+ * @function
+ * @name ipv4
  * @param value {string} ip string
  * @returns {boolean}
  * @example
@@ -76,6 +83,8 @@ Mixed.ipv4 = (value) => {
  *
  * **Interfaces**: `all`, `any`, `not`
  *
+ * @function
+ * @name ipv6
  * @param value {string} ip string
  * @returns {boolean}
  * @example
@@ -90,6 +99,8 @@ Mixed.ipv6 = (value) => {
  *
  * **Interfaces**: `all`, `any`, `not`
  *
+ * @function
+ * @name ipv
  * @param value {string} ip string
  * @returns {boolean}
  * @example
@@ -104,6 +115,8 @@ Mixed.ip = (value) => {
  *
  * **Interfaces**: `all`, `any`, `not`
  *
+ * @function
+ * @name base64
  * @param value {string} base64 string
  * @returns {boolean}
  * @example
@@ -118,6 +131,8 @@ Mixed.base64 = (value) => {
  *
  * **Interfaces**: `all`, `any`, `not`
  *
+ * @function
+ * @name semVer
  * @param value {string} version string
  * @returns {boolean}
  * @example
@@ -132,6 +147,8 @@ Mixed.semVer = (value) => {
  *
  * **Interfaces**: `not`
  *
+ * @function
+ * @name equal
  * @param value {Number|String|Boolean|RegExp} first
  * @param other {Number|String|Boolean|RegExp} second
  * @returns {boolean}
@@ -158,6 +175,8 @@ Mixed.equal.multiple = false;
  *
  * **Interfaces**: `all`, `any`, `not`
  *
+ * @function
+ * @name fiscalCodeIT
  * @param value {string} code string
  * @returns {boolean}
  * @example
@@ -172,6 +191,8 @@ Mixed.fiscalCodeIT = (value) => {
  *
  * **Interfaces**: `all`, `any`, `not`
  *
+ * @function
+ * @name macAddress
  * @param value {string} MAC string
  * @returns {boolean}
  * @example

@@ -1,6 +1,6 @@
 /**
- * @module be
- * @description Dates checks.
+ * @fileOverview Dates checks.
+ * @module Dates
  */
 
 const Types = require('./types');
@@ -38,6 +38,8 @@ let _months = [
  *
  * **Interfaces**: `all`, `any`, `not`
  *
+ * @function
+ * @name dateString
  * @param value {string} string date
  * @returns {boolean}
  * @example
@@ -54,6 +56,8 @@ Dates.dateString = (value) => {
  *
  * **Interfaces**: `all`, `any`, `not`
  *
+ * @function
+ * @name timeString
  * @param value {string} string time
  * @returns {boolean}
  * @example
@@ -68,6 +72,8 @@ Dates.timeString = (value) => {
  *
  * **Interfaces**: `all`, `any`, `not`
  *
+ * @function
+ * @name today
  * @param date {Date} date object
  * @returns {boolean}
  * @example
@@ -83,6 +89,8 @@ Dates.today = (date) => {
  *
  * **Interfaces**: `all`, `any`, `not`
  *
+ * @function
+ * @name tomorrow
  * @param date {Date} date object
  * @returns {boolean}
  * @example
@@ -101,6 +109,8 @@ Dates.tomorrow = (date) => {
  *
  * **Interfaces**: `all`, `any`, `not`
  *
+ * @function
+ * @name yesterday
  * @param date {Date} date object
  * @returns {boolean}
  * @example
@@ -119,6 +129,8 @@ Dates.yesterday = (date) => {
  *
  * **Interfaces**: `all`, `any`, `not`
  *
+ * @function
+ * @name past
  * @param date {Date} date object
  * @returns {boolean}
  * @example
@@ -134,6 +146,8 @@ Dates.past = (date) => {
  *
  * **Interfaces**: `all`, `any`, `not`
  *
+ * @function
+ * @name future
  * @param date {Date} date object
  * @returns {boolean}
  * @example
@@ -151,6 +165,8 @@ Dates.future = (date) => {
  *
  * **Interfaces**: `not`
  *
+ * @function
+ * @name day
  * @param date {Date} date object
  * @param day {string} day can be 'sunday','monday','tuesday','wednesday','thursday','friday','saturday'
  * @returns {boolean}
@@ -172,6 +188,8 @@ Dates.day.multiple = false;
  *
  * **Interfaces**: `not`
  *
+ * @function
+ * @name month
  * @param date {Date} date object
  * @param month {string} month can be 'january', 'february', 'march', 'april', 'may', 'june', 'july', 'august', 'september', 'october', 'november', 'december'
  * @returns {boolean}
@@ -193,6 +211,8 @@ Dates.month.multiple = false;
  *
  * **Interfaces**: `not`
  *
+ * @function
+ * @name year
  * @param date {Date} date object
  * @param year {number} year
  * @returns {boolean}
@@ -213,6 +233,8 @@ Dates.year.multiple = false;
  *
  * **Interfaces**: `all`, `any`, `not`
  *
+ * @function
+ * @name leapYear
  * @param year {number} year
  * @returns {boolean}
  * @example
@@ -233,6 +255,8 @@ Dates.leapYear = (year) => {
  *
  * **Interfaces**: `all`, `any`, `not`
  *
+ * @function
+ * @name weekend
  * @param date {Date} date object
  * @returns {boolean}
  * @example
@@ -250,6 +274,8 @@ Dates.weekend = (date) => {
  *
  * **Interfaces**: `all`, `any`, `not`
  *
+ * @function
+ * @name weekday
  * @param date {Date} date object
  * @returns {boolean}
  * @example
@@ -264,6 +290,8 @@ Dates.weekday = (date) => {
 
 /**
  * Check if number is in week, between 0 and 6
+ * @function
+ * @name numberInWeek
  * @param number {number} number
  * @returns {boolean}
  * @example
@@ -280,6 +308,8 @@ Dates.numberInWeek = (number) => {
  *
  * **Interfaces**: `not`
  *
+ * @function
+ * @name dateBetween
  * @param date {Date} date object
  * @param startDate {Date} start date object
  * @param endDate {Date} end date object
@@ -300,6 +330,8 @@ Dates.dateBetween.multiple = false;
  *
  * **Interfaces**: `all`, `any`, `not`
  *
+ * @function
+ * @name dayLightSavingTime
  * @param date {Date} date object
  * @returns {boolean}
  * @example

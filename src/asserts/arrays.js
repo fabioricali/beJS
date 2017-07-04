@@ -1,6 +1,6 @@
 /**
- * @module be
- * @description Arrays checks.
+ * @fileOverview Arrays checks.
+ * @module Array
  */
 
 const Types = require('./types');
@@ -10,17 +10,19 @@ let Arrays = {};
 /**
  * Check if an element is in the array
  *
- * **Interfaces**: `not`
+ * **Interface**: `not`
  *
  * @param value {Mixed} element to search
  * @param array {array} array where search
- * @returns {boolean}
+ * @function
+ * @name inArray
+ * @return {boolean}
  * @example
- * be.inArray('hello', ['hello', 'world']) //true
- * be.inArray('ciao', ['hello', 'world']) //false
- * be.inArray(1, true) //false
- * be.not.inArray(1, true) //true
- * be.Arrays.inArray(1, [1, 2, 3]) //true
+ *  be.inArray('hello', ['hello', 'world']) //true
+ *  be.inArray('ciao', ['hello', 'world']) //false
+ *  be.inArray(1, true) //false
+ *  be.not.inArray(1, true) //true
+ *  be.Arrays.inArray(1, [1, 2, 3]) //true
  */
 Arrays.inArray = (value, array) => {
     if(!Types.array(array)) return false;
@@ -39,12 +41,14 @@ Arrays.inArray.multiple = false;
  * **Interfaces**: `all`, `any`, `not`
  *
  * @param value {array} array
+ * @function
+ * @name arrayOfStrings
  * @returns {*|boolean}
  * @example
  * be.arrayOfStrings(['hello', 'world']) // true
  * be.all.arrayOfStrings([
- *      ['hello', 'world'],
- *      ['ciao', 'mondo']
+ *     ['hello', 'world'],
+ *     ['ciao', 'mondo']
  * ]) // true
  */
 Arrays.arrayOfStrings = (value) => {
@@ -56,6 +60,8 @@ Arrays.arrayOfStrings = (value) => {
  *
  * **Interfaces**: `all`, `any`, `not`
  *
+ * @function
+ * @name arrayOfObjects
  * @param value {array} array
  * @returns {*|boolean}
  * @example

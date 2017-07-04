@@ -1,6 +1,6 @@
 /**
- * @module be
- * @description Credit cards checks.
+ * @fileOverview Credit cards checks.
+ * @module Credit card
  */
 
 const Interface = require('../interface');
@@ -11,6 +11,8 @@ let CreditCard = {};
  *
  * **Interfaces**: `all`, `any`, `not`
  *
+ * @function
+ * @name creditCard
  * @param value {string} version string
  * @returns {boolean}
  * @example
@@ -25,6 +27,8 @@ CreditCard.creditCard = (value) => {
  *
  * **Interfaces**: `all`, `any`, `not`
  *
+ * @function
+ * @name amex
  * @param value {string} version string
  * @returns {boolean}
  * @example
@@ -39,6 +43,8 @@ CreditCard.amex = (value) => {
  *
  * **Interfaces**: `all`, `any`, `not`
  *
+ * @function
+ * @name dinersClub
  * @param value {string} version string
  * @returns {boolean}
  * @example
@@ -53,6 +59,8 @@ CreditCard.dinersClub = (value) => {
  *
  * **Interfaces**: `all`, `any`, `not`
  *
+ * @function
+ * @name discover
  * @param value {string} version string
  * @returns {boolean}
  * @example
@@ -67,6 +75,8 @@ CreditCard.discover = (value) => {
  *
  * **Interfaces**: `all`, `any`, `not`
  *
+ * @function
+ * @name mastercard
  * @param value {string} version string
  * @returns {boolean}
  * @example
@@ -81,6 +91,8 @@ CreditCard.mastercard = (value) => {
  *
  * **Interfaces**: `all`, `any`, `not`
  *
+ * @function
+ * @name visa
  * @param value {string} version string
  * @returns {boolean}
  * @example

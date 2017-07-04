@@ -1,6 +1,6 @@
 /**
- * @module be
- * @description DOM checks.
+ * @fileOverview DOM checks.
+ * @module DOM
  */
 
 const Interface = require('../interface');
@@ -12,6 +12,8 @@ let DOM = {};
  *
  * **Interfaces**: `all`, `any`, `not`
  *
+ * @function
+ * @name domElement
  * @param element {object} element object
  * @returns {boolean}
  * @example
@@ -29,6 +31,8 @@ DOM.domElement = (element) => {
  *
  * **Interfaces**: `not`
  *
+ * @function
+ * @name domElementTag
  * @param element {object} element object
  * @param tag {string} tag name
  * @returns {boolean}

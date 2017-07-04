@@ -1,6 +1,6 @@
 /**
- * @module be
- * @description Environments checks.
+ * @fileOverview Environments checks.
+ * @module Envs
  */
 
 const Helpers = require('../helpers');
@@ -12,6 +12,8 @@ let Envs = {};
  *
  * **Interfaces**: `not`
  *
+ * @function
+ * @name commonjsEnv
  * @returns {boolean}
  * @example
  * be.commonjsEnv() // true
@@ -27,6 +29,8 @@ Envs.commonjsEnv.multiple = false;
  *
  * **Interfaces**: `not`
  *
+ * @function
+ * @name browserEnv
  * @returns {boolean}
  * @example
  * be.browserEnv() // true
@@ -42,6 +46,8 @@ Envs.browserEnv.multiple = false;
  *
  * **Interfaces**: `not`
  *
+ * @function
+ * @name amdEnv
  * @returns {boolean}
  * @example
  * be.amdEnv() // true
@@ -57,6 +63,8 @@ Envs.amdEnv.multiple = false;
  *
  * **Interfaces**: `not`
  *
+ * @function
+ * @name ios
  * @returns {boolean}
  * @example
  * be.ios() // true
@@ -73,6 +81,8 @@ Envs.ios.multiple = false;
  *
  * **Interfaces**: `not`
  *
+ * @function
+ * @name iphone
  * @returns {boolean}
  * @example
  * be.iphone() // true
@@ -89,6 +99,8 @@ Envs.iphone.multiple = false;
  *
  * **Interfaces**: `not`
  *
+ * @function
+ * @name ipad
  * @returns {boolean}
  * @example
  * be.ipad() // true
@@ -105,6 +117,8 @@ Envs.ipad.multiple = false;
  *
  * **Interfaces**: `not`
  *
+ * @function
+ * @name ipod
  * @returns {boolean}
  * @example
  * be.ipod() // true
@@ -121,6 +135,8 @@ Envs.ipod.multiple = false;
  *
  * **Interfaces**: `not`
  *
+ * @function
+ * @name android
  * @returns {boolean}
  * @example
  * be.android() // true
@@ -137,6 +153,8 @@ Envs.android.multiple = false;
  *
  * **Interfaces**: `not`
  *
+ * @function
+ * @name navigator
  * @returns {boolean}
  * @example
  * be.navigator() // true
@@ -152,6 +170,8 @@ Envs.navigator.multiple = false;
  *
  * **Interfaces**: `not`
  *
+ * @function
+ * @name firefox
  * @returns {boolean}
  * @example
  * be.firefox() // true
@@ -168,6 +188,8 @@ Envs.firefox.multiple = false;
  *
  * **Interfaces**: `not`
  *
+ * @function
+ * @name chrome
  * @returns {boolean}
  * @example
  * be.chrome() // true
@@ -184,6 +206,8 @@ Envs.chrome.multiple = false;
  *
  * **Interfaces**: `not`
  *
+ * @function
+ * @name safari
  * @returns {boolean}
  * @example
  * be.safari() // true
@@ -201,6 +225,8 @@ Envs.safari.multiple = false;
  *
  * **Interfaces**: `not`
  *
+ * @function
+ * @name userAgent
  * @returns {boolean}
  * @example
  * be.ie() // true
@@ -217,6 +243,8 @@ Envs.ie.multiple = false;
  *
  * **Interfaces**: `not`
  *
+ * @function
+ * @name mac
  * @returns {boolean}
  * @example
  * be.mac() // true
@@ -233,6 +261,8 @@ Envs.mac.multiple = false;
  *
  * **Interfaces**: `not`
  *
+ * @function
+ * @name online
  * @returns {boolean}
  * @example
  * be.onLine() // true

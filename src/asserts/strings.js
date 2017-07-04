@@ -1,6 +1,6 @@
 /**
- * @module be
- * @description Strings checks.
+ * @fileOverview Strings checks.
+ * @module Strings
  */
 
 const Helpers = require('../helpers');
@@ -14,6 +14,8 @@ let Strings = {};
  *
  * **Interfaces**: `all`, `any`, `not`
  *
+ * @function
+ * @name camelCase
  * @param value {string} string
  * @returns {boolean}
  * @example
@@ -32,6 +34,8 @@ Strings.camelCase = (value) => {
  *
  * **Interfaces**: `all`, `any`, `not`
  *
+ * @function
+ * @name snakeCase
  * @param value {string} string
  * @returns {boolean}
  * @example
@@ -48,6 +52,8 @@ Strings.snakeCase = (value) => {
  *
  * **Interfaces**: `all`, `any`, `not`
  *
+ * @function
+ * @name kebabCase
  * @param value {string} string
  * @returns {boolean}
  * @example
@@ -64,6 +70,8 @@ Strings.kebabCase = (value) => {
  *
  * **Interfaces**: `not`
  *
+ * @function
+ * @name similarity
  * @param string1 {string} string
  * @param string2 {string} string target
  * @param threshold {int|float} 0 to 1
@@ -99,6 +107,8 @@ Strings.similarity.multiple = false;
  *
  * **Interfaces**: `not`
  *
+ * @function
+ * @name contains
  * @param string {string} string
  * @param value {string} string target
  * @returns {boolean}
@@ -117,6 +127,8 @@ Strings.contains.multiple = false;
  *
  * **Interfaces**: `all`, `any`, `not`
  *
+ * @function
+ * @name lowerCase
  * @param value {string} string
  * @returns {boolean}
  * @example
@@ -132,6 +144,8 @@ Strings.lowerCase = (value) => {
  *
  * **Interfaces**: `all`, `any`, `not`
  *
+ * @function
+ * @name upperCase
  * @param value {string} string
  * @returns {boolean}
  * @example
@@ -147,6 +161,8 @@ Strings.upperCase = (value) => {
  *
  * **Interfaces**: `all`, `any`, `not`
  *
+ * @function
+ * @name word
  * @param value {string} string
  * @returns {boolean}
  * @example
@@ -164,6 +180,8 @@ Strings.word = (value) => {
  *
  * **Interfaces**: `all`, `any`, `not`
  *
+ * @function
+ * @name capitalized
  * @param value {string} string
  * @returns {boolean}
  * @example
@@ -188,6 +206,8 @@ Strings.capitalized = (value) => {
  *
  * **Interfaces**: `all`, `any`, `not`
  *
+ * @function
+ * @name emptyString
  * @param value {string} string
  * @returns {boolean}
  * @example
@@ -202,6 +222,8 @@ Strings.emptyString = (value) => {
  *
  * **Interfaces**: `all`, `any`, `not`
  *
+ * @function
+ * @name alphanumeric
  * @param value {string} string
  * @returns {boolean}
  * @example
@@ -217,6 +239,8 @@ Strings.alphanumeric = (value) => {
  *
  * **Interfaces**: `not`
  *
+ * @function
+ * @name startWith
  * @param value {string} start string
  * @param string {string} string target
  * @param insensitive {boolean} case sensitive
@@ -238,6 +262,8 @@ Strings.startWith.multiple = false;
  *
  * **Interfaces**: `all`, `any`, `not`
  *
+ * @function
+ * @name palindrome
  * @param value {string} string
  * @returns {boolean}
  * @example
@@ -254,6 +280,8 @@ Strings.palindrome = (value) => {
  *
  * **Interfaces**: `all`, `any`, `not`
  *
+ * @function
+ * @name char
  * @param value {string} string
  * @returns {boolean}
  * @example
@@ -269,6 +297,8 @@ Strings.char = (value) => {
  *
  * **Interfaces**: `all`, `any`, `not`
  *
+ * @function
+ * @name space
  * @param value {string} string
  * @returns {boolean}
  * @example
@@ -284,6 +314,8 @@ Strings.space = (value) => {
  *
  * **Interfaces**: `all`, `any`, `not`
  *
+ * @function
+ * @name spaces
  * @param value {string} string
  * @returns {boolean}
  * @example
