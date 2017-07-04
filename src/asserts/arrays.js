@@ -33,6 +33,16 @@ Arrays.inArray = (value, array) => {
 
 Arrays.inArray.multiple = false;
 
+/**
+ * Check if is an array of strings
+ *
+ * **Interfaces**: `all`, `any`, `not`
+ *
+ * @param value {array} array
+ * @returns {*|boolean}
+ * @example
+ * be.arrayOfStrings(['hello', 'world']) // true
+ */
 Arrays.arrayOfStrings = (value) => {
     return Types.all.string(value);
 };
