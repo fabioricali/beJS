@@ -357,8 +357,7 @@
 <div class="section-examples">
 <h5>Example</h5>
 
-    <pre class="prettyprint"><code>be.dateBetween(new Date('2017-05-12'), new Date('2017-03-10'), new Date('2017-07-25')) // true
-be.not.dateBetween(new Date('2017-05-12'), new Date('2017-03-10'), new Date('2017-07-25')) // false</code></pre>
+    <pre class="prettyprint"><code>be.dateBetween(new Date('2017-05-12'), new Date('2017-03-10'), new Date('2017-07-25')) // truebe.not.dateBetween(new Date('2017-05-12'), new Date('2017-03-10'), new Date('2017-07-25')) // false</code></pre>
 
 </div>
 
@@ -522,8 +521,7 @@ be.not.dateBetween(new Date('2017-05-12'), new Date('2017-03-10'), new Date('201
 <div class="section-examples">
 <h5>Example</h5>
 
-    <pre class="prettyprint"><code>be.dateString('2017-06-20') // true
-be.dateString('hello') // false</code></pre>
+    <pre class="prettyprint"><code>be.dateString('2017-06-20') // truebe.dateString('hello') // false</code></pre>
 
 </div>
 
@@ -713,9 +711,7 @@ be.dateString('hello') // false</code></pre>
 <div class="section-examples">
 <h5>Example</h5>
 
-    <pre class="prettyprint"><code>be.day(new Date('2017-06-24'), 'saturday') // true
-be.day(new Date('2017-06-25'), 'monday') // false
-be.not.day(new Date('2017-06-25'), 'monday') // true</code></pre>
+    <pre class="prettyprint"><code>be.day(new Date('2017-06-24'), 'saturday') // truebe.day(new Date('2017-06-25'), 'monday') // falsebe.not.day(new Date('2017-06-25'), 'monday') // true</code></pre>
 
 </div>
 
@@ -879,8 +875,7 @@ be.not.day(new Date('2017-06-25'), 'monday') // true</code></pre>
 <div class="section-examples">
 <h5>Example</h5>
 
-    <pre class="prettyprint"><code>be.dayLightSavingTime(new Date('2017-06-24')) // true
-be.dayLightSavingTime(new Date('2017-10-30')) // false</code></pre>
+    <pre class="prettyprint"><code>be.dayLightSavingTime(new Date('2017-06-24')) // truebe.dayLightSavingTime(new Date('2017-10-30')) // false</code></pre>
 
 </div>
 
@@ -1044,10 +1039,7 @@ be.dayLightSavingTime(new Date('2017-10-30')) // false</code></pre>
 <div class="section-examples">
 <h5>Example</h5>
 
-    <pre class="prettyprint"><code>be.future(new Date('2117-06-24')) // true
-be.all.future(new Date('2117-06-24'), new Date('2007-06-25')) // false
-be.any.future(new Date('2117-06-24'), new Date('2007-06-25')) // true
-be.not.future(new Date('2117-06-24')) // false</code></pre>
+    <pre class="prettyprint"><code>be.future(new Date('2117-06-24')) // truebe.all.future(new Date('2117-06-24'), new Date('2007-06-25')) // falsebe.any.future(new Date('2117-06-24'), new Date('2007-06-25')) // truebe.not.future(new Date('2117-06-24')) // false</code></pre>
 
 </div>
 
@@ -1211,11 +1203,7 @@ be.not.future(new Date('2117-06-24')) // false</code></pre>
 <div class="section-examples">
 <h5>Example</h5>
 
-    <pre class="prettyprint"><code>be.leapYear(2016) // true
-be.leapYear(2017) // false
-be.not.leapYear(2017) // true
-be.all.leapYear(2012, 2016) // true
-be.any.leapYear(2015, 2016) // true</code></pre>
+    <pre class="prettyprint"><code>be.leapYear(2016) // truebe.leapYear(2017) // falsebe.not.leapYear(2017) // truebe.all.leapYear(2012, 2016) // truebe.any.leapYear(2015, 2016) // true</code></pre>
 
 </div>
 
@@ -1405,9 +1393,7 @@ be.any.leapYear(2015, 2016) // true</code></pre>
 <div class="section-examples">
 <h5>Example</h5>
 
-    <pre class="prettyprint"><code>be.month(new Date('2017-06-24'), 'june') // true
-be.month(new Date('2017-02-25'), 'march') // false
-be.not.month(new Date('2017-02-25'), 'march') // true</code></pre>
+    <pre class="prettyprint"><code>be.month(new Date('2017-06-24'), 'june') // truebe.month(new Date('2017-02-25'), 'march') // falsebe.not.month(new Date('2017-02-25'), 'march') // true</code></pre>
 
 </div>
 
@@ -1570,9 +1556,7 @@ be.not.month(new Date('2017-02-25'), 'march') // true</code></pre>
 <div class="section-examples">
 <h5>Example</h5>
 
-    <pre class="prettyprint"><code>be.numberInWeek(0) // true, is sunday
-be.numberInWeek(1) // true, is monday
-be.numberInWeek(7) // false, the days are between 0 and 6</code></pre>
+    <pre class="prettyprint"><code>be.numberInWeek(0) // true, is sundaybe.numberInWeek(1) // true, is mondaybe.numberInWeek(7) // false, the days are between 0 and 6</code></pre>
 
 </div>
 
@@ -2228,9 +2212,7 @@ be.numberInWeek(7) // false, the days are between 0 and 6</code></pre>
 <div class="section-examples">
 <h5>Example</h5>
 
-    <pre class="prettyprint"><code>let now = new Date();
-let tomorrow = now.setDate(now.getDate() + 1);
-be.tomorrow(tomorrow) // true</code></pre>
+    <pre class="prettyprint"><code>let now = new Date();let tomorrow = now.setDate(now.getDate() + 1);be.tomorrow(tomorrow) // true</code></pre>
 
 </div>
 
@@ -2394,10 +2376,7 @@ be.tomorrow(tomorrow) // true</code></pre>
 <div class="section-examples">
 <h5>Example</h5>
 
-    <pre class="prettyprint"><code>be.weekday(new Date('2017-06-26')) // true
-be.not.weekday(new Date('2017-06-24')) // true
-be.all.weekday(new Date('2017-06-26'), new Date('2017-06-27')) // true
-be.any.weekday(new Date('2017-06-24'), new Date('2017-06-26')) // true</code></pre>
+    <pre class="prettyprint"><code>be.weekday(new Date('2017-06-26')) // truebe.not.weekday(new Date('2017-06-24')) // truebe.all.weekday(new Date('2017-06-26'), new Date('2017-06-27')) // truebe.any.weekday(new Date('2017-06-24'), new Date('2017-06-26')) // true</code></pre>
 
 </div>
 
@@ -2561,10 +2540,7 @@ be.any.weekday(new Date('2017-06-24'), new Date('2017-06-26')) // true</code></p
 <div class="section-examples">
 <h5>Example</h5>
 
-    <pre class="prettyprint"><code>be.weekend(new Date('2017-06-24')) // true
-be.not.weekend(new Date('2017-06-24')) // false
-be.all.weekend(new Date('2017-06-24'), new Date('2017-06-25')) // true
-be.any.weekend(new Date('2017-06-24'), new Date('2017-06-26')) // true</code></pre>
+    <pre class="prettyprint"><code>be.weekend(new Date('2017-06-24')) // truebe.not.weekend(new Date('2017-06-24')) // falsebe.all.weekend(new Date('2017-06-24'), new Date('2017-06-25')) // truebe.any.weekend(new Date('2017-06-24'), new Date('2017-06-26')) // true</code></pre>
 
 </div>
 
@@ -2754,8 +2730,7 @@ be.any.weekend(new Date('2017-06-24'), new Date('2017-06-26')) // true</code></p
 <div class="section-examples">
 <h5>Example</h5>
 
-    <pre class="prettyprint"><code>be.year(new Date('2017-06-06'), 2017) // true
-be.not.year(new Date('2017-06-06'), 2017) // false</code></pre>
+    <pre class="prettyprint"><code>be.year(new Date('2017-06-06'), 2017) // truebe.not.year(new Date('2017-06-06'), 2017) // false</code></pre>
 
 </div>
 
@@ -2919,9 +2894,7 @@ be.not.year(new Date('2017-06-06'), 2017) // false</code></pre>
 <div class="section-examples">
 <h5>Example</h5>
 
-    <pre class="prettyprint"><code>let now = new Date();
-let yesterday = now.setDate(now.getDate() - 1);
-be.yesterday(yesterday) // true</code></pre>
+    <pre class="prettyprint"><code>let now = new Date();let yesterday = now.setDate(now.getDate() - 1);be.yesterday(yesterday) // true</code></pre>
 
 </div>
 
@@ -2944,7 +2917,7 @@ be.yesterday(yesterday) // true</code></pre>
 <br class="clear">
 
 <footer>
-    Generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.4.3</a> on Tue Jul 04 2017 10:54:23 GMT+0200 (CEST) using the Minami theme.
+    Generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.4.3</a> on Tue Jul 04 2017 11:44:44 GMT+0200 (ora legale Europa occidentale) using the Minami theme.
 </footer>
 
 <script>prettyPrint();</script>
