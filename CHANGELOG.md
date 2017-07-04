@@ -8,11 +8,16 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ### Added
 - **Asserts**
-    - be.primitive()
-    - be.promise()
-    - be.buffer()
-    - be.iterable()
-    - be.arrayOfBooleans()
+    - `be.primitive`
+    - `be.promise`
+    - `be.buffer`
+    - `be.iterable`
+    - `be.arrayOfBooleans`
+    - `be.false`
+    - `be.true`
+    
+### Changed
+- now `be.booleanTrue` and `be.booleanFalse` are alias of `be.true` and `be.false`
 
 ### Fixed
 - test
