@@ -65,7 +65,7 @@ Arrays.arrayOfStrings = (value) => {
  * @param value {array} array
  * @returns {*|boolean}
  * @example
- * be.arrayOfObjects({a:1},{b:2}) // true
+ * be.arrayOfObjects([{a:1},{b:2}]) // true
  * be.all.arrayOfObjects([
  *      {a: 1},
  *      {b: 2},
@@ -74,6 +74,27 @@ Arrays.arrayOfStrings = (value) => {
  */
 Arrays.arrayOfObjects = (value) => {
     return Types.all.object(value);
+};
+
+/**
+ * Check if is an array of booleans
+ *
+ * **Interfaces**: `all`, `any`, `not`
+ *
+ * @function
+ * @name arrayOfBooleans
+ * @param value {array} array
+ * @returns {*|boolean}
+ * @example
+ * be.arrayOfBooleans([true, false]) // true
+ * be.all.arrayOfBooleans([
+ *      true,
+ *      false,
+ *      [1, 2, 3]
+ * ]) // false
+ */
+Arrays.arrayOfBooleans = (value) => {
+    return Types.all.boolean(value);
 };
 
 Arrays = Interface.create(Arrays);

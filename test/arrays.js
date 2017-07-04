@@ -95,3 +95,34 @@ describe('arrayOfObjects', function () {
         assert.equal(result, false);
     });
 });
+
+describe('arrayOfBooleans', function () {
+    it('should be return true', function () {
+        var result = be.arrayOfBooleans([true, false]);
+        console.log(result);
+        assert.equal(result, true);
+    });
+    it('interface all, should be return true', function () {
+        var result = be.all.arrayOfBooleans([true, true],[false, false]);
+        console.log(result);
+        assert.equal(result, true);
+    });
+    it('interface all, different types, should be return false', function () {
+        var result = be.all.arrayOfBooleans([
+            [{a:1},{b:2}],
+            false
+        ]);
+        console.log(result);
+        assert.equal(result, false);
+    });
+    it('should be return false', function () {
+        var result = be.arrayOfBooleans([true, true, 2]);
+        console.log(result);
+        assert.equal(result, false);
+    });
+    it('[], should be return false', function () {
+        var result = be.arrayOfBooleans([]);
+        console.log(result);
+        assert.equal(result, false);
+    });
+});
