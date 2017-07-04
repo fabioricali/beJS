@@ -387,6 +387,9 @@ Types.argument = (value) => {
 
 /**
  * Check if is a primitive object
+ *
+ * **Interfaces**: `all`, `any`, `not`
+ *
  * @function
  * @name primitive
  * @param value {Mixed} value
@@ -397,6 +400,23 @@ Types.argument = (value) => {
  */
 Types.primitive = (value) => {
     return value !== Object(value);
+};
+
+/**
+ * Check if is a primitive object
+ *
+ * **Interfaces**: `all`, `any`, `not`
+ *
+ * @function
+ * @name promise
+ * @param value {Mixed} value
+ * @returns {boolean}
+ * @example
+ * var p = new Promise((resolve, reject) => {resolve()});
+ * be.promise(p) // true
+ */
+Types.promise = (value) => {
+    return Types.classOf(value, 'promise');
 };
 
 Types = Interface.create(Types);

@@ -510,3 +510,23 @@ describe('primitive', function () {
         assert.equal(result, false);
     });
 });
+
+describe('promise', function () {
+    it('should be return true', function () {
+
+        var p = new Promise(
+            function (resolve, reject) {
+                resolve();
+            }
+        );
+
+        var result = be.promise(p);
+        console.log(result);
+        assert.equal(result, true);
+    });
+    it('should be return false', function () {
+        var result = be.promise(function(){});
+        console.log(result);
+        assert.equal(result, false);
+    });
+});
