@@ -159,8 +159,8 @@ module.exports = Interface;
 
 
 /**
- * @module be
- * @description Types checks.
+ * @fileOverview Types checks.
+ * @module Types
  */
 
 var Helpers = __webpack_require__(2);
@@ -172,6 +172,8 @@ var Types = {};
  *
  * **Interfaces**: `not`
  *
+ * @function
+ * @name classOf
  * @param object {Mixed} object
  * @param className {string} class name
  * @returns {boolean}
@@ -194,6 +196,8 @@ Types.classOf.multiple = false;
  *
  * **Interfaces**: `all`, `any`, `not`
  *
+ * @function
+ * @name boolean
  * @param value {Mixed} value
  * @returns {boolean}
  * @example
@@ -209,6 +213,8 @@ Types.boolean = function (value) {
  *
  * **Interfaces**: `all`, `any`, `not`
  *
+ * @function
+ * @name booleanFalse
  * @param value {Mixed} value
  * @returns {boolean}
  * @example
@@ -224,6 +230,8 @@ Types.booleanFalse = function (value) {
  *
  * **Interfaces**: `all`, `any`, `not`
  *
+ * @function
+ * @name booleanTrue
  * @param value {Mixed} value
  * @returns {boolean}
  * @example
@@ -239,6 +247,8 @@ Types.booleanTrue = function (value) {
  *
  * **Interfaces**: `all`, `any`, `not`
  *
+ * @function
+ * @name number
  * @param value {Mixed} value
  * @returns {boolean}
  * @example
@@ -254,6 +264,8 @@ Types.number = function (value) {
  *
  * **Interfaces**: `all`, `any`, `not`
  *
+ * @function
+ * @name string
  * @param value {Mixed} value
  * @returns {boolean}
  * @example
@@ -269,6 +281,8 @@ Types.string = function (value) {
  *
  * **Interfaces**: `all`, `any`, `not`
  *
+ * @function
+ * @name undefined
  * @param value {Mixed} value
  * @returns {boolean}
  * @example
@@ -284,6 +298,8 @@ Types.undefined = function (value) {
  *
  * **Interfaces**: `all`, `any`, `not`
  *
+ * @function
+ * @name null
  * @alias null
  * @param value {Mixed} value
  * @returns {boolean}
@@ -315,6 +331,8 @@ Types.object = function (value) {
  *
  * **Interfaces**: `all`, `any`, `not`
  *
+ * @function
+ * @name array
  * @param value {Mixed} value
  * @returns {boolean}
  * @example
@@ -330,6 +348,8 @@ Types.array = function (value) {
  *
  * **Interfaces**: `all`, `any`, `not`
  *
+ * @function
+ * @name json
  * @param value {Mixed} json string
  * @returns {boolean}
  * @example
@@ -350,6 +370,8 @@ Types.json = function (value) {
  *
  * **Interfaces**: `all`, `any`, `not`
  *
+ * @function
+ * @name date
  * @param value {Mixed} date object
  * @returns {boolean}
  * @example
@@ -365,6 +387,8 @@ Types.date = function (value) {
  *
  * **Interfaces**: `all`, `any`, `not`
  *
+ * @function
+ * @name function
  * @alias function
  * @param value {Mixed} value
  * @returns {boolean}
@@ -381,6 +405,8 @@ Types['function'] = function (value) {
  *
  * **Interfaces**: `all`, `any`, `not`
  *
+ * @function
+ * @name regexp
  * @param value {Mixed} value
  * @returns {boolean}
  * @example
@@ -397,6 +423,8 @@ Types.regexp = function (value) {
  *
  * **Interfaces**: `not`
  *
+ * @function
+ * @name sameType
  * @param value {Mixed} first
  * @param other {Mixed} second
  * @returns {boolean}
@@ -415,6 +443,8 @@ Types.sameType.multiple = false;
  *
  * **Interfaces**: `all`, `any`, `not`
  *
+ * @function
+ * @name empty
  * @param value {Mixed} value
  * @returns {boolean}
  * @example
@@ -441,10 +471,11 @@ Types.empty = function (value) {
 
 /**
  * Check if a falsy value
- *
+ * https://developer.mozilla.org/it/docs/Glossary/Falsy
  * **Interfaces**: `all`, `any`, `not`
  *
- * @link https://developer.mozilla.org/it/docs/Glossary/Falsy
+ * @function
+ * @name falsy
  * @param value {Mixed} value
  * @returns {boolean}
  * @example
@@ -460,10 +491,11 @@ Types.falsy = function (value) {
 
 /**
  * Check if a truthy value
- *
+ * https://developer.mozilla.org/en-US/docs/Glossary/Truthy
  * **Interfaces**: `all`, `any`, `not`
  *
- * @link https://developer.mozilla.org/en-US/docs/Glossary/Truthy
+ * @function
+ * @name truthy
  * @param value {Mixed}
  * @returns {boolean}
  * @example
@@ -484,6 +516,8 @@ Types.truthy = function (value) {
  *
  * **Interfaces**: `all`, `any`, `not`
  *
+ * @function
+ * @name error
  * @param value {Mixed} value
  * @returns {boolean}
  * @example
@@ -499,6 +533,8 @@ Types.error = function (value) {
  *
  * **Interfaces**: `all`, `any`, `not`
  *
+ * @function
+ * @name argument
  * @param value {Mixed} value
  * @returns {boolean}
  * @example
@@ -507,6 +543,40 @@ Types.error = function (value) {
  */
 Types.argument = function (value) {
     return Types.classOf(value, 'arguments') || Types.object(value) && 'callee' in value;
+};
+
+/**
+ * Check if is a primitive object
+ *
+ * **Interfaces**: `all`, `any`, `not`
+ *
+ * @function
+ * @name primitive
+ * @param value {Mixed} value
+ * @returns {boolean}
+ * @example
+ * be.primitive(20) // true
+ * be.primitive(new Number(20)) // false
+ */
+Types.primitive = function (value) {
+    return value !== Object(value);
+};
+
+/**
+ * Check if is a primitive object
+ *
+ * **Interfaces**: `all`, `any`, `not`
+ *
+ * @function
+ * @name promise
+ * @param value {Mixed} value
+ * @returns {boolean}
+ * @example
+ * var p = new Promise((resolve, reject) => {resolve()});
+ * be.promise(p) // true
+ */
+Types.promise = function (value) {
+    return Types.classOf(value, 'promise');
 };
 
 Types = Interface.create(Types);
@@ -600,8 +670,8 @@ module.exports = Helpers;
 
 
 /**
- * @module be
- * @description Numbers checks.
+ * @fileOverview Numbers checks.
+ * @module Numbers
  */
 
 var Types = __webpack_require__(1);
@@ -614,6 +684,8 @@ var Numbers = {};
  *
  * **Interfaces**: `all`, `any`, `not`
  *
+ * @function
+ * @name int
  * @param value {number} number
  * @returns {boolean}
  * @example
@@ -630,6 +702,8 @@ Numbers.int = function (value) {
  *
  * **Interfaces**: `all`, `any`, `not`
  *
+ * @function
+ * @name float
  * @param value {number} number
  * @returns {boolean}
  * @example
@@ -646,6 +720,8 @@ Numbers.float = function (value) {
  *
  * **Interfaces**: `all`, `any`, `not`
  *
+ * @function
+ * @name nan
  * @param value {number} number
  * @returns {boolean}
  * @example
@@ -660,6 +736,8 @@ Numbers.nan = function (value) {
  *
  * **Interfaces**: `all`, `any`, `not`
  *
+ * @function
+ * @name even
  * @param value {number} number
  * @returns {boolean}
  * @example
@@ -675,6 +753,8 @@ Numbers.even = function (value) {
  *
  * **Interfaces**: `all`, `any`, `not`
  *
+ * @function
+ * @name odd
  * @param value {number} number
  * @returns {boolean}
  * @example
@@ -690,6 +770,8 @@ Numbers.odd = function (value) {
  *
  * **Interfaces**: `all`, `any`, `not`
  *
+ * @function
+ * @name positive
  * @param value {number} number
  * @returns {boolean}
  * @example
@@ -705,6 +787,8 @@ Numbers.positive = function (value) {
  *
  * **Interfaces**: `all`, `any`, `not`
  *
+ * @function
+ * @name negative
  * @param value {number} number
  * @returns {boolean}
  * @example
@@ -720,6 +804,8 @@ Numbers.negative = function (value) {
  *
  * **Interfaces**: `all`, `any`, `not`
  *
+ * @function
+ * @name negativeZero
  * @param value {number} number
  * @returns {boolean}
  * @example
@@ -735,6 +821,8 @@ Numbers.negativeZero = function (value) {
  *
  * **Interfaces**: `all`, `any`, `not`
  *
+ * @function
+ * @name positiveZero
  * @param value {number} number
  * @returns {boolean}
  * @example
@@ -750,6 +838,8 @@ Numbers.positiveZero = function (value) {
  *
  * **Interfaces**: `all`, `any`, `not`
  *
+ * @function
+ * @name infinity
  * @param value {number} number
  * @returns {boolean}
  * @example
@@ -764,6 +854,8 @@ Numbers.infinity = function (value) {
  *
  * **Interfaces**: `all`, `any`, `not`
  *
+ * @function
+ * @name infinityPositive
  * @param value {number} number
  * @returns {boolean}
  * @example
@@ -779,6 +871,8 @@ Numbers.infinityPositive = function (value) {
  *
  * **Interfaces**: `all`, `any`, `not`
  *
+ * @function
+ * @name infinityNegative
  * @param value {number} number
  * @returns {boolean}
  * @example
@@ -794,6 +888,8 @@ Numbers.infinityNegative = function (value) {
  *
  * **Interfaces**: `not`
  *
+ * @function
+ * @name between
  * @param num {number} number
  * @param min {number} number min
  * @param max {number} number max
@@ -812,6 +908,8 @@ Numbers.between.multiple = false;
  *
  * **Interfaces**: `not`
  *
+ * @function
+ * @name greater
  * @param value {number} value to check
  * @param num {number} number target
  * @returns {boolean}
@@ -830,6 +928,8 @@ Numbers.greater.multiple = false;
  *
  * **Interfaces**: `not`
  *
+ * @function
+ * @name lesser
  * @param value {number} value to check
  * @param num {number} number target
  * @returns {boolean}
@@ -848,6 +948,8 @@ Numbers.lesser.multiple = false;
  *
  * **Interfaces**: `all`, `any`, `not`
  *
+ * @function
+ * @name numeric
  * @param value {number} number
  * @returns {boolean}
  * @example
@@ -1040,8 +1142,8 @@ be.getVersion = function () {
 
 
 /**
- * @module be
- * @description Strings checks.
+ * @fileOverview Strings checks.
+ * @module Strings
  */
 
 var Helpers = __webpack_require__(2);
@@ -1055,6 +1157,8 @@ var Strings = {};
  *
  * **Interfaces**: `all`, `any`, `not`
  *
+ * @function
+ * @name camelCase
  * @param value {string} string
  * @returns {boolean}
  * @example
@@ -1070,6 +1174,8 @@ Strings.camelCase = function (value) {
  *
  * **Interfaces**: `all`, `any`, `not`
  *
+ * @function
+ * @name snakeCase
  * @param value {string} string
  * @returns {boolean}
  * @example
@@ -1085,6 +1191,8 @@ Strings.snakeCase = function (value) {
  *
  * **Interfaces**: `all`, `any`, `not`
  *
+ * @function
+ * @name kebabCase
  * @param value {string} string
  * @returns {boolean}
  * @example
@@ -1100,6 +1208,8 @@ Strings.kebabCase = function (value) {
  *
  * **Interfaces**: `not`
  *
+ * @function
+ * @name similarity
  * @param string1 {string} string
  * @param string2 {string} string target
  * @param threshold {int|float} 0 to 1
@@ -1133,6 +1243,8 @@ Strings.similarity.multiple = false;
  *
  * **Interfaces**: `not`
  *
+ * @function
+ * @name contains
  * @param string {string} string
  * @param value {string} string target
  * @returns {boolean}
@@ -1151,6 +1263,8 @@ Strings.contains.multiple = false;
  *
  * **Interfaces**: `all`, `any`, `not`
  *
+ * @function
+ * @name lowerCase
  * @param value {string} string
  * @returns {boolean}
  * @example
@@ -1166,6 +1280,8 @@ Strings.lowerCase = function (value) {
  *
  * **Interfaces**: `all`, `any`, `not`
  *
+ * @function
+ * @name upperCase
  * @param value {string} string
  * @returns {boolean}
  * @example
@@ -1181,6 +1297,8 @@ Strings.upperCase = function (value) {
  *
  * **Interfaces**: `all`, `any`, `not`
  *
+ * @function
+ * @name word
  * @param value {string} string
  * @returns {boolean}
  * @example
@@ -1198,6 +1316,8 @@ Strings.word = function (value) {
  *
  * **Interfaces**: `all`, `any`, `not`
  *
+ * @function
+ * @name capitalized
  * @param value {string} string
  * @returns {boolean}
  * @example
@@ -1221,6 +1341,8 @@ Strings.capitalized = function (value) {
  *
  * **Interfaces**: `all`, `any`, `not`
  *
+ * @function
+ * @name emptyString
  * @param value {string} string
  * @returns {boolean}
  * @example
@@ -1235,6 +1357,8 @@ Strings.emptyString = function (value) {
  *
  * **Interfaces**: `all`, `any`, `not`
  *
+ * @function
+ * @name alphanumeric
  * @param value {string} string
  * @returns {boolean}
  * @example
@@ -1250,6 +1374,8 @@ Strings.alphanumeric = function (value) {
  *
  * **Interfaces**: `not`
  *
+ * @function
+ * @name startWith
  * @param value {string} start string
  * @param string {string} string target
  * @param insensitive {boolean} case sensitive
@@ -1271,6 +1397,8 @@ Strings.startWith.multiple = false;
  *
  * **Interfaces**: `all`, `any`, `not`
  *
+ * @function
+ * @name palindrome
  * @param value {string} string
  * @returns {boolean}
  * @example
@@ -1287,6 +1415,8 @@ Strings.palindrome = function (value) {
  *
  * **Interfaces**: `all`, `any`, `not`
  *
+ * @function
+ * @name char
  * @param value {string} string
  * @returns {boolean}
  * @example
@@ -1302,6 +1432,8 @@ Strings.char = function (value) {
  *
  * **Interfaces**: `all`, `any`, `not`
  *
+ * @function
+ * @name space
  * @param value {string} string
  * @returns {boolean}
  * @example
@@ -1317,6 +1449,8 @@ Strings.space = function (value) {
  *
  * **Interfaces**: `all`, `any`, `not`
  *
+ * @function
+ * @name spaces
  * @param value {string} string
  * @returns {boolean}
  * @example
@@ -1340,8 +1474,8 @@ module.exports = Strings;
 /* WEBPACK VAR INJECTION */(function(process) {
 
 /**
- * @module be
- * @description Environments checks.
+ * @fileOverview Environments checks.
+ * @module Envs
  */
 
 var Helpers = __webpack_require__(2);
@@ -1353,6 +1487,8 @@ var Envs = {};
  *
  * **Interfaces**: `not`
  *
+ * @function
+ * @name commonjsEnv
  * @returns {boolean}
  * @example
  * be.commonjsEnv() // true
@@ -1368,6 +1504,8 @@ Envs.commonjsEnv.multiple = false;
  *
  * **Interfaces**: `not`
  *
+ * @function
+ * @name browserEnv
  * @returns {boolean}
  * @example
  * be.browserEnv() // true
@@ -1383,6 +1521,8 @@ Envs.browserEnv.multiple = false;
  *
  * **Interfaces**: `not`
  *
+ * @function
+ * @name amdEnv
  * @returns {boolean}
  * @example
  * be.amdEnv() // true
@@ -1398,6 +1538,8 @@ Envs.amdEnv.multiple = false;
  *
  * **Interfaces**: `not`
  *
+ * @function
+ * @name ios
  * @returns {boolean}
  * @example
  * be.ios() // true
@@ -1419,6 +1561,8 @@ Envs.ios.multiple = false;
  *
  * **Interfaces**: `not`
  *
+ * @function
+ * @name iphone
  * @returns {boolean}
  * @example
  * be.iphone() // true
@@ -1440,6 +1584,8 @@ Envs.iphone.multiple = false;
  *
  * **Interfaces**: `not`
  *
+ * @function
+ * @name ipad
  * @returns {boolean}
  * @example
  * be.ipad() // true
@@ -1461,6 +1607,8 @@ Envs.ipad.multiple = false;
  *
  * **Interfaces**: `not`
  *
+ * @function
+ * @name ipod
  * @returns {boolean}
  * @example
  * be.ipod() // true
@@ -1482,6 +1630,8 @@ Envs.ipod.multiple = false;
  *
  * **Interfaces**: `not`
  *
+ * @function
+ * @name android
  * @returns {boolean}
  * @example
  * be.android() // true
@@ -1503,6 +1653,8 @@ Envs.android.multiple = false;
  *
  * **Interfaces**: `not`
  *
+ * @function
+ * @name navigator
  * @returns {boolean}
  * @example
  * be.navigator() // true
@@ -1518,6 +1670,8 @@ Envs.navigator.multiple = false;
  *
  * **Interfaces**: `not`
  *
+ * @function
+ * @name firefox
  * @returns {boolean}
  * @example
  * be.firefox() // true
@@ -1539,6 +1693,8 @@ Envs.firefox.multiple = false;
  *
  * **Interfaces**: `not`
  *
+ * @function
+ * @name chrome
  * @returns {boolean}
  * @example
  * be.chrome() // true
@@ -1560,6 +1716,8 @@ Envs.chrome.multiple = false;
  *
  * **Interfaces**: `not`
  *
+ * @function
+ * @name safari
  * @returns {boolean}
  * @example
  * be.safari() // true
@@ -1581,6 +1739,8 @@ Envs.safari.multiple = false;
  *
  * **Interfaces**: `not`
  *
+ * @function
+ * @name userAgent
  * @returns {boolean}
  * @example
  * be.ie() // true
@@ -1602,6 +1762,8 @@ Envs.ie.multiple = false;
  *
  * **Interfaces**: `not`
  *
+ * @function
+ * @name mac
  * @returns {boolean}
  * @example
  * be.mac() // true
@@ -1623,6 +1785,8 @@ Envs.mac.multiple = false;
  *
  * **Interfaces**: `not`
  *
+ * @function
+ * @name online
  * @returns {boolean}
  * @example
  * be.onLine() // true
@@ -1848,8 +2012,8 @@ module.exports = __webpack_amd_options__;
 
 
 /**
- * @module be
- * @description Objects checks.
+ * @fileOverview Objects checks.
+ * @module Objects
  */
 
 var Types = __webpack_require__(1);
@@ -1861,6 +2025,8 @@ var Objects = {};
  *
  * **Interfaces**: `not`
  *
+ * @function
+ * @name propertyOf
  * @param value {Mixed} property that you want to search
  * @param object {Object} object target
  * @returns {boolean}
@@ -1879,6 +2045,8 @@ Objects.propertyOf.multiple = false;
  *
  * **Interfaces**: `not`
  *
+ * @function
+ * @name propertyCount
  * @param object {Object} object
  * @param value {Integer} count
  * @returns {boolean}
@@ -1908,8 +2076,8 @@ module.exports = Objects;
 
 
 /**
- * @module be
- * @description Various checks.
+ * @fileOverview Various checks.
+ * @module Mixed
  */
 
 var Types = __webpack_require__(1);
@@ -1918,10 +2086,11 @@ var Mixed = {};
 
 /**
  * Check if is valid email
- *
+ * https://emailregex.com/
  * **Interfaces**: `all`, `any`, `not`
  *
- * @link https://emailregex.com/
+ * @function
+ * @name email
  * @param value {string} email
  * @returns {boolean}
  * @example
@@ -1938,6 +2107,8 @@ Mixed.email = function (value) {
  *
  * **Interfaces**: `all`, `any`, `not`
  *
+ * @function
+ * @name hex
  * @param value {string} hex string
  * @returns {boolean}
  * @example
@@ -1953,6 +2124,8 @@ Mixed.hex = function (value) {
  *
  * **Interfaces**: `all`, `any`, `not`
  *
+ * @function
+ * @name hexColor
  * @param value {string} hex color string
  * @returns {boolean}
  * @example
@@ -1972,6 +2145,8 @@ Mixed.hexColor = function (value) {
  *
  * **Interfaces**: `all`, `any`, `not`
  *
+ * @function
+ * @name ipv4
  * @param value {string} ip string
  * @returns {boolean}
  * @example
@@ -1987,6 +2162,8 @@ Mixed.ipv4 = function (value) {
  *
  * **Interfaces**: `all`, `any`, `not`
  *
+ * @function
+ * @name ipv6
  * @param value {string} ip string
  * @returns {boolean}
  * @example
@@ -2002,6 +2179,8 @@ Mixed.ipv6 = function (value) {
  *
  * **Interfaces**: `all`, `any`, `not`
  *
+ * @function
+ * @name ipv
  * @param value {string} ip string
  * @returns {boolean}
  * @example
@@ -2016,6 +2195,8 @@ Mixed.ip = function (value) {
  *
  * **Interfaces**: `all`, `any`, `not`
  *
+ * @function
+ * @name base64
  * @param value {string} base64 string
  * @returns {boolean}
  * @example
@@ -2031,6 +2212,8 @@ Mixed.base64 = function (value) {
  *
  * **Interfaces**: `all`, `any`, `not`
  *
+ * @function
+ * @name semVer
  * @param value {string} version string
  * @returns {boolean}
  * @example
@@ -2046,6 +2229,8 @@ Mixed.semVer = function (value) {
  *
  * **Interfaces**: `not`
  *
+ * @function
+ * @name equal
  * @param value {Number|String|Boolean|RegExp} first
  * @param other {Number|String|Boolean|RegExp} second
  * @returns {boolean}
@@ -2065,6 +2250,8 @@ Mixed.equal.multiple = false;
  *
  * **Interfaces**: `all`, `any`, `not`
  *
+ * @function
+ * @name fiscalCodeIT
  * @param value {string} code string
  * @returns {boolean}
  * @example
@@ -2080,6 +2267,8 @@ Mixed.fiscalCodeIT = function (value) {
  *
  * **Interfaces**: `all`, `any`, `not`
  *
+ * @function
+ * @name macAddress
  * @param value {string} MAC string
  * @returns {boolean}
  * @example
@@ -2102,8 +2291,8 @@ module.exports = Mixed;
 
 
 /**
- * @module be
- * @description Arrays checks.
+ * @fileOverview Arrays checks.
+ * @module Array
  */
 
 var Types = __webpack_require__(1);
@@ -2113,17 +2302,19 @@ var Arrays = {};
 /**
  * Check if an element is in the array
  *
- * **Interfaces**: `not`
+ * **Interface**: `not`
  *
  * @param value {Mixed} element to search
  * @param array {array} array where search
- * @returns {boolean}
+ * @function
+ * @name inArray
+ * @return {boolean}
  * @example
- * be.inArray('hello', ['hello', 'world']) //true
- * be.inArray('ciao', ['hello', 'world']) //false
- * be.inArray(1, true) //false
- * be.not.inArray(1, true) //true
- * be.Arrays.inArray(1, [1, 2, 3]) //true
+ *  be.inArray('hello', ['hello', 'world']) //true
+ *  be.inArray('ciao', ['hello', 'world']) //false
+ *  be.inArray(1, true) //false
+ *  be.not.inArray(1, true) //true
+ *  be.Arrays.inArray(1, [1, 2, 3]) //true
  */
 Arrays.inArray = function (value, array) {
   if (!Types.array(array)) return false;
@@ -2141,12 +2332,14 @@ Arrays.inArray.multiple = false;
  * **Interfaces**: `all`, `any`, `not`
  *
  * @param value {array} array
+ * @function
+ * @name arrayOfStrings
  * @returns {*|boolean}
  * @example
  * be.arrayOfStrings(['hello', 'world']) // true
  * be.all.arrayOfStrings([
- *      ['hello', 'world'],
- *      ['ciao', 'mondo']
+ *     ['hello', 'world'],
+ *     ['ciao', 'mondo']
  * ]) // true
  */
 Arrays.arrayOfStrings = function (value) {
@@ -2158,6 +2351,8 @@ Arrays.arrayOfStrings = function (value) {
  *
  * **Interfaces**: `all`, `any`, `not`
  *
+ * @function
+ * @name arrayOfObjects
  * @param value {array} array
  * @returns {*|boolean}
  * @example
@@ -2184,8 +2379,8 @@ module.exports = Arrays;
 
 
 /**
- * @module be
- * @description Dates checks.
+ * @fileOverview Dates checks.
+ * @module Dates
  */
 
 var Types = __webpack_require__(1);
@@ -2202,6 +2397,8 @@ var _months = ['january', 'february', 'march', 'april', 'may', 'june', 'july', '
  *
  * **Interfaces**: `all`, `any`, `not`
  *
+ * @function
+ * @name dateString
  * @param value {string} string date
  * @returns {boolean}
  * @example
@@ -2218,6 +2415,8 @@ Dates.dateString = function (value) {
  *
  * **Interfaces**: `all`, `any`, `not`
  *
+ * @function
+ * @name timeString
  * @param value {string} string time
  * @returns {boolean}
  * @example
@@ -2233,6 +2432,8 @@ Dates.timeString = function (value) {
  *
  * **Interfaces**: `all`, `any`, `not`
  *
+ * @function
+ * @name today
  * @param date {Date} date object
  * @returns {boolean}
  * @example
@@ -2248,6 +2449,8 @@ Dates.today = function (date) {
  *
  * **Interfaces**: `all`, `any`, `not`
  *
+ * @function
+ * @name tomorrow
  * @param date {Date} date object
  * @returns {boolean}
  * @example
@@ -2266,6 +2469,8 @@ Dates.tomorrow = function (date) {
  *
  * **Interfaces**: `all`, `any`, `not`
  *
+ * @function
+ * @name yesterday
  * @param date {Date} date object
  * @returns {boolean}
  * @example
@@ -2284,6 +2489,8 @@ Dates.yesterday = function (date) {
  *
  * **Interfaces**: `all`, `any`, `not`
  *
+ * @function
+ * @name past
  * @param date {Date} date object
  * @returns {boolean}
  * @example
@@ -2299,6 +2506,8 @@ Dates.past = function (date) {
  *
  * **Interfaces**: `all`, `any`, `not`
  *
+ * @function
+ * @name future
  * @param date {Date} date object
  * @returns {boolean}
  * @example
@@ -2316,6 +2525,8 @@ Dates.future = function (date) {
  *
  * **Interfaces**: `not`
  *
+ * @function
+ * @name day
  * @param date {Date} date object
  * @param day {string} day can be 'sunday','monday','tuesday','wednesday','thursday','friday','saturday'
  * @returns {boolean}
@@ -2335,6 +2546,8 @@ Dates.day.multiple = false;
  *
  * **Interfaces**: `not`
  *
+ * @function
+ * @name month
  * @param date {Date} date object
  * @param month {string} month can be 'january', 'february', 'march', 'april', 'may', 'june', 'july', 'august', 'september', 'october', 'november', 'december'
  * @returns {boolean}
@@ -2354,6 +2567,8 @@ Dates.month.multiple = false;
  *
  * **Interfaces**: `not`
  *
+ * @function
+ * @name year
  * @param date {Date} date object
  * @param year {number} year
  * @returns {boolean}
@@ -2372,6 +2587,8 @@ Dates.year.multiple = false;
  *
  * **Interfaces**: `all`, `any`, `not`
  *
+ * @function
+ * @name leapYear
  * @param year {number} year
  * @returns {boolean}
  * @example
@@ -2390,6 +2607,8 @@ Dates.leapYear = function (year) {
  *
  * **Interfaces**: `all`, `any`, `not`
  *
+ * @function
+ * @name weekend
  * @param date {Date} date object
  * @returns {boolean}
  * @example
@@ -2407,6 +2626,8 @@ Dates.weekend = function (date) {
  *
  * **Interfaces**: `all`, `any`, `not`
  *
+ * @function
+ * @name weekday
  * @param date {Date} date object
  * @returns {boolean}
  * @example
@@ -2421,6 +2642,8 @@ Dates.weekday = function (date) {
 
 /**
  * Check if number is in week, between 0 and 6
+ * @function
+ * @name numberInWeek
  * @param number {number} number
  * @returns {boolean}
  * @example
@@ -2437,6 +2660,8 @@ Dates.numberInWeek = function (number) {
  *
  * **Interfaces**: `not`
  *
+ * @function
+ * @name dateBetween
  * @param date {Date} date object
  * @param startDate {Date} start date object
  * @param endDate {Date} end date object
@@ -2456,6 +2681,8 @@ Dates.dateBetween.multiple = false;
  *
  * **Interfaces**: `all`, `any`, `not`
  *
+ * @function
+ * @name dayLightSavingTime
  * @param date {Date} date object
  * @returns {boolean}
  * @example
@@ -2482,8 +2709,8 @@ module.exports = Dates;
 
 
 /**
- * @module be
- * @description Urls checks.
+ * @fileOverview Urls checks.
+ * @module Urls
  */
 
 var Interface = __webpack_require__(0);
@@ -2494,7 +2721,8 @@ var Urls = {};
  *
  * **Interfaces**: `all`, `any`, `not`
  *
- * @link https://gist.github.com/dperini/729294
+ * @function
+ * @name url
  * @param value {string} url
  * @returns {boolean}
  * @example
@@ -2513,6 +2741,8 @@ Urls.url = function (value) {
  *
  * **Interfaces**: `all`, `any`, `not`
  *
+ * @function
+ * @name httpUrl
  * @param value {string} url
  * @returns {boolean}
  * @example
@@ -2530,6 +2760,8 @@ Urls.httpUrl = function (value) {
  *
  * **Interfaces**: `all`, `any`, `not`
  *
+ * @function
+ * @name httpsUrl
  * @param value {string} url
  * @returns {boolean}
  * @example
@@ -2547,6 +2779,8 @@ Urls.httpsUrl = function (value) {
  *
  * **Interfaces**: `all`, `any`, `not`
  *
+ * @function
+ * @name urlEncoded
  * @param value {string} url encoded
  * @returns {boolean}
  * @example
@@ -2562,6 +2796,8 @@ Urls.urlEncoded = function (value) {
  *
  * **Interfaces**: `all`, `any`, `not`
  *
+ * @function
+ * @name ftpUrl
  * @param value {string} url
  * @returns {boolean}
  * @example
@@ -2579,6 +2815,8 @@ Urls.ftpUrl = function (value) {
  *
  * **Interfaces**: `all`, `any`, `not`
  *
+ * @function
+ * @name ftpsUrl
  * @param value {string} url
  * @returns {boolean}
  * @example
@@ -2603,8 +2841,8 @@ module.exports = Urls;
 
 
 /**
- * @module be
- * @description Hashes checks.
+ * @fileOverview Hashes checks.
+ * @module Hashes
  */
 
 var Interface = __webpack_require__(0);
@@ -2615,6 +2853,8 @@ var Hashes = {};
  *
  * **Interfaces**: `all`, `any`, `not`
  *
+ * @function
+ * @name md5
  * @param value {string} hash string
  * @returns {boolean}
  * @example
@@ -2631,6 +2871,8 @@ Hashes.md5 = function (value) {
  *
  * **Interfaces**: `all`, `any`, `not`
  *
+ * @function
+ * @name sha1
  * @param value {string} hash string
  * @returns {boolean}
  * @example
@@ -2654,8 +2896,8 @@ module.exports = Hashes;
 
 
 /**
- * @module be
- * @description Credit cards checks.
+ * @fileOverview Credit cards checks.
+ * @module creditCard
  */
 
 var Interface = __webpack_require__(0);
@@ -2666,6 +2908,8 @@ var CreditCard = {};
  *
  * **Interfaces**: `all`, `any`, `not`
  *
+ * @function
+ * @name creditCard
  * @param value {string} version string
  * @returns {boolean}
  * @example
@@ -2681,6 +2925,8 @@ CreditCard.creditCard = function (value) {
  *
  * **Interfaces**: `all`, `any`, `not`
  *
+ * @function
+ * @name amex
  * @param value {string} version string
  * @returns {boolean}
  * @example
@@ -2696,6 +2942,8 @@ CreditCard.amex = function (value) {
  *
  * **Interfaces**: `all`, `any`, `not`
  *
+ * @function
+ * @name dinersClub
  * @param value {string} version string
  * @returns {boolean}
  * @example
@@ -2711,6 +2959,8 @@ CreditCard.dinersClub = function (value) {
  *
  * **Interfaces**: `all`, `any`, `not`
  *
+ * @function
+ * @name discover
  * @param value {string} version string
  * @returns {boolean}
  * @example
@@ -2726,6 +2976,8 @@ CreditCard.discover = function (value) {
  *
  * **Interfaces**: `all`, `any`, `not`
  *
+ * @function
+ * @name mastercard
  * @param value {string} version string
  * @returns {boolean}
  * @example
@@ -2741,6 +2993,8 @@ CreditCard.mastercard = function (value) {
  *
  * **Interfaces**: `all`, `any`, `not`
  *
+ * @function
+ * @name visa
  * @param value {string} version string
  * @returns {boolean}
  * @example
@@ -2763,8 +3017,8 @@ module.exports = CreditCard;
 
 
 /**
- * @module be
- * @description Postal codes checks.
+ * @fileOverview Postal codes checks.
+ * @module postalCodes
  */
 
 var Interface = __webpack_require__(0);
@@ -2775,6 +3029,8 @@ var PostalCodes = {};
  *
  * **Interfaces**: `all`, `any`, `not`
  *
+ * @function
+ * @name postalCodeES
  * @param value {string} version string
  * @returns {boolean}
  * @example
@@ -2790,6 +3046,8 @@ PostalCodes.postalCodeES = function (value) {
  *
  * **Interfaces**: `all`, `any`, `not`
  *
+ * @function
+ * @name postalCodeUK
  * @param value {string} version string
  * @returns {boolean}
  * @example
@@ -2805,6 +3063,8 @@ PostalCodes.postalCodeUK = function (value) {
  *
  * **Interfaces**: `all`, `any`, `not`
  *
+ * @function
+ * @name postalCodeUS
  * @param value {string} version string
  * @returns {boolean}
  * @example
@@ -2820,6 +3080,8 @@ PostalCodes.postalCodeUS = function (value) {
  *
  * **Interfaces**: `all`, `any`, `not`
  *
+ * @function
+ * @name postalCodeIT
  * @param value {string} version string
  * @returns {boolean}
  * @example
@@ -2835,6 +3097,8 @@ PostalCodes.postalCodeIT = function (value) {
  *
  * **Interfaces**: `all`, `any`, `not`
  *
+ * @function
+ * @name postalCodeDE
  * @param value {string} version string
  * @returns {boolean}
  * @example
@@ -2850,6 +3114,8 @@ PostalCodes.postalCodeDE = function (value) {
  *
  * **Interfaces**: `all`, `any`, `not`
  *
+ * @function
+ * @name postalCodeNL
  * @param value {string} version string
  * @returns {boolean}
  * @example
@@ -2874,8 +3140,8 @@ module.exports = PostalCodes;
 var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
 
 /**
- * @module be
- * @description DOM checks.
+ * @fileOverview DOM checks.
+ * @module DOM
  */
 
 var Interface = __webpack_require__(0);
@@ -2887,6 +3153,8 @@ var DOM = {};
  *
  * **Interfaces**: `all`, `any`, `not`
  *
+ * @function
+ * @name domElement
  * @param element {object} element object
  * @returns {boolean}
  * @example
@@ -2901,6 +3169,8 @@ DOM.domElement = function (element) {
  *
  * **Interfaces**: `not`
  *
+ * @function
+ * @name domElementTag
  * @param element {object} element object
  * @param tag {string} tag name
  * @returns {boolean}
@@ -2931,10 +3201,12 @@ module.exports = {
 		"version:minor": "webpack --env.minor && npm run-script doc && version-to-tag.sh && npm publish",
 		"version:patch": "webpack --env.patch && npm run-script doc && version-to-tag.sh && npm publish",
 		"build": "webpack --progress",
-		"doc": "jsdox -i -r -o docs src",
+		"doc": "./node_modules/.bin/jsdoc --configure .jsdoc.json --verbose",
 		"test": "istanbul cover ./node_modules/mocha/bin/_mocha --report lcovonly -- -R spec && cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js && rm -rf ./coverage"
 	},
 	"keywords": [
+		"asserts",
+		"test",
 		"is",
 		"boolean",
 		"url",
@@ -2963,8 +3235,9 @@ module.exports = {
 		"babel-preset-es2015": "^6.24.1",
 		"coveralls": "^2.13.1",
 		"istanbul": "^0.4.5",
+		"jsdoc": "^3.4.3",
 		"jsdom": "^11.0.0",
-		"jsdox": "^0.4.10",
+		"minami": "^1.2.3",
 		"mocha": "^3.4.2",
 		"mocha-lcov-reporter": "^1.3.0",
 		"unminified-webpack-plugin": "^1.2.0",
