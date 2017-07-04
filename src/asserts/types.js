@@ -385,6 +385,20 @@ Types.argument = (value) => {
     return Types.classOf(value, 'arguments') || (Types.object(value) && 'callee' in value);
 };
 
+/**
+ * Check if is a primitive object
+ * @function
+ * @name primitive
+ * @param value {Mixed} value
+ * @returns {boolean}
+ * @example
+ * be.primitive(20) // true
+ * be.primitive(new Number(20)) // false
+ */
+Types.primitive = (value) => {
+    return value !== Object(value);
+};
+
 Types = Interface.create(Types);
 
 module.exports = Types;

@@ -487,3 +487,26 @@ describe('argument', function () {
         assert.equal(result, false);
     });
 });
+
+describe('primitive', function () {
+    it('number, should be return true', function () {
+        var result = be.primitive(20);
+        console.log(result);
+        assert.equal(result, true);
+    });
+    it('number, should be return false', function () {
+        var result = be.primitive(new Number(20));
+        console.log(result);
+        assert.equal(result, false);
+    });
+    it('string, should be return true', function () {
+        var result = be.primitive('hello');
+        console.log(result);
+        assert.equal(result, true);
+    });
+    it('string, should be return false', function () {
+        var result = be.primitive(new String('hello'));
+        console.log(result);
+        assert.equal(result, false);
+    });
+});
