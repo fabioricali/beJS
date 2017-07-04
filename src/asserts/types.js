@@ -419,6 +419,23 @@ Types.promise = (value) => {
     return Types.classOf(value, 'promise');
 };
 
+/**
+ * Check if is a buffer
+ *
+ * **Interfaces**: `all`, `any`, `not`
+ *
+ * @function
+ * @name buffer
+ * @param value {Mixed} value
+ * @returns {boolean}
+ * @example
+ * var b = new Buffer('hello');
+ * be.buffer(b) // true
+ */
+Types.buffer = (value) => {
+    return value instanceof Buffer;
+};
+
 Types = Interface.create(Types);
 
 module.exports = Types;

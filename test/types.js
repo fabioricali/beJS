@@ -530,3 +530,19 @@ describe('promise', function () {
         assert.equal(result, false);
     });
 });
+
+describe('buffer', function () {
+    it('should be return true', function () {
+
+        var b = new Buffer('hello');
+
+        var result = be.buffer(b);
+        console.log(result);
+        assert.equal(result, true);
+    });
+    it('should be return false', function () {
+        var result = be.buffer('hello');
+        console.log(result);
+        assert.equal(result, false);
+    });
+});
