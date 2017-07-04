@@ -47,6 +47,20 @@ Arrays.arrayOfStrings = (value) => {
     return Types.all.string(value);
 };
 
+/**
+ * Check if is an array of objects
+ *
+ * **Interfaces**: `all`, `any`, `not`
+ *
+ * @param value {array} array
+ * @returns {*|boolean}
+ * @example
+ * be.arrayOfObjects({a:1},{b:2}) // true
+ */
+Arrays.arrayOfObjects = (value) => {
+    return Types.all.object(value);
+};
+
 Arrays = Interface.create(Arrays);
 
 module.exports = Arrays;
