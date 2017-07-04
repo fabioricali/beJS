@@ -50,6 +50,14 @@ describe('arrayOfStrings', function () {
         console.log(result);
         assert.equal(result, false);
     });
+    it('interface all, different types, should be return false', function () {
+        var result = be.all.arrayOfStrings([
+            ['ciao', 'bye'],
+            [2]
+        ]);
+        console.log(result);
+        assert.equal(result, false);
+    });
     it('[], should be return false', function () {
         var result = be.arrayOfStrings([]);
         console.log(result);
@@ -67,12 +75,15 @@ describe('arrayOfObjects', function () {
         var result = be.all.arrayOfObjects([{a:1},{b:2}],[{a:1},{b:2}]);
         console.log(result);
         assert.equal(result, true);
-    });/*
+    });
     it('interface all, different types, should be return false', function () {
-        var result = be.all.arrayOfObjects([{a:1},{b:2}],false);
+        var result = be.all.arrayOfObjects([
+            [{a:1},{b:2}],
+            false
+        ]);
         console.log(result);
         assert.equal(result, false);
-    });*/
+    });
     it('should be return false', function () {
         var result = be.arrayOfObjects(['ciao', 'bye', 2]);
         console.log(result);

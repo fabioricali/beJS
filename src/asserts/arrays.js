@@ -42,6 +42,10 @@ Arrays.inArray.multiple = false;
  * @returns {*|boolean}
  * @example
  * be.arrayOfStrings(['hello', 'world']) // true
+ * be.all.arrayOfStrings([
+ *      ['hello', 'world'],
+ *      ['ciao', 'mondo']
+ * ]) // true
  */
 Arrays.arrayOfStrings = (value) => {
     return Types.all.string(value);
@@ -56,6 +60,11 @@ Arrays.arrayOfStrings = (value) => {
  * @returns {*|boolean}
  * @example
  * be.arrayOfObjects({a:1},{b:2}) // true
+ * be.all.arrayOfObjects([
+ *      {a: 1},
+ *      {b: 2},
+ *      [1, 2, 3]
+ * ]) // false
  */
 Arrays.arrayOfObjects = (value) => {
     return Types.all.object(value);
