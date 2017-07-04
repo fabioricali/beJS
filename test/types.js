@@ -547,3 +547,21 @@ if(Buffer)
             assert.equal(result, false);
         });
     });
+
+describe('iterable', function () {
+    it('array should be return true', function () {
+        var result = be.iterable([1,2,3]);
+        console.log(result);
+        assert.equal(result, true);
+    });
+    it('string should be return true', function () {
+        var result = be.iterable('hello');
+        console.log(result);
+        assert.equal(result, true);
+    });
+    it('object should be return false', function () {
+        var result = be.iterable({a:1});
+        console.log(result);
+        assert.equal(result, false);
+    });
+});
