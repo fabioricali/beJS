@@ -74,7 +74,7 @@ let Checks = {
 /**
  * Get version of framework
  * @function
- * @name getVersion
+ * @name be#getVersion
  * @memberOf be
  * @returns {string}
  */

@@ -1,7 +1,3 @@
-/**
- * @module interface
- */
-
 let Helpers = require('./helpers');
 let Interface = {};
 
@@ -20,8 +16,34 @@ Interface._isArray = (object) => {
  * @returns {Object}
  */
 Interface.create = (obj) => {
+    /**
+     * @interface all
+     * @description
+     * All checks must be satisfied, can accept array or arguments
+     * @example
+     * be.all.true(true, true, false) // false;
+     *
+     */
     obj.all = {};
+
+    /**
+     * @interface any
+     * @description
+     * Also just one check can be satisfied, can accept array or arguments
+     * @example
+     * be.any.true(true, true, false) // true;
+     *
+     */
     obj.any = {};
+
+    /**
+     * @interface not
+     * @description
+     * return "logical not" of called method, accept one argument
+     * @example
+     * be.not.true(true) // false;
+     *
+     */
     obj.not = {};
 
     for (let i in obj) {

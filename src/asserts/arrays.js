@@ -1,5 +1,5 @@
 /**
- * @fileOverview Arrays checks.
+ * @fileOverview Arrays asserts.
  * @module Array
  */
 
