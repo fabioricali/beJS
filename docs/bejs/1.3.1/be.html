@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>asserts/arrays.js - Documentation</title>
+    <title>be - Documentation</title>
 
     <script src="scripts/prettify/prettify.js"></script>
     <script src="scripts/prettify/lang-css.js"></script>
@@ -29,121 +29,221 @@
 
 <div id="main">
     
-    <h1 class="page-title">asserts/arrays.js</h1>
+    <h1 class="page-title">be</h1>
     
 
     
 
 
 
+
+<section>
+
+<header>
     
-    <section>
-        <article>
-            <pre class="prettyprint source linenums"><code>/**
- * @fileOverview Arrays checks.
- * @module Array
- */
+        <h2>
+        be
+        </h2>
+        
+    
+</header>
 
-const Types = require('./types');
-const Interface = require('../interface');
-let Arrays = {};
+<article>
+    <div class="container-overview">
+    
+        
+            <div class="description"><p>beJS has the following interfaces:</p>
+<ul>
+<li><code>all</code>, all checks must be satisfied</li>
+<li><code>any</code>, also just one check can be satisfied</li>
+<li><code>not</code>, return &quot;logical not&quot; of called method</li>
+</ul>
+<p><code>all</code>, <code>any</code> can accept array or arguments</p>
+<p>You can access the methods directly from &quot;be.boolean&quot; or from the class eg &quot;be.Types.boolean&quot;.
+Also the classes supports <code>all</code>, <code>any</code>, <code>not</code></p></div>
+        
 
-/**
- * Check if an element is in the array
- *
- * **Interface**: `not`
- *
- * @param value {Mixed} element to search
- * @param array {array} array where search
- * @function
- * @name inArray
- * @return {boolean}
- * @example
- *  be.inArray('hello', ['hello', 'world']) //true
- *  be.inArray('ciao', ['hello', 'world']) //false
- *  be.inArray(1, true) //false
- *  be.not.inArray(1, true) //true
- *  be.Arrays.inArray(1, [1, 2, 3]) //true
- */
-Arrays.inArray = (value, array) => {
-    if(!Types.array(array)) return false;
-    for(let i in array){
-        if(array.hasOwnProperty(i) &amp;&amp; array[i] === value)
-            return true;
-    }
-    return false;
-};
+        
 
-Arrays.inArray.multiple = false;
 
-/**
- * Check if is an array of strings
- *
- * **Interfaces**: `all`, `any`, `not`
- *
- * @param value {array} array
- * @function
- * @name arrayOfStrings
- * @returns {*|boolean}
- * @example
- * be.arrayOfStrings(['hello', 'world']) // true
- * be.all.arrayOfStrings([
- *     ['hello', 'world'],
- *     ['ciao', 'mondo']
- * ]) // true
- */
-Arrays.arrayOfStrings = (value) => {
-    return Types.all.string(value);
-};
+<dl class="details">
 
-/**
- * Check if is an array of objects
- *
- * **Interfaces**: `all`, `any`, `not`
- *
- * @function
- * @name arrayOfObjects
- * @param value {array} array
- * @returns {*|boolean}
- * @example
- * be.arrayOfObjects([{a:1},{b:2}]) // true
- * be.all.arrayOfObjects([
- *      {a: 1},
- *      {b: 2},
- *      [1, 2, 3]
- * ]) // false
- */
-Arrays.arrayOfObjects = (value) => {
-    return Types.all.object(value);
-};
+    
 
-/**
- * Check if is an array of booleans
- *
- * **Interfaces**: `all`, `any`, `not`
- *
- * @function
- * @name arrayOfBooleans
- * @param value {array} array
- * @returns {*|boolean}
- * @example
- * be.arrayOfBooleans([true, false]) // true
- * be.all.arrayOfBooleans([
- *      true,
- *      false,
- *      [1, 2, 3]
- * ]) // false
- */
-Arrays.arrayOfBooleans = (value) => {
-    return Types.all.boolean(value);
-};
+    
 
-Arrays = Interface.create(Arrays);
+    
 
-module.exports = Arrays;
-</code></pre>
-        </article>
-    </section>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="be.js.html">be.js</a>, <a href="be.js.html#line1">line 1</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+        
+            <h3>Example</h3>
+            
+    <pre class="prettyprint"><code>// call a methodbe.boolean(true);// call interface "not"be.not.boolean(1);// call interface "all" and passing argumentsbe.all.boolean(true, false, true);// call interface "all" and passing arraybe.all.boolean([true, false, true]);// call interface "any" and passing argumentsbe.any.boolean(true, false, 1);</code></pre>
+
+        
+    
+    </div>
+
+    
+
+    
+
+    
+
+     
+
+    
+
+    
+
+    
+        <h3 class="subsection-title">Methods</h3>
+
+        
+            
+<div class="section-method">
+
+    
+
+    <h4 class="name" id=".getVersion"><span class="type-signature">(static) </span>getVersion<span class="signature">()</span><span class="type-signature"> &rarr; {string}</span></h4>
+
+    
+
+
+
+<div class="description">
+    <p>Get version of framework</p>
+</div>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="be.js.html">be.js</a>, <a href="be.js.html#line74">line 74</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="section-returns">
+<h5>Returns:</h5>
+
+        
+
+<dl class="param-type">
+    <dt>
+        Type:
+    </dt>
+    <dd>
+        
+<span class="param-type"><code>string</code></span>
+
+
+    </dd>
+</dl>
+
+
+    
+</div>
+
+
+
+</div>
+        
+    
+
+    
+
+    
+</article>
+
+</section>
 
 
 

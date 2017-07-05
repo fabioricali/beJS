@@ -89,7 +89,7 @@ Types.false = (value) => {
  * **Interfaces**: `all`, `any`, `not`
  *
  * @function
- * @name booleanTru
+ * @name booleanTrue
  * @alias true
  * @param value {Mixed} value
  * @returns {boolean}

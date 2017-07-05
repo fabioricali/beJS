@@ -1,5 +1,4 @@
 /**
- * @module be
  * @fileOverview
  * beJS has the following interfaces:
  *
@@ -11,23 +10,7 @@
  *
  * You can access the methods directly from "be.boolean" or from the class eg "be.Types.boolean".
  * Also the classes supports `all`, `any`, `not`
- *
- * Checks
- *
- * - [Arrays](arrays.md)
- * - [Dates](dates.md)
- * - [Envs](envs.md)
- * - [Hashes](hashes.md)
- * - [Mixed](mixed.md)
- * - [Numbers](numbers.md)
- * - [Objects](objects.md)
- * - [Strings](strings.md)
- * - [Types](types.md)
- * - [Urls](urls.md)
- * - [CreditCards](creditCards.md)
- * - [PostalCodes](postalCodes.md)
- * - [DOM](dom.md)
- *
+ * @namespace be
  * @example
  * // call a method
  * be.boolean(true);
@@ -44,9 +27,6 @@
  * // call interface "any" and passing arguments
  * be.any.boolean(true, false, 1);
  *
- * @author Fabio Ricali <fabio@rica.li>
- * @copyright rica.li 2017
- * @license MIT
  **/
 
 const Helpers = require('./helpers');
