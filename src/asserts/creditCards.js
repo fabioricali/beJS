@@ -1,6 +1,6 @@
 /**
  * @fileOverview Credit cards checks.
- * @module creditCard
+ * @module CreditCard
  */
 
 const Interface = require('../interface');

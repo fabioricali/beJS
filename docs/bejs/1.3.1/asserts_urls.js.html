@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>mixed.js - Documentation</title>
+    <title>asserts/urls.js - Documentation</title>
 
     <script src="scripts/prettify/prettify.js"></script>
     <script src="scripts/prettify/lang-css.js"></script>
@@ -29,7 +29,7 @@
 
 <div id="main">
     
-    <h1 class="page-title">mixed.js</h1>
+    <h1 class="page-title">asserts/urls.js</h1>
     
 
     
@@ -40,212 +40,127 @@
     <section>
         <article>
             <pre class="prettyprint source linenums"><code>/**
- * @fileOverview Various checks.
- * @module Mixed
+ * @fileOverview Urls checks.
+ * @module Urls
  */
 
-const Types = require('./types');
 const Interface = require('../interface');
-let Mixed = {};
+let Urls = {};
 
 /**
- * Check if is valid email
- * https://emailregex.com/
- * **Interfaces**: `all`, `any`, `not`
- *
- * @function
- * @name email
- * @param value {string} email
- * @returns {boolean}
- * @example
- * be.email('fabio@rica.li') // true
- * be.not.email('fabiorica.li') // true
- */
-Mixed.email = (value) => {
-    return /^(([^&lt;>()\[\]\\.,;:\s@"]+(\.[^&lt;>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(value);
-};
-
-/**
- * Check if is a hexadecimal
+ * Check if is valid string url
  *
  * **Interfaces**: `all`, `any`, `not`
  *
  * @function
- * @name hex
- * @param value {string} hex string
+ * @name url
+ * @param value {string} url
  * @returns {boolean}
  * @example
- * be.hex('fff') // true
+ * be.url('http://www.google.com') // true;
+ * be.not.url('http://www.google.com') // false;
+ * be.any.url('http://www.google.com', 'http://') // true;
+ * be.all.url('http://www.google.com', 'http://') // false;
  */
-Mixed.hex = (value) => {
-    return /^(?:0x)?[a-f0-9]+$/.test(value);
+Urls.url = (value) => {
+    return /^(?:(?:https?|ftps?):\/\/)(?:\S+(?::\S*)?@)?(?:(?!(?:10|127)(?:\.\d{1,3}){3})(?!(?:169\.254|192\.168)(?:\.\d{1,3}){2})(?!172\.(?:1[6-9]|2\d|3[0-1])(?:\.\d{1,3}){2})(?:[1-9]\d?|1\d\d|2[01]\d|22[0-3])(?:\.(?:1?\d{1,2}|2[0-4]\d|25[0-5])){2}(?:\.(?:[1-9]\d?|1\d\d|2[0-4]\d|25[0-4]))|(?:(?:[a-z\u00a1-\uffff0-9]-*)*[a-z\u00a1-\uffff0-9]+)(?:\.(?:[a-z\u00a1-\uffff0-9]-*)*[a-z\u00a1-\uffff0-9]+)*(?:\.(?:[a-z\u00a1-\uffff]{2,}))\.?)(?::\d{2,5})?(?:[/?#]\S*)?$/i.test(value);
 };
 
 /**
- * Check if is a hexadecimal color
+ * Check if is a HTTP url
  *
  * **Interfaces**: `all`, `any`, `not`
  *
  * @function
- * @name hexColor
- * @param value {string} hex color string
+ * @name httpUrl
+ * @param value {string} url
  * @returns {boolean}
  * @example
- * be.hexColor('#ff0000') // true
- */
-Mixed.hexColor = (value) => {
-    try {
-        value = value.replace('#', '');
-        return Mixed.hex(value) &amp;&amp;
-            (value.length === 3 || value.length === 6);
-    } catch (e) {
-        return false;
-    }
+ * be.httpUrl('http://www.google.com') // true;
+ * be.not.httpUrl('http://www.google.com') // false;
+ * be.any.httpUrl('http://www.google.com', 'http://') // true;
+ * be.all.httpUrl('http://www.google.com', 'http://') // false;
+*/
+Urls.httpUrl = (value) => {
+    return Urls.url(value) &amp;&amp; /^http:/i.test(value);
 };
 
 /**
- * Check if is a valid IPv4
+ * Check if is a HTTPS url
  *
  * **Interfaces**: `all`, `any`, `not`
  *
  * @function
- * @name ipv4
- * @param value {string} ip string
+ * @name httpsUrl
+ * @param value {string} url
  * @returns {boolean}
  * @example
- * be.ipv4('127.0.0.1') // true
+ * be.httpsUrl('https://www.google.com') // true;
+ * be.not.httpsUrl('https://www.google.com') // false;
+ * be.any.httpsUrl('https://www.google.com', 'http://') // true;
+ * be.all.httpsUrl('https://www.google.com', 'http://') // false;
  */
-Mixed.ipv4 = (value) => {
-    return /^(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)$/.test(value);
+Urls.httpsUrl = (value) => {
+    return Urls.url(value) &amp;&amp; /^https:/i.test(value);
 };
 
 /**
- * Check if is a valid IPv6
+ * Check if url is encoded
  *
  * **Interfaces**: `all`, `any`, `not`
  *
  * @function
- * @name ipv6
- * @param value {string} ip string
+ * @name urlEncoded
+ * @param value {string} url encoded
  * @returns {boolean}
  * @example
- * be.ipv6('FF01:0:0:0:0:0:0:1') // true
+ * be.urlEncoded('http://ja.wikipedia.org/wiki/%E3%83%A1%E3%82%A4%E3%83%B3%E3%83%9A%E3%83%BC%E3%82%B8') // true
  */
-Mixed.ipv6 = (value) => {
-    return /^(([0-9A-Fa-f]{1,4}:){7}([0-9A-Fa-f]{1,4}|:))|(([0-9A-Fa-f]{1,4}:){6}(:[0-9A-Fa-f]{1,4}|((25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)(\.(25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)){3})|:))|(([0-9A-Fa-f]{1,4}:){5}(((:[0-9A-Fa-f]{1,4}){1,2})|:((25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)(\.(25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)){3})|:))|(([0-9A-Fa-f]{1,4}:){4}(((:[0-9A-Fa-f]{1,4}){1,3})|((:[0-9A-Fa-f]{1,4})?:((25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)(\.(25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)){3}))|:))|(([0-9A-Fa-f]{1,4}:){3}(((:[0-9A-Fa-f]{1,4}){1,4})|((:[0-9A-Fa-f]{1,4}){0,2}:((25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)(\.(25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)){3}))|:))|(([0-9A-Fa-f]{1,4}:){2}(((:[0-9A-Fa-f]{1,4}){1,5})|((:[0-9A-Fa-f]{1,4}){0,3}:((25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)(\.(25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)){3}))|:))|(([0-9A-Fa-f]{1,4}:){1}(((:[0-9A-Fa-f]{1,4}){1,6})|((:[0-9A-Fa-f]{1,4}){0,4}:((25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)(\.(25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)){3}))|:))|(:(((:[0-9A-Fa-f]{1,4}){1,7})|((:[0-9A-Fa-f]{1,4}){0,5}:((25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)(\.(25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)){3}))|:))$/.test(value);
+Urls.urlEncoded = (value) => {
+    return /%[0-9a-f]{2}/i.test(value);
 };
 
 /**
- * Check if is a valid ip string
+ * Check if is a FTP urls
  *
  * **Interfaces**: `all`, `any`, `not`
  *
  * @function
- * @name ipv
- * @param value {string} ip string
+ * @name ftpUrl
+ * @param value {string} url
  * @returns {boolean}
  * @example
- * be.ipv('127.0.0.1') // true
+ * be.ftpUrl('ftp://ftp.google.com') // true;
+ * be.not.ftpUrl('ftp://ftp.google.com') // false;
+ * be.any.ftpUrl('ftp://ftp.google.com', 'http://') // true;
+ * be.all.ftpUrl('ftp://ftp.google.com', 'http://') // false;
  */
-Mixed.ip = (value) => {
-    return Mixed.ipv4(value) || Mixed.ipv6(value);
+Urls.ftpUrl = (value) => {
+    return Urls.url(value) &amp;&amp; /^ftp:/i.test(value);
 };
 
 /**
- * Check if is base64 encoded string
+ * Check if is a FTPS urls
  *
  * **Interfaces**: `all`, `any`, `not`
  *
  * @function
- * @name base64
- * @param value {string} base64 string
+ * @name ftpsUrl
+ * @param value {string} url
  * @returns {boolean}
  * @example
- * be.base64('aGVsbG8=') // true
+ * be.ftpsUrl('ftps://ftp.google.com') // true;
+ * be.not.ftpsUrl('ftps://ftp.google.com') // false;
+ * be.any.ftpsUrl('ftps://ftp.google.com', 'http://') // true;
+ * be.all.ftpsUrl('ftps://ftp.google.com', 'http://') // false;
  */
-Mixed.base64 = (value) => {
-    return /^([0-9a-zA-Z+/]{4})*(([0-9a-zA-Z+/]{2}==)|([0-9a-zA-Z+/]{3}=))?$/.test(value);
+Urls.ftpsUrl = (value) => {
+    return Urls.url(value) &amp;&amp; /^ftps:/i.test(value);
 };
 
-/**
- * Check if is a valid semver string
- *
- * **Interfaces**: `all`, `any`, `not`
- *
- * @function
- * @name semVer
- * @param value {string} version string
- * @returns {boolean}
- * @example
- * be.semVer('1.0.0') // true
- */
-Mixed.semVer = (value) => {
-    return /^(\d*)\.(\d*)\.(\d*)(-(\d*|\d*[a-z-][0-9a-z-]*)(\.(\d*|\d*[a-z-][0-9a-z-]*))*)?(\+[0-9a-z-]+(\.[0-9a-z-]+)*)?$/i.test(value);
-};
+Urls = Interface.create(Urls);
 
-/**
- * Checks if equal
- *
- * **Interfaces**: `not`
- *
- * @function
- * @name equal
- * @param value {Number|String|Boolean|RegExp} first
- * @param other {Number|String|Boolean|RegExp} second
- * @returns {boolean}
- * @example
- * be.equal('hello', 'hello') // true
- * be.equal('hello', 'hellow') // false
- * be.equal(true, 'true') // false
- */
-Mixed.equal = (value, other) => {
-    if(Types.all.number(value, other))
-        return  value === other;
-    else if((Types.all.string(value, other)) || (Types.all.regexp(value, other)))
-        return value + '' === '' + other;
-    else if(Types.all.boolean(value, other))
-        return value === other;
-    else
-        return false;
-};
-
-Mixed.equal.multiple = false;
-
-/**
- * Check if is an IT fiscal code
- *
- * **Interfaces**: `all`, `any`, `not`
- *
- * @function
- * @name fiscalCodeIT
- * @param value {string} code string
- * @returns {boolean}
- * @example
- * be.fiscalCodeIT('OLEFBA97C64F158X') // true
- */
-Mixed.fiscalCodeIT = (value) => {
-    return /^[A-Za-z]{6}[0-9]{2}[A-Za-z]{1}[0-9]{2}[A-Za-z]{1}[0-9]{3}[A-Za-z]{1}$/.test(value);
-};
-
-/**
- * Check if is a valid MAC address
- *
- * **Interfaces**: `all`, `any`, `not`
- *
- * @function
- * @name macAddress
- * @param value {string} MAC string
- * @returns {boolean}
- * @example
- * be.macAddress('3D:F2:C9:A6:B3:4F') // true
- */
-Mixed.macAddress = (value) => {
-    return /^([0-9A-Fa-f]{2}[:-]){5}([0-9A-Fa-f]{2})$/.test(value);
-};
-
-Mixed = Interface.create(Mixed);
-
-module.exports = Mixed;
+module.exports = Urls;
 </code></pre>
         </article>
     </section>
@@ -258,7 +173,7 @@ module.exports = Mixed;
 <br class="clear">
 
 <footer>
-    Generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.4.3</a> on Wed Jul 05 2017 08:47:22 GMT+0200 (ora legale Europa occidentale) using the Minami theme.
+    Generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.4.3</a> on Wed Jul 05 2017 08:48:01 GMT+0200 (ora legale Europa occidentale) using the Minami theme.
 </footer>
 
 <script>prettyPrint();</script>

@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>mixed.js - Documentation</title>
+    <title>asserts/envs.js - Documentation</title>
 
     <script src="scripts/prettify/prettify.js"></script>
     <script src="scripts/prettify/lang-css.js"></script>
@@ -29,7 +29,7 @@
 
 <div id="main">
     
-    <h1 class="page-title">mixed.js</h1>
+    <h1 class="page-title">asserts/envs.js</h1>
     
 
     
@@ -40,212 +40,283 @@
     <section>
         <article>
             <pre class="prettyprint source linenums"><code>/**
- * @fileOverview Various checks.
- * @module Mixed
+ * @fileOverview Environments checks.
+ * @module Envs
  */
 
-const Types = require('./types');
+const Helpers = require('../helpers');
 const Interface = require('../interface');
-let Mixed = {};
+let Envs = {};
 
 /**
- * Check if is valid email
- * https://emailregex.com/
- * **Interfaces**: `all`, `any`, `not`
- *
- * @function
- * @name email
- * @param value {string} email
- * @returns {boolean}
- * @example
- * be.email('fabio@rica.li') // true
- * be.not.email('fabiorica.li') // true
- */
-Mixed.email = (value) => {
-    return /^(([^&lt;>()\[\]\\.,;:\s@"]+(\.[^&lt;>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(value);
-};
-
-/**
- * Check if is a hexadecimal
- *
- * **Interfaces**: `all`, `any`, `not`
- *
- * @function
- * @name hex
- * @param value {string} hex string
- * @returns {boolean}
- * @example
- * be.hex('fff') // true
- */
-Mixed.hex = (value) => {
-    return /^(?:0x)?[a-f0-9]+$/.test(value);
-};
-
-/**
- * Check if is a hexadecimal color
- *
- * **Interfaces**: `all`, `any`, `not`
- *
- * @function
- * @name hexColor
- * @param value {string} hex color string
- * @returns {boolean}
- * @example
- * be.hexColor('#ff0000') // true
- */
-Mixed.hexColor = (value) => {
-    try {
-        value = value.replace('#', '');
-        return Mixed.hex(value) &amp;&amp;
-            (value.length === 3 || value.length === 6);
-    } catch (e) {
-        return false;
-    }
-};
-
-/**
- * Check if is a valid IPv4
- *
- * **Interfaces**: `all`, `any`, `not`
- *
- * @function
- * @name ipv4
- * @param value {string} ip string
- * @returns {boolean}
- * @example
- * be.ipv4('127.0.0.1') // true
- */
-Mixed.ipv4 = (value) => {
-    return /^(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)$/.test(value);
-};
-
-/**
- * Check if is a valid IPv6
- *
- * **Interfaces**: `all`, `any`, `not`
- *
- * @function
- * @name ipv6
- * @param value {string} ip string
- * @returns {boolean}
- * @example
- * be.ipv6('FF01:0:0:0:0:0:0:1') // true
- */
-Mixed.ipv6 = (value) => {
-    return /^(([0-9A-Fa-f]{1,4}:){7}([0-9A-Fa-f]{1,4}|:))|(([0-9A-Fa-f]{1,4}:){6}(:[0-9A-Fa-f]{1,4}|((25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)(\.(25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)){3})|:))|(([0-9A-Fa-f]{1,4}:){5}(((:[0-9A-Fa-f]{1,4}){1,2})|:((25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)(\.(25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)){3})|:))|(([0-9A-Fa-f]{1,4}:){4}(((:[0-9A-Fa-f]{1,4}){1,3})|((:[0-9A-Fa-f]{1,4})?:((25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)(\.(25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)){3}))|:))|(([0-9A-Fa-f]{1,4}:){3}(((:[0-9A-Fa-f]{1,4}){1,4})|((:[0-9A-Fa-f]{1,4}){0,2}:((25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)(\.(25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)){3}))|:))|(([0-9A-Fa-f]{1,4}:){2}(((:[0-9A-Fa-f]{1,4}){1,5})|((:[0-9A-Fa-f]{1,4}){0,3}:((25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)(\.(25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)){3}))|:))|(([0-9A-Fa-f]{1,4}:){1}(((:[0-9A-Fa-f]{1,4}){1,6})|((:[0-9A-Fa-f]{1,4}){0,4}:((25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)(\.(25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)){3}))|:))|(:(((:[0-9A-Fa-f]{1,4}){1,7})|((:[0-9A-Fa-f]{1,4}){0,5}:((25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)(\.(25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)){3}))|:))$/.test(value);
-};
-
-/**
- * Check if is a valid ip string
- *
- * **Interfaces**: `all`, `any`, `not`
- *
- * @function
- * @name ipv
- * @param value {string} ip string
- * @returns {boolean}
- * @example
- * be.ipv('127.0.0.1') // true
- */
-Mixed.ip = (value) => {
-    return Mixed.ipv4(value) || Mixed.ipv6(value);
-};
-
-/**
- * Check if is base64 encoded string
- *
- * **Interfaces**: `all`, `any`, `not`
- *
- * @function
- * @name base64
- * @param value {string} base64 string
- * @returns {boolean}
- * @example
- * be.base64('aGVsbG8=') // true
- */
-Mixed.base64 = (value) => {
-    return /^([0-9a-zA-Z+/]{4})*(([0-9a-zA-Z+/]{2}==)|([0-9a-zA-Z+/]{3}=))?$/.test(value);
-};
-
-/**
- * Check if is a valid semver string
- *
- * **Interfaces**: `all`, `any`, `not`
- *
- * @function
- * @name semVer
- * @param value {string} version string
- * @returns {boolean}
- * @example
- * be.semVer('1.0.0') // true
- */
-Mixed.semVer = (value) => {
-    return /^(\d*)\.(\d*)\.(\d*)(-(\d*|\d*[a-z-][0-9a-z-]*)(\.(\d*|\d*[a-z-][0-9a-z-]*))*)?(\+[0-9a-z-]+(\.[0-9a-z-]+)*)?$/i.test(value);
-};
-
-/**
- * Checks if equal
+ * Check if server environment
  *
  * **Interfaces**: `not`
  *
  * @function
- * @name equal
- * @param value {Number|String|Boolean|RegExp} first
- * @param other {Number|String|Boolean|RegExp} second
+ * @name commonjsEnv
  * @returns {boolean}
  * @example
- * be.equal('hello', 'hello') // true
- * be.equal('hello', 'hellow') // false
- * be.equal(true, 'true') // false
+ * be.commonjsEnv() // true
  */
-Mixed.equal = (value, other) => {
-    if(Types.all.number(value, other))
-        return  value === other;
-    else if((Types.all.string(value, other)) || (Types.all.regexp(value, other)))
-        return value + '' === '' + other;
-    else if(Types.all.boolean(value, other))
-        return value === other;
-    else
-        return false;
+Envs.commonjsEnv = () => {
+    return typeof process !== 'undefined';
 };
 
-Mixed.equal.multiple = false;
+Envs.commonjsEnv.multiple = false;
 
 /**
- * Check if is an IT fiscal code
+ * Check if browser environment
  *
- * **Interfaces**: `all`, `any`, `not`
+ * **Interfaces**: `not`
  *
  * @function
- * @name fiscalCodeIT
- * @param value {string} code string
+ * @name browserEnv
  * @returns {boolean}
  * @example
- * be.fiscalCodeIT('OLEFBA97C64F158X') // true
+ * be.browserEnv() // true
  */
-Mixed.fiscalCodeIT = (value) => {
-    return /^[A-Za-z]{6}[0-9]{2}[A-Za-z]{1}[0-9]{2}[A-Za-z]{1}[0-9]{3}[A-Za-z]{1}$/.test(value);
+Envs.browserEnv = () => {
+    return typeof window !== 'undefined';
 };
+
+Envs.browserEnv.multiple = false;
 
 /**
- * Check if is a valid MAC address
+ * Check if AMD environment
  *
- * **Interfaces**: `all`, `any`, `not`
+ * **Interfaces**: `not`
  *
  * @function
- * @name macAddress
- * @param value {string} MAC string
+ * @name amdEnv
  * @returns {boolean}
  * @example
- * be.macAddress('3D:F2:C9:A6:B3:4F') // true
+ * be.amdEnv() // true
  */
-Mixed.macAddress = (value) => {
-    return /^([0-9A-Fa-f]{2}[:-]){5}([0-9A-Fa-f]{2})$/.test(value);
+Envs.amdEnv = () => {
+    return typeof define === 'function' &amp;&amp; define.amd;
 };
 
-Mixed = Interface.create(Mixed);
+Envs.amdEnv.multiple = false;
 
-module.exports = Mixed;
+/**
+ * Check if is iOS device
+ *
+ * **Interfaces**: `not`
+ *
+ * @function
+ * @name ios
+ * @returns {boolean}
+ * @example
+ * be.ios() // true
+ */
+Envs.ios = (...params) => {
+    let userAgent = Helpers.getUserAgent.apply(this, params);
+    return /iphone|ipad|ipod/i.test(userAgent);
+};
+
+Envs.ios.multiple = false;
+
+/**
+ * Check if is iPhone device
+ *
+ * **Interfaces**: `not`
+ *
+ * @function
+ * @name iphone
+ * @returns {boolean}
+ * @example
+ * be.iphone() // true
+ */
+Envs.iphone = (...params) => {
+    let userAgent = Helpers.getUserAgent.apply(this, params);
+    return /iphone/i.test(userAgent);
+};
+
+Envs.iphone.multiple = false;
+
+/**
+ * Check if is iPad device
+ *
+ * **Interfaces**: `not`
+ *
+ * @function
+ * @name ipad
+ * @returns {boolean}
+ * @example
+ * be.ipad() // true
+ */
+Envs.ipad = (...params) => {
+    let userAgent = Helpers.getUserAgent.apply(this, params);
+    return /ipad/i.test(userAgent);
+};
+
+Envs.ipad.multiple = false;
+
+/**
+ * Check if is iPod device
+ *
+ * **Interfaces**: `not`
+ *
+ * @function
+ * @name ipod
+ * @returns {boolean}
+ * @example
+ * be.ipod() // true
+ */
+Envs.ipod = (...params) => {
+    let userAgent = Helpers.getUserAgent.apply(this, params);
+    return /ipod/i.test(userAgent);
+};
+
+Envs.ipod.multiple = false;
+
+/**
+ * Check if is Android device
+ *
+ * **Interfaces**: `not`
+ *
+ * @function
+ * @name android
+ * @returns {boolean}
+ * @example
+ * be.android() // true
+ */
+Envs.android = (...params) => {
+    let userAgent = Helpers.getUserAgent.apply(this, params);
+    return /Android/i.test(userAgent);
+};
+
+Envs.android.multiple = false;
+
+/**
+ * Check if exists navigator object
+ *
+ * **Interfaces**: `not`
+ *
+ * @function
+ * @name navigator
+ * @returns {boolean}
+ * @example
+ * be.navigator() // true
+ */
+Envs.navigator = () => {
+    return Envs.browserEnv() &amp;&amp; typeof window.navigator !== 'undefined';
+};
+
+Envs.navigator.multiple = false;
+
+/**
+ * Firefox detecting
+ *
+ * **Interfaces**: `not`
+ *
+ * @function
+ * @name firefox
+ * @returns {boolean}
+ * @example
+ * be.firefox() // true
+ */
+Envs.firefox = (...params) => {
+    let userAgent = Helpers.getUserAgent.apply(this, params);
+    return /Firefox/i.test(userAgent);
+};
+
+Envs.firefox.multiple = false;
+
+/**
+ * Chrome detecting
+ *
+ * **Interfaces**: `not`
+ *
+ * @function
+ * @name chrome
+ * @returns {boolean}
+ * @example
+ * be.chrome() // true
+ */
+Envs.chrome = (...params) => {
+    let userAgent = Helpers.getUserAgent.apply(this, params);
+    return /Chrome/i.test(userAgent);
+};
+
+Envs.chrome.multiple = false;
+
+/**
+ * Safari detecting
+ *
+ * **Interfaces**: `not`
+ *
+ * @function
+ * @name safari
+ * @returns {boolean}
+ * @example
+ * be.safari() // true
+ */
+Envs.safari = (...params) => {
+    let userAgent = Helpers.getUserAgent.apply(this, params);
+    return /Safari/i.test(userAgent.replace('Chrome', '')) &amp;&amp;
+        !/Chrome/i.test(userAgent.replace('Safari', ''));
+};
+
+Envs.safari.multiple = false;
+
+/**
+ * Explorer detecting
+ *
+ * **Interfaces**: `not`
+ *
+ * @function
+ * @name userAgent
+ * @returns {boolean}
+ * @example
+ * be.ie() // true
+ */
+Envs.ie = (...params) => {
+    let userAgent = Helpers.getUserAgent.apply(this, params);
+    return /MSIE|Trident/i.test(userAgent);
+};
+
+Envs.ie.multiple = false;
+
+/**
+ * Mac detecting
+ *
+ * **Interfaces**: `not`
+ *
+ * @function
+ * @name mac
+ * @returns {boolean}
+ * @example
+ * be.mac() // true
+ */
+Envs.mac = (...params) => {
+    let userAgent = Helpers.getUserAgent.apply(this, params);
+    return /mac/i.test(userAgent);
+};
+
+Envs.mac.multiple = false;
+
+/**
+ * Check if is on line
+ *
+ * **Interfaces**: `not`
+ *
+ * @function
+ * @name online
+ * @returns {boolean}
+ * @example
+ * be.onLine() // true
+ */
+Envs.onLine = function () {
+    return Envs.navigator() &amp;&amp; navigator.onLine;
+};
+
+Envs.onLine.multiple = false;
+
+Envs = Interface.create(Envs);
+
+module.exports = Envs;
 </code></pre>
         </article>
     </section>
@@ -258,7 +329,7 @@ module.exports = Mixed;
 <br class="clear">
 
 <footer>
-    Generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.4.3</a> on Wed Jul 05 2017 08:47:22 GMT+0200 (ora legale Europa occidentale) using the Minami theme.
+    Generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.4.3</a> on Wed Jul 05 2017 08:48:01 GMT+0200 (ora legale Europa occidentale) using the Minami theme.
 </footer>
 
 <script>prettyPrint();</script>

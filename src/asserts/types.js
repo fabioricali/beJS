@@ -49,7 +49,7 @@ Types.boolean = (value) => {
 };
 
 /**
- * Check if is false boolean type
+ * Alias of `be.false`
  *
  * **Interfaces**: `all`, `any`, `not`
  *
@@ -84,12 +84,12 @@ Types.false = (value) => {
 };
 
 /**
- * Check if is true boolean type
+ * Alias of `be.true`
  *
  * **Interfaces**: `all`, `any`, `not`
  *
  * @function
- * @name booleanTrue
+ * @name booleanTru
  * @alias true
  * @param value {Mixed} value
  * @returns {boolean}

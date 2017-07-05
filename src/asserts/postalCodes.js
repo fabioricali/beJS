@@ -1,6 +1,6 @@
 /**
  * @fileOverview Postal codes checks.
- * @module postalCodes
+ * @module PostalCodes
  */
 
 const Interface = require('../interface');

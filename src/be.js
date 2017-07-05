@@ -1,6 +1,6 @@
 /**
  * @module be
- * @description
+ * @fileOverview
  * beJS has the following interfaces:
  *
  * - `all`, all checks must be satisfied
@@ -93,6 +93,8 @@ let Checks = {
 
 /**
  * Get version of framework
+ * @function
+ * @name getVersion
  * @memberOf be
  * @returns {string}
  */
