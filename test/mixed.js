@@ -230,6 +230,11 @@ describe('equal', function () {
         console.log(result);
         assert.equal(result, false);
     });
+    it('number zero and empty string, should be return false', function () {
+        var result = be.equal(0, '');
+        console.log(result);
+        assert.equal(result, false);
+    });
     it('boolean, should be return true', function () {
         var result = be.equal(true, true);
         console.log(result);

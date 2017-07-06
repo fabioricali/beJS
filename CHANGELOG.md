@@ -17,7 +17,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 - improved `be.json`
 - improved `be.buffer`
 
-### fixed
+### Fixed
 - now `be.equal` with zero negative return false
 
 ## [1.3.1] - 2017-07-04
