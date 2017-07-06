@@ -489,6 +489,23 @@ Types.iterable = (value) => {
     return Types.function(value[Symbol.iterator]);
 };
 
+/**
+ * Check if is symbol
+ *
+ * **Interfaces**: `all`, `any`, `not`
+ *
+ * @function
+ * @name symbol
+ * @param value {Mixed} value
+ * @returns {boolean}
+ * @example
+ * be.symbol(Symbol('hello')) // true
+ * be.symbol({a: 1}) // false
+ */
+Types.symbol = (value) => {
+    return !Types.undefined(Symbol) && Types.classOf(value, 'symbol');
+};
+
 Types = Interface.create(Types);
 
 module.exports = Types;
