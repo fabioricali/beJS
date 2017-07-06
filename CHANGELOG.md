@@ -7,6 +7,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 ## [unreleased]
 ### Added
 - `be.symbol`
+- `be.defined`
 
 ### Changed
 - improved `be.json`
