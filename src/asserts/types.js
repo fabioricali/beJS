@@ -506,6 +506,25 @@ Types.symbol = (value) => {
     return !Types.undefined(Symbol) && Types.classOf(value, 'symbol');
 };
 
+/**
+ * Check if is defined
+ *
+ * **Interfaces**: `all`, `any`, `not`
+ *
+ * @function
+ * @name defined
+ * @param value {Mixed} value
+ * @returns {boolean}
+ * @example
+ * var param = 'hello';
+ * be.defined(param) // true
+ * var param2;
+ * be.defined(param2) // false
+ */
+Types.defined = (value) => {
+    return !Types.undefined(value);
+};
+
 Types = Interface.create(Types);
 
 module.exports = Types;

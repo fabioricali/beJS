@@ -622,3 +622,18 @@ describe('symbol', function () {
         assert.equal(result, false);
     });
 });
+
+describe('defined_', function () {
+    it('should be return true', function () {
+        var param = 'hello';
+        var result = be.defined(param);
+        console.log(result);
+        assert.equal(result, true);
+    });
+    it('should be return false', function () {
+        var param;
+        var result = be.defined(param);
+        console.log(result);
+        assert.equal(result, false);
+    });
+});
