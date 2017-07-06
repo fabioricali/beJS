@@ -234,8 +234,7 @@ Types.array = (value) => {
  */
 Types.json = (value) => {
     try {
-        JSON.parse(value);
-        return true;
+        return !!JSON.parse(value);
     } catch (e) {
         return false;
     }
@@ -469,7 +468,7 @@ Types.promise = (value) => {
  * be.buffer(b) // true
  */
 Types.buffer = (value) => {
-    return value instanceof Buffer;
+    return Buffer && value instanceof Buffer;
 };
 
 /**
