@@ -129,14 +129,35 @@ Arrays.arrayOfNumbers = (value) => {
  * @returns {*|boolean}
  * @example
  * be.arrayOfDates([new Date(), new Date('2017-07-06')]) // true
- * be.all.arrayOfNumbers([
+ * be.all.arrayOfDates([
  *      true,
  *      false,
- *      [new Date()]
+ *      new Date()
  * ]) // false
  */
 Arrays.arrayOfDates = (value) => {
     return Types.all.date(value);
+};
+
+/**
+ * Check if is an array of functions
+ *
+ * **Interfaces**: `all`, `any`, `not`
+ *
+ * @function
+ * @name arrayOfFunctions
+ * @param value {array} array
+ * @returns {*|boolean}
+ * @example
+ * be.arrayOfFunctions([function(){return 1}, function(){return 2}]) // true
+ * be.all.arrayOfFunctions([
+ *      true,
+ *      false,
+ *      function(){return 1}
+ * ]) // false
+ */
+Arrays.arrayOfFunctions = (value) => {
+    return Types.all.function(value);
 };
 
 Arrays = Interface.create(Arrays);

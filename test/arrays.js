@@ -152,3 +152,16 @@ describe('arrayOfDates', function () {
         assert.equal(result, false);
     });
 });
+
+describe('arrayOfFunctions', function () {
+    it('should be return true', function () {
+        var result = be.arrayOfFunctions([function(){return 1}, function(){return 2}]);
+        console.log(result);
+        assert.equal(result, true);
+    });
+    it('should be return false', function () {
+        var result = be.arrayOfFunctions([true, true, function(){return 1}]);
+        console.log(result);
+        assert.equal(result, false);
+    });
+});

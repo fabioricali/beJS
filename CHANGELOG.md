@@ -11,6 +11,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 - `be.defined`
 - `be.arrayOfNumbers`
 - `be.arrayOfDates`
+- `be.arrayOfFunctions`
 
 ### Changed
 - improved `be.json`
