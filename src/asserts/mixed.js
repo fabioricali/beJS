@@ -159,7 +159,7 @@ Mixed.semVer = (value) => {
  */
 Mixed.equal = (value, other) => {
     if(Types.all.number(value, other))
-        return  value === other;
+        return  value === other && 1 / value === 1 / other;
     else if((Types.all.string(value, other)) || (Types.all.regexp(value, other)))
         return value + '' === '' + other;
     else if(Types.all.boolean(value, other))

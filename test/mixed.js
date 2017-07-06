@@ -210,6 +210,26 @@ describe('equal', function () {
         console.log(result);
         assert.equal(result, false);
     });
+    it('number zero negative, should be return false', function () {
+        var result = be.equal(-0, 0);
+        console.log(result);
+        assert.equal(result, false);
+    });
+    it('number zero, should be return true', function () {
+        var result = be.equal(0, 0);
+        console.log(result);
+        assert.equal(result, true);
+    });
+    it('number zero positive, should be return true', function () {
+        var result = be.equal(+0, 0);
+        console.log(result);
+        assert.equal(result, true);
+    });
+    it('number zero positive and negative, should be return false', function () {
+        var result = be.equal(+0, -0);
+        console.log(result);
+        assert.equal(result, false);
+    });
     it('boolean, should be return true', function () {
         var result = be.equal(true, true);
         console.log(result);
