@@ -126,3 +126,29 @@ describe('arrayOfBooleans', function () {
         assert.equal(result, false);
     });
 });
+
+describe('arrayOfNumbers', function () {
+    it('should be return true', function () {
+        var result = be.arrayOfNumbers([1, 2]);
+        console.log(result);
+        assert.equal(result, true);
+    });
+    it('should be return false', function () {
+        var result = be.arrayOfNumbers([true, true, 2]);
+        console.log(result);
+        assert.equal(result, false);
+    });
+});
+
+describe('arrayOfDates', function () {
+    it('should be return true', function () {
+        var result = be.arrayOfDates([new Date(), new Date('2017-07-06')]);
+        console.log(result);
+        assert.equal(result, true);
+    });
+    it('should be return false', function () {
+        var result = be.arrayOfDates([true, true, new Date()]);
+        console.log(result);
+        assert.equal(result, false);
+    });
+});

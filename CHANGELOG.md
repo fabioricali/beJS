@@ -5,9 +5,12 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [unreleased]
+
 ### Added
 - `be.symbol`
 - `be.defined`
+- `be.arrayOfNumbers`
+- `be.arrayOfDates`
 
 ### Changed
 - improved `be.json`

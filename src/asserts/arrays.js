@@ -97,6 +97,48 @@ Arrays.arrayOfBooleans = (value) => {
     return Types.all.boolean(value);
 };
 
+/**
+ * Check if is an array of numbers
+ *
+ * **Interfaces**: `all`, `any`, `not`
+ *
+ * @function
+ * @name arrayOfNumbers
+ * @param value {array} array
+ * @returns {*|boolean}
+ * @example
+ * be.arrayOfNumbers([1, 2]) // true
+ * be.all.arrayOfNumbers([
+ *      true,
+ *      false,
+ *      [1, 2, 3]
+ * ]) // false
+ */
+Arrays.arrayOfNumbers = (value) => {
+    return Types.all.number(value);
+};
+
+/**
+ * Check if is an array of dates
+ *
+ * **Interfaces**: `all`, `any`, `not`
+ *
+ * @function
+ * @name arrayOfDates
+ * @param value {array} array
+ * @returns {*|boolean}
+ * @example
+ * be.arrayOfDates([new Date(), new Date('2017-07-06')]) // true
+ * be.all.arrayOfNumbers([
+ *      true,
+ *      false,
+ *      [new Date()]
+ * ]) // false
+ */
+Arrays.arrayOfDates = (value) => {
+    return Types.all.date(value);
+};
+
 Arrays = Interface.create(Arrays);
 
 module.exports = Arrays;
