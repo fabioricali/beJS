@@ -16,9 +16,12 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 ### Changed
 - improved `be.json`
 - improved `be.buffer`
+- now `be.equal` support also object and array
 
 ### Fixed
 - now `be.equal` with zero negative return false
+- `be.all.array` failed
+- `be.any.array` failed
 
 ## [1.3.1] - 2017-07-04
 

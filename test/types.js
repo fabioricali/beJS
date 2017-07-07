@@ -17,6 +17,30 @@ describe('boolean', function () {
         assert.equal(result, true);
     });
 
+    it('boolean interface all, should be return true', function () {
+        var result = be.all.boolean(true, false, true);
+        console.log(result);
+        assert.equal(result, true);
+    });
+
+    it('boolean interface any, should be return true', function () {
+        var result = be.any.boolean(1, false, 1);
+        console.log(result);
+        assert.equal(result, true);
+    });
+
+    it('boolean array interface any, should be return true', function () {
+        var result = be.any.boolean([1, false, 1]);
+        console.log(result);
+        assert.equal(result, true);
+    });
+
+    it('boolean array interface all, should be return true', function () {
+        var result = be.all.boolean([true, false, true]);
+        console.log(result);
+        assert.equal(result, true);
+    });
+
     it('string value, should be return false', function () {
         var result = be.boolean('true');
         console.log(result);
@@ -633,6 +657,29 @@ describe('defined_', function () {
     it('should be return false', function () {
         var param;
         var result = be.defined(param);
+        console.log(result);
+        assert.equal(result, false);
+    });
+});
+
+describe('array_', function () {
+    it('should be return true', function () {
+        var result = be.array([1,2,3]);
+        console.log(result);
+        assert.equal(result, true);
+    });
+    it('interface all, should be return true', function () {
+        var result = be.all.array([1,2,3],[2,4,5]);
+        console.log(result);
+        assert.equal(result, true);
+    });
+    it('interface any, should be return true', function () {
+        var result = be.any.array([1,2,3],true);
+        console.log(result);
+        assert.equal(result, true);
+    });
+    it('should be return false', function () {
+        var result = be.array('hello');
         console.log(result);
         assert.equal(result, false);
     });

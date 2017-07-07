@@ -55,7 +55,8 @@ Interface.create = (obj) => {
             if (typeof obj[i].multiple === 'undefined') {
                 obj.all[i] = (...params) => {
                     let args = params;
-                    if (Interface._isArray(args[0]))
+
+                    if (Interface._isArray(args[0]) && args.length === 1)
                         args = args[0];
 
                     if(!args.length) return false;
@@ -69,7 +70,7 @@ Interface.create = (obj) => {
 
                 obj.any[i] = (...params) => {
                     let args = params;
-                    if (Interface._isArray(args[0]))
+                    if (Interface._isArray(args[0]) && args.length === 1)
                         args = args[0];
 
                     for (let a in args) {
