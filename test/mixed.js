@@ -260,6 +260,26 @@ describe('equal', function () {
         console.log(result);
         assert.equal(result, true);
     });
+    it('object, should be return true', function () {
+        var result = be.equal({a:1}, {a:1});
+        console.log(result);
+        assert.equal(result, true);
+    });
+    it('object different, should be return false', function () {
+        var result = be.equal({a:1}, {a:2});
+        console.log(result);
+        assert.equal(result, false);
+    });
+    it('array, should be return true', function () {
+        var result = be.equal([1,2,3], [1,2,3]);
+        console.log(result);
+        assert.equal(result, true);
+    });
+    it('array different, should be return false', function () {
+        var result = be.equal([1,2,3], [1,1,1]);
+        console.log(result);
+        assert.equal(result, false);
+    });
 });
 
 describe('creditCard', function () {

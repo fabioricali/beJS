@@ -149,23 +149,36 @@ Mixed.semVer = (value) => {
  *
  * @function
  * @name equal
- * @param value {Number|String|Boolean|RegExp} first
- * @param other {Number|String|Boolean|RegExp} second
+ * @param value {Number|String|Boolean|RegExp|Array|Object} first
+ * @param other {Number|String|Boolean|RegExp|Array|Object} second
  * @returns {boolean}
  * @example
  * be.equal('hello', 'hello') // true
  * be.equal('hello', 'hellow') // false
  * be.equal(true, 'true') // false
+ * be.equal([1,2,3], [1,1,1]) // false
+ * be.equal({a:1}, {a:1}) // true
  */
 Mixed.equal = (value, other) => {
+    console.log('sss',Types.all.array(value, other));
     if(Types.all.number(value, other))
         return  value === other && 1 / value === 1 / other;
-    else if((Types.all.string(value, other)) || (Types.all.regexp(value, other)))
-        return value + '' === '' + other;
+    else if(Types.all.string(value, other) || Types.all.regexp(value, other))
+        return value.toString() === other.toString();
     else if(Types.all.boolean(value, other))
         return value === other;
-    else
-        return false;
+    else if(Types.all.object(value, other) || Types.all.array(value, other)) {
+        if (Object.keys(value).length !== Object.keys(other).length)
+            return false;
+        for (let prop in value) {
+            if (value.hasOwnProperty(prop) && other.hasOwnProperty(prop)){
+                if (!Mixed.equal(value[prop], other[prop]))
+                    return false;
+            }else
+                return false;
+        }
+        return true;
+    } else return false;
 };
 
 Mixed.equal.multiple = false;
