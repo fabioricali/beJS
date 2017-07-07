@@ -72,10 +72,6 @@
 "use strict";
 
 
-/**
- * @module interface
- */
-
 var Helpers = __webpack_require__(2);
 var Interface = {};
 
@@ -94,8 +90,34 @@ Interface._isArray = function (object) {
  * @returns {Object}
  */
 Interface.create = function (obj) {
+    /**
+     * @interface all
+     * @description
+     * All checks must be satisfied, can accept array or arguments
+     * @example
+     * be.all.true(true, true, false) // false;
+     *
+     */
     obj.all = {};
+
+    /**
+     * @interface any
+     * @description
+     * Also just one check can be satisfied, can accept array or arguments
+     * @example
+     * be.any.true(true, true, false) // true;
+     *
+     */
     obj.any = {};
+
+    /**
+     * @interface not
+     * @description
+     * return "logical not" of called method, accept one argument
+     * @example
+     * be.not.true(true) // false;
+     *
+     */
     obj.not = {};
 
     var _loop = function _loop(i) {
@@ -115,7 +137,8 @@ Interface.create = function (obj) {
                     }
 
                     var args = params;
-                    if (Interface._isArray(args[0])) args = args[0];
+
+                    if (Interface._isArray(args[0]) && args.length === 1) args = args[0];
 
                     if (!args.length) return false;
 
@@ -131,7 +154,7 @@ Interface.create = function (obj) {
                     }
 
                     var args = params;
-                    if (Interface._isArray(args[0])) args = args[0];
+                    if (Interface._isArray(args[0]) && args.length === 1) args = args[0];
 
                     for (var a in args) {
                         if (args.hasOwnProperty(a) && obj[i].call(undefined, args[a])) return true;
@@ -209,7 +232,7 @@ Types.boolean = function (value) {
 };
 
 /**
- * Check if is false boolean type
+ * Alias of `be.false`
  *
  * **Interfaces**: `all`, `any`, `not`
  *
@@ -244,7 +267,7 @@ Types.false = function (value) {
 };
 
 /**
- * Check if is true boolean type
+ * Alias of `be.true`
  *
  * **Interfaces**: `all`, `any`, `not`
  *
@@ -394,8 +417,7 @@ Types.array = function (value) {
  */
 Types.json = function (value) {
     try {
-        JSON.parse(value);
-        return true;
+        return !!JSON.parse(value);
     } catch (e) {
         return false;
     }
@@ -629,7 +651,7 @@ Types.promise = function (value) {
  * be.buffer(b) // true
  */
 Types.buffer = function (value) {
-    return value instanceof Buffer;
+    return Buffer && value instanceof Buffer;
 };
 
 /**
@@ -648,6 +670,42 @@ Types.buffer = function (value) {
  */
 Types.iterable = function (value) {
     return Types.function(value[Symbol.iterator]);
+};
+
+/**
+ * Check if is symbol
+ *
+ * **Interfaces**: `all`, `any`, `not`
+ *
+ * @function
+ * @name symbol
+ * @param value {Mixed} value
+ * @returns {boolean}
+ * @example
+ * be.symbol(Symbol('hello')) // true
+ * be.symbol({a: 1}) // false
+ */
+Types.symbol = function (value) {
+    return !Types.undefined(Symbol) && Types.classOf(value, 'symbol');
+};
+
+/**
+ * Check if is defined
+ *
+ * **Interfaces**: `all`, `any`, `not`
+ *
+ * @function
+ * @name defined
+ * @param value {Mixed} value
+ * @returns {boolean}
+ * @example
+ * var param = 'hello';
+ * be.defined(param) // true
+ * var param2;
+ * be.defined(param2) // false
+ */
+Types.defined = function (value) {
+    return !Types.undefined(value);
 };
 
 Types = Interface.create(Types);
@@ -1056,8 +1114,7 @@ module.exports = __webpack_require__(5);
 
 
 /**
- * @module be
- * @description
+ * @fileOverview
  * beJS has the following interfaces:
  *
  * - `all`, all checks must be satisfied
@@ -1068,23 +1125,7 @@ module.exports = __webpack_require__(5);
  *
  * You can access the methods directly from "be.boolean" or from the class eg "be.Types.boolean".
  * Also the classes supports `all`, `any`, `not`
- *
- * Checks
- *
- * - [Arrays](arrays.md)
- * - [Dates](dates.md)
- * - [Envs](envs.md)
- * - [Hashes](hashes.md)
- * - [Mixed](mixed.md)
- * - [Numbers](numbers.md)
- * - [Objects](objects.md)
- * - [Strings](strings.md)
- * - [Types](types.md)
- * - [Urls](urls.md)
- * - [CreditCards](creditCards.md)
- * - [PostalCodes](postalCodes.md)
- * - [DOM](dom.md)
- *
+ * @namespace be
  * @example
  * // call a method
  * be.boolean(true);
@@ -1101,9 +1142,6 @@ module.exports = __webpack_require__(5);
  * // call interface "any" and passing arguments
  * be.any.boolean(true, false, 1);
  *
- * @author Fabio Ricali <fabio@rica.li>
- * @copyright rica.li 2017
- * @license MIT
  **/
 
 var Helpers = __webpack_require__(2);
@@ -1150,6 +1188,8 @@ var Checks = {
 
 /**
  * Get version of framework
+ * @function
+ * @name be#getVersion
  * @memberOf be
  * @returns {string}
  */
@@ -4303,16 +4343,30 @@ Mixed.semVer = function (value) {
  *
  * @function
  * @name equal
- * @param value {Number|String|Boolean|RegExp} first
- * @param other {Number|String|Boolean|RegExp} second
+ * @param value {Number|String|Boolean|RegExp|Array|Object} first
+ * @param other {Number|String|Boolean|RegExp|Array|Object} second
  * @returns {boolean}
  * @example
  * be.equal('hello', 'hello') // true
  * be.equal('hello', 'hellow') // false
  * be.equal(true, 'true') // false
+ * be.equal([1,2,3], [1,1,1]) // false
+ * be.equal({a:1}, {a:1}) // true
  */
 Mixed.equal = function (value, other) {
-    if (Types.all.number(value, other)) return value === other;else if (Types.all.string(value, other) || Types.all.regexp(value, other)) return value + '' === '' + other;else if (Types.all.boolean(value, other)) return value === other;else return false;
+    //console.log('aaa',Types.all.object(value, other));
+    //console.log('bbb',Types.all.array(value, other));
+    console.log('ccc', Types.all.number(value, other));
+    if (Types.all.number(value, other)) return value === other && 1 / value === 1 / other;else if (Types.all.string(value, other) || Types.all.regexp(value, other)) return value.toString() === other.toString();else if (Types.all.boolean(value, other)) return value === other;else if (Types.all.object(value, other) || Types.all.array(value, other)) {
+        console.log('sss', Types.all.array(value, other));
+        if (Object.keys(value).length !== Object.keys(other).length) return false;
+        for (var prop in value) {
+            if (value.hasOwnProperty(prop) && other.hasOwnProperty(prop)) {
+                if (!Mixed.equal(value[prop], other[prop])) return false;
+            } else return false;
+        }
+        return true;
+    } else return false;
 };
 
 Mixed.equal.multiple = false;
@@ -4363,7 +4417,7 @@ module.exports = Mixed;
 
 
 /**
- * @fileOverview Arrays checks.
+ * @fileOverview Arrays asserts.
  * @module Array
  */
 
@@ -4458,6 +4512,69 @@ Arrays.arrayOfObjects = function (value) {
  */
 Arrays.arrayOfBooleans = function (value) {
   return Types.all.boolean(value);
+};
+
+/**
+ * Check if is an array of numbers
+ *
+ * **Interfaces**: `all`, `any`, `not`
+ *
+ * @function
+ * @name arrayOfNumbers
+ * @param value {array} array
+ * @returns {*|boolean}
+ * @example
+ * be.arrayOfNumbers([1, 2]) // true
+ * be.all.arrayOfNumbers([
+ *      true,
+ *      false,
+ *      [1, 2, 3]
+ * ]) // false
+ */
+Arrays.arrayOfNumbers = function (value) {
+  return Types.all.number(value);
+};
+
+/**
+ * Check if is an array of dates
+ *
+ * **Interfaces**: `all`, `any`, `not`
+ *
+ * @function
+ * @name arrayOfDates
+ * @param value {array} array
+ * @returns {*|boolean}
+ * @example
+ * be.arrayOfDates([new Date(), new Date('2017-07-06')]) // true
+ * be.all.arrayOfDates([
+ *      true,
+ *      false,
+ *      new Date()
+ * ]) // false
+ */
+Arrays.arrayOfDates = function (value) {
+  return Types.all.date(value);
+};
+
+/**
+ * Check if is an array of functions
+ *
+ * **Interfaces**: `all`, `any`, `not`
+ *
+ * @function
+ * @name arrayOfFunctions
+ * @param value {array} array
+ * @returns {*|boolean}
+ * @example
+ * be.arrayOfFunctions([function(){return 1}, function(){return 2}]) // true
+ * be.all.arrayOfFunctions([
+ *      true,
+ *      false,
+ *      function(){return 1}
+ * ]) // false
+ */
+Arrays.arrayOfFunctions = function (value) {
+  return Types.all.function(value);
 };
 
 Arrays = Interface.create(Arrays);
@@ -4990,7 +5107,7 @@ module.exports = Hashes;
 
 /**
  * @fileOverview Credit cards checks.
- * @module creditCard
+ * @module CreditCard
  */
 
 var Interface = __webpack_require__(0);
@@ -5111,7 +5228,7 @@ module.exports = CreditCard;
 
 /**
  * @fileOverview Postal codes checks.
- * @module postalCodes
+ * @module PostalCodes
  */
 
 var Interface = __webpack_require__(0);
@@ -5327,6 +5444,7 @@ module.exports = {
 		"babel-loader": "^7.1.0",
 		"babel-preset-es2015": "^6.24.1",
 		"coveralls": "^2.13.1",
+		"docdash": "^0.4.0",
 		"istanbul": "^0.4.5",
 		"jsdoc": "^3.4.3",
 		"jsdom": "^11.0.0",
