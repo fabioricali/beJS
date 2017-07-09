@@ -86,6 +86,23 @@ be.getVersion = () => {
 };
 
 /**
+ * Set new/overwrite method
+ * @function
+ * @name be#set
+ * @memberOf be
+ * @param name {string} assertion name
+ * @param func {function} function
+ * @example
+ * be.set('myAssert', (a, b)=>{
+ *      return a === b;
+ * });
+ * be.myAssert(true, true) // true
+ */
+be.set = (name, func) => {
+    be[name] = func;
+};
+
+/**
  * Create interfaces
  */
 (function () {

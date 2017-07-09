@@ -13,3 +13,30 @@ describe('getVersion', function () {
         assert.equal(typeof result === 'string', true);
     });
 });
+
+describe('set', function () {
+    it('should be return a true', function () {
+        be.set('myAssert', function () {
+            return true;
+        });
+        var result = be.myAssert();
+        console.log(result);
+        assert.equal(result, true);
+    });
+    it('should be return a string', function () {
+        be.set('myAssert', function (param) {
+            return param;
+        });
+        var result = be.myAssert('hello');
+        console.log(result);
+        assert.equal(typeof result === 'string', true);
+    });
+    it('should be return a true using a "be method"', function () {
+        be.set('myAssert', function (param) {
+            return be.string(param);
+        });
+        var result = be.myAssert('hello');
+        console.log(result);
+        assert.equal(result, true);
+    });
+});
