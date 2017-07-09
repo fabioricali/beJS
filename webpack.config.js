@@ -1,6 +1,15 @@
 const webpack = require('webpack');
 const unminifiedWebpackPlugin = require('unminified-webpack-plugin');
 const WebpackAutoInject = require('webpack-auto-inject-version');
+const pkg = require('./package.json');
+
+const banner = `
+  ${pkg.name} - ${pkg.description}
+  Author: ${pkg.author.name}
+  Version: v${pkg.version}
+  Url: ${pkg.homepage}
+  License(s): ${pkg.license}
+`;
 
 module.exports = {
     entry: './index.js',
@@ -29,18 +38,14 @@ module.exports = {
             compress: {
                 warnings:false
             }, include: /\.min\.js$/ }),
-        new unminifiedWebpackPlugin(),
         new WebpackAutoInject({
           PACKAGE_JSON_PATH: './package.json',
           components: {
-            InjectAsComment: true,
+            InjectAsComment: false,
             InjectByTag: true,
-          },
-          componentsOptions: {
-            InjectAsComment: {
-              tag: 'beJS Build version: {version}'
-            }
           }
-        })
+        }),
+        new unminifiedWebpackPlugin(),
+        new webpack.BannerPlugin(banner)
     ]
 };

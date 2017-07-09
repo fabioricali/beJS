@@ -2,6 +2,7 @@
     "name": "bejs",
     "version": "1.4.0",
     "description": "Simple, light-weight assertions framework for javascript",
+    "homepage": "https://be.js.org",
     "main": "index.js",
     "scripts": {
         "version:major": "webpack --env.major && npm run-script doc && version-to-tag.sh && npm publish",

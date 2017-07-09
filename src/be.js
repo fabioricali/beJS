@@ -93,7 +93,7 @@ be.getVersion = () => {
  * @param name {string} assertion name
  * @param func {function} function
  * @example
- * be.set('myAssert', (a, b)=>{
+ * be.set('myAssert', (a, b) => {
  *      return a === b;
  * });
  * be.myAssert(true, true) // true
