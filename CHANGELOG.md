@@ -13,6 +13,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 - es6 `be.setIterator`, Set Iterator object assertion
 - es6 `be.int8Array`, Int8Array object assertion
 - es6 `be.uint8Array`, Uint8Array object assertion
+- es6 `be.uint8ClampedArray`, Uint8ClampedArray object assertion
 
 ## [1.4.1] - 2017-07-10
 

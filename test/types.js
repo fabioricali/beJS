@@ -765,7 +765,7 @@ describe('setIterator', function () {
 
 describe('int8Array', function () {
     it('should be return true', function () {
-        var result = be.int8Array(new Int8Array());
+        var result = be.int8Array(new Int8Array({}));
         console.log(result);
         assert.equal(result, true);
     });
@@ -778,12 +778,25 @@ describe('int8Array', function () {
 
 describe('uint8Array', function () {
     it('should be return true', function () {
-        var result = be.uint8Array(new Uint8Array());
+        var result = be.uint8Array(new Uint8Array({}));
         console.log(result);
         assert.equal(result, true);
     });
     it('should be return false', function () {
         var result = be.uint8Array({});
+        console.log(result);
+        assert.equal(result, false);
+    });
+});
+
+describe('uint8ClampedArray', function () {
+    it('should be return true', function () {
+        var result = be.uint8ClampedArray(new Uint8ClampedArray());
+        console.log(result);
+        assert.equal(result, true);
+    });
+    it('should be return false', function () {
+        var result = be.uint8ClampedArray({});
         console.log(result);
         assert.equal(result, false);
     });
