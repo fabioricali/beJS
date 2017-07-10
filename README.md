@@ -10,6 +10,8 @@
 
 # Simple, light-weight assertions framework for javascript
 
+#### More than ***150*** assertions
+
 ## Installation
 
 ### Node.js
@@ -56,6 +58,9 @@ be.any.boolean(true, false, 1);
 
 ## Documentation
 See [https://be.js.org](https://be.js.org/)
+
+## Changelog
+You can view the changelog [here](https://github.com/fabioricali/beJS/blob/master/CHANGELOG.md)
 
 ## License
 beJS is open-sourced software licensed under the [MIT license](http://opensource.org/licenses/MIT)
