@@ -685,7 +685,7 @@ describe('array_', function () {
     });
 });
 
-describe('set', function () {
+describe('oSet', function () {
     it('should be return true', function () {
         var result = be.oSet(new Set());
         console.log(result);
@@ -693,6 +693,19 @@ describe('set', function () {
     });
     it('should be return false', function () {
         var result = be.oSet({});
+        console.log(result);
+        assert.equal(result, false);
+    });
+});
+
+describe('weakSet', function () {
+    it('should be return true', function () {
+        var result = be.weakSet(new WeakSet());
+        console.log(result);
+        assert.equal(result, true);
+    });
+    it('should be return false', function () {
+        var result = be.weakSet({});
         console.log(result);
         assert.equal(result, false);
     });

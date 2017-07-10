@@ -541,6 +541,22 @@ Types.oSet = (value) => {
     return Types.classOf(value, 'set');
 };
 
+/**
+ * Check if is WeakSet object
+ *
+ * **Interfaces**: `all`, `any`, `not`
+ *
+ * @function
+ * @name weakSet
+ * @param value {Mixed} value
+ * @returns {boolean}
+ * @example
+ * be.weakSet(new WeakSet()) // true
+ */
+Types.weakSet = (value) => {
+    return Types.classOf(value, 'weakset');
+};
+
 Types = Interface.create(Types);
 
 module.exports = Types;

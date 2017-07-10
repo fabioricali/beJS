@@ -4,6 +4,10 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
+## [unreleased]
+### Added
+- `be.oSet`, Set object assertion
+
 ## [1.4.1] - 2017-07-10
 
 ### Added
