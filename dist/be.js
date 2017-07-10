@@ -1,4 +1,5 @@
-var be =
+// [AIV]  beJS Build version: 1.4.1  
+ var be =
 /******/ (function(modules) { // webpackBootstrap
 /******/ 	// The module cache
 /******/ 	var installedModules = {};
@@ -5090,6 +5091,25 @@ Urls.ftpsUrl = function (value) {
   return Urls.url(value) && /^ftps:/i.test(value);
 };
 
+/**
+ * Check if is a valid domain
+ *
+ * **Interfaces**: `all`, `any`, `not`
+ *
+ * @function
+ * @name domain
+ * @param value {string} url
+ * @returns {boolean}
+ * @see https://github.com/johnotander/domain-regex
+ * @example
+ * be.domain('google.com') // true;
+ * be.domain('image.google.com') // true;
+ */
+Urls.domain = function (value) {
+  return (/\b((?=[a-z0-9-]{1,63}\.)(xn--)?[a-z0-9]+(-[a-z0-9]+)*\.)+[a-z]{2,63}\b/.test(value)
+  );
+};
+
 Urls = Interface.create(Urls);
 
 module.exports = Urls;
@@ -5514,4 +5534,4 @@ module.exports = {
 };
 
 /***/ })
-/******/ ]);
+/******/ ]); 

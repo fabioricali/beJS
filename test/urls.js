@@ -109,3 +109,17 @@ describe('urlEncoded', function () {
         assert.equal(result, true);
     });
 });
+
+describe('domain', function () {
+    it('should be return true', function () {
+        var result = be.domain('images.google.com');
+        console.log(result);
+        assert.equal(result, true);
+    });
+
+    it('should be return false', function () {
+        var result = be.domain('google');
+        console.log(result);
+        assert.equal(result, false);
+    });
+});
