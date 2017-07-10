@@ -710,3 +710,16 @@ describe('weakSet', function () {
         assert.equal(result, false);
     });
 });
+
+describe('map', function () {
+    it('should be return true', function () {
+        var result = be.map(new Map());
+        console.log(result);
+        assert.equal(result, true);
+    });
+    it('should be return false', function () {
+        var result = be.map({});
+        console.log(result);
+        assert.equal(result, false);
+    });
+});

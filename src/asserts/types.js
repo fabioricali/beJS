@@ -557,6 +557,22 @@ Types.weakSet = (value) => {
     return Types.classOf(value, 'weakset');
 };
 
+/**
+ * Check if is Map object
+ *
+ * **Interfaces**: `all`, `any`, `not`
+ *
+ * @function
+ * @name map
+ * @param value {Mixed} value
+ * @returns {boolean}
+ * @example
+ * be.weakSet(new Map()) // true
+ */
+Types.map = (value) => {
+    return Types.classOf(value, 'map');
+};
+
 Types = Interface.create(Types);
 
 module.exports = Types;

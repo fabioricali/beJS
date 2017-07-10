@@ -7,6 +7,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 ## [unreleased]
 ### Added
 - `be.oSet`, Set object assertion
+- `be.weakSet`, WeakSet object assertion
+- `be.map`, Map object assertion
 
 ## [1.4.1] - 2017-07-10
 
