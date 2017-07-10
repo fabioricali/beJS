@@ -749,6 +749,22 @@ Types.float32Array = (value) => {
     return Types.classOf(value, 'float32array');
 };
 
+/**
+ * Check if is Float64Array object
+ *
+ * **Interfaces**: `all`, `any`, `not`
+ *
+ * @function
+ * @name float64Array
+ * @param value {Mixed} value
+ * @returns {boolean}
+ * @example
+ * be.float64Array(new Float64Array()) // true
+ */
+Types.float64Array = (value) => {
+    return Types.classOf(value, 'float64array');
+};
+
 Types = Interface.create(Types);
 
 module.exports = Types;

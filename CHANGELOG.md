@@ -19,6 +19,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 - es6 `be.int32Array`, Int32Array object assertion
 - es6 `be.uint32Array`, Uint32Array object assertion
 - es6 `be.float32Array`, Float32Array object assertion
+- es6 `be.float64Array`, Float64Array object assertion
 
 ## [1.4.1] - 2017-07-10
 

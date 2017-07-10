@@ -866,3 +866,16 @@ describe('float32Array', function () {
         assert.equal(result, false);
     });
 });
+
+describe('float64Array', function () {
+    it('should be return true', function () {
+        var result = be.float64Array(new Float64Array({}));
+        console.log(result);
+        assert.equal(result, true);
+    });
+    it('should be return false', function () {
+        var result = be.float64Array({});
+        console.log(result);
+        assert.equal(result, false);
+    });
+});
