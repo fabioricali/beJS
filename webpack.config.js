@@ -39,11 +39,16 @@ module.exports = {
                 warnings:false
             }, include: /\.min\.js$/ }),
         new WebpackAutoInject({
-          PACKAGE_JSON_PATH: './package.json',
-          components: {
-            InjectAsComment: false,
-            InjectByTag: true,
-          }
+            PACKAGE_JSON_PATH: './package.json',
+            components: {
+                InjectAsComment: false,
+                InjectByTag: true,
+            },
+            componentsOptions: {
+                InjectAsComment: {
+                    tag: 'beJS Build version: {version}'
+                }
+            }
         }),
         new unminifiedWebpackPlugin(),
         new webpack.BannerPlugin(banner)

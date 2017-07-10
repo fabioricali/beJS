@@ -250,12 +250,42 @@ Strings.alphanumeric = (value) => {
  * be.startWith('hello', 'HELLO world', true) // false
  */
 Strings.startWith = (value, string, insensitive) => {
+    if(!Types.all.string(value, string))
+        return false;
+
+    if(Types.truthy(insensitive)){
+        value = value.toLocaleLowerCase();
+        string = string.toLocaleLowerCase();
+    }
+    //console.log(value,string);
+    //console.log(string.substr(0, value.length) === value);
+    return string.indexOf(value) === 0;
+};
+
+Strings.startWith.multiple = false;
+
+/**
+ * Check if string end with a value
+ *
+ * **Interfaces**: `not`
+ *
+ * @function
+ * @name endWith
+ * @param value {string} start string
+ * @param string {string} string target
+ * @param insensitive {boolean} case sensitive
+ * @returns {boolean}
+ * @example
+ * be.startWith('hello', 'hello world') // true
+ * be.startWith('hello', 'HELLO world', true) // false
+ */
+Strings.endWith = (value, string, insensitive) => {
     if(Types.falsy(insensitive)) insensitive = false;
     let regex = new RegExp('^' + value, Types.booleanTrue(insensitive) ? 'i' : '');
     return regex.test(string);
 };
 
-Strings.startWith.multiple = false;
+Strings.endWith.multiple = false;
 
 /**
  * Check if a string is palindrome

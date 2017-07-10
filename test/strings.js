@@ -323,6 +323,11 @@ describe('startWith', function () {
         console.log(result);
         assert.equal(result, false);
     });
+    it('special char, should be return true', function () {
+        var result = be.startWith('^world', '^world hello');
+        console.log(result);
+        assert.equal(result, true);
+    })
 });
 
 describe('char', function () {
