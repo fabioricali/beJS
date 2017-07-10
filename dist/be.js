@@ -708,6 +708,246 @@ Types.defined = function (value) {
     return !Types.undefined(value);
 };
 
+/**
+ * Check if is Set object
+ *
+ * **Interfaces**: `all`, `any`, `not`
+ *
+ * @function
+ * @name oSet
+ * @param value {Mixed} value
+ * @returns {boolean}
+ * @example
+ * be.oSet(new Set()) // true
+ */
+Types.oSet = function (value) {
+    return Types.classOf(value, 'set');
+};
+
+/**
+ * Check if is WeakSet object
+ *
+ * **Interfaces**: `all`, `any`, `not`
+ *
+ * @function
+ * @name weakSet
+ * @param value {Mixed} value
+ * @returns {boolean}
+ * @example
+ * be.weakSet(new WeakSet()) // true
+ */
+Types.weakSet = function (value) {
+    return Types.classOf(value, 'weakset');
+};
+
+/**
+ * Check if is Map object
+ *
+ * **Interfaces**: `all`, `any`, `not`
+ *
+ * @function
+ * @name map
+ * @param value {Mixed} value
+ * @returns {boolean}
+ * @example
+ * be.map(new Map()) // true
+ */
+Types.map = function (value) {
+    return Types.classOf(value, 'map');
+};
+
+/**
+ * Check if is WeakMap object
+ *
+ * **Interfaces**: `all`, `any`, `not`
+ *
+ * @function
+ * @name weakMap
+ * @param value {Mixed} value
+ * @returns {boolean}
+ * @example
+ * be.weakMap(new WeakMap()) // true
+ */
+Types.weakMap = function (value) {
+    return Types.classOf(value, 'weakmap');
+};
+
+/**
+ * Check if is Map Iterator object
+ *
+ * **Interfaces**: `all`, `any`, `not`
+ *
+ * @function
+ * @name mapIterator
+ * @param value {Mixed} value
+ * @returns {boolean}
+ * @example
+ * be.mapIterator(new Map().values()) // true
+ */
+Types.mapIterator = function (value) {
+    return Types.classOf(value, 'map iterator');
+};
+
+/**
+ * Check if is Set Iterator object
+ *
+ * **Interfaces**: `all`, `any`, `not`
+ *
+ * @function
+ * @name setIterator
+ * @param value {Mixed} value
+ * @returns {boolean}
+ * @example
+ * be.setIterator(new Set().values()) // true
+ */
+Types.setIterator = function (value) {
+    return Types.classOf(value, 'set iterator');
+};
+
+/**
+ * Check if is Int8Array object
+ *
+ * **Interfaces**: `all`, `any`, `not`
+ *
+ * @function
+ * @name int8Array
+ * @param value {Mixed} value
+ * @returns {boolean}
+ * @example
+ * be.int8Array(new Int8Array()) // true
+ */
+Types.int8Array = function (value) {
+    return Types.classOf(value, 'int8array');
+};
+
+/**
+ * Check if is Uint8Array object
+ *
+ * **Interfaces**: `all`, `any`, `not`
+ *
+ * @function
+ * @name uint8Array
+ * @param value {Mixed} value
+ * @returns {boolean}
+ * @example
+ * be.uint8Array(new Uint8Array()) // true
+ */
+Types.uint8Array = function (value) {
+    return Types.classOf(value, 'uint8array');
+};
+
+/**
+ * Check if is Uint8ClampedArray object
+ *
+ * **Interfaces**: `all`, `any`, `not`
+ *
+ * @function
+ * @name uint8ClampedArray
+ * @param value {Mixed} value
+ * @returns {boolean}
+ * @example
+ * be.uint8ClampedArray(new Uint8ClampedArray()) // true
+ */
+Types.uint8ClampedArray = function (value) {
+    return Types.classOf(value, 'uint8clampedarray');
+};
+
+/**
+ * Check if is Int16Array object
+ *
+ * **Interfaces**: `all`, `any`, `not`
+ *
+ * @function
+ * @name int16Array
+ * @param value {Mixed} value
+ * @returns {boolean}
+ * @example
+ * be.int16Array(new Int16Array()) // true
+ */
+Types.int16Array = function (value) {
+    return Types.classOf(value, 'int16array');
+};
+
+/**
+ * Check if is Uint16Array object
+ *
+ * **Interfaces**: `all`, `any`, `not`
+ *
+ * @function
+ * @name uint16Array
+ * @param value {Mixed} value
+ * @returns {boolean}
+ * @example
+ * be.uint16Array(new Uint16Array()) // true
+ */
+Types.uint16Array = function (value) {
+    return Types.classOf(value, 'uint16array');
+};
+
+/**
+ * Check if is Int32Array object
+ *
+ * **Interfaces**: `all`, `any`, `not`
+ *
+ * @function
+ * @name int32Array
+ * @param value {Mixed} value
+ * @returns {boolean}
+ * @example
+ * be.int32Array(new Int32Array()) // true
+ */
+Types.int32Array = function (value) {
+    return Types.classOf(value, 'int32array');
+};
+
+/**
+ * Check if is Uint32Array object
+ *
+ * **Interfaces**: `all`, `any`, `not`
+ *
+ * @function
+ * @name uint32Array
+ * @param value {Mixed} value
+ * @returns {boolean}
+ * @example
+ * be.uint32Array(new Uint32Array()) // true
+ */
+Types.uint32Array = function (value) {
+    return Types.classOf(value, 'uint32array');
+};
+
+/**
+ * Check if is Float32Array object
+ *
+ * **Interfaces**: `all`, `any`, `not`
+ *
+ * @function
+ * @name float32Array
+ * @param value {Mixed} value
+ * @returns {boolean}
+ * @example
+ * be.float32Array(new Float32Array()) // true
+ */
+Types.float32Array = function (value) {
+    return Types.classOf(value, 'float32array');
+};
+
+/**
+ * Check if is Float64Array object
+ *
+ * **Interfaces**: `all`, `any`, `not`
+ *
+ * @function
+ * @name float64Array
+ * @param value {Mixed} value
+ * @returns {boolean}
+ * @example
+ * be.float64Array(new Float64Array()) // true
+ */
+Types.float64Array = function (value) {
+    return Types.classOf(value, 'float64array');
+};
+
 Types = Interface.create(Types);
 
 module.exports = Types;
