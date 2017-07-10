@@ -250,15 +250,14 @@ Strings.alphanumeric = (value) => {
  * be.startWith('hello', 'HELLO world', true) // false
  */
 Strings.startWith = (value, string, insensitive) => {
-    if(!Types.all.string(value, string))
-        return false;
-
+    if(!Types.any.string(value, string)) {
+        value += '';
+        string += '';
+    }
     if(Types.truthy(insensitive)){
         value = value.toLocaleLowerCase();
         string = string.toLocaleLowerCase();
     }
-    //console.log(value,string);
-    //console.log(string.substr(0, value.length) === value);
     return string.indexOf(value) === 0;
 };
 
@@ -276,13 +275,20 @@ Strings.startWith.multiple = false;
  * @param insensitive {boolean} case sensitive
  * @returns {boolean}
  * @example
- * be.startWith('hello', 'hello world') // true
- * be.startWith('hello', 'HELLO world', true) // false
+ * be.endWith('world', 'hello world') // true
+ * be.endWith('world', 'hello WORLD', true) // false
  */
 Strings.endWith = (value, string, insensitive) => {
-    if(Types.falsy(insensitive)) insensitive = false;
-    let regex = new RegExp('^' + value, Types.booleanTrue(insensitive) ? 'i' : '');
-    return regex.test(string);
+    if(!Types.any.string(value, string)) {
+        value += '';
+        string += '';
+    }
+    if(Types.truthy(insensitive)){
+        value = value.toLocaleLowerCase();
+        string = string.toLocaleLowerCase();
+    }
+    let pos = string.length - value.length;
+    return pos >= 0 && string.indexOf(value, pos) === pos;
 };
 
 Strings.endWith.multiple = false;

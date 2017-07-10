@@ -327,7 +327,50 @@ describe('startWith', function () {
         var result = be.startWith('^world', '^world hello');
         console.log(result);
         assert.equal(result, true);
-    })
+    });
+    it('number, should be return true', function () {
+        var result = be.startWith(12, 12345);
+        console.log(result);
+        assert.equal(result, true);
+    });
+});
+
+describe('endWith', function () {
+    it('should be return true', function () {
+        var result = be.endWith('world', 'hello world');
+        console.log(result);
+        assert.equal(result, true);
+    });
+    it('access by Strings, should be return true', function () {
+        var result = be.Strings.endWith('world', 'hello world');
+        console.log(result);
+        assert.equal(result, true);
+    });
+    it('insensitive undefined, should be return false', function () {
+        var result = be.endWith('WORLD', 'hello world');
+        console.log(result);
+        assert.equal(result, false);
+    });
+    it('insensitive true, should be return true', function () {
+        var result = be.endWith('WORLD', 'hello world', true);
+        console.log(result);
+        assert.equal(result, true);
+    });
+    it('should be return false', function () {
+        var result = be.endWith('hello', 'hello world');
+        console.log(result);
+        assert.equal(result, false);
+    });
+    it('special char, should be return true', function () {
+        var result = be.endWith('^hello', 'world ^hello');
+        console.log(result);
+        assert.equal(result, true);
+    });
+    it('number, should be return true', function () {
+        var result = be.endWith(45, 12345);
+        console.log(result);
+        assert.equal(result, true);
+    });
 });
 
 describe('char', function () {
