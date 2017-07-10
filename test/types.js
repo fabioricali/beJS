@@ -762,3 +762,16 @@ describe('setIterator', function () {
         assert.equal(result, false);
     });
 });
+
+describe('int8Array', function () {
+    it('should be return true', function () {
+        var result = be.int8Array(new Int8Array());
+        console.log(result);
+        assert.equal(result, true);
+    });
+    it('should be return false', function () {
+        var result = be.int8Array({});
+        console.log(result);
+        assert.equal(result, false);
+    });
+});

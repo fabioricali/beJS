@@ -621,6 +621,22 @@ Types.setIterator = (value) => {
     return Types.classOf(value, 'set iterator');
 };
 
+/**
+ * Check if is Int8Array object
+ *
+ * **Interfaces**: `all`, `any`, `not`
+ *
+ * @function
+ * @name int8Array
+ * @param value {Mixed} value
+ * @returns {boolean}
+ * @example
+ * be.int8Array(new Int8Array()) // true
+ */
+Types.int8Array = (value) => {
+    return Types.classOf(value, 'int8array');
+};
+
 Types = Interface.create(Types);
 
 module.exports = Types;
