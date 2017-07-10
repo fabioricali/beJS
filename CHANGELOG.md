@@ -4,7 +4,8 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
-## [unreleased]
+## [1.5.0] - 2017-07-10
+
 ### Added
 - es6 `be.oSet`, Set object assertion
 - es6 `be.weakSet`, WeakSet object assertion
