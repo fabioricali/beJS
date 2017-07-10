@@ -685,6 +685,22 @@ Types.int16Array = (value) => {
     return Types.classOf(value, 'int16array');
 };
 
+/**
+ * Check if is Uint16Array object
+ *
+ * **Interfaces**: `all`, `any`, `not`
+ *
+ * @function
+ * @name uint16Array
+ * @param value {Mixed} value
+ * @returns {boolean}
+ * @example
+ * be.uint16Array(new Uint16Array()) // true
+ */
+Types.uint16Array = (value) => {
+    return Types.classOf(value, 'uint16array');
+};
+
 Types = Interface.create(Types);
 
 module.exports = Types;
