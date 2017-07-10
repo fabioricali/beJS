@@ -599,10 +599,26 @@ Types.weakMap = (value) => {
  * @param value {Mixed} value
  * @returns {boolean}
  * @example
- * be.mapIterator(new WeakMap()) // true
+ * be.mapIterator(new Map().values()) // true
  */
 Types.mapIterator = (value) => {
     return Types.classOf(value, 'map iterator');
+};
+
+/**
+ * Check if is Set Iterator object
+ *
+ * **Interfaces**: `all`, `any`, `not`
+ *
+ * @function
+ * @name setIterator
+ * @param value {Mixed} value
+ * @returns {boolean}
+ * @example
+ * be.setIterator(new Set().values()) // true
+ */
+Types.setIterator = (value) => {
+    return Types.classOf(value, 'set iterator');
 };
 
 Types = Interface.create(Types);

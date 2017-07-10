@@ -749,3 +749,16 @@ describe('mapIterator', function () {
         assert.equal(result, false);
     });
 });
+
+describe('setIterator', function () {
+    it('should be return true', function () {
+        var result = be.setIterator(new Set().values());
+        console.log(result);
+        assert.equal(result, true);
+    });
+    it('should be return false', function () {
+        var result = be.setIterator({});
+        console.log(result);
+        assert.equal(result, false);
+    });
+});
