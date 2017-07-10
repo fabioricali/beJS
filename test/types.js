@@ -684,3 +684,16 @@ describe('array_', function () {
         assert.equal(result, false);
     });
 });
+
+describe('set', function () {
+    it('should be return true', function () {
+        var result = be.oSet(new Set());
+        console.log(result);
+        assert.equal(result, true);
+    });
+    it('should be return false', function () {
+        var result = be.oSet({});
+        console.log(result);
+        assert.equal(result, false);
+    });
+});

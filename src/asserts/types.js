@@ -525,6 +525,22 @@ Types.defined = (value) => {
     return !Types.undefined(value);
 };
 
+/**
+ * Check if is Set object
+ *
+ * **Interfaces**: `all`, `any`, `not`
+ *
+ * @function
+ * @name oSet
+ * @param value {Mixed} value
+ * @returns {boolean}
+ * @example
+ * be.oSet(new Set()) // true
+ */
+Types.oSet = (value) => {
+    return Types.classOf(value, 'set');
+};
+
 Types = Interface.create(Types);
 
 module.exports = Types;
