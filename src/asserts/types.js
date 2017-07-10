@@ -589,6 +589,22 @@ Types.weakMap = (value) => {
     return Types.classOf(value, 'weakmap');
 };
 
+/**
+ * Check if is Map Iterator object
+ *
+ * **Interfaces**: `all`, `any`, `not`
+ *
+ * @function
+ * @name mapIterator
+ * @param value {Mixed} value
+ * @returns {boolean}
+ * @example
+ * be.mapIterator(new WeakMap()) // true
+ */
+Types.mapIterator = (value) => {
+    return Types.classOf(value, 'map iterator');
+};
+
 Types = Interface.create(Types);
 
 module.exports = Types;

@@ -736,3 +736,16 @@ describe('weakMap', function () {
         assert.equal(result, false);
     });
 });
+
+describe('mapIterator', function () {
+    it('should be return true', function () {
+        var result = be.mapIterator(new Map().values());
+        console.log(result);
+        assert.equal(result, true);
+    });
+    it('should be return false', function () {
+        var result = be.mapIterator({});
+        console.log(result);
+        assert.equal(result, false);
+    });
+});
