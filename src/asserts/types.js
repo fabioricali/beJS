@@ -669,6 +669,22 @@ Types.uint8ClampedArray = (value) => {
     return Types.classOf(value, 'uint8clampedarray');
 };
 
+/**
+ * Check if is Int16Array object
+ *
+ * **Interfaces**: `all`, `any`, `not`
+ *
+ * @function
+ * @name int16Array
+ * @param value {Mixed} value
+ * @returns {boolean}
+ * @example
+ * be.int16Array(new Int16Array()) // true
+ */
+Types.int16Array = (value) => {
+    return Types.classOf(value, 'int16array');
+};
+
 Types = Interface.create(Types);
 
 module.exports = Types;

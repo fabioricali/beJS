@@ -801,3 +801,16 @@ describe('uint8ClampedArray', function () {
         assert.equal(result, false);
     });
 });
+
+describe('int16Array', function () {
+    it('should be return true', function () {
+        var result = be.int16Array(new Int16Array({}));
+        console.log(result);
+        assert.equal(result, true);
+    });
+    it('should be return false', function () {
+        var result = be.int16Array({});
+        console.log(result);
+        assert.equal(result, false);
+    });
+});
