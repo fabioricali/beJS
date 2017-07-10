@@ -567,10 +567,26 @@ Types.weakSet = (value) => {
  * @param value {Mixed} value
  * @returns {boolean}
  * @example
- * be.weakSet(new Map()) // true
+ * be.map(new Map()) // true
  */
 Types.map = (value) => {
     return Types.classOf(value, 'map');
+};
+
+/**
+ * Check if is WeakMap object
+ *
+ * **Interfaces**: `all`, `any`, `not`
+ *
+ * @function
+ * @name weakMap
+ * @param value {Mixed} value
+ * @returns {boolean}
+ * @example
+ * be.weakMap(new WeakMap()) // true
+ */
+Types.weakMap = (value) => {
+    return Types.classOf(value, 'weakmap');
 };
 
 Types = Interface.create(Types);
