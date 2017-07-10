@@ -775,3 +775,16 @@ describe('int8Array', function () {
         assert.equal(result, false);
     });
 });
+
+describe('uint8Array', function () {
+    it('should be return true', function () {
+        var result = be.uint8Array(new Uint8Array());
+        console.log(result);
+        assert.equal(result, true);
+    });
+    it('should be return false', function () {
+        var result = be.uint8Array({});
+        console.log(result);
+        assert.equal(result, false);
+    });
+});

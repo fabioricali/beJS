@@ -637,6 +637,22 @@ Types.int8Array = (value) => {
     return Types.classOf(value, 'int8array');
 };
 
+/**
+ * Check if is Uint8Array object
+ *
+ * **Interfaces**: `all`, `any`, `not`
+ *
+ * @function
+ * @name uint8Array
+ * @param value {Mixed} value
+ * @returns {boolean}
+ * @example
+ * be.uint8Array(new Uint8Array()) // true
+ */
+Types.uint8Array = (value) => {
+    return Types.classOf(value, 'uint8array');
+};
+
 Types = Interface.create(Types);
 
 module.exports = Types;
