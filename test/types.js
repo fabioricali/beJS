@@ -840,3 +840,16 @@ describe('int32Array', function () {
         assert.equal(result, false);
     });
 });
+
+describe('uint32Array', function () {
+    it('should be return true', function () {
+        var result = be.uint32Array(new Uint32Array({}));
+        console.log(result);
+        assert.equal(result, true);
+    });
+    it('should be return false', function () {
+        var result = be.uint32Array({});
+        console.log(result);
+        assert.equal(result, false);
+    });
+});
