@@ -7,7 +7,11 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 ## [unreleased]
 
 ### Added
-- `be.set`
+- `be.set`, now it's possible add new/overwrite methods
+- `be.endWith`
+
+### Changed
+- `be.startWith`, remove regex test
 
 ## [1.4.0] - 2017-07-07
 
