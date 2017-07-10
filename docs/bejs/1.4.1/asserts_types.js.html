@@ -1,0 +1,590 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>asserts/types.js - Documentation</title>
+
+    <script src="scripts/prettify/prettify.js"></script>
+    <script src="scripts/prettify/lang-css.js"></script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+<body>
+
+<input type="checkbox" id="nav-trigger" class="nav-trigger" />
+<label for="nav-trigger" class="navicon-button x">
+  <div class="navicon"></div>
+</label>
+
+<label for="nav-trigger" class="overlay"></label>
+
+<nav>
+    <li class="nav-link nav-home-link"><a href="index.html">Home</a></li><li class="nav-heading">Modules</li><li class="nav-heading"><span class="nav-item-type type-module">M</span><span class="nav-item-name"><a href="module-Array.html">Array</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="module-Array.html#~arrayOfBooleans">arrayOfBooleans</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="module-Array.html#~arrayOfDates">arrayOfDates</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="module-Array.html#~arrayOfFunctions">arrayOfFunctions</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="module-Array.html#~arrayOfNumbers">arrayOfNumbers</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="module-Array.html#~arrayOfObjects">arrayOfObjects</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="module-Array.html#~arrayOfStrings">arrayOfStrings</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="module-Array.html#~inArray">inArray</a></span></li><li class="nav-heading"><span class="nav-item-type type-module">M</span><span class="nav-item-name"><a href="module-CreditCard.html">CreditCard</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="module-CreditCard.html#~amex">amex</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="module-CreditCard.html#~creditCard">creditCard</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="module-CreditCard.html#~dinersClub">dinersClub</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="module-CreditCard.html#~discover">discover</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="module-CreditCard.html#~mastercard">mastercard</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="module-CreditCard.html#~visa">visa</a></span></li><li class="nav-heading"><span class="nav-item-type type-module">M</span><span class="nav-item-name"><a href="module-Dates.html">Dates</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="module-Dates.html#~dateBetween">dateBetween</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="module-Dates.html#~dateString">dateString</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="module-Dates.html#~day">day</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="module-Dates.html#~dayLightSavingTime">dayLightSavingTime</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="module-Dates.html#~future">future</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="module-Dates.html#~leapYear">leapYear</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="module-Dates.html#~month">month</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="module-Dates.html#~numberInWeek">numberInWeek</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="module-Dates.html#~past">past</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="module-Dates.html#~timeString">timeString</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="module-Dates.html#~today">today</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="module-Dates.html#~tomorrow">tomorrow</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="module-Dates.html#~weekday">weekday</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="module-Dates.html#~weekend">weekend</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="module-Dates.html#~year">year</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="module-Dates.html#~yesterday">yesterday</a></span></li><li class="nav-heading"><span class="nav-item-type type-module">M</span><span class="nav-item-name"><a href="module-DOM.html">DOM</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="module-DOM.html#~domElement">domElement</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="module-DOM.html#~domElementTag">domElementTag</a></span></li><li class="nav-heading"><span class="nav-item-type type-module">M</span><span class="nav-item-name"><a href="module-Envs.html">Envs</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="module-Envs.html#~amdEnv">amdEnv</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="module-Envs.html#~android">android</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="module-Envs.html#~browserEnv">browserEnv</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="module-Envs.html#~chrome">chrome</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="module-Envs.html#~commonjsEnv">commonjsEnv</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="module-Envs.html#~firefox">firefox</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="module-Envs.html#~ios">ios</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="module-Envs.html#~ipad">ipad</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="module-Envs.html#~iphone">iphone</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="module-Envs.html#~ipod">ipod</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="module-Envs.html#~mac">mac</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="module-Envs.html#~navigator">navigator</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="module-Envs.html#~online">online</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="module-Envs.html#~safari">safari</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="module-Envs.html#~userAgent">userAgent</a></span></li><li class="nav-heading"><span class="nav-item-type type-module">M</span><span class="nav-item-name"><a href="module-Hashes.html">Hashes</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="module-Hashes.html#~md5">md5</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="module-Hashes.html#~sha1">sha1</a></span></li><li class="nav-heading"><span class="nav-item-type type-module">M</span><span class="nav-item-name"><a href="module-Mixed.html">Mixed</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="module-Mixed.html#~base64">base64</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="module-Mixed.html#~email">email</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="module-Mixed.html#~equal">equal</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="module-Mixed.html#~fiscalCodeIT">fiscalCodeIT</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="module-Mixed.html#~hex">hex</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="module-Mixed.html#~hexColor">hexColor</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="module-Mixed.html#~ipv">ipv</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="module-Mixed.html#~ipv4">ipv4</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="module-Mixed.html#~ipv6">ipv6</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="module-Mixed.html#~macAddress">macAddress</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="module-Mixed.html#~semVer">semVer</a></span></li><li class="nav-heading"><span class="nav-item-type type-module">M</span><span class="nav-item-name"><a href="module-Numbers.html">Numbers</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="module-Numbers.html#~between">between</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="module-Numbers.html#~even">even</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="module-Numbers.html#~float">float</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="module-Numbers.html#~greater">greater</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="module-Numbers.html#~infinity">infinity</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="module-Numbers.html#~infinityNegative">infinityNegative</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="module-Numbers.html#~infinityPositive">infinityPositive</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="module-Numbers.html#~int">int</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="module-Numbers.html#~lesser">lesser</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="module-Numbers.html#~nan">nan</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="module-Numbers.html#~negative">negative</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="module-Numbers.html#~negativeZero">negativeZero</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="module-Numbers.html#~numeric">numeric</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="module-Numbers.html#~odd">odd</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="module-Numbers.html#~positive">positive</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="module-Numbers.html#~positiveZero">positiveZero</a></span></li><li class="nav-heading"><span class="nav-item-type type-module">M</span><span class="nav-item-name"><a href="module-Objects.html">Objects</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="module-Objects.html#~propertyCount">propertyCount</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="module-Objects.html#~propertyOf">propertyOf</a></span></li><li class="nav-heading"><span class="nav-item-type type-module">M</span><span class="nav-item-name"><a href="module-PostalCodes.html">PostalCodes</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="module-PostalCodes.html#~postalCodeDE">postalCodeDE</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="module-PostalCodes.html#~postalCodeES">postalCodeES</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="module-PostalCodes.html#~postalCodeIT">postalCodeIT</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="module-PostalCodes.html#~postalCodeNL">postalCodeNL</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="module-PostalCodes.html#~postalCodeUK">postalCodeUK</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="module-PostalCodes.html#~postalCodeUS">postalCodeUS</a></span></li><li class="nav-heading"><span class="nav-item-type type-module">M</span><span class="nav-item-name"><a href="module-Strings.html">Strings</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="module-Strings.html#~alphanumeric">alphanumeric</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="module-Strings.html#~camelCase">camelCase</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="module-Strings.html#~capitalized">capitalized</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="module-Strings.html#~char">char</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="module-Strings.html#~contains">contains</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="module-Strings.html#~emptyString">emptyString</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="module-Strings.html#~endWith">endWith</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="module-Strings.html#~kebabCase">kebabCase</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="module-Strings.html#~lowerCase">lowerCase</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="module-Strings.html#~palindrome">palindrome</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="module-Strings.html#~similarity">similarity</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="module-Strings.html#~snakeCase">snakeCase</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="module-Strings.html#~space">space</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="module-Strings.html#~spaces">spaces</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="module-Strings.html#~startWith">startWith</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="module-Strings.html#~upperCase">upperCase</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="module-Strings.html#~word">word</a></span></li><li class="nav-heading"><span class="nav-item-type type-module">M</span><span class="nav-item-name"><a href="module-Types.html">Types</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="module-Types.html#~argument">argument</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="module-Types.html#~array">array</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="module-Types.html#~boolean">boolean</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="module-Types.html#~booleanFalse">booleanFalse</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="module-Types.html#~booleanTrue">booleanTrue</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="module-Types.html#~buffer">buffer</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="module-Types.html#~classOf">classOf</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="module-Types.html#~date">date</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="module-Types.html#~defined">defined</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="module-Types.html#~empty">empty</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="module-Types.html#~error">error</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="module-Types.html#~false">false</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="module-Types.html#~falsy">falsy</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="module-Types.html#~function">function</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="module-Types.html#~iterable">iterable</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="module-Types.html#~json">json</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="module-Types.html#~null">null</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="module-Types.html#~number">number</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="module-Types.html#~primitive">primitive</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="module-Types.html#~promise">promise</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="module-Types.html#~regexp">regexp</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="module-Types.html#~sameType">sameType</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="module-Types.html#~string">string</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="module-Types.html#~symbol">symbol</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="module-Types.html#~true">true</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="module-Types.html#~truthy">truthy</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="module-Types.html#~undefined">undefined</a></span></li><li class="nav-heading"><span class="nav-item-type type-module">M</span><span class="nav-item-name"><a href="module-Urls.html">Urls</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="module-Urls.html#~ftpsUrl">ftpsUrl</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="module-Urls.html#~ftpUrl">ftpUrl</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="module-Urls.html#~httpsUrl">httpsUrl</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="module-Urls.html#~httpUrl">httpUrl</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="module-Urls.html#~url">url</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="module-Urls.html#~urlEncoded">urlEncoded</a></span></li><li class="nav-heading">Namespaces</li><li class="nav-heading"><span class="nav-item-type type-namespace">N</span><span class="nav-item-name"><a href="be.html">be</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="be.html#getVersion">getVersion</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="be.html#set">set</a></span></li><li class="nav-heading">Interfaces</li><li class="nav-heading"><span class="nav-item-type type-interface">I</span><span class="nav-item-name"><a href="all.html">all</a></span></li><li class="nav-heading"><span class="nav-item-type type-interface">I</span><span class="nav-item-name"><a href="any.html">any</a></span></li><li class="nav-heading"><span class="nav-item-type type-interface">I</span><span class="nav-item-name"><a href="not.html">not</a></span></li>
+</nav>
+
+<div id="main">
+    
+    <h1 class="page-title">asserts/types.js</h1>
+    
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>/**
+ * @fileOverview Types checks.
+ * @module Types
+ */
+
+const Helpers = require('../helpers');
+const Interface = require('../interface');
+let Types = {};
+
+/**
+ * Check [object ?] class
+ *
+ * **Interfaces**: `not`
+ *
+ * @function
+ * @name classOf
+ * @param object {Mixed} object
+ * @param className {string} class name
+ * @returns {boolean}
+ * @example
+ * be.classOf(2, 'number') // true
+ * be.classOf([1, 2, 3], 'array') // true
+ * be.classOf({a: 1, b: 2}, 'object') // true
+ * be.classOf({a: 1, b: 2}, 'array') // false
+ * be.classOf(/hello/, 'regexp') // true
+ * be.classOf(true, 'boolean') // true
+ */
+Types.classOf = (object, className) => {
+    return Helpers.objectToString(object).toLowerCase() === '[object ' + className + ']'.toLowerCase();
+};
+
+Types.classOf.multiple = false;
+
+/**
+ * Check if is valid boolean
+ *
+ * **Interfaces**: `all`, `any`, `not`
+ *
+ * @function
+ * @name boolean
+ * @param value {Mixed} value
+ * @returns {boolean}
+ * @example
+ * be.boolean(false) // true
+ * be.boolean('true') // false
+ */
+Types.boolean = (value) => {
+    return Types.classOf(value, 'boolean');
+};
+
+/**
+ * Alias of `be.false`
+ *
+ * **Interfaces**: `all`, `any`, `not`
+ *
+ * @function
+ * @name booleanFalse
+ * @alias false
+ * @param value {Mixed} value
+ * @returns {boolean}
+ * @example
+ * be.booleanFalse(false) // true
+ * be.booleanFalse(true) // false
+ */
+Types.booleanFalse = (value) => {
+    return Types.false(value);
+};
+
+/**
+ * Check if is false boolean type
+ *
+ * **Interfaces**: `all`, `any`, `not`
+ *
+ * @function
+ * @name false
+ * @param value {Mixed} value
+ * @returns {boolean}
+ * @example
+ * be.booleanFalse(false) // true
+ * be.booleanFalse(true) // false
+ */
+Types.false = (value) => {
+    return Types.boolean(value) &amp;&amp; value === false;
+};
+
+/**
+ * Alias of `be.true`
+ *
+ * **Interfaces**: `all`, `any`, `not`
+ *
+ * @function
+ * @name booleanTrue
+ * @alias true
+ * @param value {Mixed} value
+ * @returns {boolean}
+ * @example
+ * be.booleanTrue(true) // true
+ * be.booleanTrue(false) // false
+ */
+Types.booleanTrue = (value) => {
+    return Types.true(value);
+};
+
+/**
+ * Check if is true boolean type
+ *
+ * **Interfaces**: `all`, `any`, `not`
+ *
+ * @function
+ * @name true
+ * @param value {Mixed} value
+ * @returns {boolean}
+ * @example
+ * be.booleanTrue(true) // true
+ * be.booleanTrue(false) // false
+ */
+Types.true = (value) => {
+    return Types.boolean(value) &amp;&amp; value === true;
+};
+
+/**
+ * Check if is valid number
+ *
+ * **Interfaces**: `all`, `any`, `not`
+ *
+ * @function
+ * @name number
+ * @param value {Mixed} value
+ * @returns {boolean}
+ * @example
+ * be.number(1) // true
+ * be.number(false) // false
+ */
+Types.number = (value) => {
+    return Types.classOf(value, 'number') &amp;&amp; !isNaN(value);
+};
+
+/**
+ * Check if is valid string
+ *
+ * **Interfaces**: `all`, `any`, `not`
+ *
+ * @function
+ * @name string
+ * @param value {Mixed} value
+ * @returns {boolean}
+ * @example
+ * be.string('hello') // true
+ * be.string(false) // false
+ */
+Types.string = (value) => {
+    return Types.classOf(value, 'string');
+};
+
+/**
+ * Check if is undefined value
+ *
+ * **Interfaces**: `all`, `any`, `not`
+ *
+ * @function
+ * @name undefined
+ * @param value {Mixed} value
+ * @returns {boolean}
+ * @example
+ * be.undefined(undefined) // true
+ * be.undefined(null) // false
+ */
+Types.undefined = (value) => {
+    return Types.classOf(value, 'undefined');
+};
+
+/**
+ * Check if is null
+ *
+ * **Interfaces**: `all`, `any`, `not`
+ *
+ * @function
+ * @name null
+ * @alias null
+ * @param value {Mixed} value
+ * @returns {boolean}
+ * @example
+ * be.null(null) // true
+ * be.null(undefined) // false
+ */
+Types['null'] = (value) => {
+    return Types.classOf(value, 'null');
+};
+
+/**
+ * Check if is a object
+ *
+ * **Interfaces**: `all`, `any`, `not`
+ *
+ * @param value {Mixed} value
+ * @returns {boolean}
+ * @example
+ * be.object({a: 1, b: 2}) // true
+ * be.object([1, 2, 3]) // false
+ */
+Types.object = (value) => {
+    return Types.classOf(value, 'object') &amp;&amp; !Types.array(value);
+};
+
+/**
+ * Check if is an array
+ *
+ * **Interfaces**: `all`, `any`, `not`
+ *
+ * @function
+ * @name array
+ * @param value {Mixed} value
+ * @returns {boolean}
+ * @example
+ * be.array([1, 2, 3]) // true
+ * be.array({a: 1, b: 2}) // false
+ */
+Types.array = (value) => {
+    return Types.classOf(value, 'array');
+};
+
+/**
+ * Check if is a JSON string
+ *
+ * **Interfaces**: `all`, `any`, `not`
+ *
+ * @function
+ * @name json
+ * @param value {Mixed} json string
+ * @returns {boolean}
+ * @example
+ * be.json('{"a": 1, "b": 2}') // true
+ * be.json({a: 1, b: 2}) // false
+ */
+Types.json = (value) => {
+    try {
+        return !!JSON.parse(value);
+    } catch (e) {
+        return false;
+    }
+};
+
+/**
+ * Check if is date object
+ *
+ * **Interfaces**: `all`, `any`, `not`
+ *
+ * @function
+ * @name date
+ * @param value {Mixed} date object
+ * @returns {boolean}
+ * @example
+ * be.date(new Date()) // true
+ * be.date('2017-12-25') // false
+ */
+Types.date = (value) => {
+    return Types.classOf(value, 'date');
+};
+
+/**
+ * Check if is a function
+ *
+ * **Interfaces**: `all`, `any`, `not`
+ *
+ * @function
+ * @name function
+ * @alias function
+ * @param value {Mixed} value
+ * @returns {boolean}
+ * @example
+ * be.function(function(){return 1 + 2}) // true
+ * be.function(new Date()) // false
+ */
+Types['function'] = (value) => {
+    return Types.classOf(value, 'function');
+};
+
+/**
+ * Check if is a valid RegExp
+ *
+ * **Interfaces**: `all`, `any`, `not`
+ *
+ * @function
+ * @name regexp
+ * @param value {Mixed} value
+ * @returns {boolean}
+ * @example
+ * be.regexp(/hello/) // true
+ * be.regexp('hello') // false
+ * be.regexp(new RegExp(/hello/)) // true
+ */
+Types.regexp = (value) => {
+    return Types.classOf(value,'regexp');
+};
+
+/**
+ * Check if both arguments are same type
+ *
+ * **Interfaces**: `not`
+ *
+ * @function
+ * @name sameType
+ * @param value {Mixed} first
+ * @param other {Mixed} second
+ * @returns {boolean}
+ * @example
+ * be.sameType(1, 1) // true
+ * be.sameType(1, '1') // false
+ */
+Types.sameType = (value, other) =>{
+    return Helpers.objectToString(value) === Helpers.objectToString(other);
+};
+
+Types.sameType.multiple = false;
+
+/**
+ * Check if is empty
+ *
+ * **Interfaces**: `all`, `any`, `not`
+ *
+ * @function
+ * @name empty
+ * @param value {Mixed} value
+ * @returns {boolean}
+ * @example
+ * be.empty('') // true
+ * be.empty(' ') // false
+ * be.empty({}) // true
+ * be.empty([]) // true
+ */
+Types.empty = (value) => {
+    if (Types.null(value) || Types.undefined(value)) return true;
+    if (Types.number(value) || Types.function(value) || Types.boolean(value)) return false;
+
+    if (Types.object(value) || Types.array(value)) {
+        if (value.length > 0)    return false;
+        if (value.length === 0)  return true;
+
+        for (let key in value) {
+            if (Object.prototype.hasOwnProperty.call(value, key)) return false;
+        }
+    }
+
+    return !(Types.string(value) &amp;&amp; value.length > 0);
+};
+
+/**
+ * Check if a falsy value
+ * https://developer.mozilla.org/it/docs/Glossary/Falsy
+ * **Interfaces**: `all`, `any`, `not`
+ *
+ * @function
+ * @name falsy
+ * @param value {Mixed} value
+ * @returns {boolean}
+ * @example
+ * be.falsy(false) // true
+ * be.falsy(null) // true
+ * be.falsy() // true
+ * be.falsy(0) // true
+ * be.falsy(true) // false
+ */
+Types.falsy = (value) => {
+    return !value;
+};
+
+/**
+ * Check if a truthy value
+ * https://developer.mozilla.org/en-US/docs/Glossary/Truthy
+ * **Interfaces**: `all`, `any`, `not`
+ *
+ * @function
+ * @name truthy
+ * @param value {Mixed}
+ * @returns {boolean}
+ * @example
+ * be.truthy('hello') // true
+ * be.truthy({}) // true
+ * be.truthy([]) // true
+ * be.truthy(2) // true
+ * be.truthy(false) // false
+ * be.truthy(null) // false
+ * be.truthy(undefined) // false
+ */
+Types.truthy = (value) => {
+    return !Types.falsy(value);
+};
+
+/**
+ * Check if is an error object
+ *
+ * **Interfaces**: `all`, `any`, `not`
+ *
+ * @function
+ * @name error
+ * @param value {Mixed} value
+ * @returns {boolean}
+ * @example
+ * be.error(new Error('my error')) // true
+ * be.error({}) // false
+ */
+Types.error = (value) => {
+    return Types.classOf(value, 'error');
+};
+
+/**
+ * Check if is an arguments
+ *
+ * **Interfaces**: `all`, `any`, `not`
+ *
+ * @function
+ * @name argument
+ * @param value {Mixed} value
+ * @returns {boolean}
+ * @example
+ * be.argument(arguments) // true
+ * be.argument({}) // false
+ */
+Types.argument = (value) => {
+    return Types.classOf(value, 'arguments') || (Types.object(value) &amp;&amp; 'callee' in value);
+};
+
+/**
+ * Check if is a primitive object
+ *
+ * **Interfaces**: `all`, `any`, `not`
+ *
+ * @function
+ * @name primitive
+ * @param value {Mixed} value
+ * @returns {boolean}
+ * @example
+ * be.primitive(20) // true
+ * be.primitive(new Number(20)) // false
+ */
+Types.primitive = (value) => {
+    return value !== Object(value);
+};
+
+/**
+ * Check if is a primitive object
+ *
+ * **Interfaces**: `all`, `any`, `not`
+ *
+ * @function
+ * @name promise
+ * @param value {Mixed} value
+ * @returns {boolean}
+ * @example
+ * var p = new Promise((resolve, reject) => {resolve()});
+ * be.promise(p) // true
+ */
+Types.promise = (value) => {
+    return Types.classOf(value, 'promise');
+};
+
+/**
+ * Check if is a buffer
+ *
+ * **Interfaces**: `all`, `any`, `not`
+ *
+ * @function
+ * @name buffer
+ * @param value {Mixed} value
+ * @returns {boolean}
+ * @example
+ * var b = new Buffer('hello');
+ * be.buffer(b) // true
+ */
+Types.buffer = (value) => {
+    return Buffer &amp;&amp; value instanceof Buffer;
+};
+
+/**
+ * Check if is iterable
+ *
+ * **Interfaces**: `all`, `any`, `not`
+ *
+ * @function
+ * @name iterable
+ * @param value {Mixed} value
+ * @returns {boolean}
+ * @example
+ * be.iterable([1, 2, 3]) // true
+ * be.iterable('hello') // true
+ * be.iterable({a: 1}) // false
+ */
+Types.iterable = (value) => {
+    return Types.function(value[Symbol.iterator]);
+};
+
+/**
+ * Check if is symbol
+ *
+ * **Interfaces**: `all`, `any`, `not`
+ *
+ * @function
+ * @name symbol
+ * @param value {Mixed} value
+ * @returns {boolean}
+ * @example
+ * be.symbol(Symbol('hello')) // true
+ * be.symbol({a: 1}) // false
+ */
+Types.symbol = (value) => {
+    return !Types.undefined(Symbol) &amp;&amp; Types.classOf(value, 'symbol');
+};
+
+/**
+ * Check if is defined
+ *
+ * **Interfaces**: `all`, `any`, `not`
+ *
+ * @function
+ * @name defined
+ * @param value {Mixed} value
+ * @returns {boolean}
+ * @example
+ * var param = 'hello';
+ * be.defined(param) // true
+ * var param2;
+ * be.defined(param2) // false
+ */
+Types.defined = (value) => {
+    return !Types.undefined(value);
+};
+
+Types = Interface.create(Types);
+
+module.exports = Types;
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<br class="clear">
+
+<footer>
+    Generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.4.3</a> on Mon Jul 10 2017 13:18:14 GMT+0200 (ora legale Europa occidentale) using the Minami theme.
+</footer>
+
+<script>prettyPrint();</script>
+<script src="scripts/linenumber.js"></script>
+</body>
+</html>
