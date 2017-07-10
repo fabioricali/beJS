@@ -853,3 +853,16 @@ describe('uint32Array', function () {
         assert.equal(result, false);
     });
 });
+
+describe('float32Array', function () {
+    it('should be return true', function () {
+        var result = be.float32Array(new Float32Array({}));
+        console.log(result);
+        assert.equal(result, true);
+    });
+    it('should be return false', function () {
+        var result = be.float32Array({});
+        console.log(result);
+        assert.equal(result, false);
+    });
+});
