@@ -1513,12 +1513,48 @@ Strings.alphanumeric = function (value) {
  * be.startWith('hello', 'HELLO world', true) // false
  */
 Strings.startWith = function (value, string, insensitive) {
-    if (Types.falsy(insensitive)) insensitive = false;
-    var regex = new RegExp('^' + value, Types.booleanTrue(insensitive) ? 'i' : '');
-    return regex.test(string);
+    if (!Types.any.string(value, string)) {
+        value += '';
+        string += '';
+    }
+    if (Types.truthy(insensitive)) {
+        value = value.toLocaleLowerCase();
+        string = string.toLocaleLowerCase();
+    }
+    return string.indexOf(value) === 0;
 };
 
 Strings.startWith.multiple = false;
+
+/**
+ * Check if string end with a value
+ *
+ * **Interfaces**: `not`
+ *
+ * @function
+ * @name endWith
+ * @param value {string} start string
+ * @param string {string} string target
+ * @param insensitive {boolean} case sensitive
+ * @returns {boolean}
+ * @example
+ * be.endWith('world', 'hello world') // true
+ * be.endWith('world', 'hello WORLD', true) // false
+ */
+Strings.endWith = function (value, string, insensitive) {
+    if (!Types.any.string(value, string)) {
+        value += '';
+        string += '';
+    }
+    if (Types.truthy(insensitive)) {
+        value = value.toLocaleLowerCase();
+        string = string.toLocaleLowerCase();
+    }
+    var pos = string.length - value.length;
+    return pos >= 0 && string.indexOf(value, pos) === pos;
+};
+
+Strings.endWith.multiple = false;
 
 /**
  * Check if a string is palindrome
