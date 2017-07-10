@@ -41,7 +41,7 @@ module.exports = {
         new WebpackAutoInject({
             PACKAGE_JSON_PATH: './package.json',
             components: {
-                InjectAsComment: false,
+                InjectAsComment: true,
                 InjectByTag: true,
             },
             componentsOptions: {
@@ -50,7 +50,7 @@ module.exports = {
                 }
             }
         }),
-        new unminifiedWebpackPlugin(),
-        new webpack.BannerPlugin(banner)
+        new unminifiedWebpackPlugin()/*,
+        new webpack.BannerPlugin(banner)*/
     ]
 };
