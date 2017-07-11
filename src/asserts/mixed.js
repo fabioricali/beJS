@@ -218,6 +218,22 @@ Mixed.macAddress = (value) => {
     return /^([0-9A-Fa-f]{2}[:-]){5}([0-9A-Fa-f]{2})$/.test(value);
 };
 
+/**
+ * Check if it meets a method
+ *
+ * **Interfaces**: `not`
+ *
+ * @function
+ * @name or
+ * @param value {mixed} value
+ * @param args {array} methods
+ * @example
+ * be.or(true, ['string', 'boolean', 'number']) // true
+ */
+Mixed.or = (value, args) => {
+
+};
+
 Mixed = Interface.create(Mixed);
 
 module.exports = Mixed;

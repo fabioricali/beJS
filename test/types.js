@@ -632,6 +632,16 @@ describe('iterable', function () {
         console.log(result);
         assert.equal(result, false);
     });
+    it('Map iterable, should be return true', function () {
+        var result = be.iterable(new Map().values());
+        console.log(result);
+        assert.equal(result, true);
+    });
+    it('Set iterable, should be return true', function () {
+        var result = be.iterable(new Set().values());
+        console.log(result);
+        assert.equal(result, true);
+    });
 });
 
 describe('symbol', function () {
