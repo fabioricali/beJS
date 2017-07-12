@@ -8,12 +8,6 @@ const Mixed = require('./mixed');
 const Interface = require('../interface');
 let Envs = {};
 
-let browserRegEx = {
-    chrome: /(Chrome)\/(\d+((\.\d+)+)?)?\s+(Safari)\/(\d+((\.\d+)+)?)?$/,
-    opera: /(OPR)\/(\d+((\.\d+)+)?)?$/,
-    firefox: /(Firefox)\/(\d+((\.\d+)+)?)?$/
-};
-
 /**
  * Check if server environment
  *
@@ -172,6 +166,13 @@ Envs.navigator = () => {
 
 Envs.navigator.multiple = false;
 
+let browserRegEx = {
+    chrome: /(Chrome)\/(\d+((\.\d+)+)?)?\s+(Safari)\/(\d+((\.\d+)+)?)?$/,
+    opera: /(Opera|OPR)(?:[\/\s])(\d+((\.\d+)+)?)?/,
+    firefox: /(Firefox)\/(\d+((\.\d+)+)?)?(.*)(?!Opera)/,
+    safari: /^((?!Chrome).)*(Safari)\/(\d+((\.\d+)+)?)?$/
+};
+
 /**
  * Firefox detecting
  *
@@ -182,13 +183,8 @@ Envs.navigator.multiple = false;
  * @returns {boolean}
  * @example
  * be.firefox() // true
+ * be.firefox('==30') // true
  */
-Envs.firefox = (...params) => {
-    let userAgent = Helpers.getUserAgent.apply(this, params);
-    return /Firefox/i.test(userAgent);
-};
-
-Envs.firefox.multiple = false;
 
 /**
  * Chrome detecting
@@ -204,17 +200,6 @@ Envs.firefox.multiple = false;
  * be.chrome() // true
  * be.chrome('==59') // true
  */
-Envs.chrome = (range, agent) => {
-    let rangePart = Helpers.operatorVersion(range);
-    agent = !rangePart && !agent && range ? range : agent || navigator.userAgent;
-    let match = agent.match(/(Chrome)\/(\d+((\.\d+)+)?)?\s+(Safari)\/(\d+((\.\d+)+)?)?$/i);
-    if(rangePart && match){
-        return Mixed.compareVersion(match[2], rangePart[0], rangePart[1], true);
-    }
-    return match !== null;
-};
-
-Envs.chrome.multiple = false;
 
 /**
  * Safari detecting
@@ -227,13 +212,21 @@ Envs.chrome.multiple = false;
  * @example
  * be.safari() // true
  */
-Envs.safari = (...params) => {
-    let userAgent = Helpers.getUserAgent.apply(this, params);
-    return /Safari/i.test(userAgent.replace('Chrome', '')) &&
-        !/Chrome/i.test(userAgent.replace('Safari', ''));
-};
 
-Envs.safari.multiple = false;
+(() => {
+    for(let i in browserRegEx){
+        Envs[i] = (range, agent) => {
+            let rangePart = Helpers.operatorVersion(range);
+            agent = !rangePart && !agent && range ? range : agent || navigator.userAgent;
+            let match = agent.match(browserRegEx[i]);
+            if(rangePart && match){
+                return Mixed.compareVersion(match[2], rangePart[0], rangePart[1], true);
+            }
+            return match !== null;
+        };
+        Envs[i].multiple = false;
+    }
+})();
 
 /**
  * Explorer detecting

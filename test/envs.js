@@ -104,3 +104,84 @@ describe('chrome', function () {
         assert.equal(result, false);
     });
 });
+
+describe('opera', function () {
+    it('should be return true', function () {
+        var userAgent= 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/28.0.1500.52 Safari/537.36 OPR/15.0.1147.100';
+        var result = be.opera(userAgent);
+        console.log(result);
+        assert.equal(result, true);
+    });
+    it('old agent, should be return true', function () {
+        var userAgent= 'Mozilla/5.0 (Windows NT 5.1) Gecko/20100101 Firefox/14.0 Opera/12.0';
+        var result = be.opera(userAgent);
+        console.log(result);
+        assert.equal(result, true);
+    });
+    it('old agent, should be return true (2)', function () {
+        var userAgent= 'Opera/9.80 (Windows NT 6.0; U; pl) Presto/2.10.229 Version/11.62';
+        var result = be.opera(userAgent);
+        console.log(result);
+        assert.equal(result, true);
+    });
+    it('old agent, should be return true (3)', function () {
+        var userAgent= 'Mozilla/4.0 (compatible; MSIE 5.0; Linux 2.4.19-4GB i686) Opera 6.03 [en]';
+        var result = be.opera(userAgent);
+        console.log(result);
+        assert.equal(result, true);
+    });
+});
+
+describe('firefox', function () {
+    it('should be return true', function () {
+        var userAgent= 'Mozilla/5.0 (Windows NT 6.1; WOW64; rv:40.0) Gecko/20100101 Firefox/40.1';
+        var result = be.firefox(userAgent);
+        console.log(result);
+        assert.equal(result, true);
+    });
+    it('old agent, should be return true', function () {
+        var userAgent= 'Mozilla/5.0 (Windows NT 5.1; rv:8.0; en_us) Gecko/20100101 Firefox/8.0';
+        var result = be.firefox(userAgent);
+        console.log(result);
+        assert.equal(result, true);
+    });
+    it('old agent, should be return false (2)', function () {
+        var userAgent= 'Opera/9.80 (Windows NT 6.0; U; pl) Presto/2.10.229 Version/11.62';
+        var result = be.firefox(userAgent);
+        console.log(result);
+        assert.equal(result, false);
+    });
+    it('old agent, should be return true (3)', function () {
+        var userAgent= 'Mozilla/5.0 (Windows NT 6.0; rv:2.0) Gecko/20100101 Firefox/4.0 Opera 12.14';
+        var result = be.firefox(userAgent);
+        console.log(result);
+        assert.equal(result, true);
+    });
+});
+
+describe('safari', function () {
+    it('should be return true', function () {
+        var userAgent= 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_9_3) AppleWebKit/537.75.14 (KHTML, like Gecko) Version/7.0.3 Safari/7046A194A';
+        var result = be.safari(userAgent);
+        console.log(result);
+        assert.equal(result, true);
+    });
+    it('should be return false', function () {
+        var userAgent= 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/59.0.3071.115 Safari/537.36';
+        var result = be.safari(userAgent);
+        console.log(result);
+        assert.equal(result, false);
+    });
+    it('old agent, should be return false (2)', function () {
+        var userAgent= 'Opera/9.80 (Windows NT 6.0; U; pl) Presto/2.10.229 Version/11.62';
+        var result = be.safari(userAgent);
+        console.log(result);
+        assert.equal(result, false);
+    });
+    it('old agent, should be return true (3)', function () {
+        var userAgent= 'Mozilla/5.0 (Windows NT 6.0; rv:2.0) Gecko/20100101 Firefox/4.0 Opera 12.14';
+        var result = be.safari(userAgent);
+        console.log(result);
+        assert.equal(result, true);
+    });
+});
