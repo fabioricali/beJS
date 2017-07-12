@@ -4,6 +4,7 @@
  */
 
 const Helpers = require('../helpers');
+const Mixed = require('./mixed');
 const Interface = require('../interface');
 let Envs = {};
 
@@ -190,13 +191,20 @@ Envs.firefox.multiple = false;
  *
  * @function
  * @name chrome
+ * @param range
+ * @param agent
  * @returns {boolean}
  * @example
  * be.chrome() // true
  */
-Envs.chrome = (...params) => {
-    let userAgent = Helpers.getUserAgent.apply(this, params);
-    return /chrome/i.test(userAgent);
+Envs.chrome = (range, agent) => {
+    let rangePart = Helpers.operatorVersion(range);
+    agent = !rangePart && !agent ? range : agent || navigator.userAgent;
+    let match = agent.match(/(Chrome)\/(\d+(\.\d+)+)\s+(Safari)\/(\d+(\.\d+)+)$/i);
+    if(rangePart && match){
+        return Mixed.compareVersion(match[2], rangePart[0], rangePart[1]);
+    }
+    return match !== null;
 };
 
 Envs.chrome.multiple = false;

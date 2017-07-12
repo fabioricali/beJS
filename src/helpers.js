@@ -112,7 +112,7 @@ Helpers.compareVersions = function (a, b) {
  */
 Helpers.operatorVersion = function (value) {
     if(!value) return false;
-    let match = value.match(/(==|<=?|>=?)(?:\s+)?(\d+(\.\d+)+)/);
+    let match = value.match(/(==|<=?|>=?)(?:\s+)?(\d+((\.\d+)+)?)?/);
     if(!match) return false;
     return [match[1], match[2]];
 };

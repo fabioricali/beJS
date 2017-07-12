@@ -79,7 +79,13 @@ describe('android', function () {
 });
 
 describe('chrome', function () {
-    it('should be return true', function () {
+    it('with range, should be return true', function () {
+        var userAgent= 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/59.0.3071.115 Safari/537.36';
+        var result = be.chrome('>=58', userAgent);
+        console.log(result);
+        assert.equal(result, true);
+    });
+    it('without range should be return true', function () {
         var userAgent= 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/59.0.3071.115 Safari/537.36';
         var result = be.chrome(userAgent);
         console.log(result);
