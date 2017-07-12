@@ -62,7 +62,7 @@
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 4);
+/******/ 	return __webpack_require__(__webpack_require__.s = 5);
 /******/ })
 /************************************************************************/
 /******/ ([
@@ -951,7 +951,7 @@ Types.float64Array = function (value) {
 Types = Interface.create(Types);
 
 module.exports = Types;
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(7).Buffer))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(8).Buffer))
 
 /***/ }),
 /* 2 */
@@ -991,7 +991,7 @@ Helpers.objectToString = function (object) {
 
 /**
  * Distance between the two given strings
- * @link https://en.wikibooks.org/wiki/Algorithm_Implementation/Strings/Levenshtein_distance#JavaScript
+ * @see https://en.wikibooks.org/wiki/Algorithm_Implementation/Strings/Levenshtein_distance#JavaScript
  * @param a {string}
  * @param b {string}
  * @returns {*}
@@ -1028,6 +1028,62 @@ Helpers.getEditDistance = function (a, b) {
     }
 
     return matrix[b.length][a.length];
+};
+
+/**
+ * Comparators methods
+ */
+Helpers.comparators = {
+    '==': function _(a, b) {
+        return Helpers.compareVersions(a, b) === 0;
+    },
+    '<': function _(a, b) {
+        return Helpers.compareVersions(a, b) < 0;
+    },
+    '<=': function _(a, b) {
+        return Helpers.compareVersions(a, b) <= 0;
+    },
+    '>': function _(a, b) {
+        return Helpers.compareVersions(a, b) > 0;
+    },
+    '>=': function _(a, b) {
+        return Helpers.compareVersions(a, b) >= 0;
+    }
+};
+
+/**
+ * Compare version number
+ * @see https://stackoverflow.com/questions/6832596/how-to-compare-software-version-number-using-js-only-number
+ * @param a {string} version number
+ * @param b {string} version number
+ * @returns {int}
+ */
+Helpers.compareVersions = function (a, b) {
+    var diff = void 0;
+    var regExStrip0 = /(\.0+)+$/;
+    var segmentsA = a.replace(regExStrip0, '').split('.');
+    var segmentsB = b.replace(regExStrip0, '').split('.');
+    var l = Math.min(segmentsA.length, segmentsB.length);
+
+    for (var i = 0; i < l; i++) {
+        diff = parseInt(segmentsA[i], 10) - parseInt(segmentsB[i], 10);
+        if (diff) {
+            return diff;
+        }
+    }
+    return segmentsA.length - segmentsB.length;
+};
+
+/**
+ * Get operator and version number
+ * @param value {string} string like <=1.0.0
+ * @returns {*}
+ */
+Helpers.operatorVersion = function (value) {
+    if (!value) return false;
+    var match = value.match(/(==|<=?|>=?)(?:\s+)?(\d+((\.\d+)+)?)?/);
+    if (!match) return false;
+    return [match[1], match[2]];
 };
 
 module.exports = Helpers;
@@ -1342,12 +1398,258 @@ module.exports = Numbers;
 
 
 /**
- * Created by Fabio on 17/06/2017.
+ * @fileOverview Various checks.
+ * @module Mixed
  */
-module.exports = __webpack_require__(5);
+var Helpers = __webpack_require__(2);
+var Types = __webpack_require__(1);
+var Interface = __webpack_require__(0);
+var Mixed = {};
+
+/**
+ * Check if is valid email
+ * https://emailregex.com/
+ * **Interfaces**: `all`, `any`, `not`
+ *
+ * @function
+ * @name email
+ * @param value {string} email
+ * @returns {boolean}
+ * @example
+ * be.email('fabio@rica.li') // true
+ * be.not.email('fabiorica.li') // true
+ */
+Mixed.email = function (value) {
+    return (/^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(value)
+    );
+};
+
+/**
+ * Check if is a hexadecimal
+ *
+ * **Interfaces**: `all`, `any`, `not`
+ *
+ * @function
+ * @name hex
+ * @param value {string} hex string
+ * @returns {boolean}
+ * @example
+ * be.hex('fff') // true
+ */
+Mixed.hex = function (value) {
+    return (/^(?:0x)?[a-f0-9]+$/.test(value)
+    );
+};
+
+/**
+ * Check if is a hexadecimal color
+ *
+ * **Interfaces**: `all`, `any`, `not`
+ *
+ * @function
+ * @name hexColor
+ * @param value {string} hex color string
+ * @returns {boolean}
+ * @example
+ * be.hexColor('#ff0000') // true
+ */
+Mixed.hexColor = function (value) {
+    try {
+        value = value.replace('#', '');
+        return Mixed.hex(value) && (value.length === 3 || value.length === 6);
+    } catch (e) {
+        return false;
+    }
+};
+
+/**
+ * Check if is a valid IPv4
+ *
+ * **Interfaces**: `all`, `any`, `not`
+ *
+ * @function
+ * @name ipv4
+ * @param value {string} ip string
+ * @returns {boolean}
+ * @example
+ * be.ipv4('127.0.0.1') // true
+ */
+Mixed.ipv4 = function (value) {
+    return (/^(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)$/.test(value)
+    );
+};
+
+/**
+ * Check if is a valid IPv6
+ *
+ * **Interfaces**: `all`, `any`, `not`
+ *
+ * @function
+ * @name ipv6
+ * @param value {string} ip string
+ * @returns {boolean}
+ * @example
+ * be.ipv6('FF01:0:0:0:0:0:0:1') // true
+ */
+Mixed.ipv6 = function (value) {
+    return (/^(([0-9A-Fa-f]{1,4}:){7}([0-9A-Fa-f]{1,4}|:))|(([0-9A-Fa-f]{1,4}:){6}(:[0-9A-Fa-f]{1,4}|((25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)(\.(25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)){3})|:))|(([0-9A-Fa-f]{1,4}:){5}(((:[0-9A-Fa-f]{1,4}){1,2})|:((25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)(\.(25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)){3})|:))|(([0-9A-Fa-f]{1,4}:){4}(((:[0-9A-Fa-f]{1,4}){1,3})|((:[0-9A-Fa-f]{1,4})?:((25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)(\.(25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)){3}))|:))|(([0-9A-Fa-f]{1,4}:){3}(((:[0-9A-Fa-f]{1,4}){1,4})|((:[0-9A-Fa-f]{1,4}){0,2}:((25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)(\.(25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)){3}))|:))|(([0-9A-Fa-f]{1,4}:){2}(((:[0-9A-Fa-f]{1,4}){1,5})|((:[0-9A-Fa-f]{1,4}){0,3}:((25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)(\.(25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)){3}))|:))|(([0-9A-Fa-f]{1,4}:){1}(((:[0-9A-Fa-f]{1,4}){1,6})|((:[0-9A-Fa-f]{1,4}){0,4}:((25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)(\.(25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)){3}))|:))|(:(((:[0-9A-Fa-f]{1,4}){1,7})|((:[0-9A-Fa-f]{1,4}){0,5}:((25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)(\.(25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)){3}))|:))$/.test(value)
+    );
+};
+
+/**
+ * Check if is a valid ip string
+ *
+ * **Interfaces**: `all`, `any`, `not`
+ *
+ * @function
+ * @name ipv
+ * @param value {string} ip string
+ * @returns {boolean}
+ * @example
+ * be.ipv('127.0.0.1') // true
+ */
+Mixed.ip = function (value) {
+    return Mixed.ipv4(value) || Mixed.ipv6(value);
+};
+
+/**
+ * Check if is base64 encoded string
+ *
+ * **Interfaces**: `all`, `any`, `not`
+ *
+ * @function
+ * @name base64
+ * @param value {string} base64 string
+ * @returns {boolean}
+ * @example
+ * be.base64('aGVsbG8=') // true
+ */
+Mixed.base64 = function (value) {
+    return (/^([0-9a-zA-Z+/]{4})*(([0-9a-zA-Z+/]{2}==)|([0-9a-zA-Z+/]{3}=))?$/.test(value)
+    );
+};
+
+/**
+ * Check if is a valid semver string
+ *
+ * **Interfaces**: `all`, `any`, `not`
+ *
+ * @function
+ * @name semVer
+ * @param value {string} version string
+ * @returns {boolean}
+ * @example
+ * be.semVer('1.0.0') // true
+ */
+Mixed.semVer = function (value) {
+    return (/^(\d*)\.(\d*)\.(\d*)(-(\d*|\d*[a-z-][0-9a-z-]*)(\.(\d*|\d*[a-z-][0-9a-z-]*))*)?(\+[0-9a-z-]+(\.[0-9a-z-]+)*)?$/i.test(value)
+    );
+};
+
+/**
+ * Checks if equal
+ *
+ * **Interfaces**: `not`
+ *
+ * @function
+ * @name equal
+ * @param value {Number|String|Boolean|RegExp|Array|Object} first
+ * @param other {Number|String|Boolean|RegExp|Array|Object} second
+ * @returns {boolean}
+ * @example
+ * be.equal('hello', 'hello') // true
+ * be.equal('hello', 'hellow') // false
+ * be.equal(true, 'true') // false
+ * be.equal([1,2,3], [1,1,1]) // false
+ * be.equal({a:1}, {a:1}) // true
+ */
+Mixed.equal = function (value, other) {
+    //console.log('aaa',Types.all.object(value, other));
+    //console.log('bbb',Types.all.array(value, other));
+    console.log('ccc', Types.all.number(value, other));
+    if (Types.all.number(value, other)) return value === other && 1 / value === 1 / other;else if (Types.all.string(value, other) || Types.all.regexp(value, other)) return value.toString() === other.toString();else if (Types.all.boolean(value, other)) return value === other;else if (Types.all.object(value, other) || Types.all.array(value, other)) {
+        console.log('sss', Types.all.array(value, other));
+        if (Object.keys(value).length !== Object.keys(other).length) return false;
+        for (var prop in value) {
+            if (value.hasOwnProperty(prop) && other.hasOwnProperty(prop)) {
+                if (!Mixed.equal(value[prop], other[prop])) return false;
+            } else return false;
+        }
+        return true;
+    } else return false;
+};
+
+Mixed.equal.multiple = false;
+
+/**
+ * Check if is an IT fiscal code
+ *
+ * **Interfaces**: `all`, `any`, `not`
+ *
+ * @function
+ * @name fiscalCodeIT
+ * @param value {string} code string
+ * @returns {boolean}
+ * @example
+ * be.fiscalCodeIT('OLEFBA97C64F158X') // true
+ */
+Mixed.fiscalCodeIT = function (value) {
+    return (/^[A-Za-z]{6}[0-9]{2}[A-Za-z]{1}[0-9]{2}[A-Za-z]{1}[0-9]{3}[A-Za-z]{1}$/.test(value)
+    );
+};
+
+/**
+ * Check if is a valid MAC address
+ *
+ * **Interfaces**: `all`, `any`, `not`
+ *
+ * @function
+ * @name macAddress
+ * @param value {string} MAC string
+ * @returns {boolean}
+ * @example
+ * be.macAddress('3D:F2:C9:A6:B3:4F') // true
+ */
+Mixed.macAddress = function (value) {
+    return (/^([0-9A-Fa-f]{2}[:-]){5}([0-9A-Fa-f]{2})$/.test(value)
+    );
+};
+
+/**
+ * Compare two version number
+ *
+ * **Interfaces**: `not`
+ *
+ * @function
+ * @name compareVersion
+ * @param a {string} version a
+ * @param operator {string} operator "==", "<", "<=", ">", ">="
+ * @param b {string} version b
+ * @example
+ * be.compareVersion('1.0.2', '==', '1.0.3') // false
+ */
+Mixed.compareVersion = function (a, operator, b) {
+    return Helpers.comparators[operator](a, b);
+};
+
+Mixed = Interface.create(Mixed);
+
+module.exports = Mixed;
 
 /***/ }),
 /* 5 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+/**
+ * Created by Fabio on 17/06/2017.
+ */
+module.exports = __webpack_require__(6);
+
+/***/ }),
+/* 6 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1411,12 +1713,12 @@ be._helpers = Helpers;
  * @private
  */
 var Checks = {
-    Strings: __webpack_require__(6),
+    Strings: __webpack_require__(7),
     Types: __webpack_require__(1),
     Numbers: __webpack_require__(3),
-    Envs: __webpack_require__(12),
-    Objects: __webpack_require__(15),
-    Mixed: __webpack_require__(16),
+    Envs: __webpack_require__(13),
+    Objects: __webpack_require__(16),
+    Mixed: __webpack_require__(4),
     Arrays: __webpack_require__(17),
     Dates: __webpack_require__(18),
     Urls: __webpack_require__(19),
@@ -1504,7 +1806,7 @@ be.set = function (name, func) {
 })();
 
 /***/ }),
-/* 6 */
+/* 7 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1872,7 +2174,7 @@ Strings = Interface.create(Strings);
 module.exports = Strings;
 
 /***/ }),
-/* 7 */
+/* 8 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1886,9 +2188,9 @@ module.exports = Strings;
 
 
 
-var base64 = __webpack_require__(9);
-var ieee754 = __webpack_require__(10);
-var isArray = __webpack_require__(11);
+var base64 = __webpack_require__(10);
+var ieee754 = __webpack_require__(11);
+var isArray = __webpack_require__(12);
 
 exports.Buffer = Buffer;
 exports.SlowBuffer = SlowBuffer;
@@ -3613,10 +3915,10 @@ function blitBuffer(src, dst, offset, length) {
 function isnan(val) {
   return val !== val; // eslint-disable-line no-self-compare
 }
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(8)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(9)))
 
 /***/ }),
-/* 8 */
+/* 9 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -3646,7 +3948,7 @@ try {
 module.exports = g;
 
 /***/ }),
-/* 9 */
+/* 10 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -3766,7 +4068,7 @@ function fromByteArray(uint8) {
 }
 
 /***/ }),
-/* 10 */
+/* 11 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -3858,7 +4160,7 @@ exports.write = function (buffer, value, offset, isLE, mLen, nBytes) {
 };
 
 /***/ }),
-/* 11 */
+/* 12 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -3871,7 +4173,7 @@ module.exports = Array.isArray || function (arr) {
 };
 
 /***/ }),
-/* 12 */
+/* 13 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -3883,6 +4185,7 @@ module.exports = Array.isArray || function (arr) {
  */
 
 var Helpers = __webpack_require__(2);
+var Mixed = __webpack_require__(4);
 var Interface = __webpack_require__(0);
 var Envs = {};
 
@@ -3932,7 +4235,7 @@ Envs.browserEnv.multiple = false;
  * be.amdEnv() // true
  */
 Envs.amdEnv = function () {
-  return "function" === 'function' && __webpack_require__(14);
+  return "function" === 'function' && __webpack_require__(15);
 };
 
 Envs.amdEnv.multiple = false;
@@ -4099,18 +4402,20 @@ Envs.firefox.multiple = false;
  *
  * @function
  * @name chrome
+ * @param range
+ * @param agent
  * @returns {boolean}
  * @example
  * be.chrome() // true
  */
-Envs.chrome = function () {
-  for (var _len7 = arguments.length, params = Array(_len7), _key7 = 0; _key7 < _len7; _key7++) {
-    params[_key7] = arguments[_key7];
+Envs.chrome = function (range, agent) {
+  var rangePart = Helpers.operatorVersion(range);
+  agent = !rangePart && !agent && range ? range : agent || navigator.userAgent;
+  var match = agent.match(/(Chrome)\/(\d+(\.\d+)+)\s+(Safari)\/(\d+(\.\d+)+)$/i);
+  if (rangePart && match) {
+    return Mixed.compareVersion(match[2], rangePart[0], rangePart[1]);
   }
-
-  var userAgent = Helpers.getUserAgent.apply(undefined, params);
-  return (/Chrome/i.test(userAgent)
-  );
+  return match !== null;
 };
 
 Envs.chrome.multiple = false;
@@ -4127,8 +4432,8 @@ Envs.chrome.multiple = false;
  * be.safari() // true
  */
 Envs.safari = function () {
-  for (var _len8 = arguments.length, params = Array(_len8), _key8 = 0; _key8 < _len8; _key8++) {
-    params[_key8] = arguments[_key8];
+  for (var _len7 = arguments.length, params = Array(_len7), _key7 = 0; _key7 < _len7; _key7++) {
+    params[_key7] = arguments[_key7];
   }
 
   var userAgent = Helpers.getUserAgent.apply(undefined, params);
@@ -4150,8 +4455,8 @@ Envs.safari.multiple = false;
  * be.ie() // true
  */
 Envs.ie = function () {
-  for (var _len9 = arguments.length, params = Array(_len9), _key9 = 0; _key9 < _len9; _key9++) {
-    params[_key9] = arguments[_key9];
+  for (var _len8 = arguments.length, params = Array(_len8), _key8 = 0; _key8 < _len8; _key8++) {
+    params[_key8] = arguments[_key8];
   }
 
   var userAgent = Helpers.getUserAgent.apply(undefined, params);
@@ -4173,8 +4478,8 @@ Envs.ie.multiple = false;
  * be.mac() // true
  */
 Envs.mac = function () {
-  for (var _len10 = arguments.length, params = Array(_len10), _key10 = 0; _key10 < _len10; _key10++) {
-    params[_key10] = arguments[_key10];
+  for (var _len9 = arguments.length, params = Array(_len9), _key9 = 0; _key9 < _len9; _key9++) {
+    params[_key9] = arguments[_key9];
   }
 
   var userAgent = Helpers.getUserAgent.apply(undefined, params);
@@ -4204,10 +4509,10 @@ Envs.onLine.multiple = false;
 Envs = Interface.create(Envs);
 
 module.exports = Envs;
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(13)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(14)))
 
 /***/ }),
-/* 13 */
+/* 14 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -4400,7 +4705,7 @@ process.umask = function () {
 };
 
 /***/ }),
-/* 14 */
+/* 15 */
 /***/ (function(module, exports) {
 
 /* WEBPACK VAR INJECTION */(function(__webpack_amd_options__) {/* globals __webpack_amd_options__ */
@@ -4409,7 +4714,7 @@ module.exports = __webpack_amd_options__;
 /* WEBPACK VAR INJECTION */}.call(exports, {}))
 
 /***/ }),
-/* 15 */
+/* 16 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -4471,235 +4776,6 @@ Objects.propertyCount.multiple = false;
 Objects = Interface.create(Objects);
 
 module.exports = Objects;
-
-/***/ }),
-/* 16 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-/**
- * @fileOverview Various checks.
- * @module Mixed
- */
-
-var Types = __webpack_require__(1);
-var Interface = __webpack_require__(0);
-var Mixed = {};
-
-/**
- * Check if is valid email
- * https://emailregex.com/
- * **Interfaces**: `all`, `any`, `not`
- *
- * @function
- * @name email
- * @param value {string} email
- * @returns {boolean}
- * @example
- * be.email('fabio@rica.li') // true
- * be.not.email('fabiorica.li') // true
- */
-Mixed.email = function (value) {
-    return (/^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(value)
-    );
-};
-
-/**
- * Check if is a hexadecimal
- *
- * **Interfaces**: `all`, `any`, `not`
- *
- * @function
- * @name hex
- * @param value {string} hex string
- * @returns {boolean}
- * @example
- * be.hex('fff') // true
- */
-Mixed.hex = function (value) {
-    return (/^(?:0x)?[a-f0-9]+$/.test(value)
-    );
-};
-
-/**
- * Check if is a hexadecimal color
- *
- * **Interfaces**: `all`, `any`, `not`
- *
- * @function
- * @name hexColor
- * @param value {string} hex color string
- * @returns {boolean}
- * @example
- * be.hexColor('#ff0000') // true
- */
-Mixed.hexColor = function (value) {
-    try {
-        value = value.replace('#', '');
-        return Mixed.hex(value) && (value.length === 3 || value.length === 6);
-    } catch (e) {
-        return false;
-    }
-};
-
-/**
- * Check if is a valid IPv4
- *
- * **Interfaces**: `all`, `any`, `not`
- *
- * @function
- * @name ipv4
- * @param value {string} ip string
- * @returns {boolean}
- * @example
- * be.ipv4('127.0.0.1') // true
- */
-Mixed.ipv4 = function (value) {
-    return (/^(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)$/.test(value)
-    );
-};
-
-/**
- * Check if is a valid IPv6
- *
- * **Interfaces**: `all`, `any`, `not`
- *
- * @function
- * @name ipv6
- * @param value {string} ip string
- * @returns {boolean}
- * @example
- * be.ipv6('FF01:0:0:0:0:0:0:1') // true
- */
-Mixed.ipv6 = function (value) {
-    return (/^(([0-9A-Fa-f]{1,4}:){7}([0-9A-Fa-f]{1,4}|:))|(([0-9A-Fa-f]{1,4}:){6}(:[0-9A-Fa-f]{1,4}|((25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)(\.(25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)){3})|:))|(([0-9A-Fa-f]{1,4}:){5}(((:[0-9A-Fa-f]{1,4}){1,2})|:((25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)(\.(25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)){3})|:))|(([0-9A-Fa-f]{1,4}:){4}(((:[0-9A-Fa-f]{1,4}){1,3})|((:[0-9A-Fa-f]{1,4})?:((25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)(\.(25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)){3}))|:))|(([0-9A-Fa-f]{1,4}:){3}(((:[0-9A-Fa-f]{1,4}){1,4})|((:[0-9A-Fa-f]{1,4}){0,2}:((25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)(\.(25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)){3}))|:))|(([0-9A-Fa-f]{1,4}:){2}(((:[0-9A-Fa-f]{1,4}){1,5})|((:[0-9A-Fa-f]{1,4}){0,3}:((25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)(\.(25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)){3}))|:))|(([0-9A-Fa-f]{1,4}:){1}(((:[0-9A-Fa-f]{1,4}){1,6})|((:[0-9A-Fa-f]{1,4}){0,4}:((25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)(\.(25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)){3}))|:))|(:(((:[0-9A-Fa-f]{1,4}){1,7})|((:[0-9A-Fa-f]{1,4}){0,5}:((25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)(\.(25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)){3}))|:))$/.test(value)
-    );
-};
-
-/**
- * Check if is a valid ip string
- *
- * **Interfaces**: `all`, `any`, `not`
- *
- * @function
- * @name ipv
- * @param value {string} ip string
- * @returns {boolean}
- * @example
- * be.ipv('127.0.0.1') // true
- */
-Mixed.ip = function (value) {
-    return Mixed.ipv4(value) || Mixed.ipv6(value);
-};
-
-/**
- * Check if is base64 encoded string
- *
- * **Interfaces**: `all`, `any`, `not`
- *
- * @function
- * @name base64
- * @param value {string} base64 string
- * @returns {boolean}
- * @example
- * be.base64('aGVsbG8=') // true
- */
-Mixed.base64 = function (value) {
-    return (/^([0-9a-zA-Z+/]{4})*(([0-9a-zA-Z+/]{2}==)|([0-9a-zA-Z+/]{3}=))?$/.test(value)
-    );
-};
-
-/**
- * Check if is a valid semver string
- *
- * **Interfaces**: `all`, `any`, `not`
- *
- * @function
- * @name semVer
- * @param value {string} version string
- * @returns {boolean}
- * @example
- * be.semVer('1.0.0') // true
- */
-Mixed.semVer = function (value) {
-    return (/^(\d*)\.(\d*)\.(\d*)(-(\d*|\d*[a-z-][0-9a-z-]*)(\.(\d*|\d*[a-z-][0-9a-z-]*))*)?(\+[0-9a-z-]+(\.[0-9a-z-]+)*)?$/i.test(value)
-    );
-};
-
-/**
- * Checks if equal
- *
- * **Interfaces**: `not`
- *
- * @function
- * @name equal
- * @param value {Number|String|Boolean|RegExp|Array|Object} first
- * @param other {Number|String|Boolean|RegExp|Array|Object} second
- * @returns {boolean}
- * @example
- * be.equal('hello', 'hello') // true
- * be.equal('hello', 'hellow') // false
- * be.equal(true, 'true') // false
- * be.equal([1,2,3], [1,1,1]) // false
- * be.equal({a:1}, {a:1}) // true
- */
-Mixed.equal = function (value, other) {
-    //console.log('aaa',Types.all.object(value, other));
-    //console.log('bbb',Types.all.array(value, other));
-    console.log('ccc', Types.all.number(value, other));
-    if (Types.all.number(value, other)) return value === other && 1 / value === 1 / other;else if (Types.all.string(value, other) || Types.all.regexp(value, other)) return value.toString() === other.toString();else if (Types.all.boolean(value, other)) return value === other;else if (Types.all.object(value, other) || Types.all.array(value, other)) {
-        console.log('sss', Types.all.array(value, other));
-        if (Object.keys(value).length !== Object.keys(other).length) return false;
-        for (var prop in value) {
-            if (value.hasOwnProperty(prop) && other.hasOwnProperty(prop)) {
-                if (!Mixed.equal(value[prop], other[prop])) return false;
-            } else return false;
-        }
-        return true;
-    } else return false;
-};
-
-Mixed.equal.multiple = false;
-
-/**
- * Check if is an IT fiscal code
- *
- * **Interfaces**: `all`, `any`, `not`
- *
- * @function
- * @name fiscalCodeIT
- * @param value {string} code string
- * @returns {boolean}
- * @example
- * be.fiscalCodeIT('OLEFBA97C64F158X') // true
- */
-Mixed.fiscalCodeIT = function (value) {
-    return (/^[A-Za-z]{6}[0-9]{2}[A-Za-z]{1}[0-9]{2}[A-Za-z]{1}[0-9]{3}[A-Za-z]{1}$/.test(value)
-    );
-};
-
-/**
- * Check if is a valid MAC address
- *
- * **Interfaces**: `all`, `any`, `not`
- *
- * @function
- * @name macAddress
- * @param value {string} MAC string
- * @returns {boolean}
- * @example
- * be.macAddress('3D:F2:C9:A6:B3:4F') // true
- */
-Mixed.macAddress = function (value) {
-    return (/^([0-9A-Fa-f]{2}[:-]){5}([0-9A-Fa-f]{2})$/.test(value)
-    );
-};
-
-Mixed = Interface.create(Mixed);
-
-module.exports = Mixed;
 
 /***/ }),
 /* 17 */

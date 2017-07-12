@@ -8,6 +8,12 @@ const Mixed = require('./mixed');
 const Interface = require('../interface');
 let Envs = {};
 
+let browserRegEx = {
+    chrome: /(Chrome)\/(\d+((\.\d+)+)?)?\s+(Safari)\/(\d+((\.\d+)+)?)?$/,
+    opera: /(OPR)\/(\d+((\.\d+)+)?)?$/,
+    firefox: /(Firefox)\/(\d+((\.\d+)+)?)?$/
+};
+
 /**
  * Check if server environment
  *
@@ -199,8 +205,8 @@ Envs.firefox.multiple = false;
  */
 Envs.chrome = (range, agent) => {
     let rangePart = Helpers.operatorVersion(range);
-    agent = !rangePart && !agent ? range : agent || navigator.userAgent;
-    let match = agent.match(/(Chrome)\/(\d+(\.\d+)+)\s+(Safari)\/(\d+(\.\d+)+)$/i);
+    agent = !rangePart && !agent && range ? range : agent || navigator.userAgent;
+    let match = agent.match(/(Chrome)\/(\d+((\.\d+)+)?)?\s+(Safari)\/(\d+((\.\d+)+)?)?$/i);
     if(rangePart && match){
         return Mixed.compareVersion(match[2], rangePart[0], rangePart[1]);
     }
