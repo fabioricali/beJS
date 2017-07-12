@@ -325,3 +325,16 @@ describe('macAddress', function () {
         assert.equal(result, false);
     });
 });
+
+describe('compareVersion', function () {
+    it('should be return true', function () {
+        var result = be.compareVersion('1.0.2', '>', '1.0.1');
+        console.log(result);
+        assert.equal(result, true);
+    });
+    it('should be return false', function () {
+        var result = be.compareVersion('1.0.2', '==', '1.0.1');
+        console.log(result);
+        assert.equal(result, false);
+    });
+});

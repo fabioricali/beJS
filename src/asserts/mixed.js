@@ -2,7 +2,7 @@
  * @fileOverview Various checks.
  * @module Mixed
  */
-
+const Helpers = require('../helpers');
 const Types = require('./types');
 const Interface = require('../interface');
 let Mixed = {};
@@ -219,19 +219,20 @@ Mixed.macAddress = (value) => {
 };
 
 /**
- * Check if it meets a method
+ * Compare two version number
  *
  * **Interfaces**: `not`
  *
  * @function
- * @name or
- * @param value {mixed} value
- * @param args {array} methods
+ * @name compareVersion
+ * @param a {string} version a
+ * @param operator {string} operator "==", "<", "<=", ">", ">="
+ * @param b {string} version b
  * @example
- * be.or(true, ['string', 'boolean', 'number']) // true
+ * be.compareVersion('1.0.2', '==', '1.0.3') // false
  */
-Mixed.or = (value, args) => {
-
+Mixed.compareVersion = (a, operator, b) => {
+    return Helpers.comparators[operator](a, b);
 };
 
 Mixed = Interface.create(Mixed);
