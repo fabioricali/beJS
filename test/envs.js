@@ -91,10 +91,10 @@ describe('chrome', function () {
         console.log(result);
         assert.equal(result, false);
     });
-    /*it('opera, should be return false', function () {
+    it('opera, should be return false', function () {
         var userAgent= 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/59.0.3071.86 Safari/537.36 OPR/46.0.2597.32';
         var result = be.chrome(userAgent);
         console.log(result);
         assert.equal(result, false);
-    });*/
+    });
 });

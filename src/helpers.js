@@ -32,7 +32,7 @@ Helpers.objectToString = (object) => {
 
 /**
  * Distance between the two given strings
- * @link https://en.wikibooks.org/wiki/Algorithm_Implementation/Strings/Levenshtein_distance#JavaScript
+ * @see https://en.wikibooks.org/wiki/Algorithm_Implementation/Strings/Levenshtein_distance#JavaScript
  * @param a {string}
  * @param b {string}
  * @returns {*}
@@ -75,11 +75,34 @@ Helpers.getEditDistance = (a, b) => {
  * Comparators methods
  */
 Helpers.comparators = {
-    '==': function(a, b) { return a == b; },
-    '<': function(a, b) { return a < b; },
-    '<=': function(a, b) { return a <= b; },
-    '>': function(a, b) { return a > b; },
-    '>=': function(a, b) { return a >= b; }
+    '==': function(a, b) {return Helpers.compareVersions(a, b) === 0;},
+    '<': function(a, b) {return Helpers.compareVersions(a, b) < 0;},
+    '<=': function(a, b) {return Helpers.compareVersions(a, b) <= 0;},
+    '>': function(a, b) {return Helpers.compareVersions(a, b) > 0;},
+    '>=': function(a, b) {return Helpers.compareVersions(a, b) >= 0;}
+};
+
+/**
+ * Compare version number
+ * @see https://stackoverflow.com/questions/6832596/how-to-compare-software-version-number-using-js-only-number
+ * @param a {string} version number
+ * @param b {string} version number
+ * @returns {int}
+ */
+Helpers.compareVersions = function (a, b) {
+    let diff;
+    let regExStrip0 = /(\.0+)+$/;
+    let segmentsA = a.replace(regExStrip0, '').split('.');
+    let segmentsB = b.replace(regExStrip0, '').split('.');
+    let l = Math.min(segmentsA.length, segmentsB.length);
+
+    for (let i = 0; i < l; i++) {
+        diff = parseInt(segmentsA[i], 10) - parseInt(segmentsB[i], 10);
+        if (diff) {
+            return diff;
+        }
+    }
+    return segmentsA.length - segmentsB.length;
 };
 
 module.exports = Helpers;
