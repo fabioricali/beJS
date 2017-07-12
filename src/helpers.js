@@ -116,4 +116,5 @@ Helpers.operatorVersion = function (value) {
     if(!match) return false;
     return [match[1], match[2]];
 };
+
 module.exports = Helpers;
