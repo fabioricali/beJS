@@ -71,4 +71,15 @@ Helpers.getEditDistance = (a, b) => {
     return matrix[b.length][a.length];
 };
 
+/**
+ * Comparators methods
+ */
+Helpers.comparators = {
+    '==': function(a, b) { return a == b; },
+    '<': function(a, b) { return a < b; },
+    '<=': function(a, b) { return a <= b; },
+    '>': function(a, b) { return a > b; },
+    '>=': function(a, b) { return a >= b; }
+};
+
 module.exports = Helpers;

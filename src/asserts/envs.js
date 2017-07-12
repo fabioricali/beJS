@@ -196,7 +196,7 @@ Envs.firefox.multiple = false;
  */
 Envs.chrome = (...params) => {
     let userAgent = Helpers.getUserAgent.apply(this, params);
-    return /Chrome/i.test(userAgent);
+    return /chrome/i.test(userAgent);
 };
 
 Envs.chrome.multiple = false;
