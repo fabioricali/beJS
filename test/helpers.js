@@ -92,3 +92,28 @@ describe('comparators', function () {
         assert.equal(result, true);
     });
 });
+
+describe('operatorVersion', function () {
+    it('should be return array', function () {
+        var result = be._helpers.operatorVersion('>=4.53.58');
+        console.log(result);
+        assert.equal(result[0], '>=');
+        assert.equal(result[1], '4.53.58');
+    });
+    it('with space between operator and version should be return array', function () {
+        var result = be._helpers.operatorVersion('>= 4.53.58');
+        console.log(result);
+        assert.equal(result[0], '>=');
+        assert.equal(result[1], '4.53.58');
+    });
+    it('only version should be return false', function () {
+        var result = be._helpers.operatorVersion('4.53.58');
+        console.log(result);
+        assert.equal(result, false);
+    });
+    it('undefined should be return false', function () {
+        var result = be._helpers.operatorVersion();
+        console.log(result);
+        assert.equal(result, false);
+    });
+});

@@ -105,4 +105,15 @@ Helpers.compareVersions = function (a, b) {
     return segmentsA.length - segmentsB.length;
 };
 
+/**
+ * Get operator and version number
+ * @param value {string} string like <=1.0.0
+ * @returns {*}
+ */
+Helpers.operatorVersion = function (value) {
+    if(!value) return false;
+    let match = value.match(/(==|<=?|>=?)(?:\s+)?(\d+(\.\d+)+)/);
+    if(!match) return false;
+    return [match[1], match[2]];
+};
 module.exports = Helpers;
