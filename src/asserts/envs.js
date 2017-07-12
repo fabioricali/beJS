@@ -202,13 +202,14 @@ Envs.firefox.multiple = false;
  * @returns {boolean}
  * @example
  * be.chrome() // true
+ * be.chrome('==59') // true
  */
 Envs.chrome = (range, agent) => {
     let rangePart = Helpers.operatorVersion(range);
     agent = !rangePart && !agent && range ? range : agent || navigator.userAgent;
     let match = agent.match(/(Chrome)\/(\d+((\.\d+)+)?)?\s+(Safari)\/(\d+((\.\d+)+)?)?$/i);
     if(rangePart && match){
-        return Mixed.compareVersion(match[2], rangePart[0], rangePart[1]);
+        return Mixed.compareVersion(match[2], rangePart[0], rangePart[1], true);
     }
     return match !== null;
 };

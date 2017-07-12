@@ -228,10 +228,17 @@ Mixed.macAddress = (value) => {
  * @param a {string} version a
  * @param operator {string} operator "==", "<", "<=", ">", ">="
  * @param b {string} version b
+ * @param major {boolean} consider major only
  * @example
  * be.compareVersion('1.0.2', '==', '1.0.3') // false
+ * //Consider major only
+ * be.compareVersion('1.0.2', '==', '1.0.3', true) // true
  */
-Mixed.compareVersion = (a, operator, b) => {
+Mixed.compareVersion = (a, operator, b, major) => {
+    if(major){
+        a = a.split('.')[0];
+        b = b.split('.')[0];
+    }
     return Helpers.comparators[operator](a, b);
 };
 

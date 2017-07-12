@@ -51,6 +51,11 @@ describe('comparators', function () {
         console.log(result);
         assert.equal(result, true);
     });
+    it('< should be return true (2)', function () {
+        var result = be._helpers.comparators['<']('44', '45');
+        console.log(result);
+        assert.equal(result, true);
+    });
     it('< should be return true', function () {
         var result = be._helpers.comparators['<']('4.4', '4.5');
         console.log(result);

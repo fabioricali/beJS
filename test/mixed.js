@@ -332,6 +332,11 @@ describe('compareVersion', function () {
         console.log(result);
         assert.equal(result, true);
     });
+    it('should be return true, consider major only', function () {
+        var result = be.compareVersion('1.0.2', '==', '1.0.1', true);
+        console.log(result);
+        assert.equal(result, true);
+    });
     it('should be return false', function () {
         var result = be.compareVersion('1.0.2', '==', '1.0.1');
         console.log(result);
