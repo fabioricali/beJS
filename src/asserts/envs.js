@@ -169,8 +169,10 @@ Envs.navigator.multiple = false;
 let browserRegEx = {
     chrome: /(Chrome)\/(\d+((\.\d+)+)?)?\s+(Safari)\/(\d+((\.\d+)+)?)?$/,
     opera: /(Opera|OPR)(?:[\/\s])(\d+((\.\d+)+)?)?/,
-    firefox: /(Firefox)\/(\d+((\.\d+)+)?)?(.*)(?!Opera)/,
-    safari: /^((?!Chrome).)*(Safari)\/(\d+((\.\d+)+)?)?$/
+    firefox: /(Firefox)\/(\d+((\.\d+)+)?)?$/,
+    edge: /(Edge)\/(\d+((\.\d+)+)?)?$/,
+    safari: /^(?:(?!Chrome).)*(Safari)\/(\d+((\.\d+)+)?)?/,
+    ie: /(MSIE|rv)(?:[\s:])(\d+((\.\d+)+)?)?/
 };
 
 /**
@@ -211,6 +213,33 @@ let browserRegEx = {
  * @returns {boolean}
  * @example
  * be.safari() // true
+ * be.safari(<=7) // true
+ */
+
+/**
+ * Edge detecting
+ *
+ * **Interfaces**: `not`
+ *
+ * @function
+ * @name edge
+ * @returns {boolean}
+ * @example
+ * be.edge() // true
+ * be.edge(>=12) // true
+ */
+
+/**
+ * Explorer detecting
+ *
+ * **Interfaces**: `not`
+ *
+ * @function
+ * @name userAgent
+ * @returns {boolean}
+ * @example
+ * be.ie() // true
+ * be.ie(==9) // true
  */
 
 (() => {
@@ -227,24 +256,6 @@ let browserRegEx = {
         Envs[i].multiple = false;
     }
 })();
-
-/**
- * Explorer detecting
- *
- * **Interfaces**: `not`
- *
- * @function
- * @name userAgent
- * @returns {boolean}
- * @example
- * be.ie() // true
- */
-Envs.ie = (...params) => {
-    let userAgent = Helpers.getUserAgent.apply(this, params);
-    return /MSIE|Trident/i.test(userAgent);
-};
-
-Envs.ie.multiple = false;
 
 /**
  * Mac detecting

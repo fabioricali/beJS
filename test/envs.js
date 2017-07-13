@@ -103,6 +103,12 @@ describe('chrome', function () {
         console.log(result);
         assert.equal(result, false);
     });
+    it('edge, should be return false', function () {
+        var userAgent= 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/52.0.2743.116 Safari/537.36 Edge/15.15063';
+        var result = be.chrome(userAgent);
+        console.log(result);
+        assert.equal(result, false);
+    });
 });
 
 describe('opera', function () {
@@ -130,6 +136,13 @@ describe('opera', function () {
         console.log(result);
         assert.equal(result, true);
     });
+
+    it('edge, should be return false', function () {
+        var userAgent= 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/52.0.2743.116 Safari/537.36 Edge/15.15063';
+        var result = be.opera(userAgent);
+        console.log(result);
+        assert.equal(result, false);
+    });
 });
 
 describe('firefox', function () {
@@ -151,11 +164,11 @@ describe('firefox', function () {
         console.log(result);
         assert.equal(result, false);
     });
-    it('old agent, should be return true (3)', function () {
-        var userAgent= 'Mozilla/5.0 (Windows NT 6.0; rv:2.0) Gecko/20100101 Firefox/4.0 Opera 12.14';
+    it('opera agent, should be return false (3)', function () {
+        var userAgent= 'Mozilla/5.0 (Windows NT 5.1) Gecko/20100101 Firefox/14.0 Opera/12.0';
         var result = be.firefox(userAgent);
         console.log(result);
-        assert.equal(result, true);
+        assert.equal(result, false);
     });
 });
 
@@ -178,9 +191,57 @@ describe('safari', function () {
         console.log(result);
         assert.equal(result, false);
     });
-    it('old agent, should be return true (3)', function () {
+    it('opera should be return false (3)', function () {
         var userAgent= 'Mozilla/5.0 (Windows NT 6.0; rv:2.0) Gecko/20100101 Firefox/4.0 Opera 12.14';
         var result = be.safari(userAgent);
+        console.log(result);
+        assert.equal(result, false);
+    });
+    it('edge, should be return false', function () {
+        var userAgent= 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/52.0.2743.116 Safari/537.36 Edge/15.15063';
+        var result = be.safari(userAgent);
+        console.log(result);
+        assert.equal(result, false);
+    });
+});
+
+describe('edge', function () {
+    it('should be return true', function () {
+        var userAgent= 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/52.0.2743.116 Safari/537.36 Edge/15.15063';
+        var result = be.edge(userAgent);
+        console.log(result);
+        assert.equal(result, true);
+    });
+    it('range >, should be return true', function () {
+        var userAgent= 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/52.0.2743.116 Safari/537.36 Edge/15.15063';
+        var result = be.edge('>14', userAgent);
+        console.log(result);
+        assert.equal(result, true);
+    });
+    it('range <, should be return false', function () {
+        var userAgent= 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/52.0.2743.116 Safari/537.36 Edge/15.15063';
+        var result = be.edge('<14', userAgent);
+        console.log(result);
+        assert.equal(result, false);
+    });
+});
+
+describe('ie', function () {
+    it('11, should be return true', function () {
+        var userAgent= 'Mozilla/5.0 (Windows NT 10.0; WOW64; Trident/7.0; .NET4.0C; .NET4.0E; .NET CLR 2.0.50727; .NET CLR 3.0.30729; .NET CLR 3.5.30729; rv:11.0) like Gecko';
+        var result = be.ie(userAgent);
+        console.log(result);
+        assert.equal(result, true);
+    });
+    it('range < 11, should be return true', function () {
+        var userAgent= 'Mozilla/4.0 (compatible; MSIE 10.0; Windows NT 6.1; Trident/5.0)';
+        var result = be.ie('<11', userAgent);
+        console.log(result);
+        assert.equal(result, true);
+    });
+    it('range == 8, should be return true', function () {
+        var userAgent= 'Mozilla/4.0 (compatible; MSIE 8.0; Windows NT 6.1; WOW64; Trident/4.0; SLCC2; .NET CLR 2.0.50727; .NET CLR 3.5.30729; .NET CLR 3.0.30729; Media Center PC 6.0; msn OptimizedIE8;ZHCN)';
+        var result = be.ie('==8', userAgent);
         console.log(result);
         assert.equal(result, true);
     });
