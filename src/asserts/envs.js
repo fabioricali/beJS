@@ -156,6 +156,7 @@ let regEx = {
     firefox: /(Firefox)\/(\d+((\.\d+)+)?)?$/,
     edge: /(Edge)\/(\d+((\.\d+)+)?)?$/,
     safari: /^(?:(?!Chrome).)*(Safari)\/(\d+((\.\d+)+)?)?/,
+    safariMobile: /^(?:(?!CriOS).)*(?:Mobile\/.*)(Safari)\/(\d+((\.\d+)+)?)?/,
     ie: /(MSIE|rv)(?:[\s:])(\d+((\.\d+)+)?)?/
 };
 

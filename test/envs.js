@@ -268,3 +268,18 @@ describe('ie', function () {
         assert.equal(result, true);
     });
 });
+
+describe('safariMobile', function () {
+    it('should be return true', function () {
+        var userAgent= 'Mozilla/5.0 (iPhone; CPU iPhone OS 10_2_1 like Mac OS X) AppleWebKit/600.1.4 (KHTML, like Gecko) GSA/22.1.146053689 Mobile/14D27 Safari/600.1.4';
+        var result = be.safariMobile(userAgent);
+        console.log(result);
+        assert.equal(result, true);
+    });
+    it('Chrome iOS, should be return false', function () {
+        var userAgent= 'Mozilla/5.0 (iPhone; CPU iPhone OS 10_2_1 like Mac OS X) AppleWebKit/602.1.50 (KHTML, like Gecko) CriOS/56.0.2924.79 Mobile/14D27 Safari/602.1';
+        var result = be.safariMobile(userAgent);
+        console.log(result);
+        assert.equal(result, false);
+    });
+});
