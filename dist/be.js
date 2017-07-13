@@ -1,4 +1,4 @@
-// [AIV]  beJS Build version: 1.5.0  
+// [AIV]  beJS Build version: 1.6.0  
  var be =
 /******/ (function(modules) { // webpackBootstrap
 /******/ 	// The module cache
@@ -1695,7 +1695,7 @@ module.exports = __webpack_require__(6);
 
 var Helpers = __webpack_require__(2);
 var Interface = __webpack_require__(0);
-var version = '1.5.0';
+var version = '1.6.0';
 
 /**
  * be class
@@ -5939,7 +5939,7 @@ module.exports = DOM;
 
 module.exports = {
 	"name": "bejs",
-	"version": "1.5.0",
+	"version": "1.6.0",
 	"description": "Simple, light-weight assertions framework for javascript",
 	"homepage": "https://be.js.org",
 	"main": "index.js",
