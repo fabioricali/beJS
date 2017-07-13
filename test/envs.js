@@ -67,6 +67,13 @@ describe('android', function () {
         console.log(result);
         assert.equal(result, true);
     });
+    it('range == 4, should be return false', function () {
+        var userAgent= 'Mozilla/5.0 (Linux; Android 5.1.1; SM-G928X Build/LMY47X) AppleWebKit/537.36 (KHTML, like Gecko) ' +
+            'Chrome/47.0.2526.83 Mobile Safari/537.36';
+        var result = be.android('==4', userAgent);
+        console.log(result);
+        assert.equal(result, false);
+    });
     it('should be return error', function (done) {
         try {
             be.android();
@@ -108,6 +115,15 @@ describe('chrome', function () {
         var result = be.chrome(userAgent);
         console.log(result);
         assert.equal(result, false);
+    });
+});
+
+describe('chromeIOS', function () {
+    it('should be return true', function () {
+        var userAgent= 'Mozilla/5.0 (iPhone; CPU iPhone OS 10_2_1 like Mac OS X) AppleWebKit/602.1.50 (KHTML, like Gecko) CriOS/56.0.2924.79 Mobile/14D27 Safari/602.1';
+        var result = be.chromeIOS(userAgent);
+        console.log(result);
+        assert.equal(result, true);
     });
 });
 
@@ -175,6 +191,12 @@ describe('firefox', function () {
 describe('safari', function () {
     it('should be return true', function () {
         var userAgent= 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_9_3) AppleWebKit/537.75.14 (KHTML, like Gecko) Version/7.0.3 Safari/7046A194A';
+        var result = be.safari(userAgent);
+        console.log(result);
+        assert.equal(result, true);
+    });
+    it('safari mobile, should be return true', function () {
+        var userAgent= 'Mozilla/5.0 (iPhone; CPU iPhone OS 10_2_1 like Mac OS X) AppleWebKit/602.1.50 (KHTML, like Gecko) GSA/24.0.150344369 Mobile/14D27 Safari/602.1';
         var result = be.safari(userAgent);
         console.log(result);
         assert.equal(result, true);

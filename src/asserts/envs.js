@@ -132,24 +132,6 @@ Envs.ipod = (...params) => {
 Envs.ipod.multiple = false;
 
 /**
- * Check if is Android device
- *
- * **Interfaces**: `not`
- *
- * @function
- * @name android
- * @returns {boolean}
- * @example
- * be.android() // true
- */
-Envs.android = (...params) => {
-    let userAgent = Helpers.getUserAgent.apply(this, params);
-    return /Android/i.test(userAgent);
-};
-
-Envs.android.multiple = false;
-
-/**
  * Check if exists navigator object
  *
  * **Interfaces**: `not`
@@ -166,14 +148,29 @@ Envs.navigator = () => {
 
 Envs.navigator.multiple = false;
 
-let browserRegEx = {
+let regEx = {
+    android: /(Android)(?:\s)(\d+((\.\d+)+)?)?/,
     chrome: /(Chrome)\/(\d+((\.\d+)+)?)?\s+(Safari)\/(\d+((\.\d+)+)?)?$/,
+    chromeIOS: /(CriOS)\/(\d+((\.\d+)+)?)?/,
     opera: /(Opera|OPR)(?:[\/\s])(\d+((\.\d+)+)?)?/,
     firefox: /(Firefox)\/(\d+((\.\d+)+)?)?$/,
     edge: /(Edge)\/(\d+((\.\d+)+)?)?$/,
     safari: /^(?:(?!Chrome).)*(Safari)\/(\d+((\.\d+)+)?)?/,
     ie: /(MSIE|rv)(?:[\s:])(\d+((\.\d+)+)?)?/
 };
+
+/**
+ * Check if is Android device
+ *
+ * **Interfaces**: `not`
+ *
+ * @function
+ * @name android
+ * @returns {boolean}
+ * @example
+ * be.android() // true
+ * be.android(==4) // true
+ */
 
 /**
  * Firefox detecting
@@ -201,6 +198,21 @@ let browserRegEx = {
  * @example
  * be.chrome() // true
  * be.chrome('==59') // true
+ */
+
+/**
+ * Chrome iOS detecting
+ *
+ * **Interfaces**: `not`
+ *
+ * @function
+ * @name chromeIOS
+ * @param range
+ * @param agent
+ * @returns {boolean}
+ * @example
+ * be.chromeIOS() // true
+ * be.chromeIOS('==59') // true
  */
 
 /**
@@ -243,11 +255,11 @@ let browserRegEx = {
  */
 
 (() => {
-    for(let i in browserRegEx){
+    for(let i in regEx){
         Envs[i] = (range, agent) => {
             let rangePart = Helpers.operatorVersion(range);
             agent = !rangePart && !agent && range ? range : agent || navigator.userAgent;
-            let match = agent.match(browserRegEx[i]);
+            let match = agent.match(regEx[i]);
             if(rangePart && match){
                 return Mixed.compareVersion(match[2], rangePart[0], rangePart[1], true);
             }
