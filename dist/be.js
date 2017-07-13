@@ -1625,10 +1625,17 @@ Mixed.macAddress = function (value) {
  * @param a {string} version a
  * @param operator {string} operator "==", "<", "<=", ">", ">="
  * @param b {string} version b
+ * @param major {boolean} consider major only
  * @example
  * be.compareVersion('1.0.2', '==', '1.0.3') // false
+ * //Consider major only
+ * be.compareVersion('1.0.2', '==', '1.0.3', true) // true
  */
-Mixed.compareVersion = function (a, operator, b) {
+Mixed.compareVersion = function (a, operator, b, major) {
+    if (major) {
+        a = a.split('.')[0];
+        b = b.split('.')[0];
+    }
     return Helpers.comparators[operator](a, b);
 };
 
@@ -4241,121 +4248,6 @@ Envs.amdEnv = function () {
 Envs.amdEnv.multiple = false;
 
 /**
- * Check if is iOS device
- *
- * **Interfaces**: `not`
- *
- * @function
- * @name ios
- * @returns {boolean}
- * @example
- * be.ios() // true
- */
-Envs.ios = function () {
-  for (var _len = arguments.length, params = Array(_len), _key = 0; _key < _len; _key++) {
-    params[_key] = arguments[_key];
-  }
-
-  var userAgent = Helpers.getUserAgent.apply(undefined, params);
-  return (/iphone|ipad|ipod/i.test(userAgent)
-  );
-};
-
-Envs.ios.multiple = false;
-
-/**
- * Check if is iPhone device
- *
- * **Interfaces**: `not`
- *
- * @function
- * @name iphone
- * @returns {boolean}
- * @example
- * be.iphone() // true
- */
-Envs.iphone = function () {
-  for (var _len2 = arguments.length, params = Array(_len2), _key2 = 0; _key2 < _len2; _key2++) {
-    params[_key2] = arguments[_key2];
-  }
-
-  var userAgent = Helpers.getUserAgent.apply(undefined, params);
-  return (/iphone/i.test(userAgent)
-  );
-};
-
-Envs.iphone.multiple = false;
-
-/**
- * Check if is iPad device
- *
- * **Interfaces**: `not`
- *
- * @function
- * @name ipad
- * @returns {boolean}
- * @example
- * be.ipad() // true
- */
-Envs.ipad = function () {
-  for (var _len3 = arguments.length, params = Array(_len3), _key3 = 0; _key3 < _len3; _key3++) {
-    params[_key3] = arguments[_key3];
-  }
-
-  var userAgent = Helpers.getUserAgent.apply(undefined, params);
-  return (/ipad/i.test(userAgent)
-  );
-};
-
-Envs.ipad.multiple = false;
-
-/**
- * Check if is iPod device
- *
- * **Interfaces**: `not`
- *
- * @function
- * @name ipod
- * @returns {boolean}
- * @example
- * be.ipod() // true
- */
-Envs.ipod = function () {
-  for (var _len4 = arguments.length, params = Array(_len4), _key4 = 0; _key4 < _len4; _key4++) {
-    params[_key4] = arguments[_key4];
-  }
-
-  var userAgent = Helpers.getUserAgent.apply(undefined, params);
-  return (/ipod/i.test(userAgent)
-  );
-};
-
-Envs.ipod.multiple = false;
-
-/**
- * Check if is Android device
- *
- * **Interfaces**: `not`
- *
- * @function
- * @name android
- * @returns {boolean}
- * @example
- * be.android() // true
- */
-Envs.android = function () {
-  for (var _len5 = arguments.length, params = Array(_len5), _key5 = 0; _key5 < _len5; _key5++) {
-    params[_key5] = arguments[_key5];
-  }
-
-  var userAgent = Helpers.getUserAgent.apply(undefined, params);
-  return (/Android/i.test(userAgent)
-  );
-};
-
-Envs.android.multiple = false;
-
-/**
  * Check if exists navigator object
  *
  * **Interfaces**: `not`
@@ -4373,123 +4265,6 @@ Envs.navigator = function () {
 Envs.navigator.multiple = false;
 
 /**
- * Firefox detecting
- *
- * **Interfaces**: `not`
- *
- * @function
- * @name firefox
- * @returns {boolean}
- * @example
- * be.firefox() // true
- */
-Envs.firefox = function () {
-  for (var _len6 = arguments.length, params = Array(_len6), _key6 = 0; _key6 < _len6; _key6++) {
-    params[_key6] = arguments[_key6];
-  }
-
-  var userAgent = Helpers.getUserAgent.apply(undefined, params);
-  return (/Firefox/i.test(userAgent)
-  );
-};
-
-Envs.firefox.multiple = false;
-
-/**
- * Chrome detecting
- *
- * **Interfaces**: `not`
- *
- * @function
- * @name chrome
- * @param range
- * @param agent
- * @returns {boolean}
- * @example
- * be.chrome() // true
- */
-Envs.chrome = function (range, agent) {
-  var rangePart = Helpers.operatorVersion(range);
-  agent = !rangePart && !agent && range ? range : agent || navigator.userAgent;
-  var match = agent.match(/(Chrome)\/(\d+(\.\d+)+)\s+(Safari)\/(\d+(\.\d+)+)$/i);
-  if (rangePart && match) {
-    return Mixed.compareVersion(match[2], rangePart[0], rangePart[1]);
-  }
-  return match !== null;
-};
-
-Envs.chrome.multiple = false;
-
-/**
- * Safari detecting
- *
- * **Interfaces**: `not`
- *
- * @function
- * @name safari
- * @returns {boolean}
- * @example
- * be.safari() // true
- */
-Envs.safari = function () {
-  for (var _len7 = arguments.length, params = Array(_len7), _key7 = 0; _key7 < _len7; _key7++) {
-    params[_key7] = arguments[_key7];
-  }
-
-  var userAgent = Helpers.getUserAgent.apply(undefined, params);
-  return (/Safari/i.test(userAgent.replace('Chrome', '')) && !/Chrome/i.test(userAgent.replace('Safari', ''))
-  );
-};
-
-Envs.safari.multiple = false;
-
-/**
- * Explorer detecting
- *
- * **Interfaces**: `not`
- *
- * @function
- * @name userAgent
- * @returns {boolean}
- * @example
- * be.ie() // true
- */
-Envs.ie = function () {
-  for (var _len8 = arguments.length, params = Array(_len8), _key8 = 0; _key8 < _len8; _key8++) {
-    params[_key8] = arguments[_key8];
-  }
-
-  var userAgent = Helpers.getUserAgent.apply(undefined, params);
-  return (/MSIE|Trident/i.test(userAgent)
-  );
-};
-
-Envs.ie.multiple = false;
-
-/**
- * Mac detecting
- *
- * **Interfaces**: `not`
- *
- * @function
- * @name mac
- * @returns {boolean}
- * @example
- * be.mac() // true
- */
-Envs.mac = function () {
-  for (var _len9 = arguments.length, params = Array(_len9), _key9 = 0; _key9 < _len9; _key9++) {
-    params[_key9] = arguments[_key9];
-  }
-
-  var userAgent = Helpers.getUserAgent.apply(undefined, params);
-  return (/mac/i.test(userAgent)
-  );
-};
-
-Envs.mac.multiple = false;
-
-/**
  * Check if is on line
  *
  * **Interfaces**: `not`
@@ -4505,6 +4280,380 @@ Envs.onLine = function () {
 };
 
 Envs.onLine.multiple = false;
+
+var regEx = {
+  android: /^(?:(?!Windows).)*(Android)(?:\s)(\d+((\.\d+)+)?)?/,
+  androidTablet: /(Android)(?:\s)(\d+((\.\d+)+)?)?(?!.*Mobile)/,
+  androidPhone: /(Android)(?:\s)(\d+((\.\d+)+)?)?(?:.*Mobile)/,
+  chrome: /(Chrome|Crios)\/(\d+((\.\d+)+)?)?\s+(Safari)\/(\d+((\.\d+)+)?)?$/,
+  chromeIOS: /(CriOS)\/(\d+((\.\d+)+)?)?/,
+  opera: /(Opera|OPR)(?:[\/\s])(\d+((\.\d+)+)?)?/,
+  firefox: /(Firefox)\/(\d+((\.\d+)+)?)?$/,
+  edge: /(Edge)\/(\d+((\.\d+)+)?)?$/,
+  safari: /^(?:(?!Chrome).)*(Safari)\/(\d+((\.\d+)+)?)?/,
+  safariMobile: /^(?:(?!CriOS).)*(?:Mobile\/.*)(Safari)\/(\d+((\.\d+)+)?)?/,
+  ie: /(MSIE|rv)(?:[\s:])(\d+((\.\d+)+)?)?/,
+  windowsPhone: /(Windows Phone)(?:\s)(\d+((\.\d+)+)?)?/,
+  windowsTablet: /(Windows NT)(?:\s)(\d+((\.\d+)+)?)?(?:.*Touch)/,
+  blackberry: /BlackBerry|BB10/,
+  iphone: /iPhone/,
+  ipad: /iPad/,
+  ipod: /iPod/,
+  ios: /iPhone|iPad|iPod/,
+  mac: /Mac/,
+  linux: /Linux/,
+  windows: /Windows/
+};
+
+(function () {
+  var _loop = function _loop(i) {
+    Envs[i] = function (range, agent) {
+      var rangePart = Helpers.operatorVersion(range);
+      agent = !rangePart && !agent && range ? range : agent || navigator.userAgent;
+      var match = agent.match(regEx[i]);
+      if (rangePart && match && match[2]) {
+        return Mixed.compareVersion(match[2], rangePart[0], rangePart[1], true);
+      }
+      return match !== null;
+    };
+    Envs[i].multiple = false;
+  };
+
+  for (var i in regEx) {
+    _loop(i);
+  }
+})();
+
+/**
+ * Check if is mobile device
+ *
+ * **Interfaces**: `not`
+ *
+ * @function
+ * @name mobile
+ * @param agent {string} user agent string
+ * @returns {boolean}
+ * @example
+ * be.mobile() // true
+ */
+Envs.mobile = function (agent) {
+  agent = agent || navigator.userAgent;
+  return Envs.iphone(agent) || Envs.ipod(agent) || Envs.androidPhone(agent) || Envs.blackberry(agent) || Envs.windowsPhone(agent);
+};
+
+/**
+ * Check if is tablet device
+ *
+ * **Interfaces**: `not`
+ *
+ * @function
+ * @name tablet
+ * @param agent {string} user agent string
+ * @returns {boolean}
+ * @example
+ * be.tablet() // true
+ */
+Envs.tablet = function (agent) {
+  agent = agent || navigator.userAgent;
+  return Envs.ipad(agent) || Envs.windowsTablet(agent) || Envs.androidTablet(agent);
+};
+
+/**
+ * Check if is desktop device
+ *
+ * **Interfaces**: `not`
+ *
+ * @function
+ * @name desktop
+ * @param agent {string} user agent string
+ * @returns {boolean}
+ * @example
+ * be.desktop() // true
+ */
+Envs.desktop = function (agent) {
+  agent = agent || navigator.userAgent;
+  return Envs.not.tablet(agent) && Envs.not.mobile(agent);
+};
+
+/**
+ * Check if is Android tablet
+ *
+ * **Interfaces**: `not`
+ *
+ * @function
+ * @name androidTablet
+ * @param range {string} operator and version number "==", "<", "<=", ">", "=>" ex: >=4
+ * @param agent {string} user agent string
+ * @returns {boolean}
+ * @example
+ * be.androidTablet() // true
+ */
+
+/**
+ * Check if is Android phone
+ *
+ * **Interfaces**: `not`
+ *
+ * @function
+ * @name androidPhone
+ * @param range {string} operator and version number "==", "<", "<=", ">", "=>" ex: >=4
+ * @param agent {string} user agent string
+ * @returns {boolean}
+ * @example
+ * be.androidPhone() // true
+ */
+
+/**
+ * Check if is Windows Phone
+ *
+ * **Interfaces**: `not`
+ *
+ * @function
+ * @name windowsPhone
+ * @param range {string} operator and version number "==", "<", "<=", ">", "=>" ex: >=4
+ * @param agent {string} user agent string
+ * @returns {boolean}
+ * @example
+ * be.windowsPhone() // true
+ */
+
+/**
+ * Check if is Windows Tablet
+ *
+ * **Interfaces**: `not`
+ *
+ * @function
+ * @name windowsTablet
+ * @param range {string} operator and version number "==", "<", "<=", ">", "=>" ex: >=4
+ * @param agent {string} user agent string
+ * @returns {boolean}
+ * @example
+ * be.windowsTablet() // true
+ */
+
+/**
+ * Check if is BlackBerry device
+ *
+ * **Interfaces**: `not`
+ *
+ * @function
+ * @name blackberry
+ * @param agent {string} user agent string
+ * @returns {boolean}
+ * @example
+ * be.blackberry() // true
+ */
+
+/**
+ * Check if is iOS device
+ *
+ * **Interfaces**: `not`
+ *
+ * @function
+ * @name ios
+ * @param agent {string} user agent string
+ * @returns {boolean}
+ * @example
+ * be.ios() // true
+ */
+
+/**
+ * Check if is iPad device
+ *
+ * **Interfaces**: `not`
+ *
+ * @function
+ * @name ipad
+ * @param agent {string} user agent string
+ * @returns {boolean}
+ * @example
+ * be.ipad() // true
+ */
+
+/**
+ * Check if is iPod device
+ *
+ * **Interfaces**: `not`
+ *
+ * @function
+ * @name ipod
+ * @param agent {string} user agent string
+ * @returns {boolean}
+ * @example
+ * be.ipod() // true
+ */
+
+/**
+ * Check if is iPhone device
+ *
+ * **Interfaces**: `not`
+ *
+ * @function
+ * @name iphone
+ * @param agent {string} user agent string
+ * @returns {boolean}
+ * @example
+ * be.iphone() // true
+ */
+
+/**
+ * Check if is Android device
+ *
+ * **Interfaces**: `not`
+ *
+ * @function
+ * @name android
+ * @param range {string} operator and version number "==", "<", "<=", ">", "=>" ex: >=4
+ * @param agent {string} user agent string
+ * @returns {boolean}
+ * @example
+ * be.android() // true
+ * be.android(==4) // true
+ */
+
+/**
+ * Firefox detecting
+ *
+ * **Interfaces**: `not`
+ *
+ * @function
+ * @name firefox
+ * @param range {string} operator and version number "==", "<", "<=", ">", "=>" ex: >=4
+ * @param agent {string} user agent string
+ * @returns {boolean}
+ * @example
+ * be.firefox() // true
+ * be.firefox('==30') // true
+ */
+
+/**
+ * Chrome detecting
+ *
+ * **Interfaces**: `not`
+ *
+ * @function
+ * @name chrome
+ * @param range {string} operator and version number "==", "<", "<=", ">", "=>" ex: >=4
+ * @param agent {string} user agent string
+ * @returns {boolean}
+ * @example
+ * be.chrome() // true
+ * be.chrome('==59') // true
+ */
+
+/**
+ * Chrome iOS detecting
+ *
+ * **Interfaces**: `not`
+ *
+ * @function
+ * @name chromeIOS
+ * @param range {string} operator and version number "==", "<", "<=", ">", "=>" ex: >=4
+ * @param agent {string} user agent string
+ * @returns {boolean}
+ * @example
+ * be.chromeIOS() // true
+ * be.chromeIOS('==59') // true
+ */
+
+/**
+ * Safari detecting
+ *
+ * **Interfaces**: `not`
+ *
+ * @function
+ * @name safari
+ * @param range {string} operator and version number "==", "<", "<=", ">", "=>" ex: >=4
+ * @param agent {string} user agent string
+ * @returns {boolean}
+ * @example
+ * be.safari() // true
+ * be.safari(<=7) // true
+ */
+
+/**
+ * Safari mobile detecting
+ *
+ * **Interfaces**: `not`
+ *
+ * @function
+ * @name safariMobile
+ * @param range {string} operator and version number "==", "<", "<=", ">", "=>" ex: >=4
+ * @param agent {string} user agent string
+ * @returns {boolean}
+ * @example
+ * be.safariMobile() // true
+ * be.safariMobile(<=7) // true
+ */
+
+/**
+ * Edge detecting
+ *
+ * **Interfaces**: `not`
+ *
+ * @function
+ * @name edge
+ * @param range {string} operator and version number "==", "<", "<=", ">", "=>" ex: >=4
+ * @param agent {string} user agent string
+ * @returns {boolean}
+ * @example
+ * be.edge() // true
+ * be.edge(>=12) // true
+ */
+
+/**
+ * Explorer detecting
+ *
+ * **Interfaces**: `not`
+ *
+ * @function
+ * @name userAgent
+ * @param range {string} operator and version number "==", "<", "<=", ">", "=>" ex: >=4
+ * @param agent {string} user agent string
+ * @returns {boolean}
+ * @example
+ * be.ie() // true
+ * be.ie(==9) // true
+ */
+
+/**
+ * Mac detecting
+ *
+ * **Interfaces**: `not`
+ *
+ * @function
+ * @name mac
+ * @param agent {string} user agent string
+ * @returns {boolean}
+ * @example
+ * be.mac() // true
+ */
+
+/**
+ * Windows detecting
+ *
+ * **Interfaces**: `not`
+ *
+ * @function
+ * @name windows
+ * @param agent {string} user agent string
+ * @returns {boolean}
+ * @example
+ * be.windows() // true
+ */
+
+/**
+ * Linux detecting
+ *
+ * **Interfaces**: `not`
+ *
+ * @function
+ * @name linux
+ * @param agent {string} user agent string
+ * @returns {boolean}
+ * @example
+ * be.linux() // true
+ */
 
 Envs = Interface.create(Envs);
 

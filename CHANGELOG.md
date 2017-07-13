@@ -5,7 +5,22 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [unreleased]
+
+### Added
 - `be.compareVersion`, compare two version
+- `be.androidTablet`, detect Android tablet
+- `be.androidPhone`, detect Android phone
+- `be.chromeIOS`, detect Chrome on iOS
+- `be.opera`, detect Opera browser
+- `be.edge`, detect Edge browser
+- `be.safariMobile`, detect Safari mobile browser
+- `be.windowsPhone`, detect Windows Phone
+- `be.windowsTablet`, detect Windows tablet
+- `be.blackberry`, detect BlackBerry device
+- `be.linux`, detect Linux
+- `be.mobile`, detect mobile device
+- `be.tablet`, detect tablet device
+- `be.desktop`, detect desktop device
 
 ## [1.5.0] - 2017-07-10
 
