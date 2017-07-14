@@ -8,20 +8,6 @@
 let Helpers = {};
 
 /**
- * Get user agent
- * @returns {*}
- */
-Helpers.getUserAgent = (...params) => {
-    if (params.length)
-        return params[0];
-    else {
-        if (typeof window === 'undefined' || typeof window.navigator === 'undefined')
-            throw new Error('test allowed only in browser environment');
-        return navigator.userAgent;
-    }
-};
-
-/**
  * Convert object to string
  * @param object {*}
  * @returns {*}
