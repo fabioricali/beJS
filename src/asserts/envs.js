@@ -94,7 +94,7 @@ Envs.onLine = function () {
 
 Envs.onLine.multiple = false;
 
-let regEx = {
+let regExp = {
     android: /^(?:(?!Windows).)*(Android)(?:\s)(\d+((\.\d+)+)?)?/,
     androidTablet: /(Android)(?:\s)(\d+((\.\d+)+)?)?(?!.*Mobile)/,
     androidPhone: /(Android)(?:\s)(\d+((\.\d+)+)?)?(?:.*Mobile)/,
@@ -119,11 +119,11 @@ let regEx = {
 };
 
 (() => {
-    for(let i in regEx){
+    for(let i in regExp){
         Envs[i] = (range, agent) => {
             let rangePart = Helpers.operatorVersion(range);
             agent = !rangePart && !agent && range ? range : agent || navigator.userAgent;
-            let match = agent.match(regEx[i]);
+            let match = agent.match(regExp[i]);
             if(rangePart && match && match[2]){
                 return Mixed.compareVersion(match[2], rangePart[0], rangePart[1], true);
             }

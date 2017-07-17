@@ -160,9 +160,6 @@ Mixed.semVer = (value) => {
  * be.equal({a:1}, {a:1}) // true
  */
 Mixed.equal = (value, other) => {
-    //console.log('aaa',Types.all.object(value, other));
-    //console.log('bbb',Types.all.array(value, other));
-    console.log('ccc',Types.all.number(value, other));
     if(Types.all.number(value, other))
         return  value === other && 1 / value === 1 / other;
     else if(Types.all.string(value, other) || Types.all.regexp(value, other))
@@ -170,7 +167,6 @@ Mixed.equal = (value, other) => {
     else if(Types.all.boolean(value, other))
         return value === other;
     else if(Types.all.object(value, other) || Types.all.array(value, other)) {
-        console.log('sss',Types.all.array(value, other));
         if (Object.keys(value).length !== Object.keys(other).length)
             return false;
         for (let prop in value) {
