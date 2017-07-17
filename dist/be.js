@@ -1395,6 +1395,29 @@ var Types = __webpack_require__(1);
 var Interface = __webpack_require__(0);
 var Mixed = {};
 
+var regExp = {
+    email: /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,
+    hex: /^(?:0x)?[a-f0-9]+$/,
+    ipv4: /^(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)$/,
+    ipv6: /^(([0-9A-Fa-f]{1,4}:){7}([0-9A-Fa-f]{1,4}|:))|(([0-9A-Fa-f]{1,4}:){6}(:[0-9A-Fa-f]{1,4}|((25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)(\.(25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)){3})|:))|(([0-9A-Fa-f]{1,4}:){5}(((:[0-9A-Fa-f]{1,4}){1,2})|:((25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)(\.(25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)){3})|:))|(([0-9A-Fa-f]{1,4}:){4}(((:[0-9A-Fa-f]{1,4}){1,3})|((:[0-9A-Fa-f]{1,4})?:((25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)(\.(25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)){3}))|:))|(([0-9A-Fa-f]{1,4}:){3}(((:[0-9A-Fa-f]{1,4}){1,4})|((:[0-9A-Fa-f]{1,4}){0,2}:((25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)(\.(25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)){3}))|:))|(([0-9A-Fa-f]{1,4}:){2}(((:[0-9A-Fa-f]{1,4}){1,5})|((:[0-9A-Fa-f]{1,4}){0,3}:((25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)(\.(25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)){3}))|:))|(([0-9A-Fa-f]{1,4}:){1}(((:[0-9A-Fa-f]{1,4}){1,6})|((:[0-9A-Fa-f]{1,4}){0,4}:((25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)(\.(25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)){3}))|:))|(:(((:[0-9A-Fa-f]{1,4}){1,7})|((:[0-9A-Fa-f]{1,4}){0,5}:((25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)(\.(25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)){3}))|:))$/,
+    base64: /^([0-9a-zA-Z+/]{4})*(([0-9a-zA-Z+/]{2}==)|([0-9a-zA-Z+/]{3}=))?$/,
+    semVer: /^(\d*)\.(\d*)\.(\d*)(-(\d*|\d*[a-z-][0-9a-z-]*)(\.(\d*|\d*[a-z-][0-9a-z-]*))*)?(\+[0-9a-z-]+(\.[0-9a-z-]+)*)?$/i,
+    fiscalCodeIT: /^[A-Za-z]{6}[0-9]{2}[A-Za-z]{1}[0-9]{2}[A-Za-z]{1}[0-9]{3}[A-Za-z]{1}$/,
+    macAddress: /^([0-9A-Fa-f]{2}[:-]){5}([0-9A-Fa-f]{2})$/
+};
+
+(function () {
+    var _loop = function _loop(i) {
+        Mixed[i] = function (value) {
+            return regExp[i].test(value);
+        };
+    };
+
+    for (var i in regExp) {
+        _loop(i);
+    }
+})();
+
 /**
  * Check if is valid email
  * https://emailregex.com/
@@ -1408,10 +1431,6 @@ var Mixed = {};
  * be.email('fabio@rica.li') // true
  * be.not.email('fabiorica.li') // true
  */
-Mixed.email = function (value) {
-    return (/^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(value)
-    );
-};
 
 /**
  * Check if is a hexadecimal
@@ -1425,31 +1444,6 @@ Mixed.email = function (value) {
  * @example
  * be.hex('fff') // true
  */
-Mixed.hex = function (value) {
-    return (/^(?:0x)?[a-f0-9]+$/.test(value)
-    );
-};
-
-/**
- * Check if is a hexadecimal color
- *
- * **Interfaces**: `all`, `any`, `not`
- *
- * @function
- * @name hexColor
- * @param value {string} hex color string
- * @returns {boolean}
- * @example
- * be.hexColor('#ff0000') // true
- */
-Mixed.hexColor = function (value) {
-    try {
-        value = value.replace('#', '');
-        return Mixed.hex(value) && (value.length === 3 || value.length === 6);
-    } catch (e) {
-        return false;
-    }
-};
 
 /**
  * Check if is a valid IPv4
@@ -1463,10 +1457,6 @@ Mixed.hexColor = function (value) {
  * @example
  * be.ipv4('127.0.0.1') // true
  */
-Mixed.ipv4 = function (value) {
-    return (/^(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)$/.test(value)
-    );
-};
 
 /**
  * Check if is a valid IPv6
@@ -1480,10 +1470,58 @@ Mixed.ipv4 = function (value) {
  * @example
  * be.ipv6('FF01:0:0:0:0:0:0:1') // true
  */
-Mixed.ipv6 = function (value) {
-    return (/^(([0-9A-Fa-f]{1,4}:){7}([0-9A-Fa-f]{1,4}|:))|(([0-9A-Fa-f]{1,4}:){6}(:[0-9A-Fa-f]{1,4}|((25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)(\.(25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)){3})|:))|(([0-9A-Fa-f]{1,4}:){5}(((:[0-9A-Fa-f]{1,4}){1,2})|:((25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)(\.(25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)){3})|:))|(([0-9A-Fa-f]{1,4}:){4}(((:[0-9A-Fa-f]{1,4}){1,3})|((:[0-9A-Fa-f]{1,4})?:((25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)(\.(25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)){3}))|:))|(([0-9A-Fa-f]{1,4}:){3}(((:[0-9A-Fa-f]{1,4}){1,4})|((:[0-9A-Fa-f]{1,4}){0,2}:((25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)(\.(25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)){3}))|:))|(([0-9A-Fa-f]{1,4}:){2}(((:[0-9A-Fa-f]{1,4}){1,5})|((:[0-9A-Fa-f]{1,4}){0,3}:((25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)(\.(25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)){3}))|:))|(([0-9A-Fa-f]{1,4}:){1}(((:[0-9A-Fa-f]{1,4}){1,6})|((:[0-9A-Fa-f]{1,4}){0,4}:((25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)(\.(25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)){3}))|:))|(:(((:[0-9A-Fa-f]{1,4}){1,7})|((:[0-9A-Fa-f]{1,4}){0,5}:((25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)(\.(25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)){3}))|:))$/.test(value)
-    );
-};
+
+/**
+ * Check if is base64 encoded string
+ *
+ * **Interfaces**: `all`, `any`, `not`
+ *
+ * @function
+ * @name base64
+ * @param value {string} base64 string
+ * @returns {boolean}
+ * @example
+ * be.base64('aGVsbG8=') // true
+ */
+
+/**
+ * Check if is a valid semver string
+ *
+ * **Interfaces**: `all`, `any`, `not`
+ *
+ * @function
+ * @name semVer
+ * @param value {string} version string
+ * @returns {boolean}
+ * @example
+ * be.semVer('1.0.0') // true
+ */
+
+/**
+ * Check if is an IT fiscal code
+ *
+ * **Interfaces**: `all`, `any`, `not`
+ *
+ * @function
+ * @name fiscalCodeIT
+ * @param value {string} code string
+ * @returns {boolean}
+ * @example
+ * be.fiscalCodeIT('OLEFBA97C64F158X') // true
+ */
+
+/**
+ * Check if is a valid MAC address
+ *
+ * **Interfaces**: `all`, `any`, `not`
+ *
+ * @function
+ * @name macAddress
+ * @param value {string} MAC string
+ * @returns {boolean}
+ * @example
+ * be.macAddress('3D:F2:C9:A6:B3:4F') // true
+ */
 
 /**
  * Check if is a valid ip string
@@ -1499,40 +1537,6 @@ Mixed.ipv6 = function (value) {
  */
 Mixed.ip = function (value) {
     return Mixed.ipv4(value) || Mixed.ipv6(value);
-};
-
-/**
- * Check if is base64 encoded string
- *
- * **Interfaces**: `all`, `any`, `not`
- *
- * @function
- * @name base64
- * @param value {string} base64 string
- * @returns {boolean}
- * @example
- * be.base64('aGVsbG8=') // true
- */
-Mixed.base64 = function (value) {
-    return (/^([0-9a-zA-Z+/]{4})*(([0-9a-zA-Z+/]{2}==)|([0-9a-zA-Z+/]{3}=))?$/.test(value)
-    );
-};
-
-/**
- * Check if is a valid semver string
- *
- * **Interfaces**: `all`, `any`, `not`
- *
- * @function
- * @name semVer
- * @param value {string} version string
- * @returns {boolean}
- * @example
- * be.semVer('1.0.0') // true
- */
-Mixed.semVer = function (value) {
-    return (/^(\d*)\.(\d*)\.(\d*)(-(\d*|\d*[a-z-][0-9a-z-]*)(\.(\d*|\d*[a-z-][0-9a-z-]*))*)?(\+[0-9a-z-]+(\.[0-9a-z-]+)*)?$/i.test(value)
-    );
 };
 
 /**
@@ -1553,11 +1557,7 @@ Mixed.semVer = function (value) {
  * be.equal({a:1}, {a:1}) // true
  */
 Mixed.equal = function (value, other) {
-    //console.log('aaa',Types.all.object(value, other));
-    //console.log('bbb',Types.all.array(value, other));
-    console.log('ccc', Types.all.number(value, other));
     if (Types.all.number(value, other)) return value === other && 1 / value === 1 / other;else if (Types.all.string(value, other) || Types.all.regexp(value, other)) return value.toString() === other.toString();else if (Types.all.boolean(value, other)) return value === other;else if (Types.all.object(value, other) || Types.all.array(value, other)) {
-        console.log('sss', Types.all.array(value, other));
         if (Object.keys(value).length !== Object.keys(other).length) return false;
         for (var prop in value) {
             if (value.hasOwnProperty(prop) && other.hasOwnProperty(prop)) {
@@ -1571,37 +1571,24 @@ Mixed.equal = function (value, other) {
 Mixed.equal.multiple = false;
 
 /**
- * Check if is an IT fiscal code
+ * Check if is a hexadecimal color
  *
  * **Interfaces**: `all`, `any`, `not`
  *
  * @function
- * @name fiscalCodeIT
- * @param value {string} code string
+ * @name hexColor
+ * @param value {string} hex color string
  * @returns {boolean}
  * @example
- * be.fiscalCodeIT('OLEFBA97C64F158X') // true
+ * be.hexColor('#ff0000') // true
  */
-Mixed.fiscalCodeIT = function (value) {
-    return (/^[A-Za-z]{6}[0-9]{2}[A-Za-z]{1}[0-9]{2}[A-Za-z]{1}[0-9]{3}[A-Za-z]{1}$/.test(value)
-    );
-};
-
-/**
- * Check if is a valid MAC address
- *
- * **Interfaces**: `all`, `any`, `not`
- *
- * @function
- * @name macAddress
- * @param value {string} MAC string
- * @returns {boolean}
- * @example
- * be.macAddress('3D:F2:C9:A6:B3:4F') // true
- */
-Mixed.macAddress = function (value) {
-    return (/^([0-9A-Fa-f]{2}[:-]){5}([0-9A-Fa-f]{2})$/.test(value)
-    );
+Mixed.hexColor = function (value) {
+    try {
+        value = value.replace('#', '');
+        return Mixed.hex(value) && (value.length === 3 || value.length === 6);
+    } catch (e) {
+        return false;
+    }
 };
 
 /**
@@ -4271,7 +4258,7 @@ Envs.onLine = function () {
 
 Envs.onLine.multiple = false;
 
-var regEx = {
+var regExp = {
   android: /^(?:(?!Windows).)*(Android)(?:\s)(\d+((\.\d+)+)?)?/,
   androidTablet: /(Android)(?:\s)(\d+((\.\d+)+)?)?(?!.*Mobile)/,
   androidPhone: /(Android)(?:\s)(\d+((\.\d+)+)?)?(?:.*Mobile)/,
@@ -4300,7 +4287,7 @@ var regEx = {
     Envs[i] = function (range, agent) {
       var rangePart = Helpers.operatorVersion(range);
       agent = !rangePart && !agent && range ? range : agent || navigator.userAgent;
-      var match = agent.match(regEx[i]);
+      var match = agent.match(regExp[i]);
       if (rangePart && match && match[2]) {
         return Mixed.compareVersion(match[2], rangePart[0], rangePart[1], true);
       }
@@ -4309,7 +4296,7 @@ var regEx = {
     Envs[i].multiple = false;
   };
 
-  for (var i in regEx) {
+  for (var i in regExp) {
     _loop(i);
   }
 })();
@@ -5760,6 +5747,27 @@ module.exports = CreditCard;
 var Interface = __webpack_require__(0);
 var PostalCodes = {};
 
+var regExp = {
+  postalCodeES: /^([1-9]{2}|[0-9][1-9]|[1-9][0-9])[0-9]{3}$/,
+  postalCodeUK: /^[A-Z]{1,2}[0-9RCHNQ][0-9A-Z]?\s?[0-9][ABD-HJLNP-UW-Z]{2}$|^[A-Z]{2}-?[0-9]{4}$/,
+  postalCodeUS: /(\d{5}([\-]\d{4})?)$/,
+  postalCodeIT: /^\d{5}$/,
+  postalCodeDE: /\b((?:0[1-46-9]\d{3})|(?:[1-357-9]\d{4})|(?:[4][0-24-9]\d{3})|(?:[6][013-9]\d{3}))\b/,
+  postalCodeNL: /^[1-9][0-9]{3}\s?[a-zA-Z]{2}$/
+};
+
+(function () {
+  var _loop = function _loop(i) {
+    PostalCodes[i] = function (value) {
+      return regExp[i].test(value);
+    };
+  };
+
+  for (var i in regExp) {
+    _loop(i);
+  }
+})();
+
 /**
  * Check if is an ES postal code
  *
@@ -5772,10 +5780,6 @@ var PostalCodes = {};
  * @example
  * be.postalCodeES('03160') // true
  */
-PostalCodes.postalCodeES = function (value) {
-  return (/^([1-9]{2}|[0-9][1-9]|[1-9][0-9])[0-9]{3}$/.test(value)
-  );
-};
 
 /**
  * Check if is an UK postal code
@@ -5789,10 +5793,6 @@ PostalCodes.postalCodeES = function (value) {
  * @example
  * be.postalCodeUk('BN519EJ') // true
  */
-PostalCodes.postalCodeUK = function (value) {
-  return (/^[A-Z]{1,2}[0-9RCHNQ][0-9A-Z]?\s?[0-9][ABD-HJLNP-UW-Z]{2}$|^[A-Z]{2}-?[0-9]{4}$/.test(value)
-  );
-};
 
 /**
  * Check if is an US postal code
@@ -5806,10 +5806,6 @@ PostalCodes.postalCodeUK = function (value) {
  * @example
  * be.postalCodeUS('36784') // true
  */
-PostalCodes.postalCodeUS = function (value) {
-  return (/(\d{5}([\-]\d{4})?)$/.test(value)
-  );
-};
 
 /**
  * Check if is an IT postal code
@@ -5823,10 +5819,6 @@ PostalCodes.postalCodeUS = function (value) {
  * @example
  * be.postalCodeIT('98023') // true
  */
-PostalCodes.postalCodeIT = function (value) {
-  return (/^\d{5}$/.test(value)
-  );
-};
 
 /**
  * Check if is an DE postal code
@@ -5840,10 +5832,6 @@ PostalCodes.postalCodeIT = function (value) {
  * @example
  * be.postalCodeDE('10117') // true
  */
-PostalCodes.postalCodeDE = function (value) {
-  return (/\b((?:0[1-46-9]\d{3})|(?:[1-357-9]\d{4})|(?:[4][0-24-9]\d{3})|(?:[6][013-9]\d{3}))\b/.test(value)
-  );
-};
 
 /**
  * Check if is an NL postal code
@@ -5857,10 +5845,6 @@ PostalCodes.postalCodeDE = function (value) {
  * @example
  * be.postalCodeNL('1001 AD') // true
  */
-PostalCodes.postalCodeNL = function (value) {
-  return (/^[1-9][0-9]{3}\s?[a-zA-Z]{2}$/.test(value)
-  );
-};
 
 PostalCodes = Interface.create(PostalCodes);
 
