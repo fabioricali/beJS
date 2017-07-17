@@ -6,6 +6,23 @@
 const Interface = require('../interface');
 let PostalCodes = {};
 
+let regExp = {
+    postalCodeES: /^([1-9]{2}|[0-9][1-9]|[1-9][0-9])[0-9]{3}$/,
+    postalCodeUK: /^[A-Z]{1,2}[0-9RCHNQ][0-9A-Z]?\s?[0-9][ABD-HJLNP-UW-Z]{2}$|^[A-Z]{2}-?[0-9]{4}$/,
+    postalCodeUS: /(\d{5}([\-]\d{4})?)$/,
+    postalCodeIT: /^\d{5}$/,
+    postalCodeDE: /\b((?:0[1-46-9]\d{3})|(?:[1-357-9]\d{4})|(?:[4][0-24-9]\d{3})|(?:[6][013-9]\d{3}))\b/,
+    postalCodeNL: /^[1-9][0-9]{3}\s?[a-zA-Z]{2}$/
+};
+
+(() => {
+    for(let i in regExp){
+        PostalCodes[i] = (value) => {
+            return regExp[i].test(value);
+        }
+    }
+})();
+
 /**
  * Check if is an ES postal code
  *
@@ -18,9 +35,6 @@ let PostalCodes = {};
  * @example
  * be.postalCodeES('03160') // true
  */
-PostalCodes.postalCodeES = (value) => {
-    return /^([1-9]{2}|[0-9][1-9]|[1-9][0-9])[0-9]{3}$/.test(value);
-};
 
 /**
  * Check if is an UK postal code
@@ -34,9 +48,6 @@ PostalCodes.postalCodeES = (value) => {
  * @example
  * be.postalCodeUk('BN519EJ') // true
  */
-PostalCodes.postalCodeUK = (value) => {
-    return /^[A-Z]{1,2}[0-9RCHNQ][0-9A-Z]?\s?[0-9][ABD-HJLNP-UW-Z]{2}$|^[A-Z]{2}-?[0-9]{4}$/.test(value);
-};
 
 /**
  * Check if is an US postal code
@@ -50,9 +61,6 @@ PostalCodes.postalCodeUK = (value) => {
  * @example
  * be.postalCodeUS('36784') // true
  */
-PostalCodes.postalCodeUS = (value) => {
-    return /(\d{5}([\-]\d{4})?)$/.test(value);
-};
 
 /**
  * Check if is an IT postal code
@@ -66,9 +74,6 @@ PostalCodes.postalCodeUS = (value) => {
  * @example
  * be.postalCodeIT('98023') // true
  */
-PostalCodes.postalCodeIT = (value) => {
-    return /^\d{5}$/.test(value);
-};
 
 /**
  * Check if is an DE postal code
@@ -82,9 +87,6 @@ PostalCodes.postalCodeIT = (value) => {
  * @example
  * be.postalCodeDE('10117') // true
  */
-PostalCodes.postalCodeDE = (value) => {
-    return /\b((?:0[1-46-9]\d{3})|(?:[1-357-9]\d{4})|(?:[4][0-24-9]\d{3})|(?:[6][013-9]\d{3}))\b/.test(value);
-};
 
 /**
  * Check if is an NL postal code
@@ -98,11 +100,6 @@ PostalCodes.postalCodeDE = (value) => {
  * @example
  * be.postalCodeNL('1001 AD') // true
  */
-PostalCodes.postalCodeNL = (value) => {
-    return /^[1-9][0-9]{3}\s?[a-zA-Z]{2}$/.test(value);
-};
-
-
 
 PostalCodes = Interface.create(PostalCodes);
 
