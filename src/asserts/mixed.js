@@ -7,6 +7,25 @@ const Types = require('./types');
 const Interface = require('../interface');
 let Mixed = {};
 
+let regExp = {
+    email: /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,
+    hex: /^(?:0x)?[a-f0-9]+$/,
+    ipv4: /^(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)$/,
+    ipv6: /^(([0-9A-Fa-f]{1,4}:){7}([0-9A-Fa-f]{1,4}|:))|(([0-9A-Fa-f]{1,4}:){6}(:[0-9A-Fa-f]{1,4}|((25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)(\.(25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)){3})|:))|(([0-9A-Fa-f]{1,4}:){5}(((:[0-9A-Fa-f]{1,4}){1,2})|:((25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)(\.(25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)){3})|:))|(([0-9A-Fa-f]{1,4}:){4}(((:[0-9A-Fa-f]{1,4}){1,3})|((:[0-9A-Fa-f]{1,4})?:((25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)(\.(25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)){3}))|:))|(([0-9A-Fa-f]{1,4}:){3}(((:[0-9A-Fa-f]{1,4}){1,4})|((:[0-9A-Fa-f]{1,4}){0,2}:((25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)(\.(25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)){3}))|:))|(([0-9A-Fa-f]{1,4}:){2}(((:[0-9A-Fa-f]{1,4}){1,5})|((:[0-9A-Fa-f]{1,4}){0,3}:((25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)(\.(25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)){3}))|:))|(([0-9A-Fa-f]{1,4}:){1}(((:[0-9A-Fa-f]{1,4}){1,6})|((:[0-9A-Fa-f]{1,4}){0,4}:((25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)(\.(25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)){3}))|:))|(:(((:[0-9A-Fa-f]{1,4}){1,7})|((:[0-9A-Fa-f]{1,4}){0,5}:((25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)(\.(25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)){3}))|:))$/,
+    base64: /^([0-9a-zA-Z+/]{4})*(([0-9a-zA-Z+/]{2}==)|([0-9a-zA-Z+/]{3}=))?$/,
+    semVer: /^(\d*)\.(\d*)\.(\d*)(-(\d*|\d*[a-z-][0-9a-z-]*)(\.(\d*|\d*[a-z-][0-9a-z-]*))*)?(\+[0-9a-z-]+(\.[0-9a-z-]+)*)?$/i,
+    fiscalCodeIT: /^[A-Za-z]{6}[0-9]{2}[A-Za-z]{1}[0-9]{2}[A-Za-z]{1}[0-9]{3}[A-Za-z]{1}$/,
+    macAddress: /^([0-9A-Fa-f]{2}[:-]){5}([0-9A-Fa-f]{2})$/
+};
+
+(() => {
+    for(let i in regExp){
+        Mixed[i] = (value) => {
+            return regExp[i].test(value);
+        }
+    }
+})();
+
 /**
  * Check if is valid email
  * https://emailregex.com/
@@ -20,9 +39,6 @@ let Mixed = {};
  * be.email('fabio@rica.li') // true
  * be.not.email('fabiorica.li') // true
  */
-Mixed.email = (value) => {
-    return /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(value);
-};
 
 /**
  * Check if is a hexadecimal
@@ -36,31 +52,6 @@ Mixed.email = (value) => {
  * @example
  * be.hex('fff') // true
  */
-Mixed.hex = (value) => {
-    return /^(?:0x)?[a-f0-9]+$/.test(value);
-};
-
-/**
- * Check if is a hexadecimal color
- *
- * **Interfaces**: `all`, `any`, `not`
- *
- * @function
- * @name hexColor
- * @param value {string} hex color string
- * @returns {boolean}
- * @example
- * be.hexColor('#ff0000') // true
- */
-Mixed.hexColor = (value) => {
-    try {
-        value = value.replace('#', '');
-        return Mixed.hex(value) &&
-            (value.length === 3 || value.length === 6);
-    } catch (e) {
-        return false;
-    }
-};
 
 /**
  * Check if is a valid IPv4
@@ -74,9 +65,6 @@ Mixed.hexColor = (value) => {
  * @example
  * be.ipv4('127.0.0.1') // true
  */
-Mixed.ipv4 = (value) => {
-    return /^(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)$/.test(value);
-};
 
 /**
  * Check if is a valid IPv6
@@ -90,9 +78,58 @@ Mixed.ipv4 = (value) => {
  * @example
  * be.ipv6('FF01:0:0:0:0:0:0:1') // true
  */
-Mixed.ipv6 = (value) => {
-    return /^(([0-9A-Fa-f]{1,4}:){7}([0-9A-Fa-f]{1,4}|:))|(([0-9A-Fa-f]{1,4}:){6}(:[0-9A-Fa-f]{1,4}|((25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)(\.(25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)){3})|:))|(([0-9A-Fa-f]{1,4}:){5}(((:[0-9A-Fa-f]{1,4}){1,2})|:((25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)(\.(25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)){3})|:))|(([0-9A-Fa-f]{1,4}:){4}(((:[0-9A-Fa-f]{1,4}){1,3})|((:[0-9A-Fa-f]{1,4})?:((25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)(\.(25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)){3}))|:))|(([0-9A-Fa-f]{1,4}:){3}(((:[0-9A-Fa-f]{1,4}){1,4})|((:[0-9A-Fa-f]{1,4}){0,2}:((25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)(\.(25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)){3}))|:))|(([0-9A-Fa-f]{1,4}:){2}(((:[0-9A-Fa-f]{1,4}){1,5})|((:[0-9A-Fa-f]{1,4}){0,3}:((25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)(\.(25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)){3}))|:))|(([0-9A-Fa-f]{1,4}:){1}(((:[0-9A-Fa-f]{1,4}){1,6})|((:[0-9A-Fa-f]{1,4}){0,4}:((25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)(\.(25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)){3}))|:))|(:(((:[0-9A-Fa-f]{1,4}){1,7})|((:[0-9A-Fa-f]{1,4}){0,5}:((25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)(\.(25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)){3}))|:))$/.test(value);
-};
+
+/**
+ * Check if is base64 encoded string
+ *
+ * **Interfaces**: `all`, `any`, `not`
+ *
+ * @function
+ * @name base64
+ * @param value {string} base64 string
+ * @returns {boolean}
+ * @example
+ * be.base64('aGVsbG8=') // true
+ */
+
+/**
+ * Check if is a valid semver string
+ *
+ * **Interfaces**: `all`, `any`, `not`
+ *
+ * @function
+ * @name semVer
+ * @param value {string} version string
+ * @returns {boolean}
+ * @example
+ * be.semVer('1.0.0') // true
+ */
+
+/**
+ * Check if is an IT fiscal code
+ *
+ * **Interfaces**: `all`, `any`, `not`
+ *
+ * @function
+ * @name fiscalCodeIT
+ * @param value {string} code string
+ * @returns {boolean}
+ * @example
+ * be.fiscalCodeIT('OLEFBA97C64F158X') // true
+ */
+
+/**
+ * Check if is a valid MAC address
+ *
+ * **Interfaces**: `all`, `any`, `not`
+ *
+ * @function
+ * @name macAddress
+ * @param value {string} MAC string
+ * @returns {boolean}
+ * @example
+ * be.macAddress('3D:F2:C9:A6:B3:4F') // true
+ */
 
 /**
  * Check if is a valid ip string
@@ -108,38 +145,6 @@ Mixed.ipv6 = (value) => {
  */
 Mixed.ip = (value) => {
     return Mixed.ipv4(value) || Mixed.ipv6(value);
-};
-
-/**
- * Check if is base64 encoded string
- *
- * **Interfaces**: `all`, `any`, `not`
- *
- * @function
- * @name base64
- * @param value {string} base64 string
- * @returns {boolean}
- * @example
- * be.base64('aGVsbG8=') // true
- */
-Mixed.base64 = (value) => {
-    return /^([0-9a-zA-Z+/]{4})*(([0-9a-zA-Z+/]{2}==)|([0-9a-zA-Z+/]{3}=))?$/.test(value);
-};
-
-/**
- * Check if is a valid semver string
- *
- * **Interfaces**: `all`, `any`, `not`
- *
- * @function
- * @name semVer
- * @param value {string} version string
- * @returns {boolean}
- * @example
- * be.semVer('1.0.0') // true
- */
-Mixed.semVer = (value) => {
-    return /^(\d*)\.(\d*)\.(\d*)(-(\d*|\d*[a-z-][0-9a-z-]*)(\.(\d*|\d*[a-z-][0-9a-z-]*))*)?(\+[0-9a-z-]+(\.[0-9a-z-]+)*)?$/i.test(value);
 };
 
 /**
@@ -183,35 +188,25 @@ Mixed.equal = (value, other) => {
 Mixed.equal.multiple = false;
 
 /**
- * Check if is an IT fiscal code
+ * Check if is a hexadecimal color
  *
  * **Interfaces**: `all`, `any`, `not`
  *
  * @function
- * @name fiscalCodeIT
- * @param value {string} code string
+ * @name hexColor
+ * @param value {string} hex color string
  * @returns {boolean}
  * @example
- * be.fiscalCodeIT('OLEFBA97C64F158X') // true
+ * be.hexColor('#ff0000') // true
  */
-Mixed.fiscalCodeIT = (value) => {
-    return /^[A-Za-z]{6}[0-9]{2}[A-Za-z]{1}[0-9]{2}[A-Za-z]{1}[0-9]{3}[A-Za-z]{1}$/.test(value);
-};
-
-/**
- * Check if is a valid MAC address
- *
- * **Interfaces**: `all`, `any`, `not`
- *
- * @function
- * @name macAddress
- * @param value {string} MAC string
- * @returns {boolean}
- * @example
- * be.macAddress('3D:F2:C9:A6:B3:4F') // true
- */
-Mixed.macAddress = (value) => {
-    return /^([0-9A-Fa-f]{2}[:-]){5}([0-9A-Fa-f]{2})$/.test(value);
+Mixed.hexColor = (value) => {
+    try {
+        value = value.replace('#', '');
+        return Mixed.hex(value) &&
+            (value.length === 3 || value.length === 6);
+    } catch (e) {
+        return false;
+    }
 };
 
 /**
