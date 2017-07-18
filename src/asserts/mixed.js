@@ -18,13 +18,7 @@ let regExp = {
     macAddress: /^([0-9A-Fa-f]{2}[:-]){5}([0-9A-Fa-f]{2})$/
 };
 
-(() => {
-    for(let i in regExp){
-        Mixed[i] = (value) => {
-            return regExp[i].test(value);
-        }
-    }
-})();
+Mixed = Helpers.createRegExpMethods(Mixed, regExp);
 
 /**
  * Check if is valid email

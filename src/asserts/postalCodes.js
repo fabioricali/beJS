@@ -3,6 +3,7 @@
  * @module PostalCodes
  */
 
+const Helpers = require('../helpers');
 const Interface = require('../interface');
 let PostalCodes = {};
 
@@ -15,13 +16,7 @@ let regExp = {
     postalCodeNL: /^[1-9][0-9]{3}\s?[a-zA-Z]{2}$/
 };
 
-(() => {
-    for(let i in regExp){
-        PostalCodes[i] = (value) => {
-            return regExp[i].test(value);
-        }
-    }
-})();
+PostalCodes = Helpers.createRegExpMethods(PostalCodes, regExp);
 
 /**
  * Check if is an ES postal code

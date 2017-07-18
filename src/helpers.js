@@ -61,11 +61,11 @@ Helpers.getEditDistance = (a, b) => {
  * Comparators methods
  */
 Helpers.comparators = {
-    '==': function(a, b) {return Helpers.compareVersions(a, b) === 0;},
-    '<': function(a, b) {return Helpers.compareVersions(a, b) < 0;},
-    '<=': function(a, b) {return Helpers.compareVersions(a, b) <= 0;},
-    '>': function(a, b) {return Helpers.compareVersions(a, b) > 0;},
-    '>=': function(a, b) {return Helpers.compareVersions(a, b) >= 0;}
+    '==': (a, b) => {return Helpers.compareVersions(a, b) === 0;},
+    '<': (a, b) => {return Helpers.compareVersions(a, b) < 0;},
+    '<=': (a, b) => {return Helpers.compareVersions(a, b) <= 0;},
+    '>': (a, b) => {return Helpers.compareVersions(a, b) > 0;},
+    '>=': (a, b) => {return Helpers.compareVersions(a, b) >= 0;}
 };
 
 /**
@@ -75,7 +75,7 @@ Helpers.comparators = {
  * @param b {string} version number
  * @returns {int}
  */
-Helpers.compareVersions = function (a, b) {
+Helpers.compareVersions = (a, b) => {
     let diff;
     let regExStrip0 = /(\.0+)+$/;
     let segmentsA = a.replace(regExStrip0, '').split('.');
@@ -96,11 +96,27 @@ Helpers.compareVersions = function (a, b) {
  * @param value {string} string like <=1.0.0
  * @returns {*}
  */
-Helpers.operatorVersion = function (value) {
+Helpers.operatorVersion = (value) => {
     if(!value) return false;
     let match = value.match(/(==|<=?|>=?)(?:\s+)?(\d+((\.\d+)+)?)?/);
     if(!match) return false;
     return [match[1], match[2]];
+};
+
+/**
+ * Create RegExp methods
+ * @param obj {object} object
+ * @param methods {object} RegExp object
+ * @returns {*}
+ */
+Helpers.createRegExpMethods = (obj, methods) => {
+    for(let i in methods){
+        if(methods.hasOwnProperty(i))
+            obj[i] = (value) => {
+                return methods[i].test(value);
+            }
+    }
+    return obj;
 };
 
 module.exports = Helpers;

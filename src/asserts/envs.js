@@ -118,20 +118,18 @@ let regExp = {
     windows: /Windows/,
 };
 
-(() => {
-    for(let i in regExp){
-        Envs[i] = (range, agent) => {
-            let rangePart = Helpers.operatorVersion(range);
-            agent = !rangePart && !agent && range ? range : agent || navigator.userAgent;
-            let match = agent.match(regExp[i]);
-            if(rangePart && match && match[2]){
-                return Mixed.compareVersion(match[2], rangePart[0], rangePart[1], true);
-            }
-            return match !== null;
-        };
-        Envs[i].multiple = false;
-    }
-})();
+for(let i in regExp){
+    Envs[i] = (range, agent) => {
+        let rangePart = Helpers.operatorVersion(range);
+        agent = !rangePart && !agent && range ? range : agent || navigator.userAgent;
+        let match = agent.match(regExp[i]);
+        if(rangePart && match && match[2]){
+            return Mixed.compareVersion(match[2], rangePart[0], rangePart[1], true);
+        }
+        return match !== null;
+    };
+    Envs[i].multiple = false;
+}
 
 /**
  * Check if is mobile device

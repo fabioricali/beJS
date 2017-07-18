@@ -122,3 +122,11 @@ describe('operatorVersion', function () {
         assert.equal(result, false);
     });
 });
+
+describe('createRegExpMethods', function () {
+    it('should be return true', function () {
+        var result = be._helpers.createRegExpMethods({}, {a: /hello/});
+        console.log(result);
+        assert.equal(result.a('hello'), true);
+    });
+});

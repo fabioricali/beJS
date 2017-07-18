@@ -1075,6 +1075,25 @@ Helpers.operatorVersion = function (value) {
     return [match[1], match[2]];
 };
 
+/**
+ * Create RegExp methods
+ * @param obj {object} object
+ * @param methods {object} RegExp object
+ * @returns {*}
+ */
+Helpers.createRegExpMethods = function (obj, methods) {
+    var _loop = function _loop(i) {
+        if (methods.hasOwnProperty(i)) obj[i] = function (value) {
+            return methods[i].test(value);
+        };
+    };
+
+    for (var i in methods) {
+        _loop(i);
+    }
+    return obj;
+};
+
 module.exports = Helpers;
 
 /***/ }),
@@ -1406,17 +1425,7 @@ var regExp = {
     macAddress: /^([0-9A-Fa-f]{2}[:-]){5}([0-9A-Fa-f]{2})$/
 };
 
-(function () {
-    var _loop = function _loop(i) {
-        Mixed[i] = function (value) {
-            return regExp[i].test(value);
-        };
-    };
-
-    for (var i in regExp) {
-        _loop(i);
-    }
-})();
+Mixed = Helpers.createRegExpMethods(Mixed, regExp);
 
 /**
  * Check if is valid email
@@ -4282,24 +4291,22 @@ var regExp = {
   windows: /Windows/
 };
 
-(function () {
-  var _loop = function _loop(i) {
-    Envs[i] = function (range, agent) {
-      var rangePart = Helpers.operatorVersion(range);
-      agent = !rangePart && !agent && range ? range : agent || navigator.userAgent;
-      var match = agent.match(regExp[i]);
-      if (rangePart && match && match[2]) {
-        return Mixed.compareVersion(match[2], rangePart[0], rangePart[1], true);
-      }
-      return match !== null;
-    };
-    Envs[i].multiple = false;
+var _loop = function _loop(i) {
+  Envs[i] = function (range, agent) {
+    var rangePart = Helpers.operatorVersion(range);
+    agent = !rangePart && !agent && range ? range : agent || navigator.userAgent;
+    var match = agent.match(regExp[i]);
+    if (rangePart && match && match[2]) {
+      return Mixed.compareVersion(match[2], rangePart[0], rangePart[1], true);
+    }
+    return match !== null;
   };
+  Envs[i].multiple = false;
+};
 
-  for (var i in regExp) {
-    _loop(i);
-  }
-})();
+for (var i in regExp) {
+  _loop(i);
+}
 
 /**
  * Check if is mobile device
@@ -5744,6 +5751,7 @@ module.exports = CreditCard;
  * @module PostalCodes
  */
 
+var Helpers = __webpack_require__(2);
 var Interface = __webpack_require__(0);
 var PostalCodes = {};
 
@@ -5756,17 +5764,7 @@ var regExp = {
   postalCodeNL: /^[1-9][0-9]{3}\s?[a-zA-Z]{2}$/
 };
 
-(function () {
-  var _loop = function _loop(i) {
-    PostalCodes[i] = function (value) {
-      return regExp[i].test(value);
-    };
-  };
-
-  for (var i in regExp) {
-    _loop(i);
-  }
-})();
+PostalCodes = Helpers.createRegExpMethods(PostalCodes, regExp);
 
 /**
  * Check if is an ES postal code
