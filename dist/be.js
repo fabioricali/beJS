@@ -948,6 +948,22 @@ Types.float64Array = function (value) {
     return Types.classOf(value, 'float64array');
 };
 
+/**
+ * Check if is async Function
+ *
+ * **Interfaces**: `all`, `any`, `not`
+ *
+ * @function
+ * @name asyncFunction
+ * @param value {Mixed} value
+ * @returns {boolean}
+ * @example
+ * be.asyncFunction(async function test(){}) // true
+ */
+Types.asyncFunction = function (value) {
+    return Types.classOf(value, 'asyncfunction');
+};
+
 Types = Interface.create(Types);
 
 module.exports = Types;

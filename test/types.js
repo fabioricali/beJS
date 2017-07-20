@@ -889,3 +889,16 @@ describe('float64Array', function () {
         assert.equal(result, false);
     });
 });
+
+describe('asyncFunction', function () {
+    it('should be return true', function () {
+        var result = be.asyncFunction(async function test(){});
+        console.log(result);
+        assert.equal(result, true);
+    });
+    it('should be return false', function () {
+        var result = be.asyncFunction(function test(){});
+        console.log(result);
+        assert.equal(result, false);
+    });
+});
