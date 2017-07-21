@@ -88,6 +88,11 @@ describe('odd', function () {
         console.log(result);
         assert.equal(result, true);
     });
+    it('-3, should be return true', function () {
+        var result = be.odd(-3);
+        console.log(result);
+        assert.equal(result, true);
+    });
 
     it('2, should be return false', function () {
         var result = be.odd(2);
