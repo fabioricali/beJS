@@ -6,8 +6,10 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [1.7.0] - 2017-07-22
 ### Added
+- `be.uuid1`, detect if is UUID v1
 - `be.uuid3`, detect if is UUID v3
 - `be.uuid4`, detect if is UUID v4
+- `be.uuid5`, detect if is UUID v5
 
 ## [1.6.3] - 2017-07-20
 ### Added

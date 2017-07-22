@@ -16,6 +16,7 @@ let regExp = {
     semVer: /^(\d*)\.(\d*)\.(\d*)(-(\d*|\d*[a-z-][0-9a-z-]*)(\.(\d*|\d*[a-z-][0-9a-z-]*))*)?(\+[0-9a-z-]+(\.[0-9a-z-]+)*)?$/i,
     fiscalCodeIT: /^[A-Za-z]{6}[0-9]{2}[A-Za-z]{1}[0-9]{2}[A-Za-z]{1}[0-9]{3}[A-Za-z]{1}$/,
     macAddress: /^([0-9A-Fa-f]{2}[:-]){5}([0-9A-Fa-f]{2})$/,
+    uuid1: /^[0-9A-F]{8}-[0-9A-F]{4}-1[0-9A-F]{3}-[0-9A-F]{4}-[0-9A-F]{12}$/i,
     uuid3: /^[0-9A-F]{8}-[0-9A-F]{4}-3[0-9A-F]{3}-[0-9A-F]{4}-[0-9A-F]{12}$/i,
     uuid4: /^[0-9A-F]{8}-[0-9A-F]{4}-4[0-9A-F]{3}-[89AB][0-9A-F]{3}-[0-9A-F]{12}$/i,
     uuid5: /^[0-9A-F]{8}-[0-9A-F]{4}-5[0-9A-F]{3}-[89AB][0-9A-F]{3}-[0-9A-F]{12}$/i,
@@ -27,26 +28,51 @@ let regExp = {
 Mixed = Helpers.createRegExpMethods(Mixed, regExp);
 
 /**
+ * Check if is UUID ver 1
+ * **Interfaces**: `all`, `any`, `not`
+ *
+ * @function
+ * @name uuid1
+ * @param value {string} uuid
+ * @returns {boolean}
+ * @example
+ * be.uuid1('9e3a0460-d72d-11e4-a631-c8e0eb141dab') // true
+ */
+
+/**
  * Check if is UUID ver 3
  * **Interfaces**: `all`, `any`, `not`
  *
  * @function
  * @name uuid3
- * @param value {string} uuid3
+ * @param value {string} uuid
  * @returns {boolean}
  * @example
  * be.uuid3('2c1d43b8-e6d7-376e-af7f-d4bde997cc3f') // true
  */
+
 /**
  * Check if is UUID ver 4
  * **Interfaces**: `all`, `any`, `not`
  *
  * @function
  * @name uuid4
- * @param value {string} uuid4
+ * @param value {string} uuid
  * @returns {boolean}
  * @example
  * be.uuid4('366a77ba-d506-4a03-a730-318b8e6be8c5') // true
+ */
+
+/**
+ * Check if is UUID ver 5
+ * **Interfaces**: `all`, `any`, `not`
+ *
+ * @function
+ * @name uuid5
+ * @param value {string} uuid
+ * @returns {boolean}
+ * @example
+ * be.uuid5('39888f87-fb62-5988-a425-b2ea63f5b81e') // true
  */
 
 /**
