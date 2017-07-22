@@ -1,4 +1,4 @@
-// [AIV]  beJS Build version: 1.7.0  
+// [AIV]  beJS Build version: 1.7.1  
  var be =
 /******/ (function(modules) { // webpackBootstrap
 /******/ 	// The module cache
@@ -1645,11 +1645,11 @@ Mixed = Helpers.createRegExpMethods(Mixed, regExp);
  * **Interfaces**: `all`, `any`, `not`
  *
  * @function
- * @name ipv
+ * @name ip
  * @param value {string} ip string
  * @returns {boolean}
  * @example
- * be.ipv('127.0.0.1') // true
+ * be.ip('127.0.0.1') // true
  */
 Mixed.ip = function (value) {
   return Mixed.ipv4(value) || Mixed.ipv6(value);
@@ -1787,7 +1787,7 @@ module.exports = __webpack_require__(6);
 
 var Helpers = __webpack_require__(2);
 var Interface = __webpack_require__(0);
-var version = '1.7.0';
+var version = '1.7.1';
 
 /**
  * be class
@@ -6018,7 +6018,7 @@ module.exports = DOM;
 
 module.exports = {
 	"name": "bejs",
-	"version": "1.7.0",
+	"version": "1.7.1",
 	"description": "Simple, light-weight assertions framework for javascript",
 	"homepage": "https://be.js.org",
 	"main": "index.js",
