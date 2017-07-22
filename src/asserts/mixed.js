@@ -21,11 +21,23 @@ let regExp = {
     uuid4: /^[0-9A-F]{8}-[0-9A-F]{4}-4[0-9A-F]{3}-[89AB][0-9A-F]{3}-[0-9A-F]{12}$/i,
     uuid5: /^[0-9A-F]{8}-[0-9A-F]{4}-5[0-9A-F]{3}-[89AB][0-9A-F]{3}-[0-9A-F]{12}$/i,
     uuid: /^[0-9A-F]{8}-[0-9A-F]{4}-[0-9A-F]{4}-[0-9A-F]{4}-[0-9A-F]{12}$/i,
-    isrc: /^[A-Z]{2}[0-9A-Z]{3}\d{2}\d{5}$/,
+    isrc: /^([A-Z]{2}-[0-9A-Z]{3}-\d{2}-\d{5}|[A-Z]{2}[0-9A-Z]{3}\d{2}\d{5})$/,
     iswc: /^T-\d{9}-[A-Za-z0-9]$/
 };
 
 Mixed = Helpers.createRegExpMethods(Mixed, regExp);
+
+/**
+ * Check if is ISRC
+ * **Interfaces**: `all`, `any`, `not`
+ *
+ * @function
+ * @name isrc
+ * @param value {string} ISRC code
+ * @returns {boolean}
+ * @example
+ * be.isrc('JMK401400212') // true
+ */
 
 /**
  * Check if is UUID
@@ -33,7 +45,7 @@ Mixed = Helpers.createRegExpMethods(Mixed, regExp);
  *
  * @function
  * @name uuid
- * @param value {string} uuid
+ * @param value {string} UUID code
  * @returns {boolean}
  * @example
  * be.uuid('9e3a0460-d72d-11e4-a631-c8e0eb141dab') // true
@@ -45,7 +57,7 @@ Mixed = Helpers.createRegExpMethods(Mixed, regExp);
  *
  * @function
  * @name uuid1
- * @param value {string} uuid
+ * @param value {string} UUID code
  * @returns {boolean}
  * @example
  * be.uuid1('9e3a0460-d72d-11e4-a631-c8e0eb141dab') // true
@@ -57,7 +69,7 @@ Mixed = Helpers.createRegExpMethods(Mixed, regExp);
  *
  * @function
  * @name uuid3
- * @param value {string} uuid
+ * @param value {string} UUID code
  * @returns {boolean}
  * @example
  * be.uuid3('2c1d43b8-e6d7-376e-af7f-d4bde997cc3f') // true
@@ -69,7 +81,7 @@ Mixed = Helpers.createRegExpMethods(Mixed, regExp);
  *
  * @function
  * @name uuid4
- * @param value {string} uuid
+ * @param value {string} UUID code
  * @returns {boolean}
  * @example
  * be.uuid4('366a77ba-d506-4a03-a730-318b8e6be8c5') // true
@@ -81,7 +93,7 @@ Mixed = Helpers.createRegExpMethods(Mixed, regExp);
  *
  * @function
  * @name uuid5
- * @param value {string} uuid
+ * @param value {string} UUID code
  * @returns {boolean}
  * @example
  * be.uuid5('39888f87-fb62-5988-a425-b2ea63f5b81e') // true

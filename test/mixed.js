@@ -418,3 +418,21 @@ describe('uuid', function () {
         assert.equal(result, true);
     });
 });
+
+describe('isrc', function () {
+    it('#1 should be return true', function () {
+        var result = be.isrc('JMK401400212');
+        console.log(result);
+        assert.equal(result, true);
+    });
+    it('#2 should be return true', function () {
+        var result = be.isrc('JM-K40-14-00212');
+        console.log(result);
+        assert.equal(result, true);
+    });
+    it('#3 should be return false', function () {
+        var result = be.uuid('JMK40-14-00212');
+        console.log(result);
+        assert.equal(result, false);
+    });
+});
