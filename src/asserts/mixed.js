@@ -15,10 +15,28 @@ let regExp = {
     base64: /^([0-9a-zA-Z+/]{4})*(([0-9a-zA-Z+/]{2}==)|([0-9a-zA-Z+/]{3}=))?$/,
     semVer: /^(\d*)\.(\d*)\.(\d*)(-(\d*|\d*[a-z-][0-9a-z-]*)(\.(\d*|\d*[a-z-][0-9a-z-]*))*)?(\+[0-9a-z-]+(\.[0-9a-z-]+)*)?$/i,
     fiscalCodeIT: /^[A-Za-z]{6}[0-9]{2}[A-Za-z]{1}[0-9]{2}[A-Za-z]{1}[0-9]{3}[A-Za-z]{1}$/,
-    macAddress: /^([0-9A-Fa-f]{2}[:-]){5}([0-9A-Fa-f]{2})$/
+    macAddress: /^([0-9A-Fa-f]{2}[:-]){5}([0-9A-Fa-f]{2})$/,
+    uuid3: /^[0-9A-F]{8}-[0-9A-F]{4}-3[0-9A-F]{3}-[0-9A-F]{4}-[0-9A-F]{12}$/i,
+    uuid4: /^[0-9A-F]{8}-[0-9A-F]{4}-4[0-9A-F]{3}-[89AB][0-9A-F]{3}-[0-9A-F]{12}$/i,
+    uuid5: /^[0-9A-F]{8}-[0-9A-F]{4}-5[0-9A-F]{3}-[89AB][0-9A-F]{3}-[0-9A-F]{12}$/i,
+    uuid: /^[0-9A-F]{8}-[0-9A-F]{4}-[0-9A-F]{4}-[0-9A-F]{4}-[0-9A-F]{12}$/i,
+    isrc: /^[A-Z]{2}[0-9A-Z]{3}\d{2}\d{5}$/,
+    iswc: /^T-\d{9}-[A-Za-z0-9]$/
 };
 
 Mixed = Helpers.createRegExpMethods(Mixed, regExp);
+
+/**
+ * Check if is UUID ver 3
+ * **Interfaces**: `all`, `any`, `not`
+ *
+ * @function
+ * @name uuid3
+ * @param value {string} uuid3
+ * @returns {boolean}
+ * @example
+ * be.uuid3('2c1d43b8-e6d7-376e-af7f-d4bde997cc3f') // true
+ */
 
 /**
  * Check if is valid email

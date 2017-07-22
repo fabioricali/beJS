@@ -343,3 +343,16 @@ describe('compareVersion', function () {
         assert.equal(result, false);
     });
 });
+
+describe('uuid3', function () {
+    it('should be return true', function () {
+        var result = be.uuid3('2c1d43b8-e6d7-376e-af7f-d4bde997cc3f');
+        console.log(result);
+        assert.equal(result, true);
+    });
+    it('should be return false', function () {
+        var result = be.uuid3('39888f87-fb62-5988-a425-b2ea63f5b81e');
+        console.log(result);
+        assert.equal(result, false);
+    });
+});
