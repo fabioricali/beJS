@@ -22,10 +22,22 @@ let regExp = {
     uuid5: /^[0-9A-F]{8}-[0-9A-F]{4}-5[0-9A-F]{3}-[89AB][0-9A-F]{3}-[0-9A-F]{12}$/i,
     uuid: /^[0-9A-F]{8}-[0-9A-F]{4}-[0-9A-F]{4}-[0-9A-F]{4}-[0-9A-F]{12}$/i,
     isrc: /^([A-Z]{2}-[0-9A-Z]{3}-\d{2}-\d{5}|[A-Z]{2}[0-9A-Z]{3}\d{2}\d{5})$/,
-    iswc: /^T-\d{9}-[A-Za-z0-9]$/
+    iswc: /^T-(\d{9}|\d{3}.\d{3}.\d{3})-[A-Za-z0-9]$/
 };
 
 Mixed = Helpers.createRegExpMethods(Mixed, regExp);
+
+/**
+ * Check if is ISWC
+ * **Interfaces**: `all`, `any`, `not`
+ *
+ * @function
+ * @name iswc
+ * @param value {string} ISWC code
+ * @returns {boolean}
+ * @example
+ * be.iswc('T-000000001-0') // true
+ */
 
 /**
  * Check if is ISRC

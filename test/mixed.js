@@ -431,7 +431,25 @@ describe('isrc', function () {
         assert.equal(result, true);
     });
     it('#3 should be return false', function () {
-        var result = be.uuid('JMK40-14-00212');
+        var result = be.isrc('JMK40-14-00212');
+        console.log(result);
+        assert.equal(result, false);
+    });
+});
+
+describe('iswc', function () {
+    it('#1 should be return true', function () {
+        var result = be.iswc('T-000.000.001-0');
+        console.log(result);
+        assert.equal(result, true);
+    });
+    it('#2 should be return true', function () {
+        var result = be.iswc('T-000000001-0');
+        console.log(result);
+        assert.equal(result, true);
+    });
+    it('#3 should be return false', function () {
+        var result = be.iswc('T-000.000001-0');
         console.log(result);
         assert.equal(result, false);
     });
