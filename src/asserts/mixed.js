@@ -28,6 +28,18 @@ let regExp = {
 Mixed = Helpers.createRegExpMethods(Mixed, regExp);
 
 /**
+ * Check if is UUID
+ * **Interfaces**: `all`, `any`, `not`
+ *
+ * @function
+ * @name uuid
+ * @param value {string} uuid
+ * @returns {boolean}
+ * @example
+ * be.uuid('9e3a0460-d72d-11e4-a631-c8e0eb141dab') // true
+ */
+
+/**
  * Check if is UUID ver 1
  * **Interfaces**: `all`, `any`, `not`
  *
