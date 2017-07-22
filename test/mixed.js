@@ -355,4 +355,22 @@ describe('uuid3', function () {
         console.log(result);
         assert.equal(result, false);
     });
+    it('#2 should be return false', function () {
+        var result = be.uuid3('9e3a0460-d72d-11e4-a631-c8e0eb141dab');
+        console.log(result);
+        assert.equal(result, false);
+    });
+});
+
+describe('uuid4', function () {
+    it('should be return true', function () {
+        var result = be.uuid4('366a77ba-d506-4a03-a730-318b8e6be8c5');
+        console.log(result);
+        assert.equal(result, true);
+    });
+    it('should be return false', function () {
+        var result = be.uuid4('39888f87-fb62-5988-a425-b2ea63f5b81e');
+        console.log(result);
+        assert.equal(result, false);
+    });
 });

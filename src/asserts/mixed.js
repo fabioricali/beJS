@@ -37,6 +37,17 @@ Mixed = Helpers.createRegExpMethods(Mixed, regExp);
  * @example
  * be.uuid3('2c1d43b8-e6d7-376e-af7f-d4bde997cc3f') // true
  */
+/**
+ * Check if is UUID ver 4
+ * **Interfaces**: `all`, `any`, `not`
+ *
+ * @function
+ * @name uuid4
+ * @param value {string} uuid4
+ * @returns {boolean}
+ * @example
+ * be.uuid4('366a77ba-d506-4a03-a730-318b8e6be8c5') // true
+ */
 
 /**
  * Check if is valid email
