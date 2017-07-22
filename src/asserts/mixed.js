@@ -222,11 +222,11 @@ Mixed = Helpers.createRegExpMethods(Mixed, regExp);
  * **Interfaces**: `all`, `any`, `not`
  *
  * @function
- * @name ipv
+ * @name ip
  * @param value {string} ip string
  * @returns {boolean}
  * @example
- * be.ipv('127.0.0.1') // true
+ * be.ip('127.0.0.1') // true
  */
 Mixed.ip = (value) => {
     return Mixed.ipv4(value) || Mixed.ipv6(value);
