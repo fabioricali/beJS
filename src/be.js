@@ -103,39 +103,33 @@ be.set = (name, func) => {
 };
 
 /**
- * Create interfaces
+ * Add all methods to "be"
  */
-(function () {
-    /**
-     * Add all methods to "be"
-     */
-    for (let c in Checks) {
-        if (Checks.hasOwnProperty(c)) {
-            for (let f in Checks[c]) {
-                if (Checks[c].hasOwnProperty(f) && Checks.Types.function(Checks[c][f])) {
-                    be[f] = (...params) => {
-                        return Checks[c][f].apply(null, params);
-                    };
-                }
+for (let c in Checks) {
+    if (Checks.hasOwnProperty(c)) {
+        for (let f in Checks[c]) {
+            if (Checks[c].hasOwnProperty(f) && Checks.Types.function(Checks[c][f])) {
+                be[f] = (...params) => {
+                    return Checks[c][f].apply(null, params);
+                };
             }
         }
     }
+}
 
-    /**
-     * @ignore
-     * @type {be}
-     */
-    be = Interface.create(be);
+/**
+ * @ignore
+ * @type {be}
+ */
+be = Interface.create(be);
 
-    /**
-     * After add checks class
-     */
-    for (let m in Checks) {
-        if (Checks.hasOwnProperty(m)) {
-            be[m] = Checks[m];
-        }
+/**
+ * After add checks class
+ */
+for (let m in Checks) {
+    if (Checks.hasOwnProperty(m)) {
+        be[m] = Checks[m];
     }
+}
 
-    module.exports = be;
-
-})();
+module.exports = be;
