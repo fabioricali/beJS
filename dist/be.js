@@ -1,4 +1,4 @@
-// [AIV]  beJS Build version: 1.7.1  
+// [AIV]  beJS Build version: 1.7.2  
  var be =
 /******/ (function(modules) { // webpackBootstrap
 /******/ 	// The module cache
@@ -1787,7 +1787,7 @@ module.exports = __webpack_require__(6);
 
 var Helpers = __webpack_require__(2);
 var Interface = __webpack_require__(0);
-var version = '1.7.1';
+var version = '1.7.2';
 
 /**
  * be class
@@ -1856,53 +1856,49 @@ be.set = function (name, func) {
 };
 
 /**
- * Create interfaces
+ * Add all methods to "be"
  */
-(function () {
-    var _loop = function _loop(c) {
-        if (Checks.hasOwnProperty(c)) {
-            var _loop2 = function _loop2(f) {
-                if (Checks[c].hasOwnProperty(f) && Checks.Types.function(Checks[c][f])) {
-                    be[f] = function () {
-                        for (var _len = arguments.length, params = Array(_len), _key = 0; _key < _len; _key++) {
-                            params[_key] = arguments[_key];
-                        }
 
-                        return Checks[c][f].apply(null, params);
-                    };
-                }
-            };
+var _loop = function _loop(c) {
+    if (Checks.hasOwnProperty(c)) {
+        var _loop2 = function _loop2(f) {
+            if (Checks[c].hasOwnProperty(f) && Checks.Types.function(Checks[c][f])) {
+                be[f] = function () {
+                    for (var _len = arguments.length, params = Array(_len), _key = 0; _key < _len; _key++) {
+                        params[_key] = arguments[_key];
+                    }
 
-            for (var f in Checks[c]) {
-                _loop2(f);
+                    return Checks[c][f].apply(null, params);
+                };
             }
-        }
-    };
+        };
 
-    /**
-     * Add all methods to "be"
-     */
-    for (var c in Checks) {
-        _loop(c);
-    }
-
-    /**
-     * @ignore
-     * @type {be}
-     */
-    be = Interface.create(be);
-
-    /**
-     * After add checks class
-     */
-    for (var m in Checks) {
-        if (Checks.hasOwnProperty(m)) {
-            be[m] = Checks[m];
+        for (var f in Checks[c]) {
+            _loop2(f);
         }
     }
+};
 
-    module.exports = be;
-})();
+for (var c in Checks) {
+    _loop(c);
+}
+
+/**
+ * @ignore
+ * @type {be}
+ */
+be = Interface.create(be);
+
+/**
+ * After add checks class
+ */
+for (var m in Checks) {
+    if (Checks.hasOwnProperty(m)) {
+        be[m] = Checks[m];
+    }
+}
+
+module.exports = be;
 
 /***/ }),
 /* 7 */
@@ -2319,12 +2315,12 @@ exports.INSPECT_MAX_BYTES = 50;
  * We detect these buggy browsers and set `Buffer.TYPED_ARRAY_SUPPORT` to `false` so they
  * get the Object implementation, which is slower but behaves correctly.
  */
-Buffer.TYPED_ARRAY_SUPPORT = global.TYPED_ARRAY_SUPPORT !== undefined ? global.TYPED_ARRAY_SUPPORT : typedArraySupport
+Buffer.TYPED_ARRAY_SUPPORT = global.TYPED_ARRAY_SUPPORT !== undefined ? global.TYPED_ARRAY_SUPPORT : typedArraySupport();
 
 /*
  * Export kMaxLength after typed array support is determined.
  */
-();exports.kMaxLength = kMaxLength();
+exports.kMaxLength = kMaxLength();
 
 function typedArraySupport() {
   try {
@@ -3258,8 +3254,7 @@ var MAX_ARGUMENTS_LENGTH = 0x1000;
 function decodeCodePointsArray(codePoints) {
   var len = codePoints.length;
   if (len <= MAX_ARGUMENTS_LENGTH) {
-    return String.fromCharCode.apply(String, codePoints // avoid extra slice()
-    );
+    return String.fromCharCode.apply(String, codePoints); // avoid extra slice()
   }
 
   // Decode in chunks to avoid "call stack size exceeded".
@@ -3887,9 +3882,9 @@ var INVALID_BASE64_RE = /[^+\/0-9A-Za-z-_]/g;
 
 function base64clean(str) {
   // Node strips out invalid characters like \n and \t from the string, base64-js does not
-  str = stringtrim(str).replace(INVALID_BASE64_RE, ''
+  str = stringtrim(str).replace(INVALID_BASE64_RE, '');
   // Node converts strings with length < 2 to ''
-  );if (str.length < 2) return '';
+  if (str.length < 2) return '';
   // Node allows for non-padded base64 strings (missing trailing ===), base64-js does not
   while (str.length % 4 !== 0) {
     str = str + '=';
@@ -3915,10 +3910,10 @@ function utf8ToBytes(string, units) {
   var bytes = [];
 
   for (var i = 0; i < length; ++i) {
-    codePoint = string.charCodeAt(i
+    codePoint = string.charCodeAt(i);
 
     // is surrogate component
-    );if (codePoint > 0xD7FF && codePoint < 0xE000) {
+    if (codePoint > 0xD7FF && codePoint < 0xE000) {
       // last char was a lead
       if (!leadSurrogate) {
         // no lead yet
@@ -6018,7 +6013,7 @@ module.exports = DOM;
 
 module.exports = {
 	"name": "bejs",
-	"version": "1.7.1",
+	"version": "1.7.2",
 	"description": "Simple, light-weight assertions framework for javascript",
 	"homepage": "https://be.js.org",
 	"main": "index.js",
