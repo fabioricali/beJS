@@ -1,3 +1,4 @@
+<div align="center">
 <img src="https://raw.githubusercontent.com/fabioricali/beJS/master/extra/logo.png" title="beJS"/>
 
 ***to be, or not to be, that is the question***
@@ -7,6 +8,7 @@
 <a href="https://opensource.org/licenses/MIT" target="_blank"><img src="https://img.shields.io/badge/License-MIT-yellow.svg" title="License: MIT"/></a>
 <img src="https://img.shields.io/badge/node.js-%3E%3D6-blue.svg" title="Node.js version"/>
 <img src="https://img.shields.io/badge/team-terrons-orange.svg" title="Team Terrons"/>
+</div>
 
 # Simple, light-weight assertions framework for javascript
 

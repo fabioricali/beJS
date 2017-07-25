@@ -6,7 +6,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [1.7.2] - 2017-07-25
 ### Added
-- Wrong documentation
+- TypeScript type definitions
 
 ## [1.7.1] - 2017-07-22
 ### Fixed
