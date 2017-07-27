@@ -9,7 +9,7 @@ let Urls = {};
 /**
  * Check if is valid string url
  *
- * **Interfaces**: `all`, `any`, `not`
+ * **Interfaces**: `all`, `any`, `not`, `err`
  *
  * @function
  * @name url
@@ -28,7 +28,7 @@ Urls.url = (value) => {
 /**
  * Check if is a HTTP url
  *
- * **Interfaces**: `all`, `any`, `not`
+ * **Interfaces**: `all`, `any`, `not`, `err`
  *
  * @function
  * @name httpUrl
@@ -47,7 +47,7 @@ Urls.httpUrl = (value) => {
 /**
  * Check if is a HTTPS url
  *
- * **Interfaces**: `all`, `any`, `not`
+ * **Interfaces**: `all`, `any`, `not`, `err`
  *
  * @function
  * @name httpsUrl
@@ -66,7 +66,7 @@ Urls.httpsUrl = (value) => {
 /**
  * Check if url is encoded
  *
- * **Interfaces**: `all`, `any`, `not`
+ * **Interfaces**: `all`, `any`, `not`, `err`
  *
  * @function
  * @name urlEncoded
@@ -82,7 +82,7 @@ Urls.urlEncoded = (value) => {
 /**
  * Check if is a FTP urls
  *
- * **Interfaces**: `all`, `any`, `not`
+ * **Interfaces**: `all`, `any`, `not`, `err`
  *
  * @function
  * @name ftpUrl
@@ -101,7 +101,7 @@ Urls.ftpUrl = (value) => {
 /**
  * Check if is a FTPS urls
  *
- * **Interfaces**: `all`, `any`, `not`
+ * **Interfaces**: `all`, `any`, `not`, `err`
  *
  * @function
  * @name ftpsUrl
@@ -120,7 +120,7 @@ Urls.ftpsUrl = (value) => {
 /**
  * Check if is a valid domain
  *
- * **Interfaces**: `all`, `any`, `not`
+ * **Interfaces**: `all`, `any`, `not`, `err`
  *
  * @function
  * @name domain

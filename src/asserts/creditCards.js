@@ -9,7 +9,7 @@ let CreditCard = {};
 /**
  * Check if is a valid credit card
  *
- * **Interfaces**: `all`, `any`, `not`
+ * **Interfaces**: `all`, `any`, `not`, `err`
  *
  * @function
  * @name creditCard
@@ -25,7 +25,7 @@ CreditCard.creditCard = (value) => {
 /**
  * Check if is a valid American Express credit card
  *
- * **Interfaces**: `all`, `any`, `not`
+ * **Interfaces**: `all`, `any`, `not`, `err`
  *
  * @function
  * @name amex
@@ -41,7 +41,7 @@ CreditCard.amex = (value) => {
 /**
  * Check if is a valid Diner’s Club credit card
  *
- * **Interfaces**: `all`, `any`, `not`
+ * **Interfaces**: `all`, `any`, `not`, `err`
  *
  * @function
  * @name dinersClub
@@ -57,7 +57,7 @@ CreditCard.dinersClub = (value) => {
 /**
  * Check if is a valid Discover credit card
  *
- * **Interfaces**: `all`, `any`, `not`
+ * **Interfaces**: `all`, `any`, `not`, `err`
  *
  * @function
  * @name discover
@@ -73,7 +73,7 @@ CreditCard.discover = (value) => {
 /**
  * Check if is a valid Mastercard credit card
  *
- * **Interfaces**: `all`, `any`, `not`
+ * **Interfaces**: `all`, `any`, `not`, `err`
  *
  * @function
  * @name mastercard
@@ -89,7 +89,7 @@ CreditCard.mastercard = (value) => {
 /**
  * Check if is a valid Visa credit card
  *
- * **Interfaces**: `all`, `any`, `not`
+ * **Interfaces**: `all`, `any`, `not`, `err`
  *
  * @function
  * @name visa

@@ -29,7 +29,7 @@ Mixed = Helpers.createRegExpMethods(Mixed, regExp);
 
 /**
  * Check if is ISWC
- * **Interfaces**: `all`, `any`, `not`
+ * **Interfaces**: `all`, `any`, `not`, `err`
  *
  * @function
  * @name iswc
@@ -41,7 +41,7 @@ Mixed = Helpers.createRegExpMethods(Mixed, regExp);
 
 /**
  * Check if is ISRC
- * **Interfaces**: `all`, `any`, `not`
+ * **Interfaces**: `all`, `any`, `not`, `err`
  *
  * @function
  * @name isrc
@@ -53,7 +53,7 @@ Mixed = Helpers.createRegExpMethods(Mixed, regExp);
 
 /**
  * Check if is UUID
- * **Interfaces**: `all`, `any`, `not`
+ * **Interfaces**: `all`, `any`, `not`, `err`
  *
  * @function
  * @name uuid
@@ -65,7 +65,7 @@ Mixed = Helpers.createRegExpMethods(Mixed, regExp);
 
 /**
  * Check if is UUID ver 1
- * **Interfaces**: `all`, `any`, `not`
+ * **Interfaces**: `all`, `any`, `not`, `err`
  *
  * @function
  * @name uuid1
@@ -77,7 +77,7 @@ Mixed = Helpers.createRegExpMethods(Mixed, regExp);
 
 /**
  * Check if is UUID ver 3
- * **Interfaces**: `all`, `any`, `not`
+ * **Interfaces**: `all`, `any`, `not`, `err`
  *
  * @function
  * @name uuid3
@@ -89,7 +89,7 @@ Mixed = Helpers.createRegExpMethods(Mixed, regExp);
 
 /**
  * Check if is UUID ver 4
- * **Interfaces**: `all`, `any`, `not`
+ * **Interfaces**: `all`, `any`, `not`, `err`
  *
  * @function
  * @name uuid4
@@ -101,7 +101,7 @@ Mixed = Helpers.createRegExpMethods(Mixed, regExp);
 
 /**
  * Check if is UUID ver 5
- * **Interfaces**: `all`, `any`, `not`
+ * **Interfaces**: `all`, `any`, `not`, `err`
  *
  * @function
  * @name uuid5
@@ -114,7 +114,7 @@ Mixed = Helpers.createRegExpMethods(Mixed, regExp);
 /**
  * Check if is valid email
  * https://emailregex.com/
- * **Interfaces**: `all`, `any`, `not`
+ * **Interfaces**: `all`, `any`, `not`, `err`
  *
  * @function
  * @name email
@@ -128,7 +128,7 @@ Mixed = Helpers.createRegExpMethods(Mixed, regExp);
 /**
  * Check if is a hexadecimal
  *
- * **Interfaces**: `all`, `any`, `not`
+ * **Interfaces**: `all`, `any`, `not`, `err`
  *
  * @function
  * @name hex
@@ -141,7 +141,7 @@ Mixed = Helpers.createRegExpMethods(Mixed, regExp);
 /**
  * Check if is a valid IPv4
  *
- * **Interfaces**: `all`, `any`, `not`
+ * **Interfaces**: `all`, `any`, `not`, `err`
  *
  * @function
  * @name ipv4
@@ -154,7 +154,7 @@ Mixed = Helpers.createRegExpMethods(Mixed, regExp);
 /**
  * Check if is a valid IPv6
  *
- * **Interfaces**: `all`, `any`, `not`
+ * **Interfaces**: `all`, `any`, `not`, `err`
  *
  * @function
  * @name ipv6
@@ -167,7 +167,7 @@ Mixed = Helpers.createRegExpMethods(Mixed, regExp);
 /**
  * Check if is base64 encoded string
  *
- * **Interfaces**: `all`, `any`, `not`
+ * **Interfaces**: `all`, `any`, `not`, `err`
  *
  * @function
  * @name base64
@@ -180,7 +180,7 @@ Mixed = Helpers.createRegExpMethods(Mixed, regExp);
 /**
  * Check if is a valid semver string
  *
- * **Interfaces**: `all`, `any`, `not`
+ * **Interfaces**: `all`, `any`, `not`, `err`
  *
  * @function
  * @name semVer
@@ -193,7 +193,7 @@ Mixed = Helpers.createRegExpMethods(Mixed, regExp);
 /**
  * Check if is an IT fiscal code
  *
- * **Interfaces**: `all`, `any`, `not`
+ * **Interfaces**: `all`, `any`, `not`, `err`
  *
  * @function
  * @name fiscalCodeIT
@@ -206,7 +206,7 @@ Mixed = Helpers.createRegExpMethods(Mixed, regExp);
 /**
  * Check if is a valid MAC address
  *
- * **Interfaces**: `all`, `any`, `not`
+ * **Interfaces**: `all`, `any`, `not`, `err`
  *
  * @function
  * @name macAddress
@@ -219,7 +219,7 @@ Mixed = Helpers.createRegExpMethods(Mixed, regExp);
 /**
  * Check if is a valid ip string
  *
- * **Interfaces**: `all`, `any`, `not`
+ * **Interfaces**: `all`, `any`, `not`, `err`
  *
  * @function
  * @name ip
@@ -235,7 +235,7 @@ Mixed.ip = (value) => {
 /**
  * Checks if equal
  *
- * **Interfaces**: `not`
+ * **Interfaces**: `not`, `err`
  *
  * @function
  * @name equal
@@ -275,7 +275,7 @@ Mixed.equal.multiple = false;
 /**
  * Check if is a hexadecimal color
  *
- * **Interfaces**: `all`, `any`, `not`
+ * **Interfaces**: `all`, `any`, `not`, `err`
  *
  * @function
  * @name hexColor
@@ -297,7 +297,7 @@ Mixed.hexColor = (value) => {
 /**
  * Compare two version number
  *
- * **Interfaces**: `not`
+ * **Interfaces**: `not`, `err`
  *
  * @function
  * @name compareVersion

@@ -38,7 +38,7 @@ Arrays.inArray.multiple = false;
 /**
  * Check if is an array of strings
  *
- * **Interfaces**: `all`, `any`, `not`
+ * **Interfaces**: `all`, `any`, `not`, `err`
  *
  * @param value {array} array
  * @function
@@ -58,7 +58,7 @@ Arrays.arrayOfStrings = (value) => {
 /**
  * Check if is an array of objects
  *
- * **Interfaces**: `all`, `any`, `not`
+ * **Interfaces**: `all`, `any`, `not`, `err`
  *
  * @function
  * @name arrayOfObjects
@@ -79,7 +79,7 @@ Arrays.arrayOfObjects = (value) => {
 /**
  * Check if is an array of booleans
  *
- * **Interfaces**: `all`, `any`, `not`
+ * **Interfaces**: `all`, `any`, `not`, `err`
  *
  * @function
  * @name arrayOfBooleans
@@ -100,7 +100,7 @@ Arrays.arrayOfBooleans = (value) => {
 /**
  * Check if is an array of numbers
  *
- * **Interfaces**: `all`, `any`, `not`
+ * **Interfaces**: `all`, `any`, `not`, `err`
  *
  * @function
  * @name arrayOfNumbers
@@ -121,7 +121,7 @@ Arrays.arrayOfNumbers = (value) => {
 /**
  * Check if is an array of dates
  *
- * **Interfaces**: `all`, `any`, `not`
+ * **Interfaces**: `all`, `any`, `not`, `err`
  *
  * @function
  * @name arrayOfDates
@@ -142,7 +142,7 @@ Arrays.arrayOfDates = (value) => {
 /**
  * Check if is an array of functions
  *
- * **Interfaces**: `all`, `any`, `not`
+ * **Interfaces**: `all`, `any`, `not`, `err`
  *
  * @function
  * @name arrayOfFunctions

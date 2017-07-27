@@ -10,7 +10,7 @@ let DOM = {};
 /**
  * Check if is a valid DOM element
  *
- * **Interfaces**: `all`, `any`, `not`
+ * **Interfaces**: `all`, `any`, `not`, `err`
  *
  * @function
  * @name domElement
@@ -29,7 +29,7 @@ DOM.domElement = (element) => {
 /**
  * Check if element is a specific tag
  *
- * **Interfaces**: `not`
+ * **Interfaces**: `not`, `err`
  *
  * @function
  * @name domElementTag

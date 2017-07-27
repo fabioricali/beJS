@@ -10,7 +10,7 @@ let Types = {};
 /**
  * Check [object ?] class
  *
- * **Interfaces**: `not`
+ * **Interfaces**: `not`, `err`
  *
  * @function
  * @name classOf
@@ -34,7 +34,7 @@ Types.classOf.multiple = false;
 /**
  * Check if is valid boolean
  *
- * **Interfaces**: `all`, `any`, `not`
+ * **Interfaces**: `all`, `any`, `not`, `err`
  *
  * @function
  * @name boolean
@@ -51,7 +51,7 @@ Types.boolean = (value) => {
 /**
  * Alias of `be.false`
  *
- * **Interfaces**: `all`, `any`, `not`
+ * **Interfaces**: `all`, `any`, `not`, `err`
  *
  * @function
  * @name booleanFalse
@@ -69,7 +69,7 @@ Types.booleanFalse = (value) => {
 /**
  * Check if is false boolean type
  *
- * **Interfaces**: `all`, `any`, `not`
+ * **Interfaces**: `all`, `any`, `not`, `err`
  *
  * @function
  * @name false
@@ -86,7 +86,7 @@ Types.false = (value) => {
 /**
  * Alias of `be.true`
  *
- * **Interfaces**: `all`, `any`, `not`
+ * **Interfaces**: `all`, `any`, `not`, `err`
  *
  * @function
  * @name booleanTrue
@@ -104,7 +104,7 @@ Types.booleanTrue = (value) => {
 /**
  * Check if is true boolean type
  *
- * **Interfaces**: `all`, `any`, `not`
+ * **Interfaces**: `all`, `any`, `not`, `err`
  *
  * @function
  * @name true
@@ -121,7 +121,7 @@ Types.true = (value) => {
 /**
  * Check if is valid number
  *
- * **Interfaces**: `all`, `any`, `not`
+ * **Interfaces**: `all`, `any`, `not`, `err`
  *
  * @function
  * @name number
@@ -138,7 +138,7 @@ Types.number = (value) => {
 /**
  * Check if is valid string
  *
- * **Interfaces**: `all`, `any`, `not`
+ * **Interfaces**: `all`, `any`, `not`, `err`
  *
  * @function
  * @name string
@@ -155,7 +155,7 @@ Types.string = (value) => {
 /**
  * Check if is undefined value
  *
- * **Interfaces**: `all`, `any`, `not`
+ * **Interfaces**: `all`, `any`, `not`, `err`
  *
  * @function
  * @name undefined
@@ -172,7 +172,7 @@ Types.undefined = (value) => {
 /**
  * Check if is null
  *
- * **Interfaces**: `all`, `any`, `not`
+ * **Interfaces**: `all`, `any`, `not`, `err`
  *
  * @function
  * @name null
@@ -190,7 +190,7 @@ Types['null'] = (value) => {
 /**
  * Check if is a object
  *
- * **Interfaces**: `all`, `any`, `not`
+ * **Interfaces**: `all`, `any`, `not`, `err`
  *
  * @param value {Mixed} value
  * @returns {boolean}
@@ -205,7 +205,7 @@ Types.object = (value) => {
 /**
  * Check if is an array
  *
- * **Interfaces**: `all`, `any`, `not`
+ * **Interfaces**: `all`, `any`, `not`, `err`
  *
  * @function
  * @name array
@@ -222,7 +222,7 @@ Types.array = (value) => {
 /**
  * Check if is a JSON string
  *
- * **Interfaces**: `all`, `any`, `not`
+ * **Interfaces**: `all`, `any`, `not`, `err`
  *
  * @function
  * @name json
@@ -243,7 +243,7 @@ Types.json = (value) => {
 /**
  * Check if is date object
  *
- * **Interfaces**: `all`, `any`, `not`
+ * **Interfaces**: `all`, `any`, `not`, `err`
  *
  * @function
  * @name date
@@ -260,7 +260,7 @@ Types.date = (value) => {
 /**
  * Check if is a function
  *
- * **Interfaces**: `all`, `any`, `not`
+ * **Interfaces**: `all`, `any`, `not`, `err`
  *
  * @function
  * @name function
@@ -278,7 +278,7 @@ Types['function'] = (value) => {
 /**
  * Check if is a valid RegExp
  *
- * **Interfaces**: `all`, `any`, `not`
+ * **Interfaces**: `all`, `any`, `not`, `err`
  *
  * @function
  * @name regexp
@@ -296,7 +296,7 @@ Types.regexp = (value) => {
 /**
  * Check if both arguments are same type
  *
- * **Interfaces**: `not`
+ * **Interfaces**: `not`, `err`
  *
  * @function
  * @name sameType
@@ -316,7 +316,7 @@ Types.sameType.multiple = false;
 /**
  * Check if is empty
  *
- * **Interfaces**: `all`, `any`, `not`
+ * **Interfaces**: `all`, `any`, `not`, `err`
  *
  * @function
  * @name empty
@@ -347,7 +347,7 @@ Types.empty = (value) => {
 /**
  * Check if a falsy value
  * https://developer.mozilla.org/it/docs/Glossary/Falsy
- * **Interfaces**: `all`, `any`, `not`
+ * **Interfaces**: `all`, `any`, `not`, `err`
  *
  * @function
  * @name falsy
@@ -367,7 +367,7 @@ Types.falsy = (value) => {
 /**
  * Check if a truthy value
  * https://developer.mozilla.org/en-US/docs/Glossary/Truthy
- * **Interfaces**: `all`, `any`, `not`
+ * **Interfaces**: `all`, `any`, `not`, `err`
  *
  * @function
  * @name truthy
@@ -389,7 +389,7 @@ Types.truthy = (value) => {
 /**
  * Check if is an error object
  *
- * **Interfaces**: `all`, `any`, `not`
+ * **Interfaces**: `all`, `any`, `not`, `err`
  *
  * @function
  * @name error
@@ -406,7 +406,7 @@ Types.error = (value) => {
 /**
  * Check if is an arguments
  *
- * **Interfaces**: `all`, `any`, `not`
+ * **Interfaces**: `all`, `any`, `not`, `err`
  *
  * @function
  * @name argument
@@ -423,7 +423,7 @@ Types.argument = (value) => {
 /**
  * Check if is a primitive object
  *
- * **Interfaces**: `all`, `any`, `not`
+ * **Interfaces**: `all`, `any`, `not`, `err`
  *
  * @function
  * @name primitive
@@ -440,7 +440,7 @@ Types.primitive = (value) => {
 /**
  * Check if is a primitive object
  *
- * **Interfaces**: `all`, `any`, `not`
+ * **Interfaces**: `all`, `any`, `not`, `err`
  *
  * @function
  * @name promise
@@ -457,7 +457,7 @@ Types.promise = (value) => {
 /**
  * Check if is a buffer
  *
- * **Interfaces**: `all`, `any`, `not`
+ * **Interfaces**: `all`, `any`, `not`, `err`
  *
  * @function
  * @name buffer
@@ -474,7 +474,7 @@ Types.buffer = (value) => {
 /**
  * Check if is iterable
  *
- * **Interfaces**: `all`, `any`, `not`
+ * **Interfaces**: `all`, `any`, `not`, `err`
  *
  * @function
  * @name iterable
@@ -492,7 +492,7 @@ Types.iterable = (value) => {
 /**
  * Check if is symbol
  *
- * **Interfaces**: `all`, `any`, `not`
+ * **Interfaces**: `all`, `any`, `not`, `err`
  *
  * @function
  * @name symbol
@@ -509,7 +509,7 @@ Types.symbol = (value) => {
 /**
  * Check if is defined
  *
- * **Interfaces**: `all`, `any`, `not`
+ * **Interfaces**: `all`, `any`, `not`, `err`
  *
  * @function
  * @name defined
@@ -528,7 +528,7 @@ Types.defined = (value) => {
 /**
  * Check if is Set object
  *
- * **Interfaces**: `all`, `any`, `not`
+ * **Interfaces**: `all`, `any`, `not`, `err`
  *
  * @function
  * @name oSet
@@ -544,7 +544,7 @@ Types.oSet = (value) => {
 /**
  * Check if is WeakSet object
  *
- * **Interfaces**: `all`, `any`, `not`
+ * **Interfaces**: `all`, `any`, `not`, `err`
  *
  * @function
  * @name weakSet
@@ -560,7 +560,7 @@ Types.weakSet = (value) => {
 /**
  * Check if is Map object
  *
- * **Interfaces**: `all`, `any`, `not`
+ * **Interfaces**: `all`, `any`, `not`, `err`
  *
  * @function
  * @name map
@@ -576,7 +576,7 @@ Types.map = (value) => {
 /**
  * Check if is WeakMap object
  *
- * **Interfaces**: `all`, `any`, `not`
+ * **Interfaces**: `all`, `any`, `not`, `err`
  *
  * @function
  * @name weakMap
@@ -592,7 +592,7 @@ Types.weakMap = (value) => {
 /**
  * Check if is Map Iterator object
  *
- * **Interfaces**: `all`, `any`, `not`
+ * **Interfaces**: `all`, `any`, `not`, `err`
  *
  * @function
  * @name mapIterator
@@ -608,7 +608,7 @@ Types.mapIterator = (value) => {
 /**
  * Check if is Set Iterator object
  *
- * **Interfaces**: `all`, `any`, `not`
+ * **Interfaces**: `all`, `any`, `not`, `err`
  *
  * @function
  * @name setIterator
@@ -624,7 +624,7 @@ Types.setIterator = (value) => {
 /**
  * Check if is Int8Array object
  *
- * **Interfaces**: `all`, `any`, `not`
+ * **Interfaces**: `all`, `any`, `not`, `err`
  *
  * @function
  * @name int8Array
@@ -640,7 +640,7 @@ Types.int8Array = (value) => {
 /**
  * Check if is Uint8Array object
  *
- * **Interfaces**: `all`, `any`, `not`
+ * **Interfaces**: `all`, `any`, `not`, `err`
  *
  * @function
  * @name uint8Array
@@ -656,7 +656,7 @@ Types.uint8Array = (value) => {
 /**
  * Check if is Uint8ClampedArray object
  *
- * **Interfaces**: `all`, `any`, `not`
+ * **Interfaces**: `all`, `any`, `not`, `err`
  *
  * @function
  * @name uint8ClampedArray
@@ -672,7 +672,7 @@ Types.uint8ClampedArray = (value) => {
 /**
  * Check if is Int16Array object
  *
- * **Interfaces**: `all`, `any`, `not`
+ * **Interfaces**: `all`, `any`, `not`, `err`
  *
  * @function
  * @name int16Array
@@ -688,7 +688,7 @@ Types.int16Array = (value) => {
 /**
  * Check if is Uint16Array object
  *
- * **Interfaces**: `all`, `any`, `not`
+ * **Interfaces**: `all`, `any`, `not`, `err`
  *
  * @function
  * @name uint16Array
@@ -704,7 +704,7 @@ Types.uint16Array = (value) => {
 /**
  * Check if is Int32Array object
  *
- * **Interfaces**: `all`, `any`, `not`
+ * **Interfaces**: `all`, `any`, `not`, `err`
  *
  * @function
  * @name int32Array
@@ -720,7 +720,7 @@ Types.int32Array = (value) => {
 /**
  * Check if is Uint32Array object
  *
- * **Interfaces**: `all`, `any`, `not`
+ * **Interfaces**: `all`, `any`, `not`, `err`
  *
  * @function
  * @name uint32Array
@@ -736,7 +736,7 @@ Types.uint32Array = (value) => {
 /**
  * Check if is Float32Array object
  *
- * **Interfaces**: `all`, `any`, `not`
+ * **Interfaces**: `all`, `any`, `not`, `err`
  *
  * @function
  * @name float32Array
@@ -752,7 +752,7 @@ Types.float32Array = (value) => {
 /**
  * Check if is Float64Array object
  *
- * **Interfaces**: `all`, `any`, `not`
+ * **Interfaces**: `all`, `any`, `not`, `err`
  *
  * @function
  * @name float64Array
@@ -768,7 +768,7 @@ Types.float64Array = (value) => {
 /**
  * Check if is async Function
  *
- * **Interfaces**: `all`, `any`, `not`
+ * **Interfaces**: `all`, `any`, `not`, `err`
  *
  * @function
  * @name asyncFunction

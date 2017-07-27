@@ -36,7 +36,7 @@ let _months = [
 /**
  * Check if is date string
  *
- * **Interfaces**: `all`, `any`, `not`
+ * **Interfaces**: `all`, `any`, `not`, `err`
  *
  * @function
  * @name dateString
@@ -54,7 +54,7 @@ Dates.dateString = (value) => {
 /**
  * Check if is time string
  *
- * **Interfaces**: `all`, `any`, `not`
+ * **Interfaces**: `all`, `any`, `not`, `err`
  *
  * @function
  * @name timeString
@@ -70,7 +70,7 @@ Dates.timeString = (value) => {
 /**
  * Check if date is today
  *
- * **Interfaces**: `all`, `any`, `not`
+ * **Interfaces**: `all`, `any`, `not`, `err`
  *
  * @function
  * @name today
@@ -87,7 +87,7 @@ Dates.today = (date) => {
 /**
  * Check if date is tomorrow
  *
- * **Interfaces**: `all`, `any`, `not`
+ * **Interfaces**: `all`, `any`, `not`, `err`
  *
  * @function
  * @name tomorrow
@@ -107,7 +107,7 @@ Dates.tomorrow = (date) => {
 /**
  * Check if date is yesterday
  *
- * **Interfaces**: `all`, `any`, `not`
+ * **Interfaces**: `all`, `any`, `not`, `err`
  *
  * @function
  * @name yesterday
@@ -127,7 +127,7 @@ Dates.yesterday = (date) => {
 /**
  * Check if date is past
  *
- * **Interfaces**: `all`, `any`, `not`
+ * **Interfaces**: `all`, `any`, `not`, `err`
  *
  * @function
  * @name past
@@ -144,7 +144,7 @@ Dates.past = (date) => {
 /**
  * Check if date is future
  *
- * **Interfaces**: `all`, `any`, `not`
+ * **Interfaces**: `all`, `any`, `not`, `err`
  *
  * @function
  * @name future
@@ -163,7 +163,7 @@ Dates.future = (date) => {
 /**
  * Check if date is day specified
  *
- * **Interfaces**: `not`
+ * **Interfaces**: `not`, `err`
  *
  * @function
  * @name day
@@ -186,7 +186,7 @@ Dates.day.multiple = false;
 /**
  * Check if date is month specified
  *
- * **Interfaces**: `not`
+ * **Interfaces**: `not`, `err`
  *
  * @function
  * @name month
@@ -209,7 +209,7 @@ Dates.month.multiple = false;
 /**
  * Check if date is the year specified
  *
- * **Interfaces**: `not`
+ * **Interfaces**: `not`, `err`
  *
  * @function
  * @name year
@@ -231,7 +231,7 @@ Dates.year.multiple = false;
 /**
  * Check if is leap year
  *
- * **Interfaces**: `all`, `any`, `not`
+ * **Interfaces**: `all`, `any`, `not`, `err`
  *
  * @function
  * @name leapYear
@@ -253,7 +253,7 @@ Dates.leapYear = (year) => {
 /**
  * Check if date is weekend
  *
- * **Interfaces**: `all`, `any`, `not`
+ * **Interfaces**: `all`, `any`, `not`, `err`
  *
  * @function
  * @name weekend
@@ -272,7 +272,7 @@ Dates.weekend = (date) => {
 /**
  * Check if date is weekday
  *
- * **Interfaces**: `all`, `any`, `not`
+ * **Interfaces**: `all`, `any`, `not`, `err`
  *
  * @function
  * @name weekday
@@ -306,7 +306,7 @@ Dates.numberInWeek = (number) => {
 /**
  * Check if date is between start date and end date
  *
- * **Interfaces**: `not`
+ * **Interfaces**: `not`, `err`
  *
  * @function
  * @name dateBetween
@@ -328,7 +328,7 @@ Dates.dateBetween.multiple = false;
 /**
  * Check if date is DST
  *
- * **Interfaces**: `all`, `any`, `not`
+ * **Interfaces**: `all`, `any`, `not`, `err`
  *
  * @function
  * @name dayLightSavingTime

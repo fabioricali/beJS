@@ -4,11 +4,32 @@ if(typeof process === 'object') {
 }
 
 describe('err', function () {
-    it('be.err.equal, should be return error', function () {
-        console.log(be.err);
-        be.err.equal('hello', 'helloo');
+    it('be.err.equal, should be ok', function () {
+        be.err.equal('hello', 'hello');
     });
-    it('be.err.all.boolean, should be return error', function () {
-        be.err.all.boolean(true, false, true, 2);
-    })
+
+    it('be.err.not.equal, should be ok', function () {
+        be.err.not.equal('hello', 'helloo');
+    });
+
+    it('be.err.all.boolean, should be return error', function (done) {
+        try {
+            be.err.all.boolean([true, false, true, 2]);
+            done('error')
+        } catch (e) {
+            console.log(e);
+            done()
+        }
+    });
+
+    it('be.err.any.boolean, should be return error', function (done) {
+        try {
+            be.err.any.boolean([true, false, true, 2]);
+            done()
+        } catch (e) {
+            console.log(e);
+            done(e)
+        }
+    });
+
 });

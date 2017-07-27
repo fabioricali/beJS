@@ -11,7 +11,7 @@ let Numbers = {};
 /**
  * Check if a number is integer
  *
- * **Interfaces**: `all`, `any`, `not`
+ * **Interfaces**: `all`, `any`, `not`, `err`
  *
  * @function
  * @name int
@@ -31,7 +31,7 @@ Numbers.int = (value) => {
 /**
  * Check if is float number
  *
- * **Interfaces**: `all`, `any`, `not`
+ * **Interfaces**: `all`, `any`, `not`, `err`
  *
  * @function
  * @name float
@@ -49,7 +49,7 @@ Numbers.float = (value) => {
 /**
  * Check if is NaN
  *
- * **Interfaces**: `all`, `any`, `not`
+ * **Interfaces**: `all`, `any`, `not`, `err`
  *
  * @function
  * @name nan
@@ -65,7 +65,7 @@ Numbers.nan = (value) => {
 /**
  * Check if is a even number
  *
- * **Interfaces**: `all`, `any`, `not`
+ * **Interfaces**: `all`, `any`, `not`, `err`
  *
  * @function
  * @name even
@@ -82,7 +82,7 @@ Numbers.even = (value) => {
 /**
  * Check if is an odd number
  *
- * **Interfaces**: `all`, `any`, `not`
+ * **Interfaces**: `all`, `any`, `not`, `err`
  *
  * @function
  * @name odd
@@ -99,7 +99,7 @@ Numbers.odd = (value) => {
 /**
  * Check if is a positive number
  *
- * **Interfaces**: `all`, `any`, `not`
+ * **Interfaces**: `all`, `any`, `not`, `err`
  *
  * @function
  * @name positive
@@ -116,7 +116,7 @@ Numbers.positive = (value) => {
 /**
  * Check if is a negative number
  *
- * **Interfaces**: `all`, `any`, `not`
+ * **Interfaces**: `all`, `any`, `not`, `err`
  *
  * @function
  * @name negative
@@ -133,7 +133,7 @@ Numbers.negative = (value) => {
 /**
  * Check if is negative zero
  *
- * **Interfaces**: `all`, `any`, `not`
+ * **Interfaces**: `all`, `any`, `not`, `err`
  *
  * @function
  * @name negativeZero
@@ -150,7 +150,7 @@ Numbers.negativeZero = (value) => {
 /**
  * Check if is negative zero
  *
- * **Interfaces**: `all`, `any`, `not`
+ * **Interfaces**: `all`, `any`, `not`, `err`
  *
  * @function
  * @name positiveZero
@@ -167,7 +167,7 @@ Numbers.positiveZero = (value) => {
 /**
  * Check if number is infinity
  *
- * **Interfaces**: `all`, `any`, `not`
+ * **Interfaces**: `all`, `any`, `not`, `err`
  *
  * @function
  * @name infinity
@@ -183,7 +183,7 @@ Numbers.infinity = (value) => {
 /**
  * Check if number is infinity positive
  *
- * **Interfaces**: `all`, `any`, `not`
+ * **Interfaces**: `all`, `any`, `not`, `err`
  *
  * @function
  * @name infinityPositive
@@ -200,7 +200,7 @@ Numbers.infinityPositive = (value) => {
 /**
  * Check if number is infinity positive
  *
- * **Interfaces**: `all`, `any`, `not`
+ * **Interfaces**: `all`, `any`, `not`, `err`
  *
  * @function
  * @name infinityNegative
@@ -217,7 +217,7 @@ Numbers.infinityNegative = (value) => {
 /**
  * Check if number is between min and max
  *
- * **Interfaces**: `not`
+ * **Interfaces**: `not`, `err`
  *
  * @function
  * @name between
@@ -237,7 +237,7 @@ Numbers.between.multiple = false;
 /**
  * Checks if number is greater then an other
  *
- * **Interfaces**: `not`
+ * **Interfaces**: `not`, `err`
  *
  * @function
  * @name greater
@@ -257,7 +257,7 @@ Numbers.greater.multiple = false;
 /**
  * Checks if number is lesser then an other
  *
- * **Interfaces**: `not`
+ * **Interfaces**: `not`, `err`
  *
  * @function
  * @name lesser
@@ -277,7 +277,7 @@ Numbers.lesser.multiple = false;
 /**
  * Checks if is a number as string or number type
  *
- * **Interfaces**: `all`, `any`, `not`
+ * **Interfaces**: `all`, `any`, `not`, `err`
  *
  * @function
  * @name numeric

@@ -85,6 +85,8 @@ be.getVersion = () => {
         return version;
 };
 
+be.getVersion._ofBe = true;
+
 /**
  * Set new/overwrite method
  * @function
@@ -101,6 +103,8 @@ be.getVersion = () => {
 be.set = (name, func) => {
     be[name] = func;
 };
+
+be.set._ofBe = true;
 
 /**
  * Add all methods to "be"

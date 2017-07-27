@@ -1,4 +1,5 @@
-let Helpers = require('./helpers');
+const Helpers = require('./helpers');
+const Errors = require('./errors');
 let Interface = {};
 
 /**
@@ -57,7 +58,7 @@ Interface.create = (obj) => {
     obj.err = {};
 
     for (let i in obj) {
-        if (obj.hasOwnProperty(i) && typeof obj[i] === 'function') {
+        if (obj.hasOwnProperty(i) && typeof obj[i] === 'function' && typeof obj[i]._ofBe === 'undefined') {
             obj.not[i] = (...params) => {
                 return !obj[i].apply(this, params);
             };
@@ -91,28 +92,26 @@ Interface.create = (obj) => {
                 };
             }
         }
-    }
 
-    // Build "err" interface
-    for (let i in obj) {
-        //console.log(i);
-        if (typeof obj === 'object') {
-            for (let j in obj[i]) {
-                if(!obj.err[i])
-                    obj.err[i] = {};
-                if(obj[i].hasOwnProperty(j)) {
-                    obj.err[i][j] = (...params) => {
-                        if (!obj[i][j].apply(this, params))
-                            throw new Error('error');
+        // Build err
+        if(typeof obj[i]._ofBe === 'undefined')
+            if (typeof obj[i] === 'object') {
+                for (let j in obj[i]) {
+                    if(!obj.err[i])
+                        obj.err[i] = {};
+                    if(obj[i].hasOwnProperty(j)) {
+                        obj.err[i][j] = (...params) => {
+                            if (!obj[i][j].apply(this, params))
+                                throw new Errors(`${i}.${j} is not satisfied`);
+                        }
                     }
                 }
+            } else {
+                obj.err[i] = (...params) => {
+                    if (!obj[i].apply(this, params))
+                        throw new Errors(`${i} is not satisfied`);
+                }
             }
-        } else {
-            obj.err[i] = (...params) => {
-                if (!obj[i].apply(this, params))
-                    throw new Error('error');
-            }
-        }
     }
 
 

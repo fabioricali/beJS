@@ -10,7 +10,7 @@ let Objects = {};
 /**
  * Check if is a property of an object
  *
- * **Interfaces**: `not`
+ * **Interfaces**: `not`, `err`
  *
  * @function
  * @name propertyOf
@@ -30,7 +30,7 @@ Objects.propertyOf.multiple = false;
 /**
  * Count properties of an object
  *
- * **Interfaces**: `not`
+ * **Interfaces**: `not`, `err`
  *
  * @function
  * @name propertyCount

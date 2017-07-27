@@ -72,7 +72,10 @@
 "use strict";
 
 
+var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
+
 var Helpers = __webpack_require__(2);
+var Errors = __webpack_require__(7);
 var Interface = {};
 
 /**
@@ -120,6 +123,16 @@ Interface.create = function (obj) {
      */
     obj.not = {};
 
+    /**
+     * @interface err
+     * @description
+     * Throw an Error if assertions are not satisfied
+     * @example
+     * be.err.true(false) // Error;
+     *
+     */
+    obj.err = {};
+
     var _loop = function _loop(i) {
         if (obj.hasOwnProperty(i) && typeof obj[i] === 'function') {
             obj.not[i] = function () {
@@ -162,6 +175,34 @@ Interface.create = function (obj) {
                     return false;
                 };
             }
+        }
+
+        // Build err
+        if (typeof obj[i]._ofBe === 'undefined') if (_typeof(obj[i]) === 'object') {
+            var _loop2 = function _loop2(j) {
+                if (!obj.err[i]) obj.err[i] = {};
+                if (obj[i].hasOwnProperty(j)) {
+                    obj.err[i][j] = function () {
+                        for (var _len4 = arguments.length, params = Array(_len4), _key4 = 0; _key4 < _len4; _key4++) {
+                            params[_key4] = arguments[_key4];
+                        }
+
+                        if (!obj[i][j].apply(undefined, params)) throw new Errors(i + '.' + j + '  is not satisfied');
+                    };
+                }
+            };
+
+            for (var j in obj[i]) {
+                _loop2(j);
+            }
+        } else {
+            obj.err[i] = function () {
+                for (var _len5 = arguments.length, params = Array(_len5), _key5 = 0; _key5 < _len5; _key5++) {
+                    params[_key5] = arguments[_key5];
+                }
+
+                if (!obj[i].apply(undefined, params)) throw new Errors(i + ' is not satisfied');
+            };
         }
     };
 
@@ -967,7 +1008,7 @@ Types.asyncFunction = function (value) {
 Types = Interface.create(Types);
 
 module.exports = Types;
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(8).Buffer))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(9).Buffer))
 
 /***/ }),
 /* 2 */
@@ -1812,19 +1853,19 @@ be._helpers = Helpers;
  * @private
  */
 var Checks = {
-    Strings: __webpack_require__(7),
+    Strings: __webpack_require__(8),
     Types: __webpack_require__(1),
     Numbers: __webpack_require__(3),
-    Envs: __webpack_require__(13),
-    Objects: __webpack_require__(16),
+    Envs: __webpack_require__(14),
+    Objects: __webpack_require__(17),
     Mixed: __webpack_require__(4),
-    Arrays: __webpack_require__(17),
-    Dates: __webpack_require__(18),
-    Urls: __webpack_require__(19),
-    Hashes: __webpack_require__(20),
-    CreditCards: __webpack_require__(21),
-    PostalCodes: __webpack_require__(22),
-    DOM: __webpack_require__(23)
+    Arrays: __webpack_require__(18),
+    Dates: __webpack_require__(19),
+    Urls: __webpack_require__(20),
+    Hashes: __webpack_require__(21),
+    CreditCards: __webpack_require__(22),
+    PostalCodes: __webpack_require__(23),
+    DOM: __webpack_require__(24)
 };
 
 /**
@@ -1835,8 +1876,10 @@ var Checks = {
  * @returns {string}
  */
 be.getVersion = function () {
-    if (Checks.Envs.commonjsEnv()) return __webpack_require__(24).version;else return version;
+    if (Checks.Envs.commonjsEnv()) return __webpack_require__(25).version;else return version;
 };
+
+be.getVersion._ofBe = true;
 
 /**
  * Set new/overwrite method
@@ -1854,6 +1897,8 @@ be.getVersion = function () {
 be.set = function (name, func) {
     be[name] = func;
 };
+
+be.set._ofBe = true;
 
 /**
  * Add all methods to "be"
@@ -1902,6 +1947,77 @@ module.exports = be;
 
 /***/ }),
 /* 7 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var ExtendableError = function (_Error) {
+    _inherits(ExtendableError, _Error);
+
+    function ExtendableError() {
+        var message = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : '';
+
+        _classCallCheck(this, ExtendableError);
+
+        // extending Error is weird and does not propagate `message`
+        var _this = _possibleConstructorReturn(this, (ExtendableError.__proto__ || Object.getPrototypeOf(ExtendableError)).call(this, message));
+
+        Object.defineProperty(_this, 'message', {
+            configurable: true,
+            enumerable: false,
+            value: message,
+            writable: true
+        });
+
+        Object.defineProperty(_this, 'name', {
+            configurable: true,
+            enumerable: false,
+            value: _this.constructor.name,
+            writable: true
+        });
+
+        if (Error.hasOwnProperty('captureStackTrace')) {
+            Error.captureStackTrace(_this, _this.constructor);
+            return _possibleConstructorReturn(_this);
+        }
+
+        Object.defineProperty(_this, 'stack', {
+            configurable: true,
+            enumerable: false,
+            value: new Error(message).stack,
+            writable: true
+        });
+        return _this;
+    }
+
+    return ExtendableError;
+}(Error);
+
+var BeError = function (_ExtendableError) {
+    _inherits(BeError, _ExtendableError);
+
+    function BeError() {
+        var message = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 'Default message';
+
+        _classCallCheck(this, BeError);
+
+        return _possibleConstructorReturn(this, (BeError.__proto__ || Object.getPrototypeOf(BeError)).call(this, message));
+    }
+
+    return BeError;
+}(ExtendableError);
+
+module.exports = BeError;
+
+/***/ }),
+/* 8 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2269,7 +2385,7 @@ Strings = Interface.create(Strings);
 module.exports = Strings;
 
 /***/ }),
-/* 8 */
+/* 9 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2283,9 +2399,9 @@ module.exports = Strings;
 
 
 
-var base64 = __webpack_require__(10);
-var ieee754 = __webpack_require__(11);
-var isArray = __webpack_require__(12);
+var base64 = __webpack_require__(11);
+var ieee754 = __webpack_require__(12);
+var isArray = __webpack_require__(13);
 
 exports.Buffer = Buffer;
 exports.SlowBuffer = SlowBuffer;
@@ -4010,10 +4126,10 @@ function blitBuffer(src, dst, offset, length) {
 function isnan(val) {
   return val !== val; // eslint-disable-line no-self-compare
 }
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(9)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(10)))
 
 /***/ }),
-/* 9 */
+/* 10 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -4043,7 +4159,7 @@ try {
 module.exports = g;
 
 /***/ }),
-/* 10 */
+/* 11 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -4163,7 +4279,7 @@ function fromByteArray(uint8) {
 }
 
 /***/ }),
-/* 11 */
+/* 12 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -4255,7 +4371,7 @@ exports.write = function (buffer, value, offset, isLE, mLen, nBytes) {
 };
 
 /***/ }),
-/* 12 */
+/* 13 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -4268,7 +4384,7 @@ module.exports = Array.isArray || function (arr) {
 };
 
 /***/ }),
-/* 13 */
+/* 14 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -4330,7 +4446,7 @@ Envs.browserEnv.multiple = false;
  * be.amdEnv() // true
  */
 Envs.amdEnv = function () {
-  return "function" === 'function' && __webpack_require__(15);
+  return "function" === 'function' && __webpack_require__(16);
 };
 
 Envs.amdEnv.multiple = false;
@@ -4744,10 +4860,10 @@ Envs.desktop = function (agent) {
 Envs = Interface.create(Envs);
 
 module.exports = Envs;
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(14)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(15)))
 
 /***/ }),
-/* 14 */
+/* 15 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -4940,7 +5056,7 @@ process.umask = function () {
 };
 
 /***/ }),
-/* 15 */
+/* 16 */
 /***/ (function(module, exports) {
 
 /* WEBPACK VAR INJECTION */(function(__webpack_amd_options__) {/* globals __webpack_amd_options__ */
@@ -4949,7 +5065,7 @@ module.exports = __webpack_amd_options__;
 /* WEBPACK VAR INJECTION */}.call(exports, {}))
 
 /***/ }),
-/* 16 */
+/* 17 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -5013,7 +5129,7 @@ Objects = Interface.create(Objects);
 module.exports = Objects;
 
 /***/ }),
-/* 17 */
+/* 18 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -5185,7 +5301,7 @@ Arrays = Interface.create(Arrays);
 module.exports = Arrays;
 
 /***/ }),
-/* 18 */
+/* 19 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -5515,7 +5631,7 @@ Dates = Interface.create(Dates);
 module.exports = Dates;
 
 /***/ }),
-/* 19 */
+/* 20 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -5666,7 +5782,7 @@ Urls = Interface.create(Urls);
 module.exports = Urls;
 
 /***/ }),
-/* 20 */
+/* 21 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -5721,7 +5837,7 @@ Hashes = Interface.create(Hashes);
 module.exports = Hashes;
 
 /***/ }),
-/* 21 */
+/* 22 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -5842,7 +5958,7 @@ CreditCard = Interface.create(CreditCard);
 module.exports = CreditCard;
 
 /***/ }),
-/* 22 */
+/* 23 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -5951,7 +6067,7 @@ PostalCodes = Interface.create(PostalCodes);
 module.exports = PostalCodes;
 
 /***/ }),
-/* 23 */
+/* 24 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -6008,7 +6124,7 @@ DOM = Interface.create(DOM);
 module.exports = DOM;
 
 /***/ }),
-/* 24 */
+/* 25 */
 /***/ (function(module, exports) {
 
 module.exports = {

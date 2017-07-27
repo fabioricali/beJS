@@ -9,7 +9,7 @@ let Hashes = {};
 /**
  * Check if is a valid MD5 hash string
  *
- * **Interfaces**: `all`, `any`, `not`
+ * **Interfaces**: `all`, `any`, `not`, `err`
  *
  * @function
  * @name md5
@@ -26,7 +26,7 @@ Hashes.md5 = (value) => {
 /**
  * Check if is a valid SHA1 hash string
  *
- * **Interfaces**: `all`, `any`, `not`
+ * **Interfaces**: `all`, `any`, `not`, `err`
  *
  * @function
  * @name sha1

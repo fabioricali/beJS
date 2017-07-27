@@ -12,7 +12,7 @@ let Strings = {};
 /**
  * Check if string is in camelCase format
  *
- * **Interfaces**: `all`, `any`, `not`
+ * **Interfaces**: `all`, `any`, `not`, `err`
  *
  * @function
  * @name camelCase
@@ -32,7 +32,7 @@ Strings.camelCase = (value) => {
 /**
  * Check if string is in snake_case format
  *
- * **Interfaces**: `all`, `any`, `not`
+ * **Interfaces**: `all`, `any`, `not`, `err`
  *
  * @function
  * @name snakeCase
@@ -50,7 +50,7 @@ Strings.snakeCase = (value) => {
 /**
  * Check if string is in kebab-case format
  *
- * **Interfaces**: `all`, `any`, `not`
+ * **Interfaces**: `all`, `any`, `not`, `err`
  *
  * @function
  * @name kebabCase
@@ -68,7 +68,7 @@ Strings.kebabCase = (value) => {
 /**
  * Check similarity between two string
  *
- * **Interfaces**: `not`
+ * **Interfaces**: `not`, `err`
  *
  * @function
  * @name similarity
@@ -105,7 +105,7 @@ Strings.similarity.multiple = false;
 /**
  * Check if string contains a value
  *
- * **Interfaces**: `not`
+ * **Interfaces**: `not`, `err`
  *
  * @function
  * @name contains
@@ -125,7 +125,7 @@ Strings.contains.multiple = false;
 /**
  * Check if string is lower case
  *
- * **Interfaces**: `all`, `any`, `not`
+ * **Interfaces**: `all`, `any`, `not`, `err`
  *
  * @function
  * @name lowerCase
@@ -142,7 +142,7 @@ Strings.lowerCase = (value) => {
 /**
  * Check if string is upper case
  *
- * **Interfaces**: `all`, `any`, `not`
+ * **Interfaces**: `all`, `any`, `not`, `err`
  *
  * @function
  * @name upperCase
@@ -159,7 +159,7 @@ Strings.upperCase = (value) => {
 /**
  * Check if is a word
  *
- * **Interfaces**: `all`, `any`, `not`
+ * **Interfaces**: `all`, `any`, `not`, `err`
  *
  * @function
  * @name word
@@ -178,7 +178,7 @@ Strings.word = (value) => {
 /**
  * Check if string is capitalized
  *
- * **Interfaces**: `all`, `any`, `not`
+ * **Interfaces**: `all`, `any`, `not`, `err`
  *
  * @function
  * @name capitalized
@@ -204,7 +204,7 @@ Strings.capitalized = (value) => {
 /**
  * Check if string is empty
  *
- * **Interfaces**: `all`, `any`, `not`
+ * **Interfaces**: `all`, `any`, `not`, `err`
  *
  * @function
  * @name emptyString
@@ -220,7 +220,7 @@ Strings.emptyString = (value) => {
 /**
  * Check if is alphanumeric string
  *
- * **Interfaces**: `all`, `any`, `not`
+ * **Interfaces**: `all`, `any`, `not`, `err`
  *
  * @function
  * @name alphanumeric
@@ -237,7 +237,7 @@ Strings.alphanumeric = (value) => {
 /**
  * Check if string start with a value
  *
- * **Interfaces**: `not`
+ * **Interfaces**: `not`, `err`
  *
  * @function
  * @name startWith
@@ -266,7 +266,7 @@ Strings.startWith.multiple = false;
 /**
  * Check if string end with a value
  *
- * **Interfaces**: `not`
+ * **Interfaces**: `not`, `err`
  *
  * @function
  * @name endWith
@@ -296,7 +296,7 @@ Strings.endWith.multiple = false;
 /**
  * Check if a string is palindrome
  *
- * **Interfaces**: `all`, `any`, `not`
+ * **Interfaces**: `all`, `any`, `not`, `err`
  *
  * @function
  * @name palindrome
@@ -314,7 +314,7 @@ Strings.palindrome = (value) => {
 /**
  * Check if value is a single char
  *
- * **Interfaces**: `all`, `any`, `not`
+ * **Interfaces**: `all`, `any`, `not`, `err`
  *
  * @function
  * @name char
@@ -331,7 +331,7 @@ Strings.char = (value) => {
 /**
  * Check if string is a space
  *
- * **Interfaces**: `all`, `any`, `not`
+ * **Interfaces**: `all`, `any`, `not`, `err`
  *
  * @function
  * @name space
@@ -348,7 +348,7 @@ Strings.space = (value) => {
 /**
  * Check if exists spaces in string
  *
- * **Interfaces**: `all`, `any`, `not`
+ * **Interfaces**: `all`, `any`, `not`, `err`
  *
  * @function
  * @name spaces

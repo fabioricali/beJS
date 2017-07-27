@@ -11,7 +11,7 @@ let Envs = {};
 /**
  * Check if server environment
  *
- * **Interfaces**: `not`
+ * **Interfaces**: `not`, `err`
  *
  * @function
  * @name commonjsEnv
@@ -28,7 +28,7 @@ Envs.commonjsEnv.multiple = false;
 /**
  * Check if browser environment
  *
- * **Interfaces**: `not`
+ * **Interfaces**: `not`, `err`
  *
  * @function
  * @name browserEnv
@@ -45,7 +45,7 @@ Envs.browserEnv.multiple = false;
 /**
  * Check if AMD environment
  *
- * **Interfaces**: `not`
+ * **Interfaces**: `not`, `err`
  *
  * @function
  * @name amdEnv
@@ -62,7 +62,7 @@ Envs.amdEnv.multiple = false;
 /**
  * Check if exists navigator object
  *
- * **Interfaces**: `not`
+ * **Interfaces**: `not`, `err`
  *
  * @function
  * @name navigator
@@ -80,7 +80,7 @@ Envs.navigator.multiple = false;
 /**
  * Check if is on line
  *
- * **Interfaces**: `not`
+ * **Interfaces**: `not`, `err`
  *
  * @function
  * @name online
@@ -134,7 +134,7 @@ for(let i in regExp){
 /**
  * Check if is mobile device
  *
- * **Interfaces**: `not`
+ * **Interfaces**: `not`, `err`
  *
  * @function
  * @name mobile
@@ -151,7 +151,7 @@ Envs.mobile = (agent) => {
 /**
  * Check if is tablet device
  *
- * **Interfaces**: `not`
+ * **Interfaces**: `not`, `err`
  *
  * @function
  * @name tablet
@@ -168,7 +168,7 @@ Envs.tablet = (agent) => {
 /**
  * Check if is desktop device
  *
- * **Interfaces**: `not`
+ * **Interfaces**: `not`, `err`
  *
  * @function
  * @name desktop
@@ -185,7 +185,7 @@ Envs.desktop = (agent) => {
 /**
  * Check if is Android tablet
  *
- * **Interfaces**: `not`
+ * **Interfaces**: `not`, `err`
  *
  * @function
  * @name androidTablet
@@ -199,7 +199,7 @@ Envs.desktop = (agent) => {
 /**
  * Check if is Android phone
  *
- * **Interfaces**: `not`
+ * **Interfaces**: `not`, `err`
  *
  * @function
  * @name androidPhone
@@ -213,7 +213,7 @@ Envs.desktop = (agent) => {
 /**
  * Check if is Windows Phone
  *
- * **Interfaces**: `not`
+ * **Interfaces**: `not`, `err`
  *
  * @function
  * @name windowsPhone
@@ -227,7 +227,7 @@ Envs.desktop = (agent) => {
 /**
  * Check if is Windows Tablet
  *
- * **Interfaces**: `not`
+ * **Interfaces**: `not`, `err`
  *
  * @function
  * @name windowsTablet
@@ -241,7 +241,7 @@ Envs.desktop = (agent) => {
 /**
  * Check if is BlackBerry device
  *
- * **Interfaces**: `not`
+ * **Interfaces**: `not`, `err`
  *
  * @function
  * @name blackberry
@@ -254,7 +254,7 @@ Envs.desktop = (agent) => {
 /**
  * Check if is iOS device
  *
- * **Interfaces**: `not`
+ * **Interfaces**: `not`, `err`
  *
  * @function
  * @name ios
@@ -267,7 +267,7 @@ Envs.desktop = (agent) => {
 /**
  * Check if is iPad device
  *
- * **Interfaces**: `not`
+ * **Interfaces**: `not`, `err`
  *
  * @function
  * @name ipad
@@ -280,7 +280,7 @@ Envs.desktop = (agent) => {
 /**
  * Check if is iPod device
  *
- * **Interfaces**: `not`
+ * **Interfaces**: `not`, `err`
  *
  * @function
  * @name ipod
@@ -293,7 +293,7 @@ Envs.desktop = (agent) => {
 /**
  * Check if is iPhone device
  *
- * **Interfaces**: `not`
+ * **Interfaces**: `not`, `err`
  *
  * @function
  * @name iphone
@@ -306,7 +306,7 @@ Envs.desktop = (agent) => {
 /**
  * Check if is Android device
  *
- * **Interfaces**: `not`
+ * **Interfaces**: `not`, `err`
  *
  * @function
  * @name android
@@ -321,7 +321,7 @@ Envs.desktop = (agent) => {
 /**
  * Firefox detecting
  *
- * **Interfaces**: `not`
+ * **Interfaces**: `not`, `err`
  *
  * @function
  * @name firefox
@@ -336,7 +336,7 @@ Envs.desktop = (agent) => {
 /**
  * Chrome detecting
  *
- * **Interfaces**: `not`
+ * **Interfaces**: `not`, `err`
  *
  * @function
  * @name chrome
@@ -351,7 +351,7 @@ Envs.desktop = (agent) => {
 /**
  * Chrome iOS detecting
  *
- * **Interfaces**: `not`
+ * **Interfaces**: `not`, `err`
  *
  * @function
  * @name chromeIOS
@@ -366,7 +366,7 @@ Envs.desktop = (agent) => {
 /**
  * Safari detecting
  *
- * **Interfaces**: `not`
+ * **Interfaces**: `not`, `err`
  *
  * @function
  * @name safari
@@ -381,7 +381,7 @@ Envs.desktop = (agent) => {
 /**
  * Safari mobile detecting
  *
- * **Interfaces**: `not`
+ * **Interfaces**: `not`, `err`
  *
  * @function
  * @name safariMobile
@@ -396,7 +396,7 @@ Envs.desktop = (agent) => {
 /**
  * Edge detecting
  *
- * **Interfaces**: `not`
+ * **Interfaces**: `not`, `err`
  *
  * @function
  * @name edge
@@ -411,7 +411,7 @@ Envs.desktop = (agent) => {
 /**
  * Explorer detecting
  *
- * **Interfaces**: `not`
+ * **Interfaces**: `not`, `err`
  *
  * @function
  * @name userAgent
@@ -426,7 +426,7 @@ Envs.desktop = (agent) => {
 /**
  * Mac detecting
  *
- * **Interfaces**: `not`
+ * **Interfaces**: `not`, `err`
  *
  * @function
  * @name mac
@@ -439,7 +439,7 @@ Envs.desktop = (agent) => {
 /**
  * Windows detecting
  *
- * **Interfaces**: `not`
+ * **Interfaces**: `not`, `err`
  *
  * @function
  * @name windows
@@ -452,7 +452,7 @@ Envs.desktop = (agent) => {
 /**
  * Linux detecting
  *
- * **Interfaces**: `not`
+ * **Interfaces**: `not`, `err`
  *
  * @function
  * @name linux

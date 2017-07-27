@@ -21,7 +21,7 @@ PostalCodes = Helpers.createRegExpMethods(PostalCodes, regExp);
 /**
  * Check if is an ES postal code
  *
- * **Interfaces**: `all`, `any`, `not`
+ * **Interfaces**: `all`, `any`, `not`, `err`
  *
  * @function
  * @name postalCodeES
@@ -34,7 +34,7 @@ PostalCodes = Helpers.createRegExpMethods(PostalCodes, regExp);
 /**
  * Check if is an UK postal code
  *
- * **Interfaces**: `all`, `any`, `not`
+ * **Interfaces**: `all`, `any`, `not`, `err`
  *
  * @function
  * @name postalCodeUK
@@ -47,7 +47,7 @@ PostalCodes = Helpers.createRegExpMethods(PostalCodes, regExp);
 /**
  * Check if is an US postal code
  *
- * **Interfaces**: `all`, `any`, `not`
+ * **Interfaces**: `all`, `any`, `not`, `err`
  *
  * @function
  * @name postalCodeUS
@@ -60,7 +60,7 @@ PostalCodes = Helpers.createRegExpMethods(PostalCodes, regExp);
 /**
  * Check if is an IT postal code
  *
- * **Interfaces**: `all`, `any`, `not`
+ * **Interfaces**: `all`, `any`, `not`, `err`
  *
  * @function
  * @name postalCodeIT
@@ -73,7 +73,7 @@ PostalCodes = Helpers.createRegExpMethods(PostalCodes, regExp);
 /**
  * Check if is an DE postal code
  *
- * **Interfaces**: `all`, `any`, `not`
+ * **Interfaces**: `all`, `any`, `not`, `err`
  *
  * @function
  * @name postalCodeDE
@@ -86,7 +86,7 @@ PostalCodes = Helpers.createRegExpMethods(PostalCodes, regExp);
 /**
  * Check if is an NL postal code
  *
- * **Interfaces**: `all`, `any`, `not`
+ * **Interfaces**: `all`, `any`, `not`, `err`
  *
  * @function
  * @name postalCodeNL
