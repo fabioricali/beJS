@@ -46,6 +46,16 @@ Interface.create = (obj) => {
      */
     obj.not = {};
 
+    /**
+     * @interface err
+     * @description
+     * Throw an Error if assertions are not satisfied
+     * @example
+     * be.err.true(false) // Error;
+     *
+     */
+    obj.err = {};
+
     for (let i in obj) {
         if (obj.hasOwnProperty(i) && typeof obj[i] === 'function') {
             obj.not[i] = (...params) => {
@@ -82,6 +92,29 @@ Interface.create = (obj) => {
             }
         }
     }
+
+    // Build "err" interface
+    for (let i in obj) {
+        //console.log(i);
+        if (typeof obj === 'object') {
+            for (let j in obj[i]) {
+                if(!obj.err[i])
+                    obj.err[i] = {};
+                if(obj[i].hasOwnProperty(j)) {
+                    obj.err[i][j] = (...params) => {
+                        if (!obj[i][j].apply(this, params))
+                            throw new Error('error');
+                    }
+                }
+            }
+        } else {
+            obj.err[i] = (...params) => {
+                if (!obj[i].apply(this, params))
+                    throw new Error('error');
+            }
+        }
+    }
+
 
     return obj;
 };

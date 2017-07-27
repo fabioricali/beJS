@@ -3,6 +3,7 @@ export declare namespace be {
     interface all {}
     interface not {}
     interface any {}
+    interface err {}
     interface Types {}
     interface Arrays {}
     interface CreditCard {}
