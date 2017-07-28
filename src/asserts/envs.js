@@ -414,7 +414,7 @@ Envs.desktop = (agent) => {
  * **Interfaces**: `not`, `err`
  *
  * @function
- * @name userAgent
+ * @name ie
  * @param range {string} operator and version number "==", "<", "<=", ">", "=>" ex: >=4
  * @param agent {string} user agent string
  * @returns {boolean}
