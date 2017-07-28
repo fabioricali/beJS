@@ -315,7 +315,7 @@ Envs.desktop = (agent) => {
  * @returns {boolean}
  * @example
  * be.android() // true
- * be.android(==4) // true
+ * be.android('==4') // true
  */
 
 /**
@@ -375,7 +375,7 @@ Envs.desktop = (agent) => {
  * @returns {boolean}
  * @example
  * be.safari() // true
- * be.safari(<=7) // true
+ * be.safari('<=7') // true
  */
 
 /**
@@ -390,7 +390,7 @@ Envs.desktop = (agent) => {
  * @returns {boolean}
  * @example
  * be.safariMobile() // true
- * be.safariMobile(<=7) // true
+ * be.safariMobile('<=7') // true
  */
 
 /**
@@ -405,7 +405,7 @@ Envs.desktop = (agent) => {
  * @returns {boolean}
  * @example
  * be.edge() // true
- * be.edge(>=12) // true
+ * be.edge('>=12') // true
  */
 
 /**
@@ -420,7 +420,7 @@ Envs.desktop = (agent) => {
  * @returns {boolean}
  * @example
  * be.ie() // true
- * be.ie(==9) // true
+ * be.ie('==9') // true
  */
 
 /**
