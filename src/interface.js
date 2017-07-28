@@ -1,5 +1,5 @@
 const Helpers = require('./helpers');
-const Errors = require('./errors');
+const AssertionError = require('./errors');
 let Interface = {};
 
 /**
@@ -51,11 +51,23 @@ Interface.create = (obj) => {
      * @interface err
      * @description
      * Throw an Error if assertions are not satisfied
+     * @param msg {string} optional error message
+     * @returns {(function(*))|*}
      * @example
-     * be.err.true(false) // Error;
+     * be.err().true(false) // Error;
      *
      */
-    obj.err = {};
+    obj.err = (msg = '') => {
+        obj.err.__last_error_message = msg;
+        return obj.err;
+    };
+
+    /**
+     * Last error message
+     * @type {string}
+     * @private
+     */
+    obj.err.__last_error_message = '';
 
     for (let i in obj) {
         if (obj.hasOwnProperty(i) && typeof obj[i] === 'function' && typeof obj[i]._ofBe === 'undefined') {
@@ -70,7 +82,7 @@ Interface.create = (obj) => {
                     if (Interface._isArray(args[0]) && args.length === 1)
                         args = args[0];
 
-                    if(!args.length) return false;
+                    if (!args.length) return false;
 
                     for (let a in args) {
                         if (args.hasOwnProperty(a) && !obj[i].call(this, args[a]))
@@ -94,26 +106,35 @@ Interface.create = (obj) => {
         }
 
         // Build err
-        if(typeof obj[i]._ofBe === 'undefined')
+        if (typeof obj[i]._ofBe === 'undefined')
             if (typeof obj[i] === 'object') {
                 for (let j in obj[i]) {
-                    if(!obj.err[i])
+                    if (!obj.err[i])
                         obj.err[i] = {};
-                    if(obj[i].hasOwnProperty(j)) {
+                    if (obj[i].hasOwnProperty(j)) {
                         obj.err[i][j] = (...params) => {
-                            if (!obj[i][j].apply(this, params))
-                                throw new Errors(`${i}.${j} is not satisfied`);
+                            if (!obj[i][j].apply(this, params)) {
+                                let errorMessage = obj.err.__last_error_message + '';
+                                obj.err.__last_error_message = '';
+                                throw new AssertionError(
+                                    errorMessage ? errorMessage : `${i}.${j} is not satisfied`
+                                );
+                            }
                         }
                     }
                 }
             } else {
                 obj.err[i] = (...params) => {
-                    if (!obj[i].apply(this, params))
-                        throw new Errors(`${i} is not satisfied`);
+                    if (!obj[i].apply(this, params)) {
+                        let errorMessage = obj.err.__last_error_message + '';
+                        obj.err.__last_error_message = '';
+                        throw new AssertionError(
+                            errorMessage ? errorMessage : `${i} is not satisfied`
+                        );
+                    }
                 }
             }
     }
-
 
     return obj;
 };
