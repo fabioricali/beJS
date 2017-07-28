@@ -10,7 +10,7 @@ let Arrays = {};
 /**
  * Check if an element is in the array
  *
- * **Interface**: `not`
+ * **Interfaces**: `not`, `err`
  *
  * @param value {Mixed} element to search
  * @param array {array} array where search
