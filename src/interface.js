@@ -52,9 +52,11 @@ Interface.create = (obj) => {
      * @description
      * Throw an Error if assertions are not satisfied
      * @param msg {string} optional error message
-     * @returns {(function(*))|*}
+     * @returns {error|void}
      * @example
-     * be.err().true(false) // Error;
+     * be.err.true(false) // Error;
+     * be.err('an error message').true(false) // Error;
+     * be.err().all.true(false, 1) // Error;
      *
      */
     obj.err = (msg = '') => {

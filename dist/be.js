@@ -75,7 +75,7 @@
 var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
 
 var Helpers = __webpack_require__(2);
-var Errors = __webpack_require__(7);
+var AssertionError = __webpack_require__(7);
 var Interface = {};
 
 /**
@@ -127,14 +127,30 @@ Interface.create = function (obj) {
      * @interface err
      * @description
      * Throw an Error if assertions are not satisfied
+     * @param msg {string} optional error message
+     * @returns {error|void}
      * @example
      * be.err.true(false) // Error;
+     * be.err('an error message').true(false) // Error;
+     * be.err().all.true(false, 1) // Error;
      *
      */
-    obj.err = {};
+    obj.err = function () {
+        var msg = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : '';
+
+        obj.err.__last_error_message = msg;
+        return obj.err;
+    };
+
+    /**
+     * Last error message
+     * @type {string}
+     * @private
+     */
+    obj.err.__last_error_message = '';
 
     var _loop = function _loop(i) {
-        if (obj.hasOwnProperty(i) && typeof obj[i] === 'function') {
+        if (obj.hasOwnProperty(i) && typeof obj[i] === 'function' && typeof obj[i]._ofBe === 'undefined') {
             obj.not[i] = function () {
                 for (var _len = arguments.length, params = Array(_len), _key = 0; _key < _len; _key++) {
                     params[_key] = arguments[_key];
@@ -187,7 +203,11 @@ Interface.create = function (obj) {
                             params[_key4] = arguments[_key4];
                         }
 
-                        if (!obj[i][j].apply(undefined, params)) throw new Errors(i + '.' + j + '  is not satisfied');
+                        if (!obj[i][j].apply(undefined, params)) {
+                            var errorMessage = obj.err.__last_error_message + '';
+                            obj.err.__last_error_message = '';
+                            throw new AssertionError(errorMessage ? errorMessage : i + '.' + j + ' is not satisfied');
+                        }
                     };
                 }
             };
@@ -201,7 +221,11 @@ Interface.create = function (obj) {
                     params[_key5] = arguments[_key5];
                 }
 
-                if (!obj[i].apply(undefined, params)) throw new Errors(i + ' is not satisfied');
+                if (!obj[i].apply(undefined, params)) {
+                    var errorMessage = obj.err.__last_error_message + '';
+                    obj.err.__last_error_message = '';
+                    throw new AssertionError(errorMessage ? errorMessage : i + ' is not satisfied');
+                }
             };
         }
     };
@@ -234,7 +258,7 @@ var Types = {};
 /**
  * Check [object ?] class
  *
- * **Interfaces**: `not`
+ * **Interfaces**: `not`, `err`
  *
  * @function
  * @name classOf
@@ -258,7 +282,7 @@ Types.classOf.multiple = false;
 /**
  * Check if is valid boolean
  *
- * **Interfaces**: `all`, `any`, `not`
+ * **Interfaces**: `all`, `any`, `not`, `err`
  *
  * @function
  * @name boolean
@@ -275,7 +299,7 @@ Types.boolean = function (value) {
 /**
  * Alias of `be.false`
  *
- * **Interfaces**: `all`, `any`, `not`
+ * **Interfaces**: `all`, `any`, `not`, `err`
  *
  * @function
  * @name booleanFalse
@@ -293,7 +317,7 @@ Types.booleanFalse = function (value) {
 /**
  * Check if is false boolean type
  *
- * **Interfaces**: `all`, `any`, `not`
+ * **Interfaces**: `all`, `any`, `not`, `err`
  *
  * @function
  * @name false
@@ -310,7 +334,7 @@ Types.false = function (value) {
 /**
  * Alias of `be.true`
  *
- * **Interfaces**: `all`, `any`, `not`
+ * **Interfaces**: `all`, `any`, `not`, `err`
  *
  * @function
  * @name booleanTrue
@@ -328,7 +352,7 @@ Types.booleanTrue = function (value) {
 /**
  * Check if is true boolean type
  *
- * **Interfaces**: `all`, `any`, `not`
+ * **Interfaces**: `all`, `any`, `not`, `err`
  *
  * @function
  * @name true
@@ -345,7 +369,7 @@ Types.true = function (value) {
 /**
  * Check if is valid number
  *
- * **Interfaces**: `all`, `any`, `not`
+ * **Interfaces**: `all`, `any`, `not`, `err`
  *
  * @function
  * @name number
@@ -362,7 +386,7 @@ Types.number = function (value) {
 /**
  * Check if is valid string
  *
- * **Interfaces**: `all`, `any`, `not`
+ * **Interfaces**: `all`, `any`, `not`, `err`
  *
  * @function
  * @name string
@@ -379,7 +403,7 @@ Types.string = function (value) {
 /**
  * Check if is undefined value
  *
- * **Interfaces**: `all`, `any`, `not`
+ * **Interfaces**: `all`, `any`, `not`, `err`
  *
  * @function
  * @name undefined
@@ -396,7 +420,7 @@ Types.undefined = function (value) {
 /**
  * Check if is null
  *
- * **Interfaces**: `all`, `any`, `not`
+ * **Interfaces**: `all`, `any`, `not`, `err`
  *
  * @function
  * @name null
@@ -414,7 +438,7 @@ Types['null'] = function (value) {
 /**
  * Check if is a object
  *
- * **Interfaces**: `all`, `any`, `not`
+ * **Interfaces**: `all`, `any`, `not`, `err`
  *
  * @param value {Mixed} value
  * @returns {boolean}
@@ -429,7 +453,7 @@ Types.object = function (value) {
 /**
  * Check if is an array
  *
- * **Interfaces**: `all`, `any`, `not`
+ * **Interfaces**: `all`, `any`, `not`, `err`
  *
  * @function
  * @name array
@@ -446,7 +470,7 @@ Types.array = function (value) {
 /**
  * Check if is a JSON string
  *
- * **Interfaces**: `all`, `any`, `not`
+ * **Interfaces**: `all`, `any`, `not`, `err`
  *
  * @function
  * @name json
@@ -467,7 +491,7 @@ Types.json = function (value) {
 /**
  * Check if is date object
  *
- * **Interfaces**: `all`, `any`, `not`
+ * **Interfaces**: `all`, `any`, `not`, `err`
  *
  * @function
  * @name date
@@ -484,7 +508,7 @@ Types.date = function (value) {
 /**
  * Check if is a function
  *
- * **Interfaces**: `all`, `any`, `not`
+ * **Interfaces**: `all`, `any`, `not`, `err`
  *
  * @function
  * @name function
@@ -502,7 +526,7 @@ Types['function'] = function (value) {
 /**
  * Check if is a valid RegExp
  *
- * **Interfaces**: `all`, `any`, `not`
+ * **Interfaces**: `all`, `any`, `not`, `err`
  *
  * @function
  * @name regexp
@@ -520,7 +544,7 @@ Types.regexp = function (value) {
 /**
  * Check if both arguments are same type
  *
- * **Interfaces**: `not`
+ * **Interfaces**: `not`, `err`
  *
  * @function
  * @name sameType
@@ -540,7 +564,7 @@ Types.sameType.multiple = false;
 /**
  * Check if is empty
  *
- * **Interfaces**: `all`, `any`, `not`
+ * **Interfaces**: `all`, `any`, `not`, `err`
  *
  * @function
  * @name empty
@@ -571,7 +595,7 @@ Types.empty = function (value) {
 /**
  * Check if a falsy value
  * https://developer.mozilla.org/it/docs/Glossary/Falsy
- * **Interfaces**: `all`, `any`, `not`
+ * **Interfaces**: `all`, `any`, `not`, `err`
  *
  * @function
  * @name falsy
@@ -591,7 +615,7 @@ Types.falsy = function (value) {
 /**
  * Check if a truthy value
  * https://developer.mozilla.org/en-US/docs/Glossary/Truthy
- * **Interfaces**: `all`, `any`, `not`
+ * **Interfaces**: `all`, `any`, `not`, `err`
  *
  * @function
  * @name truthy
@@ -613,7 +637,7 @@ Types.truthy = function (value) {
 /**
  * Check if is an error object
  *
- * **Interfaces**: `all`, `any`, `not`
+ * **Interfaces**: `all`, `any`, `not`, `err`
  *
  * @function
  * @name error
@@ -630,7 +654,7 @@ Types.error = function (value) {
 /**
  * Check if is an arguments
  *
- * **Interfaces**: `all`, `any`, `not`
+ * **Interfaces**: `all`, `any`, `not`, `err`
  *
  * @function
  * @name argument
@@ -647,7 +671,7 @@ Types.argument = function (value) {
 /**
  * Check if is a primitive object
  *
- * **Interfaces**: `all`, `any`, `not`
+ * **Interfaces**: `all`, `any`, `not`, `err`
  *
  * @function
  * @name primitive
@@ -664,7 +688,7 @@ Types.primitive = function (value) {
 /**
  * Check if is a primitive object
  *
- * **Interfaces**: `all`, `any`, `not`
+ * **Interfaces**: `all`, `any`, `not`, `err`
  *
  * @function
  * @name promise
@@ -681,7 +705,7 @@ Types.promise = function (value) {
 /**
  * Check if is a buffer
  *
- * **Interfaces**: `all`, `any`, `not`
+ * **Interfaces**: `all`, `any`, `not`, `err`
  *
  * @function
  * @name buffer
@@ -698,7 +722,7 @@ Types.buffer = function (value) {
 /**
  * Check if is iterable
  *
- * **Interfaces**: `all`, `any`, `not`
+ * **Interfaces**: `all`, `any`, `not`, `err`
  *
  * @function
  * @name iterable
@@ -716,7 +740,7 @@ Types.iterable = function (value) {
 /**
  * Check if is symbol
  *
- * **Interfaces**: `all`, `any`, `not`
+ * **Interfaces**: `all`, `any`, `not`, `err`
  *
  * @function
  * @name symbol
@@ -733,7 +757,7 @@ Types.symbol = function (value) {
 /**
  * Check if is defined
  *
- * **Interfaces**: `all`, `any`, `not`
+ * **Interfaces**: `all`, `any`, `not`, `err`
  *
  * @function
  * @name defined
@@ -752,7 +776,7 @@ Types.defined = function (value) {
 /**
  * Check if is Set object
  *
- * **Interfaces**: `all`, `any`, `not`
+ * **Interfaces**: `all`, `any`, `not`, `err`
  *
  * @function
  * @name oSet
@@ -768,7 +792,7 @@ Types.oSet = function (value) {
 /**
  * Check if is WeakSet object
  *
- * **Interfaces**: `all`, `any`, `not`
+ * **Interfaces**: `all`, `any`, `not`, `err`
  *
  * @function
  * @name weakSet
@@ -784,7 +808,7 @@ Types.weakSet = function (value) {
 /**
  * Check if is Map object
  *
- * **Interfaces**: `all`, `any`, `not`
+ * **Interfaces**: `all`, `any`, `not`, `err`
  *
  * @function
  * @name map
@@ -800,7 +824,7 @@ Types.map = function (value) {
 /**
  * Check if is WeakMap object
  *
- * **Interfaces**: `all`, `any`, `not`
+ * **Interfaces**: `all`, `any`, `not`, `err`
  *
  * @function
  * @name weakMap
@@ -816,7 +840,7 @@ Types.weakMap = function (value) {
 /**
  * Check if is Map Iterator object
  *
- * **Interfaces**: `all`, `any`, `not`
+ * **Interfaces**: `all`, `any`, `not`, `err`
  *
  * @function
  * @name mapIterator
@@ -832,7 +856,7 @@ Types.mapIterator = function (value) {
 /**
  * Check if is Set Iterator object
  *
- * **Interfaces**: `all`, `any`, `not`
+ * **Interfaces**: `all`, `any`, `not`, `err`
  *
  * @function
  * @name setIterator
@@ -848,7 +872,7 @@ Types.setIterator = function (value) {
 /**
  * Check if is Int8Array object
  *
- * **Interfaces**: `all`, `any`, `not`
+ * **Interfaces**: `all`, `any`, `not`, `err`
  *
  * @function
  * @name int8Array
@@ -864,7 +888,7 @@ Types.int8Array = function (value) {
 /**
  * Check if is Uint8Array object
  *
- * **Interfaces**: `all`, `any`, `not`
+ * **Interfaces**: `all`, `any`, `not`, `err`
  *
  * @function
  * @name uint8Array
@@ -880,7 +904,7 @@ Types.uint8Array = function (value) {
 /**
  * Check if is Uint8ClampedArray object
  *
- * **Interfaces**: `all`, `any`, `not`
+ * **Interfaces**: `all`, `any`, `not`, `err`
  *
  * @function
  * @name uint8ClampedArray
@@ -896,7 +920,7 @@ Types.uint8ClampedArray = function (value) {
 /**
  * Check if is Int16Array object
  *
- * **Interfaces**: `all`, `any`, `not`
+ * **Interfaces**: `all`, `any`, `not`, `err`
  *
  * @function
  * @name int16Array
@@ -912,7 +936,7 @@ Types.int16Array = function (value) {
 /**
  * Check if is Uint16Array object
  *
- * **Interfaces**: `all`, `any`, `not`
+ * **Interfaces**: `all`, `any`, `not`, `err`
  *
  * @function
  * @name uint16Array
@@ -928,7 +952,7 @@ Types.uint16Array = function (value) {
 /**
  * Check if is Int32Array object
  *
- * **Interfaces**: `all`, `any`, `not`
+ * **Interfaces**: `all`, `any`, `not`, `err`
  *
  * @function
  * @name int32Array
@@ -944,7 +968,7 @@ Types.int32Array = function (value) {
 /**
  * Check if is Uint32Array object
  *
- * **Interfaces**: `all`, `any`, `not`
+ * **Interfaces**: `all`, `any`, `not`, `err`
  *
  * @function
  * @name uint32Array
@@ -960,7 +984,7 @@ Types.uint32Array = function (value) {
 /**
  * Check if is Float32Array object
  *
- * **Interfaces**: `all`, `any`, `not`
+ * **Interfaces**: `all`, `any`, `not`, `err`
  *
  * @function
  * @name float32Array
@@ -976,7 +1000,7 @@ Types.float32Array = function (value) {
 /**
  * Check if is Float64Array object
  *
- * **Interfaces**: `all`, `any`, `not`
+ * **Interfaces**: `all`, `any`, `not`, `err`
  *
  * @function
  * @name float64Array
@@ -992,7 +1016,7 @@ Types.float64Array = function (value) {
 /**
  * Check if is async Function
  *
- * **Interfaces**: `all`, `any`, `not`
+ * **Interfaces**: `all`, `any`, `not`, `err`
  *
  * @function
  * @name asyncFunction
@@ -1173,7 +1197,7 @@ var Numbers = {};
 /**
  * Check if a number is integer
  *
- * **Interfaces**: `all`, `any`, `not`
+ * **Interfaces**: `all`, `any`, `not`, `err`
  *
  * @function
  * @name int
@@ -1191,7 +1215,7 @@ Numbers.int = function (value) {
 /**
  * Check if is float number
  *
- * **Interfaces**: `all`, `any`, `not`
+ * **Interfaces**: `all`, `any`, `not`, `err`
  *
  * @function
  * @name float
@@ -1209,7 +1233,7 @@ Numbers.float = function (value) {
 /**
  * Check if is NaN
  *
- * **Interfaces**: `all`, `any`, `not`
+ * **Interfaces**: `all`, `any`, `not`, `err`
  *
  * @function
  * @name nan
@@ -1225,7 +1249,7 @@ Numbers.nan = function (value) {
 /**
  * Check if is a even number
  *
- * **Interfaces**: `all`, `any`, `not`
+ * **Interfaces**: `all`, `any`, `not`, `err`
  *
  * @function
  * @name even
@@ -1242,7 +1266,7 @@ Numbers.even = function (value) {
 /**
  * Check if is an odd number
  *
- * **Interfaces**: `all`, `any`, `not`
+ * **Interfaces**: `all`, `any`, `not`, `err`
  *
  * @function
  * @name odd
@@ -1259,7 +1283,7 @@ Numbers.odd = function (value) {
 /**
  * Check if is a positive number
  *
- * **Interfaces**: `all`, `any`, `not`
+ * **Interfaces**: `all`, `any`, `not`, `err`
  *
  * @function
  * @name positive
@@ -1276,7 +1300,7 @@ Numbers.positive = function (value) {
 /**
  * Check if is a negative number
  *
- * **Interfaces**: `all`, `any`, `not`
+ * **Interfaces**: `all`, `any`, `not`, `err`
  *
  * @function
  * @name negative
@@ -1293,7 +1317,7 @@ Numbers.negative = function (value) {
 /**
  * Check if is negative zero
  *
- * **Interfaces**: `all`, `any`, `not`
+ * **Interfaces**: `all`, `any`, `not`, `err`
  *
  * @function
  * @name negativeZero
@@ -1310,7 +1334,7 @@ Numbers.negativeZero = function (value) {
 /**
  * Check if is negative zero
  *
- * **Interfaces**: `all`, `any`, `not`
+ * **Interfaces**: `all`, `any`, `not`, `err`
  *
  * @function
  * @name positiveZero
@@ -1327,7 +1351,7 @@ Numbers.positiveZero = function (value) {
 /**
  * Check if number is infinity
  *
- * **Interfaces**: `all`, `any`, `not`
+ * **Interfaces**: `all`, `any`, `not`, `err`
  *
  * @function
  * @name infinity
@@ -1343,7 +1367,7 @@ Numbers.infinity = function (value) {
 /**
  * Check if number is infinity positive
  *
- * **Interfaces**: `all`, `any`, `not`
+ * **Interfaces**: `all`, `any`, `not`, `err`
  *
  * @function
  * @name infinityPositive
@@ -1360,7 +1384,7 @@ Numbers.infinityPositive = function (value) {
 /**
  * Check if number is infinity positive
  *
- * **Interfaces**: `all`, `any`, `not`
+ * **Interfaces**: `all`, `any`, `not`, `err`
  *
  * @function
  * @name infinityNegative
@@ -1377,7 +1401,7 @@ Numbers.infinityNegative = function (value) {
 /**
  * Check if number is between min and max
  *
- * **Interfaces**: `not`
+ * **Interfaces**: `not`, `err`
  *
  * @function
  * @name between
@@ -1397,7 +1421,7 @@ Numbers.between.multiple = false;
 /**
  * Checks if number is greater then an other
  *
- * **Interfaces**: `not`
+ * **Interfaces**: `not`, `err`
  *
  * @function
  * @name greater
@@ -1417,7 +1441,7 @@ Numbers.greater.multiple = false;
 /**
  * Checks if number is lesser then an other
  *
- * **Interfaces**: `not`
+ * **Interfaces**: `not`, `err`
  *
  * @function
  * @name lesser
@@ -1437,7 +1461,7 @@ Numbers.lesser.multiple = false;
 /**
  * Checks if is a number as string or number type
  *
- * **Interfaces**: `all`, `any`, `not`
+ * **Interfaces**: `all`, `any`, `not`, `err`
  *
  * @function
  * @name numeric
@@ -1493,7 +1517,7 @@ Mixed = Helpers.createRegExpMethods(Mixed, regExp);
 
 /**
  * Check if is ISWC
- * **Interfaces**: `all`, `any`, `not`
+ * **Interfaces**: `all`, `any`, `not`, `err`
  *
  * @function
  * @name iswc
@@ -1505,7 +1529,7 @@ Mixed = Helpers.createRegExpMethods(Mixed, regExp);
 
 /**
  * Check if is ISRC
- * **Interfaces**: `all`, `any`, `not`
+ * **Interfaces**: `all`, `any`, `not`, `err`
  *
  * @function
  * @name isrc
@@ -1517,7 +1541,7 @@ Mixed = Helpers.createRegExpMethods(Mixed, regExp);
 
 /**
  * Check if is UUID
- * **Interfaces**: `all`, `any`, `not`
+ * **Interfaces**: `all`, `any`, `not`, `err`
  *
  * @function
  * @name uuid
@@ -1529,7 +1553,7 @@ Mixed = Helpers.createRegExpMethods(Mixed, regExp);
 
 /**
  * Check if is UUID ver 1
- * **Interfaces**: `all`, `any`, `not`
+ * **Interfaces**: `all`, `any`, `not`, `err`
  *
  * @function
  * @name uuid1
@@ -1541,7 +1565,7 @@ Mixed = Helpers.createRegExpMethods(Mixed, regExp);
 
 /**
  * Check if is UUID ver 3
- * **Interfaces**: `all`, `any`, `not`
+ * **Interfaces**: `all`, `any`, `not`, `err`
  *
  * @function
  * @name uuid3
@@ -1553,7 +1577,7 @@ Mixed = Helpers.createRegExpMethods(Mixed, regExp);
 
 /**
  * Check if is UUID ver 4
- * **Interfaces**: `all`, `any`, `not`
+ * **Interfaces**: `all`, `any`, `not`, `err`
  *
  * @function
  * @name uuid4
@@ -1565,7 +1589,7 @@ Mixed = Helpers.createRegExpMethods(Mixed, regExp);
 
 /**
  * Check if is UUID ver 5
- * **Interfaces**: `all`, `any`, `not`
+ * **Interfaces**: `all`, `any`, `not`, `err`
  *
  * @function
  * @name uuid5
@@ -1578,7 +1602,7 @@ Mixed = Helpers.createRegExpMethods(Mixed, regExp);
 /**
  * Check if is valid email
  * https://emailregex.com/
- * **Interfaces**: `all`, `any`, `not`
+ * **Interfaces**: `all`, `any`, `not`, `err`
  *
  * @function
  * @name email
@@ -1592,7 +1616,7 @@ Mixed = Helpers.createRegExpMethods(Mixed, regExp);
 /**
  * Check if is a hexadecimal
  *
- * **Interfaces**: `all`, `any`, `not`
+ * **Interfaces**: `all`, `any`, `not`, `err`
  *
  * @function
  * @name hex
@@ -1605,7 +1629,7 @@ Mixed = Helpers.createRegExpMethods(Mixed, regExp);
 /**
  * Check if is a valid IPv4
  *
- * **Interfaces**: `all`, `any`, `not`
+ * **Interfaces**: `all`, `any`, `not`, `err`
  *
  * @function
  * @name ipv4
@@ -1618,7 +1642,7 @@ Mixed = Helpers.createRegExpMethods(Mixed, regExp);
 /**
  * Check if is a valid IPv6
  *
- * **Interfaces**: `all`, `any`, `not`
+ * **Interfaces**: `all`, `any`, `not`, `err`
  *
  * @function
  * @name ipv6
@@ -1631,7 +1655,7 @@ Mixed = Helpers.createRegExpMethods(Mixed, regExp);
 /**
  * Check if is base64 encoded string
  *
- * **Interfaces**: `all`, `any`, `not`
+ * **Interfaces**: `all`, `any`, `not`, `err`
  *
  * @function
  * @name base64
@@ -1644,7 +1668,7 @@ Mixed = Helpers.createRegExpMethods(Mixed, regExp);
 /**
  * Check if is a valid semver string
  *
- * **Interfaces**: `all`, `any`, `not`
+ * **Interfaces**: `all`, `any`, `not`, `err`
  *
  * @function
  * @name semVer
@@ -1657,7 +1681,7 @@ Mixed = Helpers.createRegExpMethods(Mixed, regExp);
 /**
  * Check if is an IT fiscal code
  *
- * **Interfaces**: `all`, `any`, `not`
+ * **Interfaces**: `all`, `any`, `not`, `err`
  *
  * @function
  * @name fiscalCodeIT
@@ -1670,7 +1694,7 @@ Mixed = Helpers.createRegExpMethods(Mixed, regExp);
 /**
  * Check if is a valid MAC address
  *
- * **Interfaces**: `all`, `any`, `not`
+ * **Interfaces**: `all`, `any`, `not`, `err`
  *
  * @function
  * @name macAddress
@@ -1683,7 +1707,7 @@ Mixed = Helpers.createRegExpMethods(Mixed, regExp);
 /**
  * Check if is a valid ip string
  *
- * **Interfaces**: `all`, `any`, `not`
+ * **Interfaces**: `all`, `any`, `not`, `err`
  *
  * @function
  * @name ip
@@ -1699,7 +1723,7 @@ Mixed.ip = function (value) {
 /**
  * Checks if equal
  *
- * **Interfaces**: `not`
+ * **Interfaces**: `not`, `err`
  *
  * @function
  * @name equal
@@ -1730,7 +1754,7 @@ Mixed.equal.multiple = false;
 /**
  * Check if is a hexadecimal color
  *
- * **Interfaces**: `all`, `any`, `not`
+ * **Interfaces**: `all`, `any`, `not`, `err`
  *
  * @function
  * @name hexColor
@@ -1751,7 +1775,7 @@ Mixed.hexColor = function (value) {
 /**
  * Compare two version number
  *
- * **Interfaces**: `not`
+ * **Interfaces**: `not`, `err`
  *
  * @function
  * @name compareVersion
@@ -2000,21 +2024,21 @@ var ExtendableError = function (_Error) {
     return ExtendableError;
 }(Error);
 
-var BeError = function (_ExtendableError) {
-    _inherits(BeError, _ExtendableError);
+var AssertionError = function (_ExtendableError) {
+    _inherits(AssertionError, _ExtendableError);
 
-    function BeError() {
-        var message = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 'Default message';
+    function AssertionError() {
+        var message = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 'An error has occurred';
 
-        _classCallCheck(this, BeError);
+        _classCallCheck(this, AssertionError);
 
-        return _possibleConstructorReturn(this, (BeError.__proto__ || Object.getPrototypeOf(BeError)).call(this, message));
+        return _possibleConstructorReturn(this, (AssertionError.__proto__ || Object.getPrototypeOf(AssertionError)).call(this, message));
     }
 
-    return BeError;
+    return AssertionError;
 }(ExtendableError);
 
-module.exports = BeError;
+module.exports = AssertionError;
 
 /***/ }),
 /* 8 */
@@ -2037,7 +2061,7 @@ var Strings = {};
 /**
  * Check if string is in camelCase format
  *
- * **Interfaces**: `all`, `any`, `not`
+ * **Interfaces**: `all`, `any`, `not`, `err`
  *
  * @function
  * @name camelCase
@@ -2054,7 +2078,7 @@ Strings.camelCase = function (value) {
 /**
  * Check if string is in snake_case format
  *
- * **Interfaces**: `all`, `any`, `not`
+ * **Interfaces**: `all`, `any`, `not`, `err`
  *
  * @function
  * @name snakeCase
@@ -2071,7 +2095,7 @@ Strings.snakeCase = function (value) {
 /**
  * Check if string is in kebab-case format
  *
- * **Interfaces**: `all`, `any`, `not`
+ * **Interfaces**: `all`, `any`, `not`, `err`
  *
  * @function
  * @name kebabCase
@@ -2088,7 +2112,7 @@ Strings.kebabCase = function (value) {
 /**
  * Check similarity between two string
  *
- * **Interfaces**: `not`
+ * **Interfaces**: `not`, `err`
  *
  * @function
  * @name similarity
@@ -2123,7 +2147,7 @@ Strings.similarity.multiple = false;
 /**
  * Check if string contains a value
  *
- * **Interfaces**: `not`
+ * **Interfaces**: `not`, `err`
  *
  * @function
  * @name contains
@@ -2143,7 +2167,7 @@ Strings.contains.multiple = false;
 /**
  * Check if string is lower case
  *
- * **Interfaces**: `all`, `any`, `not`
+ * **Interfaces**: `all`, `any`, `not`, `err`
  *
  * @function
  * @name lowerCase
@@ -2160,7 +2184,7 @@ Strings.lowerCase = function (value) {
 /**
  * Check if string is upper case
  *
- * **Interfaces**: `all`, `any`, `not`
+ * **Interfaces**: `all`, `any`, `not`, `err`
  *
  * @function
  * @name upperCase
@@ -2177,7 +2201,7 @@ Strings.upperCase = function (value) {
 /**
  * Check if is a word
  *
- * **Interfaces**: `all`, `any`, `not`
+ * **Interfaces**: `all`, `any`, `not`, `err`
  *
  * @function
  * @name word
@@ -2196,7 +2220,7 @@ Strings.word = function (value) {
 /**
  * Check if string is capitalized
  *
- * **Interfaces**: `all`, `any`, `not`
+ * **Interfaces**: `all`, `any`, `not`, `err`
  *
  * @function
  * @name capitalized
@@ -2221,7 +2245,7 @@ Strings.capitalized = function (value) {
 /**
  * Check if string is empty
  *
- * **Interfaces**: `all`, `any`, `not`
+ * **Interfaces**: `all`, `any`, `not`, `err`
  *
  * @function
  * @name emptyString
@@ -2237,7 +2261,7 @@ Strings.emptyString = function (value) {
 /**
  * Check if is alphanumeric string
  *
- * **Interfaces**: `all`, `any`, `not`
+ * **Interfaces**: `all`, `any`, `not`, `err`
  *
  * @function
  * @name alphanumeric
@@ -2254,7 +2278,7 @@ Strings.alphanumeric = function (value) {
 /**
  * Check if string start with a value
  *
- * **Interfaces**: `not`
+ * **Interfaces**: `not`, `err`
  *
  * @function
  * @name startWith
@@ -2283,7 +2307,7 @@ Strings.startWith.multiple = false;
 /**
  * Check if string end with a value
  *
- * **Interfaces**: `not`
+ * **Interfaces**: `not`, `err`
  *
  * @function
  * @name endWith
@@ -2313,7 +2337,7 @@ Strings.endWith.multiple = false;
 /**
  * Check if a string is palindrome
  *
- * **Interfaces**: `all`, `any`, `not`
+ * **Interfaces**: `all`, `any`, `not`, `err`
  *
  * @function
  * @name palindrome
@@ -2331,7 +2355,7 @@ Strings.palindrome = function (value) {
 /**
  * Check if value is a single char
  *
- * **Interfaces**: `all`, `any`, `not`
+ * **Interfaces**: `all`, `any`, `not`, `err`
  *
  * @function
  * @name char
@@ -2348,7 +2372,7 @@ Strings.char = function (value) {
 /**
  * Check if string is a space
  *
- * **Interfaces**: `all`, `any`, `not`
+ * **Interfaces**: `all`, `any`, `not`, `err`
  *
  * @function
  * @name space
@@ -2365,7 +2389,7 @@ Strings.space = function (value) {
 /**
  * Check if exists spaces in string
  *
- * **Interfaces**: `all`, `any`, `not`
+ * **Interfaces**: `all`, `any`, `not`, `err`
  *
  * @function
  * @name spaces
@@ -4403,7 +4427,7 @@ var Envs = {};
 /**
  * Check if server environment
  *
- * **Interfaces**: `not`
+ * **Interfaces**: `not`, `err`
  *
  * @function
  * @name commonjsEnv
@@ -4420,7 +4444,7 @@ Envs.commonjsEnv.multiple = false;
 /**
  * Check if browser environment
  *
- * **Interfaces**: `not`
+ * **Interfaces**: `not`, `err`
  *
  * @function
  * @name browserEnv
@@ -4437,7 +4461,7 @@ Envs.browserEnv.multiple = false;
 /**
  * Check if AMD environment
  *
- * **Interfaces**: `not`
+ * **Interfaces**: `not`, `err`
  *
  * @function
  * @name amdEnv
@@ -4454,7 +4478,7 @@ Envs.amdEnv.multiple = false;
 /**
  * Check if exists navigator object
  *
- * **Interfaces**: `not`
+ * **Interfaces**: `not`, `err`
  *
  * @function
  * @name navigator
@@ -4471,7 +4495,7 @@ Envs.navigator.multiple = false;
 /**
  * Check if is on line
  *
- * **Interfaces**: `not`
+ * **Interfaces**: `not`, `err`
  *
  * @function
  * @name online
@@ -4529,7 +4553,7 @@ for (var i in regExp) {
 /**
  * Check if is mobile device
  *
- * **Interfaces**: `not`
+ * **Interfaces**: `not`, `err`
  *
  * @function
  * @name mobile
@@ -4546,7 +4570,7 @@ Envs.mobile = function (agent) {
 /**
  * Check if is tablet device
  *
- * **Interfaces**: `not`
+ * **Interfaces**: `not`, `err`
  *
  * @function
  * @name tablet
@@ -4563,7 +4587,7 @@ Envs.tablet = function (agent) {
 /**
  * Check if is desktop device
  *
- * **Interfaces**: `not`
+ * **Interfaces**: `not`, `err`
  *
  * @function
  * @name desktop
@@ -4580,7 +4604,7 @@ Envs.desktop = function (agent) {
 /**
  * Check if is Android tablet
  *
- * **Interfaces**: `not`
+ * **Interfaces**: `not`, `err`
  *
  * @function
  * @name androidTablet
@@ -4594,7 +4618,7 @@ Envs.desktop = function (agent) {
 /**
  * Check if is Android phone
  *
- * **Interfaces**: `not`
+ * **Interfaces**: `not`, `err`
  *
  * @function
  * @name androidPhone
@@ -4608,7 +4632,7 @@ Envs.desktop = function (agent) {
 /**
  * Check if is Windows Phone
  *
- * **Interfaces**: `not`
+ * **Interfaces**: `not`, `err`
  *
  * @function
  * @name windowsPhone
@@ -4622,7 +4646,7 @@ Envs.desktop = function (agent) {
 /**
  * Check if is Windows Tablet
  *
- * **Interfaces**: `not`
+ * **Interfaces**: `not`, `err`
  *
  * @function
  * @name windowsTablet
@@ -4636,7 +4660,7 @@ Envs.desktop = function (agent) {
 /**
  * Check if is BlackBerry device
  *
- * **Interfaces**: `not`
+ * **Interfaces**: `not`, `err`
  *
  * @function
  * @name blackberry
@@ -4649,7 +4673,7 @@ Envs.desktop = function (agent) {
 /**
  * Check if is iOS device
  *
- * **Interfaces**: `not`
+ * **Interfaces**: `not`, `err`
  *
  * @function
  * @name ios
@@ -4662,7 +4686,7 @@ Envs.desktop = function (agent) {
 /**
  * Check if is iPad device
  *
- * **Interfaces**: `not`
+ * **Interfaces**: `not`, `err`
  *
  * @function
  * @name ipad
@@ -4675,7 +4699,7 @@ Envs.desktop = function (agent) {
 /**
  * Check if is iPod device
  *
- * **Interfaces**: `not`
+ * **Interfaces**: `not`, `err`
  *
  * @function
  * @name ipod
@@ -4688,7 +4712,7 @@ Envs.desktop = function (agent) {
 /**
  * Check if is iPhone device
  *
- * **Interfaces**: `not`
+ * **Interfaces**: `not`, `err`
  *
  * @function
  * @name iphone
@@ -4701,7 +4725,7 @@ Envs.desktop = function (agent) {
 /**
  * Check if is Android device
  *
- * **Interfaces**: `not`
+ * **Interfaces**: `not`, `err`
  *
  * @function
  * @name android
@@ -4716,7 +4740,7 @@ Envs.desktop = function (agent) {
 /**
  * Firefox detecting
  *
- * **Interfaces**: `not`
+ * **Interfaces**: `not`, `err`
  *
  * @function
  * @name firefox
@@ -4731,7 +4755,7 @@ Envs.desktop = function (agent) {
 /**
  * Chrome detecting
  *
- * **Interfaces**: `not`
+ * **Interfaces**: `not`, `err`
  *
  * @function
  * @name chrome
@@ -4746,7 +4770,7 @@ Envs.desktop = function (agent) {
 /**
  * Chrome iOS detecting
  *
- * **Interfaces**: `not`
+ * **Interfaces**: `not`, `err`
  *
  * @function
  * @name chromeIOS
@@ -4761,7 +4785,7 @@ Envs.desktop = function (agent) {
 /**
  * Safari detecting
  *
- * **Interfaces**: `not`
+ * **Interfaces**: `not`, `err`
  *
  * @function
  * @name safari
@@ -4776,7 +4800,7 @@ Envs.desktop = function (agent) {
 /**
  * Safari mobile detecting
  *
- * **Interfaces**: `not`
+ * **Interfaces**: `not`, `err`
  *
  * @function
  * @name safariMobile
@@ -4791,7 +4815,7 @@ Envs.desktop = function (agent) {
 /**
  * Edge detecting
  *
- * **Interfaces**: `not`
+ * **Interfaces**: `not`, `err`
  *
  * @function
  * @name edge
@@ -4806,7 +4830,7 @@ Envs.desktop = function (agent) {
 /**
  * Explorer detecting
  *
- * **Interfaces**: `not`
+ * **Interfaces**: `not`, `err`
  *
  * @function
  * @name userAgent
@@ -4821,7 +4845,7 @@ Envs.desktop = function (agent) {
 /**
  * Mac detecting
  *
- * **Interfaces**: `not`
+ * **Interfaces**: `not`, `err`
  *
  * @function
  * @name mac
@@ -4834,7 +4858,7 @@ Envs.desktop = function (agent) {
 /**
  * Windows detecting
  *
- * **Interfaces**: `not`
+ * **Interfaces**: `not`, `err`
  *
  * @function
  * @name windows
@@ -4847,7 +4871,7 @@ Envs.desktop = function (agent) {
 /**
  * Linux detecting
  *
- * **Interfaces**: `not`
+ * **Interfaces**: `not`, `err`
  *
  * @function
  * @name linux
@@ -5083,7 +5107,7 @@ var Objects = {};
 /**
  * Check if is a property of an object
  *
- * **Interfaces**: `not`
+ * **Interfaces**: `not`, `err`
  *
  * @function
  * @name propertyOf
@@ -5103,7 +5127,7 @@ Objects.propertyOf.multiple = false;
 /**
  * Count properties of an object
  *
- * **Interfaces**: `not`
+ * **Interfaces**: `not`, `err`
  *
  * @function
  * @name propertyCount
@@ -5174,7 +5198,7 @@ Arrays.inArray.multiple = false;
 /**
  * Check if is an array of strings
  *
- * **Interfaces**: `all`, `any`, `not`
+ * **Interfaces**: `all`, `any`, `not`, `err`
  *
  * @param value {array} array
  * @function
@@ -5194,7 +5218,7 @@ Arrays.arrayOfStrings = function (value) {
 /**
  * Check if is an array of objects
  *
- * **Interfaces**: `all`, `any`, `not`
+ * **Interfaces**: `all`, `any`, `not`, `err`
  *
  * @function
  * @name arrayOfObjects
@@ -5215,7 +5239,7 @@ Arrays.arrayOfObjects = function (value) {
 /**
  * Check if is an array of booleans
  *
- * **Interfaces**: `all`, `any`, `not`
+ * **Interfaces**: `all`, `any`, `not`, `err`
  *
  * @function
  * @name arrayOfBooleans
@@ -5236,7 +5260,7 @@ Arrays.arrayOfBooleans = function (value) {
 /**
  * Check if is an array of numbers
  *
- * **Interfaces**: `all`, `any`, `not`
+ * **Interfaces**: `all`, `any`, `not`, `err`
  *
  * @function
  * @name arrayOfNumbers
@@ -5257,7 +5281,7 @@ Arrays.arrayOfNumbers = function (value) {
 /**
  * Check if is an array of dates
  *
- * **Interfaces**: `all`, `any`, `not`
+ * **Interfaces**: `all`, `any`, `not`, `err`
  *
  * @function
  * @name arrayOfDates
@@ -5278,7 +5302,7 @@ Arrays.arrayOfDates = function (value) {
 /**
  * Check if is an array of functions
  *
- * **Interfaces**: `all`, `any`, `not`
+ * **Interfaces**: `all`, `any`, `not`, `err`
  *
  * @function
  * @name arrayOfFunctions
@@ -5324,7 +5348,7 @@ var _months = ['january', 'february', 'march', 'april', 'may', 'june', 'july', '
 /**
  * Check if is date string
  *
- * **Interfaces**: `all`, `any`, `not`
+ * **Interfaces**: `all`, `any`, `not`, `err`
  *
  * @function
  * @name dateString
@@ -5342,7 +5366,7 @@ Dates.dateString = function (value) {
 /**
  * Check if is time string
  *
- * **Interfaces**: `all`, `any`, `not`
+ * **Interfaces**: `all`, `any`, `not`, `err`
  *
  * @function
  * @name timeString
@@ -5359,7 +5383,7 @@ Dates.timeString = function (value) {
 /**
  * Check if date is today
  *
- * **Interfaces**: `all`, `any`, `not`
+ * **Interfaces**: `all`, `any`, `not`, `err`
  *
  * @function
  * @name today
@@ -5376,7 +5400,7 @@ Dates.today = function (date) {
 /**
  * Check if date is tomorrow
  *
- * **Interfaces**: `all`, `any`, `not`
+ * **Interfaces**: `all`, `any`, `not`, `err`
  *
  * @function
  * @name tomorrow
@@ -5396,7 +5420,7 @@ Dates.tomorrow = function (date) {
 /**
  * Check if date is yesterday
  *
- * **Interfaces**: `all`, `any`, `not`
+ * **Interfaces**: `all`, `any`, `not`, `err`
  *
  * @function
  * @name yesterday
@@ -5416,7 +5440,7 @@ Dates.yesterday = function (date) {
 /**
  * Check if date is past
  *
- * **Interfaces**: `all`, `any`, `not`
+ * **Interfaces**: `all`, `any`, `not`, `err`
  *
  * @function
  * @name past
@@ -5433,7 +5457,7 @@ Dates.past = function (date) {
 /**
  * Check if date is future
  *
- * **Interfaces**: `all`, `any`, `not`
+ * **Interfaces**: `all`, `any`, `not`, `err`
  *
  * @function
  * @name future
@@ -5452,7 +5476,7 @@ Dates.future = function (date) {
 /**
  * Check if date is day specified
  *
- * **Interfaces**: `not`
+ * **Interfaces**: `not`, `err`
  *
  * @function
  * @name day
@@ -5473,7 +5497,7 @@ Dates.day.multiple = false;
 /**
  * Check if date is month specified
  *
- * **Interfaces**: `not`
+ * **Interfaces**: `not`, `err`
  *
  * @function
  * @name month
@@ -5494,7 +5518,7 @@ Dates.month.multiple = false;
 /**
  * Check if date is the year specified
  *
- * **Interfaces**: `not`
+ * **Interfaces**: `not`, `err`
  *
  * @function
  * @name year
@@ -5514,7 +5538,7 @@ Dates.year.multiple = false;
 /**
  * Check if is leap year
  *
- * **Interfaces**: `all`, `any`, `not`
+ * **Interfaces**: `all`, `any`, `not`, `err`
  *
  * @function
  * @name leapYear
@@ -5534,7 +5558,7 @@ Dates.leapYear = function (year) {
 /**
  * Check if date is weekend
  *
- * **Interfaces**: `all`, `any`, `not`
+ * **Interfaces**: `all`, `any`, `not`, `err`
  *
  * @function
  * @name weekend
@@ -5553,7 +5577,7 @@ Dates.weekend = function (date) {
 /**
  * Check if date is weekday
  *
- * **Interfaces**: `all`, `any`, `not`
+ * **Interfaces**: `all`, `any`, `not`, `err`
  *
  * @function
  * @name weekday
@@ -5587,7 +5611,7 @@ Dates.numberInWeek = function (number) {
 /**
  * Check if date is between start date and end date
  *
- * **Interfaces**: `not`
+ * **Interfaces**: `not`, `err`
  *
  * @function
  * @name dateBetween
@@ -5608,7 +5632,7 @@ Dates.dateBetween.multiple = false;
 /**
  * Check if date is DST
  *
- * **Interfaces**: `all`, `any`, `not`
+ * **Interfaces**: `all`, `any`, `not`, `err`
  *
  * @function
  * @name dayLightSavingTime
@@ -5648,7 +5672,7 @@ var Urls = {};
 /**
  * Check if is valid string url
  *
- * **Interfaces**: `all`, `any`, `not`
+ * **Interfaces**: `all`, `any`, `not`, `err`
  *
  * @function
  * @name url
@@ -5668,7 +5692,7 @@ Urls.url = function (value) {
 /**
  * Check if is a HTTP url
  *
- * **Interfaces**: `all`, `any`, `not`
+ * **Interfaces**: `all`, `any`, `not`, `err`
  *
  * @function
  * @name httpUrl
@@ -5687,7 +5711,7 @@ Urls.httpUrl = function (value) {
 /**
  * Check if is a HTTPS url
  *
- * **Interfaces**: `all`, `any`, `not`
+ * **Interfaces**: `all`, `any`, `not`, `err`
  *
  * @function
  * @name httpsUrl
@@ -5706,7 +5730,7 @@ Urls.httpsUrl = function (value) {
 /**
  * Check if url is encoded
  *
- * **Interfaces**: `all`, `any`, `not`
+ * **Interfaces**: `all`, `any`, `not`, `err`
  *
  * @function
  * @name urlEncoded
@@ -5723,7 +5747,7 @@ Urls.urlEncoded = function (value) {
 /**
  * Check if is a FTP urls
  *
- * **Interfaces**: `all`, `any`, `not`
+ * **Interfaces**: `all`, `any`, `not`, `err`
  *
  * @function
  * @name ftpUrl
@@ -5742,7 +5766,7 @@ Urls.ftpUrl = function (value) {
 /**
  * Check if is a FTPS urls
  *
- * **Interfaces**: `all`, `any`, `not`
+ * **Interfaces**: `all`, `any`, `not`, `err`
  *
  * @function
  * @name ftpsUrl
@@ -5761,7 +5785,7 @@ Urls.ftpsUrl = function (value) {
 /**
  * Check if is a valid domain
  *
- * **Interfaces**: `all`, `any`, `not`
+ * **Interfaces**: `all`, `any`, `not`, `err`
  *
  * @function
  * @name domain
@@ -5799,7 +5823,7 @@ var Hashes = {};
 /**
  * Check if is a valid MD5 hash string
  *
- * **Interfaces**: `all`, `any`, `not`
+ * **Interfaces**: `all`, `any`, `not`, `err`
  *
  * @function
  * @name md5
@@ -5817,7 +5841,7 @@ Hashes.md5 = function (value) {
 /**
  * Check if is a valid SHA1 hash string
  *
- * **Interfaces**: `all`, `any`, `not`
+ * **Interfaces**: `all`, `any`, `not`, `err`
  *
  * @function
  * @name sha1
@@ -5854,7 +5878,7 @@ var CreditCard = {};
 /**
  * Check if is a valid credit card
  *
- * **Interfaces**: `all`, `any`, `not`
+ * **Interfaces**: `all`, `any`, `not`, `err`
  *
  * @function
  * @name creditCard
@@ -5871,7 +5895,7 @@ CreditCard.creditCard = function (value) {
 /**
  * Check if is a valid American Express credit card
  *
- * **Interfaces**: `all`, `any`, `not`
+ * **Interfaces**: `all`, `any`, `not`, `err`
  *
  * @function
  * @name amex
@@ -5888,7 +5912,7 @@ CreditCard.amex = function (value) {
 /**
  * Check if is a valid Diner’s Club credit card
  *
- * **Interfaces**: `all`, `any`, `not`
+ * **Interfaces**: `all`, `any`, `not`, `err`
  *
  * @function
  * @name dinersClub
@@ -5905,7 +5929,7 @@ CreditCard.dinersClub = function (value) {
 /**
  * Check if is a valid Discover credit card
  *
- * **Interfaces**: `all`, `any`, `not`
+ * **Interfaces**: `all`, `any`, `not`, `err`
  *
  * @function
  * @name discover
@@ -5922,7 +5946,7 @@ CreditCard.discover = function (value) {
 /**
  * Check if is a valid Mastercard credit card
  *
- * **Interfaces**: `all`, `any`, `not`
+ * **Interfaces**: `all`, `any`, `not`, `err`
  *
  * @function
  * @name mastercard
@@ -5939,7 +5963,7 @@ CreditCard.mastercard = function (value) {
 /**
  * Check if is a valid Visa credit card
  *
- * **Interfaces**: `all`, `any`, `not`
+ * **Interfaces**: `all`, `any`, `not`, `err`
  *
  * @function
  * @name visa
@@ -5987,7 +6011,7 @@ PostalCodes = Helpers.createRegExpMethods(PostalCodes, regExp);
 /**
  * Check if is an ES postal code
  *
- * **Interfaces**: `all`, `any`, `not`
+ * **Interfaces**: `all`, `any`, `not`, `err`
  *
  * @function
  * @name postalCodeES
@@ -6000,7 +6024,7 @@ PostalCodes = Helpers.createRegExpMethods(PostalCodes, regExp);
 /**
  * Check if is an UK postal code
  *
- * **Interfaces**: `all`, `any`, `not`
+ * **Interfaces**: `all`, `any`, `not`, `err`
  *
  * @function
  * @name postalCodeUK
@@ -6013,7 +6037,7 @@ PostalCodes = Helpers.createRegExpMethods(PostalCodes, regExp);
 /**
  * Check if is an US postal code
  *
- * **Interfaces**: `all`, `any`, `not`
+ * **Interfaces**: `all`, `any`, `not`, `err`
  *
  * @function
  * @name postalCodeUS
@@ -6026,7 +6050,7 @@ PostalCodes = Helpers.createRegExpMethods(PostalCodes, regExp);
 /**
  * Check if is an IT postal code
  *
- * **Interfaces**: `all`, `any`, `not`
+ * **Interfaces**: `all`, `any`, `not`, `err`
  *
  * @function
  * @name postalCodeIT
@@ -6039,7 +6063,7 @@ PostalCodes = Helpers.createRegExpMethods(PostalCodes, regExp);
 /**
  * Check if is an DE postal code
  *
- * **Interfaces**: `all`, `any`, `not`
+ * **Interfaces**: `all`, `any`, `not`, `err`
  *
  * @function
  * @name postalCodeDE
@@ -6052,7 +6076,7 @@ PostalCodes = Helpers.createRegExpMethods(PostalCodes, regExp);
 /**
  * Check if is an NL postal code
  *
- * **Interfaces**: `all`, `any`, `not`
+ * **Interfaces**: `all`, `any`, `not`, `err`
  *
  * @function
  * @name postalCodeNL
@@ -6087,7 +6111,7 @@ var DOM = {};
 /**
  * Check if is a valid DOM element
  *
- * **Interfaces**: `all`, `any`, `not`
+ * **Interfaces**: `all`, `any`, `not`, `err`
  *
  * @function
  * @name domElement
@@ -6103,7 +6127,7 @@ DOM.domElement = function (element) {
 /**
  * Check if element is a specific tag
  *
- * **Interfaces**: `not`
+ * **Interfaces**: `not`, `err`
  *
  * @function
  * @name domElementTag

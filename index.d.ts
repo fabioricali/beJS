@@ -18,6 +18,8 @@ export declare namespace be {
     interface Mixed {}
     interface Strings {}
 
+    function err(msg?: string): Error|void;
+
     function getVersion(): string;
     function set(name: string, func: Function): void;
 
