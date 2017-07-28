@@ -54,6 +54,15 @@ be.all.boolean([true, false, true]);
 
 // call interface "any" and passing arguments
 be.any.boolean(true, false, 1);
+
+// call interface "err" to throw an error if assertions  are not satisfied
+be.err.equal('hello world', 'hello world!'); // throw AssertionError
+
+// call interface "err" passing a custom error message
+be.err('the string must be equal to "hello world!"').equal('hello world', 'hello world!'); // throw AssertionError
+
+// call others interfaces from "err"
+be.err.any.array([], {}, '');
 ```
 
 ## Documentation
