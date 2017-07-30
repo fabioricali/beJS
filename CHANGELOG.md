@@ -4,6 +4,11 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
+## [1.9.0] - 2017-07-22
+### Added
+- `be.sha256`, check if is sha256 string
+- `be.sha512`, detect if is sha512 string
+
 ## [1.8.0] - 2017-07-28
 ### Added
 - New interface `err`. Now it's possible "throw" an error if assertion are not satisfied

@@ -38,7 +38,26 @@ describe('sha1', function () {
     });
 
     it('string, should be return false', function () {
-        var result = be.md5('foo');
+        var result = be.sha1('foo');
+        console.log(result);
+        assert.equal(result, false);
+    });
+});
+
+describe('sha256', function () {
+    it('sha256 hash string, should be return true', function () {
+        var result = be.sha256('7f83b1657ff1fc53b92dc18148a1d65dfc2d4b1fa3d677284addd200126d9069');
+        console.log(result);
+        assert.equal(result, true);
+    });
+    it('sha256 hash string uppercase, should be return true', function () {
+        var result = be.sha256('7f83b1657ff1fc53b92dc18148a1d65dfc2d4b1fa3d677284addd200126d9069'.toUpperCase());
+        console.log(result);
+        assert.equal(result, true);
+    });
+
+    it('string, should be return false', function () {
+        var result = be.sha256('foo');
         console.log(result);
         assert.equal(result, false);
     });
