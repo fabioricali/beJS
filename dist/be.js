@@ -2455,12 +2455,12 @@ exports.INSPECT_MAX_BYTES = 50;
  * We detect these buggy browsers and set `Buffer.TYPED_ARRAY_SUPPORT` to `false` so they
  * get the Object implementation, which is slower but behaves correctly.
  */
-Buffer.TYPED_ARRAY_SUPPORT = global.TYPED_ARRAY_SUPPORT !== undefined ? global.TYPED_ARRAY_SUPPORT : typedArraySupport();
+Buffer.TYPED_ARRAY_SUPPORT = global.TYPED_ARRAY_SUPPORT !== undefined ? global.TYPED_ARRAY_SUPPORT : typedArraySupport
 
 /*
  * Export kMaxLength after typed array support is determined.
  */
-exports.kMaxLength = kMaxLength();
+();exports.kMaxLength = kMaxLength();
 
 function typedArraySupport() {
   try {
@@ -3394,7 +3394,8 @@ var MAX_ARGUMENTS_LENGTH = 0x1000;
 function decodeCodePointsArray(codePoints) {
   var len = codePoints.length;
   if (len <= MAX_ARGUMENTS_LENGTH) {
-    return String.fromCharCode.apply(String, codePoints); // avoid extra slice()
+    return String.fromCharCode.apply(String, codePoints // avoid extra slice()
+    );
   }
 
   // Decode in chunks to avoid "call stack size exceeded".
@@ -4022,9 +4023,9 @@ var INVALID_BASE64_RE = /[^+\/0-9A-Za-z-_]/g;
 
 function base64clean(str) {
   // Node strips out invalid characters like \n and \t from the string, base64-js does not
-  str = stringtrim(str).replace(INVALID_BASE64_RE, '');
+  str = stringtrim(str).replace(INVALID_BASE64_RE, ''
   // Node converts strings with length < 2 to ''
-  if (str.length < 2) return '';
+  );if (str.length < 2) return '';
   // Node allows for non-padded base64 strings (missing trailing ===), base64-js does not
   while (str.length % 4 !== 0) {
     str = str + '=';
@@ -4050,10 +4051,10 @@ function utf8ToBytes(string, units) {
   var bytes = [];
 
   for (var i = 0; i < length; ++i) {
-    codePoint = string.charCodeAt(i);
+    codePoint = string.charCodeAt(i
 
     // is surrogate component
-    if (codePoint > 0xD7FF && codePoint < 0xE000) {
+    );if (codePoint > 0xD7FF && codePoint < 0xE000) {
       // last char was a lead
       if (!leadSurrogate) {
         // no lead yet
@@ -4734,7 +4735,7 @@ Envs.desktop = function (agent) {
  * @returns {boolean}
  * @example
  * be.android() // true
- * be.android(==4) // true
+ * be.android('==4') // true
  */
 
 /**
@@ -4794,7 +4795,7 @@ Envs.desktop = function (agent) {
  * @returns {boolean}
  * @example
  * be.safari() // true
- * be.safari(<=7) // true
+ * be.safari('<=7') // true
  */
 
 /**
@@ -4809,7 +4810,7 @@ Envs.desktop = function (agent) {
  * @returns {boolean}
  * @example
  * be.safariMobile() // true
- * be.safariMobile(<=7) // true
+ * be.safariMobile('<=7') // true
  */
 
 /**
@@ -4824,7 +4825,7 @@ Envs.desktop = function (agent) {
  * @returns {boolean}
  * @example
  * be.edge() // true
- * be.edge(>=12) // true
+ * be.edge('>=12') // true
  */
 
 /**
@@ -4833,13 +4834,13 @@ Envs.desktop = function (agent) {
  * **Interfaces**: `not`, `err`
  *
  * @function
- * @name userAgent
+ * @name ie
  * @param range {string} operator and version number "==", "<", "<=", ">", "=>" ex: >=4
  * @param agent {string} user agent string
  * @returns {boolean}
  * @example
  * be.ie() // true
- * be.ie(==9) // true
+ * be.ie('==9') // true
  */
 
 /**
@@ -5171,7 +5172,7 @@ var Arrays = {};
 /**
  * Check if an element is in the array
  *
- * **Interface**: `not`
+ * **Interfaces**: `not`, `err`
  *
  * @param value {Mixed} element to search
  * @param array {array} array where search
@@ -5853,6 +5854,42 @@ Hashes.md5 = function (value) {
  */
 Hashes.sha1 = function (value) {
   return (/^[a-f0-9]{40}$/i.test(value)
+  );
+};
+
+/**
+ * Check if is a valid SHA256 hash string
+ *
+ * **Interfaces**: `all`, `any`, `not`, `err`
+ *
+ * @function
+ * @name sha256
+ * @param value {string} hash string
+ * @returns {boolean}
+ * @example
+ * be.256('7f83b1657ff1fc53b92dc18148a1d65dfc2d4b1fa3d677284addd200126d9069') // true
+ * be.not.256('7f83b1657ff1fc53b92dc18148a1d65dfc2d4b1fa3d677284addd200126d9069') // false
+ */
+Hashes.sha256 = function (value) {
+  return (/^[a-f0-9]{64}$/i.test(value)
+  );
+};
+
+/**
+ * Check if is a valid SHA512 hash string
+ *
+ * **Interfaces**: `all`, `any`, `not`, `err`
+ *
+ * @function
+ * @name sha512
+ * @param value {string} hash string
+ * @returns {boolean}
+ * @example
+ * be.sha512('aeae379a6e857728e44164267fdb7a0e27b205d757cc19899586c89dbb221930f1813d02ff93a661859bc17065eac4d6edf3c38a034e6283a84754d52917e5b0') // true
+ * be.not.sha512('aeae379a6e857728e44164267fdb7a0e27b205d757cc19899586c89dbb221930f1813d02ff93a661859bc17065eac4d6edf3c38a034e6283a84754d52917e5b0') // false
+ */
+Hashes.sha512 = function (value) {
+  return (/^[a-f0-9]{128}$/i.test(value)
   );
 };
 
