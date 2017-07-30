@@ -62,3 +62,22 @@ describe('sha256', function () {
         assert.equal(result, false);
     });
 });
+
+describe('sha512', function () {
+    it('sha512 hash string, should be return true', function () {
+        var result = be.sha512('aeae379a6e857728e44164267fdb7a0e27b205d757cc19899586c89dbb221930f1813d02ff93a661859bc17065eac4d6edf3c38a034e6283a84754d52917e5b0');
+        console.log(result);
+        assert.equal(result, true);
+    });
+    it('sha512 hash string uppercase, should be return true', function () {
+        var result = be.sha512('aeae379a6e857728e44164267fdb7a0e27b205d757cc19899586c89dbb221930f1813d02ff93a661859bc17065eac4d6edf3c38a034e6283a84754d52917e5b0'.toUpperCase());
+        console.log(result);
+        assert.equal(result, true);
+    });
+
+    it('string, should be return false', function () {
+        var result = be.sha512('foo');
+        console.log(result);
+        assert.equal(result, false);
+    });
+});

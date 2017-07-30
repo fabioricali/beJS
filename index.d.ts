@@ -133,6 +133,7 @@ export declare namespace be {
 
     function sha1(value: string): boolean;
     function sha256(value: string): boolean;
+    function sha512(value: string): boolean;
     function md5(value: string): boolean;
 
     function email(value: string): boolean;
