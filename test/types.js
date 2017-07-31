@@ -902,3 +902,16 @@ describe('asyncFunction', function () {
         assert.equal(result, false);
     });
 });
+
+describe('generatorFunction', function () {
+    it('should be return true', function () {
+        var result = be.generatorFunction(function* name(){return true});
+        console.log(result);
+        assert.equal(result, true);
+    });
+    it('should be return false', function () {
+        var result = be.generatorFunction(function test(){});
+        console.log(result);
+        assert.equal(result, false);
+    });
+});

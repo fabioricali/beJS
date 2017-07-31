@@ -781,6 +781,22 @@ Types.asyncFunction = (value) => {
     return Types.classOf(value, 'asyncfunction');
 };
 
+/**
+ * Check if is GeneratorFunction
+ *
+ * **Interfaces**: `all`, `any`, `not`, `err`
+ *
+ * @function
+ * @name generatorFunction
+ * @param value {Mixed} value
+ * @returns {boolean}
+ * @example
+ * be.generatorFunction(function* test(){}) // true
+ */
+Types.generatorFunction = (value) => {
+    return Types.classOf(value, 'generatorfunction');
+};
+
 Types = Interface.create(Types);
 
 module.exports = Types;

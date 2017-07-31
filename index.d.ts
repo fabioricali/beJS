@@ -65,6 +65,7 @@ export declare namespace be {
     function float32Array(value: any): boolean;
     function float64Array(value: any): boolean;
     function asyncFunction(value: any): boolean;
+    function generatorFunction(value: any): boolean;
 
     function inArray(value: any, array: Array<any>): boolean;
     function arrayOfStrings(array: Array<any>): boolean;

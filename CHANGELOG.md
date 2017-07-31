@@ -4,6 +4,10 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
+## [unreleased]
+### Added
+- `be.generatorFunction`, check if is GeneratorFunction
+
 ## [1.9.0] - 2017-07-30
 ### Added
 - `be.sha256`, check if is sha256 string
