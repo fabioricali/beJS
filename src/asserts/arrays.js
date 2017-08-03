@@ -161,13 +161,13 @@ Arrays.arrayOfFunctions = (value) => {
 };
 
 /**
- * Check if is a key of an object with determinated value is in array
+ * Check if is a key of an object with determined value is in array
  *
  * **Interfaces**: `not`, `err`
  *
  * @function
  * @name objValueInArray
- * @param array {array} array
+ * @param array {Array} array
  * @param key {string} object key that you are looking for
  * @param value {any}  the value of the key that you are looking for
  * @returns {*|boolean}
@@ -178,7 +178,7 @@ Arrays.objValueInArray = (array, key, value) => {
   let result = [];
   if(Types.all.object(array)){
     result = array.map((a) => {
-      return a.hasOwnProperty([key]) && a[key] === value;
+      return a.hasOwnProperty(key) && a[key] === value;
    })
   }
   return Types.any.booleanTrue(result);
