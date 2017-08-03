@@ -160,6 +160,32 @@ Arrays.arrayOfFunctions = (value) => {
     return Types.all.function(value);
 };
 
+/**
+ * Check if is a key of an object with determinated value is in array
+ *
+ * **Interfaces**: `not`, `err`
+ *
+ * @function
+ * @name objValueInArray
+ * @param array {array} array
+ * @param key {string} object key that you are looking for
+ * @param value {any}  the value of the key that you are looking for
+ * @returns {*|boolean}
+ * @example
+ * be.objValInArray([{ id: 1, name: '...'}], 'id', 1) // true
+ */
+Arrays.objValueInArray = (array, key, value) => {
+  let result = [];
+  if(Types.all.object(array)){
+    result = array.map((a) => {
+      return a.hasOwnProperty([key]) && a[key] === value;
+   })
+  }
+  return Types.any.booleanTrue(result);
+};
+
+Arrays.objValueInArray.multiple = false;
+
 Arrays = Interface.create(Arrays);
 
 module.exports = Arrays;

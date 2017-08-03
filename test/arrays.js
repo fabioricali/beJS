@@ -165,3 +165,16 @@ describe('arrayOfFunctions', function () {
         assert.equal(result, false);
     });
 });
+
+describe('objValueInArray', function () {
+    it('should be return true', function () {
+        var result = be.objValueInArray([{id: 2, name: 'test'},{ id: 1, name: '...'}], "id", 1);
+        console.log(result);
+        assert.equal(result, true);
+    });
+    it('should be return false', function () {
+        var result = be.objValueInArray([{id: 2, name: 'test'},{ id: 1, name: '...'}], "id", 3);
+        console.log(result);
+        assert.equal(result, false);
+    });
+});
