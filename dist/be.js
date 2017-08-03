@@ -1,4 +1,4 @@
-// [AIV]  beJS Build version: 1.9.0  
+// [AIV]  beJS Build version: 1.10.0  
  var be =
 /******/ (function(modules) { // webpackBootstrap
 /******/ 	// The module cache
@@ -1029,6 +1029,22 @@ Types.asyncFunction = function (value) {
     return Types.classOf(value, 'asyncfunction');
 };
 
+/**
+ * Check if is GeneratorFunction
+ *
+ * **Interfaces**: `all`, `any`, `not`, `err`
+ *
+ * @function
+ * @name generatorFunction
+ * @param value {Mixed} value
+ * @returns {boolean}
+ * @example
+ * be.generatorFunction(function* test(){}) // true
+ */
+Types.generatorFunction = function (value) {
+    return Types.classOf(value, 'generatorfunction');
+};
+
 Types = Interface.create(Types);
 
 module.exports = Types;
@@ -1852,7 +1868,7 @@ module.exports = __webpack_require__(6);
 
 var Helpers = __webpack_require__(2);
 var Interface = __webpack_require__(0);
-var version = '1.9.0';
+var version = '1.10.0';
 
 /**
  * be class
@@ -2455,12 +2471,12 @@ exports.INSPECT_MAX_BYTES = 50;
  * We detect these buggy browsers and set `Buffer.TYPED_ARRAY_SUPPORT` to `false` so they
  * get the Object implementation, which is slower but behaves correctly.
  */
-Buffer.TYPED_ARRAY_SUPPORT = global.TYPED_ARRAY_SUPPORT !== undefined ? global.TYPED_ARRAY_SUPPORT : typedArraySupport
+Buffer.TYPED_ARRAY_SUPPORT = global.TYPED_ARRAY_SUPPORT !== undefined ? global.TYPED_ARRAY_SUPPORT : typedArraySupport();
 
 /*
  * Export kMaxLength after typed array support is determined.
  */
-();exports.kMaxLength = kMaxLength();
+exports.kMaxLength = kMaxLength();
 
 function typedArraySupport() {
   try {
@@ -3394,8 +3410,7 @@ var MAX_ARGUMENTS_LENGTH = 0x1000;
 function decodeCodePointsArray(codePoints) {
   var len = codePoints.length;
   if (len <= MAX_ARGUMENTS_LENGTH) {
-    return String.fromCharCode.apply(String, codePoints // avoid extra slice()
-    );
+    return String.fromCharCode.apply(String, codePoints); // avoid extra slice()
   }
 
   // Decode in chunks to avoid "call stack size exceeded".
@@ -4023,9 +4038,9 @@ var INVALID_BASE64_RE = /[^+\/0-9A-Za-z-_]/g;
 
 function base64clean(str) {
   // Node strips out invalid characters like \n and \t from the string, base64-js does not
-  str = stringtrim(str).replace(INVALID_BASE64_RE, ''
+  str = stringtrim(str).replace(INVALID_BASE64_RE, '');
   // Node converts strings with length < 2 to ''
-  );if (str.length < 2) return '';
+  if (str.length < 2) return '';
   // Node allows for non-padded base64 strings (missing trailing ===), base64-js does not
   while (str.length % 4 !== 0) {
     str = str + '=';
@@ -4051,10 +4066,10 @@ function utf8ToBytes(string, units) {
   var bytes = [];
 
   for (var i = 0; i < length; ++i) {
-    codePoint = string.charCodeAt(i
+    codePoint = string.charCodeAt(i);
 
     // is surrogate component
-    );if (codePoint > 0xD7FF && codePoint < 0xE000) {
+    if (codePoint > 0xD7FF && codePoint < 0xE000) {
       // last char was a lead
       if (!leadSurrogate) {
         // no lead yet
@@ -5321,6 +5336,32 @@ Arrays.arrayOfFunctions = function (value) {
   return Types.all.function(value);
 };
 
+/**
+ * Check if is a key of an object with determined value is in array
+ *
+ * **Interfaces**: `not`, `err`
+ *
+ * @function
+ * @name objValueInArray
+ * @param array {Array} array
+ * @param key {string} object key that you are looking for
+ * @param value {any}  the value of the key that you are looking for
+ * @returns {*|boolean}
+ * @example
+ * be.objValInArray([{ id: 1, name: '...'}], 'id', 1) // true
+ */
+Arrays.objValueInArray = function (array, key, value) {
+  var result = [];
+  if (Types.all.object(array)) {
+    result = array.map(function (a) {
+      return a.hasOwnProperty(key) && a[key] === value;
+    });
+  }
+  return Types.any.booleanTrue(result);
+};
+
+Arrays.objValueInArray.multiple = false;
+
 Arrays = Interface.create(Arrays);
 
 module.exports = Arrays;
@@ -6190,7 +6231,7 @@ module.exports = DOM;
 
 module.exports = {
 	"name": "bejs",
-	"version": "1.9.0",
+	"version": "1.10.0",
 	"description": "Simple, light-weight assertions framework for javascript",
 	"homepage": "https://be.js.org",
 	"main": "index.js",
