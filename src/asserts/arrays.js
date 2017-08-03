@@ -172,7 +172,7 @@ Arrays.arrayOfFunctions = (value) => {
  * @param value {any}  the value of the key that you are looking for
  * @returns {*|boolean}
  * @example
- * be.objValInArray([{ id: 1, name: '...'}], 'id', 1) // true
+ * be.objValueInArray([{ id: 1, name: '...'}], 'id', 1) // true
  */
 Arrays.objValueInArray = (array, key, value) => {
   let result = [];
