@@ -529,6 +529,11 @@ describe('error', function () {
         console.log(result);
         assert.equal(result, true);
     });
+    it('reference error, should be return true', function () {
+        var result = be.error(new ReferenceError('aaaaaa'));
+        console.log(result);
+        assert.equal(result, true);
+    });
     it('should be return false', function () {
         var result = be.error({});
         console.log(result);
