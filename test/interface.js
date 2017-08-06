@@ -44,6 +44,17 @@ describe('err', function () {
         }
     });
 
+    it('be.err("my error message").all.boolean, should be return error', function (done) {
+        try {
+            be.err("my error message").all.boolean([true, false, true, 2]);
+            done('error')
+        } catch (e) {
+            console.log(e.message);
+            console.log(e);
+            done()
+        }
+    });
+
     it('be.err.any.boolean, should be return ok', function (done) {
         try {
             be.err.any.boolean([true, false, true, 2]);
@@ -53,5 +64,25 @@ describe('err', function () {
             done(e)
         }
     });
+});
 
+describe('err with koa', function () {
+    it('should be error', function (done) {
+        const request = require('request');
+        const koa = require('koa');
+        const app = new koa();
+
+        app.on('error', error=>{
+            console.log(error.message);
+            done();
+        });
+
+        app.use(ctx=>{
+            be.err('must be hello').equal('hello', 'hello world');
+        });
+
+        app.listen(3000);
+        request('http://localhost:3000');
+        //
+    });
 });
