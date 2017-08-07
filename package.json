@@ -24,7 +24,13 @@
         "object",
         "check",
         "float",
-        "alphanumeric"
+        "alphanumeric",
+        "mocha",
+        "testing",
+        "validation",
+        "test unit",
+        "valid",
+        "type"
     ],
     "author": {
         "name": "Fabio Ricali",
