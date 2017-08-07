@@ -52,6 +52,7 @@ Interface.create = (obj) => {
      * @description
      * Throw an Error if assertions are not satisfied
      * @param msg {string} optional error message
+     * @param callback {function} optional function callback
      * @returns {error|void}
      * @example
      * be.err.true(false) // Error;
@@ -59,8 +60,14 @@ Interface.create = (obj) => {
      * be.err().all.true(false, 1) // Error;
      *
      */
-    obj.err = (msg = '') => {
-        obj.err.__last_error_message = msg;
+    obj.err = (msg = '', callback = null) => {
+        if (typeof msg === 'function') {
+            obj.err.__last_error_message = '';
+            obj.err.__last_error_callback = msg;
+        } else {
+            obj.err.__last_error_message = msg;
+            obj.err.__last_error_callback = callback;
+        }
         return obj.err;
     };
 
@@ -121,6 +128,9 @@ Interface.create = (obj) => {
                                 throw new AssertionError(
                                     errorMessage ? errorMessage : `${i}.${j} is not satisfied`
                                 );
+                            } else if (typeof obj.err.__last_error_callback === 'function') {
+                                obj.err.__last_error_callback();
+                                obj.err.__last_error_callback = null;
                             }
                         }
                     }
@@ -133,6 +143,9 @@ Interface.create = (obj) => {
                         throw new AssertionError(
                             errorMessage ? errorMessage : `${i} is not satisfied`
                         );
+                    } else if (typeof obj.err.__last_error_callback === 'function') {
+                        obj.err.__last_error_callback();
+                        obj.err.__last_error_callback = null;
                     }
                 }
             }

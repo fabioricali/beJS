@@ -64,9 +64,32 @@ describe('err', function () {
             done(e)
         }
     });
+
+    it('be.err(done).any.boolean, should be return ok', function (done) {
+        be.err(done).any.boolean([true, false, true, 2]);
+    });
+
+    it('be.err(done).all.boolean, should be return error', function (done) {
+        try {
+        be.err(done).all.boolean([true, false, true, 2]);
+        } catch (e) {
+            console.log(e);
+            done()
+        }
+    });
+
+    it('be.err("my error message", done).all.boolean, should be return error', function (done) {
+        try {
+        be.err("my error message", done).all.boolean([true, false, true, 2]);
+        } catch (e) {
+            console.log(e);
+            done()
+        }
+    });
 });
 
 describe('err with koa', function () {
+    this.timeout(10000);
     it('should be error', function (done) {
         const request = require('request');
         const koa = require('koa');
