@@ -22,6 +22,7 @@ export declare namespace be {
     function set(name: string, func: Function): void;
 
     function classOf(object: any, className: string): boolean;
+    function of(object: any, className: string): boolean;
     function boolean(value: any): boolean;
     function booleanFalse(value: any): boolean;
     function booleanTrue(value: any): boolean;

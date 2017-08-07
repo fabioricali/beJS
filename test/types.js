@@ -523,6 +523,29 @@ describe('classOf', function () {
     });
 });
 
+describe('of', function () {
+    it('should be return true', function () {
+        var result = be.of(new Error('an error'), 'error');
+        console.log(result);
+        assert.equal(result, true);
+    });
+    it('string, should be return true', function () {
+        var result = be.of('hello', 'string');
+        console.log(result);
+        assert.equal(result, true);
+    });
+    it('number, should be return true', function () {
+        var result = be.of(1235, 'number');
+        console.log(result);
+        assert.equal(result, true);
+    });
+    it('should be return false', function () {
+        var result = be.of(new Error('an error'), 'object');
+        console.log(result);
+        assert.equal(result, false);
+    });
+});
+
 describe('error', function () {
     it('should be return true', function () {
         var result = be.error(new Error('an error'));

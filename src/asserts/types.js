@@ -32,6 +32,28 @@ Types.classOf = (object, className) => {
 Types.classOf.multiple = false;
 
 /**
+ * Check type of (alias of classOf)
+ *
+ * **Interfaces**: `not`, `err`
+ *
+ * @function
+ * @name of
+ * @param object {Mixed} object
+ * @param className {string} class name
+ * @returns {boolean}
+ * @example
+ * be.of(2, 'number') // true
+ * be.of([1, 2, 3], 'array') // true
+ * be.of({a: 1, b: 2}, 'object') // true
+ * be.of({a: 1, b: 2}, 'array') // false
+ * be.of(/hello/, 'regexp') // true
+ * be.of(true, 'boolean') // true
+ */
+Types.of = Types.classOf;
+
+Types.of.multiple = false;
+
+/**
  * Check if is valid boolean
  *
  * **Interfaces**: `all`, `any`, `not`, `err`
