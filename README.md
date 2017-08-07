@@ -9,7 +9,9 @@
 <img src="https://img.shields.io/badge/node.js-%3E%3D6-blue.svg" title="Node.js version"/>
 <img src="https://img.shields.io/badge/team-terrons-orange.svg" title="Team Terrons"/>
 # Simple, light-weight assertions framework for javascript
-#### More than ***170*** assertions
+
+#### More than ***170*** validation methods
+
 </div>
 
 ## Installation
@@ -63,6 +65,15 @@ be.err('the string must be equal to "hello world!"').equal('hello world', 'hello
 
 // call others interfaces from "err"
 be.err.any.array([], {}, '');
+```
+
+## As unit test with Mocha
+```javascript
+describe('a test', () => {
+    it('should be ok', (done)=>{
+        be.err(done).email('fabio@rica.li');
+    });
+});
 ```
 
 ## Documentation

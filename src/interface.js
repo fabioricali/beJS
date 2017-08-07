@@ -58,6 +58,8 @@ Interface.create = (obj) => {
      * be.err.true(false) // Error;
      * be.err('an error message').true(false) // Error;
      * be.err().all.true(false, 1) // Error;
+     * be.err(callback).all.true(false, 1) // Error;
+     * be.err('your message', callback).all.boolean(false, true) // callback invoked;
      *
      */
     obj.err = (msg = '', callback = null) => {

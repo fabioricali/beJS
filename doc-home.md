@@ -8,7 +8,7 @@
 
 # Simple, light-weight assertions framework for javascript
 
-#### More than ***170*** assertions
+#### More than ***170*** validation methods
 
 ## Installation
 
@@ -61,6 +61,15 @@ be.err('the string must be equal to "hello world!"').equal('hello world', 'hello
 
 // call others interfaces from "err"
 be.err.any.array([], {}, '');
+```
+
+## As unit test with Mocha
+```javascript
+describe('a test', () => {
+    it('should be ok', (done)=>{
+        be.err(done).email('fabio@rica.li');
+    });
+});
 ```
 
 ## Changelog
