@@ -1,4 +1,4 @@
-// [AIV]  beJS Build version: 1.10.0  
+// [AIV]  beJS Build version: 1.11.0  
  var be =
 /******/ (function(modules) { // webpackBootstrap
 /******/ 	// The module cache
@@ -128,17 +128,27 @@ Interface.create = function (obj) {
      * @description
      * Throw an Error if assertions are not satisfied
      * @param msg {string} optional error message
+     * @param callback {function} optional function callback
      * @returns {error|void}
      * @example
      * be.err.true(false) // Error;
      * be.err('an error message').true(false) // Error;
      * be.err().all.true(false, 1) // Error;
+     * be.err(callback).all.true(false, 1) // Error;
+     * be.err('your message', callback).all.boolean(false, true) // callback invoked;
      *
      */
     obj.err = function () {
         var msg = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : '';
+        var callback = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : null;
 
-        obj.err.__last_error_message = msg;
+        if (typeof msg === 'function') {
+            obj.err.__last_error_message = '';
+            obj.err.__last_error_callback = msg;
+        } else {
+            obj.err.__last_error_message = msg;
+            obj.err.__last_error_callback = callback;
+        }
         return obj.err;
     };
 
@@ -207,6 +217,9 @@ Interface.create = function (obj) {
                             var errorMessage = obj.err.__last_error_message + '';
                             obj.err.__last_error_message = '';
                             throw new AssertionError(errorMessage ? errorMessage : i + '.' + j + ' is not satisfied');
+                        } else if (typeof obj.err.__last_error_callback === 'function') {
+                            obj.err.__last_error_callback();
+                            obj.err.__last_error_callback = null;
                         }
                     };
                 }
@@ -225,6 +238,9 @@ Interface.create = function (obj) {
                     var errorMessage = obj.err.__last_error_message + '';
                     obj.err.__last_error_message = '';
                     throw new AssertionError(errorMessage ? errorMessage : i + ' is not satisfied');
+                } else if (typeof obj.err.__last_error_callback === 'function') {
+                    obj.err.__last_error_callback();
+                    obj.err.__last_error_callback = null;
                 }
             };
         }
@@ -278,6 +294,28 @@ Types.classOf = function (object, className) {
 };
 
 Types.classOf.multiple = false;
+
+/**
+ * Check type of (alias of classOf)
+ *
+ * **Interfaces**: `not`, `err`
+ *
+ * @function
+ * @name of
+ * @param object {Mixed} object
+ * @param className {string} class name
+ * @returns {boolean}
+ * @example
+ * be.of(2, 'number') // true
+ * be.of([1, 2, 3], 'array') // true
+ * be.of({a: 1, b: 2}, 'object') // true
+ * be.of({a: 1, b: 2}, 'array') // false
+ * be.of(/hello/, 'regexp') // true
+ * be.of(true, 'boolean') // true
+ */
+Types.of = Types.classOf;
+
+Types.of.multiple = false;
 
 /**
  * Check if is valid boolean
@@ -1868,7 +1906,7 @@ module.exports = __webpack_require__(6);
 
 var Helpers = __webpack_require__(2);
 var Interface = __webpack_require__(0);
-var version = '1.10.0';
+var version = '1.11.0';
 
 /**
  * be class
@@ -2471,12 +2509,12 @@ exports.INSPECT_MAX_BYTES = 50;
  * We detect these buggy browsers and set `Buffer.TYPED_ARRAY_SUPPORT` to `false` so they
  * get the Object implementation, which is slower but behaves correctly.
  */
-Buffer.TYPED_ARRAY_SUPPORT = global.TYPED_ARRAY_SUPPORT !== undefined ? global.TYPED_ARRAY_SUPPORT : typedArraySupport();
+Buffer.TYPED_ARRAY_SUPPORT = global.TYPED_ARRAY_SUPPORT !== undefined ? global.TYPED_ARRAY_SUPPORT : typedArraySupport
 
 /*
  * Export kMaxLength after typed array support is determined.
  */
-exports.kMaxLength = kMaxLength();
+();exports.kMaxLength = kMaxLength();
 
 function typedArraySupport() {
   try {
@@ -3410,7 +3448,8 @@ var MAX_ARGUMENTS_LENGTH = 0x1000;
 function decodeCodePointsArray(codePoints) {
   var len = codePoints.length;
   if (len <= MAX_ARGUMENTS_LENGTH) {
-    return String.fromCharCode.apply(String, codePoints); // avoid extra slice()
+    return String.fromCharCode.apply(String, codePoints // avoid extra slice()
+    );
   }
 
   // Decode in chunks to avoid "call stack size exceeded".
@@ -4038,9 +4077,9 @@ var INVALID_BASE64_RE = /[^+\/0-9A-Za-z-_]/g;
 
 function base64clean(str) {
   // Node strips out invalid characters like \n and \t from the string, base64-js does not
-  str = stringtrim(str).replace(INVALID_BASE64_RE, '');
+  str = stringtrim(str).replace(INVALID_BASE64_RE, ''
   // Node converts strings with length < 2 to ''
-  if (str.length < 2) return '';
+  );if (str.length < 2) return '';
   // Node allows for non-padded base64 strings (missing trailing ===), base64-js does not
   while (str.length % 4 !== 0) {
     str = str + '=';
@@ -4066,10 +4105,10 @@ function utf8ToBytes(string, units) {
   var bytes = [];
 
   for (var i = 0; i < length; ++i) {
-    codePoint = string.charCodeAt(i);
+    codePoint = string.charCodeAt(i
 
     // is surrogate component
-    if (codePoint > 0xD7FF && codePoint < 0xE000) {
+    );if (codePoint > 0xD7FF && codePoint < 0xE000) {
       // last char was a lead
       if (!leadSurrogate) {
         // no lead yet
@@ -5348,7 +5387,7 @@ Arrays.arrayOfFunctions = function (value) {
  * @param value {any}  the value of the key that you are looking for
  * @returns {*|boolean}
  * @example
- * be.objValInArray([{ id: 1, name: '...'}], 'id', 1) // true
+ * be.objValueInArray([{ id: 1, name: '...'}], 'id', 1) // true
  */
 Arrays.objValueInArray = function (array, key, value) {
   var result = [];
@@ -6231,7 +6270,7 @@ module.exports = DOM;
 
 module.exports = {
 	"name": "bejs",
-	"version": "1.10.0",
+	"version": "1.11.0",
 	"description": "Simple, light-weight assertions framework for javascript",
 	"homepage": "https://be.js.org",
 	"main": "index.js",
@@ -6255,7 +6294,13 @@ module.exports = {
 		"object",
 		"check",
 		"float",
-		"alphanumeric"
+		"alphanumeric",
+		"mocha",
+		"testing",
+		"validation",
+		"test unit",
+		"valid",
+		"type"
 	],
 	"author": {
 		"name": "Fabio Ricali",
@@ -6277,9 +6322,11 @@ module.exports = {
 		"istanbul": "^0.4.5",
 		"jsdoc": "^3.4.3",
 		"jsdom": "^11.0.0",
+		"koa": "^2.3.0",
 		"minami": "^1.2.3",
 		"mocha": "^3.4.2",
 		"mocha-lcov-reporter": "^1.3.0",
+		"request": "^2.81.0",
 		"unminified-webpack-plugin": "^1.2.0",
 		"webpack": "^3.0.0",
 		"webpack-auto-inject-version": "^0.5.14"
