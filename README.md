@@ -1,8 +1,9 @@
 <div align="center">
-<img src="https://raw.githubusercontent.com/fabioricali/beJS/master/extra/logo.png" title="beJS"/>
+<br/>
+<img width="120" src="https://raw.githubusercontent.com/fabioricali/beJS/master/extra/logo.png" title="beJS"/>
 
 ***to be, or not to be, that is the question***
-
+<br/><br/><br/>
 <a href="https://travis-ci.org/fabioricali/beJS" target="_blank"><img src="https://travis-ci.org/fabioricali/beJS.svg?branch=master" title="Build Status"/></a>
 <a href="https://coveralls.io/github/fabioricali/beJS?branch=master" target="_blank"><img src="https://coveralls.io/repos/github/fabioricali/beJS/badge.svg?branch=master" title="Coverage Status"/></a>
 <a href="https://opensource.org/licenses/MIT" target="_blank"><img src="https://img.shields.io/badge/License-MIT-yellow.svg" title="License: MIT"/></a>
