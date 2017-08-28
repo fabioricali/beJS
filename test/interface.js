@@ -1,7 +1,23 @@
 if(typeof process === 'object') {
     var assert = require('assert');
     var be = require('../index');
+    var interface = require('../src/interface');
 }
+
+describe('_printArgs', function () {
+    it('string, should be return a string', function () {
+        console.log(interface._printArgs(['hello', 'world']));
+    });
+    it('array and arguments, should be return a string', function () {
+        console.log(interface._printArgs(['hello', 'world', ['1', 'ciao']]));
+    });
+    it('object, should be return a string', function () {
+        console.log(interface._printArgs([{a: 1}, {b: 2}]));
+    });
+    it('empty, should be return a string', function () {
+        console.log(interface._printArgs());
+    });
+});
 
 describe('err', function () {
     it('be.err().equal, should be return error', function (done) {
@@ -25,7 +41,7 @@ describe('err', function () {
 
     it('be.err.all.boolean, should be return error', function (done) {
         try {
-            be.err.all.boolean([true, false, true, 2]);
+            be.err.all.boolean([true, false, true, 2, ['hello', 'world']]);
             done('error')
         } catch (e) {
             assert.notEqual(e.message, 'this a message error');
@@ -37,6 +53,16 @@ describe('err', function () {
     it('be.err().all.boolean, should be return error', function (done) {
         try {
             be.err().all.boolean([true, false, true, 2]);
+            done('error')
+        } catch (e) {
+            console.log(e);
+            done()
+        }
+    });
+
+    it('be.err().all.boolean, as arguments, should be return error', function (done) {
+        try {
+            be.err().all.boolean(true, false, true, 2, [1, 2, 3]);
             done('error')
         } catch (e) {
             console.log(e);

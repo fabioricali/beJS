@@ -12,6 +12,24 @@ Interface._isArray = (object) => {
 };
 
 /**
+ * Returns formatted arguments
+ * @param args {Array}
+ * @param pos {number}
+ * @returns {string}
+ */
+Interface._printArgs = (args = [], pos = 0) => {
+    let out = ``;
+    for(let i=0; i<args.length; i++){
+        if(Interface._isArray(args[i])){
+            out += Interface._printArgs(args[i], i);
+        } else {
+            out += `args[${i + pos}]: ${args[i]}\n`;
+        }
+    }
+    return out;
+};
+
+/**
  * Create interface all and any
  * @param obj {Object} object
  * @returns {Object}
@@ -127,8 +145,9 @@ Interface.create = (obj) => {
                             if (!obj[i][j].apply(this, params)) {
                                 let errorMessage = obj.err.__last_error_message + '';
                                 obj.err.__last_error_message = '';
+                                //console.log(params.toString());
                                 throw new AssertionError(
-                                    errorMessage ? errorMessage : `${i}.${j} is not satisfied`
+                                    errorMessage ? errorMessage : `${i}.${j} is not satisfied\n\n${Interface._printArgs(params)}\n`
                                 );
                             } else if (typeof obj.err.__last_error_callback === 'function') {
                                 obj.err.__last_error_callback();
@@ -143,7 +162,7 @@ Interface.create = (obj) => {
                         let errorMessage = obj.err.__last_error_message + '';
                         obj.err.__last_error_message = '';
                         throw new AssertionError(
-                            errorMessage ? errorMessage : `${i} is not satisfied`
+                            errorMessage ? errorMessage : `${i} is not satisfied\n\n${Interface._printArgs(params)}\n`
                         );
                     } else if (typeof obj.err.__last_error_callback === 'function') {
                         obj.err.__last_error_callback();

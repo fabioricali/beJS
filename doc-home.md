@@ -1,4 +1,4 @@
-<img src="https://raw.githubusercontent.com/fabioricali/beJS/master/extra/logo.png" title="beJS"/>
+<img width="102" src="https://raw.githubusercontent.com/fabioricali/beJS/master/extra/logo.png" title="beJS"/>
 
 ***to be, or not to be, that is the question***
 
@@ -8,7 +8,7 @@
 
 # Simple, light-weight assertions framework for javascript
 
-#### More than ***170*** validation methods
+#### More than ***190*** validation methods
 
 ## Installation
 
@@ -68,6 +68,10 @@ be.err.any.array([], {}, '');
 describe('a test', () => {
     it('should be ok', (done)=>{
         be.err(done).email('fabio@rica.li');
+    });
+    
+    it('should be false', ()=>{
+        be.err.false(2 === 3);
     });
 });
 ```

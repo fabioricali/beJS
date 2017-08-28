@@ -1,6 +1,6 @@
 <div align="center">
 <br/>
-<img width="120" src="https://raw.githubusercontent.com/fabioricali/beJS/master/extra/logo.png" title="beJS"/>
+<img width="102" src="https://raw.githubusercontent.com/fabioricali/beJS/master/extra/logo.png" title="beJS"/>
 
 ***to be, or not to be, that is the question***
 <br/><br/><br/>
@@ -11,7 +11,7 @@
 <img src="https://img.shields.io/badge/team-terrons-orange.svg" title="Team Terrons"/>
 # Simple, light-weight assertions framework for javascript
 
-#### More than ***170*** validation methods
+#### More than ***190*** validation methods
 
 </div>
 
