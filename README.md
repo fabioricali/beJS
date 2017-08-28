@@ -73,6 +73,10 @@ describe('a test', () => {
     it('should be ok', (done)=>{
         be.err(done).email('fabio@rica.li');
     });
+    
+    it('should be false', ()=>{
+        be.err.false(2 === 3);
+    });
 });
 ```
 
