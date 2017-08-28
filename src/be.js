@@ -56,19 +56,19 @@ be._helpers = Helpers;
  * @private
  */
 let Checks = {
-    Strings: require('./asserts/strings'),
-    Types: require('./asserts/types'),
-    Numbers: require('./asserts/numbers'),
-    Envs: require('./asserts/envs'),
-    Objects: require('./asserts/objects'),
-    Mixed: require('./asserts/mixed'),
-    Arrays: require('./asserts/arrays'),
-    Dates: require('./asserts/dates'),
-    Urls: require('./asserts/urls'),
-    Hashes: require('./asserts/hashes'),
-    CreditCards: require('./asserts/creditCards'),
-    PostalCodes: require('./asserts/postalCodes'),
-    DOM: require('./asserts/dom')
+    Strings: require('./assertions/strings'),
+    Types: require('./assertions/types'),
+    Numbers: require('./assertions/numbers'),
+    Envs: require('./assertions/envs'),
+    Objects: require('./assertions/objects'),
+    Mixed: require('./assertions/mixed'),
+    Arrays: require('./assertions/arrays'),
+    Dates: require('./assertions/dates'),
+    Urls: require('./assertions/urls'),
+    Hashes: require('./assertions/hashes'),
+    CreditCards: require('./assertions/creditCards'),
+    PostalCodes: require('./assertions/postalCodes'),
+    DOM: require('./assertions/dom')
 };
 
 /**
