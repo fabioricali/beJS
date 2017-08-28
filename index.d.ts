@@ -32,6 +32,7 @@ export declare namespace be {
     function string(value: any): boolean;
     function undefined(value: any): boolean;
     const null = function(value: any): boolean;
+    function nil(value: any): boolean;
     function object(value: any): boolean;
     function array(value: any): boolean;
     function json(value: any): boolean;

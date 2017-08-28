@@ -193,6 +193,27 @@ describe('null', function () {
     });
 });
 
+describe('nil', function () {
+    it('null should be return true', function () {
+        var result = be.nil(null);
+        console.log(result);
+        assert.equal(result, true);
+    });
+
+    it('undefined should be return true', function () {
+        var result = be.nil(undefined);
+        console.log(result);
+        assert.equal(result, true);
+    });
+
+    it('number value, should be return false', function () {
+        var result = be.nil(1);
+        console.log(result);
+        assert.equal(result, false);
+    });
+
+});
+
 describe('object', function () {
     it('object, should be return true', function () {
         var result = be.object({a: 1, b: 2, c: [1, 2, 3]});

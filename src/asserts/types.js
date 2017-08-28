@@ -210,6 +210,24 @@ Types['null'] = (value) => {
 };
 
 /**
+ * Check if is null or undefined
+ *
+ * **Interfaces**: `all`, `any`, `not`, `err`
+ *
+ * @function
+ * @name nil
+ * @alias nil
+ * @param value {Mixed} value
+ * @returns {boolean}
+ * @example
+ * be.nil(null) // true
+ * be.nil(undefined) // true
+ */
+Types.nil = (value) => {
+    return Types.null(value) || Types.undefined(value);
+};
+
+/**
  * Check if is a object
  *
  * **Interfaces**: `all`, `any`, `not`, `err`
