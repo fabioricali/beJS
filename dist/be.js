@@ -1,4 +1,4 @@
-// [AIV]  beJS Build version: 1.12.1  
+// [AIV]  beJS Build version: 1.12.2  
  var be =
 /******/ (function(modules) { // webpackBootstrap
 /******/ 	// The module cache
@@ -85,6 +85,27 @@ var Interface = {};
  */
 Interface._isArray = function (object) {
     return Helpers.objectToString(object) === '[object Array]';
+};
+
+/**
+ * Returns formatted arguments
+ * @param args {Array}
+ * @param pos {number}
+ * @returns {string}
+ */
+Interface._printArgs = function () {
+    var args = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : [];
+    var pos = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 0;
+
+    var out = '';
+    for (var i = 0; i < args.length; i++) {
+        if (Interface._isArray(args[i])) {
+            out += Interface._printArgs(args[i], i);
+        } else {
+            out += 'args[' + (i + pos) + ']: ' + args[i] + '\n';
+        }
+    }
+    return out;
 };
 
 /**
@@ -216,7 +237,8 @@ Interface.create = function (obj) {
                         if (!obj[i][j].apply(undefined, params)) {
                             var errorMessage = obj.err.__last_error_message + '';
                             obj.err.__last_error_message = '';
-                            throw new AssertionError(errorMessage ? errorMessage : i + '.' + j + ' is not satisfied');
+                            //console.log(params.toString());
+                            throw new AssertionError(errorMessage ? errorMessage : i + '.' + j + ' is not satisfied\n\n' + Interface._printArgs(params) + '\n');
                         } else if (typeof obj.err.__last_error_callback === 'function') {
                             obj.err.__last_error_callback();
                             obj.err.__last_error_callback = null;
@@ -237,7 +259,7 @@ Interface.create = function (obj) {
                 if (!obj[i].apply(undefined, params)) {
                     var errorMessage = obj.err.__last_error_message + '';
                     obj.err.__last_error_message = '';
-                    throw new AssertionError(errorMessage ? errorMessage : i + ' is not satisfied');
+                    throw new AssertionError(errorMessage ? errorMessage : i + ' is not satisfied\n\n' + Interface._printArgs(params) + '\n');
                 } else if (typeof obj.err.__last_error_callback === 'function') {
                     obj.err.__last_error_callback();
                     obj.err.__last_error_callback = null;
@@ -1924,7 +1946,7 @@ module.exports = __webpack_require__(6);
 
 var Helpers = __webpack_require__(2);
 var Interface = __webpack_require__(0);
-var version = '1.12.1';
+var version = '1.12.2';
 
 /**
  * be class
@@ -6285,7 +6307,7 @@ module.exports = DOM;
 /* 25 */
 /***/ (function(module, exports) {
 
-module.exports = {"name":"bejs","version":"1.12.1","description":"Simple, light-weight assertions framework for javascript","homepage":"https://be.js.org","main":"index.js","scripts":{"version:major":"webpack --env.major && npm run-script doc && version-to-tag.sh && npm publish","version:minor":"webpack --env.minor && npm run-script doc && version-to-tag.sh && npm publish","version:patch":"webpack --env.patch && npm run-script doc && version-to-tag.sh && npm publish","build":"webpack --progress","doc":"./node_modules/.bin/jsdoc --configure .jsdoc.json --verbose","test":"istanbul cover ./node_modules/mocha/bin/_mocha --report lcovonly -- -R spec && cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js && rm -rf ./coverage"},"keywords":["asserts","assertions","test","is","boolean","url","number","string","email","object","check","float","alphanumeric","mocha","testing","validation","test unit","valid","type"],"author":{"name":"Fabio Ricali","email":"fabio@rica.li"},"contributors":[{"name":"Davide Polano","email":"info@mdslab.org"}],"license":"MIT","devDependencies":{"babel-core":"^6.26.0","babel-loader":"^7.1.2","babel-preset-es2015":"^6.24.1","coveralls":"^2.13.1","docdash":"^0.4.0","istanbul":"^0.4.5","jsdoc":"^3.5.4","jsdom":"^11.2.0","koa":"^2.3.0","minami":"^1.2.3","mocha":"^3.5.0","mocha-lcov-reporter":"^1.3.0","request":"^2.81.0","unminified-webpack-plugin":"^1.2.0","webpack":"^3.5.5","webpack-auto-inject-version":"^0.5.14"},"repository":{"type":"git","url":"https://github.com/fabioricali/beJS"}}
+module.exports = {"name":"bejs","version":"1.12.2","description":"Simple, light-weight assertions framework for javascript","homepage":"https://be.js.org","main":"index.js","scripts":{"version:major":"webpack --env.major && npm run-script doc && version-to-tag.sh && npm publish","version:minor":"webpack --env.minor && npm run-script doc && version-to-tag.sh && npm publish","version:patch":"webpack --env.patch && npm run-script doc && version-to-tag.sh && npm publish","build":"webpack --progress","doc":"./node_modules/.bin/jsdoc --configure .jsdoc.json --verbose","test":"istanbul cover ./node_modules/mocha/bin/_mocha --report lcovonly -- -R spec && cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js && rm -rf ./coverage"},"keywords":["asserts","assertions","test","is","boolean","url","number","string","email","object","check","float","alphanumeric","mocha","testing","validation","test unit","valid","type"],"author":{"name":"Fabio Ricali","email":"fabio@rica.li"},"contributors":[{"name":"Davide Polano","email":"info@mdslab.org"}],"license":"MIT","devDependencies":{"babel-core":"^6.26.0","babel-loader":"^7.1.2","babel-preset-es2015":"^6.24.1","coveralls":"^2.13.1","docdash":"^0.4.0","istanbul":"^0.4.5","jsdoc":"^3.5.4","jsdom":"^11.2.0","koa":"^2.3.0","minami":"^1.2.3","mocha":"^3.5.0","mocha-lcov-reporter":"^1.3.0","request":"^2.81.0","unminified-webpack-plugin":"^1.2.0","webpack":"^3.5.5","webpack-auto-inject-version":"^0.5.14"},"repository":{"type":"git","url":"https://github.com/fabioricali/beJS"}}
 
 /***/ })
 /******/ ]); 
