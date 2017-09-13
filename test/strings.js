@@ -416,3 +416,16 @@ describe('palindrome', function () {
         assert.equal(result, false);
     });
 });
+
+describe('stringRange', function () {
+    it('should be return true', function () {
+        var result = be.stringRange('hello world', 5, 11);
+        console.log(result);
+        assert.equal(result, true);
+    });
+    it('should be return false', function () {
+        var result = be.stringRange('hello world', 15, 20);
+        console.log(result);
+        assert.equal(result, false);
+    });
+});

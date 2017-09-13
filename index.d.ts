@@ -204,6 +204,7 @@ export declare namespace be {
     function char(value: string): boolean;
     function space(value: string): boolean;
     function spaces(value: string): boolean;
+    function stringRange(value: string, min: number, max: number): boolean;
 
     function url(value: string): boolean;
     function httpUrl(value: string): boolean;

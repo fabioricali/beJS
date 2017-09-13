@@ -7,6 +7,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 ## [1.13.0] - 2017-09-13
 ### Added
 - `be.arrayOfNumeric`
+- `be.stringRange`
 
 ## [1.12.2] - 2017-08-28
 ### Fixed

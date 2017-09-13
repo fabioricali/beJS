@@ -6,6 +6,7 @@
 const Helpers = require('../helpers');
 const Interface = require('../interface');
 const Types = require('./types');
+const Numbers = require('./numbers');
 
 let Strings = {};
 
@@ -360,6 +361,37 @@ Strings.space = (value) => {
  */
 Strings.spaces = (value) => {
     return /\s/.test(value);
+};
+
+/**
+ * Check string length range
+ *
+ * **Interfaces**: `not`, `err`
+ *
+ * @function
+ * @name stringRange
+ * @param value {string} string
+ * @param min=0 {number}
+ * @param max {number}
+ */
+Strings.stringRange = (value, min = 0, max) => {
+    return Types.string(value) && Numbers.between(value.length, min, (max || value.length));
+};
+
+Strings.stringRange.multiple = false;
+
+/**
+ * Check string length
+ *
+ * **Interfaces**: `all`, `any`, `not`, `err`
+ *
+ * @function
+ * @name stringLength
+ * @param value {string} string
+ * @param num {number}
+ */
+Strings.stringLength = (value, num) => {
+    return Types.string(value) && value.length === num;
 };
 
 Strings = Interface.create(Strings);
