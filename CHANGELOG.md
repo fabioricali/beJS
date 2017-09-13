@@ -8,6 +8,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 ### Added
 - `be.arrayOfNumeric`
 - `be.stringRange`
+- `be.stringLength`
 
 ## [1.12.2] - 2017-08-28
 ### Fixed

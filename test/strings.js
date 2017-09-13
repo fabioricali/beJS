@@ -429,3 +429,16 @@ describe('stringRange', function () {
         assert.equal(result, false);
     });
 });
+
+describe('stringLength', function () {
+    it('should be return true', function () {
+        var result = be.stringLength('hello world', 11);
+        console.log(result);
+        assert.equal(result, true);
+    });
+    it('should be return false', function () {
+        var result = be.stringLength('hello world', 15);
+        console.log(result);
+        assert.equal(result, false);
+    });
+});
