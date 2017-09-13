@@ -4,6 +4,7 @@
  */
 
 const Types = require('./types');
+const Numbers = require('./numbers');
 const Interface = require('../interface');
 let Arrays = {};
 
@@ -116,6 +117,26 @@ Arrays.arrayOfBooleans = (value) => {
  */
 Arrays.arrayOfNumbers = (value) => {
     return Types.all.number(value);
+};
+
+/**
+ * Check if is an array of numeric
+ *
+ * **Interfaces**: `all`, `any`, `not`, `err`
+ *
+ * @function
+ * @name arrayOfNumeric
+ * @param value {array} array
+ * @returns {*|boolean}
+ * @example
+ * be.arrayOfNumeric([1, "2"]) // true
+ * be.all.arrayOfNumeric([
+ *      12,
+ *      "two"
+ * ]) // false
+ */
+Arrays.arrayOfNumeric = (value) => {
+    return Numbers.all.numeric(value);
 };
 
 /**

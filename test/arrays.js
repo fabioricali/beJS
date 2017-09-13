@@ -140,6 +140,19 @@ describe('arrayOfNumbers', function () {
     });
 });
 
+describe('arrayOfNumeric', function () {
+    it('should be return true', function () {
+        var result = be.arrayOfNumeric([1, '2']);
+        console.log(result);
+        assert.equal(result, true);
+    });
+    it('should be return false', function () {
+        var result = be.arrayOfNumeric([1, true, '2']);
+        console.log(result);
+        assert.equal(result, false);
+    });
+});
+
 describe('arrayOfDates', function () {
     it('should be return true', function () {
         var result = be.arrayOfDates([new Date(), new Date('2017-07-06')]);

@@ -74,6 +74,7 @@ export declare namespace be {
     function arrayOfObjects(array: Array<any>): boolean;
     function arrayOfBooleans(array: Array<any>): boolean;
     function arrayOfNumbers(array: Array<any>): boolean;
+    function arrayOfNumeric(array: Array<any>): boolean;
     function arrayOfDates(array: Array<any>): boolean;
     function arrayOfFunctions(array: Array<any>): boolean;
     function objValueInArray(array: Array<any>, key: string, value: any): boolean;
