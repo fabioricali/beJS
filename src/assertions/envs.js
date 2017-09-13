@@ -140,6 +140,7 @@ for(let i in regExp){
  * @name mobile
  * @param agent {string} user agent string
  * @returns {boolean}
+ * @since 1.6.0
  * @example
  * be.mobile() // true
  */
@@ -157,6 +158,7 @@ Envs.mobile = (agent) => {
  * @name tablet
  * @param agent {string} user agent string
  * @returns {boolean}
+ * @since 1.6.0
  * @example
  * be.tablet() // true
  */
@@ -174,6 +176,7 @@ Envs.tablet = (agent) => {
  * @name desktop
  * @param agent {string} user agent string
  * @returns {boolean}
+ * @since 1.6.0
  * @example
  * be.desktop() // true
  */
@@ -192,6 +195,7 @@ Envs.desktop = (agent) => {
  * @param range {string} operator and version number "==", "<", "<=", ">", "=>" ex: >=4
  * @param agent {string} user agent string
  * @returns {boolean}
+ * @since 1.6.0
  * @example
  * be.androidTablet() // true
  */
@@ -206,6 +210,7 @@ Envs.desktop = (agent) => {
  * @param range {string} operator and version number "==", "<", "<=", ">", "=>" ex: >=4
  * @param agent {string} user agent string
  * @returns {boolean}
+ * @since 1.6.0
  * @example
  * be.androidPhone() // true
  */
@@ -220,6 +225,7 @@ Envs.desktop = (agent) => {
  * @param range {string} operator and version number "==", "<", "<=", ">", "=>" ex: >=4
  * @param agent {string} user agent string
  * @returns {boolean}
+ * @since 1.6.0
  * @example
  * be.windowsPhone() // true
  */
@@ -234,6 +240,7 @@ Envs.desktop = (agent) => {
  * @param range {string} operator and version number "==", "<", "<=", ">", "=>" ex: >=4
  * @param agent {string} user agent string
  * @returns {boolean}
+ * @since 1.6.0
  * @example
  * be.windowsTablet() // true
  */
@@ -247,6 +254,7 @@ Envs.desktop = (agent) => {
  * @name blackberry
  * @param agent {string} user agent string
  * @returns {boolean}
+ * @since 1.6.0
  * @example
  * be.blackberry() // true
  */
@@ -358,6 +366,7 @@ Envs.desktop = (agent) => {
  * @param range {string} operator and version number "==", "<", "<=", ">", "=>" ex: >=4
  * @param agent {string} user agent string
  * @returns {boolean}
+ * @since 1.6.0
  * @example
  * be.chromeIOS() // true
  * be.chromeIOS('==59') // true
@@ -388,6 +397,7 @@ Envs.desktop = (agent) => {
  * @param range {string} operator and version number "==", "<", "<=", ">", "=>" ex: >=4
  * @param agent {string} user agent string
  * @returns {boolean}
+ * @since 1.6.0
  * @example
  * be.safariMobile() // true
  * be.safariMobile('<=7') // true
@@ -403,6 +413,7 @@ Envs.desktop = (agent) => {
  * @param range {string} operator and version number "==", "<", "<=", ">", "=>" ex: >=4
  * @param agent {string} user agent string
  * @returns {boolean}
+ * @since 1.6.0
  * @example
  * be.edge() // true
  * be.edge('>=12') // true
@@ -458,6 +469,7 @@ Envs.desktop = (agent) => {
  * @name linux
  * @param agent {string} user agent string
  * @returns {boolean}
+ * @since 1.6.0
  * @example
  * be.linux() // true
  */

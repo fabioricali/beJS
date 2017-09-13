@@ -86,6 +86,7 @@ Arrays.arrayOfObjects = (value) => {
  * @name arrayOfBooleans
  * @param value {array} array
  * @returns {*|boolean}
+ * @since 1.3.1
  * @example
  * be.arrayOfBooleans([true, false]) // true
  * be.all.arrayOfBooleans([
@@ -107,6 +108,7 @@ Arrays.arrayOfBooleans = (value) => {
  * @name arrayOfNumbers
  * @param value {array} array
  * @returns {*|boolean}
+ * @since 1.4.0
  * @example
  * be.arrayOfNumbers([1, 2]) // true
  * be.all.arrayOfNumbers([
@@ -149,6 +151,7 @@ Arrays.arrayOfNumeric = (value) => {
  * @name arrayOfDates
  * @param value {array} array
  * @returns {*|boolean}
+ * @since 1.4.0
  * @example
  * be.arrayOfDates([new Date(), new Date('2017-07-06')]) // true
  * be.all.arrayOfDates([
@@ -170,6 +173,7 @@ Arrays.arrayOfDates = (value) => {
  * @name arrayOfFunctions
  * @param value {array} array
  * @returns {*|boolean}
+ * @since 1.4.0
  * @example
  * be.arrayOfFunctions([function(){return 1}, function(){return 2}]) // true
  * be.all.arrayOfFunctions([
@@ -193,6 +197,7 @@ Arrays.arrayOfFunctions = (value) => {
  * @param key {string} object key that you are looking for
  * @param value {any}  the value of the key that you are looking for
  * @returns {*|boolean}
+ * @since 1.10.0
  * @example
  * be.objValueInArray([{ id: 1, name: '...'}], 'id', 1) // true
  */

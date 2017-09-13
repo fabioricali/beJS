@@ -41,6 +41,7 @@ Types.classOf.multiple = false;
  * @param object {Mixed} object
  * @param className {string} class name
  * @returns {boolean}
+ * @since 1.11.0
  * @example
  * be.of(2, 'number') // true
  * be.of([1, 2, 3], 'array') // true
@@ -80,6 +81,7 @@ Types.boolean = (value) => {
  * @alias false
  * @param value {Mixed} value
  * @returns {boolean}
+ * @since 1.3.1
  * @example
  * be.booleanFalse(false) // true
  * be.booleanFalse(true) // false
@@ -115,6 +117,7 @@ Types.false = (value) => {
  * @alias true
  * @param value {Mixed} value
  * @returns {boolean}
+ * @since 1.3.1
  * @example
  * be.booleanTrue(true) // true
  * be.booleanTrue(false) // false
@@ -219,6 +222,7 @@ Types['null'] = (value) => {
  * @alias nil
  * @param value {Mixed} value
  * @returns {boolean}
+ * @since 1.12.1
  * @example
  * be.nil(null) // true
  * be.nil(undefined) // true
@@ -469,6 +473,7 @@ Types.argument = (value) => {
  * @name primitive
  * @param value {Mixed} value
  * @returns {boolean}
+ * @since 1.3.1
  * @example
  * be.primitive(20) // true
  * be.primitive(new Number(20)) // false
@@ -486,6 +491,7 @@ Types.primitive = (value) => {
  * @name promise
  * @param value {Mixed} value
  * @returns {boolean}
+ * @since 1.3.1
  * @example
  * var p = new Promise((resolve, reject) => {resolve()});
  * be.promise(p) // true
@@ -503,6 +509,7 @@ Types.promise = (value) => {
  * @name buffer
  * @param value {Mixed} value
  * @returns {boolean}
+ * @since 1.3.1
  * @example
  * var b = new Buffer('hello');
  * be.buffer(b) // true
@@ -520,6 +527,7 @@ Types.buffer = (value) => {
  * @name iterable
  * @param value {Mixed} value
  * @returns {boolean}
+ * @since 1.3.1
  * @example
  * be.iterable([1, 2, 3]) // true
  * be.iterable('hello') // true
@@ -538,6 +546,7 @@ Types.iterable = (value) => {
  * @name symbol
  * @param value {Mixed} value
  * @returns {boolean}
+ * @since 1.4.0
  * @example
  * be.symbol(Symbol('hello')) // true
  * be.symbol({a: 1}) // false
@@ -555,6 +564,7 @@ Types.symbol = (value) => {
  * @name defined
  * @param value {Mixed} value
  * @returns {boolean}
+ * @since 1.4.0
  * @example
  * var param = 'hello';
  * be.defined(param) // true
@@ -574,6 +584,7 @@ Types.defined = (value) => {
  * @name oSet
  * @param value {Mixed} value
  * @returns {boolean}
+ * @since 1.5.0
  * @example
  * be.oSet(new Set()) // true
  */
@@ -590,6 +601,7 @@ Types.oSet = (value) => {
  * @name weakSet
  * @param value {Mixed} value
  * @returns {boolean}
+ * @since 1.5.0
  * @example
  * be.weakSet(new WeakSet()) // true
  */
@@ -606,6 +618,7 @@ Types.weakSet = (value) => {
  * @name map
  * @param value {Mixed} value
  * @returns {boolean}
+ * @since 1.5.0
  * @example
  * be.map(new Map()) // true
  */
@@ -622,6 +635,7 @@ Types.map = (value) => {
  * @name weakMap
  * @param value {Mixed} value
  * @returns {boolean}
+ * @since 1.5.0
  * @example
  * be.weakMap(new WeakMap()) // true
  */
@@ -638,6 +652,7 @@ Types.weakMap = (value) => {
  * @name mapIterator
  * @param value {Mixed} value
  * @returns {boolean}
+ * @since 1.5.0
  * @example
  * be.mapIterator(new Map().values()) // true
  */
@@ -654,6 +669,7 @@ Types.mapIterator = (value) => {
  * @name setIterator
  * @param value {Mixed} value
  * @returns {boolean}
+ * @since 1.5.0
  * @example
  * be.setIterator(new Set().values()) // true
  */
@@ -670,6 +686,7 @@ Types.setIterator = (value) => {
  * @name int8Array
  * @param value {Mixed} value
  * @returns {boolean}
+ * @since 1.5.0
  * @example
  * be.int8Array(new Int8Array()) // true
  */
@@ -686,6 +703,7 @@ Types.int8Array = (value) => {
  * @name uint8Array
  * @param value {Mixed} value
  * @returns {boolean}
+ * @since 1.5.0
  * @example
  * be.uint8Array(new Uint8Array()) // true
  */
@@ -702,6 +720,7 @@ Types.uint8Array = (value) => {
  * @name uint8ClampedArray
  * @param value {Mixed} value
  * @returns {boolean}
+ * @since 1.5.0
  * @example
  * be.uint8ClampedArray(new Uint8ClampedArray()) // true
  */
@@ -718,6 +737,7 @@ Types.uint8ClampedArray = (value) => {
  * @name int16Array
  * @param value {Mixed} value
  * @returns {boolean}
+ * @since 1.5.0
  * @example
  * be.int16Array(new Int16Array()) // true
  */
@@ -734,6 +754,7 @@ Types.int16Array = (value) => {
  * @name uint16Array
  * @param value {Mixed} value
  * @returns {boolean}
+ * @since 1.5.0
  * @example
  * be.uint16Array(new Uint16Array()) // true
  */
@@ -750,6 +771,7 @@ Types.uint16Array = (value) => {
  * @name int32Array
  * @param value {Mixed} value
  * @returns {boolean}
+ * @since 1.5.0
  * @example
  * be.int32Array(new Int32Array()) // true
  */
@@ -766,6 +788,7 @@ Types.int32Array = (value) => {
  * @name uint32Array
  * @param value {Mixed} value
  * @returns {boolean}
+ * @since 1.5.0
  * @example
  * be.uint32Array(new Uint32Array()) // true
  */
@@ -782,6 +805,7 @@ Types.uint32Array = (value) => {
  * @name float32Array
  * @param value {Mixed} value
  * @returns {boolean}
+ * @since 1.5.0
  * @example
  * be.float32Array(new Float32Array()) // true
  */
@@ -798,6 +822,7 @@ Types.float32Array = (value) => {
  * @name float64Array
  * @param value {Mixed} value
  * @returns {boolean}
+ * @since 1.5.0
  * @example
  * be.float64Array(new Float64Array()) // true
  */
@@ -814,6 +839,7 @@ Types.float64Array = (value) => {
  * @name asyncFunction
  * @param value {Mixed} value
  * @returns {boolean}
+ * @since 1.6.3
  * @example
  * be.asyncFunction(async function test(){}) // true
  */
@@ -830,6 +856,7 @@ Types.asyncFunction = (value) => {
  * @name generatorFunction
  * @param value {Mixed} value
  * @returns {boolean}
+ * @since 1.10.0
  * @example
  * be.generatorFunction(function* test(){}) // true
  */

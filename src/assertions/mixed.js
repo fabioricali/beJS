@@ -35,6 +35,7 @@ Mixed = Helpers.createRegExpMethods(Mixed, regExp);
  * @name iswc
  * @param value {string} ISWC code
  * @returns {boolean}
+ * @since 1.7.0
  * @example
  * be.iswc('T-000000001-0') // true
  */
@@ -47,6 +48,7 @@ Mixed = Helpers.createRegExpMethods(Mixed, regExp);
  * @name isrc
  * @param value {string} ISRC code
  * @returns {boolean}
+ * @since 1.7.0
  * @example
  * be.isrc('JMK401400212') // true
  */
@@ -59,6 +61,7 @@ Mixed = Helpers.createRegExpMethods(Mixed, regExp);
  * @name uuid
  * @param value {string} UUID code
  * @returns {boolean}
+ * @since 1.7.0
  * @example
  * be.uuid('9e3a0460-d72d-11e4-a631-c8e0eb141dab') // true
  */
@@ -71,6 +74,7 @@ Mixed = Helpers.createRegExpMethods(Mixed, regExp);
  * @name uuid1
  * @param value {string} UUID code
  * @returns {boolean}
+ * @since 1.7.0
  * @example
  * be.uuid1('9e3a0460-d72d-11e4-a631-c8e0eb141dab') // true
  */
@@ -83,6 +87,7 @@ Mixed = Helpers.createRegExpMethods(Mixed, regExp);
  * @name uuid3
  * @param value {string} UUID code
  * @returns {boolean}
+ * @since 1.7.0
  * @example
  * be.uuid3('2c1d43b8-e6d7-376e-af7f-d4bde997cc3f') // true
  */
@@ -95,6 +100,7 @@ Mixed = Helpers.createRegExpMethods(Mixed, regExp);
  * @name uuid4
  * @param value {string} UUID code
  * @returns {boolean}
+ * @since 1.7.0
  * @example
  * be.uuid4('366a77ba-d506-4a03-a730-318b8e6be8c5') // true
  */
@@ -107,6 +113,7 @@ Mixed = Helpers.createRegExpMethods(Mixed, regExp);
  * @name uuid5
  * @param value {string} UUID code
  * @returns {boolean}
+ * @since 1.7.0
  * @example
  * be.uuid5('39888f87-fb62-5988-a425-b2ea63f5b81e') // true
  */
@@ -305,6 +312,8 @@ Mixed.hexColor = (value) => {
  * @param operator {string} operator "==", "<", "<=", ">", ">="
  * @param b {string} version b
  * @param major {boolean} consider major only
+ * @returns {boolean}
+ * @since 1.6.0
  * @example
  * be.compareVersion('1.0.2', '==', '1.0.3') // false
  * //Consider major only

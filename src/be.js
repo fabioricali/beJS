@@ -94,6 +94,7 @@ be.getVersion._ofBe = true;
  * @memberOf be
  * @param name {string} assertion name
  * @param func {function} function
+ * @since 1.4.1
  * @example
  * be.set('myAssert', (a, b) => {
  *      return a === b;

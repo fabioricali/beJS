@@ -49,6 +49,7 @@ Hashes.sha1 = (value) => {
  * @name sha256
  * @param value {string} hash string
  * @returns {boolean}
+ * @since 1.9.0
  * @example
  * be.256('7f83b1657ff1fc53b92dc18148a1d65dfc2d4b1fa3d677284addd200126d9069') // true
  * be.not.256('7f83b1657ff1fc53b92dc18148a1d65dfc2d4b1fa3d677284addd200126d9069') // false
@@ -66,6 +67,7 @@ Hashes.sha256 = (value) => {
  * @name sha512
  * @param value {string} hash string
  * @returns {boolean}
+ * @since 1.9.0
  * @example
  * be.sha512('aeae379a6e857728e44164267fdb7a0e27b205d757cc19899586c89dbb221930f1813d02ff93a661859bc17065eac4d6edf3c38a034e6283a84754d52917e5b0') // true
  * be.not.sha512('aeae379a6e857728e44164267fdb7a0e27b205d757cc19899586c89dbb221930f1813d02ff93a661859bc17065eac4d6edf3c38a034e6283a84754d52917e5b0') // false

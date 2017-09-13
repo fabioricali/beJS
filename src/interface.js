@@ -72,6 +72,7 @@ Interface.create = (obj) => {
      * @param msg {string} optional error message
      * @param callback {function} optional function callback
      * @returns {error|void}
+     * @since 1.8.0
      * @example
      * be.err.true(false) // Error;
      * be.err('an error message').true(false) // Error;

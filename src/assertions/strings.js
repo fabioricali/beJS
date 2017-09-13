@@ -275,6 +275,7 @@ Strings.startWith.multiple = false;
  * @param string {string} string target
  * @param insensitive {boolean} case sensitive
  * @returns {boolean}
+ * @since 1.4.1
  * @example
  * be.endWith('world', 'hello world') // true
  * be.endWith('world', 'hello WORLD', true) // false
