@@ -128,6 +128,7 @@ Arrays.arrayOfNumbers = (value) => {
  * @name arrayOfNumeric
  * @param value {array} array
  * @returns {*|boolean}
+ * @since 1.13.0
  * @example
  * be.arrayOfNumeric([1, "2"]) // true
  * be.all.arrayOfNumeric([

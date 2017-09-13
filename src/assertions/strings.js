@@ -373,6 +373,8 @@ Strings.spaces = (value) => {
  * @param value {string} string
  * @param min=0 {number}
  * @param max {number}
+ * @since 1.13.0
+ * @returns {boolean}
  */
 Strings.stringRange = (value, min = 0, max) => {
     return Types.string(value) && Numbers.between(value.length, min, (max || value.length));
@@ -389,6 +391,8 @@ Strings.stringRange.multiple = false;
  * @name stringLength
  * @param value {string} string
  * @param num {number}
+ * @since 1.13.0
+ * @returns {boolean}
  */
 Strings.stringLength = (value, num) => {
     return Types.string(value) && value.length === num;
