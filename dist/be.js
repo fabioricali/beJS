@@ -1,4 +1,4 @@
-// [AIV]  beJS Build version: 1.12.2  
+// [AIV]  beJS Build version: 1.13.0  
  var be =
 /******/ (function(modules) { // webpackBootstrap
 /******/ 	// The module cache
@@ -151,6 +151,7 @@ Interface.create = function (obj) {
      * @param msg {string} optional error message
      * @param callback {function} optional function callback
      * @returns {error|void}
+     * @since 1.8.0
      * @example
      * be.err.true(false) // Error;
      * be.err('an error message').true(false) // Error;
@@ -327,6 +328,7 @@ Types.classOf.multiple = false;
  * @param object {Mixed} object
  * @param className {string} class name
  * @returns {boolean}
+ * @since 1.11.0
  * @example
  * be.of(2, 'number') // true
  * be.of([1, 2, 3], 'array') // true
@@ -366,6 +368,7 @@ Types.boolean = function (value) {
  * @alias false
  * @param value {Mixed} value
  * @returns {boolean}
+ * @since 1.3.1
  * @example
  * be.booleanFalse(false) // true
  * be.booleanFalse(true) // false
@@ -401,6 +404,7 @@ Types.false = function (value) {
  * @alias true
  * @param value {Mixed} value
  * @returns {boolean}
+ * @since 1.3.1
  * @example
  * be.booleanTrue(true) // true
  * be.booleanTrue(false) // false
@@ -505,6 +509,7 @@ Types['null'] = function (value) {
  * @alias nil
  * @param value {Mixed} value
  * @returns {boolean}
+ * @since 1.12.1
  * @example
  * be.nil(null) // true
  * be.nil(undefined) // true
@@ -755,6 +760,7 @@ Types.argument = function (value) {
  * @name primitive
  * @param value {Mixed} value
  * @returns {boolean}
+ * @since 1.3.1
  * @example
  * be.primitive(20) // true
  * be.primitive(new Number(20)) // false
@@ -772,6 +778,7 @@ Types.primitive = function (value) {
  * @name promise
  * @param value {Mixed} value
  * @returns {boolean}
+ * @since 1.3.1
  * @example
  * var p = new Promise((resolve, reject) => {resolve()});
  * be.promise(p) // true
@@ -789,6 +796,7 @@ Types.promise = function (value) {
  * @name buffer
  * @param value {Mixed} value
  * @returns {boolean}
+ * @since 1.3.1
  * @example
  * var b = new Buffer('hello');
  * be.buffer(b) // true
@@ -806,6 +814,7 @@ Types.buffer = function (value) {
  * @name iterable
  * @param value {Mixed} value
  * @returns {boolean}
+ * @since 1.3.1
  * @example
  * be.iterable([1, 2, 3]) // true
  * be.iterable('hello') // true
@@ -824,6 +833,7 @@ Types.iterable = function (value) {
  * @name symbol
  * @param value {Mixed} value
  * @returns {boolean}
+ * @since 1.4.0
  * @example
  * be.symbol(Symbol('hello')) // true
  * be.symbol({a: 1}) // false
@@ -841,6 +851,7 @@ Types.symbol = function (value) {
  * @name defined
  * @param value {Mixed} value
  * @returns {boolean}
+ * @since 1.4.0
  * @example
  * var param = 'hello';
  * be.defined(param) // true
@@ -860,6 +871,7 @@ Types.defined = function (value) {
  * @name oSet
  * @param value {Mixed} value
  * @returns {boolean}
+ * @since 1.5.0
  * @example
  * be.oSet(new Set()) // true
  */
@@ -876,6 +888,7 @@ Types.oSet = function (value) {
  * @name weakSet
  * @param value {Mixed} value
  * @returns {boolean}
+ * @since 1.5.0
  * @example
  * be.weakSet(new WeakSet()) // true
  */
@@ -892,6 +905,7 @@ Types.weakSet = function (value) {
  * @name map
  * @param value {Mixed} value
  * @returns {boolean}
+ * @since 1.5.0
  * @example
  * be.map(new Map()) // true
  */
@@ -908,6 +922,7 @@ Types.map = function (value) {
  * @name weakMap
  * @param value {Mixed} value
  * @returns {boolean}
+ * @since 1.5.0
  * @example
  * be.weakMap(new WeakMap()) // true
  */
@@ -924,6 +939,7 @@ Types.weakMap = function (value) {
  * @name mapIterator
  * @param value {Mixed} value
  * @returns {boolean}
+ * @since 1.5.0
  * @example
  * be.mapIterator(new Map().values()) // true
  */
@@ -940,6 +956,7 @@ Types.mapIterator = function (value) {
  * @name setIterator
  * @param value {Mixed} value
  * @returns {boolean}
+ * @since 1.5.0
  * @example
  * be.setIterator(new Set().values()) // true
  */
@@ -956,6 +973,7 @@ Types.setIterator = function (value) {
  * @name int8Array
  * @param value {Mixed} value
  * @returns {boolean}
+ * @since 1.5.0
  * @example
  * be.int8Array(new Int8Array()) // true
  */
@@ -972,6 +990,7 @@ Types.int8Array = function (value) {
  * @name uint8Array
  * @param value {Mixed} value
  * @returns {boolean}
+ * @since 1.5.0
  * @example
  * be.uint8Array(new Uint8Array()) // true
  */
@@ -988,6 +1007,7 @@ Types.uint8Array = function (value) {
  * @name uint8ClampedArray
  * @param value {Mixed} value
  * @returns {boolean}
+ * @since 1.5.0
  * @example
  * be.uint8ClampedArray(new Uint8ClampedArray()) // true
  */
@@ -1004,6 +1024,7 @@ Types.uint8ClampedArray = function (value) {
  * @name int16Array
  * @param value {Mixed} value
  * @returns {boolean}
+ * @since 1.5.0
  * @example
  * be.int16Array(new Int16Array()) // true
  */
@@ -1020,6 +1041,7 @@ Types.int16Array = function (value) {
  * @name uint16Array
  * @param value {Mixed} value
  * @returns {boolean}
+ * @since 1.5.0
  * @example
  * be.uint16Array(new Uint16Array()) // true
  */
@@ -1036,6 +1058,7 @@ Types.uint16Array = function (value) {
  * @name int32Array
  * @param value {Mixed} value
  * @returns {boolean}
+ * @since 1.5.0
  * @example
  * be.int32Array(new Int32Array()) // true
  */
@@ -1052,6 +1075,7 @@ Types.int32Array = function (value) {
  * @name uint32Array
  * @param value {Mixed} value
  * @returns {boolean}
+ * @since 1.5.0
  * @example
  * be.uint32Array(new Uint32Array()) // true
  */
@@ -1068,6 +1092,7 @@ Types.uint32Array = function (value) {
  * @name float32Array
  * @param value {Mixed} value
  * @returns {boolean}
+ * @since 1.5.0
  * @example
  * be.float32Array(new Float32Array()) // true
  */
@@ -1084,6 +1109,7 @@ Types.float32Array = function (value) {
  * @name float64Array
  * @param value {Mixed} value
  * @returns {boolean}
+ * @since 1.5.0
  * @example
  * be.float64Array(new Float64Array()) // true
  */
@@ -1100,6 +1126,7 @@ Types.float64Array = function (value) {
  * @name asyncFunction
  * @param value {Mixed} value
  * @returns {boolean}
+ * @since 1.6.3
  * @example
  * be.asyncFunction(async function test(){}) // true
  */
@@ -1116,6 +1143,7 @@ Types.asyncFunction = function (value) {
  * @name generatorFunction
  * @param value {Mixed} value
  * @returns {boolean}
+ * @since 1.10.0
  * @example
  * be.generatorFunction(function* test(){}) // true
  */
@@ -1617,6 +1645,7 @@ Mixed = Helpers.createRegExpMethods(Mixed, regExp);
  * @name iswc
  * @param value {string} ISWC code
  * @returns {boolean}
+ * @since 1.7.0
  * @example
  * be.iswc('T-000000001-0') // true
  */
@@ -1629,6 +1658,7 @@ Mixed = Helpers.createRegExpMethods(Mixed, regExp);
  * @name isrc
  * @param value {string} ISRC code
  * @returns {boolean}
+ * @since 1.7.0
  * @example
  * be.isrc('JMK401400212') // true
  */
@@ -1641,6 +1671,7 @@ Mixed = Helpers.createRegExpMethods(Mixed, regExp);
  * @name uuid
  * @param value {string} UUID code
  * @returns {boolean}
+ * @since 1.7.0
  * @example
  * be.uuid('9e3a0460-d72d-11e4-a631-c8e0eb141dab') // true
  */
@@ -1653,6 +1684,7 @@ Mixed = Helpers.createRegExpMethods(Mixed, regExp);
  * @name uuid1
  * @param value {string} UUID code
  * @returns {boolean}
+ * @since 1.7.0
  * @example
  * be.uuid1('9e3a0460-d72d-11e4-a631-c8e0eb141dab') // true
  */
@@ -1665,6 +1697,7 @@ Mixed = Helpers.createRegExpMethods(Mixed, regExp);
  * @name uuid3
  * @param value {string} UUID code
  * @returns {boolean}
+ * @since 1.7.0
  * @example
  * be.uuid3('2c1d43b8-e6d7-376e-af7f-d4bde997cc3f') // true
  */
@@ -1677,6 +1710,7 @@ Mixed = Helpers.createRegExpMethods(Mixed, regExp);
  * @name uuid4
  * @param value {string} UUID code
  * @returns {boolean}
+ * @since 1.7.0
  * @example
  * be.uuid4('366a77ba-d506-4a03-a730-318b8e6be8c5') // true
  */
@@ -1689,6 +1723,7 @@ Mixed = Helpers.createRegExpMethods(Mixed, regExp);
  * @name uuid5
  * @param value {string} UUID code
  * @returns {boolean}
+ * @since 1.7.0
  * @example
  * be.uuid5('39888f87-fb62-5988-a425-b2ea63f5b81e') // true
  */
@@ -1877,6 +1912,8 @@ Mixed.hexColor = function (value) {
  * @param operator {string} operator "==", "<", "<=", ">", ">="
  * @param b {string} version b
  * @param major {boolean} consider major only
+ * @returns {boolean}
+ * @since 1.6.0
  * @example
  * be.compareVersion('1.0.2', '==', '1.0.3') // false
  * //Consider major only
@@ -1946,7 +1983,7 @@ module.exports = __webpack_require__(6);
 
 var Helpers = __webpack_require__(2);
 var Interface = __webpack_require__(0);
-var version = '1.12.2';
+var version = '1.13.0';
 
 /**
  * be class
@@ -2006,6 +2043,7 @@ be.getVersion._ofBe = true;
  * @memberOf be
  * @param name {string} assertion name
  * @param func {function} function
+ * @since 1.4.1
  * @example
  * be.set('myAssert', (a, b) => {
  *      return a === b;
@@ -2149,6 +2187,7 @@ module.exports = AssertionError;
 var Helpers = __webpack_require__(2);
 var Interface = __webpack_require__(0);
 var Types = __webpack_require__(1);
+var Numbers = __webpack_require__(3);
 
 var Strings = {};
 
@@ -2409,6 +2448,7 @@ Strings.startWith.multiple = false;
  * @param string {string} string target
  * @param insensitive {boolean} case sensitive
  * @returns {boolean}
+ * @since 1.4.1
  * @example
  * be.endWith('world', 'hello world') // true
  * be.endWith('world', 'hello WORLD', true) // false
@@ -2496,6 +2536,44 @@ Strings.space = function (value) {
 Strings.spaces = function (value) {
     return (/\s/.test(value)
     );
+};
+
+/**
+ * Check string length range
+ *
+ * **Interfaces**: `not`, `err`
+ *
+ * @function
+ * @name stringRange
+ * @param value {string} string
+ * @param min=0 {number}
+ * @param max {number}
+ * @since 1.13.0
+ * @returns {boolean}
+ */
+Strings.stringRange = function (value) {
+    var min = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 0;
+    var max = arguments[2];
+
+    return Types.string(value) && Numbers.between(value.length, min, max || value.length);
+};
+
+Strings.stringRange.multiple = false;
+
+/**
+ * Check string length
+ *
+ * **Interfaces**: `all`, `any`, `not`, `err`
+ *
+ * @function
+ * @name stringLength
+ * @param value {string} string
+ * @param num {number}
+ * @since 1.13.0
+ * @returns {boolean}
+ */
+Strings.stringLength = function (value, num) {
+    return Types.string(value) && value.length === num;
 };
 
 Strings = Interface.create(Strings);
@@ -4653,6 +4731,7 @@ for (var i in regExp) {
  * @name mobile
  * @param agent {string} user agent string
  * @returns {boolean}
+ * @since 1.6.0
  * @example
  * be.mobile() // true
  */
@@ -4670,6 +4749,7 @@ Envs.mobile = function (agent) {
  * @name tablet
  * @param agent {string} user agent string
  * @returns {boolean}
+ * @since 1.6.0
  * @example
  * be.tablet() // true
  */
@@ -4687,6 +4767,7 @@ Envs.tablet = function (agent) {
  * @name desktop
  * @param agent {string} user agent string
  * @returns {boolean}
+ * @since 1.6.0
  * @example
  * be.desktop() // true
  */
@@ -4705,6 +4786,7 @@ Envs.desktop = function (agent) {
  * @param range {string} operator and version number "==", "<", "<=", ">", "=>" ex: >=4
  * @param agent {string} user agent string
  * @returns {boolean}
+ * @since 1.6.0
  * @example
  * be.androidTablet() // true
  */
@@ -4719,6 +4801,7 @@ Envs.desktop = function (agent) {
  * @param range {string} operator and version number "==", "<", "<=", ">", "=>" ex: >=4
  * @param agent {string} user agent string
  * @returns {boolean}
+ * @since 1.6.0
  * @example
  * be.androidPhone() // true
  */
@@ -4733,6 +4816,7 @@ Envs.desktop = function (agent) {
  * @param range {string} operator and version number "==", "<", "<=", ">", "=>" ex: >=4
  * @param agent {string} user agent string
  * @returns {boolean}
+ * @since 1.6.0
  * @example
  * be.windowsPhone() // true
  */
@@ -4747,6 +4831,7 @@ Envs.desktop = function (agent) {
  * @param range {string} operator and version number "==", "<", "<=", ">", "=>" ex: >=4
  * @param agent {string} user agent string
  * @returns {boolean}
+ * @since 1.6.0
  * @example
  * be.windowsTablet() // true
  */
@@ -4760,6 +4845,7 @@ Envs.desktop = function (agent) {
  * @name blackberry
  * @param agent {string} user agent string
  * @returns {boolean}
+ * @since 1.6.0
  * @example
  * be.blackberry() // true
  */
@@ -4871,6 +4957,7 @@ Envs.desktop = function (agent) {
  * @param range {string} operator and version number "==", "<", "<=", ">", "=>" ex: >=4
  * @param agent {string} user agent string
  * @returns {boolean}
+ * @since 1.6.0
  * @example
  * be.chromeIOS() // true
  * be.chromeIOS('==59') // true
@@ -4901,6 +4988,7 @@ Envs.desktop = function (agent) {
  * @param range {string} operator and version number "==", "<", "<=", ">", "=>" ex: >=4
  * @param agent {string} user agent string
  * @returns {boolean}
+ * @since 1.6.0
  * @example
  * be.safariMobile() // true
  * be.safariMobile('<=7') // true
@@ -4916,6 +5004,7 @@ Envs.desktop = function (agent) {
  * @param range {string} operator and version number "==", "<", "<=", ">", "=>" ex: >=4
  * @param agent {string} user agent string
  * @returns {boolean}
+ * @since 1.6.0
  * @example
  * be.edge() // true
  * be.edge('>=12') // true
@@ -4971,6 +5060,7 @@ Envs.desktop = function (agent) {
  * @name linux
  * @param agent {string} user agent string
  * @returns {boolean}
+ * @since 1.6.0
  * @example
  * be.linux() // true
  */
@@ -5259,6 +5349,7 @@ module.exports = Objects;
  */
 
 var Types = __webpack_require__(1);
+var Numbers = __webpack_require__(3);
 var Interface = __webpack_require__(0);
 var Arrays = {};
 
@@ -5339,6 +5430,7 @@ Arrays.arrayOfObjects = function (value) {
  * @name arrayOfBooleans
  * @param value {array} array
  * @returns {*|boolean}
+ * @since 1.3.1
  * @example
  * be.arrayOfBooleans([true, false]) // true
  * be.all.arrayOfBooleans([
@@ -5360,6 +5452,7 @@ Arrays.arrayOfBooleans = function (value) {
  * @name arrayOfNumbers
  * @param value {array} array
  * @returns {*|boolean}
+ * @since 1.4.0
  * @example
  * be.arrayOfNumbers([1, 2]) // true
  * be.all.arrayOfNumbers([
@@ -5373,6 +5466,27 @@ Arrays.arrayOfNumbers = function (value) {
 };
 
 /**
+ * Check if is an array of numeric
+ *
+ * **Interfaces**: `all`, `any`, `not`, `err`
+ *
+ * @function
+ * @name arrayOfNumeric
+ * @param value {array} array
+ * @returns {*|boolean}
+ * @since 1.13.0
+ * @example
+ * be.arrayOfNumeric([1, "2"]) // true
+ * be.all.arrayOfNumeric([
+ *      12,
+ *      "two"
+ * ]) // false
+ */
+Arrays.arrayOfNumeric = function (value) {
+  return Numbers.all.numeric(value);
+};
+
+/**
  * Check if is an array of dates
  *
  * **Interfaces**: `all`, `any`, `not`, `err`
@@ -5381,6 +5495,7 @@ Arrays.arrayOfNumbers = function (value) {
  * @name arrayOfDates
  * @param value {array} array
  * @returns {*|boolean}
+ * @since 1.4.0
  * @example
  * be.arrayOfDates([new Date(), new Date('2017-07-06')]) // true
  * be.all.arrayOfDates([
@@ -5402,6 +5517,7 @@ Arrays.arrayOfDates = function (value) {
  * @name arrayOfFunctions
  * @param value {array} array
  * @returns {*|boolean}
+ * @since 1.4.0
  * @example
  * be.arrayOfFunctions([function(){return 1}, function(){return 2}]) // true
  * be.all.arrayOfFunctions([
@@ -5425,6 +5541,7 @@ Arrays.arrayOfFunctions = function (value) {
  * @param key {string} object key that you are looking for
  * @param value {any}  the value of the key that you are looking for
  * @returns {*|boolean}
+ * @since 1.10.0
  * @example
  * be.objValueInArray([{ id: 1, name: '...'}], 'id', 1) // true
  */
@@ -5985,6 +6102,7 @@ Hashes.sha1 = function (value) {
  * @name sha256
  * @param value {string} hash string
  * @returns {boolean}
+ * @since 1.9.0
  * @example
  * be.256('7f83b1657ff1fc53b92dc18148a1d65dfc2d4b1fa3d677284addd200126d9069') // true
  * be.not.256('7f83b1657ff1fc53b92dc18148a1d65dfc2d4b1fa3d677284addd200126d9069') // false
@@ -6003,6 +6121,7 @@ Hashes.sha256 = function (value) {
  * @name sha512
  * @param value {string} hash string
  * @returns {boolean}
+ * @since 1.9.0
  * @example
  * be.sha512('aeae379a6e857728e44164267fdb7a0e27b205d757cc19899586c89dbb221930f1813d02ff93a661859bc17065eac4d6edf3c38a034e6283a84754d52917e5b0') // true
  * be.not.sha512('aeae379a6e857728e44164267fdb7a0e27b205d757cc19899586c89dbb221930f1813d02ff93a661859bc17065eac4d6edf3c38a034e6283a84754d52917e5b0') // false
@@ -6307,7 +6426,7 @@ module.exports = DOM;
 /* 25 */
 /***/ (function(module, exports) {
 
-module.exports = {"name":"bejs","version":"1.12.2","description":"Simple, light-weight assertions framework for javascript","homepage":"https://be.js.org","main":"index.js","scripts":{"version:major":"webpack --env.major && npm run-script doc && version-to-tag.sh && npm publish","version:minor":"webpack --env.minor && npm run-script doc && version-to-tag.sh && npm publish","version:patch":"webpack --env.patch && npm run-script doc && version-to-tag.sh && npm publish","build":"webpack --progress","doc":"./node_modules/.bin/jsdoc --configure .jsdoc.json --verbose","test":"istanbul cover ./node_modules/mocha/bin/_mocha --report lcovonly -- -R spec && cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js && rm -rf ./coverage"},"keywords":["asserts","assertions","test","is","boolean","url","number","string","email","object","check","float","alphanumeric","mocha","testing","validation","test unit","valid","type"],"author":{"name":"Fabio Ricali","email":"fabio@rica.li"},"contributors":[{"name":"Davide Polano","email":"info@mdslab.org"}],"license":"MIT","devDependencies":{"babel-core":"^6.26.0","babel-loader":"^7.1.2","babel-preset-es2015":"^6.24.1","coveralls":"^2.13.1","docdash":"^0.4.0","istanbul":"^0.4.5","jsdoc":"^3.5.4","jsdom":"^11.2.0","koa":"^2.3.0","minami":"^1.2.3","mocha":"^3.5.0","mocha-lcov-reporter":"^1.3.0","request":"^2.81.0","unminified-webpack-plugin":"^1.2.0","webpack":"^3.5.5","webpack-auto-inject-version":"^0.5.14"},"repository":{"type":"git","url":"https://github.com/fabioricali/beJS"}}
+module.exports = {"name":"bejs","version":"1.13.0","description":"Simple, light-weight assertions framework for javascript","homepage":"https://be.js.org","main":"index.js","scripts":{"version:major":"webpack --env.major && npm run-script doc && version-to-tag.sh && npm publish","version:minor":"webpack --env.minor && npm run-script doc && version-to-tag.sh && npm publish","version:patch":"webpack --env.patch && npm run-script doc && version-to-tag.sh && npm publish","build":"webpack --progress","doc":"./node_modules/.bin/jsdoc --configure .jsdoc.json --verbose","test":"istanbul cover ./node_modules/mocha/bin/_mocha --report lcovonly -- -R spec && cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js && rm -rf ./coverage"},"keywords":["asserts","assertions","test","is","boolean","url","number","string","email","object","check","float","alphanumeric","mocha","testing","validation","test unit","valid","type"],"author":{"name":"Fabio Ricali","email":"fabio@rica.li"},"contributors":[{"name":"Davide Polano","email":"info@mdslab.org"}],"license":"MIT","devDependencies":{"babel-core":"^6.26.0","babel-loader":"^7.1.2","babel-preset-es2015":"^6.24.1","coveralls":"^2.13.1","docdash":"^0.4.0","istanbul":"^0.4.5","jsdoc":"^3.5.4","jsdom":"^11.2.0","koa":"^2.3.0","minami":"^1.2.3","mocha":"^3.5.0","mocha-lcov-reporter":"^1.3.0","request":"^2.81.0","unminified-webpack-plugin":"^1.2.0","webpack":"^3.5.5","webpack-auto-inject-version":"^0.5.14"},"repository":{"type":"git","url":"https://github.com/fabioricali/beJS"}}
 
 /***/ })
 /******/ ]); 
