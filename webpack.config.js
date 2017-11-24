@@ -16,7 +16,8 @@ module.exports = {
     output: {
         filename: './dist/be.min.js',
         library: 'be',
-        umdNamedDefine: true
+        umdNamedDefine: true,
+        libraryTarget: 'umd'
     },
     resolve: {
         modules: ['node_modules'],

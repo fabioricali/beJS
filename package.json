@@ -3,7 +3,7 @@
     "version": "1.13.0",
     "description": "Simple, light-weight assertions framework for javascript",
     "homepage": "https://be.js.org",
-    "main": "index.js",
+    "main": "dist/be.js",
     "scripts": {
         "version:major": "webpack --env.major && npm run-script doc && version-to-tag.sh && npm publish",
         "version:minor": "webpack --env.minor && npm run-script doc && version-to-tag.sh && npm publish",
