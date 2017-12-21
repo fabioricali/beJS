@@ -339,7 +339,7 @@ Mixed.compareVersion = (a, operator, b, major) => {
  * @returns {boolean}
  * @example
  * be.max(10, 2) // false
- * be.max('hello', 4) // true
+ * be.max('hello', 5) // true
  */
 Mixed.max = (value, num) => {
     if (Types.string(value))
@@ -361,7 +361,7 @@ Mixed.max.multiple = false;
  * @returns {boolean}
  * @example
  * be.min(10, 2) // true
- * be.min('hello', 3) // false
+ * be.min('hello', 3) // true
  */
 Mixed.min = (value, num) => {
     if (Types.string(value))
