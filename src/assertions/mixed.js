@@ -337,6 +337,7 @@ Mixed.compareVersion = (a, operator, b, major) => {
  * @param value {string|number} value to check
  * @param num {number} number target
  * @returns {boolean}
+ * @since 1.15.0
  * @example
  * be.max(10, 2) // false
  * be.max('hello', 5) // true
@@ -359,6 +360,7 @@ Mixed.max.multiple = false;
  * @param value {string|number} value to check
  * @param num {number} number target
  * @returns {boolean}
+ * @since 1.15.0
  * @example
  * be.min(10, 2) // true
  * be.min('hello', 3) // true
