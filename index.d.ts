@@ -160,6 +160,8 @@ export declare namespace be {
     function equal(value: any, other: any): boolean;
     function hexColor(value: string): boolean;
     function compareVersion(a: string, operator: string, b: string, major: boolean): boolean;
+    function max(value: string|number, num: number): boolean;
+    function min(value: string|number, num: number): boolean;
 
     function int(value: number): boolean;
     function float(value: number): boolean;
