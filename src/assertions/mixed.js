@@ -327,6 +327,50 @@ Mixed.compareVersion = (a, operator, b, major) => {
     return Helpers.comparators[operator](a, b);
 };
 
+/**
+ * Checks if string length or if a number value is greater or equal than a given number
+ *
+ * **Interfaces**: `not`, `err`
+ *
+ * @function
+ * @name max
+ * @param value {string|number} value to check
+ * @param num {number} number target
+ * @returns {boolean}
+ * @example
+ * be.max(10, 2) // false
+ * be.max('hello', 4) // true
+ */
+Mixed.max = (value, num) => {
+    if (Types.string(value))
+        value = value.length;
+    return Types.all.number(value, num) && value <= num;
+};
+
+Mixed.max.multiple = false;
+
+/**
+ * Checks if string length or if a number value is lesser or equal than a given number
+ *
+ * **Interfaces**: `not`, `err`
+ *
+ * @function
+ * @name min
+ * @param value {string|number} value to check
+ * @param num {number} number target
+ * @returns {boolean}
+ * @example
+ * be.min(10, 2) // true
+ * be.min('hello', 3) // false
+ */
+Mixed.min = (value, num) => {
+    if (Types.string(value))
+        value = value.length;
+    return Types.all.number(value, num) && value >= num;
+};
+
+Mixed.min.multiple = false;
+
 Mixed = Interface.create(Mixed);
 
 module.exports = Mixed;
