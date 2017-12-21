@@ -466,13 +466,36 @@ describe('min', function () {
         console.log(result);
         assert.equal(result, true);
     });
-    it('#3 should be return true', function () {
+    it('#3 should be return false', function () {
         var result = be.min(10, 15);
         console.log(result);
         assert.equal(result, false);
     });
-    it('#4 should be return true', function () {
+    it('#4 should be return false', function () {
         var result = be.min('hello', 6);
+        console.log(result);
+        assert.equal(result, false);
+    });
+});
+
+describe('max', function () {
+    it('#1 should be return true', function () {
+        var result = be.max(10, 11);
+        console.log(result);
+        assert.equal(result, true);
+    });
+    it('#2 should be return true', function () {
+        var result = be.max('hello', 5);
+        console.log(result);
+        assert.equal(result, true);
+    });
+    it('#3 should be return false', function () {
+        var result = be.max(10, 9);
+        console.log(result);
+        assert.equal(result, false);
+    });
+    it('#4 should be return false', function () {
+        var result = be.max('hello', 4);
         console.log(result);
         assert.equal(result, false);
     });
