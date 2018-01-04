@@ -1,4 +1,4 @@
-// [AIV]  beJS Build version: 1.16.0  
+// [AIV]  beJS Build version: 2.0.0  
  (function webpackUniversalModuleDefinition(root, factory) {
 	if(typeof exports === 'object' && typeof module === 'object')
 		module.exports = factory();
@@ -2036,7 +2036,7 @@ module.exports = __webpack_require__(6);
 
 var Helpers = __webpack_require__(2);
 var Interface = __webpack_require__(0);
-var version = '1.16.0';
+var version = '2.0.0';
 
 /**
  * be class
@@ -2092,22 +2092,22 @@ be.getVersion._ofBe = true;
 /**
  * Set new/overwrite method
  * @function
- * @name be#set
+ * @name be#setAssert
  * @memberOf be
  * @param name {string} assertion name
  * @param func {function} function
  * @since 1.4.1
  * @example
- * be.set('myAssert', (a, b) => {
+ * be.setAssert('myAssert', (a, b) => {
  *      return a === b;
  * });
  * be.myAssert(true, true) // true
  */
-be.set = function (name, func) {
+be.setAssert = function (name, func) {
     be[name] = func;
 };
 
-be.set._ofBe = true;
+be.setAssert._ofBe = true;
 
 /**
  * Add all methods to "be"
@@ -2458,6 +2458,23 @@ Strings.emptyString = function (value) {
  */
 Strings.alphanumeric = function (value) {
     return (/^[a-z0-9]+$/i.test(value) && Types.string(value)
+    );
+};
+
+/**
+ * Check if is alpha string
+ *
+ * **Interfaces**: `all`, `any`, `not`, `err`
+ *
+ * @function
+ * @name alpha
+ * @param value {string} string
+ * @returns {boolean}
+ * @example
+ * be.alpha('hello123456') // false
+ */
+Strings.alpha = function (value) {
+    return (/^[a-z]+$/i.test(value) && Types.string(value)
     );
 };
 
@@ -6479,7 +6496,7 @@ module.exports = DOM;
 /* 25 */
 /***/ (function(module, exports) {
 
-module.exports = {"name":"bejs","version":"1.16.0","description":"Simple, light-weight assertions framework for javascript","homepage":"https://be.js.org","main":"dist/be.js","scripts":{"version:major":"webpack --env.major && npm run-script doc && version-to-tag.sh && npm publish","version:minor":"webpack --env.minor && npm run-script doc && version-to-tag.sh && npm publish","version:patch":"webpack --env.patch && npm run-script doc && version-to-tag.sh && npm publish","build":"webpack --progress","doc":"./node_modules/.bin/jsdoc --configure .jsdoc.json --verbose","test":"istanbul cover ./node_modules/mocha/bin/_mocha --report lcovonly -- -R spec && cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js && rm -rf ./coverage"},"keywords":["asserts","assertions","test","is","boolean","url","number","string","email","object","check","float","alphanumeric","mocha","testing","validation","test unit","valid","type"],"author":{"name":"Fabio Ricali","email":"fabio@rica.li"},"contributors":[{"name":"Davide Polano","email":"info@mdslab.org"}],"license":"MIT","devDependencies":{"babel-core":"^6.26.0","babel-loader":"^7.1.2","babel-preset-es2015":"^6.24.1","coveralls":"^2.13.1","docdash":"^0.4.0","istanbul":"^0.4.5","jsdoc":"^3.5.5","jsdom":"^11.2.0","koa":"^2.3.0","minami":"^1.2.3","mocha":"^3.5.0","mocha-lcov-reporter":"^1.3.0","request":"^2.81.0","unminified-webpack-plugin":"^1.2.0","webpack":"^3.5.5","webpack-auto-inject-version":"^0.5.14"},"repository":{"type":"git","url":"https://github.com/fabioricali/beJS"}}
+module.exports = {"name":"bejs","version":"2.0.0","description":"Simple, light-weight assertions framework for javascript","homepage":"https://be.js.org","main":"index.js","browser":"dist/be.js","scripts":{"version:major":"webpack --env.major && npm run-script doc && version-to-tag.sh && npm publish","version:minor":"webpack --env.minor && npm run-script doc && version-to-tag.sh && npm publish","version:patch":"webpack --env.patch && npm run-script doc && version-to-tag.sh && npm publish","build":"webpack --progress","doc":"./node_modules/.bin/jsdoc --configure .jsdoc.json --verbose","test":"istanbul cover ./node_modules/mocha/bin/_mocha --report lcovonly -- -R spec && cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js && rm -rf ./coverage"},"keywords":["asserts","assertions","test","is","boolean","url","number","string","email","object","check","float","alphanumeric","mocha","testing","validation","test unit","valid","type"],"author":{"name":"Fabio Ricali","email":"fabio@rica.li"},"contributors":[{"name":"Davide Polano","email":"info@mdslab.org"}],"license":"MIT","devDependencies":{"babel-core":"^6.26.0","babel-loader":"^7.1.2","babel-preset-es2015":"^6.24.1","coveralls":"^2.13.1","docdash":"^0.4.0","istanbul":"^0.4.5","jsdoc":"^3.5.5","jsdom":"^11.2.0","koa":"^2.3.0","minami":"^1.2.3","mocha":"^3.5.0","mocha-lcov-reporter":"^1.3.0","request":"^2.81.0","unminified-webpack-plugin":"^1.2.0","webpack":"^3.5.5","webpack-auto-inject-version":"^0.5.14"},"repository":{"type":"git","url":"https://github.com/fabioricali/beJS"}}
 
 /***/ })
 /******/ ]);
