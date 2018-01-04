@@ -29,6 +29,29 @@ describe('alphanumeric', function () {
     });
 });
 
+describe('alpha', function () {
+    it('alpha, should be return true', function () {
+        var result = be.alpha('abcdhju');
+        console.log(result);
+        assert.equal(result, true);
+    });
+    it('number as string, should be return false', function () {
+        var result = be.alpha('222');
+        console.log(result);
+        assert.equal(result, false);
+    });
+    it('number, should be return true', function () {
+        var result = be.alpha(222);
+        console.log(result);
+        assert.equal(result, false);
+    });
+    it('boolean, should be return true', function () {
+        var result = be.alpha(true);
+        console.log(result);
+        assert.equal(result, false);
+    });
+});
+
 describe('contains', function () {
     it('should be return true', function () {
         var result = be.contains('hello world', 'world');

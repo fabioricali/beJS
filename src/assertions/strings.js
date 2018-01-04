@@ -236,6 +236,23 @@ Strings.alphanumeric = (value) => {
 };
 
 /**
+ * Check if is alpha string
+ *
+ * **Interfaces**: `all`, `any`, `not`, `err`
+ *
+ * @function
+ * @name alpha
+ * @param value {string} string
+ * @returns {boolean}
+ * @example
+ * be.alpha('hello123456') // false
+ */
+Strings.alpha = (value) => {
+    return /^[a-z]+$/i.test(value) &&
+        Types.string(value);
+};
+
+/**
  * Check if string start with a value
  *
  * **Interfaces**: `not`, `err`
