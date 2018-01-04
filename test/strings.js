@@ -394,6 +394,11 @@ describe('endWith', function () {
         console.log(result);
         assert.equal(result, true);
     });
+    it('symbol ?, should be return true', function () {
+        var result = be.endWith('?', 'string?');
+        console.log(result);
+        assert.equal(result, true);
+    });
 });
 
 describe('char', function () {

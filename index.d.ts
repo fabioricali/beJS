@@ -202,7 +202,7 @@ export declare namespace be {
     function alphanumeric(value: string): boolean;
     function alpha(value: string): boolean;
     function startWith(value: string, string: string, insensitive: boolean): boolean;
-    function endWith(value: string, string: string, insensitive: boolean): boolean;
+    function endWith(value: string, string: string, insensitive?: boolean): boolean;
     function palindrome(value: string): boolean;
     function char(value: string): boolean;
     function space(value: string): boolean;
