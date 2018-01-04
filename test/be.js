@@ -14,9 +14,9 @@ describe('getVersion', function () {
     });
 });
 
-describe('set', function () {
+describe('setAssert', function () {
     it('should be return a true', function () {
-        be.set('myAssert', function () {
+        be.setAssert('myAssert', function () {
             return true;
         });
         var result = be.myAssert();
@@ -24,7 +24,7 @@ describe('set', function () {
         assert.equal(result, true);
     });
     it('should be return a string', function () {
-        be.set('myAssert', function (param) {
+        be.setAssert('myAssert', function (param) {
             return param;
         });
         var result = be.myAssert('hello');
@@ -32,7 +32,7 @@ describe('set', function () {
         assert.equal(typeof result === 'string', true);
     });
     it('should be return a true using a "be method"', function () {
-        be.set('myAssert', function (param) {
+        be.setAssert('myAssert', function (param) {
             return be.string(param);
         });
         var result = be.myAssert('hello');

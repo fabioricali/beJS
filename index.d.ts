@@ -19,7 +19,7 @@ export declare namespace be {
     interface Strings {}
 
     function getVersion(): string;
-    function set(name: string, func: Function): void;
+    function setAssert(name: string, func: Function): void;
 
     function classOf(object: any, className: string): boolean;
     function of(object: any, className: string): boolean;
@@ -51,7 +51,7 @@ export declare namespace be {
     function iterable(value: any): boolean;
     function symbol(value: any): boolean;
     function defined(value: any): boolean;
-    function oSet(value: any): boolean;
+    function set(value: any): boolean;
     function weakSet(value: any): boolean;
     function map(value: any): boolean;
     function weakMap(value: any): boolean;

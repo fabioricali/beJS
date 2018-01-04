@@ -90,22 +90,22 @@ be.getVersion._ofBe = true;
 /**
  * Set new/overwrite method
  * @function
- * @name be#set
+ * @name be#setAssert
  * @memberOf be
  * @param name {string} assertion name
  * @param func {function} function
  * @since 1.4.1
  * @example
- * be.set('myAssert', (a, b) => {
+ * be.setAssert('myAssert', (a, b) => {
  *      return a === b;
  * });
  * be.myAssert(true, true) // true
  */
-be.set = (name, func) => {
+be.setAssert = (name, func) => {
     be[name] = func;
 };
 
-be.set._ofBe = true;
+be.setAssert._ofBe = true;
 
 /**
  * Add all methods to "be"
