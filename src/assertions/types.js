@@ -581,14 +581,14 @@ Types.defined = (value) => {
  * **Interfaces**: `all`, `any`, `not`, `err`
  *
  * @function
- * @name oSet
+ * @name set
  * @param value {Mixed} value
  * @returns {boolean}
  * @since 1.5.0
  * @example
- * be.oSet(new Set()) // true
+ * be.set(new Set()) // true
  */
-Types.oSet = (value) => {
+Types.set = (value) => {
     return Types.classOf(value, 'set');
 };
 

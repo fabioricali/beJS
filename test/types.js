@@ -744,14 +744,14 @@ describe('array_', function () {
     });
 });
 
-describe('oSet', function () {
+describe('set', function () {
     it('should be return true', function () {
-        var result = be.oSet(new Set());
+        var result = be.set(new Set());
         console.log(result);
         assert.equal(result, true);
     });
     it('should be return false', function () {
-        var result = be.oSet({});
+        var result = be.set({});
         console.log(result);
         assert.equal(result, false);
     });
