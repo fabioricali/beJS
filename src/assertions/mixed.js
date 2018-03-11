@@ -257,12 +257,8 @@ Mixed.ip = (value) => {
  * be.equal({a:1}, {a:1}) // true
  */
 Mixed.equal = (value, other) => {
-    /*if (Types.all.number(value, other))
-        return value === other && 1 / value === 1 / other;
-    else */if (/*Types.all.string(value, other) || */Types.all.regexp(value, other))
+    if (Types.all.regexp(value, other))
         return value.toString() === other.toString();
-    /*else if (Types.all.boolean(value, other))
-        return value === other;*/
     else if (Types.all.object(value, other) || Types.all.array(value, other)) {
         if (Object.keys(value).length !== Object.keys(other).length)
             return false;
