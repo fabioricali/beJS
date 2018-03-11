@@ -4,6 +4,9 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
+## [2.0.1] - 2018-03-11
+- **Improved** `equal`
+
 ## [2.0.0] - 2018-01-04
 - **Added** `be.alpha`
 - **Changed** `be.set` to `be.setAssert`
