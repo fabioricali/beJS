@@ -257,24 +257,26 @@ Mixed.ip = (value) => {
  * be.equal({a:1}, {a:1}) // true
  */
 Mixed.equal = (value, other) => {
-    if(Types.all.number(value, other))
-        return  value === other && 1 / value === 1 / other;
-    else if(Types.all.string(value, other) || Types.all.regexp(value, other))
+    /*if (Types.all.number(value, other))
+        return value === other && 1 / value === 1 / other;
+    else */if (/*Types.all.string(value, other) || */Types.all.regexp(value, other))
         return value.toString() === other.toString();
-    else if(Types.all.boolean(value, other))
-        return value === other;
-    else if(Types.all.object(value, other) || Types.all.array(value, other)) {
+    /*else if (Types.all.boolean(value, other))
+        return value === other;*/
+    else if (Types.all.object(value, other) || Types.all.array(value, other)) {
         if (Object.keys(value).length !== Object.keys(other).length)
             return false;
         for (let prop in value) {
-            if (value.hasOwnProperty(prop) && other.hasOwnProperty(prop)){
+            if (value.hasOwnProperty(prop) && other.hasOwnProperty(prop)) {
                 if (!Mixed.equal(value[prop], other[prop]))
                     return false;
-            }else
+            } else
                 return false;
         }
         return true;
-    } else return false;
+    } else {
+        return Object.is(value, other);
+    }
 };
 
 Mixed.equal.multiple = false;
@@ -320,7 +322,7 @@ Mixed.hexColor = (value) => {
  * be.compareVersion('1.0.2', '==', '1.0.3', true) // true
  */
 Mixed.compareVersion = (a, operator, b, major) => {
-    if(major){
+    if (major) {
         a = a.split('.')[0];
         b = b.split('.')[0];
     }
