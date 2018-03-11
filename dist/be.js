@@ -1,4 +1,4 @@
-// [AIV]  beJS Build version: 2.0.0  
+// [AIV]  beJS Build version: 2.0.1  
  (function webpackUniversalModuleDefinition(root, factory) {
 	if(typeof exports === 'object' && typeof module === 'object')
 		module.exports = factory();
@@ -1876,7 +1876,7 @@ Mixed.ip = function (value) {
  * be.equal({a:1}, {a:1}) // true
  */
 Mixed.equal = function (value, other) {
-  if (Types.all.number(value, other)) return value === other && 1 / value === 1 / other;else if (Types.all.string(value, other) || Types.all.regexp(value, other)) return value.toString() === other.toString();else if (Types.all.boolean(value, other)) return value === other;else if (Types.all.object(value, other) || Types.all.array(value, other)) {
+  if (Types.all.regexp(value, other)) return value.toString() === other.toString();else if (Types.all.object(value, other) || Types.all.array(value, other)) {
     if (Object.keys(value).length !== Object.keys(other).length) return false;
     for (var prop in value) {
       if (value.hasOwnProperty(prop) && other.hasOwnProperty(prop)) {
@@ -1884,7 +1884,9 @@ Mixed.equal = function (value, other) {
       } else return false;
     }
     return true;
-  } else return false;
+  } else {
+    return Object.is(value, other);
+  }
 };
 
 Mixed.equal.multiple = false;
@@ -2036,7 +2038,7 @@ module.exports = __webpack_require__(6);
 
 var Helpers = __webpack_require__(2);
 var Interface = __webpack_require__(0);
-var version = '2.0.0';
+var version = '2.0.1';
 
 /**
  * be class
@@ -2697,12 +2699,12 @@ exports.INSPECT_MAX_BYTES = 50;
  * We detect these buggy browsers and set `Buffer.TYPED_ARRAY_SUPPORT` to `false` so they
  * get the Object implementation, which is slower but behaves correctly.
  */
-Buffer.TYPED_ARRAY_SUPPORT = global.TYPED_ARRAY_SUPPORT !== undefined ? global.TYPED_ARRAY_SUPPORT : typedArraySupport();
+Buffer.TYPED_ARRAY_SUPPORT = global.TYPED_ARRAY_SUPPORT !== undefined ? global.TYPED_ARRAY_SUPPORT : typedArraySupport
 
 /*
  * Export kMaxLength after typed array support is determined.
  */
-exports.kMaxLength = kMaxLength();
+();exports.kMaxLength = kMaxLength();
 
 function typedArraySupport() {
   try {
@@ -3636,7 +3638,8 @@ var MAX_ARGUMENTS_LENGTH = 0x1000;
 function decodeCodePointsArray(codePoints) {
   var len = codePoints.length;
   if (len <= MAX_ARGUMENTS_LENGTH) {
-    return String.fromCharCode.apply(String, codePoints); // avoid extra slice()
+    return String.fromCharCode.apply(String, codePoints // avoid extra slice()
+    );
   }
 
   // Decode in chunks to avoid "call stack size exceeded".
@@ -4264,9 +4267,9 @@ var INVALID_BASE64_RE = /[^+\/0-9A-Za-z-_]/g;
 
 function base64clean(str) {
   // Node strips out invalid characters like \n and \t from the string, base64-js does not
-  str = stringtrim(str).replace(INVALID_BASE64_RE, '');
+  str = stringtrim(str).replace(INVALID_BASE64_RE, ''
   // Node converts strings with length < 2 to ''
-  if (str.length < 2) return '';
+  );if (str.length < 2) return '';
   // Node allows for non-padded base64 strings (missing trailing ===), base64-js does not
   while (str.length % 4 !== 0) {
     str = str + '=';
@@ -4292,10 +4295,10 @@ function utf8ToBytes(string, units) {
   var bytes = [];
 
   for (var i = 0; i < length; ++i) {
-    codePoint = string.charCodeAt(i);
+    codePoint = string.charCodeAt(i
 
     // is surrogate component
-    if (codePoint > 0xD7FF && codePoint < 0xE000) {
+    );if (codePoint > 0xD7FF && codePoint < 0xE000) {
       // last char was a lead
       if (!leadSurrogate) {
         // no lead yet
@@ -6496,7 +6499,76 @@ module.exports = DOM;
 /* 25 */
 /***/ (function(module, exports) {
 
-module.exports = {"name":"bejs","version":"2.0.0","description":"Simple, light-weight assertions framework for javascript","homepage":"https://be.js.org","main":"index.js","browser":"dist/be.js","scripts":{"version:major":"webpack --env.major && npm run-script doc && version-to-tag.sh && npm publish","version:minor":"webpack --env.minor && npm run-script doc && version-to-tag.sh && npm publish","version:patch":"webpack --env.patch && npm run-script doc && version-to-tag.sh && npm publish","build":"webpack --progress","doc":"./node_modules/.bin/jsdoc --configure .jsdoc.json --verbose","test":"istanbul cover ./node_modules/mocha/bin/_mocha --report lcovonly -- -R spec && cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js && rm -rf ./coverage"},"keywords":["asserts","assertions","test","is","boolean","url","number","string","email","object","check","float","alphanumeric","mocha","testing","validation","test unit","valid","type"],"author":{"name":"Fabio Ricali","email":"fabio@rica.li"},"contributors":[{"name":"Davide Polano","email":"info@mdslab.org"}],"license":"MIT","devDependencies":{"babel-core":"^6.26.0","babel-loader":"^7.1.2","babel-preset-es2015":"^6.24.1","coveralls":"^2.13.1","docdash":"^0.4.0","istanbul":"^0.4.5","jsdoc":"^3.5.5","jsdom":"^11.2.0","koa":"^2.3.0","minami":"^1.2.3","mocha":"^3.5.0","mocha-lcov-reporter":"^1.3.0","request":"^2.81.0","unminified-webpack-plugin":"^1.2.0","webpack":"^3.5.5","webpack-auto-inject-version":"^0.5.14"},"repository":{"type":"git","url":"https://github.com/fabioricali/beJS"}}
+module.exports = {
+	"name": "bejs",
+	"version": "2.0.1",
+	"description": "Simple, light-weight assertions framework for javascript",
+	"homepage": "https://be.js.org",
+	"main": "index.js",
+	"browser": "dist/be.js",
+	"scripts": {
+		"version:major": "webpack --env.major && npm run-script doc && version-to-tag.sh && npm publish",
+		"version:minor": "webpack --env.minor && npm run-script doc && version-to-tag.sh && npm publish",
+		"version:patch": "webpack --env.patch && npm run-script doc && version-to-tag.sh && npm publish",
+		"build": "webpack --progress",
+		"doc": "./node_modules/.bin/jsdoc --configure .jsdoc.json --verbose",
+		"test": "istanbul cover ./node_modules/mocha/bin/_mocha --report lcovonly -- -R spec && cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js && rm -rf ./coverage"
+	},
+	"keywords": [
+		"asserts",
+		"assertions",
+		"test",
+		"is",
+		"boolean",
+		"url",
+		"number",
+		"string",
+		"email",
+		"object",
+		"check",
+		"float",
+		"alphanumeric",
+		"mocha",
+		"testing",
+		"validation",
+		"test unit",
+		"valid",
+		"type"
+	],
+	"author": {
+		"name": "Fabio Ricali",
+		"email": "fabio@rica.li"
+	},
+	"contributors": [
+		{
+			"name": "Davide Polano",
+			"email": "info@mdslab.org"
+		}
+	],
+	"license": "MIT",
+	"devDependencies": {
+		"babel-core": "^6.26.0",
+		"babel-loader": "^7.1.2",
+		"babel-preset-es2015": "^6.24.1",
+		"coveralls": "^2.13.1",
+		"docdash": "^0.4.0",
+		"istanbul": "^0.4.5",
+		"jsdoc": "^3.5.5",
+		"jsdom": "^11.2.0",
+		"koa": "^2.3.0",
+		"minami": "^1.2.3",
+		"mocha": "^3.5.0",
+		"mocha-lcov-reporter": "^1.3.0",
+		"request": "^2.81.0",
+		"unminified-webpack-plugin": "^1.2.0",
+		"webpack": "^3.5.5",
+		"webpack-auto-inject-version": "^0.5.14"
+	},
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/fabioricali/beJS"
+	}
+};
 
 /***/ })
 /******/ ]);
